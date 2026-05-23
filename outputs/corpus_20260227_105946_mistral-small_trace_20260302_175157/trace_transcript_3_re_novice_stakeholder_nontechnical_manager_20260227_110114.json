@@ -1,0 +1,172 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_3_re_novice_stakeholder_nontechnical_manager_20260227_110114.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_175159",
+  "requirements": [
+    {
+      "requirement": "The system should feel straightforward to use and not be clunky.",
+      "source_citation": "Also, it should feel straightforward to use — people here get frustrated with clunky tools.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states that the system should be easy to use and not frustrating, indicating a usability concern.",
+      "follow_up_question": "Can you provide examples of tools that are considered clunky and what makes them so?"
+    },
+    {
+      "requirement": "The system should be learnable quickly, with users able to pick it up after a short training session.",
+      "source_citation": "They're generally competent, not tech wizards. We can't assume they'll read a 200-page manual. I really want this to be learnable quickly — they should be able to pick it up after a short training and then manage schedules without calling IT every other day.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder emphasizes the importance of quick learnability and minimal training requirements.",
+      "follow_up_question": "What specific tasks should users be able to perform after a short training session?"
+    },
+    {
+      "requirement": "The system should use clear and consistent terminology, including Standard English and nursing-specific terms.",
+      "source_citation": "It should be clear and use Standard English, and it should also speak the language of nurses... consistent wording — don't call the same thing different names in different places.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for clear, consistent, and domain-specific terminology.",
+      "follow_up_question": "Can you provide examples of nursing-specific terms that should be used?"
+    },
+    {
+      "requirement": "The system should provide warnings and prevent invalid data entries, such as duplicate student placements or mismatched course codes.",
+      "source_citation": "Warnings help, yes, like if you try to put a student in two places at once it should stop you or at least flag it loudly. Preventing invalid dates or catching mismatched course codes before someone saves them.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "data_integrity",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for warnings and data validation to prevent errors.",
+      "follow_up_question": "What specific types of invalid data entries have caused issues in the past?"
+    },
+    {
+      "requirement": "The system should handle aliases or mapping for different naming conventions used by clinical partners.",
+      "source_citation": "Our clinical partners sometimes use different naming conventions for their units. So it'd be great if the system could handle aliases or mapping...",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for the system to handle different naming conventions, which implies a maintainability concern.",
+      "follow_up_question": "Can you provide examples of different naming conventions used by clinical partners?"
+    },
+    {
+      "requirement": "The system should provide basic exports for attendance, placements, and schedule summaries in spreadsheets or PDFs.",
+      "source_citation": "Basic exports to start are fine. If we can pull attendance, placements, and schedule summaries into spreadsheets or PDFs easily, that's a huge win.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for basic exports, which is a maintainability concern.",
+      "follow_up_question": "What specific formats and data fields should be included in these exports?"
+    },
+    {
+      "requirement": "The system should interface with the central campus system (CampusConnect) for student records and enrollment.",
+      "source_citation": "We use the central campus system for student records and enrollment — CampusConnect — so this needs to interface with that...",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "interoperability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for integration with CampusConnect.",
+      "follow_up_question": "What specific data fields and APIs should be used for this integration?"
+    },
+    {
+      "requirement": "The system should sync with CampusConnect often enough to avoid stale rosters during enrollment changes, but not necessarily instantaneously.",
+      "source_citation": "Ideally it would sync often enough that we don't have stale rosters during enrollment changes, but it doesn't have to be instantaneous.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "interoperability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for regular syncs with CampusConnect to avoid stale data.",
+      "follow_up_question": "What is the acceptable frequency for syncs to avoid stale rosters?"
+    },
+    {
+      "requirement": "The system should feel fast for small tasks, with a response time of a few seconds.",
+      "source_citation": "It just needs to feel fast. For small tasks like updating a student record or adding someone to a cohort, a pause longer than a few seconds feels slow.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for fast response times for small tasks.",
+      "follow_up_question": "What specific tasks are considered small tasks, and what is the acceptable response time?"
+    },
+    {
+      "requirement": "The system should have a response time of around five seconds for routine student management tasks.",
+      "source_citation": "For routine student management stuff, around five seconds is what feels acceptable to users.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the acceptable response time for routine student management tasks.",
+      "follow_up_question": "What specific tasks are considered routine student management tasks?"
+    },
+    {
+      "requirement": "The system should have a response time of up to thirty seconds for schedule generation.",
+      "source_citation": "For schedule generation, I think up to thirty seconds is reasonable.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the acceptable response time for schedule generation.",
+      "follow_up_question": "What specific factors influence the acceptable response time for schedule generation?"
+    },
+    {
+      "requirement": "The system should be available during business hours with high uptime, aiming for around ninety-five percent availability.",
+      "source_citation": "We need it to be available during business hours when staff are working, and outages are disruptive. Aiming for high nineties in percent uptime is what I'd expect — something around ninety-five percent would be acceptable.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for high availability during business hours.",
+      "follow_up_question": "What specific measures are in place to ensure high availability?"
+    },
+    {
+      "requirement": "The system should control access to sensitive student information and respect university information policies.",
+      "source_citation": "Some of the student info is sensitive, so access needs to be controlled in practice. We have an information policy at the university that spells it out, so the system needs to respect those limits.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for access control and compliance with university policies.",
+      "follow_up_question": "What specific types of sensitive information need to be protected?"
+    },
+    {
+      "requirement": "The system should implement role-based visibility to ensure information is not exposed to unauthorized users.",
+      "source_citation": "Role-based visibility is important and there should be safeguards so that information isn't exposed to people who don't need it.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for role-based visibility to protect sensitive information.",
+      "follow_up_question": "What specific roles and permissions should be defined for role-based visibility?"
+    },
+    {
+      "requirement": "The system should prevent unauthorized export of sensitive lists and limit data access for external partners.",
+      "source_citation": "It's a risk if someone can export sensitive lists or if an external partner gets more data than they should.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the risk of unauthorized data export and access by external partners.",
+      "follow_up_question": "What specific measures should be implemented to prevent unauthorized data export and access?"
+    }
+  ]
+}

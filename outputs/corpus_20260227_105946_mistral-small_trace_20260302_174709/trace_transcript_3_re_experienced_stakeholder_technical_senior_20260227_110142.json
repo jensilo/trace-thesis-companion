@@ -1,0 +1,216 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_3_re_experienced_stakeholder_technical_senior_20260227_110142.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_174711",
+  "requirements": [
+    {
+      "requirement": "The system should provide real-time conflict detection, immediate validation, and clear warnings with suggested fixes to prevent invalid scheduling actions.",
+      "source_citation": "real-time conflict detection, immediate validation when you pick a time or a site, warnings that explain the problem and suggest fixes — not just a cryptic error message.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for real-time feedback and user guidance to prevent errors, which is a clear usability requirement.",
+      "follow_up_question": "Can you provide examples of specific conflict scenarios and the expected warning messages or suggestions for each?"
+    },
+    {
+      "requirement": "The system should guide users through safe steps with guided workflows, inline help, and minimal clicks for common tasks.",
+      "source_citation": "the system should guide the user through safe steps rather than leaving them to remember rules.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for a user-friendly interface that guides users and minimizes the cognitive load.",
+      "follow_up_question": "Can you list the top 5 most common tasks and the expected number of clicks or steps for each?"
+    },
+    {
+      "requirement": "The system should be keyboard-friendly for power users but also intuitive for occasional users.",
+      "source_citation": "keyboard-friendly for power users, but not a steep learning curve for occasional users.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the need for a balance between efficiency for power users and accessibility for occasional users.",
+      "follow_up_question": "Can you describe the typical profiles of power users and occasional users in terms of their technical skills and frequency of use?"
+    },
+    {
+      "requirement": "A single hands-on training session of 1-2 hours should be sufficient for new admins to perform core tasks.",
+      "source_citation": "a single hands-on session that lasts an hour or two should be enough for most admins to get comfortable with daily tasks.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder sets a clear expectation for the training effort required, which impacts the usability and design of the system.",
+      "follow_up_question": "Can you list the core tasks that new admins should be able to perform after the initial training session?"
+    },
+    {
+      "requirement": "The UI should resemble spreadsheet and campus portal mental models to ensure familiarity for users.",
+      "source_citation": "the UI should be obvious, with guided workflows that resemble the mental model they already use.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of aligning the UI with existing mental models to enhance usability.",
+      "follow_up_question": "Can you provide examples of specific spreadsheet or campus portal features that the UI should mimic?"
+    },
+    {
+      "requirement": "The system should perform routine operations (e.g., student edits) in less than 5 seconds.",
+      "source_citation": "for routine student management or small edits, anything above a few seconds feels sluggish to staff. If you press a button to update a student's enrollment, waiting more than, say, five seconds is noticeable.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the performance expectation for routine operations.",
+      "follow_up_question": "Can you define what constitutes a routine operation in terms of data size and complexity?"
+    },
+    {
+      "requirement": "The system should generate full cohort schedules in less than 30 seconds.",
+      "source_citation": "for bigger tasks like generating a full schedule for a cohort, it's okay to take longer, but I'd expect it to finish within, um, under half a minute.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder sets a clear performance expectation for generating full cohort schedules.",
+      "follow_up_question": "Can you describe the typical size and complexity of a full cohort schedule?"
+    },
+    {
+      "requirement": "The system should use an aggressive caching strategy for static data and a conservative strategy for mutable schedules.",
+      "source_citation": "Cache read-heavy, mostly static reference data aggressively, but for schedule data we need short TTLs or cache invalidation on writes so users see near-real-time changes.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder outlines the caching strategy to balance performance and data freshness.",
+      "follow_up_question": "Can you provide examples of static reference data and mutable schedule data?"
+    },
+    {
+      "requirement": "The system should provide quick reports for routine use and batch jobs for heavy reports to avoid blocking day-to-day operations.",
+      "source_citation": "Routine reports should be quick — similar to other small tasks — but comprehensive, cross-year reports can be generated as batch jobs.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder differentiates between routine and heavy reports and sets performance expectations for each.",
+      "follow_up_question": "Can you define the criteria for distinguishing routine reports from heavy reports?"
+    },
+    {
+      "requirement": "The system should implement role-based access control (RBAC) to restrict access to sensitive student data.",
+      "source_citation": "Not everyone should see everything — some of that student information is sensitive. Access should be role-based so program admins can see full records, while clinical site coordinators or instructors only see what they need for supervision or scheduling.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for role-based access control to protect sensitive data.",
+      "follow_up_question": "Can you provide a detailed list of roles and the corresponding access levels for each?"
+    },
+    {
+      "requirement": "The system should maintain audit trails to track who views or edits critical data.",
+      "source_citation": "there should be audit trails so we can see who viewed or changed critical data.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for audit trails to monitor access and changes to critical data.",
+      "follow_up_question": "Can you specify what constitutes critical data and the level of detail required in the audit trails?"
+    },
+    {
+      "requirement": "The system should use TLS for encryption in transit and standard disk/database encryption for data at rest.",
+      "source_citation": "Use industry-standard TLS for all transport, and standard disk/database encryption for data at rest.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the encryption standards for data in transit and at rest.",
+      "follow_up_question": "Can you provide details on the specific TLS versions and disk/database encryption methods to be used?"
+    },
+    {
+      "requirement": "The system should have fallback admin accounts for CampusConnect outages, but these accounts should be tightly controlled and audited.",
+      "source_citation": "having a fallback administrative account or emergency access mechanism is sensible if CampusConnect is down. That fallback should be tightly controlled and audited.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for fallback accounts with strict control and auditing.",
+      "follow_up_question": "Can you describe the specific controls and audit mechanisms for fallback admin accounts?"
+    },
+    {
+      "requirement": "The system should achieve 95% uptime to ensure reliability during business hours.",
+      "source_citation": "aiming for around ninety-five percent availability is reasonable for our context.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder sets a clear uptime target to ensure the system's reliability.",
+      "follow_up_question": "Can you specify the acceptable downtime window and the consequences of exceeding it?"
+    },
+    {
+      "requirement": "The system should use an asynchronous event bus for long-running tasks to avoid blocking the UI.",
+      "source_citation": "an asynchronous event bus for long-running tasks like full schedule generation or bulk notifications, so we don't block the UI.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the use of an asynchronous event bus to handle long-running tasks without impacting the UI.",
+      "follow_up_question": "Can you provide examples of long-running tasks and the expected handling mechanism?"
+    },
+    {
+      "requirement": "The system should be designed for at least 5 years of use with a service-oriented architecture and clean, versioned REST APIs for future integrations.",
+      "source_citation": "We should design for at least a multi-year horizon so upgrades and schema changes are manageable without ripping the system out every few years. I'd say a minimum of five years.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for a long-term design with maintainability in mind.",
+      "follow_up_question": "Can you provide specific examples of anticipated changes or integrations over the 5-year period?"
+    },
+    {
+      "requirement": "The system should integrate with CampusConnect via REST APIs and SSO (OAuth-based) and fall back to batch sync if real-time APIs are not available.",
+      "source_citation": "We need it to integrate with CampusConnect — their central server holds student identities, enrollments, authentication, and certain rosters. So we should use the official APIs or a supported interface so we aren't re-creating identity. Single sign-on is a must so users don't have multiple passwords, and we should reconcile student enrollment changes coming from CampusConnect rather than duplicating authoritative data.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "interoperability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for integration with CampusConnect using specific protocols and fallback mechanisms.",
+      "follow_up_question": "Can you provide details on the specific REST APIs and SSO protocols to be used?"
+    },
+    {
+      "requirement": "The system should be a pure web app that works in modern HTML5 browsers without heavy client installs.",
+      "source_citation": "It should be pure web — no heavy client installs.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for a web-based application that is compatible with modern browsers.",
+      "follow_up_question": "Can you provide a list of modern HTML5-capable browsers that the system should support?"
+    },
+    {
+      "requirement": "The system should block invalid entries (e.g., impossible dates, overlapping assignments) and warn for complex consistency issues.",
+      "source_citation": "The system must catch basic invalid entries up front with validation — things like impossible dates, overlapping assignments, or missing prerequisites should be blocked or corrected before saving. For more complex consistency rules, it can warn and require confirmation.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "data_integrity",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for data validation and consistency checks.",
+      "follow_up_question": "Can you provide examples of complex consistency issues and the expected warning messages?"
+    }
+  ]
+}

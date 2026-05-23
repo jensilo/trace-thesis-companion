@@ -1,0 +1,194 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_8_re_experienced_stakeholder_nontechnical_manager_20260227_111502.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_173349",
+  "requirements": [
+    {
+      "requirement": "The system shall load pages within 5 seconds for routine actions to prevent user frustration and abandonment.",
+      "source_citation": "For the small interactions — like loading a movie detail or moving between pages — I think it should feel instant. If I had to pick a threshold, maybe about five seconds for those routine actions.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states a threshold for page load times, indicating a clear performance requirement. The confidence is high because the requirement is directly stated and quantified.",
+      "follow_up_question": "Are there specific types of pages or interactions that should be prioritized for this 5-second load time requirement?"
+    },
+    {
+      "requirement": "The system shall ensure video buffering does not exceed 10 seconds to maintain a continuous streaming experience.",
+      "source_citation": "streaming should feel continuous. I'd expect any initial buffering to be short, like only a few seconds. If it takes much longer than that, people will assume the stream is broken. So perhaps around ten seconds max to get started.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions a threshold for video buffering, indicating a clear performance requirement. The confidence is high because the requirement is directly stated and quantified.",
+      "follow_up_question": "Are there specific types of video content or user scenarios that should be prioritized for this 10-second buffering requirement?"
+    },
+    {
+      "requirement": "The system shall be designed to be lightweight to ensure optimal performance on low-bandwidth connections.",
+      "source_citation": "pages should be lightweight so they load well on low-bandwidth connections.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for lightweight pages to ensure performance on low-bandwidth connections, indicating a performance requirement. The confidence is high because the requirement is directly stated.",
+      "follow_up_question": "Are there specific regions or user segments with particularly low-bandwidth connections that should be prioritized?"
+    },
+    {
+      "requirement": "The system shall implement monitoring to detect and alert on performance issues such as slow page loads or streaming buffering.",
+      "source_citation": "Monitoring is critical. We need to know when pages or streams slow down, and we need daily usage stats for trend detection. If we see slowdowns or unusual patterns, ops must be alerted so we can react before customers complain.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for monitoring and alerting for performance issues, indicating an operability requirement. The confidence is high because the requirement is directly stated.",
+      "follow_up_question": "What specific metrics or thresholds should trigger alerts for performance issues?"
+    },
+    {
+      "requirement": "The system shall ensure that payment data is encrypted and accessible only to authorized staff to protect user information.",
+      "source_citation": "We need to make it crystal clear we treat card data seriously. We shouldn't be in a position where any random employee can look up card numbers. Only very specific, authorised staff should be able to access payment records, and the data should be stored in a way that a leak would be meaningless. From a business-risk point of view, that means encryption and strict access controls.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for encryption and strict access controls for payment data, indicating a security requirement. The confidence is high because the requirement is directly stated.",
+      "follow_up_question": "What specific roles or job titles should be considered authorized staff for accessing payment data?"
+    },
+    {
+      "requirement": "The system shall implement strict access controls requiring additional approvals for sensitive actions such as accessing raw payment data or processing refunds over a certain threshold.",
+      "source_citation": "I think for the most sensitive things, like unlocking raw payment data or doing refunds over a certain threshold, additional approvals make sense. For routine reporting, a single authorised admin is OK. We must avoid overburdening simple tasks but be deliberate with high-risk ones.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for additional approvals for sensitive actions, indicating a security requirement. The confidence is medium because the requirement is stated but not fully quantified.",
+      "follow_up_question": "What specific threshold for refund amounts should trigger the need for additional approvals?"
+    },
+    {
+      "requirement": "The system shall provide a clear and accessible privacy notice to users, including a summary during signup or payment processes.",
+      "source_citation": "We need to be upfront before we collect anything — a clear privacy notice that people can find easily. I want it visible on every page in a simple link and, especially during signup or payment, users should be reminded what we're collecting and why. It's a trust anchor.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "privacy",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for a clear and accessible privacy notice, indicating a privacy requirement. The confidence is medium because the requirement is stated but not fully detailed.",
+      "follow_up_question": "What specific information should be included in the privacy notice summary during signup or payment processes?"
+    },
+    {
+      "requirement": "The system shall support pre-paid cards as a major payment channel, especially in markets with low credit card penetration.",
+      "source_citation": "It's strategically important in several African markets where card penetration is low. So it's not just a niche; it's a core acquisition route. We need a seamless flow for merchants to sell cards and for customers to redeem them without friction.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the importance of pre-paid cards in certain markets, indicating a usability requirement. The confidence is medium because the requirement is stated but not fully detailed.",
+      "follow_up_question": "What specific markets or regions should be prioritized for pre-paid card support?"
+    },
+    {
+      "requirement": "The system shall provide a seamless and frictionless flow for users to redeem pre-paid cards, even if the payment gateway is down.",
+      "source_citation": "Yes, pre-paid cards are important in markets where credit cards aren't universal. Redemption should be processed immediately on our side — it shouldn't require the external gateway — so people can buy access in a shop and watch right away. If the external gateway is down, the in-house flow should keep working.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for a seamless flow for pre-paid card redemption, indicating a usability requirement. The confidence is high because the requirement is directly stated.",
+      "follow_up_question": "Are there specific types of pre-paid cards or redemption scenarios that should be prioritized?"
+    },
+    {
+      "requirement": "The system shall maintain an uptime of 99.5% to ensure business credibility and user trust.",
+      "source_citation": "From a business credibility standpoint, we need very high availability. Downtime erodes trust quickly. If I had to pick a target for SLAs and investor conversations, I'd aim for something like ninety-nine point five percent availability — low enough risk that our customers don't notice routine maintenance, but realistic.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions a target uptime percentage, indicating an availability requirement. The confidence is high because the requirement is directly stated and quantified.",
+      "follow_up_question": "Are there specific times or events where higher availability is required, such as during premieres or peak usage times?"
+    },
+    {
+      "requirement": "The system shall implement fallback mechanisms to ensure users can still browse, redeem pre-paid cards, access purchased titles, and queue purchases if the payment gateway is down.",
+      "source_citation": "If the payment gateway hiccups, we shouldn't go dark. Users should still be able to browse, redeem pre-paid cards, access their purchased titles, and maybe queue purchases to complete later. Ideally, the customer experience doesn't grind to a halt just because a vendor is flaky; we need fallback paths so the business can still make money and customers aren't frustrated.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for fallback mechanisms, indicating a fault tolerance requirement. The confidence is high because the requirement is directly stated.",
+      "follow_up_question": "What specific fallback mechanisms or redundancy strategies should be implemented?"
+    },
+    {
+      "requirement": "The system shall provide clear messaging and either automatic retry or a fallback stream if the streaming server goes down to minimize disruption.",
+      "source_citation": "For playback, we need clear messaging and either automatic retry or a fallback stream so that most people can still watch. From a revenue standpoint, we can't just serve an error page during peak times.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for clear messaging and fallback options for streaming, indicating a fault tolerance requirement. The confidence is medium because the requirement is stated but not fully detailed.",
+      "follow_up_question": "What specific types of clear messaging or fallback streams should be implemented?"
+    },
+    {
+      "requirement": "The system shall support around 1,000 simultaneous users at peak times to handle expected usage during premieres or popular weekend evenings.",
+      "source_citation": "We're not Netflix, but we do expect noticeable peaks, like during premieres or popular weekend evenings. If you need a ballpark number for capacity planning, I'd say around one thousand simultaneous users at peak.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions a specific number of simultaneous users, indicating a scalability requirement. The confidence is medium because the requirement is stated but not fully detailed.",
+      "follow_up_question": "Are there specific types of content or events that should be prioritized for handling peak loads?"
+    },
+    {
+      "requirement": "The system shall provide admins with a dashboard for real-time monitoring and the ability to pull detailed records for audits or financial reconciliation.",
+      "source_citation": "Both [dashboard and downloadable reports], ideally. A dashboard for immediate checks and the ability to pull detailed records for audits or financial reconciliation. Admins should be able to slice by title, date, and payment type without calling engineering.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for a dashboard and downloadable reports, indicating a maintainability requirement. The confidence is high because the requirement is directly stated.",
+      "follow_up_question": "What specific types of detailed records or reports should be available for admins?"
+    },
+    {
+      "requirement": "The system shall retain financial records for a duration sufficient to satisfy auditors and local tax rules, and usage analytics for at least several months.",
+      "source_citation": "For financial records, long enough to satisfy auditors and local tax rules — so not short-lived. For usage analytics, I want daily aggregates kept for trend analysis for at least months. Exact retention periods I expect legal and finance to define, but long enough to be useful.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for retaining financial records and usage analytics, indicating a maintainability requirement. The confidence is medium because the requirement is stated but not fully quantified.",
+      "follow_up_question": "What specific retention periods should be defined for financial records and usage analytics?"
+    },
+    {
+      "requirement": "The system shall comply with data residency and local privacy laws, ensuring customer data is handled appropriately in different regions.",
+      "source_citation": "Data residency and local privacy laws are a concern. In some countries, customer data has to be handled a certain way. We need legal to weigh in, but from product side, let's assume we must be able to show compliance and restrict access based on region if required.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need to comply with data residency and local privacy laws, indicating a legal requirement. The confidence is medium because the requirement is stated but not fully detailed.",
+      "follow_up_question": "What specific regions or countries have the most stringent data residency and privacy laws that should be prioritized?"
+    },
+    {
+      "requirement": "The system shall be designed to be simple and familiar, with big buttons, clear language, and local language support where possible to ensure usability for non-tech-savvy users.",
+      "source_citation": "design needs to be simple and familiar — big buttons, clear language, and local language support where possible.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for a simple and familiar design, indicating a usability requirement. The confidence is medium because the requirement is stated but not fully detailed.",
+      "follow_up_question": "What specific local languages or regions should be prioritized for language support?"
+    }
+  ]
+}

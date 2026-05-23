@@ -1,0 +1,161 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_3_re_novice_stakeholder_technical_junior_20260227_110127.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_173241",
+  "requirements": [
+    {
+      "requirement": "The system should respond to small tasks (e.g., adding a student) within approximately 5 seconds.",
+      "source_citation": "It just needs to feel snappy... For the small things... people expect almost immediate feedback. For the heavier stuff... maybe up to thirty seconds is acceptable.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for the system to feel snappy and provides specific time frames for acceptable response times. The evidence is clear and directly addresses performance expectations.",
+      "follow_up_question": "Are there specific small tasks beyond adding a student that should also meet this 5-second response time?"
+    },
+    {
+      "requirement": "The system should respond to complex tasks (e.g., generating schedules) within approximately 30 seconds.",
+      "source_citation": "It just needs to feel snappy... For the small things... people expect almost immediate feedback. For the heavier stuff... maybe up to thirty seconds is acceptable.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder provides a clear distinction between small and complex tasks and specifies the acceptable response time for complex tasks.",
+      "follow_up_question": "Are there specific complex tasks beyond generating schedules that should also meet this 30-second response time?"
+    },
+    {
+      "requirement": "The system should implement role-based access control (RBAC) to restrict access to sensitive data based on user roles.",
+      "source_citation": "Program admins should have broad access... Site coordinators should only see the basics... Instructors should see academic-relevant info... clear restrictions so only authorized people can see personal data.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for role-based access control and provides specific examples of different user roles and their access levels.",
+      "follow_up_question": "Can you provide a detailed list of the specific data elements that each role should have access to?"
+    },
+    {
+      "requirement": "The system should comply with the university’s information policy on privacy, including controlled access, encryption where required, and minimal exposure of personal identifiers.",
+      "source_citation": "It must protect private information in line with our organization’s information policy... controlled access, encryption where required.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for compliance with the university’s information policy and specifies the requirements for protecting private information.",
+      "follow_up_question": "Can you provide specific examples of personal identifiers that should be protected and the encryption standards that should be used?"
+    },
+    {
+      "requirement": "The system should have an intuitive user interface that requires minimal training, with clear error messages and predictable workflows.",
+      "source_citation": "Minimal clicks to perform common tasks, clear error messages, and predictable workflows... If something feels clunky, they'll avoid it and go back to spreadsheets.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for an intuitive user interface and provides specific examples of what makes an interface intuitive.",
+      "follow_up_question": "Can you provide specific examples of common tasks that should require minimal clicks and clear error messages?"
+    },
+    {
+      "requirement": "The system should have basic integrity checks and validation to prevent obvious mistakes, such as overlapping dates and duplicate assignments.",
+      "source_citation": "Basic integrity checks are important... validation to catch obvious mistakes.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "data_quality",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for basic integrity checks and validation to prevent obvious mistakes.",
+      "follow_up_question": "Can you provide a detailed list of the specific validation rules that should be implemented?"
+    },
+    {
+      "requirement": "The system should be reliable during working hours, aiming for around 95% availability.",
+      "source_citation": "It needs to be reliable during working hours... aiming for around ninety-five percent availability.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for reliability during working hours and specifies the target availability percentage.",
+      "follow_up_question": "Can you provide specific details on the acceptable downtime for maintenance and the procedures for handling outages?"
+    },
+    {
+      "requirement": "The system should be designed to support future curriculum updates and additional cohorts, ensuring extensibility and scalability.",
+      "source_citation": "It should be built so we can support future curriculum updates... keep it simple enough that admins who aren't technical can use it.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for the system to support future curriculum updates and additional cohorts, indicating a requirement for extensibility and scalability.",
+      "follow_up_question": "Can you provide specific examples of future curriculum updates and additional cohorts that the system should be able to support?"
+    },
+    {
+      "requirement": "The system should maintain a history of changes made to schedules and student data, including who made the changes and when.",
+      "source_citation": "We should have a history of who changed what and when... helps with compliance.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "auditability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for a history of changes and specifies the importance of tracking who made the changes and when.",
+      "follow_up_question": "Can you provide specific details on the retention period for audit logs and the format in which the history should be maintained?"
+    },
+    {
+      "requirement": "The system should have regular backups and a recovery plan to restore data in case of corruption.",
+      "source_citation": "Backups should be routine... some recovery plan is required.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "disaster_recovery",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for regular backups and a recovery plan to restore data in case of corruption.",
+      "follow_up_question": "Can you provide specific details on the backup frequency, storage location, and the recovery time objective (RTO) and recovery point objective (RPO) for the system?"
+    },
+    {
+      "requirement": "The system should integrate with CampusConnect for student records and authentication, using a stable and authorized connection.",
+      "source_citation": "It definitely needs to hook into our campus systems for student records and authentication... stable, authorized connection.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "integration",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for integration with CampusConnect and specifies the requirements for a stable and authorized connection.",
+      "follow_up_question": "Can you provide specific details on the integration protocol and the data elements that should be exchanged with CampusConnect?"
+    },
+    {
+      "requirement": "The system should comply with the university’s information policy on privacy, including controlled access, encryption where required, and minimal exposure of personal identifiers.",
+      "source_citation": "It must follow our university’s information policy on privacy... we can't just make ad hoc decisions here.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "compliance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for compliance with the university’s information policy and specifies the requirements for protecting private information.",
+      "follow_up_question": "Can you provide specific details on the university’s information policy and the encryption standards that should be used?"
+    },
+    {
+      "requirement": "The system should provide automated, role-specific notifications for schedule changes, including email and calendar invites, and optionally SMS for urgent changes.",
+      "source_citation": "They need to be automatic... clear and go to the right people... not spam people for tiny, irrelevant tweaks.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "notifications",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for automated, role-specific notifications and specifies the types of notifications that should be provided.",
+      "follow_up_question": "Can you provide specific details on the notification triggers, the content of the notifications, and the roles that should receive each type of notification?"
+    },
+    {
+      "requirement": "The system should be designed with budget constraints in mind, relying on campus infrastructure and avoiding top-tier enterprise SLAs.",
+      "source_citation": "Budget is always a thing... we probably can't aim for top-tier enterprise SLAs everywhere.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "constraints",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need to consider budget constraints and specifies the reliance on campus infrastructure.",
+      "follow_up_question": "Can you provide specific details on the budget constraints and the campus infrastructure that should be relied upon?"
+    }
+  ]
+}

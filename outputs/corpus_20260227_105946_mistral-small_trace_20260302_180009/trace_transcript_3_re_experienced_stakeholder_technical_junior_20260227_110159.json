@@ -1,0 +1,161 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_3_re_experienced_stakeholder_technical_junior_20260227_110159.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_180011",
+  "requirements": [
+    {
+      "requirement": "The system should prevent obvious mistakes such as scheduling conflicts and invalid enrollments.",
+      "source_citation": "the UI should warn you before you save it, maybe block it outright if it's clearly impossible.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for the system to prevent obvious mistakes and guide users to avoid entering bad data. This indicates a usability requirement for the system to be user-friendly and prevent errors.",
+      "follow_up_question": "What specific types of mistakes should the system block outright, and what should it only warn about?"
+    },
+    {
+      "requirement": "The system should use terminology familiar to nurses and avoid computer jargon.",
+      "source_citation": "it should use wording people are familiar with — not weird computer jargon. Oh, and the terminology should match what nurses expect",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of using familiar terminology to ensure the system is user-friendly and intuitive for nurses.",
+      "follow_up_question": "Can you provide a list of specific terms that should be used or avoided?"
+    },
+    {
+      "requirement": "Small tasks should feel instantaneous, with a maximum delay of 5 seconds.",
+      "source_citation": "small student management things should come back in a handful of seconds, maybe up to about five seconds.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the expected performance for small tasks, indicating a clear performance requirement.",
+      "follow_up_question": "What specific tasks are considered 'small tasks'?"
+    },
+    {
+      "requirement": "Schedule generation should be completed within 30 seconds.",
+      "source_citation": "For the heavy lift — like when you press 'Generate Schedule' for a term — people expect it in under a minute; personally, I think around thirty seconds would be reasonable",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder provides a specific time frame for schedule generation, indicating a clear performance requirement.",
+      "follow_up_question": "What factors might affect the time it takes to generate a schedule?"
+    },
+    {
+      "requirement": "The system should handle peak usage during mornings without performance degradation.",
+      "source_citation": "Yeah, mornings are peak. The scheduling team and some instructors tend to pile on changes at the same time, so the app needs to handle that burst.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the need for the system to handle peak usage times, indicating a performance requirement.",
+      "follow_up_question": "What specific performance metrics should be maintained during peak usage?"
+    },
+    {
+      "requirement": "The system should be available during business hours (8 AM–6 PM, weekdays).",
+      "source_citation": "It needs to be available when the office is open — folks can't do their jobs during downtime. ... Yeah, sure — roughly eight in the morning to six in the evening on weekdays.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the required availability times, indicating a clear availability requirement.",
+      "follow_up_question": "Are there specific business hours for different roles or departments?"
+    },
+    {
+      "requirement": "The system should have an overall availability of 95%, with stricter guarantees during critical scheduling windows.",
+      "source_citation": "I'd say something like mid-90s availability feels tolerable, but anything that causes missed clinical sign-ups would be a problem. ... If a downtime hits during a critical scheduling window, even a little outage is a big deal.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the desired availability percentage and the need for stricter guarantees during critical times, indicating an availability requirement.",
+      "follow_up_question": "What specific measures will be taken to ensure higher availability during critical windows?"
+    },
+    {
+      "requirement": "The system should enforce role-based access control to restrict sensitive data.",
+      "source_citation": "We have to follow the university's information policy. Students' personal data and health-related info about clinical issues should be restricted. ... role-based access is important — not everyone gets to see everything.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for role-based access control to protect sensitive data, indicating a security requirement.",
+      "follow_up_question": "What specific roles and permissions should be defined?"
+    },
+    {
+      "requirement": "The system should support versioning of curriculum structures to accommodate changes every 1-2 years.",
+      "source_citation": "Curricula shift about every couple of years, sometimes yearly for tweaks. The system should let admins edit curriculum maps and version them so we can see historical structures.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for versioning to accommodate curriculum changes, indicating a maintainability requirement.",
+      "follow_up_question": "What specific versioning features are required?"
+    },
+    {
+      "requirement": "The system should allow program staff to fix day-to-day data issues without IT intervention.",
+      "source_citation": "Ideally, program staff can fix most day-to-day things within the app if they have permissions; anything structural or systemic should go to IT.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for program staff to be able to fix day-to-day issues, indicating a maintainability requirement.",
+      "follow_up_question": "What specific permissions and tools should be provided to program staff?"
+    },
+    {
+      "requirement": "The system should sync with CampusConnect in near-real-time for student rosters.",
+      "source_citation": "I think real-time or near-real-time sync is better for rosters so changes show up quickly.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for near-real-time sync with CampusConnect, indicating a scalability requirement.",
+      "follow_up_question": "What specific data should be synced and how often?"
+    },
+    {
+      "requirement": "The system should provide immediate alerts for critical changes and batched digests for minor updates.",
+      "source_citation": "Immediate for critical changes, like a cancellation, but for small edits maybe a daily digest would be nicer.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for different types of notifications, indicating a usability requirement.",
+      "follow_up_question": "What specific events should trigger immediate alerts versus batched digests?"
+    },
+    {
+      "requirement": "The system should support exports for accreditation in CSV/Excel format, including historical data.",
+      "source_citation": "They typically want CSV or Excel. ... So the export needs to be accurate and include historical versions of curriculum and student progression.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for exports in specific formats, indicating a usability requirement.",
+      "follow_up_question": "What specific data should be included in the exports?"
+    },
+    {
+      "requirement": "The system should include inline help and examples in forms to reduce support calls.",
+      "source_citation": "Oh, and one last thing — I think users will appreciate inline help and a few examples in forms; it cuts down on calls to support.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for inline help and examples, indicating a usability requirement.",
+      "follow_up_question": "What specific types of help and examples should be included?"
+    }
+  ]
+}

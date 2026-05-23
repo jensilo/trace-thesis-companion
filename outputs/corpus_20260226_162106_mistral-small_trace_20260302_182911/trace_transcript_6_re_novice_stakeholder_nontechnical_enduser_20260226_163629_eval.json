@@ -1,0 +1,117 @@
+{
+  "extraction_file": "outputs/corpus_20260226_162106_mistral-small_trace_20260302_182911/trace_transcript_6_re_novice_stakeholder_nontechnical_enduser_20260226_163629.json",
+  "ground_truth_source": "outputs/corpus-20260226_162106/transcript_6_re_novice_stakeholder_nontechnical_enduser_20260226_163629.json",
+  "eval_model": "openai/gpt-5-mini",
+  "per_requirement": [
+    {
+      "extracted_requirement": "The system should complete quick actions within five seconds and all actions within eight seconds.",
+      "matched_ground_truth": "The response shall be fast enough to avoid interrupting the user's flow of thought. 90% of tasks shall complete within 5 seconds. 98% of tasks shall complete within 8 seconds.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 5,
+      "rationale_quality": 4,
+      "gap_detection_quality": 3,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system should provide clear and human-readable error messages, such as 'That time is taken' and show alternatives.",
+      "matched_ground_truth": "'The product shall give users feedback when necessary. 80% of the users surveyed report that the product accurately confirms their actions.'",
+      "overlap_score": 4,
+      "overlap_label": "High",
+      "quality_attribute_match": true,
+      "confidence_quality": 4,
+      "rationale_quality": 3,
+      "gap_detection_quality": 3,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system should conform to the Americans with Disabilities Act (ADA) and be accessible to screen-reader users.",
+      "matched_ground_truth": "'The product shall conform to the Americans with Disabilities Act.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": false,
+      "confidence_quality": 5,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system should provide immediate on-screen confirmations that stay until dismissed, along with email or calendar invites.",
+      "matched_ground_truth": "'The product shall give users feedback when necessary. 80% of the users surveyed report that the product accurately confirms their actions.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": false,
+      "confidence_quality": 5,
+      "rationale_quality": 4,
+      "gap_detection_quality": 3,
+      "is_hit": true,
+      "is_duplicate": true
+    },
+    {
+      "extracted_requirement": "The system should be tested with a mix of browsers and should support graceful degradation for older browsers.",
+      "matched_ground_truth": "'The product must be able to interface with any HTML browser. The product shall transmit data between the user and the product without problems. The product shall display HTML properly in 80% of all HTML browsers tested (minimum is to test 8 browsers).'",
+      "overlap_score": 4,
+      "overlap_label": "High",
+      "quality_attribute_match": false,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 3,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system should look like the company's branding, with a conservative and professional appearance.",
+      "matched_ground_truth": "'The product shall have a conservative and professional appearance.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system should support multiple languages and date/time formats, with the ability for users to choose their preferred settings.",
+      "matched_ground_truth": "'The product shall allow the user to select a chosen language from one of the target market countries.'",
+      "overlap_score": 4,
+      "overlap_label": "High",
+      "quality_attribute_match": false,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 3,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system should be validated through a mix of usability testing, surveys, and analytics.",
+      "matched_ground_truth": null,
+      "overlap_score": 2,
+      "overlap_label": "Low",
+      "quality_attribute_match": false,
+      "confidence_quality": 4,
+      "rationale_quality": 3,
+      "gap_detection_quality": 4,
+      "is_hit": false,
+      "is_duplicate": false
+    }
+  ],
+  "metrics": {
+    "hit_count": 6,
+    "extracted_count": 8,
+    "ground_truth_count": 10,
+    "precision": 0.75,
+    "recall": 0.6,
+    "f1": 0.667,
+    "quality_attribute_accuracy": 0.5,
+    "avg_confidence": 4.625,
+    "avg_overlap_score": 4.25,
+    "avg_confidence_quality": 4.375,
+    "avg_rationale_quality": 3.75,
+    "avg_gap_detection_quality": 3.375
+  }
+}

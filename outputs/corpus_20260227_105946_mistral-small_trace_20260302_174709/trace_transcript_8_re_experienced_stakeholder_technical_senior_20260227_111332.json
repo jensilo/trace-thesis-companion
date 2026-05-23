@@ -1,0 +1,205 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_8_re_experienced_stakeholder_technical_senior_20260227_111332.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_174828",
+  "requirements": [
+    {
+      "requirement": "The site should respond to routine interactions (browsing, searching, loading movie details) within five seconds.",
+      "source_citation": "Five seconds for the page or action to respond feels like the outer edge",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states a performance target for routine interactions, providing a clear metric for responsiveness.",
+      "follow_up_question": "Are there specific interactions or pages that should be prioritized for performance optimization?"
+    },
+    {
+      "requirement": "The checkout process should complete within fifteen seconds.",
+      "source_citation": "Fifteen seconds is where I'd draw a line for card processing",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder sets a clear performance target for the checkout process, acknowledging the involvement of external payment gateways.",
+      "follow_up_question": "Are there specific steps within the checkout process that should be optimized for performance?"
+    },
+    {
+      "requirement": "Initial buffering for streaming content should be within single-digit seconds.",
+      "source_citation": "Initial buffering should be short, single-digit seconds ideally",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 3,
+      "rationale": "The stakeholder expresses a preference for short buffering times but acknowledges network variability.",
+      "follow_up_question": "What specific measures should be taken to ensure minimal buffering times for streaming content?"
+    },
+    {
+      "requirement": "The system should be available 99.5% of the time.",
+      "source_citation": "I'd aim for ninety-nine point five percent availability",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states an availability target, balancing cost and customer expectations.",
+      "follow_up_question": "What specific measures should be taken to ensure 99.5% availability?"
+    },
+    {
+      "requirement": "Payment data should be encrypted at rest and accessible only to a very small set of administrators.",
+      "source_citation": "Card data has to be locked down. I think it should be stored only if we have to, and if stored, it should be encrypted at rest and only accessible to a very small set of administrators",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of securing payment data and restricting access to it.",
+      "follow_up_question": "What specific encryption standards and access control measures should be implemented?"
+    },
+    {
+      "requirement": "The system should have audit trails to track access and actions related to sensitive data.",
+      "source_citation": "Audit trails are essential so we can answer 'who did what'",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the need for audit trails to monitor and track access to sensitive data.",
+      "follow_up_question": "What specific information should be included in the audit trails?"
+    },
+    {
+      "requirement": "The system should implement role-based access control (RBAC) integrated with the identity provider.",
+      "source_citation": "Role-based access control integrated with our identity provider",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for RBAC to manage access to different parts of the system.",
+      "follow_up_question": "What specific roles and permissions should be defined for RBAC?"
+    },
+    {
+      "requirement": "The system should use PCI-compliant payment processors.",
+      "source_citation": "Use PCI-compliant payment processors",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for PCI compliance to ensure secure payment processing.",
+      "follow_up_question": "What specific PCI compliance measures should be implemented?"
+    },
+    {
+      "requirement": "The system should detect and alert on anomalous patterns indicative of abuse or fraud.",
+      "source_citation": "The system should be able to detect anomalous patterns",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the need for the system to detect and respond to anomalous patterns.",
+      "follow_up_question": "What specific types of anomalous patterns should the system detect?"
+    },
+    {
+      "requirement": "The system should have a clear privacy notice visible on every page and a short, plain-language banner or modal before collecting sensitive data.",
+      "source_citation": "A clear privacy notice before we collect anything",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of clear and visible privacy notices to inform users.",
+      "follow_up_question": "What specific information should be included in the privacy notice?"
+    },
+    {
+      "requirement": "The system should be designed with a forgiving UI that is easy to use for non-power users.",
+      "source_citation": "Make the UI forgiving for folks who aren't power users",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the need for a user-friendly interface that caters to non-power users.",
+      "follow_up_question": "What specific UI design principles and practices should be followed?"
+    },
+    {
+      "requirement": "The system should have role-based UIs that are simple and tailored to different user roles.",
+      "source_citation": "Role-based UIs that are simple",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for role-based UIs to simplify the user experience.",
+      "follow_up_question": "What specific role-based UIs should be implemented?"
+    },
+    {
+      "requirement": "The system should have automated filters for obvious spam or abusive language, with human review for edge cases.",
+      "source_citation": "Automated filters for obvious spam or abusive language, with human review",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the need for a mix of automated and human moderation for user reviews.",
+      "follow_up_question": "What specific automated filters and human review processes should be implemented?"
+    },
+    {
+      "requirement": "The system should use a microservices approach for user-facing APIs, with a CDN fronting static and streaming assets.",
+      "source_citation": "I'd go with a microservices approach for the user-facing APIs, with a CDN fronting static and streaming assets",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for a microservices architecture and CDN to ensure scalability.",
+      "follow_up_question": "What specific microservices and CDN configurations should be implemented?"
+    },
+    {
+      "requirement": "The system should use container orchestration for scale and health checks.",
+      "source_citation": "Use container orchestration for scale and health checks",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the need for container orchestration to ensure scalability and health checks.",
+      "follow_up_question": "What specific container orchestration tools and practices should be implemented?"
+    },
+    {
+      "requirement": "The system should have centralized application logs, access logs, and security events retained for operational troubleshooting and forensic work.",
+      "source_citation": "Application logs, access logs, and security events should be centralized",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for centralized logging to ensure maintainability and troubleshooting.",
+      "follow_up_question": "What specific logging tools and retention policies should be implemented?"
+    },
+    {
+      "requirement": "The system should have dashboards and alerts for key health metrics, with immediate notifications for high-severity incidents.",
+      "source_citation": "Immediate for high-severity incidents",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the need for monitoring and alerting to ensure maintainability.",
+      "follow_up_question": "What specific health metrics and alerting mechanisms should be implemented?"
+    },
+    {
+      "requirement": "The system should run synthetic transactions and page-load tests against the production stack to validate performance targets.",
+      "source_citation": "Run synthetic transactions and page-load tests against the production stack",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for synthetic testing to ensure performance and reliability.",
+      "follow_up_question": "What specific synthetic tests and performance metrics should be implemented?"
+    }
+  ]
+}

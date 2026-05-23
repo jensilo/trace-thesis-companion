@@ -1,0 +1,139 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_5_re_novice_stakeholder_nontechnical_manager_20260227_110640.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_175626",
+  "requirements": [
+    {
+      "requirement": "The system must be easy to use for 95% of adjusters and estimators as reported in surveys.",
+      "source_citation": "We aim for something like ninety-five percent of adjusters and estimators reporting that it's easy to use in our surveys.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states a target usability metric, which is a clear and measurable non-functional requirement.",
+      "follow_up_question": "What specific usability metrics or survey questions will be used to measure this requirement?"
+    },
+    {
+      "requirement": "The recycled parts search must complete within 15 seconds, with a preference for faster performance.",
+      "source_citation": "For the recycled parts search, people told me they'd tolerate up to about fifteen seconds, but they'd prefer it much faster.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder provides a specific performance target for the recycled parts search, indicating a clear non-functional requirement.",
+      "follow_up_question": "What are the technical constraints that might affect the ability to meet this performance target?"
+    },
+    {
+      "requirement": "The repair facility search must complete within 8 seconds.",
+      "source_citation": "When you're on the phone with a customer or standing at a tow yard, you can't wait long. I think under eight seconds is where users stop fidgeting — again, they'd love faster, but that's the practical cutoff.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder provides a specific performance target for the repair facility search, indicating a clear non-functional requirement.",
+      "follow_up_question": "What are the technical constraints that might affect the ability to meet this performance target?"
+    },
+    {
+      "requirement": "The system must have an annual availability of 98%.",
+      "source_citation": "The business expects something in the high nineties — around ninety-eight percent availability over the year is what leadership considers acceptable.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states an availability target, which is a clear and measurable non-functional requirement.",
+      "follow_up_question": "What are the planned maintenance windows and how will they affect the availability target?"
+    },
+    {
+      "requirement": "The system must support 1,500 concurrent users at peak times.",
+      "source_citation": "We sized it for roughly fifteen hundred concurrent users at peak.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder provides a specific scalability target, indicating a clear non-functional requirement.",
+      "follow_up_question": "What are the technical constraints that might affect the ability to meet this scalability target?"
+    },
+    {
+      "requirement": "The system must ensure that each insurance company can only access their own claims and related data.",
+      "source_citation": "Each company must only see their own claims and related data, period. It's sensitive stuff; cross-visibility would be a showstopper.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states a security requirement, which is a clear and measurable non-functional requirement.",
+      "follow_up_question": "What specific technical measures will be implemented to ensure data isolation?"
+    },
+    {
+      "requirement": "The system must be resilient to attacks and misuse, including denial of service and automated scraping.",
+      "source_citation": "We have to assume people will try to break or overload things, whether maliciously or by accident. Denial of service or automated scraping of parts data would be bad.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder provides a specific security concern, indicating a clear non-functional requirement.",
+      "follow_up_question": "What specific security measures will be implemented to protect against these threats?"
+    },
+    {
+      "requirement": "The system must integrate with the existing Choice Parts feed for parts data.",
+      "source_citation": "The parts data has to come from our Choice Parts feed — we rely on that data source today, so whatever we build needs to talk to it.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states an integration requirement, which is a clear and measurable non-functional requirement.",
+      "follow_up_question": "What are the technical details of the integration with the Choice Parts feed?"
+    },
+    {
+      "requirement": "The system must follow corporate architecture guidelines and UI look-and-feel standards.",
+      "source_citation": "We can't ignore the corporate architecture and the UI look-and-feel. We have to follow the architecture guidelines so ops and security don't push back, and the user interface has to match our corporate UI patterns so users don't feel like they're in a different universe.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder provides specific maintainability concerns, indicating clear non-functional requirements.",
+      "follow_up_question": "What specific corporate architecture guidelines and UI look-and-feel standards must be followed?"
+    },
+    {
+      "requirement": "The system must support basic lookups and recent cache functionality while offline.",
+      "source_citation": "It would be great to have a resilient experience — at least the basic lookups and recent cache working offline.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "resilience",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions a need for offline capability, indicating a clear non-functional requirement, but the specifics are not fully detailed.",
+      "follow_up_question": "What specific offline functionality is required and how will it be implemented?"
+    },
+    {
+      "requirement": "The system must provide audit trails to show who changed what for internal reviews and compliance.",
+      "source_citation": "We need to be able to show who changed what, both for internal reviews and for compliance.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "auditability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states an auditability requirement, which is a clear and measurable non-functional requirement.",
+      "follow_up_question": "What specific audit trails and compliance requirements must be met?"
+    },
+    {
+      "requirement": "The system must ensure that parts data is near-real-time or updated frequently enough to be trusted by adjusters.",
+      "source_citation": "Freshness matters. If a part is listed but gone in a few hours, that creates bad experiences. So ideally it's near-real-time or updated frequently enough that adjusters trust availability.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "data_freshness",
+      "confidence": 4,
+      "rationale": "The stakeholder provides a specific data freshness concern, indicating a clear non-functional requirement.",
+      "follow_up_question": "What specific data freshness targets must be met and how will they be achieved?"
+    }
+  ]
+}

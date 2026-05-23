@@ -1,0 +1,172 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_5_re_experienced_stakeholder_nontechnical_enduser_20260227_110902.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_174711",
+  "requirements": [
+    {
+      "requirement": "The parts search should complete in under 15 seconds to avoid user impatience.",
+      "source_citation": "Under a quarter of a minute? Maybe around fifteen seconds feels okay to me.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states a target time for parts search performance, indicating a clear performance requirement. The confidence is high due to the direct statement.",
+      "follow_up_question": "Can you confirm if this 15-second target applies to all parts searches, or are there specific scenarios where a longer time might be acceptable?"
+    },
+    {
+      "requirement": "The facility lookup should complete in under 10 seconds, ideally 8 seconds, to keep the user's workflow smooth.",
+      "source_citation": "That one should be snappier than parts... under ten seconds — like eight seconds would be nice.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a clear performance target for facility lookups, indicating a strong performance requirement. The confidence is high due to the explicit time frame provided.",
+      "follow_up_question": "Are there any specific conditions under which the facility lookup time might need to be faster or slower?"
+    },
+    {
+      "requirement": "Audit reports should be generated in under 10 seconds to avoid task switching.",
+      "source_citation": "It took ages to produce the report... under maybe ten seconds? Quick enough that I don't have to switch tasks.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states a target time for audit report generation, indicating a clear performance requirement. The confidence is high due to the direct statement.",
+      "follow_up_question": "Can you provide examples of the types of audit reports that need to be generated quickly?"
+    },
+    {
+      "requirement": "Save actions should confirm within 5 seconds to ensure user confidence.",
+      "source_citation": "If I don't see confirmation within, say, five seconds, I start poking around and double-saving.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a clear performance target for save confirmation, indicating a strong performance requirement. The confidence is high due to the explicit time frame provided.",
+      "follow_up_question": "Are there any specific save actions that might require faster or slower confirmation times?"
+    },
+    {
+      "requirement": "The system should handle up to 1,500 concurrent users during peak times without significant performance degradation.",
+      "source_citation": "On busy days it definitely strains... maybe in the low thousands? Fifteen hundred people at the same time in the worst-case scenario.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 3,
+      "rationale": "The stakeholder provides a rough estimate of the number of concurrent users the system should handle, indicating a scalability requirement. The confidence is medium due to the rough estimate and lack of specific details.",
+      "follow_up_question": "Can you provide more specific scenarios or user profiles that would be active during peak times?"
+    },
+    {
+      "requirement": "The system should remain available 98% of the time to minimize downtime.",
+      "source_citation": "It should be available almost always. Like, ninety-something percent of the time. Ninety-eight percent would probably be okay in my head, I think.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 3,
+      "rationale": "The stakeholder specifies a target availability percentage, indicating a clear availability requirement. The confidence is medium due to the rough estimate and lack of specific details.",
+      "follow_up_question": "Are there any specific times or scenarios where higher availability is critical?"
+    },
+    {
+      "requirement": "The system should handle spotty mobile connections gracefully, ensuring that sessions do not break and data is cached for offline use.",
+      "source_citation": "In the field, the connection is flaky... it must not break my session.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for the system to handle spotty connections, indicating a fault tolerance requirement. The confidence is medium due to the lack of specific details.",
+      "follow_up_question": "Can you provide examples of specific scenarios where spotty connections are a problem?"
+    },
+    {
+      "requirement": "Help should be accessible in approximately 90% of screens, with inline tips and a help icon that opens short steps.",
+      "source_citation": "A little help button or tips where I am... in most places you'd need it. Ninety percent sounds about right in my head.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for help in most screens, indicating a clear usability requirement. The confidence is high due to the explicit percentage provided.",
+      "follow_up_question": "Can you provide examples of screens where help is most needed?"
+    },
+    {
+      "requirement": "Users should receive warnings before session timeouts, and the system should save drafts to prevent data loss.",
+      "source_citation": "Warnings before session timeouts... and if I'm in the middle of something it should save drafts.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for warnings and draft saving, indicating a clear fault tolerance requirement. The confidence is high due to the explicit statements.",
+      "follow_up_question": "Can you provide examples of specific scenarios where session timeouts are a problem?"
+    },
+    {
+      "requirement": "The system should keep each insurer's claims data separated to ensure privacy and security.",
+      "source_citation": "The system needs to keep each insurer's claims separated.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for data separation, indicating a clear security requirement. The confidence is high due to the explicit statement.",
+      "follow_up_question": "Can you provide examples of specific scenarios where data separation is critical?"
+    },
+    {
+      "requirement": "Access to data should be role-based, with admins having broad access and other roles having limited access.",
+      "source_citation": "Program admins need access across the board... most of us are adjusters or estimators and only need to see our own company's claims.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for role-based access, indicating a clear security requirement. The confidence is high due to the explicit statements.",
+      "follow_up_question": "Can you provide more details on the specific roles and their access levels?"
+    },
+    {
+      "requirement": "Cross-company shop ratings should be anonymized or aggregated to prevent tracing back to a specific company's claims.",
+      "source_citation": "If ratings are shared, they should be anonymized or aggregated so you can't trace back to a company's claim.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for anonymized or aggregated data, indicating a clear security requirement. The confidence is high due to the explicit statement.",
+      "follow_up_question": "Can you provide examples of specific scenarios where data anonymization is critical?"
+    },
+    {
+      "requirement": "The system should be designed with a clean and uncluttered UI to reduce user errors and improve usability.",
+      "source_citation": "Make the UI uncluttered... I can't stand screens with too many buttons.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for a clean UI, indicating a usability requirement. The confidence is medium due to the lack of specific details.",
+      "follow_up_question": "Can you provide examples of specific screens or interfaces that need to be uncluttered?"
+    },
+    {
+      "requirement": "Users should be able to complete core tasks without help after two days of hands-on, onsite training.",
+      "source_citation": "Two days of hands-on, onsite training would get most of us comfortable.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 3,
+      "rationale": "The stakeholder specifies the need for training, indicating a usability requirement. The confidence is medium due to the rough estimate and lack of specific details.",
+      "follow_up_question": "Can you provide more details on the specific tasks that users should be able to complete after training?"
+    },
+    {
+      "requirement": "Help should be integrated into the system with quick bullets, examples, and short steps to assist users in completing tasks.",
+      "source_citation": "Quick bullets, examples — like: 'How to search for a part' right where you're entering the VIN.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for integrated help, indicating a clear usability requirement. The confidence is high due to the explicit statements.",
+      "follow_up_question": "Can you provide examples of specific tasks where integrated help is most needed?"
+    }
+  ]
+}

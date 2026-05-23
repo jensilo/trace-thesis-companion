@@ -1,0 +1,153 @@
+{
+  "extraction_file": "outputs/corpus_20260227_105946_mistral-small_trace_20260302_165429/trace_transcript_6_re_experienced_stakeholder_nontechnical_manager_20260227_111115.json",
+  "ground_truth_source": "outputs/corpus-20260227_105946/transcript_6_re_experienced_stakeholder_nontechnical_manager_20260227_111115.json",
+  "eval_model": "openai/gpt-5-mini",
+  "per_requirement": [
+    {
+      "extracted_requirement": "The system should allow users to book a room in 5 minutes or less on their first attempt.",
+      "matched_ground_truth": "'The product shall be easy to use. 90% of users will be able to successfully reserve a conference room within 5 minutes of product use.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system should require minimal training for basic tasks.",
+      "matched_ground_truth": "'The product shall be easy to use. 90% of users will be able to successfully reserve a conference room within 5 minutes of product use.'",
+      "overlap_score": 4,
+      "overlap_label": "High",
+      "quality_attribute_match": true,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 5,
+      "is_hit": true,
+      "is_duplicate": true
+    },
+    {
+      "extracted_requirement": "The system should support screen readers, keyboard navigation, and high-contrast modes to comply with ADA standards.",
+      "matched_ground_truth": "'The product shall conform to the Americans with Disabilities Act.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": false,
+      "confidence_quality": 5,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system should handle 1,000 concurrent requests initially, scaling to 2,000 by the next release.",
+      "matched_ground_truth": "'The product shall be capable of handling up to 1 000 concurrent requests. This number will increase to 2 000 by Release 2. The concurrency capacity must be able to handle peak scheduling times such as early morning and late afternoon hours.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 5,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system should complete 90% of tasks in 5 seconds or less and 98% of tasks in 8 seconds or less.",
+      "matched_ground_truth": "The response shall be fast enough to avoid interrupting the user's flow of thought. 90% of tasks shall complete within 5 seconds. 98% of tasks shall complete within 8 seconds.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system should achieve 99.99% uptime, excluding total server loss events.",
+      "matched_ground_truth": "'Aside from server failure the software product shall achieve 99.99% up time.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system should automatically capture and transmit exception logs to the support team.",
+      "matched_ground_truth": "'The product shall create an exception log of problems encountered within the product for transmission to our company for analysis and resolution.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system should support English, Spanish, French, and German at launch.",
+      "matched_ground_truth": "'The product shall allow the user to select a chosen language from one of the target market countries.'",
+      "overlap_score": 4,
+      "overlap_label": "High",
+      "quality_attribute_match": false,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system should allow customer branding (logo, colors, fonts) while enforcing accessibility guardrails (e.g., contrast ratios).",
+      "matched_ground_truth": "The product's Look and Feel shall be able to incorporate aspects of the customer's organization such as logo branding and identity'",
+      "overlap_score": 4,
+      "overlap_label": "High",
+      "quality_attribute_match": true,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system should respect access controls and privacy when generating reports.",
+      "matched_ground_truth": null,
+      "overlap_score": 1,
+      "overlap_label": "Very Low",
+      "quality_attribute_match": false,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": false,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system should show equipment availability alongside room bookings to avoid double-booking.",
+      "matched_ground_truth": null,
+      "overlap_score": 1,
+      "overlap_label": "Very Low",
+      "quality_attribute_match": false,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": false,
+      "is_duplicate": false
+    }
+  ],
+  "metrics": {
+    "hit_count": 8,
+    "extracted_count": 11,
+    "ground_truth_count": 10,
+    "precision": 0.727,
+    "recall": 0.8,
+    "f1": 0.762,
+    "quality_attribute_accuracy": 0.75,
+    "avg_confidence": 4.273,
+    "avg_overlap_score": 4.0,
+    "avg_confidence_quality": 4.182,
+    "avg_rationale_quality": 4.0,
+    "avg_gap_detection_quality": 4.091
+  }
+}

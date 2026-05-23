@@ -1,0 +1,139 @@
+{
+  "transcript_file": "outputs/corpus-20260226_162106/transcript_6_re_experienced_stakeholder_technical_junior_20260226_163658.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_182540",
+  "requirements": [
+    {
+      "requirement": "The system shall ensure that 90% of tasks complete in under 5 seconds and 98% complete in under 8 seconds.",
+      "source_citation": "If you press search or save a booking and nothing happens for a while, people get distracted. If I'm pushed to a number, maybe five seconds for the quick interactions feels like the upper limit; anything more, and users complain. For heavier operations maybe a few more seconds, but we should aim to make most routine things happen nearly instantly.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions performance targets for user tasks, specifying acceptable time frames for different types of interactions. However, the exact tasks to be measured are not clearly defined.",
+      "follow_up_question": "Which specific user actions should be included in the performance measurement set, and what are the exact API calls and UI flows to be tested?"
+    },
+    {
+      "requirement": "The system shall support authentication via SAML, LDAP/AD, and OpenID Connect.",
+      "source_citation": "From conversations, SAML and LDAP/AD came up most often, and OpenID Connect was mentioned too.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions several authentication protocols that have been discussed, but there is no definitive list or confirmation from ops/security.",
+      "follow_up_question": "Can you confirm the exact authentication protocols and identity providers that must be supported in production?"
+    },
+    {
+      "requirement": "The system shall ensure that 100% of logins are from authenticated company employees or approved external users.",
+      "source_citation": "Ops/security said they want every single login to be an authenticated company employee or an external user who has a company-approved account — basically one hundred percent of logons must be from approved IDs.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the requirement for 100% authenticated logins, leaving no room for interpretation.",
+      "follow_up_question": "Are there any exceptions or break-glass procedures for emergency access, and if so, what are the approval and logging requirements?"
+    },
+    {
+      "requirement": "The system shall support at least eight browser/OS combinations for functional parity, with visual differences allowed.",
+      "source_citation": "I'd say functional parity first — buttons, forms, and flows must work. Visual parity is ideal but acceptable differences in styling are tolerable.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for functional parity across multiple browser/OS combinations, with a focus on critical user flows.",
+      "follow_up_question": "Can you provide a definitive list of the eight browser/OS combinations that must be supported, and what are the exact acceptance criteria for functional parity?"
+    },
+    {
+      "requirement": "The system shall aim to meet WCAG 2.1 AA standards for accessibility.",
+      "source_citation": "From our internal discussions, the team leaned towards meeting a recognized standard for accessibility. We talked about aiming for the WCAG guidelines at an acceptable conformance level — I think WCAG 2.1 at AA was mentioned informally.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions WCAG 2.1 AA as a target but notes that it has not been formalized with QA or compliance.",
+      "follow_up_question": "Can you confirm the exact WCAG 2.1 AA requirements that must be met and who will be responsible for formal accessibility testing?"
+    },
+    {
+      "requirement": "The system shall achieve 99.99% uptime, excluding server-level failures.",
+      "source_citation": "Ops kept saying they want the app to be 'almost always available except for host-level failures,' and they mentioned a number in a meeting but I didn't write it down. My impression is they expect us to design for clustering and failover so that single-host problems don't bring the service down.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions a high uptime target but is unclear about what is excluded from this metric.",
+      "follow_up_question": "Can you clarify what is excluded from the 99.99% uptime target, such as planned maintenance, database outages, or network partitions?"
+    },
+    {
+      "requirement": "The system shall implement clustering, failover, health checks, and session persistence for high availability.",
+      "source_citation": "To reach that level we'd need multiple application nodes behind a load balancer, health checks, rolling updates so we can patch without downtime, session handling that survives node restarts, and probably automated failover for the database.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "The stakeholder outlines specific technical requirements for achieving high availability, but these have not been confirmed by ops.",
+      "follow_up_question": "Can you confirm the exact high availability requirements and who will be responsible for implementing them?"
+    },
+    {
+      "requirement": "The system shall use cross-platform or container-friendly scripts for deployment.",
+      "source_citation": "Can we try to avoid adding more quirky shell scripts to the repo? They always break on CI agents.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 3,
+      "rationale": "The stakeholder expresses a concern about the fragility of current deployment scripts but does not provide specific requirements.",
+      "follow_up_question": "What are the exact requirements for cross-platform or container-friendly scripts, and who will be responsible for updating the existing scripts?"
+    },
+    {
+      "requirement": "The system shall support clustering for high availability and reproducible deploys using JBoss or Kubernetes.",
+      "source_citation": "Ops wants clustering (JBoss/Kubernetes) for high availability and reproducible deploys.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for clustering and reproducible deploys but does not provide specific details about the implementation.",
+      "follow_up_question": "Can you provide more details about the clustering and deployment requirements, and who will be responsible for implementing them?"
+    },
+    {
+      "requirement": "The system shall be portable across Java 8, Java 11, and Java 17, and support Windows, Linux, macOS, and containers.",
+      "source_citation": "I'd like the app to be runnable on any OS where a supported JVM can be installed, so Windows, Linux, maybe macOS for dev, and containers in prod, but we need to agree which Java versions and OS combos will be officially supported.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 3,
+      "rationale": "The stakeholder expresses a desire for portability but does not provide a definitive list of supported Java versions and OS combinations.",
+      "follow_up_question": "Can you confirm the exact Java versions and OS combinations that will be officially supported, and who will be responsible for testing them?"
+    },
+    {
+      "requirement": "The system shall implement central exception logging with correlation IDs for debugging.",
+      "source_citation": "We need a central exception reporting pipeline so errors can be sent to the company for analysis. But we have to strip out sensitive information — stack traces are okay but not customer PII.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "observability",
+      "confidence": 4,
+      "rationale": "The stakeholder outlines the need for central exception logging but does not provide specific details about the implementation.",
+      "follow_up_question": "Can you provide more details about the central exception logging requirements, and who will be responsible for implementing them?"
+    },
+    {
+      "requirement": "The system shall implement health endpoints for monitoring.",
+      "source_citation": "Ops wants health endpoints for monitoring, but none are implemented.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "observability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for health endpoints but does not provide specific details about the implementation.",
+      "follow_up_question": "Can you provide more details about the health endpoint requirements, and who will be responsible for implementing them?"
+    }
+  ]
+}

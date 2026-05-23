@@ -1,0 +1,205 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_8_re_novice_stakeholder_nontechnical_manager_20260227_111307.txt",
+  "model": "openai/gpt-5-mini",
+  "timestamp": "20260302_172752",
+  "requirements": [
+    {
+      "requirement": "The product shall enable people, including those who are not online‑savvy, to find and watch a film without getting frustrated; the UI shall be welcoming, modern, and simple so users do not get lost.",
+      "source_citation": "I think success is when people — even those who aren't online-savvy — can find and watch a film without getting frustrated. We want a product that feels welcoming, that sells films reliably, and that gives us the business signals we need to decide what to promote next. Oh, and it should reflect an African aesthetic, but, you know, modern and simple so people don't get lost.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly describes overall usability goals for novice users and aesthetic/look_and_feel expectations. Gaps: no specific accessibility standards or measurable usability metrics beyond qualitative statements.",
+      "follow_up_question": "Which specific usability or accessibility standards should we meet (e.g., WCAG level), and are there quantitative usability metrics (task success rate, time-on-task) you want us to target?"
+    },
+    {
+      "requirement": "The system shall be straightforward enough that most people can use it without training; it should be obvious where to go, how to buy, and how to play a movie.",
+      "source_citation": "Well, it should be straightforward. I mean, most people should be able to use it without training. It should feel obvious where to go, how to buy, how to play a movie.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Direct statement about learnability and discoverability for novice users. Gaps: no measurable learnability targets (e.g., first‑time success rate) or defined user baseline.",
+      "follow_up_question": "Do you want measurable learnability targets (e.g., >90% first‑time task success for buying/playing), and which user demographics should be used for usability testing?"
+    },
+    {
+      "requirement": "Signing up shall be fast and limited to essential fields so users do not drop off mid‑signup; users should be able to create an account within at most four pages/screens.",
+      "source_citation": "Signing up should be fast and not annoying. We don't want ten pages of forms or anything like that — just the essentials so people don't drop off mid-signup. ... I think users should reach an account within about four pages at most. Any more than that and we'll lose a lot of people.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Stakeholder gives explicit constraint (<=4 pages) and rationale (drop-off risk). Gaps: ambiguity about what counts as a 'page/screen', whether multi-step modals count, and required fields.",
+      "follow_up_question": "Do modal steps or inline progressive forms count as separate pages, and what are the mandatory fields you consider essential for signup?"
+    },
+    {
+      "requirement": "A customer shall be able to pick a movie, pay, and start watching with minimal clicking and waiting; the end‑to‑end buy‑to‑first‑frame time shall be under three minutes (assuming reasonable user internet).",
+      "source_citation": "A customer should be able to pick a movie, pay, and start watching with very little clicking or waiting. The moment of truth is being able to actually play the movie quickly after deciding to buy. ... By quick I mean a few minutes — it should be under three minutes from deciding to buy to seeing the first frame, assuming their internet isn't terrible.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Clear performance target for the critical purchase-to-play flow tied to user experience. Gaps: 'reasonable internet' threshold unspecified; no separate targets for mobile vs desktop.",
+      "follow_up_question": "What minimum network conditions should we assume (e.g., 3G, 5 Mbps) when measuring the under‑3‑minute target, and should mobile/desktop targets differ?"
+    },
+    {
+      "requirement": "The site shall feel snappy; routine interactive operations (page loads, add to cart) shall complete in roughly five seconds or less, since longer delays lead to user annoyance and abandonment.",
+      "source_citation": "Yes, absolutely. It has to feel snappy. People really abandon a site if it drags. Small interactions need to happen almost instantly; long waits are a real churn risk. ... if I had to pick a number, I'd say roughly five seconds for the usual things, like loading a page or adding to cart. Any longer and people notice and get annoyed.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Explicit perceived performance target (5s) tied to abandonment risk. Gaps: doesn't distinguish between Time‑to‑Interactive, TTFB, or perceived latency; no percentiles (p90/p99) specified.",
+      "follow_up_question": "Do you want the five‑second goal measured as median, 90th percentile, or max, and which specific operations should be included/excluded?"
+    },
+    {
+      "requirement": "Credit card transactions shall complete within approximately fifteen seconds; transactions longer than this increase abandonment and duplicate charges.",
+      "source_citation": "I think up to around fifteen seconds is acceptable for a card transaction; beyond that we start seeing abandoned attempts or duplicate charges from panicked users.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder provides a numeric SLA for payment processing with business impact. Gaps: unclear whether this includes network latency to third‑party gateways, and whether target applies to retries.",
+      "follow_up_question": "Should the 15s target include third‑party gateway roundtrips and auth time, and do you want an SLO defined (e.g., 95% of transactions under 15s)?"
+    },
+    {
+      "requirement": "The platform shall continue to allow browsing and redemption of pre‑paid codes, and allow using existing balances, even if the external payment provider is unavailable (graceful degradation).",
+      "source_citation": "Pre-paid cards are important for parts of our audience who prefer cash or who don't use cards. Generating and redeeming those should be simple for admins and for users. Also, the system should keep working if our external payment provider has an outage; we can't have the whole site go dark because the gateway hiccupped. ... Right, browsing should definitely continue. Ideally people could redeem pre-paid codes or use balances even if the gateway is down. We want graceful degradation so revenue isn't completely blocked and users don't get the impression the whole business collapsed.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 5,
+      "rationale": "Clear requirement for resiliency and graceful degradation to preserve revenue during external outages. Gaps: no definition of acceptable feature set during outage, or max tolerable outage duration; sync/consistency concerns between offline/redemption and gateway reconciliation.",
+      "follow_up_question": "Which specific features must remain available during payment provider outages, and how should offline redemptions reconcile with external provider records later?"
+    },
+    {
+      "requirement": "Streaming playback shall be smooth; initial buffering introduced by the system should generally finish within about ten seconds (plus any user network lag), so users perceive playback as immediate.",
+      "source_citation": "Streaming has to be smooth. If a person clicks play and watches a spinner forever, they'll leave. Short buffering periods are fine, but it should feel immediate. I think a few seconds is okay, but not much more. ... I would say buffering should generally finish within about ten seconds, plus whatever lag the user's connection adds. So the system shouldn't introduce the delay.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Explicit streaming startup time target (<=10s system‑introduced), with separation of client/network lag. Gaps: no bitrate/quality adaptation targets, no percentiles, no CDN/region specifics.",
+      "follow_up_question": "Do you want CDN distribution and bitrate adaptation targets defined, and should the 10s target be a p90 or p95 SLO per region or global?"
+    },
+    {
+      "requirement": "The service shall aim for an availability target of 99.5% over a year; availability below that level is unacceptable for platform credibility.",
+      "source_citation": "Yes, we need it to be up almost all the time. If pressed, our goal is something like ninety-nine and a half percent availability over the year. Anything less and I would worry about the platform's credibility.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "Stakeholder provides an explicit annual availability SLO (99.5%). Gaps: no definition of what counts as downtime (maintenance windows? partial outages?) or measurement methodology.",
+      "follow_up_question": "How should availability be measured (global users, per region), and are planned maintenance windows excluded from the 99.5% calculation?"
+    },
+    {
+      "requirement": "Access to full customer payment details shall be restricted to a few authorized Izogn admins; access shall be strictly controlled and audited.",
+      "source_citation": "Payment details are sensitive. Only a few trusted people should be able to access full card details, and access should be strictly controlled.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Clear requirement for least‑privilege access to payment data. Gaps: no specification of RBAC model, approval process, or audit/log retention requirements.",
+      "follow_up_question": "Which roles should be allowed full payment access, what approval/workflow is needed to grant access, and what audit/log retention and review policies do you require?"
+    },
+    {
+      "requirement": "Payment information stored in the database shall be encrypted so that, if accessed by an attacker, the data is not trivially usable.",
+      "source_citation": "We also want data to be stored in a way that, even if someone got to it, it wouldn't be trivially usable. It's a compliance and trust thing for customers. ... Exactly. Authorized Izogn admins only, and the payment information needs to be encrypted in the database.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Explicit encryption‑at‑rest requirement for payment data. Gaps: no algorithm/key management/compliance standards (e.g., PCI DSS) specified, or whether tokenization is acceptable.",
+      "follow_up_question": "Do you require PCI DSS compliance, tokenization of card data, and any specific encryption standards/key management (e.g., KMS, HSM)?"
+    },
+    {
+      "requirement": "The system shall be upfront and transparent about data collection and usage; a clear privacy policy shall be provided before users enter personal data and must be easily discoverable.",
+      "source_citation": "We must be upfront; people should know what we collect and how we use it before they type anything. A clear privacy policy that they can access is important, and it should be obvious — not buried.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 5,
+      "rationale": "Stakeholder mandates privacy transparency and discoverability of policy. Gaps: no requirement on consent capture, language/localization of policy, or retention/processing specifics.",
+      "follow_up_question": "Do you require explicit consent capture (opt‑in) for personal data, localized privacy policies for different countries, and retention/processing rules to be documented?"
+    },
+    {
+      "requirement": "A link to the privacy policy shall be reachable from anywhere on the site, ideally present on every page.",
+      "source_citation": "It should be reachable from anywhere on the site. Ideally a link on every page, so users can check it at any point before they hand over any personal info.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Explicit discoverability requirement for the privacy policy. Gaps: no UI/UX specifics (footer link vs prominent banner) or localization requirements.",
+      "follow_up_question": "Should the privacy policy link appear in a specific location (footer/header) on every page, and should it be localized per user's region/language?"
+    },
+    {
+      "requirement": "Access to analytics dashboards shall be role‑based so that some users receive full reports and others only summaries; broad access to all analytics shall be prevented.",
+      "source_citation": "Access should be role-based. Not everyone needs the same things; some people need full reports, others just a summary. We don't want broad access to everything.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Clear authorization requirement for analytics access. Gaps: no definition of roles, authentication mechanisms, or auditability for data access.",
+      "follow_up_question": "Please define the roles and permissions needed for analytics (e.g., admin, analyst, viewer) and any approval/audit requirements for granting access."
+    },
+    {
+      "requirement": "The UI shall minimize user friction: use big buttons, clear labels, minimal form fields, plain language, and provide a quick checkout option for returning customers.",
+      "source_citation": "The whole flow should be designed around minimal friction. Big buttons, clear labels, minimal form fields, plain language. And, um, a quick checkout option for regulars so returning customers don't have to repeat steps.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Explicit design and interaction guidelines to reduce friction and support return users. Gaps: no style guide, accessibility contrast/font size requirements, or specifics for quick checkout (one‑click? stored payment?).",
+      "follow_up_question": "Do you want a defined design system (button sizes, contrast, font), and what exactly should 'quick checkout' entail (saved payment, one‑click, stored addresses)?"
+    },
+    {
+      "requirement": "The system shall support localized text and multiple regional payment options (e.g., mobile money, pre‑paid cards) so users in different countries have suitable methods.",
+      "source_citation": "Also, small tangent here, but we need localized text and payment options for users in different countries — sometimes people prefer mobile money, sometimes pre-paid cards you can buy in a shop. That distribution channel is something we'll explore.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 4,
+      "rationale": "Stakeholder asks for i18n and support for diverse payment methods; implies regional availability. Gaps: which locales/languages, which payment methods/regions, and localization process not specified.",
+      "follow_up_question": "Which target countries and languages should be supported at launch, and which regional payment methods (specific mobile money providers, card schemes) do you want prioritized?"
+    },
+    {
+      "requirement": "The platform shall support issuing, bulk‑generating, validating, and managing pre‑paid codes for partners, with clean operational management of redemptions.",
+      "source_citation": "The system should support issuing and validating codes, and we should be able to bulk-generate cards for partners to sell physically. How those partners distribute them can vary, but the platform must manage the codes and redemptions cleanly.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Explicit operational/maintainability requirement for voucher/code management and bulk generation. Gaps: throughput/volume expectations, security of code generation, reporting and reconciliation requirements.",
+      "follow_up_question": "What volumes do you expect for bulk code generation/redemption, what reporting/reconciliation is required, and what security (e.g., cryptographic codes, single‑use) should codes have?"
+    },
+    {
+      "requirement": "The business shall remain able to operate even when partners or external providers experience hiccups; payments must remain secure and the platform must have resilience measures to keep revenue flowing.",
+      "source_citation": "I think we're on the right track; just keep everything simple for users, keep payments secure, and make sure the business can keep running even when partners hiccup.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 5,
+      "rationale": "High‑level business continuity/resilience requirement tying payment security and dependency handling to operational continuity. Gaps: no DR/BCP specifics, RTO/RPO, or dependency SLAs.",
+      "follow_up_question": "What are acceptable recovery time objectives (RTO/RPO) for major dependencies, and which partners are critical with whom we should establish SLAs?"
+    }
+  ]
+}

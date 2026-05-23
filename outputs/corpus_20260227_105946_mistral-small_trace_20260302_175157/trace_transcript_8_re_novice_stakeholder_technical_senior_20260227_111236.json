@@ -1,0 +1,172 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_8_re_novice_stakeholder_technical_senior_20260227_111236.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_175341",
+  "requirements": [
+    {
+      "requirement": "The platform should feel fast to users, with small interactions perceived as instantaneous, ideally within five seconds.",
+      "source_citation": "the platform has to feel fast to users — nobody likes waiting",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the importance of the platform feeling fast and provides a concrete target for small interactions (five seconds).",
+      "follow_up_question": "What specific metrics or tools will be used to measure and ensure the platform meets the performance requirements?"
+    },
+    {
+      "requirement": "Payment processing should finish within about fifteen seconds to avoid customer anxiety.",
+      "source_citation": "the whole processing step should finish within about fifteen seconds",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder provides a clear target for payment processing time, emphasizing the importance of quick and obvious payment flows.",
+      "follow_up_question": "What measures will be taken to ensure payment processing meets the fifteen-second target under various network conditions?"
+    },
+    {
+      "requirement": "Streaming should start and stay smooth, with startup buffering not exceeding ten seconds.",
+      "source_citation": "streaming should start and stay smooth... aim for no more than about ten seconds before playback begins",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the importance of smooth streaming and provides a concrete target for startup buffering.",
+      "follow_up_question": "What adaptive bitrate strategies will be implemented to ensure smooth streaming on poor networks?"
+    },
+    {
+      "requirement": "The platform should be solid and secure behind the scenes.",
+      "source_citation": "it needs to be solid and secure behind the scenes",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 3,
+      "rationale": "The stakeholder emphasizes the need for security but does not provide specific details or targets.",
+      "follow_up_question": "What specific security measures or protocols will be implemented to ensure the platform is secure?"
+    },
+    {
+      "requirement": "Card data at rest should be encrypted using industry-standard AES-256 encryption.",
+      "source_citation": "we should encrypt card data at rest with a strong algorithm — in our environment I'd specify industry-standard AES-256 for data at rest",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the use of AES-256 encryption for card data at rest.",
+      "follow_up_question": "What key management practices will be followed to ensure the security of the encryption keys?"
+    },
+    {
+      "requirement": "Access to sensitive data should be role-based, with all access logged and monitored.",
+      "source_citation": "implement role-based controls so only authorized Izogn administrators have permission to decrypt or view that data... all access should be logged and monitored",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder provides specific details about role-based access controls and the need for audit logging.",
+      "follow_up_question": "What tools or systems will be used to implement and monitor role-based access controls and audit logging?"
+    },
+    {
+      "requirement": "The interface should be simple enough for people who aren't tech-savvy, aiming for usability by ninety percent of novice users.",
+      "source_citation": "the interface should be simple enough for people who aren't tech-savvy... it should be usable by ninety percent of novice users",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of usability for novice users and provides a concrete target (ninety percent).",
+      "follow_up_question": "What usability testing methods will be employed to ensure the platform meets the usability target?"
+    },
+    {
+      "requirement": "The platform should follow web standards and accessibility guidelines, including semantic HTML, W3C recommendations, and ARIA where appropriate.",
+      "source_citation": "we should follow web standards and accessibility guidelines... Semantic HTML, W3C recommendations, and ARIA where appropriate are important",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need to follow web standards and accessibility guidelines.",
+      "follow_up_question": "What specific accessibility standards or guidelines will be followed, and how will compliance be verified?"
+    },
+    {
+      "requirement": "The system should be resilient and keep running when parts of the system misbehave.",
+      "source_citation": "it should keep running when parts of the system misbehave",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 3,
+      "rationale": "The stakeholder emphasizes the need for resilience but does not provide specific details or targets.",
+      "follow_up_question": "What specific resilience mechanisms or redundancy strategies will be implemented to ensure the system keeps running during failures?"
+    },
+    {
+      "requirement": "The system should be designed for high availability, aiming for around ninety-nine and a half percent availability.",
+      "source_citation": "we should design for high availability and measure it... aiming for around ninety-nine and a half percent availability",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder provides a clear target for high availability and emphasizes the need for measurement.",
+      "follow_up_question": "What specific measures or protocols will be implemented to achieve and maintain the target availability?"
+    },
+    {
+      "requirement": "The platform should adhere to standards to make it more maintainable.",
+      "source_citation": "adhering to standards makes the site more maintainable",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the importance of adhering to standards for maintainability but does not provide specific details.",
+      "follow_up_question": "What specific standards or best practices will be followed to ensure maintainability?"
+    },
+    {
+      "requirement": "The platform should be instrumented, have health checks, and allow for safe rollbacks.",
+      "source_citation": "we should instrument everything, have health checks, and make sure we can roll back safely",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder provides specific details about the need for instrumentation, health checks, and rollback capabilities.",
+      "follow_up_question": "What tools or systems will be used to implement instrumentation, health checks, and rollback capabilities?"
+    },
+    {
+      "requirement": "The platform should use CDNs and a decoupled streaming tier to ensure scalability and resilience.",
+      "source_citation": "ideally we'd use CDNs and a decoupled streaming tier",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the use of CDNs and a decoupled streaming tier but does not provide specific details or targets.",
+      "follow_up_question": "What specific CDN providers or decoupled streaming architectures will be used to ensure scalability?"
+    },
+    {
+      "requirement": "The platform should be transparent about privacy practices, with the privacy policy visible before collecting personal data and easily accessible from anywhere on the site.",
+      "source_citation": "we should be transparent... the privacy practices need to be visible before we collect personal data... it should be easy to find from anywhere on the site",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of transparency and provides specific details about privacy policy visibility.",
+      "follow_up_question": "What specific measures will be taken to ensure the privacy policy is visible and accessible as described?"
+    },
+    {
+      "requirement": "The platform should be instrumented and have health checks for observability.",
+      "source_citation": "we should instrument everything, have health checks",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 4,
+      "rationale": "The stakeholder provides specific details about the need for instrumentation and health checks.",
+      "follow_up_question": "What tools or systems will be used to implement instrumentation and health checks?"
+    }
+  ]
+}

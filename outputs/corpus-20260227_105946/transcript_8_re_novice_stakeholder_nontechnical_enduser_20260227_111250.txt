@@ -1,0 +1,88 @@
+Interviewer: Thanks for sitting down with me. Can you tell me how you usually use IzognMovies day to day?
+
+Stakeholder: Sure, um, I mostly use it in the evenings, I think, when I'm done with work. I log in, look for something to watch, and if I find it I either stream it right away or buy it. Sometimes I browse because I don't know exactly what I want. Oh, and, well, I like to show films to family so sometimes we stream together. Sometimes it feels clunky though — it should just be easy for anyone to use, even my aunt who only checks Facebook, you know?
+
+Interviewer: When you say "clunky," what do you mean exactly?
+
+Stakeholder: Hmm, I mean like navigation isn't always obvious. Buttons are in weird places, or the search doesn't find what I want even when it's there. And, you know, if I have to click too many times to get an account or to start watching, I get annoyed. I want something that a normal internet user can pick up without a lot of explanation.
+
+Interviewer: Okay. How many clicks or pages do you think is too many to create an account or start watching?
+
+Stakeholder: I think... well, for account creation it should be only a few pages. If it's long, people bail. For starting a movie after logging in, I want to be there almost immediately — like one or two clicks, not some maze. But I don't know exact wording, I just feel impatient when it's more than a couple of steps.
+
+Interviewer: You mentioned search earlier — does search or browsing break often for you?
+
+Stakeholder: It doesn't break, but sometimes it takes time to show results or it shows weird things. Also, the filters are confusing sometimes. I guess I'm saying it should be straightforward. And, ah, sometimes my internet at home is slow — rural area things — so if the site takes too long to respond I leave, which is annoying because I actually paid for something once and then it buffered forever.
+
+Interviewer: How long is "too long" for the site to respond? Like, what would make you leave?
+
+Stakeholder: For small things, like opening a page or clicking a button, I think it needs to feel instant. If I'm waiting and it just sits there, it's frustrating. Maybe, uh, five seconds for the little things feels like a lot already, so anything around that or more is annoying.
+
+Interviewer: And when you buy a movie with a credit card, do you notice delays there too?
+
+Stakeholder: Yes, yeah, payments can be slower. I don't mind waiting a bit while it checks the card, but if it stalls I worry it didn't go through. I've had a payment once where I wasn't sure if it succeeded and that was stressful. So the payment flow should be clear and reasonably quick.
+
+Interviewer: How quick would be okay for processing a credit card payment?
+
+Stakeholder: Hmm, I'd say it should be done within, I don't know, around fifteen seconds. Longer than that and I start refreshing and panicking.
+
+Interviewer: You mentioned buffering earlier. When streaming, how long is acceptable for buffering before it ruins the experience?
+
+Stakeholder: Buffering has to be short. Like, a small pause is okay, but if it keeps stopping it's useless. If I have to wait quite a while for it to start playing, or it keeps pausing, I close it. I suppose under ten seconds to get going feels reasonable to me, although that's just my gut.
+
+Interviewer: Are there times when you need the service to be available even if it's late at night or on holidays?
+
+Stakeholder: Absolutely. I have family in different time zones and sometimes we watch at odd hours. It should be there whenever we want to watch. I don't want it to be down when I'm ready to play something.
+
+Interviewer: When you say "whenever," do you mean like a specific schedule or continuously?
+
+Stakeholder: I mean all the time — day and night, every day. We shouldn't plan around the site being down, you know?
+
+Interviewer: Does reliability mean something like a target uptime to you, or just "it should work most of the time"?
+
+Stakeholder: I guess a target would be good. I want it to be up nearly all the time. If it's down a lot then people will stop trusting it. Umm, if I had to put a number on "nearly all the time" I'd say something like ninety-nine and a half percent of the time it should be reachable. But, again, that's just from a user's point of view.
+
+Interviewer: About payments and card details — who should be able to see or handle customers' credit card information?
+
+Stakeholder: Not everyone. That's important. Card details are private; they shouldn't be floating around. Only people who absolutely need to manage payments should have access. And the data should be stored safely, like encrypted, because I've heard stories about leaks and that's scary.
+
+Interviewer: So you want it encrypted and only certain staff with permission to access it?
+
+Stakeholder: Yes, exactly. Encrypted in storage and only authorized Izogn staff should be able to access it. I don't know the technicals, but it needs to be locked down. My worry isn't only hackers, it's also, you know, the wrong person at the company snooping.
+
+Interviewer: You mentioned being informed about how your information is used. What would you expect from the site before it collects your data?
+
+Stakeholder: The site should tell me up front — like a privacy thing I can read, not hidden. It should be obvious where to find it. I don't want to hunt for it after I've already typed my email. It should be accessible from anywhere on the site so I'm not surprised later.
+
+Interviewer: Do you mean the privacy info should be on the sign-up page, or also other places?
+
+Stakeholder: Everywhere, really. On the sign-up page, yes, but also somewhere obvious on other pages. If it's always there, I can check whenever. Little links at the bottom are okay as long as they're on every page and easy to find. Oh, and, um, this is a bit of a tangent, but a friend once missed a subscription charge because the terms were hidden — so making this clear would avoid that.
+
+Interviewer: Are there any other features or annoyances you run into that I should note?
+
+Stakeholder: Well, I sometimes wish there were prepaid cards I could buy in stores, because not everyone has a card or wants to use it online. That would help older folks too. Also, and this is random, the design should feel like it's made for people here — warm colors, big text, simple icons — not like those cluttered streaming sites that look like spreadsheets. And, hmm, I didn't mention reviews: being able to read and write reviews helps pick a movie, but they should be easy to find and simple to use.
+
+Interviewer: On prepaid cards, do you expect them to be generated by admins or available in shops?
+
+Stakeholder: I imagine both. Maybe admins can create codes for online or for promotions, and shops can sell physical cards; I don't know the backend, but that's the user view. The main thing is having a non-card way to pay.
+
+Interviewer: Thanks. One last question: you said the site should be usable by most people who aren't tech-savvy. If we wanted a percentage target for usability among novice internet users, what would that be?
+
+Stakeholder: Hmm, if you need a number, I'd aim high. Maybe around ninety percent of novice users should be able to use it without help. I think that's fair — almost everyone should be able to get basic things done without calling someone.
+
+Interviewer: Great, that's all I have for now.
+
+Stakeholder: Okay, good. I hope that helps. Oh, and one more tiny thing — subtitles and language options are important to us, sometimes older relatives can't follow accents, so simple toggles for language and subtitles would be lovely.
+
+---
+Selected Requirements:
+1. [NICE.csv line 388] [quality, usability] 'The product should be able to be used by 90% of novice users on the Internet.'
+2. [NICE.csv line 389] [quality, look_and_feel, usability] 'Users should only have to navigate through a maximum of 4 pages to create an account with the website.'
+3. [NICE.csv line 390] [quality, functional, look_and_feel, usability] 'Users should be able to access their streaming movies in under 2 clicks after logging into the website.'
+4. [NICE.csv line 397] [quality, fault_tolerance, performance] 'Any interface between a user and the automated system shall have a maximum response time of 5 seconds unless noted by an exception below.'
+5. [NICE.csv line 398] [quality, performance] 'When purchasing a streaming movie or pre-paid card via credit card the processing time should have a maximum response time of 15 seconds.'
+6. [NICE.csv line 399] [quality, performance] When streaming a movie the buffering time should take no longer than 10 seconds (plus any latency on the user's connection.)'
+7. [NICE.csv line 402] [quality, availability] 'The website shall be available for use 24 hours per day 365 days per year.'
+8. [NICE.csv line 403] [quality, availability] 'The website shall achieve 99.5% up time.'
+9. [NICE.csv line 401] [quality, security] 'All credit card information will be secured on the server and only accessible by authorized Izogn administrators. Information will be encrypted in the database.'
+10. [NICE.csv line 434] [quality, functional, security, usability] 'The website shall make its user aware of its information practices before collection data from them via a Privacy Policy accessible on all pages of the website.'

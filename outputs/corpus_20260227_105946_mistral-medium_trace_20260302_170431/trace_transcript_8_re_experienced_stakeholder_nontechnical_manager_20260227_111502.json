@@ -1,0 +1,249 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_8_re_experienced_stakeholder_nontechnical_manager_20260227_111502.txt",
+  "model": "mistral/mistral-medium-latest",
+  "timestamp": "20260302_171227",
+  "requirements": [
+    {
+      "requirement": "The system shall ensure that pages load within 5 seconds for routine actions to prevent user frustration.",
+      "source_citation": "For small interactions (e.g., loading movie details), it should feel instant. Maybe 5 seconds max for routine actions.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states a performance requirement for page load times, providing a clear threshold of 5 seconds.",
+      "follow_up_question": "Are there any specific pages or actions that should prioritize faster load times within this 5-second threshold?"
+    },
+    {
+      "requirement": "The system shall ensure that initial video buffering does not exceed 10 seconds to provide a continuous streaming experience.",
+      "source_citation": "Streaming should feel continuous. Initial buffering: few seconds (max 10s) to start.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states a performance requirement for initial buffering times, providing a clear threshold of 10 seconds.",
+      "follow_up_question": "Are there any specific conditions or user scenarios where buffering times should be minimized further?"
+    },
+    {
+      "requirement": "The system shall ensure that only authorized staff, including senior finance, ops, and security officers, can access payment records.",
+      "source_citation": "Only authorised staff (senior finance, ops, security) should access payment records... encryption + strict access controls.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states a security requirement for access control to payment records, specifying the roles that should have access.",
+      "follow_up_question": "What specific access control mechanisms should be implemented to ensure only authorized staff can access payment records?"
+    },
+    {
+      "requirement": "The system shall encrypt payment records to ensure that a data leak is meaningless.",
+      "source_citation": "A leak should be meaningless... no random employee can look up card numbers.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder implies a security requirement for encryption of payment records to prevent meaningful data leaks.",
+      "follow_up_question": "What specific encryption standards or methods should be used to ensure payment records are secure?"
+    },
+    {
+      "requirement": "The system shall provide a privacy notice visible on every page, with a link and summary, especially during signup and payment.",
+      "source_citation": "Privacy notice visible on every page (link + summary), especially during signup/payment.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states a usability requirement for the visibility and accessibility of the privacy notice.",
+      "follow_up_question": "What specific information should be included in the privacy notice summary on each page?"
+    },
+    {
+      "requirement": "The system shall require two-person approval for sensitive actions such as refunds over a certain threshold.",
+      "source_citation": "For sensitive actions (e.g., refunds over threshold), require two-person approval.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states a security requirement for two-person approval for sensitive actions, though the specific threshold for refunds is not defined.",
+      "follow_up_question": "What is the specific threshold for refunds that requires two-person approval?"
+    },
+    {
+      "requirement": "The system shall support local language options to accommodate non-tech-savvy users.",
+      "source_citation": "Big buttons, clear language, and local language support where possible.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for local language support as part of usability requirements, but does not specify which languages or the extent of support needed.",
+      "follow_up_question": "Which specific local languages should be supported, and to what extent (e.g., full translation, key phrases)?"
+    },
+    {
+      "requirement": "The system shall ensure that pages are lightweight to load well on low-bandwidth connections.",
+      "source_citation": "Pages should be lightweight so they load well on low-bandwidth connections.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states a performance requirement for lightweight pages to accommodate low-bandwidth connections.",
+      "follow_up_question": "What specific optimizations or techniques should be used to ensure pages are lightweight?"
+    },
+    {
+      "requirement": "The system shall achieve 99.5% availability to ensure high uptime and business credibility.",
+      "source_citation": "99.5% availability target for SLAs and stakeholder expectations.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states an availability requirement with a specific target of 99.5%.",
+      "follow_up_question": "What specific measures or strategies should be implemented to achieve and maintain 99.5% availability?"
+    },
+    {
+      "requirement": "The system shall provide real-time sales visibility and daily usage metrics for administrators.",
+      "source_citation": "Admins need real-time sales visibility + daily usage metrics (who watched what, streams started).",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states a maintainability requirement for real-time sales visibility and daily usage metrics, though the specific metrics are not fully detailed.",
+      "follow_up_question": "What specific metrics should be included in the real-time sales visibility and daily usage reports?"
+    },
+    {
+      "requirement": "The system shall provide a dashboard and downloadable reports for audits and reconciliation, allowing admins to slice data by title, date, and payment type without engineering support.",
+      "source_citation": "Dashboard + downloadable reports for audits/reconciliation. Slice by title/date/payment type without engineering.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states a maintainability requirement for a dashboard and downloadable reports, specifying the need for admins to independently access and analyze data.",
+      "follow_up_question": "What specific features or functionalities should the dashboard include to support audits and reconciliation?"
+    },
+    {
+      "requirement": "The system shall retain financial records long enough to satisfy auditors and local tax rules, and usage analytics for at least months.",
+      "source_citation": "Retain financial records long enough for audits/tax rules; usage analytics for months.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions a maintainability requirement for retaining financial records and usage analytics, but the exact duration for financial records is not specified.",
+      "follow_up_question": "What is the exact duration for retaining financial records to satisfy auditors and local tax rules?"
+    },
+    {
+      "requirement": "The system shall ensure that the design is simple and familiar, with big buttons and clear language, to accommodate non-tech-savvy users.",
+      "source_citation": "Design needs to be simple and familiar — big buttons, clear language, and local language support where possible.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states a usability requirement for a simple and familiar design, specifying the need for big buttons and clear language.",
+      "follow_up_question": "What specific design elements or features should be included to ensure the design is simple and familiar for non-tech-savvy users?"
+    },
+    {
+      "requirement": "The system shall monitor performance and alert operations if pages or streams slow down, providing daily usage stats for trend detection.",
+      "source_citation": "Monitoring is critical... alert ops if pages/streams slow down... daily usage stats for trend detection.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states a performance requirement for monitoring and alerting on slowdowns, as well as providing daily usage stats.",
+      "follow_up_question": "What specific monitoring tools or techniques should be used to detect slowdowns and provide daily usage stats?"
+    },
+    {
+      "requirement": "The system shall comply with data residency and local privacy laws, restricting access based on region if required.",
+      "source_citation": "Data residency and local privacy laws... must restrict access by region if required.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states a legal requirement for compliance with data residency and local privacy laws, mentioning the need to restrict access based on region.",
+      "follow_up_question": "What specific data residency and local privacy laws should the system comply with, and how should access be restricted based on region?"
+    },
+    {
+      "requirement": "The system shall ensure that users can still browse, redeem pre-paid cards, and queue purchases during payment gateway failures.",
+      "source_citation": "If the payment gateway hiccups, we shouldn't go dark. Users should still be able to browse, redeem pre-paid cards, access their purchased titles, and maybe queue purchases to complete later.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states a fault tolerance requirement for maintaining certain functionalities during payment gateway failures.",
+      "follow_up_question": "What specific mechanisms should be implemented to allow users to queue purchases during payment gateway failures?"
+    },
+    {
+      "requirement": "The system shall ensure that the rest of the site stays up and purchases are preserved during streaming server failures, with clear messaging and automatic retry or fallback stream for playback.",
+      "source_citation": "At minimum, the rest of the site should stay up so people can browse and buy, and their purchases should be preserved. For playback, we need clear messaging and either automatic retry or a fallback stream.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states a fault tolerance requirement for maintaining site functionality and providing fallback options during streaming server failures.",
+      "follow_up_question": "What specific fallback mechanisms should be implemented to ensure continuous playback during streaming server failures?"
+    },
+    {
+      "requirement": "The system shall support around one thousand concurrent users at peak times, such as during premieres or popular weekend evenings.",
+      "source_citation": "If you need a ballpark number for capacity planning, I'd say around one thousand simultaneous users at peak.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states a scalability requirement for supporting around one thousand concurrent users at peak times.",
+      "follow_up_question": "What specific measures should be taken to ensure the system can support one thousand concurrent users at peak times?"
+    },
+    {
+      "requirement": "The system shall ensure that pre-paid card redemption is processed immediately and does not require an external gateway, allowing users to buy access in a shop and watch right away.",
+      "source_citation": "Pre-paid card redemption should be processed immediately on our side — it shouldn't require the external gateway — so people can buy access in a shop and watch right away.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states a performance requirement for immediate processing of pre-paid card redemption without relying on an external gateway.",
+      "follow_up_question": "What specific mechanisms should be implemented to ensure immediate processing of pre-paid card redemption?"
+    },
+    {
+      "requirement": "The system shall ensure that only a small fraction of users are affected during outages, prioritizing paying customers who are mid-playback and critical admin functions.",
+      "source_citation": "Some small fraction being affected is tolerable, but not widespread outages. We want to avoid mass disruptions. If there has to be prioritisation, we should prioritise paying customers who are mid-playback and critical admin functions.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states an availability requirement for minimizing the impact of outages on users, prioritizing paying customers and critical admin functions.",
+      "follow_up_question": "What specific strategies should be implemented to ensure that only a small fraction of users are affected during outages?"
+    },
+    {
+      "requirement": "The system shall ensure that sensitive actions, such as unlocking raw payment data or doing refunds over a certain threshold, require additional approvals.",
+      "source_citation": "For the most sensitive things, like unlocking raw payment data or doing refunds over a certain threshold, additional approvals make sense.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions a security requirement for additional approvals for sensitive actions, but the specific threshold for refunds and the approval process are not detailed.",
+      "follow_up_question": "What is the specific threshold for refunds that requires additional approvals, and what is the exact approval process?"
+    },
+    {
+      "requirement": "The system shall ensure that the design includes a playful splash of African art motif to make the onboarding process fun and welcoming.",
+      "source_citation": "We should keep the onboarding fun. Maybe a playful splash of that African art motif so people feel welcomed.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions a look and feel requirement for including a playful splash of African art motif in the onboarding process, but the specific design elements are not detailed.",
+      "follow_up_question": "What specific African art motifs or design elements should be included to make the onboarding process fun and welcoming?"
+    }
+  ]
+}

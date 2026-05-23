@@ -1,0 +1,183 @@
+{
+  "transcript_file": "outputs/corpus-20260226_162106/transcript_6_re_experienced_stakeholder_nontechnical_enduser_20260226_164046.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_182537",
+  "requirements": [
+    {
+      "requirement": "The system should provide immediate, clear feedback on screen for successful bookings, including a pop-up that shows the time and attendees.",
+      "source_citation": "I want immediate, clear feedback on screen — a pop-up that says \"reserved\" and shows the time and attendees, not some tiny line at the top.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for immediate and clear feedback on screen for successful bookings, which is a usability concern.",
+      "follow_up_question": "What specific information should be included in the pop-up to ensure clarity and usability?"
+    },
+    {
+      "requirement": "The system should send automatic calendar invites to attendees upon successful booking.",
+      "source_citation": "I expect the system to send the invites automatically. I mean, otherwise people don't show up.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder emphasizes the importance of automatic calendar invites to ensure attendees are notified, which is a usability concern.",
+      "follow_up_question": "What specific details should be included in the automatic calendar invites to ensure clarity and usability?"
+    },
+    {
+      "requirement": "The system should provide clear feedback on screen when a booking fails, including the reason for the failure.",
+      "source_citation": "If it fails, tell me why — like \"equipment not available\" or \"conflict with recurring meeting\" — so I know what to do next.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for clear feedback on screen when a booking fails, which is a usability concern.",
+      "follow_up_question": "What specific reasons for booking failures should be included in the feedback to ensure clarity and usability?"
+    },
+    {
+      "requirement": "The system should be available in the users’ languages and display calendar dates in a format familiar to the users' locale.",
+      "source_citation": "We have offices in a few countries, so the UI should be available in the users’ languages. Also, the calendar display should match what they're used to, or they'll misread meeting times.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder emphasizes the need for the system to be available in the users’ languages and display calendar dates in a familiar format, which is a usability concern.",
+      "follow_up_question": "What specific languages and date formats should be supported to ensure usability for users in different locales?"
+    },
+    {
+      "requirement": "The system should work with screen readers and keyboard-only workflows, and conform to ADA and WCAG guidelines.",
+      "source_citation": "It has to work with screen readers and keyboard-only workflows. High-contrast and scalable fonts would help. I don’t know the exact standards by heart, but we should at least meet the legal expectations — so, conforming to ADA, and I think following WCAG guidelines would be sensible.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for the system to work with screen readers and keyboard-only workflows, and conform to ADA and WCAG guidelines, which is a usability concern.",
+      "follow_up_question": "What specific accessibility standards and guidelines should be followed to ensure the system is accessible to all users?"
+    },
+    {
+      "requirement": "Most small actions in the system should complete within five seconds, and almost all actions should complete within eight seconds.",
+      "source_citation": "I’d say a few seconds — maybe five seconds for the normal stuff, and if it’s longer, show me a progress indicator or let me continue doing other things. Actually, to be specific, I’d expect most small actions to complete within five seconds, and almost all within eight seconds.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the performance targets for the system, which is a performance concern.",
+      "follow_up_question": "What specific actions should be prioritized to meet the performance targets of five seconds for small actions and eight seconds for almost all actions?"
+    },
+    {
+      "requirement": "The system should show a progress indicator or allow users to continue doing other things if actions take longer than five seconds.",
+      "source_citation": "If it’s longer, show me a progress indicator or let me continue doing other things.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for a progress indicator or the ability to continue doing other things if actions take longer than five seconds, which is a performance concern.",
+      "follow_up_question": "What specific progress indicators or user interface elements should be implemented to ensure users can continue doing other things while waiting for actions to complete?"
+    },
+    {
+      "requirement": "The system should have an uptime target of 99.99% outside of server failure exceptions.",
+      "source_citation": "I’d aim for something like \"close to perfect\" — actually, maybe an uptime target that’s significantly above 99.9 percent. Sorry, that's vague, but I mean it needs to be nearly continuous outside of planned maintenance.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the need for a high uptime target, which is an availability concern. However, the exact percentage is not clearly defined.",
+      "follow_up_question": "What specific uptime target should be set to ensure the system is nearly continuous outside of planned maintenance?"
+    },
+    {
+      "requirement": "The system should have a fallback mechanism, such as a posted phone number to call facilities or a simple manual sign-up sheet at the reception, in case of outages.",
+      "source_citation": "If it’s down, we need a fallback — a posted phone number to call facilities, or a simple manual sign-up sheet at the reception.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for a fallback mechanism in case of outages, which is a fault tolerance concern.",
+      "follow_up_question": "What specific fallback mechanisms should be implemented to ensure users can still book rooms in case of system outages?"
+    },
+    {
+      "requirement": "The system should retry and queue failed email invites, log the failures for IT to diagnose, and provide an on-screen warning and manual retry option.",
+      "source_citation": "I’d want it to retry and queue the invite, and if it still fails after some attempts, show me an on-screen warning and maybe provide a manual retry option. Also log it somewhere IT can see so they can diagnose the mail server issue.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for the system to retry and queue failed email invites, log the failures, and provide an on-screen warning and manual retry option, which is a maintainability concern.",
+      "follow_up_question": "What specific retry mechanisms and logging procedures should be implemented to ensure failed email invites are handled appropriately?"
+    },
+    {
+      "requirement": "The system should support both Outlook/Exchange and Google calendar systems for email and calendar integration.",
+      "source_citation": "But whatever we build, it has to work with both, otherwise those teams will complain.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for the system to support both Outlook/Exchange and Google calendar systems, which is a scalability concern.",
+      "follow_up_question": "What specific integration requirements should be met to ensure the system works with both Outlook/Exchange and Google calendar systems?"
+    },
+    {
+      "requirement": "The system should conform to ADA and WCAG guidelines for accessibility.",
+      "source_citation": "It has to work with screen readers and keyboard-only workflows. High-contrast and scalable fonts would help. I don’t know the exact standards by heart, but we should at least meet the legal expectations — so, conforming to ADA, and I think following WCAG guidelines would be sensible.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for the system to conform to ADA and WCAG guidelines, which is a legal concern.",
+      "follow_up_question": "What specific accessibility standards and guidelines should be followed to ensure the system meets legal requirements?"
+    },
+    {
+      "requirement": "User preferences, such as start page and saved searches, should be stored server-side to ensure consistency across devices.",
+      "source_citation": "Server-side would be best. I switch between my laptop and a desktop at the office, so syncing would be helpful.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for user preferences to be stored server-side to ensure consistency across devices, which is a maintainability concern.",
+      "follow_up_question": "What specific user preferences should be stored server-side to ensure consistency across devices?"
+    },
+    {
+      "requirement": "The system should suggest alternative rooms or times when a conflict or double-booking is detected.",
+      "source_citation": "If there's a conflict, tell me right away and suggest alternatives — other rooms, different times, or maybe the same room but without the projector.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "other",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for the system to suggest alternative rooms or times when a conflict or double-booking is detected, which is a concern related to conflict resolution.",
+      "follow_up_question": "What specific conflict resolution strategies should be implemented to ensure users can find alternative rooms or times when conflicts arise?"
+    },
+    {
+      "requirement": "The system should allow users to explicitly select their preferred language and infer from browser settings as a default.",
+      "source_citation": "I'd like users to be able to pick their language explicitly so they can change it themselves. If it can infer from the browser and set a sensible default, that’s fine, but I want the choice available in case it's wrong.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for the system to allow users to explicitly select their preferred language and infer from browser settings as a default, which is a usability concern.",
+      "follow_up_question": "What specific language selection mechanisms should be implemented to ensure users can easily choose their preferred language?"
+    },
+    {
+      "requirement": "The system should support English (U.S. and British), Spanish, and German languages for different offices.",
+      "source_citation": "We need English for the U.S. site, British English for the UK office, and then Spanish for our team in Spain and maybe Latin America. Also German for one office.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for the system to support specific languages for different offices, which is a scalability concern.",
+      "follow_up_question": "What specific language support requirements should be met to ensure the system works for users in different offices?"
+    }
+  ]
+}

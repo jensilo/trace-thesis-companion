@@ -1,0 +1,179 @@
+{
+  "project_id": "8",
+  "project_name": "IzognMovies: African On-Demand Movie Streaming Platform",
+  "project_description": "IzognMovies is a web-based streaming platform delivering African movies on demand to a global audience. Customers can register, browse, search, and purchase movies via credit card or pre-paid cards, streaming content within a 2-day viewing window. The platform supports subscription and pay-as-you-go monetization models. Administrators can manage movie catalogs, generate pre-paid cards, handle customer accounts, and access business analytics. A review functionality is also included. The design emphasizes accessibility for novice internet users through an African-inspired modern aesthetic, while maintaining robust security for customer and payment data.",
+  "model": "gpt-5-mini",
+  "timestamp": "20260227_111453",
+  "interviewer_persona": "re_experienced",
+  "stakeholder_persona": "stakeholder_nontechnical_enduser",
+  "no_refine": true,
+  "selected_requirements": [
+    {
+      "text": "System shall let customers register on the website as a \"pay as you go\" user in under 5 minutes.'",
+      "line": 376,
+      "categories": [
+        "quality",
+        "functional",
+        "performance",
+        "usability"
+      ]
+    },
+    {
+      "text": "System shall let customers register on the website as a \"unlimited movie subscriber\" user in under 10 minutes.'",
+      "line": 377,
+      "categories": [
+        "quality",
+        "functional",
+        "performance",
+        "usability"
+      ]
+    },
+    {
+      "text": "'System shall let existing customers log into the website with their email address and password in under 5 seconds.'",
+      "line": 378,
+      "categories": [
+        "quality",
+        "functional",
+        "performance",
+        "usability"
+      ]
+    },
+    {
+      "text": "'The product should be able to be used by 90% of novice users on the Internet.'",
+      "line": 388,
+      "categories": [
+        "quality",
+        "usability"
+      ]
+    },
+    {
+      "text": "'Users should only have to navigate through a maximum of 4 pages to create an account with the website.'",
+      "line": 389,
+      "categories": [
+        "quality",
+        "look_and_feel",
+        "usability"
+      ]
+    },
+    {
+      "text": "'Users should be able to access their streaming movies in under 2 clicks after logging into the website.'",
+      "line": 390,
+      "categories": [
+        "quality",
+        "functional",
+        "look_and_feel",
+        "usability"
+      ]
+    },
+    {
+      "text": "'The product shall be easy for customers with novice skills on the Internet to purchase and watch streaming movies. Customers should be able to purchase and watch a pre-determined movie in under 3 minutes.'",
+      "line": 394,
+      "categories": [
+        "quality",
+        "functional",
+        "performance",
+        "usability"
+      ]
+    },
+    {
+      "text": "'Any interface between a user and the automated system shall have a maximum response time of 5 seconds unless noted by an exception below.'",
+      "line": 397,
+      "categories": [
+        "quality",
+        "fault_tolerance",
+        "performance"
+      ]
+    },
+    {
+      "text": "When streaming a movie the buffering time should take no longer than 10 seconds (plus any latency on the user's connection.)'",
+      "line": 399,
+      "categories": [
+        "quality",
+        "performance"
+      ]
+    },
+    {
+      "text": "'The website shall achieve 99.5% up time.'",
+      "line": 403,
+      "categories": [
+        "quality",
+        "availability"
+      ]
+    }
+  ],
+  "evaluation": {
+    "g_eval_quality": {
+      "judge_model": "openai/gpt-5-mini",
+      "overall_mean": 7.5,
+      "overall_std_dev": 0.69,
+      "dimensions": {
+        "structuring": {
+          "mean": 7.33,
+          "std_dev": 0.58,
+          "samples": [
+            7.0,
+            8.0,
+            7.0
+          ]
+        },
+        "clarity": {
+          "mean": 8.33,
+          "std_dev": 0.58,
+          "samples": [
+            8.0,
+            9.0,
+            8.0
+          ]
+        },
+        "responsiveness": {
+          "mean": 7.67,
+          "std_dev": 0.58,
+          "samples": [
+            8.0,
+            7.0,
+            8.0
+          ]
+        },
+        "rigor": {
+          "mean": 6.67,
+          "std_dev": 0.58,
+          "samples": [
+            7.0,
+            6.0,
+            7.0
+          ]
+        }
+      }
+    },
+    "g_eval_meta": {
+      "judge_model": "openai/gpt-5-mini",
+      "overall_mean": 9.17,
+      "overall_std_dev": 0.71,
+      "dimensions": {
+        "completeness": {
+          "mean": 9.67,
+          "std_dev": 0.58,
+          "samples": [
+            10.0,
+            10.0,
+            9.0
+          ]
+        },
+        "realism": {
+          "mean": 8.67,
+          "std_dev": 0.58,
+          "samples": [
+            9.0,
+            9.0,
+            8.0
+          ]
+        }
+      }
+    },
+    "bert_score": {
+      "precision": 0.79902583360672,
+      "recall": 0.7960110902786255,
+      "f1": 0.7975155711174011
+    }
+  }
+}

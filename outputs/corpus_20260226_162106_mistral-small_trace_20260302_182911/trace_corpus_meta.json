@@ -1,0 +1,874 @@
+{
+  "corpus_id": "corpus-20260226_162106",
+  "trace_run_id": "corpus_20260226_162106_mistral-small_trace_20260302_182911",
+  "model": "mistral/mistral-small-latest",
+  "eval_model": "openai/gpt-5-mini",
+  "generated_at": "2026-03-02T18:32:27.671937",
+  "total_elapsed_seconds": 196.5,
+  "summary": {
+    "total": 40,
+    "successful": 40,
+    "failed": 0,
+    "failures": []
+  },
+  "overall": {
+    "count": 40,
+    "precision": {
+      "mean": 0.465,
+      "std_dev": 0.155,
+      "count": 40
+    },
+    "recall": {
+      "mean": 0.772,
+      "std_dev": 0.155,
+      "count": 40
+    },
+    "f1": {
+      "mean": 0.567,
+      "std_dev": 0.137,
+      "count": 40
+    },
+    "avg_confidence": {
+      "mean": 4.141,
+      "std_dev": 0.309,
+      "count": 40
+    },
+    "avg_overlap_score": {
+      "mean": 3.454,
+      "std_dev": 0.543,
+      "count": 40
+    }
+  },
+  "by_model": {
+    "mistral/mistral-small-latest": {
+      "count": 40,
+      "precision": {
+        "mean": 0.465,
+        "std_dev": 0.155,
+        "count": 40
+      },
+      "recall": {
+        "mean": 0.772,
+        "std_dev": 0.155,
+        "count": 40
+      },
+      "f1": {
+        "mean": 0.567,
+        "std_dev": 0.137,
+        "count": 40
+      },
+      "avg_confidence": {
+        "mean": 4.141,
+        "std_dev": 0.309,
+        "count": 40
+      },
+      "avg_overlap_score": {
+        "mean": 3.454,
+        "std_dev": 0.543,
+        "count": 40
+      }
+    }
+  },
+  "per_transcript": [
+    {
+      "transcript": "transcript_3_re_novice_stakeholder_nontechnical_manager_20260226_162354.txt",
+      "extracted_count": 25,
+      "elapsed_seconds": 76.8,
+      "metrics": {
+        "hit_count": 10,
+        "extracted_count": 25,
+        "ground_truth_count": 10,
+        "precision": 0.4,
+        "recall": 1.0,
+        "f1": 0.571,
+        "quality_attribute_accuracy": 0.6,
+        "avg_confidence": 3.88,
+        "avg_overlap_score": 3.72,
+        "avg_confidence_quality": 3.84,
+        "avg_rationale_quality": 3.76,
+        "avg_gap_detection_quality": 4.08
+      },
+      "error": null
+    },
+    {
+      "transcript": "transcript_5_re_novice_stakeholder_nontechnical_manager_20260226_163121.txt",
+      "extracted_count": 24,
+      "elapsed_seconds": 85.5,
+      "metrics": {
+        "hit_count": 10,
+        "extracted_count": 24,
+        "ground_truth_count": 10,
+        "precision": 0.417,
+        "recall": 1.0,
+        "f1": 0.588,
+        "quality_attribute_accuracy": 0.7,
+        "avg_confidence": 4.0,
+        "avg_overlap_score": 3.375,
+        "avg_confidence_quality": 4.0,
+        "avg_rationale_quality": 3.625,
+        "avg_gap_detection_quality": 3.667
+      },
+      "error": null
+    },
+    {
+      "transcript": "transcript_6_re_experienced_stakeholder_nontechnical_manager_20260226_164052.txt",
+      "extracted_count": 15,
+      "elapsed_seconds": 61.4,
+      "metrics": {
+        "hit_count": 10,
+        "extracted_count": 15,
+        "ground_truth_count": 10,
+        "precision": 0.667,
+        "recall": 1.0,
+        "f1": 0.8,
+        "quality_attribute_accuracy": 0.9,
+        "avg_confidence": 4.0,
+        "avg_overlap_score": 4.6,
+        "avg_confidence_quality": 4.267,
+        "avg_rationale_quality": 3.933,
+        "avg_gap_detection_quality": 3.867
+      },
+      "error": null
+    },
+    {
+      "transcript": "transcript_6_re_experienced_stakeholder_technical_senior_20260226_163638.txt",
+      "extracted_count": 13,
+      "elapsed_seconds": 55.2,
+      "metrics": {
+        "hit_count": 10,
+        "extracted_count": 13,
+        "ground_truth_count": 10,
+        "precision": 0.769,
+        "recall": 1.0,
+        "f1": 0.87,
+        "quality_attribute_accuracy": 0.7,
+        "avg_confidence": 4.0,
+        "avg_overlap_score": 3.923,
+        "avg_confidence_quality": 3.846,
+        "avg_rationale_quality": 3.692,
+        "avg_gap_detection_quality": 3.923
+      },
+      "error": null
+    },
+    {
+      "transcript": "transcript_8_re_experienced_stakeholder_technical_junior_20260226_164240.txt",
+      "extracted_count": 21,
+      "elapsed_seconds": 70.6,
+      "metrics": {
+        "hit_count": 10,
+        "extracted_count": 21,
+        "ground_truth_count": 10,
+        "precision": 0.476,
+        "recall": 1.0,
+        "f1": 0.645,
+        "quality_attribute_accuracy": 0.9,
+        "avg_confidence": 3.714,
+        "avg_overlap_score": 3.238,
+        "avg_confidence_quality": 3.81,
+        "avg_rationale_quality": 3.81,
+        "avg_gap_detection_quality": 3.905
+      },
+      "error": null
+    },
+    {
+      "transcript": "transcript_8_re_novice_stakeholder_nontechnical_manager_20260226_164125.txt",
+      "extracted_count": 22,
+      "elapsed_seconds": 81.3,
+      "metrics": {
+        "hit_count": 10,
+        "extracted_count": 22,
+        "ground_truth_count": 10,
+        "precision": 0.455,
+        "recall": 1.0,
+        "f1": 0.625,
+        "quality_attribute_accuracy": 0.7,
+        "avg_confidence": 3.727,
+        "avg_overlap_score": 3.727,
+        "avg_confidence_quality": 3.955,
+        "avg_rationale_quality": 3.682,
+        "avg_gap_detection_quality": 3.727
+      },
+      "error": null
+    },
+    {
+      "transcript": "transcript_3_re_experienced_stakeholder_nontechnical_enduser_20260226_162420.txt",
+      "extracted_count": 17,
+      "elapsed_seconds": 58.1,
+      "metrics": {
+        "hit_count": 9,
+        "extracted_count": 17,
+        "ground_truth_count": 10,
+        "precision": 0.529,
+        "recall": 0.9,
+        "f1": 0.667,
+        "quality_attribute_accuracy": 0.889,
+        "avg_confidence": 4.059,
+        "avg_overlap_score": 3.647,
+        "avg_confidence_quality": 4.059,
+        "avg_rationale_quality": 3.765,
+        "avg_gap_detection_quality": 4.176
+      },
+      "error": null
+    },
+    {
+      "transcript": "transcript_5_re_experienced_stakeholder_nontechnical_manager_20260226_163604.txt",
+      "extracted_count": 20,
+      "elapsed_seconds": 77.1,
+      "metrics": {
+        "hit_count": 9,
+        "extracted_count": 20,
+        "ground_truth_count": 10,
+        "precision": 0.45,
+        "recall": 0.9,
+        "f1": 0.6,
+        "quality_attribute_accuracy": 0.556,
+        "avg_confidence": 4.2,
+        "avg_overlap_score": 2.95,
+        "avg_confidence_quality": 3.95,
+        "avg_rationale_quality": 3.65,
+        "avg_gap_detection_quality": 2.75
+      },
+      "error": null
+    },
+    {
+      "transcript": "transcript_6_re_novice_stakeholder_technical_junior_20260226_163609.txt",
+      "extracted_count": 10,
+      "elapsed_seconds": 52.5,
+      "metrics": {
+        "hit_count": 9,
+        "extracted_count": 10,
+        "ground_truth_count": 10,
+        "precision": 0.9,
+        "recall": 0.9,
+        "f1": 0.9,
+        "quality_attribute_accuracy": 0.889,
+        "avg_confidence": 4.2,
+        "avg_overlap_score": 4.5,
+        "avg_confidence_quality": 4.5,
+        "avg_rationale_quality": 4.0,
+        "avg_gap_detection_quality": 3.7
+      },
+      "error": null
+    },
+    {
+      "transcript": "transcript_6_re_novice_stakeholder_technical_senior_20260226_163651.txt",
+      "extracted_count": 33,
+      "elapsed_seconds": 102.1,
+      "metrics": {
+        "hit_count": 9,
+        "extracted_count": 33,
+        "ground_truth_count": 10,
+        "precision": 0.273,
+        "recall": 0.9,
+        "f1": 0.419,
+        "quality_attribute_accuracy": 0.556,
+        "avg_confidence": 5.0,
+        "avg_overlap_score": 3.242,
+        "avg_confidence_quality": 3.182,
+        "avg_rationale_quality": 2.576,
+        "avg_gap_detection_quality": 2.485
+      },
+      "error": null
+    },
+    {
+      "transcript": "transcript_8_re_experienced_stakeholder_nontechnical_enduser_20260226_164233.txt",
+      "extracted_count": 17,
+      "elapsed_seconds": 53.2,
+      "metrics": {
+        "hit_count": 9,
+        "extracted_count": 17,
+        "ground_truth_count": 10,
+        "precision": 0.529,
+        "recall": 0.9,
+        "f1": 0.667,
+        "quality_attribute_accuracy": 0.889,
+        "avg_confidence": 4.0,
+        "avg_overlap_score": 3.529,
+        "avg_confidence_quality": 4.118,
+        "avg_rationale_quality": 3.765,
+        "avg_gap_detection_quality": 3.529
+      },
+      "error": null
+    },
+    {
+      "transcript": "transcript_8_re_experienced_stakeholder_technical_senior_20260226_164201.txt",
+      "extracted_count": 25,
+      "elapsed_seconds": 77.1,
+      "metrics": {
+        "hit_count": 9,
+        "extracted_count": 25,
+        "ground_truth_count": 10,
+        "precision": 0.36,
+        "recall": 0.9,
+        "f1": 0.514,
+        "quality_attribute_accuracy": 1.0,
+        "avg_confidence": 4.72,
+        "avg_overlap_score": 3.4,
+        "avg_confidence_quality": 4.0,
+        "avg_rationale_quality": 3.56,
+        "avg_gap_detection_quality": 3.64
+      },
+      "error": null
+    },
+    {
+      "transcript": "transcript_8_re_novice_stakeholder_technical_junior_20260226_164137.txt",
+      "extracted_count": 27,
+      "elapsed_seconds": 93.9,
+      "metrics": {
+        "hit_count": 9,
+        "extracted_count": 27,
+        "ground_truth_count": 10,
+        "precision": 0.333,
+        "recall": 0.9,
+        "f1": 0.486,
+        "quality_attribute_accuracy": 0.889,
+        "avg_confidence": 4.37,
+        "avg_overlap_score": 3.593,
+        "avg_confidence_quality": 3.926,
+        "avg_rationale_quality": 3.556,
+        "avg_gap_detection_quality": 3.704
+      },
+      "error": null
+    },
+    {
+      "transcript": "transcript_3_re_experienced_stakeholder_nontechnical_manager_20260226_162335.txt",
+      "extracted_count": 26,
+      "elapsed_seconds": 98.2,
+      "metrics": {
+        "hit_count": 8,
+        "extracted_count": 26,
+        "ground_truth_count": 10,
+        "precision": 0.308,
+        "recall": 0.8,
+        "f1": 0.444,
+        "quality_attribute_accuracy": 0.375,
+        "avg_confidence": 4.269,
+        "avg_overlap_score": 3.385,
+        "avg_confidence_quality": 3.923,
+        "avg_rationale_quality": 3.692,
+        "avg_gap_detection_quality": 3.769
+      },
+      "error": null
+    },
+    {
+      "transcript": "transcript_3_re_experienced_stakeholder_technical_senior_20260226_162333.txt",
+      "extracted_count": 14,
+      "elapsed_seconds": 52.5,
+      "metrics": {
+        "hit_count": 8,
+        "extracted_count": 14,
+        "ground_truth_count": 10,
+        "precision": 0.571,
+        "recall": 0.8,
+        "f1": 0.667,
+        "quality_attribute_accuracy": 0.75,
+        "avg_confidence": 4.357,
+        "avg_overlap_score": 3.857,
+        "avg_confidence_quality": 4.0,
+        "avg_rationale_quality": 3.5,
+        "avg_gap_detection_quality": 3.214
+      },
+      "error": null
+    },
+    {
+      "transcript": "transcript_3_re_novice_stakeholder_technical_junior_20260226_162443.txt",
+      "extracted_count": 21,
+      "elapsed_seconds": 76.2,
+      "metrics": {
+        "hit_count": 8,
+        "extracted_count": 21,
+        "ground_truth_count": 10,
+        "precision": 0.381,
+        "recall": 0.8,
+        "f1": 0.516,
+        "quality_attribute_accuracy": 0.625,
+        "avg_confidence": 4.0,
+        "avg_overlap_score": 3.667,
+        "avg_confidence_quality": 3.905,
+        "avg_rationale_quality": 3.524,
+        "avg_gap_detection_quality": 3.476
+      },
+      "error": null
+    },
+    {
+      "transcript": "transcript_5_re_experienced_stakeholder_nontechnical_enduser_20260226_163543.txt",
+      "extracted_count": 13,
+      "elapsed_seconds": 45.5,
+      "metrics": {
+        "hit_count": 8,
+        "extracted_count": 13,
+        "ground_truth_count": 10,
+        "precision": 0.615,
+        "recall": 0.8,
+        "f1": 0.696,
+        "quality_attribute_accuracy": 0.75,
+        "avg_confidence": 4.0,
+        "avg_overlap_score": 3.692,
+        "avg_confidence_quality": 4.077,
+        "avg_rationale_quality": 3.846,
+        "avg_gap_detection_quality": 3.923
+      },
+      "error": null
+    },
+    {
+      "transcript": "transcript_5_re_experienced_stakeholder_technical_junior_20260226_163546.txt",
+      "extracted_count": 22,
+      "elapsed_seconds": 89.3,
+      "metrics": {
+        "hit_count": 8,
+        "extracted_count": 22,
+        "ground_truth_count": 10,
+        "precision": 0.364,
+        "recall": 0.8,
+        "f1": 0.5,
+        "quality_attribute_accuracy": 0.875,
+        "avg_confidence": 4.0,
+        "avg_overlap_score": 4.182,
+        "avg_confidence_quality": 4.227,
+        "avg_rationale_quality": 4.0,
+        "avg_gap_detection_quality": 3.727
+      },
+      "error": null
+    },
+    {
+      "transcript": "transcript_5_re_novice_stakeholder_technical_senior_20260226_163019.txt",
+      "extracted_count": 18,
+      "elapsed_seconds": 60.4,
+      "metrics": {
+        "hit_count": 8,
+        "extracted_count": 18,
+        "ground_truth_count": 10,
+        "precision": 0.444,
+        "recall": 0.8,
+        "f1": 0.571,
+        "quality_attribute_accuracy": 0.625,
+        "avg_confidence": 4.389,
+        "avg_overlap_score": 3.111,
+        "avg_confidence_quality": 4.0,
+        "avg_rationale_quality": 3.667,
+        "avg_gap_detection_quality": 3.5
+      },
+      "error": null
+    },
+    {
+      "transcript": "transcript_6_re_novice_stakeholder_nontechnical_manager_20260226_163658.txt",
+      "extracted_count": 15,
+      "elapsed_seconds": 58.0,
+      "metrics": {
+        "hit_count": 8,
+        "extracted_count": 15,
+        "ground_truth_count": 10,
+        "precision": 0.533,
+        "recall": 0.8,
+        "f1": 0.64,
+        "quality_attribute_accuracy": 0.875,
+        "avg_confidence": 4.2,
+        "avg_overlap_score": 3.733,
+        "avg_confidence_quality": 3.933,
+        "avg_rationale_quality": 3.6,
+        "avg_gap_detection_quality": 3.867
+      },
+      "error": null
+    },
+    {
+      "transcript": "transcript_8_re_experienced_stakeholder_nontechnical_manager_20260226_164301.txt",
+      "extracted_count": 15,
+      "elapsed_seconds": 51.3,
+      "metrics": {
+        "hit_count": 8,
+        "extracted_count": 15,
+        "ground_truth_count": 10,
+        "precision": 0.533,
+        "recall": 0.8,
+        "f1": 0.64,
+        "quality_attribute_accuracy": 1.0,
+        "avg_confidence": 4.0,
+        "avg_overlap_score": 4.067,
+        "avg_confidence_quality": 3.933,
+        "avg_rationale_quality": 3.933,
+        "avg_gap_detection_quality": 3.733
+      },
+      "error": null
+    },
+    {
+      "transcript": "transcript_8_re_novice_stakeholder_nontechnical_enduser_20260226_164133.txt",
+      "extracted_count": 19,
+      "elapsed_seconds": 57.7,
+      "metrics": {
+        "hit_count": 8,
+        "extracted_count": 19,
+        "ground_truth_count": 10,
+        "precision": 0.421,
+        "recall": 0.8,
+        "f1": 0.552,
+        "quality_attribute_accuracy": 1.0,
+        "avg_confidence": 4.211,
+        "avg_overlap_score": 2.895,
+        "avg_confidence_quality": 4.053,
+        "avg_rationale_quality": 3.737,
+        "avg_gap_detection_quality": 3.105
+      },
+      "error": null
+    },
+    {
+      "transcript": "transcript_8_re_novice_stakeholder_technical_senior_20260226_164107.txt",
+      "extracted_count": 19,
+      "elapsed_seconds": 71.3,
+      "metrics": {
+        "hit_count": 8,
+        "extracted_count": 19,
+        "ground_truth_count": 10,
+        "precision": 0.421,
+        "recall": 0.8,
+        "f1": 0.552,
+        "quality_attribute_accuracy": 1.0,
+        "avg_confidence": 5.0,
+        "avg_overlap_score": 3.316,
+        "avg_confidence_quality": 3.684,
+        "avg_rationale_quality": 3.316,
+        "avg_gap_detection_quality": 2.579
+      },
+      "error": null
+    },
+    {
+      "transcript": "transcript_3_re_experienced_stakeholder_technical_junior_20260226_162331.txt",
+      "extracted_count": 15,
+      "elapsed_seconds": 47.6,
+      "metrics": {
+        "hit_count": 7,
+        "extracted_count": 15,
+        "ground_truth_count": 10,
+        "precision": 0.467,
+        "recall": 0.7,
+        "f1": 0.56,
+        "quality_attribute_accuracy": 0.571,
+        "avg_confidence": 4.067,
+        "avg_overlap_score": 3.4,
+        "avg_confidence_quality": 3.867,
+        "avg_rationale_quality": 3.6,
+        "avg_gap_detection_quality": 3.533
+      },
+      "error": null
+    },
+    {
+      "transcript": "transcript_3_re_novice_stakeholder_nontechnical_enduser_20260226_162344.txt",
+      "extracted_count": 12,
+      "elapsed_seconds": 48.1,
+      "metrics": {
+        "hit_count": 7,
+        "extracted_count": 12,
+        "ground_truth_count": 10,
+        "precision": 0.583,
+        "recall": 0.7,
+        "f1": 0.636,
+        "quality_attribute_accuracy": 0.714,
+        "avg_confidence": 3.833,
+        "avg_overlap_score": 4.083,
+        "avg_confidence_quality": 4.0,
+        "avg_rationale_quality": 3.75,
+        "avg_gap_detection_quality": 4.0
+      },
+      "error": null
+    },
+    {
+      "transcript": "transcript_3_re_novice_stakeholder_technical_senior_20260226_162350.txt",
+      "extracted_count": 10,
+      "elapsed_seconds": 30.8,
+      "metrics": {
+        "hit_count": 7,
+        "extracted_count": 10,
+        "ground_truth_count": 10,
+        "precision": 0.7,
+        "recall": 0.7,
+        "f1": 0.7,
+        "quality_attribute_accuracy": 0.714,
+        "avg_confidence": 4.2,
+        "avg_overlap_score": 4.1,
+        "avg_confidence_quality": 4.1,
+        "avg_rationale_quality": 3.7,
+        "avg_gap_detection_quality": 3.4
+      },
+      "error": null
+    },
+    {
+      "transcript": "transcript_4_re_experienced_stakeholder_nontechnical_enduser_20260226_163017.txt",
+      "extracted_count": 17,
+      "elapsed_seconds": 53.1,
+      "metrics": {
+        "hit_count": 7,
+        "extracted_count": 17,
+        "ground_truth_count": 10,
+        "precision": 0.412,
+        "recall": 0.7,
+        "f1": 0.519,
+        "quality_attribute_accuracy": 0.714,
+        "avg_confidence": 4.118,
+        "avg_overlap_score": 2.706,
+        "avg_confidence_quality": 3.765,
+        "avg_rationale_quality": 3.471,
+        "avg_gap_detection_quality": 3.412
+      },
+      "error": null
+    },
+    {
+      "transcript": "transcript_4_re_novice_stakeholder_nontechnical_enduser_20260226_162946.txt",
+      "extracted_count": 17,
+      "elapsed_seconds": 62.8,
+      "metrics": {
+        "hit_count": 7,
+        "extracted_count": 17,
+        "ground_truth_count": 10,
+        "precision": 0.412,
+        "recall": 0.7,
+        "f1": 0.519,
+        "quality_attribute_accuracy": 0.571,
+        "avg_confidence": 4.235,
+        "avg_overlap_score": 2.941,
+        "avg_confidence_quality": 3.824,
+        "avg_rationale_quality": 3.529,
+        "avg_gap_detection_quality": 3.647
+      },
+      "error": null
+    },
+    {
+      "transcript": "transcript_4_re_novice_stakeholder_nontechnical_manager_20260226_163016.txt",
+      "extracted_count": 12,
+      "elapsed_seconds": 47.9,
+      "metrics": {
+        "hit_count": 7,
+        "extracted_count": 12,
+        "ground_truth_count": 10,
+        "precision": 0.583,
+        "recall": 0.7,
+        "f1": 0.636,
+        "quality_attribute_accuracy": 0.857,
+        "avg_confidence": 4.667,
+        "avg_overlap_score": 3.833,
+        "avg_confidence_quality": 4.083,
+        "avg_rationale_quality": 3.667,
+        "avg_gap_detection_quality": 3.5
+      },
+      "error": null
+    },
+    {
+      "transcript": "transcript_5_re_novice_stakeholder_technical_junior_20260226_163031.txt",
+      "extracted_count": 16,
+      "elapsed_seconds": 52.4,
+      "metrics": {
+        "hit_count": 7,
+        "extracted_count": 16,
+        "ground_truth_count": 10,
+        "precision": 0.438,
+        "recall": 0.7,
+        "f1": 0.538,
+        "quality_attribute_accuracy": 0.857,
+        "avg_confidence": 3.75,
+        "avg_overlap_score": 3.188,
+        "avg_confidence_quality": 4.0,
+        "avg_rationale_quality": 3.562,
+        "avg_gap_detection_quality": 3.812
+      },
+      "error": null
+    },
+    {
+      "transcript": "transcript_6_re_experienced_stakeholder_nontechnical_enduser_20260226_164046.txt",
+      "extracted_count": 14,
+      "elapsed_seconds": 50.8,
+      "metrics": {
+        "hit_count": 7,
+        "extracted_count": 14,
+        "ground_truth_count": 10,
+        "precision": 0.5,
+        "recall": 0.7,
+        "f1": 0.583,
+        "quality_attribute_accuracy": 0.429,
+        "avg_confidence": 4.071,
+        "avg_overlap_score": 3.643,
+        "avg_confidence_quality": 4.071,
+        "avg_rationale_quality": 3.929,
+        "avg_gap_detection_quality": 3.571
+      },
+      "error": null
+    },
+    {
+      "transcript": "transcript_4_re_experienced_stakeholder_nontechnical_manager_20260226_163045.txt",
+      "extracted_count": 29,
+      "elapsed_seconds": 97.9,
+      "metrics": {
+        "hit_count": 6,
+        "extracted_count": 29,
+        "ground_truth_count": 10,
+        "precision": 0.207,
+        "recall": 0.6,
+        "f1": 0.308,
+        "quality_attribute_accuracy": 0.333,
+        "avg_confidence": 3.793,
+        "avg_overlap_score": 2.897,
+        "avg_confidence_quality": 3.586,
+        "avg_rationale_quality": 3.448,
+        "avg_gap_detection_quality": 3.552
+      },
+      "error": null
+    },
+    {
+      "transcript": "transcript_4_re_novice_stakeholder_technical_junior_20260226_162405.txt",
+      "extracted_count": 22,
+      "elapsed_seconds": 69.9,
+      "metrics": {
+        "hit_count": 6,
+        "extracted_count": 22,
+        "ground_truth_count": 10,
+        "precision": 0.273,
+        "recall": 0.6,
+        "f1": 0.375,
+        "quality_attribute_accuracy": 0.5,
+        "avg_confidence": 3.864,
+        "avg_overlap_score": 3.091,
+        "avg_confidence_quality": 4.136,
+        "avg_rationale_quality": 3.909,
+        "avg_gap_detection_quality": 4.227
+      },
+      "error": null
+    },
+    {
+      "transcript": "transcript_4_re_novice_stakeholder_technical_senior_20260226_162405.txt",
+      "extracted_count": 18,
+      "elapsed_seconds": 58.9,
+      "metrics": {
+        "hit_count": 6,
+        "extracted_count": 18,
+        "ground_truth_count": 10,
+        "precision": 0.333,
+        "recall": 0.6,
+        "f1": 0.429,
+        "quality_attribute_accuracy": 0.5,
+        "avg_confidence": 4.111,
+        "avg_overlap_score": 2.889,
+        "avg_confidence_quality": 4.167,
+        "avg_rationale_quality": 3.778,
+        "avg_gap_detection_quality": 3.444
+      },
+      "error": null
+    },
+    {
+      "transcript": "transcript_5_re_experienced_stakeholder_technical_senior_20260226_163540.txt",
+      "extracted_count": 13,
+      "elapsed_seconds": 51.9,
+      "metrics": {
+        "hit_count": 6,
+        "extracted_count": 13,
+        "ground_truth_count": 10,
+        "precision": 0.462,
+        "recall": 0.6,
+        "f1": 0.522,
+        "quality_attribute_accuracy": 0.833,
+        "avg_confidence": 4.0,
+        "avg_overlap_score": 2.846,
+        "avg_confidence_quality": 3.846,
+        "avg_rationale_quality": 3.615,
+        "avg_gap_detection_quality": 3.462
+      },
+      "error": null
+    },
+    {
+      "transcript": "transcript_6_re_experienced_stakeholder_technical_junior_20260226_163658.txt",
+      "extracted_count": 13,
+      "elapsed_seconds": 60.5,
+      "metrics": {
+        "hit_count": 6,
+        "extracted_count": 13,
+        "ground_truth_count": 10,
+        "precision": 0.462,
+        "recall": 0.6,
+        "f1": 0.522,
+        "quality_attribute_accuracy": 0.5,
+        "avg_confidence": 3.923,
+        "avg_overlap_score": 3.231,
+        "avg_confidence_quality": 3.923,
+        "avg_rationale_quality": 3.692,
+        "avg_gap_detection_quality": 3.615
+      },
+      "error": null
+    },
+    {
+      "transcript": "transcript_6_re_novice_stakeholder_nontechnical_enduser_20260226_163629.txt",
+      "extracted_count": 8,
+      "elapsed_seconds": 37.1,
+      "metrics": {
+        "hit_count": 6,
+        "extracted_count": 8,
+        "ground_truth_count": 10,
+        "precision": 0.75,
+        "recall": 0.6,
+        "f1": 0.667,
+        "quality_attribute_accuracy": 0.5,
+        "avg_confidence": 4.625,
+        "avg_overlap_score": 4.25,
+        "avg_confidence_quality": 4.375,
+        "avg_rationale_quality": 3.75,
+        "avg_gap_detection_quality": 3.375
+      },
+      "error": null
+    },
+    {
+      "transcript": "transcript_4_re_experienced_stakeholder_technical_junior_20260226_163008.txt",
+      "extracted_count": 21,
+      "elapsed_seconds": 68.0,
+      "metrics": {
+        "hit_count": 5,
+        "extracted_count": 21,
+        "ground_truth_count": 10,
+        "precision": 0.238,
+        "recall": 0.5,
+        "f1": 0.323,
+        "quality_attribute_accuracy": 0.6,
+        "avg_confidence": 4.0,
+        "avg_overlap_score": 2.571,
+        "avg_confidence_quality": 3.619,
+        "avg_rationale_quality": 3.429,
+        "avg_gap_detection_quality": 3.333
+      },
+      "error": null
+    },
+    {
+      "transcript": "transcript_5_re_novice_stakeholder_nontechnical_enduser_20260226_163029.txt",
+      "extracted_count": 10,
+      "elapsed_seconds": 44.0,
+      "metrics": {
+        "hit_count": 5,
+        "extracted_count": 10,
+        "ground_truth_count": 10,
+        "precision": 0.5,
+        "recall": 0.5,
+        "f1": 0.5,
+        "quality_attribute_accuracy": 1.0,
+        "avg_confidence": 4.2,
+        "avg_overlap_score": 3.1,
+        "avg_confidence_quality": 4.0,
+        "avg_rationale_quality": 3.7,
+        "avg_gap_detection_quality": 3.4
+      },
+      "error": null
+    },
+    {
+      "transcript": "transcript_4_re_experienced_stakeholder_technical_senior_20260226_163032.txt",
+      "extracted_count": 27,
+      "elapsed_seconds": 74.3,
+      "metrics": {
+        "hit_count": 4,
+        "extracted_count": 27,
+        "ground_truth_count": 10,
+        "precision": 0.148,
+        "recall": 0.4,
+        "f1": 0.216,
+        "quality_attribute_accuracy": 0.75,
+        "avg_confidence": 3.889,
+        "avg_overlap_score": 2.037,
+        "avg_confidence_quality": 3.593,
+        "avg_rationale_quality": 3.481,
+        "avg_gap_detection_quality": 3.741
+      },
+      "error": null
+    }
+  ]
+}

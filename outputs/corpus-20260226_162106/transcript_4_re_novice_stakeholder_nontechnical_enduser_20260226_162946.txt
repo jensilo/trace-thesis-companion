@@ -1,0 +1,122 @@
+Interviewer: Thanks for meeting with me. To start, can you tell me what a normal day looks like for you with the Disputes app? Like, how you start, what you do, and any workarounds you use?
+
+Stakeholder: Yeah, sure. Well, I usually start by pulling up my queue — the list of cases assigned to me. I sort of scan for the urgent ones first, then open a few at a time on separate tabs. I think I handle, you know, a handful every hour, more when it's busy. When the system's slow or it freezes I get behind, and then I end up taking notes in Word or on a sticky and doing actions later. It's annoying. Oh, and sometimes I have to hop to the statement system or our merchant lookup in another app because what I see in Disputes is incomplete.
+
+Interviewer: When you say "a handful every hour" — can you give an example of a recent bad day where things went wrong? What happened step‑by‑step?
+
+Stakeholder: Umm, yeah. Last month after a holiday there were a ton of calls. I clicked into a case from my list and it hung for a long time, so I clicked again because I thought it didn't register. Ended up with duplicate windows and the second one showed different info for a moment, then it updated and I wasn't sure which notes had saved. I had to call Ops and we wasted like half an hour on a couple of cases. I stayed late to finish. Also, sometimes the list doesn't show at-a-glance what the status is, so I open each case to see if it's awaiting merchant response or if it's been closed. That's a huge waste.
+
+Interviewer: Got it. So you open multiple tabs, rely on the list first, and speed is important. Which transitions are most annoying when they're slow — from the list to case details, or something else?
+
+Stakeholder: Mostly list to details and then case to transaction history. If I click from the list to a case and then to the transaction details and any of those are sluggish, it interrupts my flow. If the page loads slowly I get distracted and sometimes make mistakes, like updating the wrong case. Hmm, it's just... it has to feel fast.
+
+Interviewer: Okay. Moving to the UI — how do you want the screen to look and behave? Any examples of corporate apps you like?
+
+Stakeholder: It should look and behave like our other internal tools — same menus, same buttons, same font, so you don't have to relearn where things are. I hate when every app invents its own icons. Also, the list of cases needs to be instantly scannable. If the status could be color coded that would help a lot — like, you know, green-ish for things that are OK and red-ish for urgent stuff. But, and this is important, make it obvious even if someone is color blind; maybe a little label or tooltip so new reps don't get confused. Oh, and I wish we could save a view — I like certain columns and filters but it forgets them.
+
+Interviewer: When you say "color coded," which statuses are you thinking of showing at a glance? And should the whole row be colored or a small icon?
+
+Stakeholder: I guess the usual ones — new, in progress, awaiting merchant, chargeback pending, on hold, closed. I think a colored flag or a colored status column is fine; whole rows might be too loud. A legend somewhere on the page would help new folks. But, you know, keep it clean.
+
+Interviewer: Do you know where the corporate UI standards live or who owns them? Can you point me to the style guide?
+
+Stakeholder: Yeah, the UX team keeps the style guide. I don't remember the exact folder but I can send you the link or the contact person after this — I think it's Jenna in UX. She always has the templates we use for external and internal apps.
+
+Interviewer: About speed — you said "it has to feel fast." How many seconds is too long for you when switching screens?
+
+Stakeholder: Hmm, I think anything longer than a few seconds is irritating. If it's more than, say, five seconds for the small stuff, I start to fidget and sometimes click again. Less is better, but five seems like a reasonable cutoff for me.
+
+Interviewer: Thanks. On concurrent usage — how many people are typically on at the same time during peak?
+
+Stakeholder: We have a lot of people on after high-volume days and after holidays. Operations told me the peak is a few hundred people at once — I don't know the exact number off the top of my head, but it's enough that if the app slows when everyone logs in it's a big problem.
+
+Interviewer: Could you check with Ops for a specific number? We need that for capacity planning.
+
+Stakeholder: Yeah, I can ask Ops. Actually, wait — if you need a number now, I was told before that the target was about three hundred and fifty concurrent users at peak. But double-check with Ops, please.
+
+Interviewer: Will do. About availability — do you need the app to be available outside normal business hours? Any maintenance windows that are acceptable?
+
+Stakeholder: We need it basically all the time because cardmembers call at odd hours and merchants can reach out from other timezones. Maintenance windows are okay if they're at night, but they should be predictable. I think Ops usually does maintenance in the very early morning, and Sundays they have a longer window. If it's down for maintenance and something urgent comes up, we need a way to at least capture the request or accept it offline — maybe a read-only mode or a draft we can submit later. Also, send banners or emails ahead of time so reps aren't surprised.
+
+Interviewer: Can you be specific about those maintenance times so I can note them for the spec?
+
+Stakeholder: Sure — weekdays they do a short window in the early morning, like three to four a.m. Eastern most days, and on Sunday they do a longer window, something like one a.m. to five a.m. Eastern. Again, Ops can confirm, but that's how it's been.
+
+Interviewer: Good. Now about integrations — you mentioned using the statement system and merchant lookup. Which system is the source of truth for transaction details?
+
+Stakeholder: The statement system is the thing we trust for transaction details. If the transaction on the statement system doesn't match what a cardmember says, we base the dispute on that. So, the Disputes app should pull transaction detail from the statement system — that's where the billing details live. If that lookup fails I want a clear message and a way to flag the case and move on.
+
+Interviewer: And for cardmember information — where should the app get contact details and account info?
+
+Stakeholder: From the cardmember database — that's where their contact info, billing address, and account-level stuff lives. We've had times when details in other systems were out of date and it just causes rework. So I'd rather the app use the official cardmember source and show me if something is missing.
+
+Interviewer: Merchant details — where do you expect those to come from?
+
+Stakeholder: The merchant database, yeah — same idea. We need merchant name, merchant category, contact info if available. Sometimes the merchant name on a statement is different from the legal name in our system, and if it's inconsistent it becomes a pain to explain to the cardmember. So if the merchant lookup fails, the app should tell me why or let me attach a manual note.
+
+Interviewer: If those backend systems are slow or unavailable, what should the app do? Show cached data, let you continue, or block you?
+
+Stakeholder: I'd rather it show cached or partial data with a clear warning and let me create or edit a case. I don't want the whole workflow blocked. A draft that flags incomplete authoritative data would be ideal. But it should be obvious to me that the data isn't fresh so I don't give the cardmember wrong info.
+
+Interviewer: Okay. About security — who should be allowed to create disputes? Any roles or approvals we should note?
+
+Stakeholder: Not everyone should create everything. New reps shouldn't be able to file certain high-risk or chargeback cases without a supervisor. Supervisors or senior reps need to be able to approve or override sometimes. Also, when someone leaves the team their access should be removed fast, because we don't want ex-people making changes. If a rep needs temporary escalation there's usually a manual process now, but it should be smoother.
+
+Interviewer: Can you tell me which roles we should include? Who can do what?
+
+Stakeholder: Umm, well, we have regular reps, senior reps, and supervisors — and there are some external merchant reps who have limited access. Regular reps should be able to open standard disputes and add notes, seniors can escalate and do certain chargebacks, supervisors can approve or override. But I don't have an organizational chart memorized, so you should confirm with HR and my manager.
+
+Interviewer: Got it. Will role changes need to be logged?
+
+Stakeholder: Absolutely. If someone gets temporary rights or someone leaves, that should show up somewhere. Auditors have asked us for evidence before. It should be clear who did what and when.
+
+Interviewer: On that—what do you expect in the case history or audit trail? What details are essential?
+
+Stakeholder: We need to see who touched the case and when. Like if someone changed a status, added a note, sent correspondence, or adjusted an account — that should be visible. Ideally it shows the old value and the new value so you can tell what changed. Sometimes I worry about IPs and all that — I don't need to know all the techy things, but if auditors ask I need to be able to pull the full history and export it. And if someone corrects a mistake, the previous entry should still be visible — don't let it disappear.
+
+Interviewer: Who should be able to view the full audit trail? All reps or only managers/audit?
+
+Stakeholder: Hmm, I think managers and audit folks should definitely see everything. Regular reps probably only need to see the history for cases they handle, but they shouldn't have the power to edit the audit entries. Keeping it visible but controlled is important.
+
+Interviewer: If a user makes a correction, do you want the app to show both versions automatically?
+
+Stakeholder: Yes, show both. If someone overwrites something the old entry should still be there with a note about who changed it and why. We had a situation once where a note was removed and it caused a big issue — we don't want that again.
+
+Interviewer: How should the system notify you of errors, failed lookups, or system issues? What level of messaging?
+
+Stakeholder: Don't show cryptic errors. Say something like "Transaction lookup failed — try again or flag for Ops" and give a way to save a draft. In-app banners are good, and an email for big outages. If it's a small backend hiccup, a non-blocking banner and the ability to continue is fine. If it's a major outage, alert Ops and let supervisors know by email or SMS so we can plan.
+
+Interviewer: Should the app allow saving drafts when key data isn't available, with a flag?
+
+Stakeholder: Yes, absolutely. Save a draft, mark it incomplete, and let us come back to it. That way we don't lose the call.
+
+Interviewer: A few quick housekeeping items — can you share sample problem cases or a screen recording of where the app trips you up?
+
+Stakeholder: Yeah, I can send a few anonymized cases and maybe a short screen clip of the laggy parts. I might need to scrub the card numbers first, though. Also, I mentioned OPS and UX — you should talk to Jenna in UX for the style guide and to Mike in Ops for the concurrency numbers and maintenance schedule.
+
+Interviewer: Okay, can you send me Jenna and Mike's contact info and those sample cases? And will you review what I capture and confirm the statuses and colors we talked about?
+
+Stakeholder: I will. I'll email you Jenna and Mike, and I can review your notes. Also, one small thing — the coffee machine on our floor breaks down a lot and I think someone should fix it. Sorry, total tangent, but I brought a thermos today because of it.
+
+Interviewer: (laughs) Noted. Last question — are there any compliance or retention rules you know of for how long case histories should be kept?
+
+Stakeholder: Compliance usually makes us keep things for a few years, but I'm not the compliance expert. I'll introduce you to the compliance contact so they can state the retention period. For me, just assume long-term retention and that it must be exportable for audits.
+
+Interviewer: Thank you. I'll follow up with Ops, UX, and Compliance for the exact numbers and windows, and I'll send you my notes to confirm. Anything else you want me to capture now?
+
+Stakeholder: No, I think you covered the important stuff. Just remember — make it look like our other apps, make the list scannable with colors and a legend, keep it fast, pull official data from the statement/cardmember/merchant systems, allow drafts when lookups fail, and keep a full history. And fix the coffee machine? Kidding. Mostly. Thanks.
+
+Interviewer: Great, thanks for your time — I'll send the draft notes and the list of follow-ups soon.
+
+---
+Selected Requirements:
+1. [NICE.csv line 149] [quality, legal, look_and_feel] 'The Disputes application shall comply with the corporate standards for user interface creation for internally and externally used applications.'
+2. [NICE.csv line 151] [quality, look_and_feel] 'The list of dispute cases that are displayed after a search is performed must be color coded for easy identification of dispute cases based upon the dispute case status.'
+3. [NICE.csv line 155] [quality, performance] 'The maximum wait time for a user navigating from one screen to another within the Disputes application shall be no more than 5 seconds.'
+4. [NICE.csv line 156] [quality, performance, scalability] 'The Disputes application shall support 350 concurrent users without any degradation of performance in the application.'
+5. [NICE.csv line 157] [quality, availability, operability] 'The Disputes application shall be available 24x7x365 with the exception of the following scheduled maintenance windows. Monday â€“ Saturday 3:00am to 4:00am EST Sunday 1:00amd to 5:00am EST'
+6. [NICE.csv line 158] [quality, operability] 'The Disputes application shall interface with the Statement Database. The Statement Database provides the transaction details to the Disputes System. All transaction details must be obtained from the Statement Database'
+7. [NICE.csv line 159] [quality, operability] 'The Disputes application shall interface with the Cardmember Information Database. The Cardmember Information Database provides detailed information with regard to a cardmember. All cardmember detail information must be obtained from the Cardmember Information Database.'
+8. [NICE.csv line 160] [quality, operability] 'The Disputes applications shall interface with the Merchant Information Database. The Merchant Information Database provides detailed information with regard to the merchant. All merchant detail information shall be obtained from the Merchant Information Database.'
+9. [NICE.csv line 163] [quality, security] 'The Disputes application shall ensure that only users with the appropriate access level are allowed to initiate dispute requests.'
+10. [NICE.csv line 177] [quality, functional, legal] 'The Disputes application must maintain a detailed history of every action that a user takes on a dispute case. This ensures a complete audit trail if questions arise later on with regard to a particular dispute case.'

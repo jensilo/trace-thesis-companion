@@ -1,0 +1,117 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_4_re_novice_stakeholder_technical_senior_20260227_110120.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_174711",
+  "requirements": [
+    {
+      "requirement": "The application should respond to routine navigations and small queries within five seconds.",
+      "source_citation": "For routine navigations and small queries, let's design for roughly five seconds as the upper bound. Anything longer and users report it as sluggish.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the performance requirement for routine navigations and small queries, providing a clear and measurable threshold.",
+      "follow_up_question": "Are there specific types of queries or navigations that should be prioritized for performance optimization?"
+    },
+    {
+      "requirement": "The application should support 350 concurrent users without performance degradation.",
+      "source_citation": "Design and load tests should target support for 350 concurrent users without application-level performance degradation.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "The stakeholder provides a specific number of concurrent users the application should support, which is a clear and measurable scalability requirement.",
+      "follow_up_question": "Are there any specific scenarios or workflows that should be prioritized during load testing?"
+    },
+    {
+      "requirement": "The application should be essentially always available, with scheduled maintenance windows.",
+      "source_citation": "It needs to be essentially always available because cardmembers and merchants can open or escalate matters at any time, and there are external systems that expect availability.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the availability requirement, including the need for scheduled maintenance windows.",
+      "follow_up_question": "What are the specific availability targets (e.g., 99.9%, 99.99%) for the application?"
+    },
+    {
+      "requirement": "The application should gate actions based on the user's role and entitlements, integrated with the identity and access management system.",
+      "source_citation": "The application must gate those actions based on the user's role and entitlements, integrated with our identity and access management.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the security requirement for access control based on roles and entitlements.",
+      "follow_up_question": "Are there any specific roles or entitlements that should be prioritized for implementation?"
+    },
+    {
+      "requirement": "The application should follow corporate UI standards for both internal and external-facing components.",
+      "source_citation": "Yes, we have to follow corporate UI standards, both for internal tools and anything external-facing so users have a consistent experience.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the usability requirement for following corporate UI standards.",
+      "follow_up_question": "Are there any specific UI standards or guidelines that should be prioritized for implementation?"
+    },
+    {
+      "requirement": "Every action that affects case state or triggers an external request must be recorded in an audit trail.",
+      "source_citation": "Every action that affects case state or triggers an external request must be recorded with who performed it, when, and what the payload was, plus any responses.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "compliance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the compliance requirement for recording actions in an audit trail.",
+      "follow_up_question": "Are there any specific types of actions or data that should be prioritized for audit trail recording?"
+    },
+    {
+      "requirement": "The application should degrade gracefully when backend systems are unavailable, providing clear diagnostics and retry mechanisms.",
+      "source_citation": "The app should degrade gracefully. For example, if the statement DB is unavailable, we should surface clearly what actions are blocked, queue or retry requests where appropriate, and provide technicians with clear diagnostics.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the fault tolerance requirement for graceful degradation and clear diagnostics.",
+      "follow_up_question": "Are there any specific backend systems or scenarios that should be prioritized for fault tolerance implementation?"
+    },
+    {
+      "requirement": "The application should ensure data segregation so internal-only fields aren't exposed to merchants or cardmembers.",
+      "source_citation": "We need data segregation so internal-only fields aren't exposed to merchants or cardmembers.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the security requirement for data segregation.",
+      "follow_up_question": "Are there any specific types of data or fields that should be prioritized for data segregation?"
+    },
+    {
+      "requirement": "The application should use authoritative data from backend systems for core transaction attributes like amount and timestamps.",
+      "source_citation": "For core transaction attributes like amount and timestamps, yes, always authoritative from the statement DB.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "data_integrity",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the data integrity requirement for using authoritative data from backend systems.",
+      "follow_up_question": "Are there any specific core transaction attributes that should be prioritized for authoritative data usage?"
+    },
+    {
+      "requirement": "The application should facilitate compliance reviews without exposing unnecessary PII to reviewers.",
+      "source_citation": "The design should facilitate compliance reviews without exposing unnecessary PII to reviewers.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "compliance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the compliance requirement for facilitating compliance reviews without exposing unnecessary PII.",
+      "follow_up_question": "Are there any specific types of PII or compliance reviews that should be prioritized for implementation?"
+    }
+  ]
+}

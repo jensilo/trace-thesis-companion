@@ -1,0 +1,164 @@
+Interviewer: Hi — thanks for joining. Can you quickly say which parts of IzognMovies you've worked on and what the general setup looks like?
+
+Stakeholder: Yeah, sure. I’ve mostly been on login, the catalog pages and the player integration, and I touched some of the admin screens for uploads. We host on a cloud provider and we use an off-the-shelf HLS player library right now. Some pieces are still prototypes; I mean, the catalog works but once it gets big some pages feel sluggish. Oh, and we started using a CDN for the video files but not everywhere yet.
+
+Interviewer: Okay. What would you say are the biggest pain points you’ve seen for users or admins so far?
+
+Stakeholder: Hmm, well users complain when things feel slow — login and catalog browsing come up a lot. Novice users get confused by too many small links and hidden buttons. On the admin side, generating and sharing pre-paid cards has been a bit clunky, and we don’t have good alerts for suspicious activity. Also payments are always a headache — we haven’t settled how to handle card storage safely, and that worries me.
+
+Interviewer: Who are the main types of users we should focus on?
+
+Stakeholder: Primarily customers looking for African films, which includes people who are comfortable online and people who are, uh, not very comfortable. Then admins and billing staff who manage catalogs and sales. Oh, and occasional content partners who upload their movies.
+
+Interviewer: Right. About login and general responsiveness — you mentioned slow login. How do you usually describe “slow” when you talk to the team?
+
+Stakeholder: I usually say it just feels sluggish; users get annoyed if they wait more than a few seconds. From our side, the auth call plus database lookup and session set should be fast, but network and third-party services add time. We need a clear expectation so the frontend and backend aim for the same thing.
+
+Interviewer: When you say “a few seconds,” how long is too long for you? Like, are we talking ten seconds, five, two?
+
+Stakeholder: Honestly, I think five seconds is a reasonable cap for small interactions. I mean, less is better, but five feels like the cutoff where people start getting impatient.
+
+Interviewer: Do you mean five seconds from the moment the user clicks Sign in to when the page finishes loading, or to when the server responds with authentication success?
+
+Stakeholder: Uh, good question. I’m thinking from the user perspective — from when they hit Sign in to when they see the next page or their dashboard. Perceived time matters more than raw API time.
+
+Interviewer: Are we using any third-party auth providers that could add delays, like social logins or OAuth?
+
+Stakeholder: We support email/password right now; social logins are on the backlog. If we add them, they’ll add some variability. Also two-factor would slow things down, obviously.
+
+Interviewer: Okay. After login, how should users find and start watching a movie? You mentioned novice users getting lost.
+
+Stakeholder: We want a super simple path. Ideally, when someone logs in they see a clear list or a featured tile and a big Play or Buy button. Novice folks get scared by too many choices, so minimal steps, clear CTAs and plain language. Tooltips and one-line help could help people who are new to streaming.
+
+Interviewer: How many clicks should it take from after login to start watching a movie?
+
+Stakeholder: I’d say it should be almost immediate — like maybe two clicks to get to the movie playing. Simpler is better; landing page, pick a movie, press play — quick.
+
+Interviewer: And if someone needs to purchase first, how fast should that whole process be — from login to watching a paid title?
+
+Stakeholder: For someone who’s not tech-savvy, it should be fast. I think they should be able to find, buy, and start watching within a few minutes. If it takes longer than that people give up.
+
+Interviewer: A few minutes — could you be a bit more specific? Like, are we aiming for one, two, three minutes?
+
+Stakeholder: Hmm, three minutes seems reasonable for the entire purchase-and-play flow, assuming they have their card or a prepaid pin ready. But, yeah, three minutes is a good target in my mind.
+
+Interviewer: Do we support guest checkout or saved payment methods to speed that up?
+
+Stakeholder: We have saved payment profiles planned; guest checkout is trickier because of streaming access and receipts. Pre-paid cards should let people bypass entering card details, which helps novices. Oh, and we should definitely prefill addresses if they’ve filled a profile before — small things save time.
+
+Interviewer: Speaking of pre-paid cards, how do admins create them today and what’s missing?
+
+Stakeholder: Currently it’s semi-manual; someone triggers generation and then we export, but it’s slow and sometimes duplicates slip through. We need a bulk generator that ensures uniqueness and makes a neat export file admins can hand out. Also some audit trail so we know who generated which batch.
+
+Interviewer: When you say “slow” for generation, what would you like to see — like instantly, within a minute, a couple of minutes?
+
+Stakeholder: For typical batches, it should be quick. I think generating a normal batch and getting a downloadable file should happen in under a couple minutes. Nobody wants to wait longer than that when they’re preparing physical cards.
+
+Interviewer: What format do you want for that download? CSV, Excel…?
+
+Stakeholder: Excel would be the friendliest, with clear columns for the pin, value and expiry. People handing out cards expect something they can open in Excel without fuss.
+
+Interviewer: Okay. Back to streaming — what about buffering and the player? Users complain about pauses?
+
+Stakeholder: Yes, buffering is a big pain. We need adaptive bitrate streaming and proper CDN use. Otherwise startup and rebuffering kill the experience, especially on shaky mobile connections.
+
+Interviewer: How long is acceptable for buffering before users get annoyed? Are we talking a few seconds or longer?
+
+Stakeholder: For initial startup and each stall, I'd say around ten seconds is the maximum that’s still tolerable — beyond that people usually abandon. Of course that depends on their own network.
+
+Interviewer: Is that ten seconds including the user’s network latency or aside from it?
+
+Stakeholder: I mean, roughly speaking it's the buffering time plus whatever their network adds. We can’t control their connection, but we can make sure our side adds as little delay as possible.
+
+Interviewer: Any DRM or encryption on the streams that might affect startup time?
+
+Stakeholder: We might use DRM for some content, which adds a negotiation step. That negotiation can add time, so it’s something to watch. But I still think the experience should feel snappy.
+
+Interviewer: On payments and card handling — earlier you mentioned worries about storing card info. What’s your stance as a developer?
+
+Stakeholder: I’m cautious. Storing whole card numbers brings heavy compliance, so our initial thought was to tokenize via a PCI-compliant processor so we avoid storing PANs. If we do store anything, it must be encrypted in the database, with strict role-based access so not every admin can see it. And we need logs and audits when someone accesses payment data.
+
+Interviewer: Are we currently storing full card numbers on our servers, or tokens from a processor?
+
+Stakeholder: Right now we’ve kept the tokens approach in mind, but there is some legacy data being carried around in dev that looks sketchy. The plan is to move to tokens and encrypt anything that remains on our servers so only authorized admin roles can view anything sensitive.
+
+Interviewer: When you say “authorized admin roles,” who do you mean exactly? Finance team, super-admins…?
+
+Stakeholder: I mean the people in billing and the site admins who handle refunds. Not content managers or general support. There needs to be an approval step and an admin audit log; only a small group should have the keys to view payment details.
+
+Interviewer: Do you have a preference for key management — KMS, HSM, or…?
+
+Stakeholder: I think a managed KMS is practical for us, at least to start. If we grow into heavier compliance we might consider dedicated HSMs. But whatever we pick should support rotation and restrict who can decrypt.
+
+Interviewer: How should payment failures and chargebacks be shown to users? And to admins?
+
+Stakeholder: Users need a clear, plain-language message with next steps — don’t dump cryptic codes on them. For admins, billing dashboards should show failure reasons and history so someone can follow up. Also, chargebacks need their own workflow for investigation.
+
+Interviewer: On abuse protection — what kinds of abuse are you most worried about?
+
+Stakeholder: Brute-force login attempts, mass account creation, scraping of the catalog, and payment fraud. We need rate-limits, IP throttling, and probably CAPTCHAs in some flows. And we need monitoring that flags these patterns.
+
+Interviewer: Should admins be notified for every single occurrence of these things, or only when something crosses a threshold?
+
+Stakeholder: Well, I’d like to be notified on each occurrence at least in the logs — like a record for every event. For active alerts, maybe we need severity levels to avoid noise, but I do think the system should be able to notify admins about each suspicious event if we configure it that way. Uh, maybe that's wishful thinking, but visibility is important.
+
+Interviewer: Which notification channels should we use? Email, SMS, Slack?
+
+Stakeholder: Slack or email for day-to-day alerts, SMS for critical stuff. Integration with whatever incident system ops uses would be good too.
+
+Interviewer: On privacy: where should the privacy policy live and when should users see it?
+
+Stakeholder: It should be persistent — like a footer link on every page — and we should show a consent screen before collecting payments or personal info. Also a cookie banner for analytics. We should record when someone consents and which version of the policy they saw.
+
+Interviewer: Do we need localized versions or just one English policy?
+
+Stakeholder: Localized versions would be great, at least for our key markets. Policies should be versioned and dated, yeah.
+
+Interviewer: About availability — what uptime target should we be planning for?
+
+Stakeholder: I’ve heard the business say a high availability target; specifically they mentioned a figure that I remember being under one percent downtime, but I think the number discussed was 99.5 percent. We need to clarify the measurement window, though, because that makes a difference.
+
+Interviewer: Monthly or yearly for that uptime number? Do you know?
+
+Stakeholder: We haven’t nailed that down; ops will likely want a monthly window for alerts and reconciliation. But the ops folks need to say for sure.
+
+Interviewer: For admins — besides PIN generation and catalog — what analytics and moderation tools are needed?
+
+Stakeholder: Admins need sales and usage dashboards, exportable reports, and the ability to moderate reviews. Reviews should be able to be auto-flagged for profanity or spam, and moderators should be able to remove or hide them. For analytics, things like top titles and redemption rates are useful. Also bulk import for catalog metadata would save time.
+
+Interviewer: Do you have any specifics on the moderation workflow? Like do reviews get pre-approved or published and then flagged?
+
+Stakeholder: I prefer published-then-flagged unless we start seeing a ton of spam; then we might move to pre-approval for new accounts. But moderators need simple tools: review list, quick hide, and a note field. And the system should keep an audit of who moderated what.
+
+Interviewer: For exports and reports, what formats should we support?
+
+Stakeholder: Excel and CSV would be fine. Folks like native Excel for quick sharing.
+
+Interviewer: Wrapping up — if you had to prioritize the next things to stabilize, what would be top three?
+
+Stakeholder: First, make login and streaming feel fast — that’s crucial for retention. Second, lock down payments properly so we’re not exposed. Third, make the pre-paid generation and admin exports reliable so business can operate. After that, reviews moderation and analytics.
+
+Interviewer: Can you share sample logs, response-time traces or an example Excel layout for pins to help me write acceptance criteria?
+
+Stakeholder: Yeah, I can pull some example response-time traces and a mockup of the Excel layout. I’ll also flag the person in ops who has the CDN and uptime numbers. Let me just, uh, find those and send them over.
+
+Interviewer: Great. One last thing — who else should I talk to for clarifying SLAs and compliance?
+
+Stakeholder: Talk to ops for availability and monitoring, billing or finance for chargebacks and admin roles, and product for priorities. I can introduce you to them. Also QA will have good test cases for performance.
+
+Interviewer: Thanks — that’s all for now. I’ll draft the requirements and follow up if I need anything else.
+
+Stakeholder: Cool. And, um, one small thing — when you write the performance bits, remember to say whether we measure from the click or from the API call; that matters when QA tests. I’ll try to get those traces to you today.
+
+---
+Selected Requirements:
+1. [NICE.csv line 397] [quality, fault_tolerance, performance] 'Any interface between a user and the automated system shall have a maximum response time of 5 seconds unless noted by an exception below.'
+2. [NICE.csv line 378] [quality, functional, performance, usability] 'System shall let existing customers log into the website with their email address and password in under 5 seconds.'
+3. [NICE.csv line 390] [quality, functional, look_and_feel, usability] 'Users should be able to access their streaming movies in under 2 clicks after logging into the website.'
+4. [NICE.csv line 394] [quality, functional, performance, usability] 'The product shall be easy for customers with novice skills on the Internet to purchase and watch streaming movies. Customers should be able to purchase and watch a pre-determined movie in under 3 minutes.'
+5. [NICE.csv line 399] [quality, performance] When streaming a movie the buffering time should take no longer than 10 seconds (plus any latency on the user's connection.)'
+6. [NICE.csv line 401] [quality, security] 'All credit card information will be secured on the server and only accessible by authorized Izogn administrators. Information will be encrypted in the database.'
+7. [NICE.csv line 432] [quality, maintainability, security] 'The website shall protect itself from intentional abuse and notify the administrator at all occurrences.'
+8. [NICE.csv line 434] [quality, functional, security, usability] 'The website shall make its user aware of its information practices before collection data from them via a Privacy Policy accessible on all pages of the website.'
+9. [NICE.csv line 403] [quality, availability] 'The website shall achieve 99.5% up time.'
+10. [NICE.csv line 384] [quality, functional, performance, usability] 'System shall let administrators generate unique pre-paid pins in under 2 minutes and generate an Excel file with the generated PINs.'

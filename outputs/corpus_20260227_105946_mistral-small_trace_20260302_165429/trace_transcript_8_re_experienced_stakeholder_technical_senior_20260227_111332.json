@@ -1,0 +1,161 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_8_re_experienced_stakeholder_technical_senior_20260227_111332.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_165731",
+  "requirements": [
+    {
+      "requirement": "Routine interactions (browsing, searching, loading movie details) should feel immediate (≤5 seconds).",
+      "source_citation": "By 'fast' I mean the routine stuff — browsing, searching, loading movie details — it should feel immediate. If a user clicks and waits, they lose context.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the requirement for routine interactions to feel immediate, with a specific time frame of ≤5 seconds. This is a clear and direct statement of a performance requirement.",
+      "follow_up_question": "What specific metrics or tools will be used to measure and ensure that routine interactions meet the ≤5 seconds performance target?"
+    },
+    {
+      "requirement": "Checkout flow should be under 15 seconds.",
+      "source_citation": "For checkout, I'd tolerate longer because of external payment gateways — perhaps something in the low double-digit seconds is acceptable, but under that is preferable.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies that the checkout flow should be under 15 seconds, which is a clear performance requirement. The exact number is confirmed later in the interview.",
+      "follow_up_question": "What specific metrics or tools will be used to measure and ensure that the checkout flow meets the <15 seconds performance target?"
+    },
+    {
+      "requirement": "Streaming startup/buffering should be single-digit seconds initially and ≤10 seconds tolerable.",
+      "source_citation": "Initial buffering should be short, you know, single-digit seconds ideally, and if adaptive bitrate is tuned correctly, it should recover quickly. So, tolerable buffering is maybe around ten seconds including CDN and client setup, beyond that it's a problem.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the performance requirements for streaming startup and buffering, with clear time frames for both initial buffering and tolerable buffering.",
+      "follow_up_question": "What specific metrics or tools will be used to measure and ensure that streaming startup and buffering meet the specified performance targets?"
+    },
+    {
+      "requirement": "The system should have 99.5% availability, with redundancy and failover for high-traffic events.",
+      "source_citation": "We need to be reliable — if the site is flaky during evenings or weekends when people watch, that's a deal-breaker. It should be up almost all the time; I don't want long outages. If you need a target number for SLAs, I'd push for a high nineties percentage uptime. We should plan for redundancy and failover.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the requirement for 99.5% availability, which is a clear and direct statement of an availability requirement. The need for redundancy and failover is also mentioned.",
+      "follow_up_question": "What specific metrics or tools will be used to measure and ensure that the system meets the 99.5% availability target?"
+    },
+    {
+      "requirement": "Payment data should be encrypted at rest, with least-privilege access, tokenization preferred, and strict admin controls.",
+      "source_citation": "Card data has to be locked down. I think it should be stored only if we have to, and if stored, it should be encrypted at rest and only accessible to a very small set of administrators.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the requirement for payment data to be encrypted at rest, with least-privilege access, and tokenization preferred. This is a clear and direct statement of a security requirement.",
+      "follow_up_question": "What specific encryption standards and access control mechanisms will be implemented to ensure payment data is secure?"
+    },
+    {
+      "requirement": "Role-based access control (RBAC) with fine-grained roles, audit trails, and MFA for admin access.",
+      "source_citation": "I mean senior ops and a lead from finance — people with explicit roles. Ideally, raw card numbers should not be casually readable; maybe only tokenized or decrypted under strict process. Access should be role-based and logged every time someone retrieves sensitive data.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the requirement for role-based access control with fine-grained roles, audit trails, and MFA for admin access. This is a clear and direct statement of a security requirement.",
+      "follow_up_question": "What specific RBAC model and MFA mechanisms will be implemented to ensure secure access control?"
+    },
+    {
+      "requirement": "Privacy notices should be clear, visible, and pre-collection consent with a footer link and modal before data entry.",
+      "source_citation": "Put it in the footer on every page and show a short, plain-language banner or modal before we collect anything sensitive, with a link to the full policy.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the requirement for privacy notices to be clear, visible, and pre-collection consent with a footer link and modal before data entry. This is a clear and direct statement of a usability requirement.",
+      "follow_up_question": "What specific design and implementation details will be used to ensure that privacy notices are clear, visible, and pre-collection consent?"
+    },
+    {
+      "requirement": "The system should have rate-limiting, anomaly detection, and alerts for credential stuffing, DDoS, and card testing.",
+      "source_citation": "The system should be able to detect anomalous patterns, rate-limit or block suspicious traffic automatically, and send alerts to the ops/admin team when something abnormal happens.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the requirement for rate-limiting, anomaly detection, and alerts for credential stuffing, DDoS, and card testing. This is a clear and direct statement of a security requirement.",
+      "follow_up_question": "What specific mechanisms and tools will be used to implement rate-limiting, anomaly detection, and alerts for security threats?"
+    },
+    {
+      "requirement": "UI/UX should be forgiving for novice users, with big buttons, simple language, and an African-inspired aesthetic.",
+      "source_citation": "Make the UI forgiving for folks who aren't power users. Big, clear buttons, simple language, and a sleek African-inspired aesthetic so it's both familiar and aspirational.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the requirement for the UI/UX to be forgiving for novice users, with big buttons, simple language, and an African-inspired aesthetic. This is a clear and direct statement of a usability requirement.",
+      "follow_up_question": "What specific design guidelines and user testing methods will be used to ensure the UI/UX meets the specified usability requirements?"
+    },
+    {
+      "requirement": "Admin workflows should include role-based UIs, catalog management, moderation tools, and audit trails.",
+      "source_citation": "We need role-based UIs that are simple. Catalog editing should include asset ingestion workflows, transcoding status, and regional availability controls. Also, a way to push promotions or bundle content, and to revoke access if there's abuse.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the requirement for admin workflows to include role-based UIs, catalog management, moderation tools, and audit trails. This is a clear and direct statement of a maintainability requirement.",
+      "follow_up_question": "What specific tools and processes will be implemented to ensure admin workflows meet the specified maintainability requirements?"
+    },
+    {
+      "requirement": "Centralized logs, dashboards, and alerts for health metrics, with on-call notifications for threshold crossings.",
+      "source_citation": "Application logs, access logs, and security events should be centralized and retained long enough for forensic work. Daily usage stats should feed into analytics, and we should have dashboards and alerts for key health metrics. If a threshold is crossed, on-call gets paged.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the requirement for centralized logs, dashboards, and alerts for health metrics, with on-call notifications for threshold crossings. This is a clear and direct statement of a maintainability requirement.",
+      "follow_up_question": "What specific logging, monitoring, and alerting tools will be used to ensure the system meets the specified maintainability requirements?"
+    },
+    {
+      "requirement": "Microservices architecture with CDN for static/streaming, container orchestration, and multi-zone failover.",
+      "source_citation": "I'd go with a microservices approach for the user-facing APIs, with a CDN fronting static and streaming assets, and a separate payments service that talks to PCI-compliant payment processors. Use container orchestration for scale and health checks, and replicate key services across zones for failover.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the requirement for a microservices architecture with CDN for static/streaming, container orchestration, and multi-zone failover. This is a clear and direct statement of a scalability requirement.",
+      "follow_up_question": "What specific technologies and deployment strategies will be used to ensure the system meets the specified scalability requirements?"
+    },
+    {
+      "requirement": "PCI compliance for payments and financial record retention.",
+      "source_citation": "The payments service should talk to a PCI-compliant processor to minimize our surface area, but if business insists on storing cards for recurring billing or special cases, then we must encrypt and strictly control access.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the requirement for PCI compliance for payments and financial record retention. This is a clear and direct statement of a legal requirement.",
+      "follow_up_question": "What specific compliance standards and record retention policies will be implemented to ensure the system meets the specified legal requirements?"
+    },
+    {
+      "requirement": "Synthetic transactions, penetration tests, quarterly access log reviews, and continuous monitoring of performance and security metrics.",
+      "source_citation": "Run synthetic transactions and page-load tests against the production stack so we have continuous proof that response targets are met. Monitor payment latencies and streaming startup times, and validate that logs and alerts fire when thresholds are crossed. Regular penetration tests for security, and quarterly reviews of access logs to confirm admin access patterns.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "other",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the requirement for synthetic transactions, penetration tests, quarterly access log reviews, and continuous monitoring of performance and security metrics. This is a clear and direct statement of a monitoring and validation requirement.",
+      "follow_up_question": "What specific tools and processes will be used to implement synthetic transactions, penetration tests, and continuous monitoring?"
+    }
+  ]
+}

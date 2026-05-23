@@ -1,0 +1,227 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_8_re_experienced_stakeholder_nontechnical_manager_20260227_111502.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_165716",
+  "requirements": [
+    {
+      "requirement": "The system shall load movie details and navigate between pages within 5 seconds to prevent user frustration and abandonment.",
+      "source_citation": "Five seconds for routine actions (e.g., loading movie details).",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions a 5-second threshold for routine actions, which is a clear performance requirement.",
+      "follow_up_question": "Are there any specific scenarios or user journeys where this 5-second threshold is more critical than others?"
+    },
+    {
+      "requirement": "The system shall initiate video streaming within 10 seconds to ensure a smooth user experience and prevent abandonment.",
+      "source_citation": "Ten seconds max to get started (streaming buffering).",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions a 10-second threshold for streaming initiation, which is a clear performance requirement.",
+      "follow_up_question": "Are there any specific scenarios or user journeys where this 10-second threshold is more critical than others?"
+    },
+    {
+      "requirement": "The system shall support up to 1,000 simultaneous users during peak times to ensure scalability and prevent performance degradation.",
+      "source_citation": "Around one thousand simultaneous users at peak (scalability concern).",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions a peak load of 1,000 simultaneous users, which is a clear scalability requirement. However, it is not clear if this is a hard limit or a target.",
+      "follow_up_question": "Is the 1,000 simultaneous users a hard limit or a target? Are there any specific scenarios or user journeys where this limit is more critical than others?"
+    },
+    {
+      "requirement": "The system shall provide monitoring and observability features to detect and alert on performance degradation in pages or streams.",
+      "source_citation": "We need to know when pages or streams slow down (performance monitoring).",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for monitoring and observability, which is a clear performance requirement. However, it is not clear what specific metrics or thresholds will be used to trigger alerts.",
+      "follow_up_question": "What specific metrics or thresholds will be used to trigger alerts for performance degradation?"
+    },
+    {
+      "requirement": "The system shall protect payment data using encryption and strict access controls to prevent unauthorized access and ensure data security.",
+      "source_citation": "We need to make it crystal clear we treat card data seriously (encryption, access controls).",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for encryption and strict access controls for payment data, which is a clear security requirement.",
+      "follow_up_question": "What specific encryption standards and access control mechanisms will be used to protect payment data?"
+    },
+    {
+      "requirement": "The system shall restrict access to payment records to only very specific, authorized staff to prevent unauthorized access and ensure data security.",
+      "source_citation": "Only very specific, authorised staff should be able to access payment records.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need to restrict access to payment records to specific, authorized staff, which is a clear security requirement. However, it is not clear what specific roles or functions these authorized staff will have.",
+      "follow_up_question": "What specific roles or functions will the authorized staff have, and what will their access levels be?"
+    },
+    {
+      "requirement": "The system shall implement two-person approvals for sensitive actions, such as refunds and data access, to ensure security and prevent unauthorized actions.",
+      "source_citation": "Two-person approvals for sensitive actions (refunds, data access).",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for two-person approvals for sensitive actions, which is a clear security requirement. However, it is not clear what specific actions will require two-person approvals.",
+      "follow_up_question": "What specific actions will require two-person approvals, and what will the approval process entail?"
+    },
+    {
+      "requirement": "The system shall display a visible privacy notice on every page to ensure user transparency and compliance with privacy regulations.",
+      "source_citation": "Visible privacy notice on every page (user transparency).",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for a visible privacy notice on every page, which is a clear legal requirement. However, it is not clear what specific information the privacy notice will contain or how it will be displayed.",
+      "follow_up_question": "What specific information will the privacy notice contain, and how will it be displayed on each page?"
+    },
+    {
+      "requirement": "The system shall comply with data residency and local privacy laws to ensure regulatory compliance and user trust.",
+      "source_citation": "Data residency and local privacy laws (regulatory concerns).",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need to comply with data residency and local privacy laws, which is a clear legal requirement. However, it is not clear what specific laws or regulations will apply or how compliance will be ensured.",
+      "follow_up_question": "What specific laws or regulations will apply, and how will compliance be ensured?"
+    },
+    {
+      "requirement": "The system shall provide an easy-to-use interface for non-tech-savvy users to ensure accessibility and prevent frustration.",
+      "source_citation": "People can find and watch African movies without getting frustrated.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for an easy-to-use interface for non-tech-savvy users, which is a clear usability requirement. However, it is not clear what specific features or design elements will be included to ensure ease of use.",
+      "follow_up_question": "What specific features or design elements will be included to ensure ease of use for non-tech-savvy users?"
+    },
+    {
+      "requirement": "The system shall provide a clear and straightforward checkout process to prevent user frustration and abandonment.",
+      "source_citation": "Confusing checkout (abandonment risk).",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for a clear and straightforward checkout process, which is a clear usability requirement. However, it is not clear what specific features or design elements will be included to ensure clarity and straightforwardness.",
+      "follow_up_question": "What specific features or design elements will be included to ensure clarity and straightforwardness in the checkout process?"
+    },
+    {
+      "requirement": "The system shall provide a fun and engaging onboarding experience to ensure user satisfaction and retention.",
+      "source_citation": "Keep the onboarding fun (playful design).",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for a fun and engaging onboarding experience, which is a clear usability requirement. However, it is not clear what specific features or design elements will be included to ensure fun and engagement.",
+      "follow_up_question": "What specific features or design elements will be included to ensure fun and engagement in the onboarding experience?"
+    },
+    {
+      "requirement": "The system shall maintain service continuity during outages by providing fallback paths, such as queuing purchases and redeeming pre-paid cards, to ensure user satisfaction and prevent revenue loss.",
+      "source_citation": "The service disappears during a big evening premiere (trust impact). Fallback paths (e.g., queuing purchases, pre-paid card redemption).",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for service continuity during outages and fallback paths, which is a clear fault tolerance requirement. However, it is not clear what specific fallback paths will be provided or how they will be implemented.",
+      "follow_up_question": "What specific fallback paths will be provided, and how will they be implemented to ensure service continuity during outages?"
+    },
+    {
+      "requirement": "The system shall achieve and maintain 99.5% availability to ensure service continuity and prevent revenue loss.",
+      "source_citation": "Ninety-nine point five percent availability (SLA target).",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions a 99.5% availability target, which is a clear availability requirement.",
+      "follow_up_question": "What specific measures will be taken to achieve and maintain 99.5% availability?"
+    },
+    {
+      "requirement": "The system shall provide automatic retry or fallback stream functionality to ensure streaming resilience and prevent playback interruptions.",
+      "source_citation": "Automatic retry or fallback stream (playback continuity).",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for automatic retry or fallback stream functionality, which is a clear fault tolerance requirement. However, it is not clear what specific mechanisms will be used to provide this functionality.",
+      "follow_up_question": "What specific mechanisms will be used to provide automatic retry or fallback stream functionality?"
+    },
+    {
+      "requirement": "The system shall provide daily rolls of usage metrics and downloadable reports and dashboards for administrators to ensure maintainability and operability.",
+      "source_citation": "Daily rolls of usage metrics (audit trails). Downloadable reports and dashboards (accessibility).",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for daily rolls of usage metrics and downloadable reports and dashboards, which is a clear maintainability requirement. However, it is not clear what specific metrics or data will be included in these reports and dashboards.",
+      "follow_up_question": "What specific metrics or data will be included in the daily rolls of usage metrics and downloadable reports and dashboards?"
+    },
+    {
+      "requirement": "The system shall implement strict access controls for payment data to ensure security and prevent unauthorized access.",
+      "source_citation": "Strict access controls for payment data (least privilege).",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for strict access controls for payment data, which is a clear security requirement. However, it is not clear what specific access control mechanisms will be used or how they will be implemented.",
+      "follow_up_question": "What specific access control mechanisms will be used, and how will they be implemented to ensure strict access controls for payment data?"
+    },
+    {
+      "requirement": "The system shall support up to 1,000 simultaneous users at peak to ensure scalability and prevent performance degradation.",
+      "source_citation": "One thousand simultaneous users at peak (initial target).",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need to support up to 1,000 simultaneous users at peak, which is a clear scalability requirement. However, it is not clear if this is a hard limit or a target.",
+      "follow_up_question": "Is the 1,000 simultaneous users a hard limit or a target? Are there any specific scenarios or user journeys where this limit is more critical than others?"
+    },
+    {
+      "requirement": "The system shall be designed to be lightweight to ensure performance and prevent buffering on low-bandwidth connections.",
+      "source_citation": "Pages should be lightweight (low-bandwidth support).",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for lightweight design, which is a clear performance requirement. However, it is not clear what specific design elements or optimizations will be included to ensure lightweight design.",
+      "follow_up_question": "What specific design elements or optimizations will be included to ensure lightweight design and prevent buffering on low-bandwidth connections?"
+    },
+    {
+      "requirement": "The system shall comply with data residency and local privacy laws to ensure regulatory compliance and user trust.",
+      "source_citation": "Data residency and local privacy laws (regional compliance).",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need to comply with data residency and local privacy laws, which is a clear legal requirement. However, it is not clear what specific laws or regulations will apply or how compliance will be ensured.",
+      "follow_up_question": "What specific laws or regulations will apply, and how will compliance be ensured?"
+    }
+  ]
+}

@@ -1,0 +1,194 @@
+{
+  "transcript_file": "outputs/corpus-20260226_162106/transcript_3_re_experienced_stakeholder_nontechnical_enduser_20260226_162420.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_182444",
+  "requirements": [
+    {
+      "requirement": "The system must be intuitive enough to allow a new scheduler to perform essential tasks after one day of training.",
+      "source_citation": "I should be able to train a brand-new scheduler in one workday and have them do the essentials alone by the end of that day.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for minimal training time, indicating a strong focus on usability and ease of learning.",
+      "follow_up_question": "What specific tasks should a new scheduler be able to perform after one day of training?"
+    },
+    {
+      "requirement": "The system must accommodate users with varying levels of technical comfort, including those who prefer paper-based processes and those using older devices.",
+      "source_citation": "Most are fine with email and basic web stuff, but we have one person who still prefers paper and needs a bit more hand-holding. Also, some of our adjuncts use older devices.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need to support users with different technical comfort levels, including those who prefer paper and those using older devices.",
+      "follow_up_question": "What specific accessibility features or accommodations are needed for users who prefer paper or use older devices?"
+    },
+    {
+      "requirement": "The system must prevent critical errors such as scheduling students without prerequisites or overfilling clinical sites.",
+      "source_citation": "Blocking would be good for the really bad stuff — prerequisites and sites over capacity — because humans miss warnings.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "error_prevention",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for the system to block critical errors to prevent scheduling mistakes.",
+      "follow_up_question": "What other critical errors should the system block besides prerequisites and overfilled sites?"
+    },
+    {
+      "requirement": "The system must provide clear and obvious warnings for less severe issues, such as instructor conflicts.",
+      "source_citation": "For other things, like an instructor conflict, maybe a big, obvious warning that you can't miss, with the conflicted items side-by-side.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "error_prevention",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for big and obvious warnings for less severe issues, indicating a focus on error prevention.",
+      "follow_up_question": "What specific types of warnings should be implemented, and how should they be displayed?"
+    },
+    {
+      "requirement": "The system must use standard nursing terminology and avoid confusing abbreviations.",
+      "source_citation": "If the system used our standard terms it would cut down on clarification emails. We also get tripped up by odd abbreviations — people assume meanings that vary.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of using standard terminology and avoiding confusing abbreviations to improve usability.",
+      "follow_up_question": "What specific terms and abbreviations should be standardized, and what authoritative sources should be referenced?"
+    },
+    {
+      "requirement": "The system must respond to small tasks, such as student lookups, in under 5 seconds.",
+      "source_citation": "For the small stuff like looking up a student or changing a contact, under five seconds feels right.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a target response time for small tasks, indicating a focus on performance.",
+      "follow_up_question": "What other small tasks should be prioritized for fast response times?"
+    },
+    {
+      "requirement": "The system must generate schedules in under 30 seconds or provide asynchronous notifications upon completion.",
+      "source_citation": "For generating a full schedule, maybe under thirty seconds — anything much longer and people will just go get coffee and forget to check it. But, uh, if a big generation is taking longer, as long as I get a notification when it's done, that's acceptable.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a target time for schedule generation and mentions the need for notifications if the process takes longer.",
+      "follow_up_question": "What specific notifications should be provided, and how should they be delivered?"
+    },
+    {
+      "requirement": "The system must handle approximately 10 simultaneous users during peak times.",
+      "source_citation": "It’s usually the schedulers and a few program staff — I'd say around ten people at the busiest time.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the expected number of concurrent users during peak times, indicating a focus on scalability.",
+      "follow_up_question": "What specific performance metrics should be monitored to ensure the system can handle peak loads?"
+    },
+    {
+      "requirement": "The system must have an uptime of 95% during business hours (9–5, weekdays).",
+      "source_citation": "Ninety-five percent during business hours sounds okay to me.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the expected uptime percentage during business hours, indicating a focus on availability.",
+      "follow_up_question": "What specific measures will be taken to ensure the system meets the 95% uptime requirement?"
+    },
+    {
+      "requirement": "The system must provide a read-only mode during outages to minimize disruption.",
+      "source_citation": "A read-only mode would be great — at least if instructors or sites can view schedules even during an outage, that would minimize chaos.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for a read-only mode during outages to minimize disruption, indicating a focus on fault tolerance.",
+      "follow_up_question": "What specific features should be available in read-only mode, and how should they be accessed?"
+    },
+    {
+      "requirement": "The system must implement role-based access control to restrict sensitive information.",
+      "source_citation": "Student health info, immunization records, private contact details — that stuff shouldn't be public to everyone.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need to restrict access to sensitive information, indicating a focus on security.",
+      "follow_up_question": "What specific roles should be defined, and what level of access should each role have?"
+    },
+    {
+      "requirement": "The system must comply with FERPA and HIPAA regulations where applicable.",
+      "source_citation": "Yes, FERPA for student education records and, depending on what health information is stored, HIPAA might be relevant.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need to comply with FERPA and HIPAA regulations, indicating a focus on legal compliance.",
+      "follow_up_question": "What specific measures will be taken to ensure compliance with FERPA and HIPAA?"
+    },
+    {
+      "requirement": "The system must log changes with details including who made the change, what was changed, when it was changed, and an optional note explaining why.",
+      "source_citation": "It should show who made the change, what the change was, when it happened, and an optional note explaining why.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for detailed audit trails, indicating a focus on security and accountability.",
+      "follow_up_question": "What specific audit trail features should be implemented, and how should they be accessed?"
+    },
+    {
+      "requirement": "The system must retain schedules and records for approximately 5 years.",
+      "source_citation": "We need to keep records for a few years because accreditation reviews often ask for past cohorts. I think five years should cover most of it.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need to retain records for a specific period, indicating a focus on data longevity and maintainability.",
+      "follow_up_question": "What specific data retention policies and procedures should be implemented?"
+    },
+    {
+      "requirement": "The system must integrate with the Student Information System (SIS), Learning Management System (LMS), and calendar tools (Outlook/Google).",
+      "source_citation": "It would be great if it could talk to our student information system so enrollments and student IDs sync, and to our LMS so course rosters are consistent. Calendar invites that push to Outlook or Google Calendar would save us from sending manual invites.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for integration with specific systems, indicating a focus on interoperability and maintainability.",
+      "follow_up_question": "What specific integration points and data flows should be implemented?"
+    },
+    {
+      "requirement": "The system must provide immediate notifications for critical changes and batched notifications for minor updates.",
+      "source_citation": "Immediate for changes that affect a student's clinical slot or a site's roster. If it's a minor change, batching daily might be okay.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for different types of notifications based on the severity of changes, indicating a focus on usability and communication.",
+      "follow_up_question": "What specific notification channels and templates should be implemented?"
+    },
+    {
+      "requirement": "The system must generate accreditation reports in PDF and CSV formats.",
+      "source_citation": "We need reports that show student progression, site utilization, and any scheduling conflicts or overrides. PDFs for official reports and CSV for data analysis would be helpful.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for specific report formats, indicating a focus on usability and reporting.",
+      "follow_up_question": "What specific report types and data elements should be included?"
+    }
+  ]
+}

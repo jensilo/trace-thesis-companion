@@ -1,0 +1,194 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_4_re_novice_stakeholder_nontechnical_enduser_20260227_110654.txt",
+  "model": "openai/gpt-5-mini",
+  "timestamp": "20260302_172247",
+  "requirements": [
+    {
+      "requirement": "Screens and UI shall be visually consistent with corporate pages (consistent layout, button placement, fonts, and colors) to reduce user errors and improve learnability.",
+      "source_citation": "The screens sometimes look different, and it confuses new hires.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly complains about inconsistent screens and gives examples (layout, buttons, fonts) and ties consistency to reduced mistakes and faster onboarding. Missing specifics: which corporate style guide, exact components to standardize, and acceptance criteria for conformance.",
+      "follow_up_question": "Do you have an existing corporate style guide or component library we must conform to, and can you provide examples of mandatory elements (e.g., header, button styles, font, spacing) and an acceptable conformance threshold?"
+    },
+    {
+      "requirement": "Search result lists shall use consistent visual cues (including color coding) that clearly distinguish statuses such as urgent/pending/closed so users can rapidly scan and identify priority items without opening each record.",
+      "source_citation": "Also the list is a mess if it isn't clear what's urgent versus what's already resolved.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Stakeholder requests clearer list behavior and explicitly mentions color helps to differentiate cases needing attention from closed ones. Missing specifics: exact status set, colors, accessibility (contrast), and how color semantics map to status.",
+      "follow_up_question": "Which exact statuses must be represented in the list, are there accessibility/contrast requirements to meet (e.g., WCAG), and do you have corporate color mappings for each status?"
+    },
+    {
+      "requirement": "Common UI actions (e.g., navigating between list and case details) shall respond within 2 seconds for typical operations and never exceed 5 seconds for interactive actions, to ensure the interface feels snappy.",
+      "source_citation": "I hate waiting more than a couple of seconds. If it's more than, say, five seconds I start doing something else and sometimes I forget to come back. So it should feel snappy — small actions shouldn't make me wait.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder gives specific perceived-performance thresholds (a couple seconds preferred, >5s unacceptable). Missing specifics: definition of 'typical operations', percentiles (e.g., 95th), test environments, and backend latency budgets.",
+      "follow_up_question": "Please list the common user actions to which this SLA should apply (e.g., open case, search, navigate back) and indicate whether the 2s/5s thresholds should be measured at the 95th or 99th percentile under normal load."
+    },
+    {
+      "requirement": "Integrations shall use authoritative backend systems as sources of truth for transaction, cardmember, and merchant data; the dispute UI must not permit manual edits that diverge from those sources without an auditable override.",
+      "source_citation": "Transaction details should come from the statement system — that's the source of truth... Same with cardmember details and merchant info; those should come from the cardmember and merchant systems, not from whatever someone remembers or types in.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "Stakeholder insists on authoritative data sources to prevent mismatches; implies integration reliability and data integrity. Missing specifics: which fields are read-only, if overrides are allowed, and how synchronization/latency is handled.",
+      "follow_up_question": "Which specific fields must be read-only from each backend (statement, cardmember, merchant), and if an override is needed, what workflow and audit controls should govern it?"
+    },
+    {
+      "requirement": "When backend integrations fail or cannot return data, the UI shall surface clear, user-friendly error messages indicating the cause (e.g., backend unavailable) and recommended next steps (retry, create ticket, contact support).",
+      "source_citation": "I don't want to click to open a transaction and see blank fields because the back end didn't respond. And, uh, if a system is down I need a clear message — not some cryptic error — so I know whether to call support or handle it a different way.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Stakeholder describes need for graceful error messaging and actionable guidance rather than cryptic errors. Missing specifics: exact wording standards, localization, and whether errors should include ticket links or diagnostics.",
+      "follow_up_question": "Do you have preferred wording or templates for user-facing error messages and should messages include automatic options (retry, create ticket) or links to support procedures?"
+    },
+    {
+      "requirement": "The system shall provide reliable audit logs recording who accessed or modified a case, what change was made, and when; logs must be exportable for compliance audits over arbitrary timeframes.",
+      "source_citation": "We often need to explain why we did something, so seeing who touched a case and what they did is crucial... sometimes compliance asks for an export or a report of actions for a particular timeframe, so having a reliable log is essential.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder requires detailed, reliable, and exportable audit trails for accountability and compliance. Missing specifics: retention period, tamper-evidence, log format, and access controls for logs.",
+      "follow_up_question": "What retention period, export formats (CSV, PDF), and tamper-protection (e.g., write-once storage) are required for audit logs, and which roles may access exported logs?"
+    },
+    {
+      "requirement": "Access to the system shall be restricted to authorized personnel and enforced such that users can only view disputes for cardmembers they are assigned or responsible for; team leads may require broader visibility per role-based permissions.",
+      "source_citation": "Only authorized people, obviously. We have sensitive info — cardnumbers, account stuff — so not everyone should get in. Also, people should only see disputes for the cardmembers they manage.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder specifies authentication and authorization constraints including scoping view to assigned cardmembers and differentiated permissions for roles. Missing specifics: authentication methods, exact role definitions, and policy for cross-region access.",
+      "follow_up_question": "Please provide the required authentication method (SSO, MFA), the role list with associated permissions (front-line rep, team lead, auditor), and the rules for cardmember assignment scoping (by region, team, or explicit assignment)."
+    },
+    {
+      "requirement": "The system shall be highly available during business hours; planned maintenance windows are acceptable and should normally be scheduled Monday–Saturday around 3 AM and Sunday between 1 AM and 5 AM.",
+      "source_citation": "We pretty much need it all the time. People call any day, any hour, so downtime is a big problem. We can tolerate planned maintenance, though; mornings when traffic is low are usually fine.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "Stakeholder expresses need for near-continuous availability and provides explicit maintenance windows. Missing specifics: required uptime percentage (e.g., 99.9%), recovery time objectives (RTO), and whether maintenance windows are hard constraints.",
+      "follow_up_question": "What target uptime percentage (e.g., 99.9%) and RTO/RPO do you require, and are the provided maintenance windows (3 AM Mon–Sat, 1–5 AM Sun) firm constraints for all planned work?"
+    },
+    {
+      "requirement": "Navigation shall preserve context: when users jump from a list to a case and back, the system must restore the list position, filters, and search state so users do not have to repeat searches.",
+      "source_citation": "Also, I want to be able to quickly jump from the list to the case details and back without losing my place. It sounds small, but repeating searches is annoying.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Stakeholder requests preservation of list state to avoid repetitive actions. Missing specifics: how long state should persist (session vs. durable), and behavior across devices or tabs.",
+      "follow_up_question": "Should list/search state persist only for the current session/tab or across sessions/devices, and which specific parameters must be preserved (page, sort, filters, selected item)?"
+    },
+    {
+      "requirement": "Color usage for status indicators shall be consistent with corporate look-and-feel (e.g., red-ish for items needing action) and adhere to accessibility contrast guidelines to avoid confusion.",
+      "source_citation": "I don't care much which exact shades, no, but it should be consistent with corporate colors so people don't get confused. Red-ish for things that need action...",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 4,
+      "rationale": "Stakeholder wants consistent corporate colors with semantics (actionable items highlight). Missing specifics: exact color codes and explicit accessibility (WCAG) requirements.",
+      "follow_up_question": "Can you provide corporate color codes for status mapping and confirm required accessibility contrast levels (e.g., WCAG AA)?"
+    },
+    {
+      "requirement": "The system shall queue and persist outgoing letter requests when the print utility is unavailable, retrying delivery or surfacing the request in a holding area so the user does not lose the request.",
+      "source_citation": "For letters, if the print utility didn't accept the request, it should keep the request in a holding area so I don't lose it.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 5,
+      "rationale": "Stakeholder requests durable queuing/holding for failed letter requests to avoid data loss. Missing specifics: queue persistence guarantees, retry policy, user notifications, and visibility of backlog.",
+      "follow_up_question": "What retention time for held letter requests, maximum retry attempts or backoff policy, and how should users be notified of queued/failed deliveries?"
+    },
+    {
+      "requirement": "If a backend fetch fails for a transaction detail, the system shall offer explicit recovery options such as retry and 'create a ticket for the backend team' to ensure tasks can continue or be escalated.",
+      "source_citation": "If a transaction detail couldn't be fetched, say so and maybe give an option to retry or to create a ticket for the backend team.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Stakeholder wants actionable recovery options surfaced to users for failed backend operations. Missing specifics: ticketing integration details and whether retries are automatic or user-initiated.",
+      "follow_up_question": "Do you have an existing ticketing system to integrate with, and should retries be automatic with exponential backoff or manually triggered by the user?"
+    },
+    {
+      "requirement": "The system shall provide clear, plain-language error messages and consistent button labels to reduce helpdesk calls and speed onboarding.",
+      "source_citation": "Also, small things like consistent button labels and clear error messages cut down on calls to the helpdesk.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "Stakeholder links consistent labels and clear errors to reduced support load and easier training. Missing specifics: style guidelines for messages and labels, localization needs, and examples of problematic messages.",
+      "follow_up_question": "Do you have preferred wording conventions or a style guide for error messages and button labels, and must messages be localized for other languages?"
+    },
+    {
+      "requirement": "The system shall provide reminders or flags for overdue follow-ups and outstanding tasks to reduce reliance on memory and prevent missed actions.",
+      "source_citation": "And, uh, tangentially, it'd be nice if there were little reminders or flags when follow-ups are overdue; we rely on memory too much now.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "Stakeholder requests notification mechanisms for overdue tasks to improve reliability of follow-up. Missing specifics: notification channels (in-app, email), escalation rules, and configuration per user/team.",
+      "follow_up_question": "Which notification channels do you want for overdue follow-ups (in-app, email, SMS), what default thresholds define 'overdue', and should notifications escalate to managers?"
+    },
+    {
+      "requirement": "The letters workflow shall integrate with the existing Letters utility such that the system programmatically requests letter creation/printing rather than requiring manual PDF creation by users.",
+      "source_citation": "So when I need to send a dispute initiation or a follow-up, the system should just request a letter and the printing folks take over. I don't want to be manually creating PDFs or copying templates — it should call the letters process and send it off to the print utility.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "Stakeholder wants automation of letter generation via existing print utility to ensure correct formatting and reduce manual work. Missing specifics: API for Letters utility, error handling, and acknowledgment of acceptance.",
+      "follow_up_question": "Can you provide the Letters utility API specification, required payloads/templates, and the expected acknowledgment semantics when a print job is accepted?"
+    },
+    {
+      "requirement": "The system shall provide straightforward reporting or a consolidated view to display case histories and related records for audits or process verification.",
+      "source_citation": "Occasional reports, yeah... it's frustrating if the system doesn't have a straightforward way to show everything in one place.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "other",
+      "confidence": 4,
+      "rationale": "Stakeholder needs simple reporting and consolidated views for audits; implies exportable and filterable reporting. Missing specifics: report types, filters, scheduling, and export formats.",
+      "follow_up_question": "What specific reports or consolidated views do you need (fields, timeframe filters), required export formats, and whether scheduled automated reports are necessary?"
+    },
+    {
+      "requirement": "System failures of downstream systems shall be transparent and include guidance on whether the user should call support or use alternative processes; historical outages during peak times must be considered in resilience planning.",
+      "source_citation": "Well, it needs to be reliable. I don't want to click to open a transaction and see blank fields because the back end didn't respond. And, uh, if a system is down I need a clear message — not some cryptic error — so I know whether to call support or handle it a different way.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "Stakeholder highlights need for transparent failures and mentions past outage impacting peak operations, indicating resilience requirements. Missing specifics: failover mechanisms, SLAs with backend teams, and prioritized functionality during outages.",
+      "follow_up_question": "What minimum functionality must remain during downstream outages (read-only access, cached data), and are there SLAs or RTO agreements with backing systems we should design against?"
+    }
+  ]
+}

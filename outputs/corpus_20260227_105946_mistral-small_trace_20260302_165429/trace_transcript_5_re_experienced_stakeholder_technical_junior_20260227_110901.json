@@ -1,0 +1,172 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_5_re_experienced_stakeholder_technical_junior_20260227_110901.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_165549",
+  "requirements": [
+    {
+      "requirement": "The system shall return parts search results within 15 seconds.",
+      "source_citation": "For parts searches, the target is that search results are returned in under fifteen seconds.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the performance requirement for parts search results, providing a clear and specific target time.",
+      "follow_up_question": "What are the acceptable thresholds for parts search result latency during peak usage times?"
+    },
+    {
+      "requirement": "The system shall return preferred repair facility search results within 8 seconds.",
+      "source_citation": "for the preferred repair facility search, the target they gave was under eight seconds.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the performance requirement for preferred repair facility search results, providing a clear and specific target time.",
+      "follow_up_question": "What are the acceptable thresholds for preferred repair facility search result latency during peak usage times?"
+    },
+    {
+      "requirement": "The system shall be designed to handle 1,500 concurrent users at maximum load.",
+      "source_citation": "The ops team set a target after looking at traffic: one thousand five hundred concurrent users at maximum load.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the scalability requirement, providing a clear and specific target for concurrent users.",
+      "follow_up_question": "What are the acceptable thresholds for system performance and response times under maximum load conditions?"
+    },
+    {
+      "requirement": "The system shall have an availability of 98%.",
+      "source_citation": "The target that was stated for SLAs is ninety-eight percent availability.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the availability requirement, providing a clear and specific target for system uptime.",
+      "follow_up_question": "What are the acceptable thresholds for system downtime and maintenance windows?"
+    },
+    {
+      "requirement": "The system shall protect sensitive customer data through role-based access control.",
+      "source_citation": "sensitive customer data must be protected by role-based access — not everyone should see everything.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the security requirement for protecting sensitive customer data, providing a clear and specific target for access control.",
+      "follow_up_question": "What are the specific roles and access levels that need to be defined for role-based access control?"
+    },
+    {
+      "requirement": "The system shall implement protections against common web vulnerabilities such as injection and broken authentication.",
+      "source_citation": "We worry about the usual web stuff — injection, broken auth, that kind of thing.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions concerns about common web vulnerabilities, indicating a need for security protections.",
+      "follow_up_question": "What specific measures will be taken to protect against injection and broken authentication vulnerabilities?"
+    },
+    {
+      "requirement": "The system shall implement protections against denial-of-service and malicious traffic, such as rate limiting, WAF rules, and DDoS mitigation.",
+      "source_citation": "So we need protections like rate limiting, WAF rules, and DDoS mitigation.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for protections against denial-of-service and malicious traffic, providing specific examples.",
+      "follow_up_question": "What specific rate limiting, WAF rules, and DDoS mitigation strategies will be implemented?"
+    },
+    {
+      "requirement": "The system shall adhere to corporate architecture guidelines and patterns.",
+      "source_citation": "The architecture review board expects adherence to their patterns — deployment models, authentication mechanisms, logging standards.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for adherence to corporate architecture guidelines, indicating a requirement for maintainability.",
+      "follow_up_question": "What specific corporate architecture guidelines and patterns must the system adhere to?"
+    },
+    {
+      "requirement": "The system shall support both onsite and remote training for users.",
+      "source_citation": "The business asked for onsite training — they feel hands-on is better, especially for older adjusters. That said, some regions might prefer remote, so we should support both.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for both onsite and remote training, indicating a requirement for usability.",
+      "follow_up_question": "What specific training materials and methods will be provided for onsite and remote training?"
+    },
+    {
+      "requirement": "The system shall be designed to be easy to use, with 95% of adjusters and collision estimators reporting that it is easy to use.",
+      "source_citation": "the product owner said we should aim that ninety-five percent of adjusters and collision estimators report the product is easy to use.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the usability requirement, providing a clear and specific target for user satisfaction.",
+      "follow_up_question": "What specific usability metrics and user feedback mechanisms will be used to measure and ensure ease of use?"
+    },
+    {
+      "requirement": "The system shall be designed to be up to speed after two days of onsite training.",
+      "source_citation": "training-wise, the goal was that people can be up to speed after two days of onsite training.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the training requirement, providing a clear and specific target for training time.",
+      "follow_up_question": "What specific training materials and methods will be provided to ensure users are up to speed after two days of onsite training?"
+    },
+    {
+      "requirement": "The system shall support screen magnifiers for adjusters who use them.",
+      "source_citation": "adjusters sometimes use screen magnifiers.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for screen magnifier support, indicating a requirement for usability.",
+      "follow_up_question": "What specific accessibility features and testing will be implemented to support screen magnifiers?"
+    },
+    {
+      "requirement": "The system shall provide near real-time updates for part availability, with a target of sub-minute updates in most cases.",
+      "source_citation": "The business wants it pretty fresh — adjusters expect inventory to be current during the workday. I remember the product owner saying near real-time is preferred, but they gave us leeway to balance load. If I have to quote a figure, I think the expectation was sub-minute for updates in most cases.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for near real-time updates, indicating a requirement for performance.",
+      "follow_up_question": "What specific mechanisms and technologies will be used to achieve near real-time updates for part availability?"
+    },
+    {
+      "requirement": "The system shall implement an adapter layer to handle feed schema changes and ensure backward compatibility.",
+      "source_citation": "From a developer view, an adapter layer is ideal — some transformation service that normalizes the feed before it hits our main app. We also want schema validation and graceful degradation if a field disappears.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for an adapter layer, providing a clear and specific target for handling feed schema changes.",
+      "follow_up_question": "What specific adapter layer design and implementation strategies will be used to handle feed schema changes?"
+    },
+    {
+      "requirement": "The system shall implement a caching strategy that balances responsiveness and freshness, with background syncs and faster expiration for critical fields like availability status.",
+      "source_citation": "Our idea is to cache aggressively for search responsiveness but to have background syncs and a way to expire critical fields faster, like availability status.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for a caching strategy that balances responsiveness and freshness, indicating a requirement for performance.",
+      "follow_up_question": "What specific caching mechanisms and strategies will be implemented to balance responsiveness and freshness?"
+    }
+  ]
+}

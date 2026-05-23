@@ -1,0 +1,161 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_5_re_novice_stakeholder_nontechnical_enduser_20260227_110739.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_175241",
+  "requirements": [
+    {
+      "requirement": "The system shall respond to parts search queries within 15 seconds.",
+      "source_citation": "anything longer than, um, say fifteen seconds feels like forever when I'm on the phone.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions a timeframe for parts search, indicating a performance requirement. However, the context suggests this is a subjective threshold rather than a strictly enforced limit.",
+      "follow_up_question": "What specific actions or data volume would trigger this 15-second response time requirement?"
+    },
+    {
+      "requirement": "The system shall respond to facility search queries within 8 seconds.",
+      "source_citation": "For finding a preferred repair facility, I expect it to be quicker—maybe eight seconds is reasonable.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder provides a specific timeframe for facility search, indicating a performance requirement. The context suggests this is a subjective threshold rather than a strictly enforced limit.",
+      "follow_up_question": "What specific actions or data volume would trigger this 8-second response time requirement?"
+    },
+    {
+      "requirement": "The system shall generate audit reports within 10 seconds.",
+      "source_citation": "The audit report needs to be something I can get before I move on. If I have to wait more than, hmm, ten seconds it interrupts my flow.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions a timeframe for audit report generation, indicating a performance requirement. The context suggests this is a subjective threshold rather than a strictly enforced limit.",
+      "follow_up_question": "What specific actions or data volume would trigger this 10-second response time requirement?"
+    },
+    {
+      "requirement": "The system shall provide help functionality on at least 90% of screens.",
+      "source_citation": "If I had to guess, maybe help should be available in the vast majority of screens—so users don't get stuck. I mean, ninety percent of the system having in-context help would be brilliant.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder provides a specific percentage for help functionality availability, indicating a usability requirement. The context suggests this is a subjective threshold rather than a strictly enforced limit.",
+      "follow_up_question": "What specific screens or user flows are critical for help functionality?"
+    },
+    {
+      "requirement": "The system shall require no more than 2 days of onsite training for users to become comfortable.",
+      "source_citation": "It can't be one of those big, drawn-out trainings. Most folks are busy, so it should be short and practical, done onsite with hands-on stuff. I'd say two days of onsite training should get people comfortable.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions a timeframe for training, indicating a usability requirement. The context suggests this is a subjective threshold rather than a strictly enforced limit.",
+      "follow_up_question": "What specific skills or knowledge areas should be covered in the 2-day training?"
+    },
+    {
+      "requirement": "The system shall integrate directly with the Choice Parts feed.",
+      "source_citation": "If it doesn't tap into the Choice Parts data directly we'll end up with old availability all the time.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for direct integration with the Choice Parts feed, indicating a maintainability requirement. The context suggests this is a critical requirement for data freshness.",
+      "follow_up_question": "What specific data or updates from the Choice Parts feed are critical for the system's operation?"
+    },
+    {
+      "requirement": "The system shall maintain an uptime of at least 98%.",
+      "source_citation": "It needs to be reliable almost all the time. If you're asking for a metric, I'd say we need it up almost always, with very little downtime—maybe around ninety-eight percent uptime would be acceptable.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder provides a specific uptime percentage, indicating an availability requirement. The context suggests this is a subjective threshold rather than a strictly enforced limit.",
+      "follow_up_question": "What specific downtime scenarios or maintenance windows are acceptable?"
+    },
+    {
+      "requirement": "The system shall prevent access to other insurance companies' claims.",
+      "source_citation": "We absolutely cannot see another insurance company's claims.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need to prevent access to other insurance companies' claims, indicating a security requirement. The context suggests this is a critical requirement for data privacy.",
+      "follow_up_question": "What specific data or access controls are needed to prevent access to other insurance companies' claims?"
+    },
+    {
+      "requirement": "The system shall provide role-based access control.",
+      "source_citation": "Within a company, people should see different things depending on their role—some folks need full view, others only the basics.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for role-based access control, indicating a security requirement. The context suggests this is a critical requirement for data privacy.",
+      "follow_up_question": "What specific roles and access levels are needed within the system?"
+    },
+    {
+      "requirement": "The system shall support multiple concurrent users without performance degradation.",
+      "source_citation": "Multiple adjusters are using it at once and it needs to keep up.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for the system to support multiple concurrent users, indicating a scalability requirement. The context suggests this is a critical requirement for peak usage scenarios.",
+      "follow_up_question": "What specific user load or concurrency levels should the system support?"
+    },
+    {
+      "requirement": "The system shall provide undo functionality for user actions.",
+      "source_citation": "It should be forgiving. People make mistakes, so undo or easy corrections are nice.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for undo functionality, indicating a usability requirement. The context suggests this is a critical requirement for user error recovery.",
+      "follow_up_question": "What specific user actions or data changes should support undo functionality?"
+    },
+    {
+      "requirement": "The system shall provide real-time notifications for part status changes.",
+      "source_citation": "Notifications when a part changes status would be good, because I don't want to keep checking.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "other",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for real-time notifications, indicating a requirement for real-time updates. The context suggests this is a critical requirement for user awareness.",
+      "follow_up_question": "What specific part status changes or events should trigger notifications?"
+    },
+    {
+      "requirement": "The system shall function in environments with limited or unreliable connectivity.",
+      "source_citation": "Sometimes I'm standing in a parking lot with sketchy cell service, and I just want the app to still let me view recent searches or at least not choke.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for the system to function in environments with limited or unreliable connectivity, indicating an operability requirement. The context suggests this is a critical requirement for field use.",
+      "follow_up_question": "What specific functionality or data should be available offline or in low-connectivity scenarios?"
+    },
+    {
+      "requirement": "The system shall adhere to the company's UI guidelines for consistency.",
+      "source_citation": "If the layout, colors, and controls are different from our other corporate apps people get confused and make mistakes. It should feel like one of our apps so it's intuitive.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for the system to adhere to the company's UI guidelines, indicating a look_and_feel requirement. The context suggests this is a critical requirement for user experience and compliance.",
+      "follow_up_question": "What specific UI guidelines or design principles should the system follow?"
+    }
+  ]
+}

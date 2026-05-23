@@ -1,0 +1,161 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_6_re_novice_stakeholder_technical_senior_20260227_110846.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_175313",
+  "requirements": [
+    {
+      "requirement": "The system shall be portable and run on Linux, Windows, and Solaris operating systems.",
+      "source_citation": "It should run on whatever servers we have in-house... Linux, Windows, sometimes Solaris... packaged to deploy onto Tomcat or JBoss-type setups.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for the system to run on multiple operating systems, indicating a clear requirement for portability.",
+      "follow_up_question": "Are there any specific versions of Linux, Windows, or Solaris that the system must support?"
+    },
+    {
+      "requirement": "The system shall be deployable on Tomcat or JBoss-type application servers.",
+      "source_citation": "It should run on whatever servers we have in-house... packaged to deploy onto Tomcat or JBoss-type setups.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies the need for the system to be deployable on specific application servers, indicating a clear requirement for compatibility.",
+      "follow_up_question": "Are there any other application servers that the system must support?"
+    },
+    {
+      "requirement": "The system shall support responsive UI actions within five seconds for small tasks and eight seconds for heavier tasks.",
+      "source_citation": "Users get annoyed if the calendar or booking doesn't come up quickly... five seconds is a threshold for small things, eight seconds for heavier tasks.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the expected response times for different types of tasks, indicating a clear performance requirement.",
+      "follow_up_question": "Are there any specific performance benchmarks or metrics that the system must meet?"
+    },
+    {
+      "requirement": "The system shall handle at least 1,000 simultaneous requests and scale to handle 2,000 simultaneous requests in the next release.",
+      "source_citation": "The system has to handle high concurrency... today: ~1,000 simultaneous requests; next release: ~2,000.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies the expected concurrency levels, indicating a clear requirement for scalability.",
+      "follow_up_question": "Are there any specific scalability benchmarks or metrics that the system must meet?"
+    },
+    {
+      "requirement": "The system shall achieve 99.99% uptime, excluding server-level failures.",
+      "source_citation": "Target four nines (99.99%) uptime... excluding server-level failures.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the expected uptime, indicating a clear availability requirement.",
+      "follow_up_question": "Are there any specific availability benchmarks or metrics that the system must meet?"
+    },
+    {
+      "requirement": "The system shall integrate with LDAP or SAML for authentication.",
+      "source_citation": "Only company employees or approved external users... LDAP/SAML integration.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies the need for integration with specific authentication protocols, indicating a clear security requirement.",
+      "follow_up_question": "Are there any other authentication protocols that the system must support?"
+    },
+    {
+      "requirement": "The system shall sanitize inputs and validate server-side to prevent SQL injection and ensure data integrity.",
+      "source_citation": "Sanitize inputs, validate server-side, prevent SQL injection... data integrity is sacrosanct.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for input sanitization and validation, indicating a clear security requirement.",
+      "follow_up_question": "Are there any specific security standards or compliance requirements that the system must meet?"
+    },
+    {
+      "requirement": "The system shall follow standard design patterns, be readable, well-documented, and have good test coverage.",
+      "source_citation": "Follow standard design patterns... readable code, good documentation, test coverage.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies the need for maintainable code, indicating a clear maintainability requirement.",
+      "follow_up_question": "Are there any specific coding standards or practices that the system must follow?"
+    },
+    {
+      "requirement": "The system shall support screen reader access, keyboard navigation, and proper semantics for accessibility.",
+      "source_citation": "Screen reader support, keyboard navigation, proper semantics.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for accessibility features, indicating a clear usability requirement.",
+      "follow_up_question": "Are there any specific accessibility standards or compliance requirements that the system must meet?"
+    },
+    {
+      "requirement": "The system shall support localization and branding for different offices.",
+      "source_citation": "UI must support localization and branding for different offices.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies the need for localization and branding, indicating a clear usability requirement.",
+      "follow_up_question": "Are there any specific languages or branding guidelines that the system must support?"
+    },
+    {
+      "requirement": "The system shall run in clustered setups, monitor key metrics, and support rolling upgrades.",
+      "source_citation": "Run in clustered setups, monitor key metrics, rolling upgrades.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for operability features, indicating a clear operability requirement.",
+      "follow_up_question": "Are there any specific operability benchmarks or metrics that the system must meet?"
+    },
+    {
+      "requirement": "The system shall be stateless where feasible and externalize session state.",
+      "source_citation": "Stateless where feasible... externalize session state.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies the need for statelessness and externalized session state, indicating a clear operability requirement.",
+      "follow_up_question": "Are there any specific statelessness or session state requirements that the system must meet?"
+    },
+    {
+      "requirement": "The system shall not send personally identifiable information (PII) or full user content in external reports.",
+      "source_citation": "Don’t send PII or full user content in external reports... scrub sensitive fields.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "privacy",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for privacy-safe telemetry, indicating a clear privacy requirement.",
+      "follow_up_question": "Are there any specific privacy standards or compliance requirements that the system must meet?"
+    },
+    {
+      "requirement": "The system shall consider equipment as first-class entities for future enhancements.",
+      "source_citation": "Think about equipment as first-class... room sensors for occupancy could be an enhancement later.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the potential for future enhancements related to equipment and room sensors, indicating a possible scalability requirement.",
+      "follow_up_question": "Are there any specific equipment or sensor requirements that the system must support in the future?"
+    }
+  ]
+}

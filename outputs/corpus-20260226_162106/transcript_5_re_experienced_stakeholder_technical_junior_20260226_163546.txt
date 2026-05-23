@@ -1,0 +1,132 @@
+Interviewer: Thanks for sitting down. To start, tell me briefly what you've been working on lately and how you see your role in the project.
+
+Stakeholder: Yeah, sure — I’ve been on the team for about a year now. Lately I’ve been mostly implementing front-end pieces and wiring up the parts feed from Choice Parts, and, uh, doing some of the API glue for search. I’ve done the UI tweaks for the search results and the facility lookup screen, and I’ve been in a few demos with adjusters when they come into the office. I’d say I’m comfortable with the UI work and the integration bits, but I’m less clear on the deployment and ops expectations — that’s been kind of fuzzy for me.
+
+Interviewer: When you say you wired up the Choice Parts feed, what exactly does that look like in practice? How do you get the data and what fields come through?
+
+Stakeholder: Right now we pull from their API endpoint. The feed gives us things like a vendor part ID, a short description, availability status, price information and the location of the part. The docs are a bit sparse — sometimes fields show up empty or formatted oddly, so I’ve had to write mapping logic to normalize vendor names and a couple of date formats. Oh, and occasionally the API times out during peak hours which causes the UI to show an error if we don’t handle it.
+
+Interviewer: When you say "we pull," is that a scheduled poll, or do they push updates? And how often does your code fetch the feed?
+
+Stakeholder: It’s a pull model from our side; we call their REST endpoint. At the moment we poll every five minutes from the aggregator service, because that seemed reasonable during early testing and it keeps things fairly fresh without hammering the API.
+
+Interviewer: Five minutes — good to know. You mentioned timeouts during peak hours. How do you handle missing or malformed data today, and what do you think users should see when the feed is flaky?
+
+Stakeholder: Currently if a part record is missing required fields we filter it out server-side, and the UI gets only the clean records. For timeouts we retry a couple of times in the background; if it still fails we show cached results with a little banner saying "data may be stale." But adjusters sometimes ask "Is this current?" so I think we need provenance info — like where the part came from and a timestamp — so users can trust it.
+
+Interviewer: That provenance idea sounds important. Is showing the source and timestamp something you've already implemented, or is it a gap?
+
+Stakeholder: We added a small "source" tag in the UI that says Choice Parts and a "last refreshed" time at the top, but it’s basic — I mean, it’s there, but it could be clearer. Also, I think we should store an audit field in the model so you can trace back to the original feed record in the DB. We don't have that fully wired yet.
+
+Interviewer: Good. Shifting to architecture: you mentioned deployment and ops felt fuzzy. What architecture constraints are you aware of that have influenced your implementation?
+
+Stakeholder: The corporate architecture is pretty prescriptive. We have to sit behind the company API gateway, use the approved front-end framework and the container image the platform team maintains, and authenticate via the corporate SSO. Also, we’ve had to include the standard monitoring agent so logs and metrics show up in the company dashboards. Honestly, it slows down prototypes because we have to add a lot of boilerplate, but it keeps things consistent.
+
+Interviewer: Which of those rules are mandatory versus "nice to have"? For instance, the API gateway and SSO — are those enforced now, or could we get an exception for a pilot?
+
+Stakeholder: Enforced, pretty much. The platform team won't let us go to pre-prod without the API gateway and SSO integration. Exceptions are possible but require sign-off from the architecture board, and, uh, getting that sign-off takes time. So for practical purposes we’ve been building to the mandated standards.
+
+Interviewer: You said the company-approved front-end framework sometimes doesn't fit the workflow. Earlier you mentioned UI tweaks. How do corporate UI guidelines affect design choices for adjusters in the field?
+
+Stakeholder: We have to use the corporate component library and design tokens, which is great for branding consistency, but some components are built for desktop-heavy workflows and not for the quick-hit targets that adjusters like on tablets. Adjusters want big buttons and a simple default view; the current components are sometimes dense. We’ve had to extend a few components to get larger tap targets and simplify the filter controls. Also, accessibility rules are enforced — we follow the color contrast and keyboard navigation guidance, though we could do more screen reader testing.
+
+Interviewer: When you say "adjusters want big buttons" and "simple default view," how did you learn that? From demos you mentioned earlier — how representative are those users?
+
+Stakeholder: In the office demos I did with three or four adjusters, they consistently ignored the advanced filters and said "just give me the top matches." One of them had a funny line about not wanting to be a power user — they just need to get a part and move on. But this was a small sample; we haven't run a formal survey yet. Oh, and tangentially, one adjuster brought his coffee into the demo and nearly spilled it on the keyboard, which is why I keep thinking big touch targets.
+
+Interviewer: (laughs) Noted — protect the keyboard. You said we haven't run a formal survey. At some point we'll want to measure ease of use. Can you estimate how many adjusters/estimators found the product easy during those sessions, and can you put a number on "most" for me?
+
+Stakeholder: Hmm, from the demo participants, I’d say almost all of them said it was intuitive in the basic flow — maybe around nine out of ten if I had to guess. But that’s informal; we didn’t do a structured usability score. If you want a concrete metric, we should run a usability test with a standardized questionnaire.
+
+Interviewer: Okay, that's helpful. We'll plan a structured usability check. Now, about learnability — how long are adjusters taking to become productive in the current setup?
+
+Stakeholder: Right now training is informal: a half-day walkthrough and a cheat-sheet. That gets them doing basic searches, but for full confidence — including facility selection and understanding the scoring — they need more hand-holding. From what I’ve observed, a couple of days of on-site walkthroughs and hands-on exercises would get most people comfortable.
+
+Interviewer: When you say "a couple of days," can you be specific? How long should formal training be to meet stakeholder expectations?
+
+Stakeholder: Two full days of on-site training with exercises and a sandbox would be my recommendation based on the pilots and feedback. It gives time for practice and Q&A, and the trainers can cover edge cases.
+
+Interviewer: Great, we'll record that. Let's talk about search performance. You mentioned Choice Parts queries can take several seconds in dev and facility lookup can spike. From a user perspective, how long is too long for a parts search, and how long for facility lookup?
+
+Stakeholder: Ugh, I hate waiting. For parts search, it just needs to feel fast — users get impatient if they stare at a spinner. If pressed, I’d say for a typical parts query, anything above maybe a dozen to fifteen seconds is unacceptable, because adjusters move on to other tasks. Facility lookup should be snappier — they expect results in just a few seconds. But we should be explicit whether that is end-to-end in the UI, because backend calls and rendering both add up.
+
+Interviewer: When you say "a few seconds" for facility lookup, can you put a number on that? And for parts search, you mentioned "a dozen to fifteen seconds" — is that the upper bound you would accept?
+
+Stakeholder: For facility lookup, I’d aim for under ten seconds from when they hit search to when the preferred facility is shown. For parts search, let's say under fifteen seconds for a full result set to appear in the UI. Those are the thresholds I think we should target to keep users from getting frustrated.
+
+Interviewer: Thanks. Do you think progressive rendering — showing partial results quickly and filling in the rest — would be acceptable to users?
+
+Stakeholder: Definitely. Showing top matches immediately and then loading the rest would feel much faster. Adjusters prefer the immediate top hits, so if the UI can show best matches fast and then stream the rest, that would be a win.
+
+Interviewer: Good. Regarding caching, how fresh does parts data need to be? You mentioned polling every five minutes earlier — is that acceptable for users, or do they need real-time accuracy?
+
+Stakeholder: Most adjusters are okay with slightly stale info for availability — if it's a few minutes old they can call to double-check. If a part is critical, they’ll verify with the vendor. So a short cache window is fine, but we need to show the last-updated timestamp so they can judge freshness.
+
+Interviewer: Earlier you brought up concurrency concerns. How many simultaneous users do you expect at peak, and what does "simultaneous" mean to you — active requests or logged-in sessions?
+
+Stakeholder: We see peaks during morning claim intake and some afternoon surges when shops upload estimates. By simultaneous, I mean active users performing searches at the same time, not just idle sessions. The business has talked about sizing for a few thousand concurrent active users, but the concrete number I’ve heard in planning is roughly fifteen hundred active users at peak, which would really exercise autoscaling and caches.
+
+Interviewer: Fifteen hundred — okay. Have you run any load tests against that figure yet?
+
+Stakeholder: Not properly. Our staging is single-instance and we haven’t simulated that kind of load. We did a small test with a hundred virtual users and saw slowdowns on the Choice Parts calls. We’ll need horizontal scaling and stateless services, and the session store needs to be shared so instances can come and go.
+
+Interviewer: Understood. On availability, what uptime expectation have you heard from stakeholders, and how does that sit with dependency on Choice Parts?
+
+Stakeholder: The stakeholders set an availability target that, honestly, seemed conservative to me compared to other corporate services. They’re accepting some downtime because of the external dependency, but they still want monitoring and graceful degradation. We plan to fall back to cached results and read-only modes if Choice Parts is down, and show clear messaging. I remember them quoting an availability figure that allows a small percentage of downtime — I can get you the exact number if you want.
+
+Interviewer: Yes, please — what exact uptime target was specified?
+
+Stakeholder: The target we were given is ninety-eight percent uptime measured monthly. I know it sounds low compared to three-nines or more, but that’s what was communicated, given the external feed and current ops constraints.
+
+Interviewer: I asked because 98% is a lot of downtime compared to typical production systems — can you explain the stakeholders' rationale and whether that's negotiable?
+
+Stakeholder: The ops team justified it because we don’t have a dedicated 24/7 support line for the pilot, and the Choice Parts SLAs aren’t super strict. I think it's negotiable if we can secure more ops support and reduce dependency risk by caching or negotiating better SLAs with the feed provider, but that would need more budget and approvals.
+
+Interviewer: Noted. Security — you said corporate SSO and API gateway earlier. What measures are in place or planned to protect against malicious activity, especially denial-of-service attacks?
+
+Stakeholder: We put the app behind the corporate API gateway and the CDN, which gives us WAF protections and the ability to do rate-limiting. The platform folks recommended per-IP and per-user rate limits and WAF signatures. For high-volume attacks, we'd rely on the CDN and gateway to absorb traffic and then autoscale the app so it degrades gracefully. We also have to pass regular security scans and pen tests before production.
+
+Interviewer: When you say "rate-limiting and WAF," are there specific policies or thresholds defined, or will security/ops define them?
+
+Stakeholder: Security and ops will define the exact policies. We’ve suggested sensible defaults like moderate per-user request limits and stricter per-IP limits, but the platform team needs to approve them and set the exact numbers. We also need logging retention settings and incident response contacts.
+
+Interviewer: Okay. Thinking about acceptance criteria: for search time, concurrency, uptime, learnability and integrations, how do you propose we validate each one? What tests or artifacts do we need?
+
+Stakeholder: For the integration with Choice Parts, automated contract tests and a sample feed in staging would validate fields and format. For performance, we need synthetic monitoring that measures end-to-end search times from the UI and load tests that simulate the fifteen hundred concurrent active users in a staging environment. For uptime, synthetic checks and platform dashboards should provide monthly reports. For learnability and ease of use, a structured usability test with a post-training competency checklist and a short user survey would cover it. And for security, automated scans plus a penetration test and verification that the app sits behind the gateway.
+
+Interviewer: Who on the team can provide the Choice Parts API docs and sample feeds, and can you get current performance logs?
+
+Stakeholder: I can get you the API docs and sample feed files — I have them in a repo, I think. Performance logs from recent dev runs are also available; I'll pull those and share. For larger load test runs we’ll need help from the platform team to spin up the proper environment.
+
+Interviewer: You mentioned earlier the corporate component library causes friction and that affects training. How does that connect to the two days of training you suggested?
+
+Stakeholder: Right — because some components behave differently on tablets, trainers will need time to show workarounds and bespoke UI flows we added. That’s why two days are helpful: one day for core workflows using standard components, and another day for role-specific behaviors and the customizations we implemented. If we didn't have those component issues, we might compress training to a shorter session.
+
+Interviewer: Good link back. Before we wrap, what do you see as the top three risks to delivering these outcomes (integration, performance, availability), and who needs to be involved to mitigate them?
+
+Stakeholder: The biggest risk is Choice Parts feed instability, because a lot of functionality depends on it. Second is our lack of production-like staging to run large load tests, so we won’t know how the system behaves at fifteen hundred concurrent users until late. Third is limited ops on-call support, which ties into the availability target. To mitigate, we need feed SLAs from Choice Parts, platform team help for load testing and autoscaling config, and buy-in from ops/security to set rate limits and incident response. I can try to pull the API contract and get the platform contact, but we’ll need formal engagement from those teams.
+
+Interviewer: That helps. For next steps, can you, within the next two business days, share the Choice Parts API docs, sample feed files, and the latest performance logs? Also, can you arrange a demo session with an adjuster during the next sprint?
+
+Stakeholder: Yes, I can get the API docs and sample feeds to you in the next couple of days. The performance logs I’ll include, though some are from dev boxes — I’ll flag that. I can also organize a demo with an adjuster next week; one of them said they'd be willing to sit in again.
+
+Interviewer: Excellent. One last clarification: you earlier suggested showing the source and timestamp for parts. Do you think we need a persistent audit field stored in our database to support later audits and adjudications?
+
+Stakeholder: Absolutely. We should persist the original feed ID and a timestamp so an auditor can trace where a part claim came from. Right now we only show the source in the UI, but we don't retain a linkable audit field. I think that's something we should add.
+
+Interviewer: Perfect. Thanks — that was very helpful. I’ll synthesize these into testable requirements and a list of follow-ups. I’ll send that draft and then loop in platform, security and training owners for follow-ups. Anything else you want me to note?
+
+Stakeholder: Umm, nothing major — except, I mean, if we can get more ops support early, it’ll make hitting the performance and uptime stuff much smoother. And, uh, remind me to send the sample feeds; I almost forgot during one sprint when I moved repos.
+
+---
+Selected Requirements:
+1. [NICE.csv line 206] [quality, operability] 'The product shall interface with the Choice Parts System. This provides the feed of recycled parts data.'
+2. [NICE.csv line 208] [quality, legal] 'The product shall adhere to the corporate Architecture guidelines'
+3. [NICE.csv line 209] [quality, legal, look_and_feel] 'The product shall comply with corporate User Interface Guidelines'
+4. [NICE.csv line 212] [quality, usability] 'The product shall be easy to use by Adjusters and Collision Estimators. 95% of Adjusters and Collision Estimators shall find the product easy to use.'
+5. [NICE.csv line 215] [quality, usability] 'The product shall be easy to learn by Adjusters and Collision Estimators. The product shall be learned with two days onsite training'
+6. [NICE.csv line 217] [quality, performance] 'The search for recycled parts shall take no longer than 15 seconds. The search results shall be returned in under 15 seconds.'
+7. [NICE.csv line 218] [quality, performance] 'The search for the preferred repair facility shall take no longer than 8 seconds. The preferred repair facility is returned within 8 seconds'
+8. [NICE.csv line 222] [quality, availability, fault_tolerance] 'The product shall achieve a 98% uptime. The product shall not fail more than 2% of the available online time.'
+9. [NICE.csv line 223] [quality, scalability] 'The product shall be able to handle up to 1500 simultaneous users. The system shall perform with 1500 users as a time.'
+10. [NICE.csv line 237] [quality, security] 'The system shall prevent malicious attacks including denial of service.'

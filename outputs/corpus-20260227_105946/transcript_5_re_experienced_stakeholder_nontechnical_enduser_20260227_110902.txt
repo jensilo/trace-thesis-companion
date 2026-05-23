@@ -1,0 +1,96 @@
+Interviewer: Thanks for meeting with me. Walk me through a typical day using the recycled parts and repair facility tools. What's the first thing you do, and what feels good or bad about the current tools?
+
+Stakeholder: Sure — well, I start with the claim list, open the estimate, and then I usually try to find recycled parts if the car's older. The search part is the worst. It just... drags. I mean, I think it should feel instant, but right now I sit there clicking my pen, you know? It breaks my flow. And finding help while I'm in the middle of an estimate is a pain — sometimes I give up and call someone. Oh, and sorry, tangent — my coffee went cold waiting the other day because I was stuck waiting for a search. Anyway.
+
+Interviewer: When you say "it drags" and "should feel instant," can you put a number on that? How long is too long for a parts search?
+
+Stakeholder: Hmm, I suppose too long is anything where you can make a sandwich. Honestly, though, if someone asked for a number, I'd say... under a quarter of a minute? Maybe around fifteen seconds feels okay to me. Anything longer and I get impatient.
+
+Interviewer: Understood. You said help is hard to find while you're working. Can you describe what you mean by "hard to find"? Where do you look now and what do you expect instead?
+
+Stakeholder: Right now there's a PDF someone put on the intranet and a separate "how-to" page, but they're separate from the screen I'm on. So I have to alt-tab or switch windows. What I want is something right there — a little help button or tips where I am. Not for everything, but in most places you'd need it. If I had to guess, I'd say help should be available almost everywhere you might be stuck — like most of the screens.
+
+Interviewer: When you say "most of the screens," can you be more specific? Do you mean half, most, or all?
+
+Stakeholder: Umm, not all — that would be overkill. I'd say... the vast majority. Maybe nine out of ten screens? Ninety percent sounds about right in my head.
+
+Interviewer: You mentioned locating preferred repair facilities based on vehicle location earlier. How fast does that lookup need to feel to keep you working smoothly?
+
+Stakeholder: That one should be snappier than parts, I think. When I'm on the phone with a customer I can't be waiting. If it takes forever, the call drags and the customer gets annoyed. I'd say it should be back in a few seconds — like under ten seconds. Eight seconds would be nice, actually.
+
+Interviewer: Okay — under ten, ideally eight. You also mentioned auditing recycled parts within collision estimates. Tell me about a recent time that the audit was frustrating.
+
+Stakeholder: Yeah, last month I had to check a bunch of estimates for recycled parts usage — an audit run. It took ages to produce the report, so I started it, had to walk away, came back, and then had to re-run something because the session timed out. It felt clunky. I need those reports while I'm still in the file, not after lunch. If I think about it, getting that audit back should be fast — like, under maybe ten seconds? Quick enough that I don't have to switch tasks.
+
+Interviewer: You mentioned the session timed out and re-ran things. How often does the system go down or become unavailable during your workday? What is "not acceptable" in terms of downtime?
+
+Stakeholder: Ugh, downtime is the worst. It's not constant, but it happens — maybe a couple times a month? I mean, I don't want this happening during business hours. Ideally it should be up pretty much all the time we're working. If I had to say — and I'm guessing — it should be available almost always. Like, ninety-something percent of the time. Ninety-eight percent would probably be okay in my head, I think.
+
+Interviewer: Earlier you said searches "drag" and that you sometimes have to re-run things because sessions time out. Does that affect how many people can be on the system at once? What happens during peak mornings?
+
+Stakeholder: Oh yes, mornings are busy. Everyone logs in and starts pulling parts and facilities. Right now if a bunch of people hit it, everything slows. I can't tell you exactly how many — it's a lot — but on busy days it definitely strains. If you ask me for numbers, I think at peak we could have... a very large group, maybe in the low thousands? One four-nine-zero? No, wait, that's not right. Hmm. Okay, to be honest, I'd say about fifteen hundred people at the same time in the worst-case scenario. It sounds high, but between adjusters, estimators, and office folks — it gets crowded.
+
+Interviewer: Fifteen hundred simultaneous users at peak — got it. You also mentioned session timeouts interrupting your work. Aside from speed and availability, what about saving actions — like when you rate a repair shop or save notes? Any frustrations there?
+
+Stakeholder: Yes. There's this star-rating thing we use for shops that respond well to recycled parts. Sometimes I hit save, and it lags or I wonder if it worked, so I click again — and then later there are duplicates or nothing saved. I need confidence that when I hit save it actually saved. It should feel immediate — like you click and it's done. If I'm pressed, I'd expect it to save in just a couple of seconds. Not a long wait.
+
+Interviewer: When you say "a couple of seconds," can you be more specific about what's acceptable before you lose confidence that the save happened?
+
+Stakeholder: Hmm, sure. If I don't see confirmation within, say, five seconds, I start poking around and double-saving. So, under five seconds would keep me calm.
+
+Interviewer: Let's talk about data access and privacy. You touched on not wanting to see other companies' data; can you describe the problem and why it's important?
+
+Stakeholder: Right — we sometimes work with multiple insurers, and there are shared shop networks. I don't want to accidentally open another company's claim or compare things I shouldn't. There was an incident where someone at a neighboring office could see something they weren't supposed to, and it caused an awkward call. So, the system needs to keep each insurer's claims separated. I mean, nobody wants to get in trouble over a privacy slip.
+
+Interviewer: Who should be able to see everything, and who should be limited? Can you explain roles a little?
+
+Stakeholder: We have program admins who need access across the board for audits and reporting. Most of us are adjusters or estimators and only need to see our own company's claims. Shop coordinators need limited views — just the assignments and basic contact stuff. So, sort of tiered access — admins wide, most folks narrow.
+
+Interviewer: You said earlier that help should be available in "most places" and that learning the system should be quick. How much training or onboarding do you think is realistic for people like you?
+
+Stakeholder: Well, we're not developers. We learn by doing. I don't want a week-long class. If I had to guess, two days of hands-on, onsite training would get most of us comfortable. It's better if it's in-person so we can ask the dumb questions. After that, quick reference help in the screens would be enough.
+
+Interviewer: You just said "most of us" would be comfortable after two days. Can you clarify — do you mean basically everyone, or some learning curve remains for new hires?
+
+Stakeholder: I think the majority would be good within those two days. There will always be someone who struggles, of course, but I'd expect most adjusters and estimators to be confident after that period. Maybe, I don't know, ninety-five percent? That number's just my gut.
+
+Interviewer: You mentioned earlier that searches, facility lookups, and reports feel slow when many people are on. How do you see performance differing between office and field use? Does spotty mobile connectivity change your expectations?
+
+Stakeholder: Oh yes, in the field the connection is flaky sometimes. If I'm on-site with a customer, I can't have an app that times out or requires constant reloading. So it needs to handle spotty networks gracefully — maybe cache things or allow me to at least view the last results. In the office we expect full speed, but out in the field, even if it's a little slower, it must not break my session. I know that's vague, but it's about reliability when I'm standing next to someone's car.
+
+Interviewer: Earlier you described running an audit and it timing out. You also said report generation should be fast. If I ask for a target for that audit report, can you be specific about how long is acceptable before you have to leave the estimate?
+
+Stakeholder: Yeah — if I'm waiting for an audit while still in the file, anything over ten seconds makes me think about doing something else. So under ten seconds would be great.
+
+Interviewer: You mentioned the rating save taking a couple of seconds and your acceptable threshold is under five seconds. I want to challenge you on one point: you said 95% of adjusters would be comfortable after two days of training — that's a tight target. Why that level of confidence and how would you measure it?
+
+Stakeholder: Hmm, fair pushback. It's high because most of our people aren't tech-savvy and if they're still confused after two days, they call support, and that kills productivity. We'd measure it by running a short skills check or maybe a quick survey after training — ask them to do common tasks. If most can complete the core tasks without help, that's success. I guess the 95% comes from wanting almost everyone to be self-sufficient so we don't have a support backlog.
+
+Interviewer: You said earlier that help should be present in about ninety percent of the screens. How do you envision that help working? Tooltips, inline guidance, videos?
+
+Stakeholder: Mostly small inline tips and a help icon that opens short steps. Videos are okay for complex stuff but I rarely watch a long video. Quick bullets, examples — like: "How to search for a part" right where you're entering the VIN. If it's available in most places — again, bright and obvious — that would cut down on calls.
+
+Interviewer: You brought up session timeouts and re-running reports. What sort of recovery behavior would make you feel comfortable? For instance, if your session times out in the field, should unsaved work persist? Or should there be a warning?
+
+Stakeholder: Definitely warnings before session timeouts — like a countdown or a "stay signed in" button. And if I'm in the middle of something it should save drafts so I don't lose work. Losing half an estimate because of a timeout is the worst.
+
+Interviewer: One last question: you talked about not wanting to see other insurers' claims. If we had to balance strict separation with features like cross-company shop ratings, how would you prefer to handle that?
+
+Stakeholder: I get that aggregate stuff can be useful, but it must not reveal specifics tied to a company. So if ratings are shared, they should be anonymized or aggregated so you can't trace back to a company's claim. But when it comes to claims and sensitive details, no — keep them separated by company. It's just safer.
+
+Interviewer: Thanks — that's very helpful. To recap a few things you mentioned earlier: you said searches should feel near-instant (about 15 seconds for parts, around 8 seconds for facility lookups), audit reports should be quick (under 10 seconds), saves should confirm quickly (under 5 seconds), help should be in roughly 90% of screens, two days of onsite training would get most people productive (around 95%), the system should be available almost all the time (you suggested about 98% uptime), handle up to roughly 1500 simultaneous users, and keep insurers' data separated with admin-level broader access. Did I miss or misstate anything?
+
+Stakeholder: No, that's exactly what I meant. You summarized it well. Oh — and one more tiny thing: make the UI uncluttered. I can't stand screens with too many buttons. If it's clean, I'll be happier and make fewer mistakes.
+
+---
+Selected Requirements:
+1. [NICE.csv line 212] [quality, usability] 'The product shall be easy to use by Adjusters and Collision Estimators. 95% of Adjusters and Collision Estimators shall find the product easy to use.'
+2. [NICE.csv line 215] [quality, usability] 'The product shall be easy to learn by Adjusters and Collision Estimators. The product shall be learned with two days onsite training'
+3. [NICE.csv line 216] [quality, look_and_feel, usability] 'The user shall easily locate instructions while using the product. User help can be found within 90% of the system.'
+4. [NICE.csv line 217] [quality, performance] 'The search for recycled parts shall take no longer than 15 seconds. The search results shall be returned in under 15 seconds.'
+5. [NICE.csv line 218] [quality, performance] 'The search for the preferred repair facility shall take no longer than 8 seconds. The preferred repair facility is returned within 8 seconds'
+6. [NICE.csv line 219] [quality, functional, performance] 'The recycled parts audit report shall be returned to the user within 10 seconds. The audit report shall be returned within 10 seconds.'
+7. [NICE.csv line 220] [quality, functional, performance] 'The preferred repair facility ratings shall be saved within 5 seconds. The save shall occur within 5 seconds.'
+8. [NICE.csv line 222] [quality, availability, fault_tolerance] 'The product shall achieve a 98% uptime. The product shall not fail more than 2% of the available online time.'
+9. [NICE.csv line 223] [quality, scalability] 'The product shall be able to handle up to 1500 simultaneous users. The system shall perform with 1500 users as a time.'
+10. [NICE.csv line 235] [quality, security] 'One insurance company shall not be able to view another insurance companys claim data.'

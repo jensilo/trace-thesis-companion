@@ -1,0 +1,216 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_5_re_experienced_stakeholder_technical_senior_20260227_110738.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_165558",
+  "requirements": [
+    {
+      "requirement": "The system shall respond to parts search queries within 15 seconds.",
+      "source_citation": "users expect results in the low tens of seconds for these kinds of queries. Any longer and field adjusters start calling the call center or going back to manual. So short of a catastrophic outage, we need it to return within that window.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the requirement for parts search response time, clarifying it as under 15 seconds. This is a clear and specific performance requirement.",
+      "follow_up_question": "Are there any specific scenarios or query types that might require even faster response times?"
+    },
+    {
+      "requirement": "The system shall respond to facility lookup queries within 8 seconds.",
+      "source_citation": "I'd want the preferred facility lookup to come back in under about eight seconds.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the requirement for facility lookup response time, specifying it as under 8 seconds. This is a clear and specific performance requirement.",
+      "follow_up_question": "Are there any specific scenarios or query types that might require even faster response times?"
+    },
+    {
+      "requirement": "The system shall cache recent searches and allow limited offline review of claims.",
+      "source_citation": "For field users, the UI should be progressive — cache recent searches, allow limited offline review of claims, and queue any non-critical updates for later sync.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for progressive UX for low connectivity, including caching and offline review. This is a clear usability requirement.",
+      "follow_up_question": "What specific data should be cached, and for how long?"
+    },
+    {
+      "requirement": "The system shall have a primary metric of time-to-interactive on a 4G-equivalent connection.",
+      "source_citation": "time-to-interactive on a 4G-equivalent connection is the business-facing metric",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the primary metric for performance measurement.",
+      "follow_up_question": "Are there any secondary metrics that should be considered?"
+    },
+    {
+      "requirement": "The system shall be protected against credential-based attacks, API abuse, and denial-of-service attacks.",
+      "source_citation": "credential-based attacks, API abuse, and denial-of-service are real worries.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions specific security concerns that the system must address.",
+      "follow_up_question": "What specific measures will be taken to protect against these attacks?"
+    },
+    {
+      "requirement": "The system shall implement rate limiting, WAF controls, and DDoS mitigation.",
+      "source_citation": "We should have rate limiting, WAF controls, and DDoS mitigation in front of the service.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the need for these security controls.",
+      "follow_up_question": "Who will provide these protections, and what specific tools or services will be used?"
+    },
+    {
+      "requirement": "The system shall use tenant-scoped encryption keys and ensure the identity provider asserts tenant information.",
+      "source_citation": "tenant-scoped encryption keys would be ideal for extra protection. Also, the identity provider must assert tenant information in tokens so every service call can enforce authorization.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for tenant isolation and specific security measures.",
+      "follow_up_question": "What specific encryption standards and identity provider integrations will be used?"
+    },
+    {
+      "requirement": "The system shall provide an audit trail for every part suggestion used or overridden in an estimate.",
+      "source_citation": "Every time a part suggestion is used or overridden in an estimate, we need an audit trail linking the action to the user, timestamp, and the change.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the need for audit trails for specific actions.",
+      "follow_up_question": "What specific data should be included in the audit trail, and how long should it be retained?"
+    },
+    {
+      "requirement": "The system shall adhere to corporate UI constraints, including color contrast and keyboard navigation.",
+      "source_citation": "color contrast, keyboard nav, that kind of thing.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need to adhere to corporate UI constraints, including specific accessibility requirements.",
+      "follow_up_question": "What specific UI components and accessibility standards must be followed?"
+    },
+    {
+      "requirement": "The system shall be optimized for mobile devices, avoiding heavy pages with lots of client-side rendering.",
+      "source_citation": "heavy pages with lots of client-side rendering will bog down cellular devices.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for mobile optimization and specific performance concerns.",
+      "follow_up_question": "What specific performance metrics will be used to ensure mobile optimization?"
+    },
+    {
+      "requirement": "The system shall provide clear indicators when data might be stale.",
+      "source_citation": "Also, we should provide clear indicators when data might be stale so adjusters know when to revalidate.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for clear indicators of stale data, which is a usability concern.",
+      "follow_up_question": "What specific indicators will be used, and how will they be displayed to users?"
+    },
+    {
+      "requirement": "The system shall have a high availability target of 98%.",
+      "source_citation": "They're asking for ninety-eight percent availability.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the high availability target.",
+      "follow_up_question": "What specific measures will be taken to ensure this level of availability?"
+    },
+    {
+      "requirement": "The system shall degrade gracefully using async replication and caching layers.",
+      "source_citation": "We'd probably want some async replication and caching layers so searches feel fast and we can degrade gracefully.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for graceful degradation and specific technical measures.",
+      "follow_up_question": "What specific caching and replication strategies will be used?"
+    },
+    {
+      "requirement": "The system shall undergo load and chaos testing during pre-production.",
+      "source_citation": "we'd want load and chaos testing during pre-prod so we know how it behaves under stress and can tune autoscaling and circuit breakers.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for specific testing to ensure system resilience.",
+      "follow_up_question": "What specific testing tools and methodologies will be used?"
+    },
+    {
+      "requirement": "The system shall be designed as small, well-scoped services with clear contracts.",
+      "source_citation": "we should design this as a set of small, well-scoped services with clear contracts",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for specific architectural principles to ensure maintainability.",
+      "follow_up_question": "What specific service boundaries and contracts will be defined?"
+    },
+    {
+      "requirement": "The system shall support 1,500 concurrent users initially and scale to 10,000 users within two years.",
+      "source_citation": "For initial capacity planning the ask is to handle fifteen hundred concurrent users comfortably. And within two years, they want the platform to be capable of supporting up to ten thousand concurrent users as adoption ramps.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the initial and future scalability requirements.",
+      "follow_up_question": "What specific scaling strategies will be used to achieve this?"
+    },
+    {
+      "requirement": "The system shall use a read-optimized cache for searches and a reconciliation pipeline.",
+      "source_citation": "So if the feed is down, show the last-known-good snapshot and mark item ages. For claims auditing and final estimates, though, we need a reconciliation step so any stale parts are flagged. In practice, that means a read-optimized cache for searches and a reconciliation pipeline that revalidates parts during estimate finalization.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "data_consistency",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for specific data consistency measures.",
+      "follow_up_question": "What specific caching and reconciliation strategies will be used?"
+    },
+    {
+      "requirement": "The system shall provide structured logging and ship logs to corporate analytics.",
+      "source_citation": "The logs should be structured and ship to corporate analytics and long-term storage for retention policies.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "observability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for specific logging and observability measures.",
+      "follow_up_question": "What specific logging standards and analytics integrations will be used?"
+    },
+    {
+      "requirement": "The system shall sample high-volume diagnostic spans but reliably record semantic audit events.",
+      "source_citation": "The high-volume diagnostic spans can be sampled, but semantic audit events — estimate submissions, parts assigned to estimates, facility assignments, and user ratings of facilities — those must be reliably recorded and retained.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "observability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for specific observability and auditing measures.",
+      "follow_up_question": "What specific sampling and recording strategies will be used?"
+    }
+  ]
+}

@@ -1,0 +1,183 @@
+{
+  "transcript_file": "outputs/corpus-20260226_162106/transcript_6_re_novice_stakeholder_technical_junior_20260226_163609.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_182546",
+  "requirements": [
+    {
+      "requirement": "The system should complete routine interactions (e.g., saving a booking, loading a calendar view) within 5 seconds for 90% of tasks.",
+      "source_citation": "For routine interactions like saving a booking or loading a calendar view, I’d expect most of those to complete within about five seconds. For almost all tasks, say ninety percent, that feels right.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions performance targets for routine interactions, specifying a 5-second completion time for 90% of tasks. This is a clear performance requirement.",
+      "follow_up_question": "Can you provide specific examples of routine interactions and the expected completion times for each?"
+    },
+    {
+      "requirement": "The system should complete nearly all tasks (98%) within 8 seconds.",
+      "source_citation": "And for nearly everything, maybe ninety-eight percent, they should finish within about eight seconds.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a performance target for nearly all tasks, stating that 98% should complete within 8 seconds.",
+      "follow_up_question": "Are there any specific tasks that should be prioritized for meeting the 8-second completion time?"
+    },
+    {
+      "requirement": "The system should restrict access to company employees and pre-approved external collaborators.",
+      "source_citation": "Access control is important. It should be restricted to company people and maybe external collaborators who have been pre-approved.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of access control and specifies the types of users who should be allowed to access the system.",
+      "follow_up_question": "What is the process for approving external collaborators, and how is this access control enforced?"
+    },
+    {
+      "requirement": "Every login should map to an approved account with no exceptions.",
+      "source_citation": "Every login should map to an approved account. It should be one hundred percent of logons, no exceptions.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states that every login must be mapped to an approved account with no exceptions, indicating a strict security requirement.",
+      "follow_up_question": "What mechanisms are in place to ensure that all logins are mapped to approved accounts?"
+    },
+    {
+      "requirement": "The system should use TLS for web traffic and SMTP.",
+      "source_citation": "We use TLS for web traffic and for SMTP in our tests.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the use of TLS for web traffic and SMTP, indicating a security requirement for encrypted communication.",
+      "follow_up_question": "Are there any specific TLS versions or configurations that should be used?"
+    },
+    {
+      "requirement": "Exception logs and emails should include redaction rules and careful handling to protect PII.",
+      "source_citation": "Exception logs and emails need redaction rules and careful handling.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the need for redaction rules and careful handling of exception logs and emails to protect PII, indicating a security requirement.",
+      "follow_up_question": "What specific redaction rules and handling procedures should be implemented?"
+    },
+    {
+      "requirement": "The system should be compatible with modern browsers like Chrome and Edge, and should address layout issues in Internet Explorer with polyfills.",
+      "source_citation": "We build the front end with standard HTML, CSS and JavaScript, and it behaves well in modern browsers like Chrome and Edge. Internet Explorer has given us layout headaches and some features don't work right without polyfills.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions compatibility issues with different browsers and the need for polyfills to address layout issues in Internet Explorer.",
+      "follow_up_question": "What specific polyfills are required for Internet Explorer, and are there any other browsers that need special consideration?"
+    },
+    {
+      "requirement": "The system should aim to render correctly in at least 80% of the tested browser/version combinations.",
+      "source_citation": "Testing across about eight different browser/version combinations would give decent coverage, and we should expect most of them to display properly — maybe around eighty percent of that set.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a target of 80% success rate for rendering correctly across 8+ browser/version combinations.",
+      "follow_up_question": "What criteria will be used to determine if a browser/version combination is rendering correctly?"
+    },
+    {
+      "requirement": "The system should be up almost all the time, aiming for near four nines (99.99%) uptime.",
+      "source_citation": "Ideally it should be up almost all the time; unplanned outages are a big source of complaints. [...] near four nines.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a target uptime of near four nines (99.99%), indicating a high availability requirement.",
+      "follow_up_question": "What measures are in place to ensure and monitor the system's uptime?"
+    },
+    {
+      "requirement": "Exceptions should be logged with stack traces and context, and securely transmitted for analysis.",
+      "source_citation": "We log exceptions locally with our logging framework, including stack traces and context, and it'd be great if those could be packaged up and sent back to you for analysis.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for structured logging of exceptions and secure transmission for analysis, indicating a maintainability requirement.",
+      "follow_up_question": "What specific logging framework and secure transmission methods should be used?"
+    },
+    {
+      "requirement": "The system should be designed to handle around 1,000 concurrent requests initially, with a plan to double that by the next release.",
+      "source_citation": "We should design for around a thousand concurrent requests as a starting point, and plan to double that by the next release.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a target for concurrent requests and a plan for scaling, indicating a scalability requirement.",
+      "follow_up_question": "What specific measures will be taken to ensure the system can handle the planned increase in concurrent requests?"
+    },
+    {
+      "requirement": "The system should be OS-agnostic and run on any OS that can support a JRE or JDK.",
+      "source_citation": "We've been treating it as OS-agnostic because we don’t use native code, so as long as you can install a JRE or JDK you can run the server pieces.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the system's OS-agnostic nature and the requirement for a JRE or JDK, indicating a portability requirement.",
+      "follow_up_question": "Are there any specific OS environments that need to be prioritized for testing?"
+    },
+    {
+      "requirement": "The system should support multiple SMTP servers and authentication methods, including TLS, username/password, and other auth as required.",
+      "source_citation": "The app needs to be flexible enough to connect to different email servers and negotiate TLS, username/password or other auth as required.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "compatibility",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for flexibility in connecting to different email servers and supporting various authentication methods, indicating a compatibility requirement.",
+      "follow_up_question": "What specific SMTP servers and authentication methods should be supported?"
+    },
+    {
+      "requirement": "Users should be able to pick their preferred language in their profile or via a selector, with support for right-to-left layouts and date/time formats.",
+      "source_citation": "Users should be able to pick their preferred language in their profile or via a selector. [...] We need to watch out for right-to-left layouts and date/time formats.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "localization",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for user-selected language preferences and support for right-to-left layouts and date/time formats, indicating a localization requirement.",
+      "follow_up_question": "What specific languages and date/time formats should be supported initially?"
+    },
+    {
+      "requirement": "The system should define and perform acceptance tests for performance, concurrency, browser compatibility, and uptime.",
+      "source_citation": "We should define acceptance tests — like scripted load tests and a browser matrix — and pick tooling.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "testing",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for defining and performing acceptance tests for various non-functional aspects, indicating a testing requirement.",
+      "follow_up_question": "What specific tools and criteria will be used for these acceptance tests?"
+    },
+    {
+      "requirement": "The system should handle a recurring booking collision bug when a user changes their timezone mid-process.",
+      "source_citation": "Oh, and one tiny aside — I ran into a weird bug last week where a recurring booking collided if someone changed a timezone on their profile mid-process.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "other",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions a specific bug related to timezone changes affecting recurring bookings, indicating an edge case that needs to be addressed.",
+      "follow_up_question": "What steps are needed to reproduce and fix this bug?"
+    }
+  ]
+}

@@ -1,0 +1,150 @@
+{
+  "transcript_file": "outputs/corpus-20260226_162106/transcript_6_re_experienced_stakeholder_technical_senior_20260226_163638.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_183016",
+  "requirements": [
+    {
+      "requirement": "The system must handle at least 1,000 concurrent requests on day one and scale to approximately double that in the next major release.",
+      "source_citation": "We need capacity for about a thousand concurrent requests to be safe on day one... and roughly double that in the next major release.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for handling a specific number of concurrent requests and the need to scale for future releases. However, the exact scaling mechanism or architecture is not detailed.",
+      "follow_up_question": "What specific scaling mechanisms or architectures are preferred or required to achieve this scalability?"
+    },
+    {
+      "requirement": "The system must support Java 11 and 17, with preference for vendor certification for at least one LTS version and compatibility guarantees for the other.",
+      "source_citation": "We'd prefer support for current LTS Java versions; my ops team has standardized around Java 11 and is evaluating Java 17, so supporting those two would be ideal.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 4,
+      "rationale": "The stakeholder clearly states the preferred Java versions and the importance of compatibility and certification.",
+      "follow_up_question": "Are there any specific Java features or APIs that must be supported in these versions?"
+    },
+    {
+      "requirement": "The system must be deployable in both Tomcat and JBoss scenarios without requiring server-specific hacks.",
+      "source_citation": "The app should be deployable in both [Tomcat and JBoss] scenarios without requiring server-specific hacks.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for compatibility with different application servers and the avoidance of server-specific hacks.",
+      "follow_up_question": "Are there any specific features or configurations in Tomcat and JBoss that must be supported?"
+    },
+    {
+      "requirement": "The system must support Oracle, PostgreSQL, and MSSQL databases with failover awareness and connection pooling.",
+      "source_citation": "The product should be DB-agnostic as much as feasible, meaning support for [Oracle, PostgreSQL, MSSQL].",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 4,
+      "rationale": "The stakeholder clearly states the required database systems and the need for failover awareness and connection pooling.",
+      "follow_up_question": "Are there any specific database features or configurations that must be supported?"
+    },
+    {
+      "requirement": "Routine operations must complete in ≤5 seconds (90th percentile) and ≤8 seconds (99th percentile).",
+      "source_citation": "For the routine stuff — looking up availability, quick calendar views — if users wait more than about five seconds it interrupts their flow and support tickets spike. So small, common operations need to be snappy. For less frequent, heavier tasks, we'd accept a bit longer, but most day-to-day tasks should meet that shorter threshold.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the performance requirements for routine operations and the acceptable response times.",
+      "follow_up_question": "What specific operations are considered routine, and what are the acceptable response times for non-routine operations?"
+    },
+    {
+      "requirement": "The system must achieve 99.99% uptime (four nines) on a monthly basis with redundancy through clustering and load balancers.",
+      "source_citation": "We need an aggressive availability target... four nines or better on a monthly basis. Planned maintenance needs to be scheduled and communicated. And yes, if a physical server dies we have to assume that could be an outage, but the software architecture should tolerate node failures through redundancy.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder clearly states the uptime requirement and the need for redundancy to achieve it.",
+      "follow_up_question": "What specific redundancy mechanisms or architectures are preferred or required to achieve this availability?"
+    },
+    {
+      "requirement": "The system must provide structured exception logging with context (request IDs, user or tenant context, timestamps, server instance identifiers, stack traces) and scrub logs of PII before transmission.",
+      "source_citation": "We need structured exception logging with context — request IDs, user or tenant context, timestamps, server instance identifiers, and stack traces where appropriate. Also, logs must be scrubbed of PII before any transmission.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for structured exception logging with specific context and the requirement to scrub logs of PII.",
+      "follow_up_question": "What specific PII elements must be scrubbed from logs, and what is the preferred format for structured logging?"
+    },
+    {
+      "requirement": "The system must support at least eight representative browsers (including Chrome, Edge, Firefox, Safari, and mobile variants) with around 80% compatibility.",
+      "source_citation": "We need wide browser compatibility... aiming for around eighty percent compatibility measured across a set of at least eight representative browsers.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder clearly states the need for wide browser compatibility and the specific compatibility target.",
+      "follow_up_question": "What specific browsers and versions must be supported, and what is the exact compatibility metric?"
+    },
+    {
+      "requirement": "The system must support per-user and per-tenant language selection with initial support for English, Spanish, and French.",
+      "source_citation": "Users should be able to pick their preferred language; tenants should also be able to set defaults for their organization.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for language selection at both user and tenant levels and the initial languages to be supported.",
+      "follow_up_question": "What additional languages will be required in future releases, and what is the process for adding new languages?"
+    },
+    {
+      "requirement": "The system must comply with WCAG 2.1 Level AA for accessibility, including keyboard navigation, ARIA roles, color contrast, and screen reader compatibility.",
+      "source_citation": "We need ADA compliance, which practically means implementing WCAG conformance. Targeting WCAG 2.1 level AA is a reasonable and defensible goal that covers the common requirements we get audited against.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder clearly states the accessibility requirements and the specific WCAG conformance level.",
+      "follow_up_question": "What specific assistive technologies must be supported for accessibility testing?"
+    },
+    {
+      "requirement": "The system must support SSO via SAML, OAuth flows for integrations, TLS encryption, RBAC, and secure defaults with the ability to rotate credentials and certificates.",
+      "source_citation": "SSO via SAML is the primary requirement, with an option for OAuth flows for integrations. TLS must be enforced everywhere; DB connections should be secured.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the security requirements, including authentication, encryption, and access control.",
+      "follow_up_question": "What specific RBAC roles and permissions are required, and what is the process for credential rotation?"
+    },
+    {
+      "requirement": "The system must support load tests that simulate realistic user behavior, including peak bursts, and achieve the specified performance SLAs.",
+      "source_citation": "For concurrency and performance, we require load tests that simulate realistic user behavior including peak bursts.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "testability",
+      "confidence": 4,
+      "rationale": "The stakeholder clearly states the need for load testing to simulate realistic user behavior and achieve performance SLAs.",
+      "follow_up_question": "What specific load testing tools or methodologies are preferred or required?"
+    },
+    {
+      "requirement": "The system must support structured exception logging with context and secure transmission to the vendor's support system for deeper cause analysis.",
+      "source_citation": "We want those logs to be exportable to our analysis endpoint — either pushed in near-real-time or batched — so our team can triage issues centrally. If we don't get good logs, debugging takes days.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for structured exception logging and secure transmission for analysis.",
+      "follow_up_question": "What specific log formats or schemas are preferred, and what is the process for transmitting logs to the vendor's support system?"
+    }
+  ]
+}

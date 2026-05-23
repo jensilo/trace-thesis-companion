@@ -1,0 +1,293 @@
+{
+  "transcript_file": "outputs/corpus-20260226_162106/transcript_3_re_novice_stakeholder_technical_junior_20260226_162443.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_182444",
+  "requirements": [
+    {
+      "requirement": "The system should respond to small tasks like viewing or editing a student record in five seconds or less.",
+      "source_citation": "For small things like viewing or editing a student record, it should be nearly instantaneous — maybe only a few seconds tops. [...] I’d say about five seconds or less for the small stuff",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions a time frame for small tasks, indicating a clear performance expectation. The exact number (five seconds) is provided later in the conversation, increasing confidence.",
+      "follow_up_question": "Are there any specific small tasks that should be prioritized for performance optimization?"
+    },
+    {
+      "requirement": "The system should generate a full schedule for a cohort in under a minute.",
+      "source_citation": "For generating a full schedule for a cohort, it can take longer but should still finish pretty quickly — on the order of seconds to under a minute. [...] schedule generation should ideally finish in half a minute or so.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a time frame for schedule generation, with a more precise target (half a minute) mentioned later. This indicates a clear performance expectation.",
+      "follow_up_question": "What are the most time-sensitive aspects of schedule generation that should be optimized?"
+    },
+    {
+      "requirement": "The system should run long-running tasks in the background and notify users upon completion.",
+      "source_citation": "If it’s going to be long, running it in the background and notifying when done is fine.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 3,
+      "rationale": "The stakeholder suggests a strategy for handling long-running tasks, implying a performance expectation for such tasks.",
+      "follow_up_question": "What specific notifications should be sent for long-running tasks, and how should users be notified?"
+    },
+    {
+      "requirement": "The system should be reliable during business hours, with a target of 95% uptime.",
+      "source_citation": "We need it to be reliable during our working day; if it goes down during schedule release week, people panic. [...] I’ve heard a target of something like ninety-five percent uptime mentioned in meetings.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions a target uptime percentage and emphasizes the importance of reliability during business hours.",
+      "follow_up_question": "What specific measures should be taken to ensure 95% uptime during business hours?"
+    },
+    {
+      "requirement": "The system should support maintenance outside of business hours with planned notice.",
+      "source_citation": "Maintenance outside business hours is fine as long as it’s planned and we give notice.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 3,
+      "rationale": "The stakeholder explicitly mentions the need for planned maintenance outside of business hours with notice.",
+      "follow_up_question": "What is the expected notice period for planned maintenance, and how should it be communicated?"
+    },
+    {
+      "requirement": "The system should have monitoring and alerts for emergency outages.",
+      "source_citation": "Short emergency outages are expected sometimes, but we should have monitoring and alerts so we react quickly.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for monitoring and alerts to react quickly to emergency outages.",
+      "follow_up_question": "What specific monitoring and alert mechanisms should be implemented?"
+    },
+    {
+      "requirement": "The system should have a read-only fallback for students in case of system degradation.",
+      "source_citation": "Also a read-only fallback for students would be useful if the system degrades.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 3,
+      "rationale": "The stakeholder suggests a read-only fallback as a strategy for handling system degradation.",
+      "follow_up_question": "What specific functionality should be included in the read-only fallback?"
+    },
+    {
+      "requirement": "The system should handle typical day traffic without slowdowns, including spikes in read-only accesses.",
+      "source_citation": "We should design so the system handles that typical day traffic without slowdowns. [...] Students hit it when schedules post, so we might see a spike of many read-only accesses — that could be higher.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need to handle typical day traffic and spikes in read-only accesses without slowdowns.",
+      "follow_up_question": "What specific measures should be taken to ensure the system can handle spikes in read-only accesses?"
+    },
+    {
+      "requirement": "The system should integrate with SSO for identities and use role-based access control.",
+      "source_citation": "We should integrate with SSO for identities, use role-based access control, and log access.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for SSO integration and role-based access control.",
+      "follow_up_question": "What specific SSO and role-based access control mechanisms should be implemented?"
+    },
+    {
+      "requirement": "The system should follow DePaul’s information policy for protecting private data, including encryption in transit and at rest.",
+      "source_citation": "Follow DePaul’s information policy for protecting private data — encrypt in transit and at rest, that sort of thing.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need to follow DePaul’s information policy for protecting private data, including encryption standards.",
+      "follow_up_question": "What specific encryption standards and data protection measures should be implemented?"
+    },
+    {
+      "requirement": "The system should have HIPAA-like controls if any PHI ends up in notes.",
+      "source_citation": "If any PHI ends up in notes, we may need HIPAA-like controls, but I’m not the policy owner.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 2,
+      "rationale": "The stakeholder mentions the potential need for HIPAA-like controls but is not the policy owner, indicating some uncertainty.",
+      "follow_up_question": "What specific HIPAA-like controls should be implemented if PHI is present in notes?"
+    },
+    {
+      "requirement": "The system should have basic validations on the front end, such as required fields and proper formats.",
+      "source_citation": "Basic validations on the front end like required fields and proper formats...",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "data_integrity",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for basic validations on the front end to ensure data integrity.",
+      "follow_up_question": "What specific validations should be implemented on the front end?"
+    },
+    {
+      "requirement": "The system should have backend checks to prevent orphaned records.",
+      "source_citation": "Basic validations on the front end like required fields and proper formats, and backend checks to prevent orphaned records.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "data_integrity",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for backend checks to prevent orphaned records, indicating a data integrity concern.",
+      "follow_up_question": "What specific backend checks should be implemented to prevent orphaned records?"
+    },
+    {
+      "requirement": "The system should have a validation pass for imports that reports bad rows and allows an admin to fix them before committing.",
+      "source_citation": "For imports, a validation pass that reports bad rows and lets an admin fix them before committing would save a ton of headaches.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "data_integrity",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for a validation pass for imports to ensure data integrity.",
+      "follow_up_question": "What specific validation rules should be applied during the validation pass?"
+    },
+    {
+      "requirement": "The system should have sanity checks, such as ensuring site capacities aren't negative and students referenced in an import actually exist in CampusConnect.",
+      "source_citation": "Also sanity checks like ensuring site capacities aren't negative and students referenced in an import actually exist in CampusConnect.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "data_integrity",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions specific sanity checks to ensure data integrity.",
+      "follow_up_question": "What other sanity checks should be implemented to ensure data integrity?"
+    },
+    {
+      "requirement": "The system should have transactional imports for critical data, allowing all-or-nothing commits.",
+      "source_citation": "I think transactional imports are safer for critical data — all-or-nothing — but for some large feeds a partial commit with an error report might be more practical.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "data_integrity",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for transactional imports for critical data to ensure data integrity.",
+      "follow_up_question": "What specific data should be considered critical and require transactional imports?"
+    },
+    {
+      "requirement": "The system should support both transactional and partial commits for imports, giving the admin a choice.",
+      "source_citation": "I think transactional imports are safer for critical data — all-or-nothing — but for some large feeds a partial commit with an error report might be more practical. We should support both modes or at least give the admin a choice.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "data_integrity",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need to support both transactional and partial commits for imports, indicating a data integrity concern.",
+      "follow_up_question": "What specific criteria should be used to determine when to use transactional versus partial commits?"
+    },
+    {
+      "requirement": "The system should have a UI that is straightforward and includes quick-start guides and an admin sandbox.",
+      "source_citation": "The UI needs to be straightforward and we should have quick-start guides and maybe an admin sandbox.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for a straightforward UI with quick-start guides and an admin sandbox.",
+      "follow_up_question": "What specific features should be included in the quick-start guides and admin sandbox?"
+    },
+    {
+      "requirement": "The system should have role-based access control to ensure users only see what they are authorized to see.",
+      "source_citation": "Not everyone should see everything... Program admins need full access, clinical site coordinators should see their own details, and students should only see what pertains to them.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for role-based access control to ensure users only see what they are authorized to see.",
+      "follow_up_question": "What specific roles and access levels should be defined for the system?"
+    },
+    {
+      "requirement": "The system should keep versions of curriculum rules tied to terms for audits and student progression disputes.",
+      "source_citation": "We need versioning for curriculum rules because those change over time. [...] keep versions tied to terms so we can see what rules applied when a cohort progressed.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for versioning of curriculum rules tied to terms for audits and student progression disputes.",
+      "follow_up_question": "What specific versioning mechanism should be implemented for curriculum rules?"
+    },
+    {
+      "requirement": "The system should handle a peak of around ten concurrent admin users during schedule release.",
+      "source_citation": "The big load is during schedule release and a few people working simultaneously; I mentioned maybe ten concurrent admin users at peak.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need to handle a peak of around ten concurrent admin users during schedule release.",
+      "follow_up_question": "What specific measures should be taken to ensure the system can handle ten concurrent admin users?"
+    },
+    {
+      "requirement": "The system should handle spikes of read-only accesses from students when schedules are posted.",
+      "source_citation": "Students hit it when schedules post, so we might see a spike of many read-only accesses — that could be higher.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need to handle spikes of read-only accesses from students when schedules are posted.",
+      "follow_up_question": "What specific measures should be taken to ensure the system can handle spikes of read-only accesses?"
+    },
+    {
+      "requirement": "The system should integrate with CampusConnect for rosters and scheduling updates, using an authenticated API or SSO integration.",
+      "source_citation": "CampusConnect is the authoritative student and course system; we should pull rosters from it and push scheduling updates back. [...] Ideally it’s an authenticated API or SSO integration — whatever central IT supports.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "interoperability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for integration with CampusConnect using an authenticated API or SSO integration.",
+      "follow_up_question": "What specific authentication and API mechanisms should be used for integration with CampusConnect?"
+    },
+    {
+      "requirement": "The system should plan for both a near-real-time API and a fallback nightly file feed for integration with CampusConnect.",
+      "source_citation": "We should plan for both a near-real-time API and a fallback nightly file feed.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "interoperability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need to plan for both a near-real-time API and a fallback nightly file feed for integration with CampusConnect.",
+      "follow_up_question": "What specific mechanisms should be implemented for the near-real-time API and the fallback nightly file feed?"
+    },
+    {
+      "requirement": "The system should have clear conflict resolution rules when CampusConnect data and local edits disagree.",
+      "source_citation": "We need clear conflict resolution rules when CampusConnect data and our edits disagree.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "interoperability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for clear conflict resolution rules when CampusConnect data and local edits disagree.",
+      "follow_up_question": "What specific conflict resolution rules should be implemented?"
+    },
+    {
+      "requirement": "The system should follow DePaul’s information policy for protecting private data, including encryption standards, retention, and audit log requirements.",
+      "source_citation": "We should get that policy early because it will dictate encryption standards, retention, and audit log requirements.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "compliance",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need to follow DePaul’s information policy for protecting private data, including encryption standards, retention, and audit log requirements.",
+      "follow_up_question": "What specific encryption standards, retention policies, and audit log requirements should be implemented?"
+    }
+  ]
+}

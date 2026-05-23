@@ -1,0 +1,142 @@
+Interviewer: Thanks for meeting with me. Can you start by telling me about your role and a typical day — what you do that this new system must support?
+
+Stakeholder: Sure — I’m an adjuster, I think… well, mostly I handle the intake and estimates for collision claims. I hop between the office and the field a lot — some days I’m at my desk running through a queue, other days I’m at a tow yard or a repair shop on a tablet or my phone. My day is basically: inspect the car, document damage, look up parts and prices, pick a shop, and wrap up the estimate so the repairs can start. It’s… it’s a lot of little steps and if any one of them is clunky I lose time.
+
+Interviewer: You mentioned hopping between office and field — how often are you in the field versus the office, and which devices do you typically use out there?
+
+Stakeholder: Hmm, rough guess — maybe half my week in the field during busy periods. And devices — I usually have a laptop in the office, and on site I use whatever company tablet they handed me, sometimes my phone if it’s urgent. I’m not a tech person, but screens should be readable in sunlight and not feel awkward on a tablet.
+
+Interviewer: What are the current tools you use for parts search and shop selection, and what frustrates you most about them?
+
+Stakeholder: Right now it’s a mix — an older parts lookup site, emails with vendors, and our internal estimate app. The worst bit is jumping between them. If I search parts and the inventory is stale, I waste time calling shops. And some tools are slow or just look different from our usual corporate apps, so people resist using them. Oh, and we have to cross-check with that Choice Parts feed — if it doesn’t show up correctly, I get duplicate work.
+
+Interviewer: When you say “slow” — what does slow feel like to you? How long is too long when you’re searching for a part or a shop?
+
+Stakeholder: Slow... I mean, I don’t want to be waiting with a customer while something crawls. For parts, if it takes more than, like, a few seconds I start checking my phone. For shops, I just need that list quick so the conversation keeps flowing. I guess put a number on that? Maybe somewhere around ten-ish seconds for a parts search? — I’m not precise on this, but I’d say double-digit seconds feels long on the roadside.
+
+Interviewer: Can you put a harder number on “few seconds” for parts and on “quick” for shops? It helps me write measurable acceptance criteria.
+
+Stakeholder: Okay, if you need specifics — for parts search, I’d expect results back within 15 seconds on my tablet. And for finding preferred repair shops, I’d be unhappy if it was slower than about 8 seconds.
+
+Interviewer: That’s helpful — thank you. You mentioned Choice Parts earlier; can you describe how you expect that to be used in your workflow?
+
+Stakeholder: Yeah, so Choice Parts is the source of recycled parts info we trust. When I search for parts as part of an estimate, the system should pull the available recycled parts from Choice Parts — pricing, location, and fit info — so I don’t have to go to Choice Parts separately. If that feed is missing or stale, it throws everything off; I want to know quickly if the feed is down, and ideally see cached results so I can at least keep working.
+
+Interviewer: When the feed is unavailable, you said “cached results” — what would be acceptable behavior? Show older data, let you enter parts manually, or something else?
+
+Stakeholder: Ideally show the most recent cached inventory with a clear note that it’s cached and when it was last updated. And let me manually add a part to the estimate if I need to, but mark it as manually entered so someone can reconcile later. I don’t want it to block me in the field.
+
+Interviewer: Earlier you said people resist new tools that look different from corporate apps. How important is compliance with your company’s UI standards, and can you point me to those guidelines?
+
+Stakeholder: It’s pretty important. If the layout, fonts, and buttons feel familiar, training is easier and people trust it. I can’t remember the exact guideline name off the top of my head, but there is a corporate UI team — I can get you their contact and the style guide. Also, accessibility matters; make sure text sizes are adjustable so older colleagues can read on a tablet.
+
+Interviewer: Speaking of training — how long do you feel the team should need to get up to speed on this system?
+
+Stakeholder: We don’t need weeks. Hands-on, face-to-face training works best for us. I’d say two days of practical onsite training should be enough for my team to be comfortable. We don’t want long theory sessions, just get in, run a few real claims, and we’ll be fine.
+
+Interviewer: Two days — is that per user or per trainer session? And what would be the must-have outcomes from those two days?
+
+Stakeholder: Two days per cohort, I guess — like small groups brought through. By the end, trainees should be able to complete an end-to-end claim: inspect, search for recycled parts, pick a shop, attach parts to the estimate, and submit for payment. If they can do that without help, training worked.
+
+Interviewer: You also mentioned finding help while using the product — what does “obvious” help look like to you during a task?
+
+Stakeholder: I want help where I’m doing the work. Tooltips or a help icon that explains the current screen, maybe short how-to videos or a guided walkthrough the first time you use a feature. Mostly, it should be obvious — like, maybe 9 out of 10 times I should be able to find help right from the screen I’m on. I don’t want to dig through a separate manual.
+
+Interviewer: Can you be precise about that ratio — when you say 9 out of 10, is there a target we should aim for?
+
+Stakeholder: Sure — make it so help is discoverable from about 90% of the screens where a user might be stuck. That feels reasonable.
+
+Interviewer: Let’s talk about selecting repair facilities. How do you define a “preferred” repair facility?
+
+Stakeholder: Preferred shops are the ones my company likes to work with — they may be on a company-approved list, or I might have favorites from past good experiences. It’d be great if the system surfaces company-wide preferred shops first, then my personal favorites or ones that showed good recycled-parts usage. Distance matters too — if I’m on site, I need to see proximity, estimated turnaround, and whether they’ve used recycled parts successfully before.
+
+Interviewer: Do you expect automatic geolocation from the vehicle or device when searching for nearby shops? Any concerns about privacy or consent?
+
+Stakeholder: Yeah, automatic geolocation is handy — but it should ask for permission, obviously. We do some inspections at customers’ homes, so privacy matters; but most of the time we’re using company devices with location turned on. Just make sure it’s clear and that the location is only used for the search.
+
+Interviewer: On shop ratings and recycled-parts performance — how would you like to rate or tag a facility when they use recycled parts? Who should be able to rate them?
+
+Stakeholder: I think ratings should be simple and quick — something like a star or thumbs-style thing tied to a job, and a short note if something went wrong. Ideally only adjusters and collision estimators from my company can rate shops for our internal view. Managers might see aggregated scores, but I don’t want shops poking around our internal reasons for a low score unless that’s part of a formal feedback process.
+
+Interviewer: About audits — how should recycled parts usage be recorded so it’s auditable later?
+
+Stakeholder: Every time I pick a recycled part, it should be tagged to the estimate with the supplier name, the part ID (from Choice Parts), and a short reason if we chose it over new. If the estimator or I override a suggestion, there should be a field to explain. That way QA or audits can trace back the decision. And those audit logs should show who changed what and when.
+
+Interviewer: You mentioned earlier “not wanting to see other companies’ claims.” What would happen if that occurred, and how strict does separation need to be?
+
+Stakeholder: That would be a nightmare — a compliance and privacy fail. I don’t want to even accidentally stumble on another insurer’s claim. So access controls need to be strict: when I log in, I should only see my company’s claims. I’m not technical, but separate logins and permissions that prevent cross-company viewing is essential. If you need specifics on how to do it, our security folks can tell you, but from my side it has to be impossible in normal use.
+
+Interviewer: When you say “impossible in normal use,” do you mean separate accounts per company, or are you fine with a single login that’s scoped to the company?
+
+Stakeholder: I’m fine with either as long as the effect is the same: I can’t view other companies’ data. Single sign-on that maps me to my company is fine, as long as it’s locked down.
+
+Interviewer: How tolerant is the business for downtime? What happens when the system is unavailable during working hours?
+
+Stakeholder: If it’s down when I’m at a shop, I’m slowed or stuck — calls get made, estimates are delayed, customers wait. We need it to be available during our busiest hours and not go down often. If it’s going to be down for maintenance, tell us in advance. Uh, can you be specific on uptime? I don’t know the technical wording.
+
+Interviewer: Can you give me a target for availability that your team would consider acceptable? For example, what percentage of time should the system be up?
+
+Stakeholder: Okay, if you need a number, we’d expect it to be almost always available — say around ninety‑eight percent of the time. Anything noticeably less and we’ll see real trouble in operations.
+
+Interviewer: Thanks. On security more broadly — you mentioned you want logs. What should those logs show to be useful for you and auditors?
+
+Stakeholder: The logs should show who did what and when — like if someone added a part, changed a rating, or edited an estimate. If an adjuster goes back and edits a recycled-part selection, the reason should be recorded. For audits, managers need to pull reports of exceptions and who made the call.
+
+Interviewer: Are there any threat concerns you want to call out — for example, denial of service attacks or unauthorized access from public networks?
+
+Stakeholder: Yeah, honestly I don’t want our system knocked offline by a malicious attack because we’re on a public network at a shop. I’m not sure of the tech, but I expect protections against that kind of thing. Also, if there’s suspicious activity, someone should be watching and we should get notified.
+
+Interviewer: When you say “someone should be watching,” do you have a security contact or team that should receive such alerts?
+
+Stakeholder: Yes, our corporate security team handles that. I can get you their contact. But from a user perspective, we’d like to see a simple notification if something affects our access, and a public status page would be nice so we know whether it’s an outage or just our connection.
+
+Interviewer: Let’s touch on performance again. Earlier you said 15 seconds for parts searches and about 8 seconds for shop searches. Are those targets expected across office Wi‑Fi and mobile networks, or only in the office?
+
+Stakeholder: Good point — I expect the 8 and 15 seconds mostly on mobile data too. Obviously Wi‑Fi will be faster, but if I’m on 4G at a parking lot I still want those numbers to be realistic. I understand mobile is variable, but the app should be optimized for both.
+
+Interviewer: If a search is taking longer than those targets, how should the UI behave so you can keep working?
+
+Stakeholder: Show a clear progress indicator and let me continue other tasks, maybe fill out notes. If it times out, give me cached results and an option to retry. Don’t just freeze or throw a technical error.
+
+Interviewer: Who else should be involved in future interviews or provided as contacts — for Choice Parts integration, corporate UI, or security?
+
+Stakeholder: Definitely get the Choice Parts contact — they have the feed. The corporate UI team I mentioned, and our security lead. Also maybe a regional collision estimator — they’re the ones in the field most days and will have good feedback. I can give you names.
+
+Interviewer: For reporting needs — what reports do you need about recycled parts and shop performance, and in what formats?
+
+Stakeholder: I want monthly summaries showing how often shops used recycled parts, rates of fit/quality issues, and any rework cases tied to recycled parts. Managers like PDFs for meetings, but we also want raw CSVs for deeper analysis. Dashboards showing trends would be useful too.
+
+Interviewer: How long should records be retained for compliance or audit purposes?
+
+Stakeholder: Hmm, I think legal expects several years, but I’ll need to check. Let me get back to you with the exact retention period — I’m not comfortable guessing on that.
+
+Interviewer: Earlier you said training should be two days and help should be available on about 90% of screens — I’ll reference those. Which three items from everything we discussed are non-negotiable for you on day one?
+
+Stakeholder: On day one? Get the parts search tied to Choice Parts and make it quick so I can do estimates without leaving the app. Second, make sure I can’t see other companies’ claims — that’s huge. Third, make help obvious and give us two days of hands-on training so people don’t panic when it’s rolled out. If those are handled, the rest we can improve over time.
+
+Interviewer: That’s clear. A couple of quick follow-ups before we wrap: can you provide sample claims and some typical VINs for testing? And can you share the corporate UI guideline contact and the Choice Parts integration contact?
+
+Stakeholder: Yeah, I can send sample claims and VINs. I’ll also send the UI team contact and the Choice Parts person — they’ll give you the feed spec. Oh, and one small tangent — coffee in the break room is terrible these days, so if devs are onsite, tell them to bring good coffee. Sorry, I know that’s not relevant, I just remembered.
+
+Interviewer: (chuckles) Noted. Final question: how would you like to be involved in validation — demos, usability testing, pilot rollout?
+
+Stakeholder: I want to be hands-on with a pilot group — let a small team use it in the field for a couple of weeks, then gather feedback. I’ll run usability tests with them and we can iterate. Demos are fine, but real-world use catches the weird stuff.
+
+Interviewer: Great. Thanks — you’ve given me exactly the kind of practical detail we need. I’ll follow up for the contacts and the sample data, and we’ll schedule a session with your regional estimator for a field demo.
+
+Stakeholder: Sounds good. If you get stuck on anything, ask the Choice Parts people first — they speak my language. And, uh, tell your devs to test on a real tablet in bright sunlight — the screen glare kills half the buttons otherwise.
+
+Interviewer: I will. Thank you for your time and the very practical suggestions.
+
+---
+Selected Requirements:
+1. [NICE.csv line 206] [quality, operability] 'The product shall interface with the Choice Parts System. This provides the feed of recycled parts data.'
+2. [NICE.csv line 209] [quality, legal, look_and_feel] 'The product shall comply with corporate User Interface Guidelines'
+3. [NICE.csv line 212] [quality, usability] 'The product shall be easy to use by Adjusters and Collision Estimators. 95% of Adjusters and Collision Estimators shall find the product easy to use.'
+4. [NICE.csv line 215] [quality, usability] 'The product shall be easy to learn by Adjusters and Collision Estimators. The product shall be learned with two days onsite training'
+5. [NICE.csv line 216] [quality, look_and_feel, usability] 'The user shall easily locate instructions while using the product. User help can be found within 90% of the system.'
+6. [NICE.csv line 217] [quality, performance] 'The search for recycled parts shall take no longer than 15 seconds. The search results shall be returned in under 15 seconds.'
+7. [NICE.csv line 218] [quality, performance] 'The search for the preferred repair facility shall take no longer than 8 seconds. The preferred repair facility is returned within 8 seconds'
+8. [NICE.csv line 222] [quality, availability, fault_tolerance] 'The product shall achieve a 98% uptime. The product shall not fail more than 2% of the available online time.'
+9. [NICE.csv line 235] [quality, security] 'One insurance company shall not be able to view another insurance companys claim data.'
+10. [NICE.csv line 237] [quality, security] 'The system shall prevent malicious attacks including denial of service.'

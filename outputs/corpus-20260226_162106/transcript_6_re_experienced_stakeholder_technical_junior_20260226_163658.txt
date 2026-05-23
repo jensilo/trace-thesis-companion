@@ -1,0 +1,162 @@
+Interviewer: Thanks for making time. To start, tell me about your role on this project and what parts you've been hands-on with lately.
+
+Stakeholder: Sure—I've been on the team about a year. Mostly I've been building the booking UI and wiring it to the backend APIs. I also help with the staging deployments, so I touch the Tomcat instance on our Linux box quite a bit. I think my responsibilities are pretty split between front-end work and the occasional backend bugfix. Oh, and I sometimes help triage DB migrations when we roll them out to staging.
+
+Interviewer: You mentioned staging on Tomcat and Linux. Where are we in terms of environments — dev, staging, production — and who owns ops for production?
+
+Stakeholder: Dev and staging are under our team; dev runs locally and in a shared CI environment, staging is the Tomcat on Linux I mentioned. Production is, um, still a little fuzzy — ops has said they might move us to a JBoss cluster or a container platform, but we haven't gotten the final word. So for now we're deploying WARs to Tomcat in staging while product and ops figure out what prod looks like.
+
+Interviewer: When you say "a JBoss cluster or container platform," what specifically does ops need that Tomcat doesn't give them?
+
+Stakeholder: Well, ops has talked about features like built-in clustering and management consoles, plus some of their automation scripts assume JBoss. To be honest, we chose Tomcat because it's lightweight and easy to run in dev. But I worry that we rely on a few Tomcat specifics in our startup scripts and context config, and switching to JBoss might require changes. Also, containers came up because they want reproducible deploys — Docker images, and maybe Kubernetes later.
+
+Interviewer: Okay — so your current build or runtime assumes a Java webapp model. When you say "Java webapp," which Java versions have you actually tested against?
+
+Stakeholder: Right now we've tested on Java 8 in CI and on Java 11 in staging. I think the codebase compiles fine on both; some library transitive deps complained on older JVMs, so we tidied those up. We haven't tried Java 17 yet. Honestly, I'd like the app to be runnable on any OS where a supported JVM can be installed, so Windows, Linux, maybe macOS for dev, and containers in prod, but we need to agree which Java versions and OS combos will be officially supported.
+
+Interviewer: When you say "any OS where a supported JVM can be installed," can you put a number on the Java versions we should guarantee? Which ones did you just name as tested?
+
+Stakeholder: I can be concrete here — we've tested on Java 8 and Java 11. If we want a support matrix, I'd propose those two as minimum supported runtimes for now; we can add Java 17 later if product wants it. Does that help?
+
+Interviewer: Yes, that's helpful. Earlier you mentioned scripts and Tomcat specifics might cause issues moving to JBoss or containers. Which Tomcat features or configuration patterns are you relying on that could block a move?
+
+Stakeholder: We use the standard servlet context and a few Valve configurations for logging and request size limits. Also our deployment pipeline drops a WAR and a couple of OS-level scripts get executed, like shell scripts for environment setup. Those scripts are tied to Linux paths right now, so moving to a Windows host or into container images would mean reworking them. And one more thing: we rely on the default session handling in Tomcat; if ops wants session replication across nodes, we'll need to add sticky sessions or session persistence.
+
+Interviewer: Noted. Let's move to data storage. You said you assist with DB migrations — which databases have you been testing against, and how portable is the schema?
+
+Stakeholder: We tried to make it portable by using Hibernate/JPA so the ORM hides a lot of dialect differences. In reality, we've only run full tests on PostgreSQL and MySQL. Switching to Oracle or SQL Server tends to reveal quirks — like certain DDL or index hints that don't translate, or differences in how booleans and timestamps are handled. So while the approach is database-agnostic in intent, the practical truth is we've only validated a couple of engines.
+
+Interviewer: When you say "a couple," can you be specific which ones are validated and which are untested?
+
+Stakeholder: Validated are PostgreSQL and MySQL. Untested in our pipelines are Oracle and SQL Server, and we haven't tried cloud-managed DBs like Azure SQL or Amazon RDS specifics beyond basic connectivity. We also expect the DB drivers to be supplied via configuration — ops should be able to drop the driver jar and point to the datasource URL.
+
+Interviewer: You mentioned dialect issues and differences in types. Are there any places in code where you knowingly use vendor-specific SQL, or is it all through JPA?
+
+Stakeholder: Mostly through JPA and Criteria API, but there are a couple of hand-rolled queries for reporting and for the search index that use native SQL. I think those are the places most likely to break when moving DBs. We should mark them for review if we target a new DB.
+
+Interviewer: Good. Now, frontend compatibility: you said the UI is standard HTML5/CSS/JS. How wide a browser matrix have you tested so far?
+
+Stakeholder: We've focused on modern browsers — current Chrome and Firefox on desktop, and Safari on Mac. Edge's latest version we've checked casually. We haven't invested in a formal compatibility matrix, so older browsers like IE11 or some corporate kiosk browsers haven't been fully tested. That's been a pain because of some users in procurement who still use old setups.
+
+Interviewer: When you say "haven't been fully tested," what should "fully" mean? There's been language in product about testing a minimum number of browsers and a pass percentage — what would you consider acceptable for launch?
+
+Stakeholder: Hmm, let me think. I remember product saying we should test a set of browsers and hit a good coverage threshold. If you need specifics, I guess we'd want at least a set of eight distinct browser/OS combinations to be part of the formal test matrix and aim for most of them to render properly. I don't want to overpromise, but testing eight sounds like a reasonable floor.
+
+Interviewer: Can you name eight browser/OS combinations you think are critical for that matrix?
+
+Stakeholder: Off the top of my head, I'd pick the latest Chrome on Windows, latest Firefox on Windows, latest Edge on Windows, Safari on Mac, Chrome on Mac, Safari on iOS, Chrome on Android, and maybe IE11 on Windows for some corporate users. That covers desktop and mobile. We should probably clarify whether older mobile WebViews need support too.
+
+Interviewer: And how would you define "render properly" for acceptance — is visual parity required, or functional parity?
+
+Stakeholder: I'd say functional parity first — buttons, forms, and flows must work. Visual parity is ideal but acceptable differences in styling are tolerable. We should probably codify that as acceptance criteria: whichever browsers in the matrix must support all booking flows end-to-end, with layout differences allowed as long as nothing is unusable.
+
+Interviewer: Let's talk perceived performance. You said users get annoyed by slow searches and booking actions. How fast does it need to feel? What counts as "too slow"?
+
+Stakeholder: It just needs to feel fast — I hate waiting around. If you press search or save a booking and nothing happens for a while, people get distracted. If I'm pushed to a number, maybe five seconds for the quick interactions feels like the upper limit; anything more, and users complain. For heavier operations maybe a few more seconds, but we should aim to make most routine things happen nearly instantly.
+
+Interviewer: You're giving a range; can you be precise about the targets we should measure? For example, should we set percentiles for task completion times under normal load?
+
+Stakeholder: Okay, be precise then: in our conversations with product and ops, we landed on targets where the vast majority of tasks complete in under five seconds, and almost all in under eight seconds. I recall people saying something like ninety percent under five, and ninety-eight percent under eight. Those numbers came up in planning, though we haven't formalized which specific user actions count as "tasks."
+
+Interviewer: Which user actions would you include in that measurement set — page load, search, saving a booking, sending invites?
+
+Stakeholder: To be practical, I'd include interactive actions that users do frequently: the search for available rooms, the booking save action, and the calendar view load. Full page refreshes might be a different category, but anything blocking the user's flow should hit those targets. We should list exact API calls and UI flows as part of performance tests.
+
+Interviewer: You mentioned earlier ops wants very high availability and you described production as fuzzy. How do you and ops interpret "high availability"? There was a phrase that sounded like uptime excluding server failure — what does that mean to you?
+
+Stakeholder: Yeah, that phrase confused me too. Ops kept saying they want the app to be "almost always available except for host-level failures," and they mentioned a number in a meeting but I didn't write it down. My impression is they expect us to design for clustering and failover so that single-host problems don't bring the service down. But we definitely need to clarify whether planned maintenance, database outages, or network partitions are counted against uptime.
+
+Interviewer: Can you check your notes or recall the number ops mentioned for uptime?
+
+Stakeholder: Let me think…and yes, I did hear them say something very specific in the ops meeting: they said ninety-nine point nine nine percent availability, but they also said "apart from server failure" which is what made it murky. So we should ask ops to define what they exclude — like are they excluding hardware failures entirely, or only the server process crashes.
+
+Interviewer: That's important to pin down. From an implementation point of view, what do you think is required to meet that level of availability?
+
+Stakeholder: To reach that level we'd need multiple application nodes behind a load balancer, health checks, rolling updates so we can patch without downtime, session handling that survives node restarts, and probably automated failover for the database. Also monitoring and alerting so on-call engineers can react fast. Right now we don't have that in staging; it's mostly a single Tomcat instance.
+
+Interviewer: Let's move on to authentication and access control. What's the current auth setup in dev and how does that differ from what's expected in production?
+
+Stakeholder: In dev and staging we use a simple username/password store for testing. Production conversations have been about integrating with the company identity systems — like LDAP/AD or SSO. The big expectation I've heard informally is that only company employees and approved external partners should be able to log in, and that there shouldn't be anonymous or shared accounts. I haven't been given the official list of identity providers or the provisioning workflow yet.
+
+Interviewer: When you say "only company employees and approved external partners," is there a requirement about the percentage of logins being from those accounts, or a guarantee?
+
+Stakeholder: Yes, that was actually made explicit later. Ops/security said they want every single login to be an authenticated company employee or an external user who has a company-approved account — basically one hundred percent of logons must be from approved IDs. That means no backdoor demo accounts in production and no local fallback without approval.
+
+Interviewer: Do you know which protocols or standards ops expects us to support for that integration — SAML, OAuth, LDAP?
+
+Stakeholder: From conversations, SAML and LDAP/AD came up most often, and OpenID Connect was mentioned too. For provisioning, SCIM was brought up as an option, but I don't have a definitive list. We will need to confirm which identity providers are required and whether we must support MFA.
+
+Interviewer: On logging and error reporting: you said you have server-side logs and some client console logs. How do you expect exception reporting to be handled for production?
+
+Stakeholder: Right now it's pretty manual: server logs rotate on the host and sometimes we attach them to tickets. We need a central exception reporting pipeline so errors can be sent to the company for analysis. But we have to strip out sensitive information — stack traces are okay but not customer PII. I'd like an approach where server-side exceptions are captured in a structured format, queued if the network is down, and forwarded securely to a central collector which the company can access. Client-side JS errors should be captured as well, but we need consent considerations for external users.
+
+Interviewer: What should those logs include when they're sent? And how should they be transmitted?
+
+Stakeholder: They should include the error context — like the request path, timestamp, a session or request identifier, and the stack trace — but avoid user passwords or full personal data. For transmission, encrypted channels like TLS, and ideally a push model where critical exceptions are sent immediately and non-critical ones are batched periodically. Also important is log retention and who triages them; ops implied they'd like automatic alerts for high-severity exceptions.
+
+Interviewer: Turning to localization and accessibility: what's implemented today, and where are you missing work?
+
+Stakeholder: We built the UI with resource bundles, so swapping strings is straightforward. Right now we have English and one other language wired in. We need a translation pipeline and a way for product to supply target languages. For accessibility, we used semantic HTML and added ARIA attributes in a few components, but we've never done a formal audit or keyboard-only navigation tests. I worry about screen reader compatibility in the calendar views — those are pretty complex.
+
+Interviewer: If I ask which target languages need to be supported at launch, can you provide the list now or do you need to check with product?
+
+Stakeholder: I need to check with product for the final list, but I can say we should allow a user to pick a language from the target markets rather than being forced into the browser language. Product mentioned a handful of countries, so per-user selection is important. I'll confirm the exact languages after I get the product list.
+
+Interviewer: For accessibility, do you have a target standard in mind we should aim to meet?
+
+Stakeholder: From our internal discussions, the team leaned towards meeting a recognized standard for accessibility. We talked about aiming for the WCAG guidelines at an acceptable conformance level — I think WCAG 2.1 at AA was mentioned informally. But again, we haven't formalized it with QA or the compliance team.
+
+Interviewer: You said earlier that browser network glitches cause incomplete form submissions. How do you currently handle failures during booking flows — retries, optimistic UI, or transactional operations?
+
+Stakeholder: Right now we do basic client-side validation and a submit that waits for the server response. For longer-running operations we show a spinner, but we don't have robust retry logic. That means if the network flakes mid-submit, the user might see an error and be unsure whether the booking succeeded or not. We should probably implement idempotent operations on the server and a client-side pattern that shows a clear status and optionally retries or queues the action.
+
+Interviewer: Linking back to what you said about exception logging and session handling, would you be able to instrument a request ID across front-end and back-end so we can tie client-side errors to server-side logs?
+
+Stakeholder: Yes, that is doable. We can propagate a correlation ID from the client with each request so server logs and client errors can be correlated. We haven't implemented it yet, but it's a relatively small change and would make debugging far easier.
+
+Interviewer: One more cross-cutting area: testing and acceptance. Who runs the browser compatibility tests and the performance tests now, and what tools are in use?
+
+Stakeholder: Right now QA runs some manual browser checks and a few automated Selenium tests for critical flows. For performance, we don't have a formal setup — there's been talk about using JMeter or Gatling, but nobody owns the load testing scripts at the moment. Monitoring hooks are something ops wants; they asked for health endpoints we can scrape, but those aren't implemented yet. If we want to meet the response-time targets and uptime measurements we discussed, we need a formal QA plan, performance scripts, and monitoring dashboards.
+
+Interviewer: Can you commit to producing some artifacts the next time we meet? Specifically, I need the current architecture diagram, the list of browsers you've tested, DB test matrix, sample log output, and any deployment scripts.
+
+Stakeholder: Yeah, I can put those together. I have an architecture diagram that's a bit out of date, but I can update it and include the staging deployment scripts, the list of browsers we've actually tested versus the ones we think we should test, and the DB test results for Postgres and MySQL. I can also attach a sample server log and a couple of console error captures from the browser. I'll need a day or two to tidy them up.
+
+Interviewer: Great. A couple of clarifying questions before we wrap. You mentioned earlier the "one hundred percent of logons must be approved" requirement — is there an exception process for emergency or break-glass access?
+
+Stakeholder: I recall security discussing break-glass accounts, but they wanted those tightly controlled and audited. If we include such a mechanism, it has to be temporary, require approvals, and all access must be logged. It's not a regular path for users. I don't have the exact policy details yet — that'll be a question for security/ops.
+
+Interviewer: And on uptime, you said ops cited ninety-nine point nine nine percent but were vague about exclusions. Who should we talk to confirm whether planned maintenance and database outages are included?
+
+Stakeholder: Ops is the right owner for that. I can ask the ops lead who attended that meeting and get a clear definition of what is excluded and whether they expect us to handle failover at the application layer or if they'll handle it on the infrastructure side.
+
+Interviewer: You also mentioned translations and product owning the target languages. Can you identify the product contact and get a prioritized list, including any RTL languages?
+
+Stakeholder: Yes, I know who to ask — the product manager for bookings. I'll ask them for the list and whether they expect right-to-left languages at launch. I'll bring that back.
+
+Interviewer: One last thing — you briefly mentioned a recurring real-world issue that inspired some of the booking edge cases. Can you tell me about that?
+
+Stakeholder: Oh, right — a bit of a tangent, but last week we had a meeting in the "Maple" room and the projector died mid-demo. The team scrambled and that led to a long thread about recording equipment statuses and marking rooms as non-usable until service. It made me think we need better equipment state handling — like marking a room's AV as broken and preventing bookings that require a functional projector. It's not central to the web app core, but it's a user pain that shows up in support tickets.
+
+Interviewer: That actually ties back to functional and operational requirements — we'll capture that as a use case for equipment management. To close, can you send the artifacts you mentioned and set up a follow-up with ops and security? Also, list the people you suggest I talk to next.
+
+Stakeholder: Sure. I'll send the updated architecture diagram, the test matrix with the eight browsers and which ones we've validated, the DB test notes for Postgres and MySQL, sample logs, and the staging deploy scripts. I'll also email the ops lead and the security contact and propose a follow-up meeting; I'll copy you on that. People to talk to next are the ops lead who manages production, the security engineer who set the auth expectations, and the product manager for the language list and equipment requirements.
+
+Interviewer: Excellent. Thanks — I appreciate the candid detail. I'll draft acceptance criteria based on what we discussed and send them back for confirmation, especially for the browser list, the performance task definitions, uptime exclusion clarifications, and the identity provider list.
+
+Stakeholder: Sounds good. And, uh, one more small thing — can we try to avoid adding more quirky shell scripts to the repo? They always break on CI agents. Sorry, I know that's random, but it's been a recurring annoyance for me.
+
+Interviewer: Noted — include that in the deployment artifacts and we'll call out a need for cross-platform or container-friendly scripts. Thanks again; I'll follow up with the items and schedule the ops/security session.
+
+---
+Selected Requirements:
+1. [NICE.csv line 278] [quality, portability] 'The product will function alongside server software on any operating system where the Java runtime can be installed.'
+2. [NICE.csv line 280] [quality, operability] 'The product must make use of web/application server technology. Open source examples include Apache web server Tomcat and the JBoss application server.'
+3. [NICE.csv line 277] [quality, operability, portability] 'The product must work with most database management systems (DBMS) on the market whether the DBMS is colocated with the product on the same machine or is located on a different machine on the computer network.'
+4. [NICE.csv line 300] [quality, look_and_feel, operability, portability] 'The product must be able to interface with any HTML browser. The product shall transmit data between the user and the product without problems. The product shall display HTML properly in 80% of all HTML browsers tested (minimum is to test 8 browsers).'
+5. [NICE.csv line 293] [quality, performance] The response shall be fast enough to avoid interrupting the user's flow of thought. 90% of tasks shall complete within 5 seconds. 98% of tasks shall complete within 8 seconds.'
+6. [NICE.csv line 294] [quality, availability] 'Aside from server failure the software product shall achieve 99.99% up time.'
+7. [NICE.csv line 315] [quality, security] 'The product shall ensure that only company employees or external users with company-approved user IDs may have product access. 100% of all logons shall be by either company employees or external users with company-approved user IDs.'
+8. [NICE.csv line 295] [quality, functional, maintainability] 'The product shall create an exception log of problems encountered within the product for transmission to our company for analysis and resolution.'
+9. [NICE.csv line 287] [quality, functional, usability] 'The product shall allow the user to select a chosen language from one of the target market countries.'
+10. [NICE.csv line 292] [quality, legal] 'The product shall conform to the Americans with Disabilities Act.'

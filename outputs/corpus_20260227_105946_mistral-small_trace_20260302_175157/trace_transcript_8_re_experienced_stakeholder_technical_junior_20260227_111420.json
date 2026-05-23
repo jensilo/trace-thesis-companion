@@ -1,0 +1,161 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_8_re_experienced_stakeholder_technical_junior_20260227_111420.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_175330",
+  "requirements": [
+    {
+      "requirement": "The system shall respond to basic UI interactions within five seconds.",
+      "source_citation": "anything longer than, uh, maybe five seconds feels too slow to most people.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states a specific time frame for acceptable response times for basic UI interactions. This is a clear and direct requirement.",
+      "follow_up_question": "Are there any specific UI interactions that should be prioritized for performance optimization?"
+    },
+    {
+      "requirement": "The system shall complete payment processing within fifteen seconds.",
+      "source_citation": "payment processing needs to complete within about fifteen seconds.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder provides a specific time frame for payment processing, indicating a clear performance requirement.",
+      "follow_up_question": "Are there any specific payment scenarios or conditions that should be considered for this performance requirement?"
+    },
+    {
+      "requirement": "The system shall have an initial buffering time of no more than ten seconds for streaming.",
+      "source_citation": "initial buffering shouldn't be more than a handful of seconds... something like ten seconds for the buffering part itself.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions a specific time frame for buffering, which is a clear performance requirement. However, the exact number is a bit vague ('a handful of seconds').",
+      "follow_up_question": "Can you provide more specific details on the acceptable buffering time for streaming?"
+    },
+    {
+      "requirement": "The system shall support adaptive bitrate streaming to adjust to the user's network connection quality.",
+      "source_citation": "adaptive bitrate is a must... Start with a lower bitrate if the user's connection is weak.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for adaptive bitrate streaming, which is a clear performance requirement.",
+      "follow_up_question": "Are there any specific bitrate levels or network conditions that should be considered for adaptive streaming?"
+    },
+    {
+      "requirement": "The system shall have an uptime availability of ninety-nine point five percent.",
+      "source_citation": "aiming for ninety-nine point five percent availability makes sense.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder provides a specific availability target, which is a clear requirement.",
+      "follow_up_question": "Are there any specific periods or conditions where higher availability is required?"
+    },
+    {
+      "requirement": "The system shall allow users to create an account within four pages.",
+      "source_citation": "no more than four pages from landing to a usable account.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions a specific number of pages for account creation, which is a clear usability requirement. However, the exact flow and steps are not detailed.",
+      "follow_up_question": "Can you provide more details on the specific steps or information required for account creation?"
+    },
+    {
+      "requirement": "The system shall be usable by ninety percent of novice users.",
+      "source_citation": "maybe around ninety percent usability for that group.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder provides a specific usability target for novice users, which is a clear requirement. However, the exact metrics or methods for measuring usability are not detailed.",
+      "follow_up_question": "Can you provide more details on the specific usability metrics or methods that will be used to measure this requirement?"
+    },
+    {
+      "requirement": "The system shall encrypt credit card details and restrict access to authorized personnel only.",
+      "source_citation": "credit card details... encrypted, and only certain people in the company should be able to see that.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for encryption and access control for credit card details, which is a clear security requirement.",
+      "follow_up_question": "Can you provide more details on the specific encryption methods and access control mechanisms that will be used?"
+    },
+    {
+      "requirement": "The system shall implement tokenization for credit card data to reduce PCI compliance burden.",
+      "source_citation": "tokenization does sound safer and less headache for PCI stuff.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions tokenization as a potential solution for security and compliance, but it is not explicitly stated as a requirement.",
+      "follow_up_question": "Can you confirm if tokenization will be implemented for credit card data and provide more details on the specific tokenization methods that will be used?"
+    },
+    {
+      "requirement": "The system shall detect and alert on suspicious activities such as repeated failed logins, credential stuffing patterns, and suspicious card activity.",
+      "source_citation": "repeated failed logins, credential stuffing patterns, or suspicious card activity should trigger alerts.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for detection and alerts for suspicious activities, which is a clear security requirement.",
+      "follow_up_question": "Can you provide more details on the specific detection mechanisms and alerting methods that will be used?"
+    },
+    {
+      "requirement": "The system shall follow W3C standards for accessibility.",
+      "source_citation": "we should follow W3C standards so assistive tech works.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "accessibility",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need to follow W3C standards for accessibility, which is a clear requirement.",
+      "follow_up_question": "Can you provide more details on the specific W3C standards and accessibility features that will be implemented?"
+    },
+    {
+      "requirement": "The system shall provide actionable dashboards for business analytics.",
+      "source_citation": "actionable dashboards that help marketing and ops make decisions.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for actionable dashboards, which is a clear requirement. However, the exact features and metrics for the dashboards are not detailed.",
+      "follow_up_question": "Can you provide more details on the specific features and metrics that will be included in the dashboards?"
+    },
+    {
+      "requirement": "The system shall fail gracefully and provide clear error messages with steps to retry or contact support.",
+      "source_citation": "it should fail gracefully and tell the user what happened, with steps to retry or contact support.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for graceful failure and clear error messages, which is a clear usability requirement.",
+      "follow_up_question": "Can you provide examples of specific error scenarios and the corresponding error messages?"
+    },
+    {
+      "requirement": "The system shall have thresholds for alerting admins on security events to avoid noise.",
+      "source_citation": "there should be thresholds where actions cross a risk score or pattern, and then it's escalated.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for thresholds to avoid noise in security alerts, but the exact thresholds and mechanisms are not detailed.",
+      "follow_up_question": "Can you provide more details on the specific thresholds and mechanisms for alerting admins on security events?"
+    }
+  ]
+}

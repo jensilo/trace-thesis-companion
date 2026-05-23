@@ -1,0 +1,161 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_5_re_experienced_stakeholder_nontechnical_enduser_20260227_110902.txt",
+  "model": "mistral/mistral-medium-latest",
+  "timestamp": "20260302_170721",
+  "requirements": [
+    {
+      "requirement": "The system shall return parts search results within 15 seconds.",
+      "source_citation": "under a quarter of a minute? Maybe around fifteen seconds feels okay",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states a performance requirement for parts search speed. The evidence is clear, but the exact threshold could be further validated.",
+      "follow_up_question": "What specific performance metrics are you using to measure the 15-second requirement for parts search results?"
+    },
+    {
+      "requirement": "The system shall provide contextual help on 90% of screens.",
+      "source_citation": "Help should be available almost everywhere you might be stuck — like most of the screens... ninety percent sounds about right",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a usability requirement for help accessibility. The evidence is clear, but the exact percentage could be further validated.",
+      "follow_up_question": "How do you envision measuring the 90% coverage for contextual help on screens?"
+    },
+    {
+      "requirement": "The system shall return facility lookup results within 8-10 seconds.",
+      "source_citation": "That one should be snappier than parts... under ten seconds. Eight seconds would be nice",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states a performance requirement for facility lookup speed. The evidence is clear, but the exact threshold could be further validated.",
+      "follow_up_question": "What specific performance metrics are you using to measure the 8-10 second requirement for facility lookup results?"
+    },
+    {
+      "requirement": "The system shall generate audit reports within 10 seconds.",
+      "source_citation": "Getting that audit back should be fast — like, under maybe ten seconds?",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states a performance requirement for audit report generation speed. The evidence is clear, but the exact threshold could be further validated.",
+      "follow_up_question": "What specific performance metrics are you using to measure the 10-second requirement for audit report generation?"
+    },
+    {
+      "requirement": "The system shall have an uptime of 98%.",
+      "source_citation": "ninety-eight percent uptime",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies an availability requirement for system uptime. The evidence is clear, but the exact percentage could be further validated.",
+      "follow_up_question": "How do you plan to measure and ensure the 98% uptime requirement?"
+    },
+    {
+      "requirement": "The system shall support up to 1500 simultaneous users during peak times.",
+      "source_citation": "about fifteen hundred people at the same time",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a scalability requirement for simultaneous users. The evidence is clear, but the exact number could be further validated.",
+      "follow_up_question": "How do you plan to test and ensure the system can support up to 1500 simultaneous users?"
+    },
+    {
+      "requirement": "The system shall save user actions (e.g., ratings) within 5 seconds.",
+      "source_citation": "under five seconds would keep me calm",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states a performance requirement for save actions. The evidence is clear, but the exact threshold could be further validated.",
+      "follow_up_question": "What specific performance metrics are you using to measure the 5-second requirement for save actions?"
+    },
+    {
+      "requirement": "The system shall provide warnings before session timeouts and save drafts to prevent data loss.",
+      "source_citation": "warnings before timeouts... save drafts so I don’t lose work",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a usability requirement for session timeouts and data recovery. The evidence is clear, but the exact behavior could be further validated.",
+      "follow_up_question": "How do you envision the warnings before session timeouts and the draft saving functionality working in practice?"
+    },
+    {
+      "requirement": "The system shall handle spotty networks gracefully and cache results for field use.",
+      "source_citation": "handle spotty networks gracefully — maybe cache things or allow me to view last results",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a fault tolerance requirement for handling spotty networks. The evidence is clear, but the exact behavior could be further validated.",
+      "follow_up_question": "How do you plan to test and ensure the system can handle spotty networks and cache results effectively?"
+    },
+    {
+      "requirement": "The system shall separate data by insurer to prevent unauthorized access.",
+      "source_citation": "keep them separated by company",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a security requirement for data separation by insurer. The evidence is clear, but the exact implementation could be further validated.",
+      "follow_up_question": "How do you plan to ensure and test that data is properly separated by insurer?"
+    },
+    {
+      "requirement": "The system shall provide role-based access control with tiered access levels.",
+      "source_citation": "Tiered access — admins wide, most folks narrow (only their company’s claims)",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a security requirement for role-based access control. The evidence is clear, but the exact roles and permissions could be further validated.",
+      "follow_up_question": "What specific roles and access levels do you envision for the tiered access control?"
+    },
+    {
+      "requirement": "The system shall enable 95% of users to be self-sufficient after two days of onsite training.",
+      "source_citation": "ninety-five percent... two days of hands-on, onsite training",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a usability requirement for training effectiveness. The evidence is clear, but the exact percentage and training duration could be further validated.",
+      "follow_up_question": "How do you plan to measure and ensure that 95% of users are self-sufficient after two days of onsite training?"
+    },
+    {
+      "requirement": "The system shall provide inline help with quick bullets and examples.",
+      "source_citation": "Quick bullets, examples — like: 'How to search for a part' right where you're entering the VIN",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a usability requirement for the format of inline help. The evidence is clear, but the exact format and content could be further validated.",
+      "follow_up_question": "What specific content and format do you envision for the inline help with quick bullets and examples?"
+    },
+    {
+      "requirement": "The system shall have an uncluttered UI with fewer buttons and a clean design.",
+      "source_citation": "Make the UI uncluttered... fewer buttons... clean",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 3,
+      "rationale": "The stakeholder specifies a look and feel requirement for the UI design. The evidence is somewhat clear, but the exact design specifics could be further validated.",
+      "follow_up_question": "Can you provide more details on what an uncluttered UI with fewer buttons and a clean design looks like to you?"
+    }
+  ]
+}

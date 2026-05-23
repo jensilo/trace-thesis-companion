@@ -1,0 +1,205 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_5_re_experienced_stakeholder_nontechnical_manager_20260227_110819.txt",
+  "model": "mistral/mistral-medium-latest",
+  "timestamp": "20260302_170741",
+  "requirements": [
+    {
+      "requirement": "The system shall provide a seamless experience for users in the field and at their desks.",
+      "source_citation": "It should feel seamless to someone who's out on the road or at their desk.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for a seamless experience across different user environments, indicating a strong focus on usability.",
+      "follow_up_question": "Can you provide specific examples of what makes an experience 'seamless' for field and desk users?"
+    },
+    {
+      "requirement": "The system shall achieve a user satisfaction rate of at least 95%.",
+      "source_citation": "I'd say we expect the vast majority to report it's easy to use — high nineties in satisfaction, something like that.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states a high target for user satisfaction, which is a clear usability metric.",
+      "follow_up_question": "How will user satisfaction be measured and tracked over time?"
+    },
+    {
+      "requirement": "The system shall provide contextual help on at least 90% of screens and workflows.",
+      "source_citation": "Most of the app's screens should have contextual guidance or links to help, so that people find assistance while they're actually in the workflow. It should be present almost everywhere users go.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for widespread contextual help to improve usability and reduce support calls.",
+      "follow_up_question": "What specific types of contextual help should be provided on these screens and workflows?"
+    },
+    {
+      "requirement": "The system shall follow corporate UI standards and accessibility guidelines.",
+      "source_citation": "It has to follow our architecture playbook and our UI standards — the look and feel people are used to, the authentication patterns, that sort of thing.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need to adhere to corporate UI standards and accessibility guidelines.",
+      "follow_up_question": "Can you provide specific details or documentation on the corporate UI standards and accessibility guidelines?"
+    },
+    {
+      "requirement": "The system shall return parts search results within 15 seconds.",
+      "source_citation": "The parts search needs to return within about fifteen seconds tops.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder provides a specific performance target for parts search response time.",
+      "follow_up_question": "What are the expected performance metrics for other critical operations?"
+    },
+    {
+      "requirement": "The system shall return repair facility search results within 8 seconds.",
+      "source_citation": "For finding a preferred repair facility based on vehicle location, it should be quicker — more like under ten seconds; I think eight seconds is a good business boundary.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder provides a specific performance target for repair facility search response time.",
+      "follow_up_question": "What are the expected performance metrics for other critical operations?"
+    },
+    {
+      "requirement": "The system shall degrade gracefully on flaky mobile connections.",
+      "source_citation": "Primarily responsive and lightweight for mobile use, so field staff can work on flaky cellular connections.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for the system to be responsive and lightweight, especially on flaky mobile connections.",
+      "follow_up_question": "What specific measures should be taken to ensure graceful degradation on poor connections?"
+    },
+    {
+      "requirement": "The system shall achieve 98% uptime.",
+      "source_citation": "The expectation is around ninety-eight percent uptime.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states a high availability target for the system.",
+      "follow_up_question": "How will uptime be measured and reported?"
+    },
+    {
+      "requirement": "The system shall be highly reliable to prevent users from reverting to old processes.",
+      "source_citation": "We need it to be highly reliable — downtime erodes trust and increases manual workarounds. If it's down too often, people revert to old processes.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "reliability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of reliability to maintain user trust and prevent reverting to old processes.",
+      "follow_up_question": "What specific reliability metrics should be tracked and reported?"
+    },
+    {
+      "requirement": "The system shall align with corporate authentication and access control rules.",
+      "source_citation": "If access isn't controlled properly we expose sensitive claim info.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need to control access to sensitive claim information, indicating a focus on security.",
+      "follow_up_question": "What specific corporate authentication and access control rules need to be followed?"
+    },
+    {
+      "requirement": "The system shall implement role-based data access for adjusters, auditors, and administrators.",
+      "source_citation": "Field users shouldn't see corporate-wide sensitive data, just the details relevant to the claim they're handling, or else it's overwhelming and risky.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for role-based data access to protect sensitive information.",
+      "follow_up_question": "What specific roles and access levels need to be defined and implemented?"
+    },
+    {
+      "requirement": "The system shall comply with estimatics laws and insurance regulations.",
+      "source_citation": "We also have to respect insurance regulations around claims processing and data retention.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need to comply with specific laws and regulations.",
+      "follow_up_question": "What specific estimatics laws and insurance regulations need to be complied with?"
+    },
+    {
+      "requirement": "The system shall provide audit trails for non-compliant workflows.",
+      "source_citation": "We need the workflow to guide users away from non-compliant choices and make any exceptions explicit so there's an audit trail.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for audit trails to track non-compliant workflows.",
+      "follow_up_question": "What specific information should be included in the audit trails for non-compliant workflows?"
+    },
+    {
+      "requirement": "The system shall integrate with the Choice Parts feed without recreating the data.",
+      "source_citation": "We definitely need to use what's already there — we've got this Choice Parts database that the whole industry leans on.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need to integrate with the Choice Parts feed to avoid data recreation.",
+      "follow_up_question": "What specific integration points and data fields are required from the Choice Parts feed?"
+    },
+    {
+      "requirement": "The system shall follow the corporate architecture playbook.",
+      "source_citation": "It has to follow our architecture playbook and our UI standards — the look and feel people are used to, the authentication patterns, that sort of thing.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need to follow the corporate architecture playbook.",
+      "follow_up_question": "Can you provide specific details or documentation on the corporate architecture playbook?"
+    },
+    {
+      "requirement": "The system shall support mobile and field use without requiring offline mode initially.",
+      "source_citation": "Offline mode would be nice, but I see it as a stretch goal for later. Right now the priority is that it works well in the field experience and degrades gracefully.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for the system to work well in the field and on mobile devices, with offline mode as a future goal.",
+      "follow_up_question": "What specific features or functionalities are required to support mobile and field use effectively?"
+    },
+    {
+      "requirement": "The system shall use a hybrid cache/live feed approach for the Choice Parts feed to ensure data freshness and handle reception issues.",
+      "source_citation": "I think a hybrid makes sense; users expect freshest data, but in areas with bad reception, a cached snapshot is better than nothing.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder suggests a hybrid approach to balance data freshness and availability in areas with poor reception.",
+      "follow_up_question": "What specific strategies should be employed to ensure data freshness and handle reception issues effectively?"
+    },
+    {
+      "requirement": "The system shall update repair facility ratings in near-real-time or at least daily to ensure up-to-date recommendations.",
+      "source_citation": "It should influence recommendations in near real-time, or at least on a daily cadence, because adjusters need to rely on up-to-date performance signals when steering repairs.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for up-to-date repair facility ratings to ensure accurate recommendations.",
+      "follow_up_question": "What specific mechanisms should be implemented to update repair facility ratings in near-real-time or daily?"
+    }
+  ]
+}

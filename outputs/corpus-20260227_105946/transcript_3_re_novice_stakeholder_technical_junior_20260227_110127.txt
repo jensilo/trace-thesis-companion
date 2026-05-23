@@ -1,0 +1,128 @@
+Interviewer: Hi, thanks for sitting down with me. Can you start by telling me what you've been doing on the nursing scheduling project?
+
+Stakeholder: Yeah, sure — I think I've been on the team for about a year now. Mostly I've been helping stitch together pieces of the scheduling logic and the UI flows for the program admins. I mean, I'm junior, so a lot of it is wiring up forms and trying to make the thing not fall over when someone edits a cohort. I've also worked a bit on the integration hooks to other systems, though, hmm, that part gets messy.
+
+Interviewer: Okay. Broadly, what are the main problems this system is supposed to solve for the nursing department?
+
+Stakeholder: Well, the day-to-day pain is that admins are juggling cohorts, classes, clinical placements and students all in different spreadsheets, so double-bookings happen, and folks miss notifications when a schedule changes. So it should keep cohorts, curriculum structure, clinical and non-clinical classes, and site assignments all in one place, track where students are in the program, and spit out schedules and reports. Also, automate alerts so instructors and site coordinators don't have to be called every time something shifts. Oh, and reduce manual errors — that’s a big one.
+
+Interviewer: Who actually uses the system on a regular basis?
+
+Stakeholder: Mostly program administrators and nursing staff — the scheduling team, basically. Instructors check it to see their assignments and students check schedules. Clinical site coordinators need to see who's coming and when, though they shouldn't see everything about the students. There are also occasional IT folks who need access to integrations and logs, but they don't use it for scheduling.
+
+Interviewer: You mentioned instructors and site coordinators. Do they need the same level of access as program admins?
+
+Stakeholder: No, not at all. Program admins need a full view, but site coordinators only need the information relevant to their site — like which students, which shifts, and contact details for logistics. Instructors need to see class rosters and maybe student progression for their course, but anything sensitive, like social security numbers or medical notes, should be hidden unless you really need it. So, access should be limited depending on role.
+
+Interviewer: Right, okay. How strict should that access be? Like, who exactly should be able to see private student info?
+
+Stakeholder: Program admins should have broad access because they're managing the cohort, and a few senior staff. Site coordinators should only see the basics they need to operate, and instructors should see academic-relevant info. There should be clear restrictions so only authorized people can see personal data. Also, it should follow our university’s information policy on privacy — we can't just make ad hoc decisions here.
+
+Interviewer: Got it. About the performance side — people hate slow tools. How fast do users expect common tasks to feel?
+
+Stakeholder: It just needs to feel snappy, you know? I hate waiting around. For the small things, like adding a student or updating a roster, people expect almost immediate feedback. For the heavier stuff — like generating full term schedules — they will tolerate a bit longer but not forever.
+
+Interviewer: When you say "almost immediate" and "a bit longer," can you put numbers on that? What would be acceptable delays?
+
+Stakeholder: Hmm. For the small management tasks — I’d say around five seconds is fine; anything longer feels sluggish. For generating an entire schedule, maybe up to thirty seconds is acceptable before folks start wandering off or hitting refresh.
+
+Interviewer: Okay, that's helpful. And how many people use it at the same time? Is this a single user at a time or multiple people?
+
+Stakeholder: The whole scheduling team tends to be on it at once in the mornings when they're doing changes, so peak concurrency matters. There's a peak group, not hundreds, but enough that if it slows under load people notice.
+
+Interviewer: Can you be specific — how many people at peak, and what hours are those?
+
+Stakeholder: I'd say about ten people at peak, and that's mostly during the standard office window from nine in the morning until five in the afternoon.
+
+Interviewer: Thanks. What about availability? When does the system need to be up?
+
+Stakeholder: It needs to be reliable during working hours when people are doing scheduling. Occasional downtime for maintenance is okay, but frequent outages during those hours make our lives miserable.
+
+Interviewer: Do you have a target for uptime, like a percentage we should aim for?
+
+Stakeholder: Yeah, I think aiming for around ninety-five percent availability makes sense given our needs and budget. We can't justify a super-high SLA for everything, but we need decent reliability.
+
+Interviewer: Understood. How long do you expect this system to be used — is it a short-term thing or more long-lived?
+
+Stakeholder: This needs to last. We’re talking multiple cohorts, accreditation cycles, curriculum changes... so we should expect it to handle the program for several years. I would plan on at least a handful of years of active use.
+
+Interviewer: By "a handful," do you mean like three, five, ten years?
+
+Stakeholder: Five years is a reasonable minimum I’d say.
+
+Interviewer: Good. You mentioned integrations before. Which systems does this need to talk to?
+
+Stakeholder: It definitely needs to hook into our campus systems for student records and authentication. There's a central campus system — CampusConnect — that holds the master data, so we need an interface there. Also, basics like email for notifications, and maybe calendar feeds for instructors and students.
+
+Interviewer: For CampusConnect, do we know how the interface should work? API, file exchange, or...?
+
+Stakeholder: I don't know all the low-level details, but the team has to be able to talk to CampusConnect's central server. The IT folks will probably sort the exact protocol, but we need a stable, authorized connection rather than some manual CSV imports.
+
+Interviewer: Okay. What about the user interface — what browsers or devices should we support?
+
+Stakeholder: It should work in any HTML browser so staff can use whatever they have on their machines. We shouldn't force a particular brand; as long as it's standard web-capable browsers, admins can run it. Mobile would be nice later, but the immediate need is desktop browsers.
+
+Interviewer: Do you mean all major browsers — Chrome, Edge, Safari, Firefox — or something else?
+
+Stakeholder: Yes, all the typical ones people run on campus should work. Nothing exotic.
+
+Interviewer: How about data quality — are there specific checks or validations you expect when admins enter data?
+
+Stakeholder: Basic integrity checks are important. Right now people type inconsistent site names and dates and the system trusts them, and that’s what causes conflicts. We need validation to catch obvious mistakes and prevent garbage getting in. Not intrusive, but enough to reduce errors.
+
+Interviewer: Any examples of things that should be validated?
+
+Stakeholder: Stuff like ensuring dates don't overlap, required fields are present, and that a student doesn't get assigned to two places at the same time. Also, cross-checks against the master student data so someone doesn't get scheduled if they're not enrolled.
+
+Interviewer: Sounds sensible. About notifications — how should they behave when schedules change?
+
+Stakeholder: They need to be automatic. If a clinical shift changes or a cohort assignment is updated, students, instructors, and the clinical site admin should get notified without someone having to remember to send an email. It should say what changed and what action, if any, is required. And, ideally, not spam people for tiny, irrelevant tweaks.
+
+Interviewer: Should notifications be only email, or do you want SMS, push, calendar invites, anything else?
+
+Stakeholder: Email and calendar invites are the baseline. SMS could be handy for urgent day-of changes, but that's a later enhancement. The important part is that messages are clear and go to the right people.
+
+Interviewer: Switching back to security for a second — do we need audit trails or logging for changes to schedules and student data?
+
+Stakeholder: Yes, we should have a history of who changed what and when. When disputes happen about why a student was assigned somewhere, admins want to see the trail. It also helps with compliance. I don't need to define retention yet, but an audit log is necessary.
+
+Interviewer: How about data protection standards — anything the system must follow?
+
+Stakeholder: Absolutely, it must protect private information in line with our organization’s information policy. That means controlled access, encryption where required, and minimal exposure of personal identifiers. We can't just put SSNs or medical notes in plain view.
+
+Interviewer: Okay. Thinking about growth: will the system need to handle more programs or a lot more users in the future?
+
+Stakeholder: It's focused on the nursing program now, but it should be built so we can support future curriculum updates and maybe more cohorts. We don't expect hundreds of concurrent users, but it should survive heavier days and changes over the years.
+
+Interviewer: Any constraints I should be aware of — budget, hosting, or anything else?
+
+Stakeholder: Budget is always a thing; we probably can't aim for top-tier enterprise SLAs everywhere. Hosting is likely through campus infrastructure so we need to coordinate with central IT. Also, keep it simple enough that admins who aren't technical can use it without weeks of training — the UI needs to be intuitive.
+
+Interviewer: What does "intuitive" mean to you in this context?
+
+Stakeholder: Minimal clicks to perform common tasks, clear error messages, and predictable workflows. If admins can do their job without hunting through menus or reading a manual every time, that's intuitive. If something feels clunky, they'll avoid it and go back to spreadsheets.
+
+Interviewer: Any other pain points or features you'd like included that we haven't covered?
+
+Stakeholder: Hmm, accreditation reporting would be handy down the line — tracking progression for reporting. Oh, and we once had a mess where a student was scheduled at two clinical sites on the same day, so whatever prevents that has to be solid. Also, small aside, there's always some odd rule about preceptor preferences and site capacities that never fits neatly into automated logic — so having manual override with checks is useful. And, uh, the coffee in the admin office is terrible, but that's not your problem.
+
+Interviewer: (laughs) Noted about the coffee. Last few things — backups? Disaster recovery?
+
+Stakeholder: Backups should be routine; if data gets corrupted, we need a way to restore to a recent state. It doesn't need to be instant failover, but some recovery plan is required so we don't lose weeks of scheduling work.
+
+Interviewer: Thanks — that's helpful. I think I have most of what I need. Anything else you want to add?
+
+Stakeholder: Just that we should keep talking as the UI shapes up. Small usability choices now save so many support tickets later. And sorry if I rambled — I tend to think out loud about edge cases.
+
+---
+Selected Requirements:
+1. [NICE.csv line 74] [quality, usability] 'The system shall be intuitive to the Program Administrators/Nursing Staff Members.'
+2. [NICE.csv line 79] [quality, performance] 'The response time of general student management tasks shall take no longer than 5 seconds and the response time of schedule generation shall take no longer than 30 seconds.'
+3. [NICE.csv line 81] [quality, availability] 'The system shall achieve 95% up time.'
+4. [NICE.csv line 83] [quality, availability, scalability] 'The system shall cater to 10 simultaneous users from 9am to 5pm.'
+5. [NICE.csv line 85] [quality, functional, scalability] 'The system shall be expected to manage the nursing program curriculum and class/clinical scheduling for a minimum of 5 years.'
+6. [NICE.csv line 89] [quality, operability] The system shall interface with CampusConnect's central server'
+7. [NICE.csv line 92] [quality, operability] 'We must be able to interface with any HTML browser.'
+8. [NICE.csv line 99] [quality, functional, security] 'The system shall have basic data integrity checking to reduce the possibility of incorrect or invalid data being introduced.'
+9. [NICE.csv line 100] [quality, functional, legal, security] The system shall protect private information in accordance with the organization's information policy.'
+10. [NICE.csv line 95] [quality, security] Only authorized users shall have access to students' personal information.'

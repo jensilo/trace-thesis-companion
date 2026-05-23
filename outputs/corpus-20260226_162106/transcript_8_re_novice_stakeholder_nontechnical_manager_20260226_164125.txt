@@ -1,0 +1,156 @@
+Interviewer: Hi, thanks for meeting with me. I’m the requirements engineer on IzognMovies. Can we start with a quick intro — your role and what you want out of this session?
+
+Stakeholder: Sure, I’m the product manager for IzognMovies. I, uh, mostly want us to get clear on what the business needs so the team can prioritize. We’re aiming for a fairly quick global launch, so I’d like this session to capture the big things — users, payments, streaming expectations, and what operations will need. Also, we’ll need to loop in security, legal, ops and marketing later.
+
+Interviewer: Great. Who exactly should I schedule those follow‑ups with? Ops, security, legal — any names or roles?
+
+Stakeholder: Yeah, I can introduce you to the ops lead and the security architect, and legal will need to be involved on privacy and payment rules. Marketing and customer support should weigh in on localization and messaging. And, um, the head of retail for pre‑paid distribution too. I’ll send contacts after this.
+
+Interviewer: Okay. Moving on — what are the main business goals we need to support?
+
+Stakeholder: We want people to find and watch African films easily and to pay us in ways that work in different markets. So subscriptions plus pay‑as‑you‑go, which includes credit cards and those pre‑paid cards you see in kiosks and stores. The other big things are keeping the site reliable — outages cost money and reputation — and having analytics so managers can react quickly when something changes.
+
+Interviewer: When you say "quick analytics" — what does that mean for managers?
+
+Stakeholder: They need near‑instant access to sales and usage numbers so they can decide on promotions or fix things if views drop. Ideally it shouldn’t feel like waiting for a report to run.
+
+Interviewer: And for reliability — do you have a target or is it just "as much uptime as possible"?
+
+Stakeholder: We have a concrete target in mind, but, uh, I can give you the number if you want it for the requirements docs.
+
+Interviewer: Yes please, what is it?
+
+Stakeholder: We’re aiming for ninety‑nine point five percent availability as a public target, measured over the usual monthly window. Planned maintenance should be scheduled and communicated, of course.
+
+Interviewer: Got it. About the users — who are we designing for?
+
+Stakeholder: Our primary users are people who love African films but might not be heavy internet users. Think of folks trying streaming for the first time in some markets, and also diaspora viewers who expect a smooth experience. So the UI must be simple and obvious — we want most novice users to be able to complete core tasks without help.
+
+Interviewer: When you say "most novice users" — how many are you thinking of succeeding?
+
+Stakeholder: We want a very high success rate; specifically, the goal is that nine out of ten typical novice users can complete key tasks on their own during usability tests.
+
+Interviewer: Okay. What are the key tasks they must be able to do?
+
+Stakeholder: Register, find a movie, pay for it, and start watching. If they can’t do those steps easily, they won’t stick around. Oh, and once they log in, they should be able to get to their movie with very few clicks — I’ll explain what that means if you need the exact expectation.
+
+Interviewer: Please — what counts as "very few"?
+
+Stakeholder: We want them to reach their streaming content within two clicks after logging in, from the landing page they see right after authentication.
+
+Interviewer: Understood. On the browsing and discovery side, any particular search features or filters we must have?
+
+Stakeholder: Keep it straightforward. Search by title, browse by category and region, and make recommendations obvious. The visual design should feel African‑inspired but not cluttered, because many users are novices and we don’t want them confused. Also, language options for major languages are important — we’ll need localization.
+
+Interviewer: For the payment flows — you mentioned credit cards and pre‑paid cards. How do you want to handle storing card data?
+
+Stakeholder: We want to own customer relationships and some business processes assume we can access payment info, so the business preference is to keep credit card data on our servers, but obviously secured. That said, we need to talk to security and legal about compliance, because I don’t want to handwave over that risk.
+
+Interviewer: When you say "secured", any specifics like encryption or who can see it?
+
+Stakeholder: The idea is that card info must be encrypted in storage and only visible to authorized staff within Izogn. There should be controls and audit trails around who can access it. But again, security will need to confirm the technical approach and any compliance obligations.
+
+Interviewer: About privacy — what must the site show users before collecting their data?
+
+Stakeholder: We must be transparent. The privacy policy should be visible on every page and users should be made aware of our information practices before we collect personal data, especially at registration and payment. Ideally that’s accessible and in the languages we support.
+
+Interviewer: Moving to playback — when someone buys a movie, how long can they watch it for?
+
+Stakeholder: We want a short window after purchase to encourage viewing; the plan is a two‑day viewing window, but I can clarify the exact start trigger if you need it.
+
+Interviewer: Yes — when does that two‑day window start? At purchase or first play?
+
+Stakeholder: It starts from the moment of purchase, not first play. That keeps the business rules simpler for retail partners using pre‑paid codes.
+
+Interviewer: On streaming quality — you said buffering kills conversion. What are your expectations for startup time or buffering?
+
+Stakeholder: It should feel immediate. I don’t want people waiting ages for playback to start. If I put a number on it for acceptance testing, I’d say something like up to around ten seconds for initial buffering, and then the usual caveat about the user’s own connection — we can’t fix their slow Wi‑Fi.
+
+Interviewer: So ten seconds is the target for startup buffering, plus any user latency?
+
+Stakeholder: Yes, that’s what I had in mind.
+
+Interviewer: Okay. For general UI responsiveness, any expectations?
+
+Stakeholder: Pages and actions should feel snappy. For routine interactions, it shouldn’t take more than a few seconds — otherwise users get impatient.
+
+Interviewer: How many seconds is "a few"? Is there a maximum you want us to capture?
+
+Stakeholder: For the common stuff — search, navigation, login, checkout — think around five seconds as the upper bound for the user‑facing response, except for things that are understood to take longer like big exports.
+
+Interviewer: Noted. You mentioned exports — what admin features do you expect?
+
+Stakeholder: Admins need to manage the movie catalog, handle customer accounts, generate pre‑paid PINs for retail partners, and access sales and usage analytics quickly. Staff should be able to run the business without waiting on IT every time.
+
+Interviewer: For pre‑paid PINs, any details on how that should work?
+
+Stakeholder: It must be fast and secure. Admins should be able to create a batch of unique pins and export them to an Excel file for partners. It should be straightforward so retail folks can get stock quickly.
+
+Interviewer: How quickly should admins be able to generate those PINs?
+
+Stakeholder: The expectation is that the system can produce a batch and the export within a couple of minutes — we don’t want to wait ages when a partner calls needing pins for a promotion.
+
+Interviewer: Okay. For the analytics you mentioned earlier — you said managers need quick access. How quick?
+
+Stakeholder: Ideally, a manager can pull up sales and usage statistics in under two minutes, even for recent data. That way they can make decisions rapidly during a campaign.
+
+Interviewer: And all sales need to be recorded, right? What exactly should be logged?
+
+Stakeholder: Every streaming sale should be logged in the database with enough detail to trace it back — who bought, what title, how they paid, and timestamps. Admins need to be able to access those logs for reporting and for resolving customer queries.
+
+Interviewer: Any rules about who can see what in the admin area?
+
+Stakeholder: Not everyone should see everything. Sensitive payment information should only be visible to certain admins, and there should be roles so people only get the data they need. We’ll need to define those roles with security.
+
+Interviewer: About exceptions — you mentioned some operations could take longer than five seconds. Which ones?
+
+Stakeholder: Long reports and large exports are obvious exceptions. Also, generating very large batches for PINs might take longer in extreme cases. The key is to surface that to the user with progress indicators so they understand what’s happening.
+
+Interviewer: For uptime, you said 99.5% monthly. Do you have planned maintenance windows and how we should notify users?
+
+Stakeholder: Yes, planned maintenance is allowed but should be minimal and announced ahead of time. Operations should have an incident plan and notify marketing and support so we can manage customer communication.
+
+Interviewer: On security and compliance, do we have a decision whether to use tokenization or store cards directly?
+
+Stakeholder: The business leans toward having the cards on our servers for certain operational needs, but, uh, that’s subject to legal and security input. If tokenization ends up being the safer route, I’m open — we just need to know the trade‑offs quickly.
+
+Interviewer: Any retention rules for payment and sales data?
+
+Stakeholder: We need to keep enough history for accounting and disputes, but also respect privacy and legal retention limits. Legal can give us the exact durations; for now, capture that we need a clear retention policy.
+
+Interviewer: For the usability target — you said nine out of ten novice users. How do we prove that in acceptance testing?
+
+Stakeholder: Run usability testing with representative novice users across the target regions and devices. Measure task completion rates for register, purchase, and play flows. The sample and exact protocol we can work out with UX, but the acceptance criterion is that the success rate meets that target.
+
+Interviewer: Alright. A couple of quick wrap‑up items: for the two‑day viewing window, you confirmed it starts at purchase. For two‑click access after login, you said it should be two clicks from the landing page — is clicking "Play" considered one of those clicks?
+
+Stakeholder: Yes, clicking "Play" should be within those two clicks. The landing page after login counts as the starting point. We should avoid forcing users through extra screens or modal clutter.
+
+Interviewer: And for admin exports — Excel is required?
+
+Stakeholder: Yes, partners expect an Excel-compatible file. CSV might be fine but Excel formatting is preferred for retail partners.
+
+Interviewer: Who signs off on these requirements and who should I send the summary to?
+
+Stakeholder: I’ll sign off for product and business, but security and legal need to sign off on payment and privacy specifics. Send the summary to me, and I’ll route it to security and legal for their input.
+
+Interviewer: Anything else I missed or you want to add?
+
+Stakeholder: Uh, one small tangent — I watched a community screening last weekend and the less techy folks loved the content but got frustrated by long sign‑up forms. It’s a good reminder: fewer fields, clearer language, and native language options go a long way. Anyway, that’s it for now.
+
+Interviewer: Thanks. I’ll draft a one‑page summary with the priorities and open questions and schedule the follow‑ups with security, legal, ops and marketing.
+
+Stakeholder: Perfect. And please call out the hard items: storage of card data, the two‑day rule, the usability target, the response and buffering expectations, admin export needs, and analytics speed. I’ll make time to review and set up the technical sessions.
+
+---
+Selected Requirements:
+1. [NICE.csv line 388] [quality, usability] 'The product should be able to be used by 90% of novice users on the Internet.'
+2. [NICE.csv line 397] [quality, fault_tolerance, performance] 'Any interface between a user and the automated system shall have a maximum response time of 5 seconds unless noted by an exception below.'
+3. [NICE.csv line 399] [quality, performance] When streaming a movie the buffering time should take no longer than 10 seconds (plus any latency on the user's connection.)'
+4. [NICE.csv line 403] [quality, availability] 'The website shall achieve 99.5% up time.'
+5. [NICE.csv line 401] [quality, security] 'All credit card information will be secured on the server and only accessible by authorized Izogn administrators. Information will be encrypted in the database.'
+6. [NICE.csv line 434] [quality, functional, security, usability] 'The website shall make its user aware of its information practices before collection data from them via a Privacy Policy accessible on all pages of the website.'
+7. [NICE.csv line 390] [quality, functional, look_and_feel, usability] 'Users should be able to access their streaming movies in under 2 clicks after logging into the website.'
+8. [NICE.csv line 384] [quality, functional, performance, usability] 'System shall let administrators generate unique pre-paid pins in under 2 minutes and generate an Excel file with the generated PINs.'
+9. [NICE.csv line 383] [quality, performance] 'System shall let Izogn Manager access sales and usage statistics in under 2 minutes.'
+10. [NICE.csv line 462] [quality, functional, availability] 'All streaming movie sales will be logged in the database and accessible by the administrator.'

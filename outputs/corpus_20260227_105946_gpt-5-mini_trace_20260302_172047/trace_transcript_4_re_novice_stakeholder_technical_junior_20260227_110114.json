@@ -1,0 +1,227 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_4_re_novice_stakeholder_technical_junior_20260227_110114.txt",
+  "model": "openai/gpt-5-mini",
+  "timestamp": "20260302_172304",
+  "requirements": [
+    {
+      "requirement": "The disputes application UI must follow corporate UI guidance and match the look and feel of other internal applications to ensure consistency and reduce user confusion.",
+      "source_citation": "Also, I guess it has to look and feel like our other internal apps; we can't just invent a new UI every time, that causes confusion. So following the corporate UI guidance is kind of important…",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly demands matching corporate UI guidance and consistent look-and-feel to avoid confusion for internal and external users. This is a clear usability/visual-consistency requirement. Gaps: no reference to specific style guide version, acceptable deviations, or how strict compliance must be (pixel-perfect vs. pattern-based).",
+      "follow_up_question": "Which corporate UI guidance documents or component library/version should we follow, and are there any allowed deviations for this app?"
+    },
+    {
+      "requirement": "Screen transitions and common UI operations must complete with perceived latency under 5 seconds for small actions (e.g., navigating from case list to case detail).",
+      "source_citation": "Hmm, okay — well if you make me pick a number, I'd say for the small stuff it should be under five seconds. Anything longer and people notice and complain.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder gives an explicit acceptable latency threshold for small interactions (under five seconds). This quantifies responsiveness expectations. Gaps: 'small stuff' is vague; doesn't specify 95th/99th percentile, network conditions, or backend vs. first-load times.",
+      "follow_up_question": "Can you enumerate which specific actions count as 'small stuff' and whether the 5s target should be measured as median, 95th percentile, or maximum under normal network conditions?"
+    },
+    {
+      "requirement": "The application must feel snappy and avoid unnecessary waiting/spinners during call-handling workflows to prevent disruption of customer calls.",
+      "source_citation": "It should feel snappy; reps are on the phone and if they're staring at a spinner, it just... derails the call.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "Stakeholder emphasizes perceived responsiveness and the impact of delays on call handling. This is a usability and performance usability requirement. Gaps: subjective 'feel'; lacks measurable metrics beyond the 5s guidance and doesn't detail acceptable background processing behavior.",
+      "follow_up_question": "Which specific call-handling screens or flows are most critical to be 'snappy', and are there acceptable background operations that can run after an immediate acknowledgement to the user?"
+    },
+    {
+      "requirement": "The system must support at least 350 concurrent users during peak loads without perceptible performance degradation.",
+      "source_citation": "the app really needs to handle around three hundred and fifty users at once during peak loads, otherwise things get sluggish.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "Stakeholder provides a concrete concurrent user target (350) and links it to performance expectations. Gaps: doesn't specify what 'perceptible degradation' means (response time SLAs), geographic distribution, or burstiness beyond peak.",
+      "follow_up_question": "Should the 350 concurrent user requirement be supported with response-time targets (e.g., 95th percentile < 5s), and do you expect this load to be from a single region or multiple regions?"
+    },
+    {
+      "requirement": "The application must be highly available — 'basically available all the time' — with maintenance scheduled in specified quiet-hour windows to minimize user impact.",
+      "source_citation": "We need it to be basically available all the time because disputes can come in any day. But, um, we do schedule maintenance sometimes — usually in the really quiet hours so it doesn't interrupt folks.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "Stakeholder requests near-continuous availability and acceptance of planned maintenance during quiet hours. Gaps: 'basically' is vague; no explicit uptime percentage (e.g., 99.9%) or unplanned outage tolerances.",
+      "follow_up_question": "What minimum uptime percentage (e.g., 99.9% monthly) and maximum allowable unplanned downtime are acceptable, and should maintenance windows be pre-scheduled with advance notifications?"
+    },
+    {
+      "requirement": "Planned maintenance windows must align with existing team expectations: Mon–Sat 03:00–04:00 local time and Sun 01:00–05:00 local time, during which downtime is acceptable.",
+      "source_citation": "Specifically, Monday through Saturday we usually slot a window around three to four in the morning, and on Sundays we do a longer window, roughly one to five in the morning. Those are the times teams expect possible downtime.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Stakeholder provides exact maintenance windows to plan around. This is operational scheduling requirement. Gaps: local time ambiguity (which timezone), required advance notice period, and whether partial availability is acceptable during windows.",
+      "follow_up_question": "Which timezone should be used for these windows (e.g., company HQ timezone or local to each operations center), and what advance notification period do teams require before a maintenance window?"
+    },
+    {
+      "requirement": "Transaction, cardmember, and merchant core data must be read from their authoritative databases (Statement Database, Cardmember Information Database, Merchant Information Database) for reconciliation and adjustments; caching is allowed only for read-only UI performance, not for authoritative updates.",
+      "source_citation": "We can cache read-only stuff for performance, sure, but for core details like the transaction data, we always want it coming from the Statement Database. Same for cardmember and merchant details — those databases are the authoritative sources. Caching is fine for UI snappiness, but reconciliation and adjustments should use the authoritative systems.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 5,
+      "rationale": "Stakeholder defines authoritative sources and allows caching only for non-authoritative read-only purposes. This is a consistency/integration requirement. Gaps: TTLs for cache, cache invalidation strategy, acceptable stale data windows, and fallback behavior if authoritative DBs are slow/unavailable.",
+      "follow_up_question": "What cache TTLs and invalidation rules are acceptable, and what fallback behavior should occur if an authoritative database is temporarily unavailable (e.g., read-only degraded mode, retry logic)?"
+    },
+    {
+      "requirement": "Requests that produce letters must be sent to the Print Letter Utility; the application must not handle printing itself.",
+      "source_citation": "Yes, they do that as part of initiating a dispute or following up. It's handy if they can request a letter right there while on the call rather than jumping to a different tool. But, um, those letter requests should go out to the print utility — we don't want to handle printing ourselves.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "integrability",
+      "confidence": 5,
+      "rationale": "Stakeholder insists that letter generation integrate with existing Print Letter Utility rather than duplicating printing functionality. This constrains integration and responsibility boundaries. Gaps: expected API contract, synchronous vs asynchronous behavior, success/failure handling, and acknowledgement semantics.",
+      "follow_up_question": "Should letter requests be synchronous (user waits for confirmation) or asynchronous (queued), and what API/contract (endpoints, payload, error codes) does the Print Letter Utility expect?"
+    },
+    {
+      "requirement": "Account adjustment requests must be routed to the posting and billing system so that ledger changes occur in the billing engine; the disputes app must not locally mark balances adjusted without confirmation from the billing system.",
+      "source_citation": "And adjustments — when a rep requests an adjustment, that request must be sent to the posting and billing system so the ledger changes actually happen in the billing engine. We don't want a half-done process where the dispute shows adjusted but the billing system wasn't updated.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "integrability",
+      "confidence": 5,
+      "rationale": "Stakeholder requires authoritative updates to originate from the billing engine and warns against inconsistent local state. This is a correctness and integration requirement. Gaps: transactional guarantees, guaranteed delivery, retry/idempotency behavior, and how UI reflects pending adjustments.",
+      "follow_up_question": "What are the expected success/failure semantics and latency for adjustment requests to the billing system, and should the UI display a pending state until confirmation is received?"
+    },
+    {
+      "requirement": "Role-based access control must restrict sensitive actions (e.g., initiating chargebacks, making account adjustments) so that only appropriate roles (program admins or senior reps) can perform them while frontline users have limited actions.",
+      "source_citation": "Not everyone should be able to kick off every action. Some of the data is sensitive, so only certain roles should initiate chargebacks or make account adjustments. I think program admins or senior reps have broader rights, while frontline folks only get the basic actions.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder clearly requires RBAC limiting high-risk actions to privileged roles. Gaps: exact roles and permissions matrix, authentication integration, segregation of duties rules, and how role changes are administered/audited.",
+      "follow_up_question": "Can you provide the initial roles and a mapping of which specific actions each role should be permitted to perform, and which identity provider manages these roles?"
+    },
+    {
+      "requirement": "There must be segregation of internal and external user views: external support users must not be able to see internal-only notes or internal-only data.",
+      "source_citation": "Just — we need clear segregation between internal and external users; external support folks shouldn't see internal-only notes.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "Stakeholder requests data segregation between user classes to protect internal notes. Gaps: definition of 'external support folks', exact fields/data considered internal-only, and enforcement mechanisms (row/field-level security).",
+      "follow_up_question": "How are 'internal' versus 'external' users defined, which specific fields or note types are internal-only, and should segregation be enforced at the UI, API, or data-layer?"
+    },
+    {
+      "requirement": "The application must maintain detailed audit logs capturing meaningful events (status changes, who initiated chargebacks, letters requested, account adjustments, notes) with timestamps and user IDs to satisfy managers and auditors and compliance requirements.",
+      "source_citation": "We should log everything meaningful — status changes, who initiated chargebacks, letters requested, account adjustments. Even small notes are useful later when someone reviews a case. And, um, timestamps, user IDs, that sort of thing.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly lists events and data required in audit logs and ties it to audits and compliance. Gaps: retention periods, log integrity (tamper-evidence), access controls to logs, log format, and export/analysis requirements.",
+      "follow_up_question": "What retention period and format are required for audit logs, who is allowed to access them, and are there regulatory requirements for tamper-proofing or exporting logs?"
+    },
+    {
+      "requirement": "Audit trails must show who did what and when for notes, status changes, letters sent, and adjustments requested (including timestamps and user identifiers).",
+      "source_citation": "Yeah, we need a full trail. Managers and auditors want to see who did what and when — like notes, status changes, letters sent, adjustments requested — the whole history.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 5,
+      "rationale": "Reinforces need for complete history for audits. Overlaps with previous logging requirement but emphasizes completeness. Gaps: level of detail for 'notes' (every edit?), immutability, and whether history must be exportable to auditors.",
+      "follow_up_question": "Should every edit to a note be preserved as a separate audit entry, and do auditors require immutable or versioned records that cannot be modified?"
+    },
+    {
+      "requirement": "Role definitions and permission assignments must be governed jointly: the disputes product team defines role responsibilities while identity and compliance teams set permissions and segregation; the system must support changing role-permission mappings in response to audits.",
+      "source_citation": "I think it's a mix. The disputes product team defines what roles need to do, but the identity folks and compliance set the permissions and segregation. It can be a little messy — we sometimes have to go back and change who can do what after audits.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "Stakeholder describes governance model and the need to update role/permission mappings post-audit. This implies the system must support administrative changes and be maintainable. Gaps: required admin UI, approval workflows, audit of permission changes, and frequency of expected changes.",
+      "follow_up_question": "What administrative workflow and approvals are required to change role-permission mappings, and should changes themselves be audited and versioned?"
+    },
+    {
+      "requirement": "The UI must preserve context when navigating (e.g., returning from a merchant profile to the original case view) to avoid disrupting calls and causing user errors.",
+      "source_citation": "Also, if context isn't preserved between screens — like jumping to a merchant profile and losing the original case view — that disrupts the call.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "Stakeholder notes navigation/context-loss as a usability problem that impacts call handling. Gaps: expected navigation patterns (breadcrumbs, back stack), whether multiple tabs are acceptable, and constraints for mobile vs desktop.",
+      "follow_up_question": "What exact navigation behaviors do users expect when navigating away and back (e.g., preserve scroll position, open in new tab, breadcrumbs), and on which device types must this be supported?"
+    },
+    {
+      "requirement": "Confirmation dialogs and critical-action flows must be unambiguous and prevent accidental duplicate actions (e.g., creating duplicate disputes), with clear outcomes to avoid error-prone confirmations.",
+      "source_citation": "once we had a rep accidentally create duplicate disputes because the confirmation was unclear. That was a mess to clean up.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "Stakeholder reports past incident where unclear confirmation led to duplicate disputes; requests clearer confirmations and safeguards. Gaps: desired confirmation patterns (one-click undo, double-confirm, idempotency), and whether system should detect duplicates automatically.",
+      "follow_up_question": "Should the system enforce idempotency (detect/prevent duplicate dispute creation) or is a stronger confirmation dialog sufficient, and what exact confirmation pattern do you prefer?"
+    },
+    {
+      "requirement": "The system must behave predictably and consistently both visually and in backend behavior (consistent data sources and error handling) so users can trust it.",
+      "source_citation": "Both, really. Visual patterns help the user, and consistent backend behavior — like always getting the right source for data and predictable error handling — helps reps trust the system.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "Stakeholder explicitly requests predictability across UI and backend to reduce mistakes. This is a broad requirement covering consistency of error handling and data sourcing. Gaps: concrete error-handling policies, standard error messages/codes, and expectations for retries or fallbacks.",
+      "follow_up_question": "Can you define acceptable backend error-handling behavior (e.g., show user-friendly error + retry, queue request) and any standard phrasing or codes to use in the UI?"
+    },
+    {
+      "requirement": "Caching may be used for read-only UI performance but must not serve as the authoritative source for transaction, cardmember, or merchant data used for reconciliation or adjustments.",
+      "source_citation": "Caching is fine for UI snappiness, but reconciliation and adjustments should use the authoritative systems.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "Reiterates acceptable use of caching for UI but forbids cached data for authoritative operations. Gaps: technical constraints (cache freshness, validation before actions), and whether occasional stale reads are acceptable in certain views.",
+      "follow_up_question": "Before performing a reconciliation or adjustment, must the app always revalidate data from the authoritative source synchronously, or is an asynchronous confirmation acceptable?"
+    },
+    {
+      "requirement": "The application must provide predictable, consistent error handling and messaging so that identical failures produce the same user-visible result.",
+      "source_citation": "If something looks the same but behaves differently, that's worse than a different-looking app that behaves reliably.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "Stakeholder emphasizes consistency of behavior and error handling to build trust. Gaps: definitions of 'predictable' messages, localization, and mapping of error conditions to remediation steps.",
+      "follow_up_question": "Do you require a standardized set of error messages and remediation steps, and should errors be localized for different user locales?"
+    },
+    {
+      "requirement": "Integrations (Statements DB, Cardmember DB, Merchant DB, Print Letter Utility, Posting/Billing System) must be reliable and return correct, authoritative data; the app must detect and handle integration failures to avoid inconsistent state.",
+      "source_citation": "transaction details come from the Statement Database. ... Cardmember details are pulled from the Cardmember Information Database ... Merchant info similarly comes from the Merchant Information Database. And for letters … we hit the Letters app or the Print Letter Utility … And when we need to make adjustments to an account, those requests have to go to the posting and billing system so balances get updated properly.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Stakeholder lists required integrations and stresses authoritative correctness and correctness of updates; implies need for robust integration error handling. Gaps: SLAs for integrated services, retry strategies, circuit-breaker behavior, and monitoring/alerting requirements.",
+      "follow_up_question": "What SLAs do the integrated systems provide, and what retry/backoff and alerting behavior should the disputes app implement if an integration is slow or unavailable?"
+    }
+  ]
+}

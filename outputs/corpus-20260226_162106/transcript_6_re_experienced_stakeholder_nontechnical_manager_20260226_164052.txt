@@ -1,0 +1,136 @@
+Interviewer: Thanks for joining. To get us started, can you tell me in your own words what success for this conference-room system looks like for the business in Year 1 and then a bit out to Year 3?
+
+Stakeholder: Sure — glad to. Success in the first year is that people actually use it instead of paper or calendar hacks; meetings get scheduled without double‑books, facility teams stop getting frantic emails, and execs trust invites sent from the system. In three years it should feel like the default way our company schedules anything — fewer support tickets, more predictable room usage, and lower administrative overhead. Oh, and it needs to feel reliable and polished; if it’s slow or flaky people won’t adopt it.
+
+Interviewer: When you say “slow or flaky people won’t adopt,” what do you mean exactly? Can you put a number on “slow” for me — how long is too long before a user abandons an action?
+
+Stakeholder: Hmm, I think small interactions have to be near instant. If someone is checking availability or booking a room and it takes more than a few seconds, they get annoyed and walk away. If you force me to be specific, I'd say around five seconds for the quick stuff, maybe slightly longer for heavier operations, but anything much beyond that is risky.
+
+Interviewer: Okay, five seconds for routine, quick interactions — good to capture. You mentioned “heavier operations” being allowed a bit more time. How long is acceptable for those?
+
+Stakeholder: For more complex things, like pulling full calendar views or running reports, I’d be comfortable with something under eight seconds most of the time. Again, that’s from the user’s perspective — the feeling of waiting shouldn’t interrupt their flow.
+
+Interviewer: Understood. You also said it needs to be reliable. What “uptime” expectation does the business have? Is “available when people need it” tied to business hours, or are you thinking broader?
+
+Stakeholder: We definitely need it during our business hours, when meetings are being arranged. We can have planned maintenance outside of those windows, but unplanned outages are a big problem; they break trust quickly. If you want an SLA number, we’re aiming for near‑continuous availability — practically no downtime. If pressed I'd say we should target four nines if possible, excluding planned maintenance and major server/catastrophic failures.
+
+Interviewer: That’s helpful. To clarify — when you say “excluding major server failures,” do you mean you'd accept exclusions for hardware-level incidents beyond our control, or do you want the uptime commitment to include those too?
+
+Stakeholder: I'm thinking we accept that a physical server crash or a whole data‑center loss is a different bucket; we want the software and the platform to be resilient, but if the underlying server farm burns down temporarily, that's a separate incident. So the availability commitment should reasonably exclude catastrophic infrastructure loss, while covering normal faults and application issues.
+
+Interviewer: Thanks — that distinction matters for design. Let’s talk scale. You mentioned peaks and adoption. How many people do you expect to be using the system at the same time during peak scheduling windows like early morning or late afternoon?
+
+Stakeholder: We get pretty busy around the start and end of the day. At launch, I’d expect a few hundred concurrent users at least, rising as more teams adopt it. For planning, think in the low thousands at peak — enough that we want confidence it won’t grind to a halt when everyone checks availability at eight in the morning.
+
+Interviewer: Can you be specific about “low thousands”? For capacity planning, do you mean one thousand concurrent requests, or something else?
+
+Stakeholder: Yeah, okay. To be concrete, plan for one thousand concurrent requests at launch. And we need to be ready to double that in the next major release — so two thousand in our roadmap.
+
+Interviewer: Good — that gives us a clear target. You also mentioned throughput in terms of transactions per hour. What volume do you anticipate over time?
+
+Stakeholder: Right, over the first couple of years traffic will grow. I expect the system should be able to handle about ten thousand transactions per hour within a couple of years of launch, and then scale up to about twenty thousand in the following release cycle as more offices adopt it.
+
+Interviewer: When you say “transactions,” are you counting each booking, each calendar sync, or every API call?
+
+Stakeholder: I mean business transactions — things like booking creation, edits, cancellations, availability searches, and calendar synchronizations that map to user actions. It’s not lower‑level internal polling calls; think of it as operations visible to users.
+
+Interviewer: Understood. Switching to security and access control: who should be allowed to use this product? You mentioned external guests at one point — how will access be managed?
+
+Stakeholder: Access has to be tightly controlled. Only our employees and external people we explicitly approve should be able to log in and take actions. We can’t have anonymous usage. For guests, they should come in through a controlled process — approved and tied to an identity we recognize.
+
+Interviewer: Can you be explicit about the percent of logins that must be tied to company or approved external identities? Is there any tolerance for anonymous or self‑registered accounts?
+
+Stakeholder: No tolerance for anonymous logins; we want every single login to map to either a company employee or an externally approved ID. So, one hundred percent of logons should be by those identities.
+
+Interviewer: Got it. Which identity systems do we need to integrate with at launch? Will you expect single sign‑on?
+
+Stakeholder: We'll need to hook into the corporate identity system for employees and support our partners' approved credentials. SSO is a must — people don't want another password. I’ll share specific providers with you, but yes, it must work with our identity infrastructure.
+
+Interviewer: Please do share those providers after this meeting. Now, about browser compatibility: you said people use many different browsers and devices and you can't force updates. What level of cross‑browser support do you expect?
+
+Stakeholder: We need to support the mainstream browsers that people actually use in the company. It has to render correctly in most of them; we don't need to chase every obscure old browser, but it should work for the bulk of users. Also, make sure mobile web works reasonably well.
+
+Interviewer: Can you quantify “most of them”? How many browsers should we include in the baseline test matrix, and is there a percentage target for correct rendering?
+
+Stakeholder: I want us to test at least eight different browsers and versions as a minimum baseline. And in terms of passing, if the product displays properly in about four‑fifths of the tested browsers, that would be acceptable.
+
+Interviewer: So, test at least eight, with acceptable rendering in roughly eighty percent of them. Noted. You also mentioned email and calendar reliability earlier. What are your expectations around sending invitations and reminders?
+
+Stakeholder: Invitations and reminders are core to the experience. People expect a calendar invite they can accept and that updates if a meeting is changed. Email must be reliable; if invites get lost or bounce, it erodes confidence. We need it to integrate with our email systems and be able to send properly formatted invites.
+
+Interviewer: Which email systems should we support at launch? Do we need to handle different SMTP configurations per tenant?
+
+Stakeholder: We use a mix internally, and our partners use different systems too. At launch, it should be able to work with our main on‑prem Exchange and cloud providers we use, and be flexible enough to use different SMTP relays per tenant if necessary. I'll get you the exact list.
+
+Interviewer: Please provide that list. On branding and look and feel: what level of customization do you expect for customers to make the product match corporate identity?
+
+Stakeholder: It should feel like our product, not a foreign app. The customer must be able to put their logo and align colors and basic identity elements so employees recognize it. I don't need complete theming for every tiny element, but things like headers, logos, and primary color palette must be configurable.
+
+Interviewer: For accessibility, you said it was non‑negotiable. Which standard or guideline should we target?
+
+Stakeholder: Accessibility is legally and ethically important. We have to comply with the Americans with Disabilities Act, so design and development should meet accepted accessibility standards. If you need a specific technical standard, meeting recognized web accessibility guidelines at a strong level makes sense.
+
+Interviewer: Can you be specific about which level — for example, WCAG 2.1 AA — or is ADA conformance your primary statement?
+
+Stakeholder: ADA is the requirement, but to operationalize that, yes, aiming for WCAG 2.1 at the AA level is appropriate.
+
+Interviewer: Thank you. Earlier you mentioned maintainability and fast developer onboarding. What does “easy to evolve” mean for your teams?
+
+Stakeholder: We want the engineering side to be able to add or change small features quickly without spending a week deciphering spaghetti code. New maintenance developers should be able to integrate routine functionality within a couple of working days in most cases, assuming they know our tech stack.
+
+Interviewer: Can you quantify “most cases” and the developer population? For planning, what percentage of maintenance developers should be able to hit that two‑day target?
+
+Stakeholder: I'd expect the vast majority — around nine out of ten of our typical maintenance developers — to be able to pick up a normal enhancement and integrate it within two working days. If it takes longer than that frequently, our cost of change goes up too much.
+
+Interviewer: That’s clear. You mentioned "assuming they know our tech stack" — our product will run on Java app servers. Do you expect that as the baseline knowledge?
+
+Stakeholder: Yes, the team will be Java‑savvy. We don't expect everyone to be an expert in every framework, but if they're comfortable with Java application servers and common patterns, they should meet that two‑day expectation.
+
+Interviewer: Bringing this back to operations, what monitoring and alerting do you need to feel confident about uptime and performance?
+
+Stakeholder: I need dashboards that show live health: response times, error rates, queue depth, and email delivery problems. Alerts should let us know before users are impacted, so the ops team can scale or troubleshoot. Also, we want monthly reports on SLA adherence and incident summaries.
+
+Interviewer: Do you want synthetic monitors that verify the five‑second interactions you mentioned earlier, and load testing to validate the concurrency and throughput targets?
+
+Stakeholder: Yes to both. Synthetic checks for the key user journeys, and realistic load testing that simulates those morning and afternoon peaks so we can be confident in the numbers we discussed.
+
+Interviewer: Earlier you said slow response causes adoption drop. How does that tie into the peak concurrency numbers — if we design for one thousand concurrent requests but see higher peaks, what impact are you most concerned about?
+
+Stakeholder: The real risk is perceived slowness. If capacity is exceeded during peaks and people experience delays, they'll revert to old ways — email chains, phone calls, ad‑hoc blockers — and adoption stalls. So the capacity targets are really safety buffers to protect the user experience during those critical windows.
+
+Interviewer: That makes sense. A few more clarifying points before we wrap. For external users, how should provisioning and approval work — self‑registration with approval, or only manual provisioning?
+
+Stakeholder: We should support a controlled flow. Automated self‑registration that requires explicit approval is useful for scale, but for sensitive access I want manual approval. The specifics can vary by partner, so flexible workflows are preferable.
+
+Interviewer: For browser testing, you said at least eight browsers and about eighty percent pass. Do you want that percentage applied across desktop and mobile separately, or combined?
+
+Stakeholder: Hmm, put simply, we want a good experience on both. If forced to pick, I'd say aim for that level per device category, but I can be pragmatic if there are technical constraints. Let’s start with separate targets and we can prioritize which devices matter most.
+
+Interviewer: Finally, priorities: if we had to rank non‑functional items, which are must‑have now and which can be deferred to Release 2?
+
+Stakeholder: Must‑have now are reliability during business hours, core security with corporate identities, simple but solid browser support for mainstream clients, email invites working reliably, and accessibility compliance. Performance and scale to the higher numbers, and broad theming options, can be phased — we're focused first on trust and adoption, then on bigger scale and fancy branding.
+
+Interviewer: You mentioned earlier you'd share lists of identity providers, email servers, browser versions, and branding assets. Can you commit to sending those and some forecasts for active users so we can finalize capacity planning?
+
+Stakeholder: Yes, I’ll pull together the identity provider names, the email systems we need to hit, a target list of eight browsers and versions, and a simple growth forecast for active users. Also, I’ll include the branding package and point you to legal for accessibility obligations.
+
+Interviewer: Great. Last thing — any outstanding risks or past incidents I should know about that shaped these expectations?
+
+Stakeholder: We had an incident last year where a board meeting invite failed to update after a room change, which was, well, embarrassing. People had to scramble and manually notify attendees. That really made leadership insist on reliable invites and clear audit trails. So anything that prevents that happening again is high priority for me.
+
+Interviewer: That’s a valuable example. I'll note it as a high‑severity risk to mitigate. Thank you — I’ll follow up with the detailed artifacts we need and schedule deep dives with IT Ops, Security, and Accessibility. Anything else you want me to capture now?
+
+Stakeholder: No, that covers it. Thanks — and sorry if I jumped around a bit; these are the things that keep me up at night. I'll get those documents to you by early next week.
+
+---
+Selected Requirements:
+1. [NICE.csv line 293] [quality, performance] The response shall be fast enough to avoid interrupting the user's flow of thought. 90% of tasks shall complete within 5 seconds. 98% of tasks shall complete within 8 seconds.'
+2. [NICE.csv line 294] [quality, availability] 'Aside from server failure the software product shall achieve 99.99% up time.'
+3. [NICE.csv line 296] [quality, scalability] 'The product shall be capable of handling up to 1 000 concurrent requests. This number will increase to 2 000 by Release 2. The concurrency capacity must be able to handle peak scheduling times such as early morning and late afternoon hours.'
+4. [NICE.csv line 297] [quality, scalability] 'The product shall be able to process 10 000 transactions per hour within two years of its launch. This number will increase to 20 000 by Release 2.'
+5. [NICE.csv line 315] [quality, security] 'The product shall ensure that only company employees or external users with company-approved user IDs may have product access. 100% of all logons shall be by either company employees or external users with company-approved user IDs.'
+6. [NICE.csv line 300] [quality, look_and_feel, operability, portability] 'The product must be able to interface with any HTML browser. The product shall transmit data between the user and the product without problems. The product shall display HTML properly in 80% of all HTML browsers tested (minimum is to test 8 browsers).'
+7. [NICE.csv line 302] [quality, operability, portability] 'The product must be able to interface with various email servers. The product shall be able to send email.'
+8. [NICE.csv line 282] [quality, look_and_feel] The product's Look and Feel shall be able to incorporate aspects of the customer's organization such as logo branding and identity'
+9. [NICE.csv line 292] [quality, legal] 'The product shall conform to the Americans with Disabilities Act.'
+10. [NICE.csv line 307] [quality, maintainability] 'The product must be designed using Design Patterns and coding best practices. 90% of maintenance software developers are able to integrate new functionality into the product with 2 working days.'

@@ -1,0 +1,238 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_3_re_experienced_stakeholder_technical_senior_20260227_110142.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_175544",
+  "requirements": [
+    {
+      "requirement": "The system should prevent invalid data entry, such as overlapping shifts or impossible dates, and provide validation before saving.",
+      "source_citation": "The system must catch basic invalid entries up front with validation — things like impossible dates, overlapping assignments, or missing prerequisites should be blocked or corrected before saving.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "data_integrity",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for validation to prevent invalid data entry, which is a clear non-functional requirement related to data integrity.",
+      "follow_up_question": "What specific validation rules should be implemented for overlapping shifts and impossible dates?"
+    },
+    {
+      "requirement": "The system should provide real-time conflict detection and immediate validation when selecting a time or site.",
+      "source_citation": "I mean, things like real-time conflict detection, immediate validation when you pick a time or a site, warnings that explain the problem and suggest fixes — not just a cryptic error message.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for real-time conflict detection and immediate validation, which are usability features.",
+      "follow_up_question": "What specific types of conflicts should the system detect in real-time?"
+    },
+    {
+      "requirement": "The system should guide users through safe steps rather than leaving them to remember rules.",
+      "source_citation": "In short, the system should guide the user through safe steps rather than leaving them to remember rules.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of guiding users through safe steps, which is a usability concern.",
+      "follow_up_question": "What specific guidelines or rules should the system enforce to ensure user safety?"
+    },
+    {
+      "requirement": "The system should have a response time of less than 5 seconds for routine operations.",
+      "source_citation": "For routine student management or small edits, anything above a few seconds feels sluggish to staff. If you press a button to update a student's enrollment, waiting more than, say, five seconds is noticeable.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the expected response time for routine operations, which is a performance requirement.",
+      "follow_up_question": "What specific routine operations should be optimized for a response time of less than 5 seconds?"
+    },
+    {
+      "requirement": "The system should complete heavier tasks, such as generating a full cohort schedule, within 30 seconds.",
+      "source_citation": "For bigger tasks like generating a full schedule for a cohort, it's okay to take longer, but I'd expect it to finish within, um, under half a minute.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the expected response time for heavier tasks, which is a performance requirement.",
+      "follow_up_question": "What specific heavier tasks should be optimized for a response time of less than 30 seconds?"
+    },
+    {
+      "requirement": "The system should be designed for at least 5 years of use.",
+      "source_citation": "It has to be a long-term solution; the nursing program will need it for several years. We should design for at least a multi-year horizon so upgrades and schema changes are manageable without ripping the system out every few years.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the expected lifespan of the system, which is a maintainability requirement.",
+      "follow_up_question": "What specific design considerations should be taken into account to ensure the system can be maintained for at least 5 years?"
+    },
+    {
+      "requirement": "The system should have a 95% uptime target.",
+      "source_citation": "Roughly, I would say the system should be up most of the time; we cannot tolerate frequent outages. If it starts going down regularly, it defeats the purpose of centralizing scheduling.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the expected uptime target, which is an availability requirement.",
+      "follow_up_question": "What specific measures should be taken to ensure the system meets the 95% uptime target?"
+    },
+    {
+      "requirement": "The system should use single sign-on (SSO) with CampusConnect for authentication.",
+      "source_citation": "Single sign-on is a must so users don't have multiple passwords.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for single sign-on with CampusConnect, which is a security requirement.",
+      "follow_up_question": "What specific SSO protocols or standards should be used for integration with CampusConnect?"
+    },
+    {
+      "requirement": "The system should have role-based access control to restrict access to sensitive student information.",
+      "source_citation": "Not everyone should see everything — some of that student information is sensitive. Access should be role-based so program admins can see full records, while clinical site coordinators or instructors only see what they need for supervision or scheduling.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for role-based access control, which is a security requirement.",
+      "follow_up_question": "What specific roles and access levels should be defined for the system?"
+    },
+    {
+      "requirement": "The system should provide audit trails for critical data changes.",
+      "source_citation": "Also, there should be audit trails so we can see who viewed or changed critical data.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for audit trails, which is a security requirement.",
+      "follow_up_question": "What specific data changes should be audited, and what level of detail should be recorded in the audit trails?"
+    },
+    {
+      "requirement": "The system should use industry-standard TLS for all transport and standard disk/database encryption for data at rest.",
+      "source_citation": "Use industry-standard TLS for all transport, and standard disk/database encryption for data at rest.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for industry-standard TLS and encryption, which are security requirements.",
+      "follow_up_question": "What specific TLS versions and encryption standards should be used for data in transit and at rest?"
+    },
+    {
+      "requirement": "The system should have a clean API surface for future integrations.",
+      "source_citation": "Yes, we should design a clean API surface from day one. If other campus services or a mobile app need to pull schedules or rosters later, having documented REST endpoints with versioning will save a lot of work.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for a clean API surface, which is a maintainability requirement.",
+      "follow_up_question": "What specific API standards or protocols should be used for future integrations?"
+    },
+    {
+      "requirement": "The system should be designed for horizontal scalability with load balancers.",
+      "source_citation": "Design for horizontal scalability with a load balancer so we can add capacity if usage grows.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for horizontal scalability, which is a scalability requirement.",
+      "follow_up_question": "What specific load balancing strategies or technologies should be used for horizontal scalability?"
+    },
+    {
+      "requirement": "The system should use an asynchronous event bus for long-running tasks to avoid UI blocking.",
+      "source_citation": "Also, implement robust logging and an audit trail, and design for horizontal scalability with a load balancer so we can add capacity if usage grows.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for an asynchronous event bus, which is a performance requirement.",
+      "follow_up_question": "What specific long-running tasks should be handled asynchronously, and what event bus technologies should be used?"
+    },
+    {
+      "requirement": "The system should be compatible with modern HTML5-capable browsers only.",
+      "source_citation": "Modern HTML5-capable browsers is what I'd expect. We don't need to cater to really old versions, but it should work in supported releases of mainstream browsers.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "interoperability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for compatibility with modern HTML5-capable browsers, which is an interoperability requirement.",
+      "follow_up_question": "What specific browser versions and technologies should be supported for HTML5 compatibility?"
+    },
+    {
+      "requirement": "The system should have a single hands-on training session that lasts 1-2 hours for most admins to get comfortable with daily tasks.",
+      "source_citation": "Hmm, I think a single hands-on session that lasts an hour or two should be enough for most admins to get comfortable with daily tasks; deeper features shouldn't require extensive classroom training.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the expected training time, which is a usability requirement.",
+      "follow_up_question": "What specific training materials or methods should be used to ensure effective training within 1-2 hours?"
+    },
+    {
+      "requirement": "The system should have a UI that resembles existing mental models, such as spreadsheets and campus portals.",
+      "source_citation": "They're generally competent but they're not developers; many are used to spreadsheets and campus portals. So the UI should be obvious, with guided workflows that resemble the mental model they already use.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for a UI that resembles existing mental models, which is a usability requirement.",
+      "follow_up_question": "What specific UI elements or design patterns should be used to ensure the system resembles existing mental models?"
+    },
+    {
+      "requirement": "The system should have a fallback administrative account or emergency access mechanism if CampusConnect is down.",
+      "source_citation": "Preferably rely on CampusConnect as the primary identity provider so we keep one source of truth, but having a fallback administrative account or emergency access mechanism is sensible if CampusConnect is down.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for a fallback administrative account, which is a security requirement.",
+      "follow_up_question": "What specific fallback mechanisms or emergency access protocols should be implemented?"
+    },
+    {
+      "requirement": "The system should use an aggressive caching strategy for static data and a conservative caching strategy for mutable schedules.",
+      "source_citation": "Cache read-heavy, mostly static reference data aggressively, but for schedule data we need short TTLs or cache invalidation on writes so users see near-real-time changes.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for different caching strategies for static and mutable data, which is a performance requirement.",
+      "follow_up_question": "What specific caching technologies or strategies should be used for static and mutable data?"
+    },
+    {
+      "requirement": "The system should provide real-time progress indicators in the UI for long-running tasks and send notifications when jobs complete.",
+      "source_citation": "Provide real-time progress indicators in the UI where applicable, and also send notifications when long jobs complete.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for real-time progress indicators and notifications, which are usability requirements.",
+      "follow_up_question": "What specific progress indicators and notification methods should be used for long-running tasks?"
+    },
+    {
+      "requirement": "The system should be designed for evolution, with configurable rules to accommodate future changes.",
+      "source_citation": "Just that we should build for evolution — program rules change, clinical partnerships change — so don't hard-code assumptions into the core. Make rules configurable where it makes sense.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for a system that can evolve and accommodate future changes, which is a maintainability requirement.",
+      "follow_up_question": "What specific design patterns or technologies should be used to ensure the system can evolve and accommodate future changes?"
+    }
+  ]
+}

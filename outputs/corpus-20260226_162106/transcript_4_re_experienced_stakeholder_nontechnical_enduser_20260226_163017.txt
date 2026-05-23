@@ -1,0 +1,164 @@
+Interviewer: Thanks for meeting with me. To start, can you tell me a bit about your role and a typical day handling disputes?
+
+Stakeholder: Sure — I’m on the cardmember services team. I, uh, handle disputes and chargebacks most of the day; I’d say I’m juggling several at once, and I move between systems to pull up transactions, member profiles and merchant details. It’s... well, it’s a pain sometimes because nothing is in one place, so I keep hopping around to confirm what happened and then I have to call or email other teams if something’s missing.
+
+Interviewer: Walk me through a single case from when it first lands to when you close or escalate it. What do you do step by step?
+
+Stakeholder: Okay, so a case comes in — either through a phone call or a ticket. I try to find the transaction, check the statement line to make sure the amount and date match, then look at the member record to confirm identity and contact info, and then I look up the merchant to see if we’ve handled anything like this before. If it’s straightforward I open a dispute or send a retrieval request; if not, I escalate to an investigator. Along the way I jot notes, attach any screenshots, and sometimes I have to wait on another team to confirm something before I can proceed.
+
+Interviewer: Which systems are you opening today to do those checks? Can you name them for me — what you rely on now?
+
+Stakeholder: I jump into our statement look-up, the member profile system, and a merchant directory — plus our current ticketing tool. I also sometimes keep a spreadsheet open where I track odd things; don’t tell IT, but yeah, that’s a messy workaround.
+
+Interviewer: You mentioned juggling several cases at once. How many do you commonly have open in parallel, when things are busy?
+
+Stakeholder: Hmm, on a busy morning I’d say... enough that I wish the UI let me tab through them faster — maybe a handful, sometimes more if there’s a wave of chargebacks. I can’t give you an exact number off the top of my head, but I definitely have multiple active ones.
+
+Interviewer: Understood. Thanks — that helps. You said “it’s a pain” switching between systems. When you think about a new Disputes application, what would make that feel better day-to-day?
+
+Stakeholder: It needs to feel familiar. If it looks and behaves like our other company apps, I don’t have to hunt for buttons or settings. Also, putting the key info — transaction details, member contact, merchant notes — on the same screen would stop so much clicking around. And, I want to be confident that what I’m seeing is the official info, not some stale copy someone exported last week.
+
+Interviewer: When you say “familiar,” which company apps work well for you? What exactly about their look-and-feel helps?
+
+Stakeholder: The ones with the standard header, the same search box up top, and where actions are in the same place — like a toolbar with Create, Save, Escalate — that consistency is big. Also, fonts and spacing that don’t feel cramped. If the new app follows our corporate look, new hires pick it up faster. And, uh, when I’m on the phone with a cardmember I don’t want to see internal-only jargon or controls — that confuses people.
+
+Interviewer: Good point about external views. So for screens you might share or show to a member or merchant, what must be different compared to internal views?
+
+Stakeholder: Basically, anything that’s internal workflow — like “investigator notes” or internal escalation flags — should be hidden or masked. Externally visible items should be clean and plain-language, so I don’t blurt out something we’re not supposed to. Oh, and it should still be consistent with our corporate UI even when external — don’t reinvent the layout.
+
+Interviewer: You mentioned transaction details and member info needing to be “official.” Can you say more about what you mean by that? Where should the app get the data from?
+
+Stakeholder: I mean, if the app shows a transaction amount or a member’s address, that needs to be pulled from the master systems we already use — the statement records, the member database, and the merchant directory. If it shows something else, I’ll waste time chasing a phantom error. So the screen has to be tied to those source systems, not some copy someone pasted.
+
+Interviewer: Which specific fields do you rely on coming from each source — for example, the statement source versus the member database versus merchant info? Can you give examples?
+
+Stakeholder: Sure — the transaction date, amount, auth code and the statement line should be from the statement records. The member’s name, contact numbers, address and account status should come from the member database. The merchant name, location, and merchant category — that’s from the merchant directory. If those are wrong, my whole case is shaky.
+
+Interviewer: If the authoritative system is temporarily down, what would you prefer the app do — show something stale, block you, or give a warning? How should it behave?
+
+Stakeholder: I’d want a clear warning. It can show cached info if necessary, but it must say it’s cached and timestamp it so I know when it was last verified. I don’t want to assume data is fresh when it isn’t. And if it’s critical, I want to be able to call it out to a supervisor, not accidentally proceed.
+
+Interviewer: You raised caching and freshness — that’s important. Let’s talk about the list view where you search and see results. You said earlier you want the key info on one screen — how do you want the list of cases to look when you search?
+
+Stakeholder: When I search, I get a bunch of results and right now I have to open each one to know its status. I’d like color flags so I can scan and spot urgent ones. But, uh, I’m colorblind so colors alone won’t cut it — there should be icons or short labels too. And hovering over a result should give me a quick preview so I can decide which to open.
+
+Interviewer: Which statuses are most important to surface in that list? Can you tell me which ones you’d want prioritized?
+
+Stakeholder: The ones I check first are those needing immediate action, ones waiting on member info, and ones that are already resolved or closed. The urgent ones are the biggest pain because they jump to the front of my day. I’d like them to stand out, then the “pending info” ones, then the quiet or closed ones.
+
+Interviewer: When you say “stand out,” what would you expect to happen when you interact with a colored item — do you want a tooltip, a quick preview, or to go straight to the full case?
+
+Stakeholder: A quick preview first would be great, maybe the most recent notes and the primary transaction details, and then I can open the full case if I need to. Tooltips are fine too, but sometimes I need more context than a tiny hover can give.
+
+Interviewer: You mentioned accessibility — since you’re colorblind, do you prefer specific icons or text labels along with colors?
+
+Stakeholder: Definitely both. Icons that are distinct — like an exclamation for urgent — plus a small text label like “Urgent” or “Pending Info.” That way I don’t have to squint or guess.
+
+Interviewer: Let’s talk about who can do what. Today, can everyone initiate a dispute, or is that limited?
+
+Stakeholder: Not everyone should. Right now some people try to open disputes who aren’t assigned to the same cardholder group, and then it becomes a mess. We have to call a supervisor to get it opened for them. I think only certain roles should start a dispute — reps handling those accounts, supervisors, and maybe investigators — but, uh, supervisors sometimes need to act across different account pools. That should be controlled and logged.
+
+Interviewer: When you say “cardholder group” or “cardholder base,” how is that defined in your organization — by region, product, BIN, or something else?
+
+Stakeholder: It’s mostly by assigned portfolios and product lines, and sometimes by BIN ranges for certain cards. Managers assign the account ownership when people are onboarded, and that determines which members we can service.
+
+Interviewer: If a supervisor or investigator needs cross-base access occasionally, how should that be handled from your perspective? Logged, approved in advance, or something else?
+
+Stakeholder: Logged for sure. Ideally there’s an exception workflow — like a request button that sends a note and supervisor approval, and every override is recorded with who did it and why. We get audited sometimes, so I don’t want someone randomly poking into other people’s cases without a trail.
+
+Interviewer: Good — logging is important. Speaking of trails, what kind of audit information do you expect for each case?
+
+Stakeholder: I need to see who opened the case, who viewed it, what they changed, and timestamps for each action. If notes were edited, show that too. If something was escalated or an override happened, that has to be in the record so we can explain our steps to a member or an auditor.
+
+Interviewer: That makes sense. Now, performance — you used words like “fast” and “I don’t want to wait.” Can you put a number on “fast” for me? How long is too long when you move from one screen to another?
+
+Stakeholder: Hmm, numbers aren’t my thing, but, um, when it’s a small move I can tell after a few seconds if it’s lagging. Maybe... five seconds feels like the outer limit before it’s annoying. If it’s longer than that I get distracted and sometimes forget what I was doing.
+
+Interviewer: Is that five seconds acceptable for all transitions, or are there some you expect to be faster or can tolerate a bit longer?
+
+Stakeholder: For small things like opening a case preview or switching between tabs, I’d want it quicker — ideally faster than that. For big things like loading a full transaction history, a little longer is okay, but the UI should show progress so I know it’s working.
+
+Interviewer: Understood. You also said this system needs to be available when you need it. Do you rely on it outside typical business hours?
+
+Stakeholder: Yes, we have people in different time zones and chargebacks come in anytime. We need it most of the time, every day. Planned maintenance is okay if it’s in the very late night hours and we get warned, because sometimes I’m finishing a case and I don’t want to get kicked out halfway through.
+
+Interviewer: What maintenance windows would be acceptable? Can you specify times that are safe to take it down?
+
+Stakeholder: Well, the quietest windows are the early morning hours. I think most teams wouldn’t mind some maintenance then. If you want specifics, early mornings like the 3 a.m. hour during weekdays feel least disruptive, and a longer window on Sunday early morning works for backups. But again, those are the least-bad times, not great.
+
+Interviewer: To be precise — are you saying maintenance Monday through Saturday around three in the morning for an hour, and Sunday in the very early morning for a longer stretch?
+
+Stakeholder: Yeah, roughly. Monday through Saturday that single early hour is usually fine, and Sunday mornings we often need a longer window. Just make sure everyone sees an in-app banner and email before it happens, and let logged-in users finish their work or at least warn them.
+
+Interviewer: When maintenance starts, would you prefer the app to deny logins entirely, or allow read-only access so people can finish in-progress items?
+
+Stakeholder: Read-only would be helpful. If I can at least pull up a case I was working on and copy notes to finish later, that’s better than getting booted out.
+
+Interviewer: Let’s talk about adoption and training. You mentioned new hires pick up familiar UIs faster. How much training do you think would be reasonable for people to use this daily and confidently?
+
+Stakeholder: If the app follows our standards and is intuitive, two days of hands-on training with practice cases should do it. People need scenarios, not just slides. Quick reference cards and short videos to refresh later help too.
+
+Interviewer: When you say “use it daily” or “regularly,” what does “regularly” mean to you — daily, several times a week?
+
+Stakeholder: For people on the team, it means they use it as their primary tool during their shift — so daily. I guess for some back-office people “regular” might be weekly, but for our reps it should be their go-to every day.
+
+Interviewer: You said everyone should adopt it — do you truly expect 100% of cardmember and merchant services reps to be using it after that two-day course? Even temps or folks on rotation?
+
+Stakeholder: In an ideal world, yes, everyone on the front lines would be using it as their tool after the course. Temps or rotating staff should be included in the onboarding plan so they’re not left using the old spreadsheets. I realize in practice there will always be exceptions, but the goal should be full adoption.
+
+Interviewer: I want to challenge that a bit: getting to 100% adoption can be hard. What would make people resist using the app after training, and how could we prevent that?
+
+Stakeholder: People resist when the app makes their job slower or forces them to do extra steps. If it’s faster than the old way, and the workflows match what we actually do, adoption will go up. Also, having managers enforce use and removing the old tools will help. And, uh, incentives or showing usage stats helps keep people honest.
+
+Interviewer: Earlier you mentioned you sometimes attach screenshots and notes manually. Would you want the app to generate correspondence or templates to send to members or merchants?
+
+Stakeholder: Absolutely. If I can pick a template for a retrieval or dispute letter and the system fills in the member name, transaction, and reason, that would save a ton. Also, having standard responses helps keep us compliant.
+
+Interviewer: Are there any regulatory or audit obligations that the correspondence must meet?
+
+Stakeholder: We have a set of required language for certain letters and time frames for responses. The app should use the approved templates so we don’t accidentally send something that gets us in trouble. And like I said, every sent letter should be logged on the case.
+
+Interviewer: One more area — you mentioned exceptions like supervisors needing cross-base access. Do you want those exceptions to be pre-approved or request-based each time?
+
+Stakeholder: Ideally request-based with quick approval. A supervisor could approve access for a user for a specific case or time window, and that action and reason are recorded. That balances security and operational needs.
+
+Interviewer: Circling back — you mentioned color-coding and said you’re colorblind. How does that connect to the corporate UI standard we discussed earlier?
+
+Stakeholder: Right, so if the corporate UI uses color coding elsewhere, we should follow the same palette, but always include icons and labels so people like me aren’t stuck guessing. Also make sure contrast is high enough and that there are keyboard shortcuts — I find those speed things up.
+
+Interviewer: Before we finish, which of the things we discussed do you want built first — what are your top priorities?
+
+Stakeholder: First, put the key data on one screen so we stop jumping between tools. Second, the role and base restrictions — I really don’t want to see cases that aren’t mine. Third, that color-coded, accessible list view with previews. Everything else is important, but those three would make the biggest day-to-day difference.
+
+Interviewer: Great — I’ll note that priority. A few quick follow-ups: can you provide screenshots of the current screens you use and some anonymized example cases for our designers?
+
+Stakeholder: Yes, I can pull a few screenshots and a couple of redacted case examples. Might take me a day to clean them up, but I’ll send them.
+
+Interviewer: And who would be the right person to confirm the definitions of cardholder base and the authoritative field mappings — the person who assigns account ownership and the data steward for the statement records?
+
+Stakeholder: Talk to our team manager for account ownership definitions, and the data steward in the transaction systems group can confirm which fields are authoritative. I’ll introduce you.
+
+Interviewer: Perfect. One last thing — I asked you earlier about “fast” and you said five seconds felt like the limit. I’ll record that as a target for typical screen transitions unless we agree otherwise with performance engineering. Is that okay?
+
+Stakeholder: Yeah, five seconds for normal navigation feels like the cap to me. Faster is better, of course.
+
+Interviewer: Thanks. I’ll summarize our notes and send them to you for review, and we’ll schedule a follow-up once we have the initial mockups. Anything else you want to add before we wrap?
+
+Stakeholder: Hmm, just — please don’t make forms where every field is required when it doesn’t need to be. And, uh, coffee breaks are sacred, so maybe don’t schedule user testing during lunch. Otherwise I think we covered it.
+
+Interviewer: Noted — and I’ll schedule sessions outside lunch hours. Thank you for your time and the detailed input; it’s very helpful.
+
+Stakeholder: No problem — glad to help. And, uh, looking forward to something that actually makes my day easier.
+
+---
+Selected Requirements:
+1. [NICE.csv line 149] [quality, legal, look_and_feel] 'The Disputes application shall comply with the corporate standards for user interface creation for internally and externally used applications.'
+2. [NICE.csv line 151] [quality, look_and_feel] 'The list of dispute cases that are displayed after a search is performed must be color coded for easy identification of dispute cases based upon the dispute case status.'
+3. [NICE.csv line 152] [quality, scalability, usability] '100% of the cardmember and merchant services representatives shall use the Disputes application regularly after a 2-day training course.'
+4. [NICE.csv line 155] [quality, performance] 'The maximum wait time for a user navigating from one screen to another within the Disputes application shall be no more than 5 seconds.'
+5. [NICE.csv line 157] [quality, availability, operability] 'The Disputes application shall be available 24x7x365 with the exception of the following scheduled maintenance windows. Monday â€“ Saturday 3:00am to 4:00am EST Sunday 1:00amd to 5:00am EST'
+6. [NICE.csv line 158] [quality, operability] 'The Disputes application shall interface with the Statement Database. The Statement Database provides the transaction details to the Disputes System. All transaction details must be obtained from the Statement Database'
+7. [NICE.csv line 159] [quality, operability] 'The Disputes application shall interface with the Cardmember Information Database. The Cardmember Information Database provides detailed information with regard to a cardmember. All cardmember detail information must be obtained from the Cardmember Information Database.'
+8. [NICE.csv line 160] [quality, operability] 'The Disputes applications shall interface with the Merchant Information Database. The Merchant Information Database provides detailed information with regard to the merchant. All merchant detail information shall be obtained from the Merchant Information Database.'
+9. [NICE.csv line 163] [quality, security] 'The Disputes application shall ensure that only users with the appropriate access level are allowed to initiate dispute requests.'
+10. [NICE.csv line 180] [quality, security] 'The Disputes System must prevent users from accessing any dispute cases that do not belong to their cardholder base.'

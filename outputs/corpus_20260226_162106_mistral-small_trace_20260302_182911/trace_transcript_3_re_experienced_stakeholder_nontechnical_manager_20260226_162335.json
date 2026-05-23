@@ -1,0 +1,293 @@
+{
+  "transcript_file": "outputs/corpus-20260226_162106/transcript_3_re_experienced_stakeholder_nontechnical_manager_20260226_162335.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_182913",
+  "requirements": [
+    {
+      "requirement": "The system should complete small actions (e.g., enrolling a student, updating a profile) within five seconds.",
+      "source_citation": "For everyday actions like enrolling a student or updating a profile, waiting more than a few seconds is noticeable and annoying.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the importance of quick response times for small actions, specifying a target time of a few seconds.",
+      "follow_up_question": "Are there specific small actions that are more critical than others, and should they have different performance targets?"
+    },
+    {
+      "requirement": "The system should generate full schedules in under half a minute to keep staff engaged during planning sessions.",
+      "source_citation": "For full schedule generation I’m okay if it takes a bit longer because it’s a heavy job, but not so long that staff can’t iterate during planning sessions. Maybe small actions should complete in about five seconds and schedule runs in under half a minute—that would keep people engaged during a working meeting.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a target time for schedule generation, emphasizing the need for quick performance to maintain engagement during planning sessions.",
+      "follow_up_question": "Are there specific scenarios or data sizes that would significantly impact schedule generation time?"
+    },
+    {
+      "requirement": "The system should handle at least a dozen simultaneous active users during peak planning sessions without significant slowdown.",
+      "source_citation": "During peak, it’s not just the ten in the scheduling room... I’d budget for maybe a dozen simultaneous active users at peak.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the expected number of simultaneous users during peak times, which is crucial for performance testing and capacity planning.",
+      "follow_up_question": "Are there specific actions or workflows that are more critical during peak times and should be prioritized for performance optimization?"
+    },
+    {
+      "requirement": "The system must follow DePaul’s information security policies and FERPA regulations.",
+      "source_citation": "We must follow DePaul’s information security policies and FERPA for sure.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need to comply with DePaul’s information security policies and FERPA, which are critical for data protection and regulatory compliance.",
+      "follow_up_question": "Are there specific aspects of DePaul’s information security policies or FERPA that are particularly important for this system?"
+    },
+    {
+      "requirement": "The system should avoid storing Protected Health Information (PHI) unless absolutely necessary to comply with HIPAA.",
+      "source_citation": "If the system ends up capturing clinical patient information, there are HIPAA implications and we should avoid storing PHI unless absolutely necessary.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the importance of avoiding PHI storage to comply with HIPAA, which is crucial for data privacy and legal compliance.",
+      "follow_up_question": "Are there specific scenarios where PHI might be captured, and how can the system minimize or avoid such data?"
+    },
+    {
+      "requirement": "The system should implement role-based access control to ensure that site coordinators and other users only see information relevant to their roles.",
+      "source_citation": "Access should be role-based—site coordinators shouldn’t see everything.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for role-based access control, which is essential for data security and privacy.",
+      "follow_up_question": "Can you provide more details on the specific roles and their corresponding access levels?"
+    },
+    {
+      "requirement": "All notifications and messages should use agreed-upon nursing terminology and be vetted for privacy to avoid disclosing sensitive student details.",
+      "source_citation": "All messages should use our agreed nursing terminology and be vetted for privacy—no sensitive student details in push texts.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for privacy-vetted notifications, which is crucial for data protection and compliance with regulations like FERPA.",
+      "follow_up_question": "Are there specific types of sensitive information that should be avoided in notifications, and what is the process for vetting terminology?"
+    },
+    {
+      "requirement": "Notifications should require opt-in consent for SMS messages.",
+      "source_citation": "Notifications need an opt-in for SMS if we go that route.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the need for opt-in consent for SMS notifications, which is important for compliance with communication regulations and user privacy.",
+      "follow_up_question": "Are there specific scenarios or types of notifications that would require SMS opt-in?"
+    },
+    {
+      "requirement": "The system should be intuitive and easy to use, allowing users to perform core tasks without extensive training.",
+      "source_citation": "If it’s not obvious, people will revert to email. Ideally, everyone who needs to use it should be competent after a single day of training.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder emphasizes the importance of usability and the need for minimal training, which is crucial for user adoption and satisfaction.",
+      "follow_up_question": "Are there specific usability features or design principles that should be prioritized to ensure ease of use?"
+    },
+    {
+      "requirement": "Users should be able to complete a checklist of main tasks (e.g., scheduling a student, assigning to a site, approving a clinical block) on their own after a one-day training session.",
+      "source_citation": "For acceptance, I’d expect they can complete a checklist of the main tasks—like scheduling a student, assigning to a site, and approving a clinical block—on their own.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the expected outcomes of training, which is important for usability testing and ensuring that users can perform tasks independently.",
+      "follow_up_question": "Can you provide more details on the specific tasks that should be included in the checklist?"
+    },
+    {
+      "requirement": "The system should avoid long manuals and provide concise, practical training materials.",
+      "source_citation": "I don’t want long manuals; people are busy.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for concise training materials, which is important for usability and user adoption.",
+      "follow_up_question": "Are there specific types of training materials or formats that would be most effective for users?"
+    },
+    {
+      "requirement": "The system should use clear Standard English for student-facing notices to ensure understanding.",
+      "source_citation": "The system’s student-facing notices should use clear Standard English—nothing too technical on the student side.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for clear and non-technical language in student-facing notices, which is crucial for usability and communication.",
+      "follow_up_question": "Are there specific terms or phrases that should be avoided or clarified in student-facing notices?"
+    },
+    {
+      "requirement": "The system should be reliably available during business hours, roughly morning into early evening on weekdays.",
+      "source_citation": "The critical window is when our office and partners are active—roughly morning into early evening on weekdays. We need the system to be reliably there during those hours.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the critical window for system availability, which is important for planning and ensuring uptime during business hours.",
+      "follow_up_question": "Are there specific business hours or peak times that are more critical than others?"
+    },
+    {
+      "requirement": "The system should have mid-90s percent availability during business hours, measured over a monthly period.",
+      "source_citation": "Something in the mid-90s percent availability makes me comfortable. If it dips below that, we’ll have problems. I think measuring it over a monthly period makes sense.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the target availability percentage and the measurement period, which is crucial for system reliability and performance monitoring.",
+      "follow_up_question": "Are there specific scenarios or events that could impact availability, and how should the system handle them?"
+    },
+    {
+      "requirement": "The system should work in a degraded mode when CampusConnect is unavailable, allowing users to view cached data and perform local scheduling work that can sync later.",
+      "source_citation": "Degraded, ideally. We should be able to view cached data and perform local scheduling work that can sync later.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for degraded mode functionality when CampusConnect is unavailable, which is important for system resilience and continuity of operations.",
+      "follow_up_question": "Are there specific data or functions that should be prioritized for caching and local work during degraded mode?"
+    },
+    {
+      "requirement": "The system should log changes, including who made the change, when it was made, the prior value, and a short justification if an override occurred.",
+      "source_citation": "I’d want to know who made the change, when they made it, what the prior value was, and a short justification if they overrode a warning.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "The stakeholder emphasizes the need for detailed change logs, which is crucial for auditability, traceability, and system maintenance.",
+      "follow_up_question": "Are there specific types of changes or overrides that should be prioritized for logging?"
+    },
+    {
+      "requirement": "The system should be the authoritative source for curriculum and scheduling data for at least five years, with a plan for data accessibility and exportability.",
+      "source_citation": "We should expect it to be the authoritative system for at least five years. We need a plan to keep data accessible and exportable in case of future transitions.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the expected lifetime of the system and the need for data accessibility and exportability, which is important for long-term maintainability and compliance.",
+      "follow_up_question": "Are there specific data formats or export requirements that should be considered for future transitions?"
+    },
+    {
+      "requirement": "The system should support standard and machine-readable export formats such as CSV or XML for data accessibility and compliance purposes.",
+      "source_citation": "I’m not picky about formats as long as they’re standard and machine-readable—CSV or XML would work.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the required export formats, which is important for data accessibility, compliance, and system maintainability.",
+      "follow_up_question": "Are there specific data elements or fields that should be included in the exports?"
+    },
+    {
+      "requirement": "The system should support on-demand exports for cohorts or terms and annual archive exports for compliance purposes.",
+      "source_citation": "We should be able to run an export for a cohort or term on demand, and an archive export annually for compliance purposes.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for on-demand and annual exports, which is crucial for data management, compliance, and system maintainability.",
+      "follow_up_question": "Are there specific compliance requirements or regulations that the exports should adhere to?"
+    },
+    {
+      "requirement": "The system should support at least a dozen simultaneous active users at peak, with more users viewing schedules.",
+      "source_citation": "I’d budget for maybe a dozen simultaneous active users at peak, with more people viewing schedules.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the expected number of simultaneous users, which is important for scalability and performance planning.",
+      "follow_up_question": "Are there specific actions or workflows that are more critical during peak times and should be prioritized for scalability?"
+    },
+    {
+      "requirement": "The system should perform immediate validations for required fields, date and time ranges, and site capacity to prevent garbage data from entering the system.",
+      "source_citation": "Simple things like required fields, date and time ranges that make sense, and flags when someone tries to assign a student to a site that’s already full. Those should be immediate.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "data_integrity",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies the need for immediate validations to ensure data integrity, which is crucial for preventing errors and maintaining data quality.",
+      "follow_up_question": "Are there specific validation rules or checks that should be prioritized for immediate implementation?"
+    },
+    {
+      "requirement": "The system should allow overrides for data integrity checks, but only for senior program admins, and should log who performed the override, the timestamp, and a short note explaining why.",
+      "source_citation": "Overrides should be possible but limited to senior program admins. When an override occurs, capture who did it, a timestamp, and a short note explaining why.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "data_integrity",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for controlled overrides and detailed logging, which is important for data integrity, auditability, and traceability.",
+      "follow_up_question": "Are there specific scenarios or conditions that would warrant an override, and how should they be documented?"
+    },
+    {
+      "requirement": "The system should integrate with CampusConnect for core student and course information, including student identity, program and course lists, and basic enrollment facts.",
+      "source_citation": "I mean core student and course information—student identity, program and course lists, and basic enrollment facts should come from CampusConnect rather than us trying to be the source of truth.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "interoperability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for integration with CampusConnect for core student and course information, which is crucial for data accuracy and system interoperability.",
+      "follow_up_question": "Are there specific data elements or fields that should be prioritized for integration with CampusConnect?"
+    },
+    {
+      "requirement": "The system should respect and integrate with the single-sign-on and user identity system used by CampusConnect.",
+      "source_citation": "I’d prefer not to reinvent account provisioning either; whatever single-sign-on and user identity CampusConnect uses should be respected.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "interoperability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need to respect and integrate with CampusConnect's single-sign-on and user identity system, which is important for seamless user access and system interoperability.",
+      "follow_up_question": "Are there specific authentication or authorization requirements that should be considered for integration with CampusConnect?"
+    },
+    {
+      "requirement": "The system should aim for near-real-time synchronization with CampusConnect for identity and course catalogs, and nightly batches for enrollment data.",
+      "source_citation": "For identity and course catalogs, near-real-time would be ideal so we’re always aligned, but I recognize that might be more work. Enrollment data could probably be shared nightly.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "interoperability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the desired synchronization frequency for different types of data, which is crucial for data accuracy and system interoperability.",
+      "follow_up_question": "Are there specific data elements or fields that should be prioritized for near-real-time synchronization?"
+    },
+    {
+      "requirement": "The system should work in a degraded mode when CampusConnect is unavailable, allowing users to view cached data and perform local scheduling work that can sync later.",
+      "source_citation": "Degraded, ideally. We should be able to view cached data and perform local scheduling work that can sync later.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for degraded mode functionality when CampusConnect is unavailable, which is important for system resilience and continuity of operations.",
+      "follow_up_question": "Are there specific data or functions that should be prioritized for caching and local work during degraded mode?"
+    }
+  ]
+}

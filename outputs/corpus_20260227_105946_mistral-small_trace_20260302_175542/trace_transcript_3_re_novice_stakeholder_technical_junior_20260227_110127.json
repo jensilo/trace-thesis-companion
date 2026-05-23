@@ -1,0 +1,183 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_3_re_novice_stakeholder_technical_junior_20260227_110127.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_175544",
+  "requirements": [
+    {
+      "requirement": "The system should respond to small tasks (e.g., adding a student) within approximately 5 seconds.",
+      "source_citation": "For the small things, like adding a student or updating a roster, people expect almost immediate feedback. For the heavier stuff — like generating full term schedules — they will tolerate a bit longer but not forever.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for immediate feedback for small tasks, indicating a performance requirement. The specific time frame of around 5 seconds is also provided.",
+      "follow_up_question": "Are there any specific small tasks that are more critical than others and require even faster response times?"
+    },
+    {
+      "requirement": "The system should generate full term schedules within approximately 30 seconds.",
+      "source_citation": "For the heavier stuff — like generating full term schedules — they will tolerate a bit longer but not forever.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions that heavier tasks like generating full term schedules should take no more than 30 seconds, indicating a performance requirement.",
+      "follow_up_question": "Are there any specific scenarios or data sizes that would make schedule generation take longer than 30 seconds?"
+    },
+    {
+      "requirement": "The system should implement role-based access control (RBAC) to restrict access to sensitive student information.",
+      "source_citation": "Program admins should have broad access because they're managing the cohort, and a few senior staff. Site coordinators should only see the basics they need to operate, and instructors should see academic-relevant info. There should be clear restrictions so only authorized people can see personal data.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for role-based access control and restrictions on sensitive information, indicating a security requirement.",
+      "follow_up_question": "Can you provide more details on the specific roles and their corresponding access levels?"
+    },
+    {
+      "requirement": "The system should comply with the university's information policy on privacy, including controlled access and encryption where required.",
+      "source_citation": "It must protect private information in line with our organization’s information policy. That means controlled access, encryption where required, and minimal exposure of personal identifiers.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for compliance with the university's information policy, indicating a security requirement.",
+      "follow_up_question": "Can you provide more details on the specific encryption standards and access control mechanisms required?"
+    },
+    {
+      "requirement": "The system should have an intuitive user interface with minimal clicks for common tasks, clear error messages, and predictable workflows.",
+      "source_citation": "Minimal clicks to perform common tasks, clear error messages, and predictable workflows. If something feels clunky, they'll avoid it and go back to spreadsheets.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for an intuitive user interface, indicating a usability requirement.",
+      "follow_up_question": "Can you provide examples of common tasks that should require minimal clicks?"
+    },
+    {
+      "requirement": "The system should have basic integrity checks and validation to prevent obvious mistakes, such as overlapping dates and double-bookings.",
+      "source_citation": "Basic integrity checks are important. Right now people type inconsistent site names and dates and the system trusts them, and that’s what causes conflicts. We need validation to catch obvious mistakes and prevent garbage getting in.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for basic integrity checks and validation, indicating a usability requirement.",
+      "follow_up_question": "Can you provide more details on the specific validation rules that should be implemented?"
+    },
+    {
+      "requirement": "The system should have an uptime of at least 95% during business hours (9 AM–5 PM).",
+      "source_citation": "It needs to be reliable during working hours when people are doing scheduling. Occasional downtime for maintenance is okay, but frequent outages during those hours make our lives miserable. Yeah, I think aiming for around ninety-five percent availability makes sense given our needs and budget.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for 95% availability during business hours, indicating an availability requirement.",
+      "follow_up_question": "Are there any specific times during business hours when downtime would be more acceptable?"
+    },
+    {
+      "requirement": "The system should be designed to be simple enough for non-technical admins to use with minimal training.",
+      "source_citation": "Keep it simple enough that admins who aren't technical can use it without weeks of training — the UI needs to be intuitive.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for a simple design that requires minimal training, indicating a maintainability requirement.",
+      "follow_up_question": "Can you provide more details on the specific training requirements for non-technical admins?"
+    },
+    {
+      "requirement": "The system should have regular backups and a disaster recovery plan to restore data in case of corruption.",
+      "source_citation": "Backups should be routine; if data gets corrupted, we need a way to restore to a recent state. It doesn't need to be instant failover, but some recovery plan is required so we don't lose weeks of scheduling work.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for regular backups and a disaster recovery plan, indicating a maintainability requirement.",
+      "follow_up_question": "Can you provide more details on the specific backup frequency and recovery time objectives?"
+    },
+    {
+      "requirement": "The system should be built to support future curriculum updates and additional cohorts, with the ability to handle peak loads of approximately 10 concurrent users.",
+      "source_citation": "It should be built so we can support future curriculum updates and maybe more cohorts. We don't expect hundreds of concurrent users, but it should survive heavier days and changes over the years.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for scalability to support future updates and additional cohorts, indicating a scalability requirement.",
+      "follow_up_question": "Can you provide more details on the specific peak load scenarios and expected growth?"
+    },
+    {
+      "requirement": "The system should integrate with CampusConnect for student records and authentication, and support email and calendar integrations for notifications.",
+      "source_citation": "It definitely needs to hook into our campus systems for student records and authentication. There's a central campus system — CampusConnect — that holds the master data, so we need an interface there. Also, basics like email for notifications, and maybe calendar feeds for instructors and students.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "integrations",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for integrations with CampusConnect and other systems, indicating an integrations requirement.",
+      "follow_up_question": "Can you provide more details on the specific integration protocols and data formats?"
+    },
+    {
+      "requirement": "The system should maintain audit logs of changes to schedule and student data to support compliance and dispute resolution.",
+      "source_citation": "Yes, we should have a history of who changed what and when. When disputes happen about why a student was assigned somewhere, admins want to see the trail. It also helps with compliance.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "auditability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for audit logs, indicating an auditability requirement.",
+      "follow_up_question": "Can you provide more details on the specific audit log requirements and retention policies?"
+    },
+    {
+      "requirement": "The system should comply with the university's information policy on privacy, including controlled access and encryption where required.",
+      "source_citation": "Absolutely, it must protect private information in line with our organization’s information policy. That means controlled access, encryption where required, and minimal exposure of personal identifiers.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "compliance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for compliance with the university's information policy, indicating a compliance requirement.",
+      "follow_up_question": "Can you provide more details on the specific compliance standards and regulations that apply?"
+    },
+    {
+      "requirement": "The system should prevent obvious mistakes, such as overlapping dates and double-bookings, through validation.",
+      "source_citation": "We need validation to catch obvious mistakes and prevent garbage getting in. Stuff like ensuring dates don't overlap, required fields are present, and that a student doesn't get assigned to two places at the same time.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "error_prevention",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for validation to prevent obvious mistakes, indicating an error prevention requirement.",
+      "follow_up_question": "Can you provide more details on the specific validation rules that should be implemented?"
+    },
+    {
+      "requirement": "The system should automatically send clear and relevant notifications to the appropriate stakeholders when schedules change.",
+      "source_citation": "They need to be automatic. If a clinical shift changes or a cohort assignment is updated, students, instructors, and the clinical site admin should get notified without someone having to remember to send an email. It should say what changed and what action, if any, is required.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "notifications",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for automatic notifications, indicating a notifications requirement.",
+      "follow_up_question": "Can you provide more details on the specific notification channels and content requirements?"
+    },
+    {
+      "requirement": "The system should be designed to last at least five years of active use, supporting multiple cohorts and accreditation cycles.",
+      "source_citation": "This needs to last. We’re talking multiple cohorts, accreditation cycles, curriculum changes... so we should expect it to handle the program for several years. I would plan on at least a handful of years of active use.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "long_term_viability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for long-term viability, indicating a long-term viability requirement.",
+      "follow_up_question": "Can you provide more details on the specific long-term requirements and expected changes?"
+    }
+  ]
+}

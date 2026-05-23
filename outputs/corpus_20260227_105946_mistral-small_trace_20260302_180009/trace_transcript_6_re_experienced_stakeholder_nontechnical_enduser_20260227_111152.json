@@ -1,0 +1,139 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_6_re_experienced_stakeholder_nontechnical_enduser_20260227_111152.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_180059",
+  "requirements": [
+    {
+      "requirement": "The system should have a clear, intuitive, and standard layout with easily recognizable labels and minimal steps for booking a room.",
+      "source_citation": "It's a mix. The labels are obscure, so I spend time guessing where to click, and there are too many steps to confirm a booking. And the layout isn't, like, standard — I'm always hunting for the calendar or the confirm button. So it feels slower than it should be.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions issues with labels, layout, and the number of steps, indicating a need for a more intuitive and standard interface. The confidence is high due to the detailed description provided.",
+      "follow_up_question": "Can you provide examples of specific web apps or interfaces that you find intuitive and would like the room-booking system to emulate?"
+    },
+    {
+      "requirement": "Routine tasks such as booking a room should be completed in approximately 5 seconds.",
+      "source_citation": "Hmm, that's a good question. I don't like waiting — if I'm doing something small, like booking a 30-minute room, it should be basically instant. Maybe, I don't know, five seconds?",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a desired response time for routine tasks, which is a clear performance requirement. The confidence is high due to the explicit mention of the time frame.",
+      "follow_up_question": "Are there any specific routine tasks besides booking a room that you would like to see completed within this time frame?"
+    },
+    {
+      "requirement": "New users should be able to start using the system successfully without training within 15 minutes.",
+      "source_citation": "Well, after poking around for a little while — like, during a coffee break — they should be able to set up a meeting. People shouldn't need a training session. I'd say within maybe a short timeframe… hmm, I'm trying to put a number on it because I know that helps, maybe like under fifteen minutes?",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions a time frame for new users to become proficient, indicating a usability requirement. The confidence is medium due to the somewhat vague nature of the time frame.",
+      "follow_up_question": "What specific features or functionalities do you believe are most critical for new users to understand within this 15-minute time frame?"
+    },
+    {
+      "requirement": "The system should prevent double-bookings by accurately showing room availability.",
+      "source_citation": "It should be straightforward — I want to type what I need, like 'projector' or '10 people', and see which rooms match for my time. Right now the search is weird and returns odd results. And, uh, filters that actually work would help, because I don't want to click into every room one by one.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the issue of double-bookings and the need for accurate availability, indicating a fault tolerance requirement. The confidence is high due to the clear description of the problem.",
+      "follow_up_question": "What specific mechanisms or features would you like to see implemented to prevent double-bookings?"
+    },
+    {
+      "requirement": "The system should be accessible to users with disabilities, including support for screen readers, keyboard navigation, and high-contrast displays.",
+      "source_citation": "One of our teammates uses a screen reader and the old system was a mess for them. Keyboard navigation felt broken, and some buttons weren't labelled so the screen reader couldn't explain them. Also, low-vision folks need high contrast or larger fonts sometimes. We can't just leave them out because the system hides things.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "accessibility",
+      "confidence": 5,
+      "rationale": "The stakeholder provides detailed examples of accessibility issues, indicating a clear requirement for accessibility support. The confidence is very high due to the specific examples provided.",
+      "follow_up_question": "Are there any specific accessibility standards or guidelines that you would like the system to comply with?"
+    },
+    {
+      "requirement": "The system should automatically adjust date and time formats to local conventions based on the user's location.",
+      "source_citation": "Oh gosh, that was embarrassing. We had a cross-office meeting with someone overseas. Their invite showed the date in the day-month order and mine showed month-day, and we got the day wrong. So, it really needs to show dates and times the way people expect where they are. Different offices should see their own formats automatically.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the issue of date and time format confusion, indicating a need for localization. The confidence is high due to the clear description of the problem and its impact.",
+      "follow_up_question": "Are there any specific date and time formats or conventions that are particularly important for your global teams?"
+    },
+    {
+      "requirement": "The system should be highly available during business hours, with minimal downtime.",
+      "source_citation": "Hmm, mostly it's okay, but we've had outage days where nobody could book rooms and everything piled up. It's disruptive — meetings get canceled or people show up with no room. It shouldn't happen during business hours, honestly.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the impact of downtime and the need for high availability during business hours. The confidence is high due to the clear description of the problem.",
+      "follow_up_question": "What specific measures or redundancies would you like to see implemented to ensure high availability during business hours?"
+    },
+    {
+      "requirement": "The system should reliably send email invites and reminders without duplicates.",
+      "source_citation": "It's bad. If someone books a room and the calendar invite or reminder doesn't send, people show up late or not at all. Or there are no reminders for guests. It needs to actually send emails reliably and play nicely with our corporate email. Sometimes it sends duplicates, which is annoying.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the issue of unreliable email sending and duplicates, indicating a maintainability requirement. The confidence is high due to the clear description of the problem.",
+      "follow_up_question": "Are there any specific email systems or protocols that the system should be compatible with to ensure reliable email sending?"
+    },
+    {
+      "requirement": "The system should be compatible with the most common browsers used within the company, approximately eight different browsers.",
+      "source_citation": "We have people on different machines and browsers — some on company laptops with corporate browsers, others on personal ones. The system needs to display properly so buttons line up and calendars look right. If it breaks on someone's browser they can't do their job. So it should work on most common browsers. Sorry, not very precise — I just mean don't break in one or two of the popular ones.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for cross-browser compatibility, indicating a maintainability requirement. The confidence is medium due to the somewhat vague nature of the browser count.",
+      "follow_up_question": "Can you provide a list of the specific browsers that the system should be compatible with?"
+    },
+    {
+      "requirement": "The system should support localization, including translations of labels and local date and time formats.",
+      "source_citation": "Oh, that's actually more important than it sounds. Clients notice when the app has our logo and colors; it looks more official. And for offices where English isn't primary, the UI should be in local language. If the labels are correctly translated and dates/times look right for where people are, it's one less thing to think about. People shouldn't have to guess the format or labels.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the importance of localization, including translations and local date and time formats, indicating a scalability requirement. The confidence is high due to the clear description of the need.",
+      "follow_up_question": "Are there any specific languages or regions that are particularly important for localization?"
+    },
+    {
+      "requirement": "The system should provide clear and explicit notifications for cancellations and errors.",
+      "source_citation": "Maybe notifications that are clear. If someone cancels the room, the notification should say who did it and why, not just a cryptic message. And when a booking fails, tell me why — don't just show an error.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for clear notifications, indicating a usability requirement. The confidence is high due to the clear description of the problem.",
+      "follow_up_question": "Can you provide examples of specific notifications or error messages that you find clear and helpful?"
+    },
+    {
+      "requirement": "The system should prioritize functionality over fancy visuals.",
+      "source_citation": "Oh, and please prioritize the things we've talked about over fancy visuals. They look nice, but function first.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the importance of prioritizing functionality over visuals, indicating a usability requirement. The confidence is medium due to the somewhat vague nature of the statement.",
+      "follow_up_question": "Can you provide specific examples of visual elements that you consider 'fancy' and would like to see deprioritized?"
+    }
+  ]
+}

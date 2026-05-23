@@ -1,0 +1,227 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_3_re_novice_stakeholder_nontechnical_manager_20260227_110114.txt",
+  "model": "openai/gpt-5-mini",
+  "timestamp": "20260302_172049",
+  "requirements": [
+    {
+      "requirement": "The system shall make scheduling obvious and prevent or clearly indicate scheduling conflicts so staff do not accidentally double-book students or clinical sites.",
+      "source_citation": "the biggest thing is it has to make scheduling less painful. Right now we're juggling cohorts, clinical rotations, classroom stuff, and it feels like spinning plates. I want something that makes it obvious when something will clash and that guides staff so they don't accidentally double-book students or sites.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly requests that clashes be made obvious and that staff are guided to avoid double-booking; this is a usability/error-prevention concern. Missing specifics: how clashes are shown (visual cues, blocking), scope of 'guides staff', and whether automated conflict resolution is required.",
+      "follow_up_question": "Should the system block saving a conflicting assignment, or is a prominent warning sufficient? Please provide examples of acceptable visual/interaction patterns (e.g., color-coded calendar entries, modal confirmation)."
+    },
+    {
+      "requirement": "The system shall validate input to prevent invalid data (e.g., invalid dates, mismatched course codes) and flag or stop saves that would introduce such errors.",
+      "source_citation": "Warnings help, yes, like if you try to put a student in two places at once it should stop you or at least flag it loudly. And I mean little things too, like preventing invalid dates or catching mismatched course codes before someone saves them.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "Stakeholder describes frequent small data errors causing downstream problems and asks for prevention via validation/warnings. Gaps: exact validation rules, which fields are critical, and whether validation must be server-side, client-side, or both.",
+      "follow_up_question": "Which specific fields require strict validation on save (provide a prioritized list), and do you require server-side enforcement for all validations to prevent race conditions/duplicates?"
+    },
+    {
+      "requirement": "The system shall implement role-based access controls so that only authorized users can view sensitive student information.",
+      "source_citation": "Not everyone needs to see everything though; some of the student info is sensitive, so access needs to be controlled in practice.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly requests controlled access to sensitive student info. Missing specifics: role definitions, granularity of permissions, and audit requirements.",
+      "follow_up_question": "Can you provide the list of user roles and a matrix of which data elements (e.g., health records, identifiers, evaluation notes) each role should be allowed to view or edit?"
+    },
+    {
+      "requirement": "The system shall protect sensitive student data (e.g., health records, personal identifiers, evaluation notes) in accordance with the university information policy, preventing unnecessary visibility.",
+      "source_citation": "Yeah, things like student health records, certain personal identifiers, and some evaluation notes shouldn't be broadly visible. We have an information policy at the university that spells it out, so the system needs to respect those limits.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 5,
+      "rationale": "Stakeholder names categories of sensitive data and references an institutional policy that must be respected. Gaps: exact policy details, retention/handling, encryption, and compliance standards to meet (e.g., FERPA/HIPAA if applicable).",
+      "follow_up_question": "Please provide the relevant university information policy sections and confirm any external compliance requirements (e.g., FERPA, HIPAA) so we can define data handling, encryption, and retention rules."
+    },
+    {
+      "requirement": "The system shall be learnable in a single day of hands-on training for typical users to perform core tasks without needing frequent IT support.",
+      "source_citation": "Yes, a single day of training should be enough for the typical user to be comfortable with the main tasks... routine scheduling and student management should be doable after that one-day session.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Stakeholder sets an explicit training-time expectation. Missing specifics: what constitutes 'typical user' and which 'main tasks' must be covered in that training; measurable acceptance criteria beyond training length (e.g., task success rates).",
+      "follow_up_question": "Which exact core tasks should a user be able to perform after the one-day training, and what success rate (e.g., percent of users completing tasks without assistance) would you accept?"
+    },
+    {
+      "requirement": "The system shall provide capacity and concurrency checks (e.g., site capacity limits) and prevent assigning more students than a site can accept.",
+      "source_citation": "or they assign more students to a site than the site can take because there's no easy way to see capacity.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "reliability",
+      "confidence": 4,
+      "rationale": "Stakeholder reports over-assignment due to lack of capacity visibility; requests system-level checks. Gaps: how capacities are configured, whether soft warnings are acceptable, and handling simultaneous assignments (race conditions).",
+      "follow_up_question": "How should capacity be modeled (fixed numbers, per-shift limits), and should the system block over-assignment or allow overrides with justification/audit trail?"
+    },
+    {
+      "requirement": "The system shall prevent or detect duplicate records/placements caused by concurrent saves, using mechanisms such as optimistic locking or duplicate detection.",
+      "source_citation": "Sometimes duplicates get created because someone saved before a previous save finished. Those kinds of things create real headaches — last-minute changes, unhappy site partners, stressed students.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 5,
+      "rationale": "Stakeholder cites duplicates from concurrent saves; implies concurrency control is needed. Missing details: acceptable conflict resolution strategy and user experience when conflicts occur.",
+      "follow_up_question": "Do you prefer optimistic locking (inform user and let them reconcile) or automatic merge/duplicate suppression, and what user feedback should be shown when a concurrency conflict occurs?"
+    },
+    {
+      "requirement": "At least two out of every three program administrators or nursing staff (≈66%) shall be able to independently manage class and clinical scheduling after training.",
+      "source_citation": "I think at least two out of every three program administrators or nursing staff should be able to manage class and clinical scheduling on their own after training.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "Stakeholder provides a measurable adoption target post-training. Gaps: definition of 'manage' and measurement method (assessments, observation, helpdesk metrics).",
+      "follow_up_question": "How will you measure this (e.g., observed task completion, helpdesk call rate), and over what timeframe after training should the 66% threshold be achieved?"
+    },
+    {
+      "requirement": "The system shall send automated notifications for assignment changes, cancellations, confirmations, reminders before clinical shifts, and notices about missing prerequisites or paperwork.",
+      "source_citation": "Automated things like changes to assignment times, cancellations, or confirmations of site placements. We also need reminders before clinical shifts and notices if there are prerequisites or missing paperwork.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Stakeholder requests specific automated notifications to reduce manual emailing. Gaps: delivery channels (email/SMS/in-app), timing/frequency, and opt-in/opt-out rules.",
+      "follow_up_question": "Which notification channels are required (email, SMS, in-app), what lead times are needed for reminders, and should recipients be able to opt out of specific notifications?"
+    },
+    {
+      "requirement": "The system shall integrate with the central CampusConnect system to synchronize student lists and enrollment statuses to avoid manual re-entry and mismatches.",
+      "source_citation": "We use the central campus system for student records and enrollment — CampusConnect — so this needs to interface with that so student lists and enrollment statuses are accurate. Pulling from CampusConnect would save us from re-entering things and reduce mismatches.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly requires interoperability with CampusConnect to keep data accurate and avoid duplication. Gaps: API/specs, authentication method, fields to sync, and error-handling for sync failures.",
+      "follow_up_question": "Please provide CampusConnect integration details (API endpoints, authentication, data schema) and which specific fields/objects must be synchronized."
+    },
+    {
+      "requirement": "Routine UI actions (e.g., update student record or add student to a cohort) shall complete and respond within approximately 5 seconds for acceptable user experience.",
+      "source_citation": "for routine student management stuff, around five seconds is what feels acceptable to users.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder gives an explicit performance target for common tasks. Gaps: whether this is end-to-end (including network latency) and acceptable percentiles (median vs 95th).",
+      "follow_up_question": "Should the 5-second target apply to median or 95th percentile response times, and does it include client rendering/network latency or only server processing?"
+    },
+    {
+      "requirement": "Longer operations (e.g., generating a whole term's schedule) shall complete within approximately 30 seconds to avoid users re-running operations.",
+      "source_citation": "And for schedule generation, I think up to thirty seconds is reasonable; any longer and people start doing other things and we get duplicate runs.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder sets a clear upper bound for heavy operations to prevent duplicate runs. Gaps: expected dataset sizes, whether asynchronous processing with progress/status is acceptable, and acceptable percentile.",
+      "follow_up_question": "For schedule generation, is an asynchronous job with progress indicator acceptable if it exceeds 30 seconds, and should 30 seconds be a 95th-percentile or median target?"
+    },
+    {
+      "requirement": "The system shall have perceived responsiveness such that save operations give immediate feedback to the user (progress or confirmation) to avoid users thinking nothing happened.",
+      "source_citation": "It just needs to feel fast. People get impatient if they save something and nothing happens.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 4,
+      "rationale": "Stakeholder emphasizes perceived responsiveness and feedback. Gaps: exact UI behaviors (loading indicators, optimistic UI), and which operations require immediate acknowledgement vs deferred processing.",
+      "follow_up_question": "What types of feedback do users expect for save actions (spinner, success toast, immediate UI update), and are optimistic UI patterns acceptable?"
+    },
+    {
+      "requirement": "The system shall be available during business hours with infrequent outages; target availability is approximately 95% uptime.",
+      "source_citation": "We need it to be available during business hours when staff are working, and outages are disruptive... If you need a number, aiming for high nineties in percent uptime is what I'd expect — something around ninety-five percent would be acceptable to cover our needs without constant interruptions.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "Stakeholder specifies availability expectations and gives an explicit target. Gaps: definition of business hours, SLAs for critical periods (schedule crunch times), and acceptable maintenance windows.",
+      "follow_up_question": "Please define 'business hours' (days/times) and whether higher availability is required during known peak periods (e.g., schedule crunch weeks)."
+    },
+    {
+      "requirement": "The system shall provide basic duplicate prevention and data validation to avoid nonsensical dates, mismatched course codes, assignments to non-existent sections, and duplicate placements.",
+      "source_citation": "We've had folks enter dates that don't make sense, or course codes that don't match the curriculum, or just typos that result in a student being assigned to a non-existent section. Sometimes the database ends up with duplicates because two people tried to add the same placement.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "Stakeholder lists specific data integrity issues that must be addressed. Gaps: authoritative sources for course codes/sections and whether validation should be live or batch-cleanup tools required.",
+      "follow_up_question": "What authoritative sources should be used to validate course codes and sections (CampusConnect, curriculum DB), and should the system provide batch validation reports for existing data?"
+    },
+    {
+      "requirement": "The system shall use clear, consistent Standard English and domain-appropriate nursing terminology, avoiding multiple names for the same concept.",
+      "source_citation": "It should be clear and use Standard English, and it should also speak the language of nurses. Use the terminology the national nursing community uses for clinical terms so instructors and site coordinators immediately understand... And consistent wording — don't call the same thing different names in different places.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "Stakeholder requires domain-appropriate, consistent wording to reduce confusion. Gaps: specific glossary of terms and whether localization is needed.",
+      "follow_up_question": "Can you provide a preferred glossary or terminology list (common terms and their preferred labels) and indicate if any localization or multi-language support is required?"
+    },
+    {
+      "requirement": "The system shall restrict export capabilities and implement safeguards so that sensitive data cannot be exported or exposed to unauthorized external partners.",
+      "source_citation": "It's a risk if someone can export sensitive lists or if an external partner gets more data than they should.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "Stakeholder concerned about data leakage via exports and external partners receiving excess data. Gaps: which exports are allowed, RBAC for export, logging/auditing of exports, and whether redaction is required.",
+      "follow_up_question": "Which reports/exports should be allowed for each role, and do you require audit logs and redaction for exported data containing sensitive fields?"
+    },
+    {
+      "requirement": "The system shall support aliasing or mapping for clinical partner unit names to avoid creating duplicate site records when partners use different naming conventions.",
+      "source_citation": "our clinical partners sometimes use different naming conventions for their units. So it'd be great if the system could handle aliases or mapping so we don't accidentally create a new site every time someone spells a unit name differently.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "Stakeholder requests name normalization to keep data tidy. Gaps: whether aliases are user-managed or automated matching, and rules for resolving ambiguous mappings.",
+      "follow_up_question": "Do you want manual alias management (admin maps synonyms) or automated fuzzy-matching with suggested merges, and how should conflicts be resolved?"
+    },
+    {
+      "requirement": "The system shall provide basic export/reporting functionality (e.g., spreadsheets or PDFs) for attendance, placements, and schedule summaries to support accreditation and internal reviews.",
+      "source_citation": "Basic exports to start are fine. If we can pull attendance, placements, and schedule summaries into spreadsheets or PDFs easily, that's a huge win.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Stakeholder needs simple export capabilities for compliance and reporting. Gaps: export formats, scheduled/export automation, and required data fields for accreditation.",
+      "follow_up_question": "Please specify required export formats, the exact fields needed for accreditation reports, and whether scheduled/automated exports are required."
+    },
+    {
+      "requirement": "The system shall synchronize with CampusConnect at an appropriate cadence to avoid stale rosters; nightly syncs are acceptable, with the option for more frequent updates during peak times.",
+      "source_citation": "Ideally it would sync often enough that we don't have stale rosters during enrollment changes, but it doesn't have to be instantaneous. Nightly syncs have worked before, but during peak times we might want more frequent updates.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "Stakeholder specifies acceptable sync frequency and that real-time is not required but frequency should increase during peaks. Gaps: definition of 'peak times', acceptable max lag, and conflict resolution for mid-day changes.",
+      "follow_up_question": "What maximum data age is acceptable for roster data during normal and peak periods (e.g., nightly = <=24 hours, peak = <=1 hour), and how should conflicts be resolved when CampusConnect and the scheduling system differ?"
+    }
+  ]
+}

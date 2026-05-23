@@ -1,0 +1,227 @@
+{
+  "transcript_file": "outputs/corpus-20260226_162106/transcript_5_re_novice_stakeholder_technical_senior_20260226_163019.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_182537",
+  "requirements": [
+    {
+      "requirement": "The system must perform searches for recycled parts within fifteen seconds for 95% of requests under realistic network conditions, including both cold-cache and warm-cache scenarios.",
+      "source_citation": "results come back within about fifteen seconds... include both cold-cache and warm-cache scenarios... use the 95th percentile under expected conditions",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the performance target for parts search and the conditions under which it should be measured. The 95th percentile is mentioned as the validation approach.",
+      "follow_up_question": "What specific network conditions should be considered when measuring the 95th percentile performance?"
+    },
+    {
+      "requirement": "The system must return a preferred repair facility within eight seconds for 95% of requests under realistic network conditions.",
+      "source_citation": "somewhere under eight seconds as a max... use the 95th percentile under expected conditions",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the performance target for facility search and the conditions under which it should be measured. The 95th percentile is mentioned as the validation approach.",
+      "follow_up_question": "What specific network conditions should be considered when measuring the 95th percentile performance?"
+    },
+    {
+      "requirement": "The system must support up to fifteen hundred concurrent users at launch and scale to ten thousand concurrent users within a couple of years.",
+      "source_citation": "plan for about fifteen hundred users concurrently... scale up to ten thousand",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder provides clear targets for concurrent users at launch and future growth. However, the specific metrics for 'concurrent users' need clarification.",
+      "follow_up_question": "What specific metrics (e.g., requests per second) should be used to measure and validate the system's scalability targets?"
+    },
+    {
+      "requirement": "The system must achieve ninety-eight percent uptime as a starting SLA, with the possibility of revisiting this target based on business needs and budget.",
+      "source_citation": "ninety-eight percent uptime... it's negotiable depending on budget and risk appetite",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder provides a clear uptime target but indicates it may be subject to change based on business needs and budget. This suggests the target is not fixed.",
+      "follow_up_question": "What specific business needs or budget constraints might lead to a revision of the ninety-eight percent uptime target?"
+    },
+    {
+      "requirement": "The system must isolate data for each insurer to prevent one insurer from accessing another's claims data.",
+      "source_citation": "each insurer's data needs to be isolated... logical separation or stronger isolation like separate schemas",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for data isolation and mentions potential approaches to achieve this.",
+      "follow_up_question": "What specific mechanisms (e.g., row-level security, separate schemas) will be used to achieve data isolation?"
+    },
+    {
+      "requirement": "The system must use the corporate single sign-on (SSO) and role-based access control (RBAC) for authentication and authorization.",
+      "source_citation": "use the corporate SSO for authentication and the corporate RBAC model for authorization",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the requirement to use corporate SSO and RBAC for authentication and authorization.",
+      "follow_up_question": "What specific corporate SSO and RBAC mechanisms should be integrated with the system?"
+    },
+    {
+      "requirement": "The system must follow corporate UI guidelines and use the corporate design system components, ensuring WCAG-level accessibility conformance.",
+      "source_citation": "follow the corporate UI guidelines and use the design system components... WCAG-level conformance",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the requirement to follow corporate UI guidelines and design system components, including accessibility conformance.",
+      "follow_up_question": "What specific WCAG conformance level (e.g., WCAG 2.1 AA) is required for the system?"
+    },
+    {
+      "requirement": "The system must support resilience to dropped connections and allow users to resume work after reconnection.",
+      "source_citation": "resilience to dropped connections and some ability to resume work",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for resilience to dropped connections and the ability to resume work, but the specific mechanisms are not detailed.",
+      "follow_up_question": "What specific mechanisms (e.g., local caching, state synchronization) will be used to achieve resilience to dropped connections and work resumption?"
+    },
+    {
+      "requirement": "The system must include sensible fallbacks, such as cached results and friendly user messages, for error handling in the Choice Parts integration.",
+      "source_citation": "sensible fallbacks... cached results, friendly user messages",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for sensible fallbacks but does not provide specific details on the types of fallbacks required.",
+      "follow_up_question": "What specific types of fallbacks (e.g., cached results, user notifications) should be implemented for error handling?"
+    },
+    {
+      "requirement": "The system must undergo a full penetration test before production rollout and include automated security scans during development.",
+      "source_citation": "full penetration test before production rollout... automated security scans during development too",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the requirement for a full penetration test before production and automated security scans during development.",
+      "follow_up_question": "What specific penetration testing and automated security scanning tools or methodologies should be used?"
+    },
+    {
+      "requirement": "The system must be designed to fit within the corporate architecture and use approved technologies and visual components.",
+      "source_citation": "must fit within our corporate architecture... use the corporate UI guideline",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the requirement to fit within corporate architecture and use approved technologies and visual components.",
+      "follow_up_question": "What specific corporate architecture standards and approved technologies should be followed?"
+    },
+    {
+      "requirement": "The system must include comprehensive and tamper-evident auditing capabilities for all user actions.",
+      "source_citation": "comprehensive and tamper-evident... capture who did what and when, and the original and changed values",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for comprehensive and tamper-evident auditing but does not provide specific details on the types of auditing required.",
+      "follow_up_question": "What specific types of auditing (e.g., user actions, data changes) should be implemented and what retention policies apply?"
+    },
+    {
+      "requirement": "The system must use corporate-approved map providers for geocoding and maps, avoiding arbitrary third-party map APIs without clearance.",
+      "source_citation": "use those, or get explicit approval to use another. Avoid arbitrary third-party map APIs without clearance.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need to use corporate-approved map providers but does not provide specific details on the approved providers.",
+      "follow_up_question": "What specific corporate-approved map providers should be used for geocoding and maps?"
+    },
+    {
+      "requirement": "The system must include API versioning to ensure backward compatibility and avoid breaking changes.",
+      "source_citation": "versioning strategy so changes don't break us",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for a versioning strategy but does not provide specific details on the versioning approach.",
+      "follow_up_question": "What specific versioning strategy (e.g., semantic versioning, API gateways) should be implemented?"
+    },
+    {
+      "requirement": "The system must include protection against DoS attacks using API gateways, WAF, rate limiting, and cloud provider DDoS protections.",
+      "source_citation": "API gateway, WAF, rate limiting, and the cloud provider's DDoS protections",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the requirement for protection against DoS attacks using specific mechanisms.",
+      "follow_up_question": "What specific API gateways, WAFs, rate limiting strategies, and cloud provider DDoS protections should be implemented?"
+    },
+    {
+      "requirement": "The system must include capacity buffers and graceful degradation to ensure essential functions remain available under stress.",
+      "source_citation": "capacity buffers and graceful degradation so essential functions remain available under stress",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for capacity buffers and graceful degradation but does not provide specific details on the implementation.",
+      "follow_up_question": "What specific capacity buffers and graceful degradation mechanisms should be implemented?"
+    },
+    {
+      "requirement": "The system must support lazy-loading of images and less critical metadata to improve search performance.",
+      "source_citation": "lazy-load images or less critical metadata",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for lazy-loading but does not provide specific details on the implementation.",
+      "follow_up_question": "What specific lazy-loading mechanisms should be implemented for images and less critical metadata?"
+    },
+    {
+      "requirement": "The system must include a small local cache for the most recent queries to support offline search in the field.",
+      "source_citation": "a small local cache for the most recent queries could help in the field",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for a small local cache but does not provide specific details on the implementation.",
+      "follow_up_question": "What specific caching mechanisms should be implemented for offline search in the field?"
+    },
+    {
+      "requirement": "The system must use horizontally scalable, stateless services and sharding strategies to support growth to ten thousand concurrent users.",
+      "source_citation": "horizontally scalable, stateless services and sharding strategies",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for horizontally scalable, stateless services and sharding strategies but does not provide specific details on the implementation.",
+      "follow_up_question": "What specific horizontally scalable, stateless services and sharding strategies should be implemented?"
+    },
+    {
+      "requirement": "The system must include chaos or failover drills to measure Recovery Time Objective (RTO) and Recovery Point Objective (RPO).",
+      "source_citation": "chaos or failover drills to measure RTO and RPO",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for chaos or failover drills but does not provide specific details on the implementation.",
+      "follow_up_question": "What specific chaos or failover drills should be conducted to measure RTO and RPO?"
+    }
+  ]
+}

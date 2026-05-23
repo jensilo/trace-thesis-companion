@@ -1,0 +1,156 @@
+Interviewer: Thanks for sitting down — I want to walk through how you work with the Disputes app and drill into a few specifics. To start, tell me briefly what pieces of the application you touch day-to-day and what the biggest pain points you see are.
+
+Stakeholder: Sure — I’ve been on the project about a year, so I mostly touch the UI and a handful of integration endpoints. I fix bugs, add small features, and help on support tickets when reps hit problems. The things that bite us the most are inconsistent UI patterns — like buttons in different places — and, hmm, data coming from different systems where we’re not always sure which is the source of truth. That leads to weird edge cases in the UI and a lot of “which system do I trust” questions from support.
+
+Interviewer: When you say “inconsistent UI patterns,” do you mean we’re not following the corporate style guide, or are there more functional inconsistencies as well?
+
+Stakeholder: Mostly the style stuff at first — headers, fonts and the component look-and-feel are different between the internal and external views — but there are functional inconsistencies too. For example, the search results screen behaves slightly differently depending on which integration was used last time, and that confuses reps. It’d be nice if everything followed the same component library and conventions so it’s predictable.
+
+Interviewer: Okay. You mentioned integrations being a source of confusion. Who are the primary users you see using the app — internal reps, external reps, supervisors — and does that map cleanly to different access levels?
+
+Stakeholder: We have internal cardmember services reps and merchant services reps, and then some external users — like partner reps — who have a narrower view. Supervisors are sort of above them. It doesn’t map cleanly today because the concept of a “cardholder base” is fuzzy; sometimes it’s a team, sometimes a region, and sometimes based on BIN ranges. That ambiguity is why we get tickets where someone accessed a case they probably shouldn’t have during testing, and it makes enforcing access tricky.
+
+Interviewer: When you say “someone accessed a case they probably shouldn’t have,” are those accidental UI bugs or missing authorization checks server-side?
+
+Stakeholder: It’s a mix — sometimes a client-side bug shows a link it shouldn’t, but the real problem is we rely too much on client-side filtering. Server-side enforcement is patchy. So in a couple of incidents a rep could open a case for a cardmember outside their assigned base because the API didn’t block it. The support logs show a few of those, and auditors don’t like it.
+
+Interviewer: You mentioned “server-side enforcement is patchy.” Can you put a number on how many incidents or tickets you’ve seen where that happened in the last quarter?
+
+Stakeholder: Hmm, I think there were, uh, maybe half a dozen tickets where access controls were the root cause. I can pull the exact ticket IDs if you want, but it’s not huge in count — still big enough to worry about from a compliance point of view.
+
+Interviewer: Yes, please send those ticket IDs. Now, on the authoritative data sources — you said different systems are the source of truth. Which backend systems are you relying on today for transactions, cardmember details, and merchant data?
+
+Stakeholder: Right now we call out to the Statement system for transaction details, the Cardmember info system for cardholder details, and a Merchant data service for merchant information. Sometimes we’ve cached bits locally to speed up screens, but that creates inconsistency. My gut is we should treat those systems as the source of truth for their respective domains, and not rely on locally stored copies unless there’s a very clear caching policy.
+
+Interviewer: When you say “treat those systems as the source of truth,” do you mean all transaction fields must come from the Statement system at display time, or can we read from a cache and fall back to Statement if stale?
+
+Stakeholder: Ideally, I think the UI should show the latest from the Statement system. Caching could be okay for non-critical stuff, but I don’t want reps seeing outdated amounts or dates. So, yeah, the transaction details should come from the Statement system unless we explicitly allow a short-lived cache with strong invalidation.
+
+Interviewer: Can you be more specific about “short-lived”? How long would you be comfortable with cached transaction data before forcing a fresh read?
+
+Stakeholder: Hmm — I don’t want to guess wrong here, but maybe a few minutes for non-critical lists? For case-level details, though, it should be real-time. If you want a number I can give one, but I’d rather the business sign off on it.
+
+Interviewer: I’ll need a number for the acceptance criteria. Please propose one after you check with operations. Moving on — you said the UI sometimes takes “a few seconds” to move between screens. What does “few” mean for your users? What's their patience threshold before they start complaining?
+
+Stakeholder: Oh, yeah, they complain pretty quickly. It just needs to feel snappy — I hate waiting around. If I had to be concrete, the reps get annoyed after, like, five seconds. But again, that’s off the top of my head.
+
+Interviewer: Can you put that precisely — is five seconds acceptable as a maximum when navigating between screens, or should we aim lower and measure percentiles?
+
+Stakeholder: Five seconds as a maximum sounds right to me for the small stuff, like opening a case or moving between main screens. We should probably measure the 95th percentile to be realistic, but users mainly notice when it’s slow at all.
+
+Interviewer: Good. You mentioned caching earlier and the possibility of real-time reads from Statement. How does that connect to performance? If we always hit those backends, will we meet that five-second target?
+
+Stakeholder: That’s the tricky part — hitting three backend systems every time will slow things down. We need to design the UI to load essential data first and then stream in secondary details asynchronously, or allow short caching for lists and force real-time reads on the case detail screen. Also, we need SLAs from the Statement, Cardmember and Merchant services so we can plan for retries and timeouts.
+
+Interviewer: Do we currently have SLAs or known latencies for those three systems?
+
+Stakeholder: Not formalized in our repo. Ops has some dashboards showing typical latencies, but nothing contractual. I can ask ops for the numbers. Right now we’ve seen the Statement service occasionally be slow and return partial payloads, which the UI turns into errors — not ideal.
+
+Interviewer: Please get those latency figures. Let’s talk about the way cases are shown. You mentioned color coding for quick identification — describe how reps expect the list to behave and any accessibility concerns.
+
+Stakeholder: Reps love color coding; it’s how they triage at a glance. So when they search and get a list, different statuses should be visually distinct. But we can’t rely on color alone because of color-blind users and corporate accessibility rules. We should show a legend and maybe icons or bolding along with color. Also, we need a canonical status list from business — I don’t want to invent statuses and colors.
+
+Interviewer: You said “canonical status list.” Do you know how many statuses are in use today, even roughly?
+
+Stakeholder: Umm, I think there’s several — maybe around half a dozen commonly used ones, and then some rare intermediate states. I’ll pull the current status list and past mappings. Also, we need the corporate component library so the UI work is consistent with internal and external branding.
+
+Interviewer: Please share the status list and the style guide. Earlier you mentioned external users and different branding. Should internal and external users get the same feature set, or are there functional differences beyond branding?
+
+Stakeholder: Functionally, external users should have a subset — they don’t get access to internal notes or some sensitive fields. Branding is separate, but the component look should still follow the corporate standard. We’ve been inconsistent where the external portal had different controls and behavior, which creates confusion when training partners.
+
+Interviewer: Understood. Shifting to load and concurrency — you implied that we need to support a certain number of concurrent users. Can you describe the typical peak usage pattern and how many simultaneous reps are expected?
+
+Stakeholder: Peak happens during business hours when multiple teams are working but also in some overlap windows. I’m not sure exactly, but it’s a few hundred people at the same time during peaks. I remember someone mentioning a specific number during a planning meeting, but I can’t recall it now.
+
+Interviewer: Can you check what that specific number was and tell me — we need it to establish load tests.
+
+Stakeholder: Right, yeah. I dug into my notes after you asked — the target that was discussed was three hundred and fifty concurrent users. That felt like a lot at first, but when you add internal and external users and supervisors, it’s believable for peak.
+
+Interviewer: Thank you. When the system is under that load, what is considered “no degradation?” Do you mean no increase in error rates, or response times must stay below that five-second threshold?
+
+Stakeholder: By “no degradation” the business expects that screens still feel responsive and error rates stay negligible. Practically, that should mean the five-second threshold holds for normal navigation and that timeouts don’t spike. We’ll need to define acceptable error percentages, but users want it to feel the same as under normal load.
+
+Interviewer: We’ll formalize acceptance thresholds. Now availability: you mentioned overnight maintenance and that reps sometimes work overnight. What availability windows are being considered?
+
+Stakeholder: The expectation is the app should basically be available around the clock, because reps in different time zones and some night operations rely on it. There are scheduled maintenance windows where we can take it down, but we need those defined and communicated clearly. Oh, and by the way, the coffee machine in our office broke last week and that didn’t help the overnight folks — sorry, bit of a tangent.
+
+Interviewer: No problem — I’ve been there. Can you give the exact scheduled maintenance windows that the team has been operating with, and confirm the time zone?
+
+Stakeholder: Sure — the windows we’ve been using are early mornings EST. From Monday through Saturday we’ve typically scheduled maintenance between three and four a.m. Eastern, and on Sundays it’s a longer window between one a.m. and five a.m. Eastern. Those are the times ops currently plans for.
+
+Interviewer: Got it. There was a small typo on one doc I saw earlier that said “1:00amd” — can you confirm Sunday’s window is one a.m. to five a.m. EST and that everyone understands those times?
+
+Stakeholder: Yes, that’s correct — one a.m. to five a.m. on Sunday. I’ll flag the typo in the doc so it’s not confusing. Also, we should clarify whether those windows are fixed or negotiable for major releases.
+
+Interviewer: Good. Now security and authorization — you said server-side enforcement is needed and there’s an ambiguity about “cardholder base.” How do you think access decisions should be enforced technically?
+
+Stakeholder: We currently do token-based auth and some middleware checks, but it isn’t uniform. I think all authorization checks should happen in the API layer, not just client-side, and we should adopt a role-based model at minimum. For mapping cardholder base, we need a clear attribute on a user account that ties them to their allowed set — whether that’s a team, a BIN range, or something else. Without that mapping, it’s hard to enforce the “only see your cases” rule.
+
+Interviewer: You mentioned role-based access; did you consider attribute-based access control as an alternative? Any preference?
+
+Stakeholder: Well, I think role-based is simpler to start with — it’s what ops and the identity team are used to. But for fine-grained restrictions like cardholder base, we’ll need attributes. So realistically it’ll be role-based for actions and attribute checks for which cases a user can access.
+
+Interviewer: How should we handle supervisor overrides or escalations where cross-access is legitimate? Any process ideas?
+
+Stakeholder: Those should be logged and require a reason code. Maybe supervisors get a special permission to “escalate view” but every time they use it we create an audit record and notify the case owner. We shouldn’t let ad-hoc cross-access happen without trackable justification.
+
+Interviewer: Speaking of audit, tell me what auditing and correspondence handling look like today and what’s missing.
+
+Stakeholder: Right now, logs are scattered between the app server and some middleware; there isn’t a single consolidated audit trail. When a rep edits a dispute or applies an adjustment, we need a clear timestamped record that captures who did what, the before-and-after values, and any reason codes. For correspondence, templates are managed in a separate system and we should pull them in and save copies of what was actually sent to cardmembers or merchants. Auditors want to be able to pull those records for review.
+
+Interviewer: Do you know the retention period for audit logs and correspondence from compliance?
+
+Stakeholder: I don’t have the exact retention number memorized. Compliance mentioned multi-year retention for some records, but I’d rather confirm with them. I don’t want to guess on legal retention windows.
+
+Interviewer: Please follow up with compliance and get the retention periods. Now, when the Statement or other backends are slow or unavailable, how should the application behave? You mentioned a UI that sometimes just errors out.
+
+Stakeholder: We need graceful degradation. If the Statement DB is down, maybe lists can show cached results with a “data may be stale” banner and the case detail view should be read-only with clear info about what’s missing and next steps for the rep. If a write is required and the backend is down, we should queue actions where possible and prevent inconsistent writes. Also, concurrent updates are a problem — we need optimistic locking or something so two reps don’t stomp on each other.
+
+Interviewer: Do you favor optimistic locking with merge conflict resolution, or pessimistic locking where a case is locked while being edited?
+
+Stakeholder: Optimistic locking feels lighter for the user experience, as long as we handle conflicts with a clear merge UI or a “someone else changed this” message. Pessimistic locking can be annoying if someone forgets to release a lock.
+
+Interviewer: Noted. For testing and acceptance, what will you and the QA team need to validate performance, availability, and integrations?
+
+Stakeholder: We need a test environment that mirrors prod for load testing, scripts to simulate three hundred and fifty concurrent users hitting typical flows, and metrics collection for response time percentiles and error rates. For integrations, contract tests against the Statement, Cardmember and Merchant services are important so we know we won’t break if a payload changes. I can help set up the load scripts if we get the tooling.
+
+Interviewer: Who owns the execution of load tests today — dev, QA, or a performance team?
+
+Stakeholder: Historically dev helped, QA owns functional tests, and ops or a performance engineering team ran heavy load tests for big releases. We could use clearer ownership so tests don’t get skipped.
+
+Interviewer: You mentioned earlier that you sometimes cached fields locally. Going back to that — how does that reconcile with the idea that transaction, cardmember and merchant systems are authoritative? Are there fields we should never cache?
+
+Stakeholder: Good point. For things like transaction amount, date, and merchant ID, I wouldn’t cache long-term — those should come from the Statement system at time of use. For labels or descriptive fields that rarely change, short caching is okay. But we need to define which fields are non-negotiable and enforce that. I’ll draft a suggested field-level list if you want.
+
+Interviewer: Please do. Last area — correspondence templates and account adjustments — do reps generate correspondence from within the app today, and how are adjustments processed?
+
+Stakeholder: Reps can generate correspondence through a UI that calls a template service, but sometimes copies aren’t stored consistently. Adjustments are triggered from the case UI and then an accounting job posts the change; sometimes there’s a delay and the UI doesn’t reflect the pending state properly. We need a tighter workflow so when an adjustment is initiated there’s clear status, audit trail and reconciliation with the ledger.
+
+Interviewer: That’s helpful. For next steps, can you provide a few artifacts: the current dispute status list, any existing color mappings, the corporate style guide or component library link, API docs for the Statement/Cardmember/Merchant services, and the support tickets showing access/control failures?
+
+Stakeholder: Yeah, I can gather all that. I already have links to the API docs and the style guide in our Confluence, and I’ll pull the status list and the relevant tickets. Also, I can reach out to ops for the latency dashboards and to compliance for retention windows. I’ll try to get these to you by the end of the week.
+
+Interviewer: Great. One more thing — you mentioned earlier that supervisors should be able to escalate but that every use must be logged. Who would sign off on the exact scope of supervisor privileges and the escalation audit flow?
+
+Stakeholder: That’s a business decision — probably the dispute operations manager and security should sign off. I can introduce you to them; they’re usually in our weekly ops sync.
+
+Interviewer: Perfect. To close, I’ll summarize action items: you’ll send the status list, color mappings, style guide link, API docs, example tickets, and ask ops for latency/SLA numbers and compliance for retention. I’ll follow up with a request for proposed caching durations and the list of fields that must be read real-time. Any other open issues I missed?
+
+Stakeholder: No, that covers it. Oh, and one minor ask — can we also get clarity on who will own the load testing scripts? I can help write them, but we need someone to run and maintain them long-term.
+
+Interviewer: Noted — I’ll add that to the action items and propose a steward in the next timeline. Thanks, this was really productive.
+
+Stakeholder: Thanks — happy to help. I’ll push those docs and ticket links soon.
+
+---
+Selected Requirements:
+1. [NICE.csv line 149] [quality, legal, look_and_feel] 'The Disputes application shall comply with the corporate standards for user interface creation for internally and externally used applications.'
+2. [NICE.csv line 151] [quality, look_and_feel] 'The list of dispute cases that are displayed after a search is performed must be color coded for easy identification of dispute cases based upon the dispute case status.'
+3. [NICE.csv line 155] [quality, performance] 'The maximum wait time for a user navigating from one screen to another within the Disputes application shall be no more than 5 seconds.'
+4. [NICE.csv line 156] [quality, performance, scalability] 'The Disputes application shall support 350 concurrent users without any degradation of performance in the application.'
+5. [NICE.csv line 157] [quality, availability, operability] 'The Disputes application shall be available 24x7x365 with the exception of the following scheduled maintenance windows. Monday â€“ Saturday 3:00am to 4:00am EST Sunday 1:00amd to 5:00am EST'
+6. [NICE.csv line 158] [quality, operability] 'The Disputes application shall interface with the Statement Database. The Statement Database provides the transaction details to the Disputes System. All transaction details must be obtained from the Statement Database'
+7. [NICE.csv line 159] [quality, operability] 'The Disputes application shall interface with the Cardmember Information Database. The Cardmember Information Database provides detailed information with regard to a cardmember. All cardmember detail information must be obtained from the Cardmember Information Database.'
+8. [NICE.csv line 160] [quality, operability] 'The Disputes applications shall interface with the Merchant Information Database. The Merchant Information Database provides detailed information with regard to the merchant. All merchant detail information shall be obtained from the Merchant Information Database.'
+9. [NICE.csv line 163] [quality, security] 'The Disputes application shall ensure that only users with the appropriate access level are allowed to initiate dispute requests.'
+10. [NICE.csv line 180] [quality, security] 'The Disputes System must prevent users from accessing any dispute cases that do not belong to their cardholder base.'

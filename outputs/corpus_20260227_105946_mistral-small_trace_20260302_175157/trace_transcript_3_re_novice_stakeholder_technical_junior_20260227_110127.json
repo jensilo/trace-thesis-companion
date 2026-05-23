@@ -1,0 +1,161 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_3_re_novice_stakeholder_technical_junior_20260227_110127.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_175159",
+  "requirements": [
+    {
+      "requirement": "The system shall provide near-instant feedback (<5 seconds) for small tasks such as adding a student or updating a roster.",
+      "source_citation": "For the small things, like adding a student or updating a roster, people expect almost immediate feedback.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the expectation for near-instant feedback for small tasks, which is a clear performance requirement.",
+      "follow_up_question": "What specific tasks are considered 'small' and what are the acceptable response times for each?"
+    },
+    {
+      "requirement": "The system shall tolerate up to 30 seconds for heavy operations such as generating full term schedules.",
+      "source_citation": "For the heavier stuff — like generating full term schedules — they will tolerate a bit longer but not forever.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions a tolerance for longer response times for heavy operations, specifying up to 30 seconds.",
+      "follow_up_question": "What are the specific heavy operations and their acceptable response times?"
+    },
+    {
+      "requirement": "The system shall support concurrent use by approximately 10 users during peak hours (9 AM–5 PM).",
+      "source_citation": "The whole scheduling team tends to be on it at once in the mornings when they're doing changes, so peak concurrency matters.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder indicates that peak concurrency is a concern, specifying around 10 users during peak hours.",
+      "follow_up_question": "What are the specific performance metrics and acceptable response times under peak concurrency?"
+    },
+    {
+      "requirement": "The system shall implement role-based access control (RBAC) to restrict access to sensitive data based on user roles.",
+      "source_citation": "Program admins should have broad access because they're managing the cohort, and a few senior staff. Site coordinators should only see the basics they need to operate, and instructors should see academic-relevant info. There should be clear restrictions so only authorized people can see personal data.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for role-based access control to restrict access to sensitive data.",
+      "follow_up_question": "What specific roles and access levels are required for each role?"
+    },
+    {
+      "requirement": "The system shall comply with the organization’s information policy for protecting private information.",
+      "source_citation": "It must protect private information in line with our organization’s information policy. That means controlled access, encryption where required, and minimal exposure of personal identifiers.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for compliance with the organization’s information policy for protecting private information.",
+      "follow_up_question": "What specific policies and regulations must the system comply with?"
+    },
+    {
+      "requirement": "The system shall maintain an audit log of changes made to schedules and student data, including who made the change and when.",
+      "source_citation": "We should have a history of who changed what and when... It also helps with compliance.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for an audit log to track changes and ensure compliance.",
+      "follow_up_question": "What specific data should be logged and how long should the audit logs be retained?"
+    },
+    {
+      "requirement": "The system shall be compatible with standard HTML browsers such as Chrome, Edge, Safari, and Firefox.",
+      "source_citation": "It should work in any HTML browser so staff can use whatever they have on their machines.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for compatibility with standard HTML browsers.",
+      "follow_up_question": "Are there any specific browser versions or features that need to be supported?"
+    },
+    {
+      "requirement": "The system shall have an intuitive user interface with minimal clicks for common tasks, clear error messages, and predictable workflows.",
+      "source_citation": "Minimal clicks to perform common tasks, clear error messages, and predictable workflows. If admins can do their job without hunting through menus or reading a manual every time, that's intuitive.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly defines what 'intuitive' means in the context of the system's user interface.",
+      "follow_up_question": "What specific usability testing or user feedback mechanisms will be used to ensure the interface meets these criteria?"
+    },
+    {
+      "requirement": "The system shall have an uptime of at least 95% during business hours (9 AM–5 PM).",
+      "source_citation": "It needs to be reliable during working hours when people are doing scheduling. Occasional downtime for maintenance is okay, but frequent outages during those hours make our lives miserable.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for reliability during business hours and specifies a target uptime of 95%.",
+      "follow_up_question": "What specific measures will be taken to ensure the system meets the 95% uptime target?"
+    },
+    {
+      "requirement": "The system shall have routine backups and a disaster recovery plan to restore data to a recent state in case of corruption.",
+      "source_citation": "Backups should be routine; if data gets corrupted, we need a way to restore to a recent state.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "reliability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for routine backups and a disaster recovery plan.",
+      "follow_up_question": "What specific backup and recovery procedures and frequencies are required?"
+    },
+    {
+      "requirement": "The system shall be designed to be simple enough for non-technical admins to use with minimal training.",
+      "source_citation": "Keep it simple enough that admins who aren't technical can use it without weeks of training.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the need for a simple design that requires minimal training for non-technical users.",
+      "follow_up_question": "What specific usability and training requirements are needed to ensure the system is easy to use for non-technical admins?"
+    },
+    {
+      "requirement": "The system shall be built to support future curriculum updates and additional cohorts.",
+      "source_citation": "It's focused on the nursing program now, but it should be built so we can support future curriculum updates and maybe more cohorts.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for the system to be built to support future curriculum updates and additional cohorts.",
+      "follow_up_question": "What specific scalability requirements and future growth plans are anticipated?"
+    },
+    {
+      "requirement": "The system shall include basic integrity checks and validation to prevent obvious mistakes and ensure data quality.",
+      "source_citation": "Basic integrity checks are important... We need validation to catch obvious mistakes and prevent garbage getting in.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "data_quality",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for basic integrity checks and validation to ensure data quality.",
+      "follow_up_question": "What specific validation rules and integrity checks are required?"
+    },
+    {
+      "requirement": "The system shall provide automated, clear, and non-spammy notifications for schedule changes.",
+      "source_citation": "They need to be automatic... It should say what changed and what action, if any, is required. And, ideally, not spam people for tiny, irrelevant tweaks.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "notifications",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the need for automated, clear, and non-spammy notifications.",
+      "follow_up_question": "What specific notification methods and content are required?"
+    }
+  ]
+}

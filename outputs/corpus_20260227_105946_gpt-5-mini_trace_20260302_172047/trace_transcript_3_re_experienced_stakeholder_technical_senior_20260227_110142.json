@@ -1,0 +1,249 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_3_re_experienced_stakeholder_technical_senior_20260227_110142.txt",
+  "model": "openai/gpt-5-mini",
+  "timestamp": "20260302_172049",
+  "requirements": [
+    {
+      "requirement": "The system shall detect scheduling conflicts in real time and validate selections immediately when a user picks a time or site, providing clear warnings that explain the problem and suggest fixes.",
+      "source_citation": "I mean, things like real-time conflict detection, immediate validation when you pick a time or a site, warnings that explain the problem and suggest fixes — not just a cryptic error message.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly requests immediate validation and explanatory warnings to prevent user error and reduce cleanup work. This affects UI behavior and validation timing. Missing specifics: what conflicts must be detected, exact wording/format of warnings, and scope (client-side vs server-side).",
+      "follow_up_question": "Which specific conflict types must be detected in real time (e.g., double-booking at same site, overlapping shifts, prerequisite violations), and should detection be implemented client-side, server-side, or both?"
+    },
+    {
+      "requirement": "The system shall employ concurrency controls (optimistic by default with clear conflict resolution flows, and stronger locking or confirmation workflows for critical operations) to prevent concurrent edits from overwriting each other.",
+      "source_citation": "I lean toward optimistic concurrency for day-to-day edits, but with clear conflict resolution flows. ... For critical operations — like finalizing clinical placements — we should use a stronger locking or a confirmation workflow.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 5,
+      "rationale": "Stakeholder specifies optimistic concurrency for routine edits and stronger locks for critical actions. This shapes consistency/transaction design. Missing specifics: which operations are 'critical', lock duration, and user experience for merge UI.",
+      "follow_up_question": "Please list the specific operations that should be classified as 'critical' (e.g., finalizing placements) and define required lock semantics (exclusive locks, lock timeout) and expected user flow for conflict merges."
+    },
+    {
+      "requirement": "The system shall provide an easy undo or revert capability so that unintended or erroneous changes can be rolled back without cascading failures.",
+      "source_citation": "And an easy undo or revert so a bad change doesn't cascade.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 4,
+      "rationale": "Stakeholder requests undo/revert to limit impact of mistakes. Details missing include scope (per-field undo, transaction undo, time window), retention, and authorization for revert.",
+      "follow_up_question": "What level of undo is required (single-action undo in UI, transaction-level rollback, or administrative restore from audit logs), and who is authorized to perform reverts?"
+    },
+    {
+      "requirement": "Routine interactive operations shall respond within approximately five seconds; larger batch operations like full cohort schedule generation shall complete within 30 seconds under normal load.",
+      "source_citation": "For routine student management or small edits, anything above a few seconds feels sluggish to staff. ... waiting more than, say, five seconds is noticeable. For bigger tasks like generating a full schedule for a cohort, it's okay to take longer, but I'd expect it to finish within, um, under half a minute.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder gave numeric perceived-performance targets for interactive and heavier tasks. Missing specifics: definition of 'normal load', percentile targets (p95/p99), and acceptable degradation during peak.",
+      "follow_up_question": "Do you want these time targets to be specified as percentiles (e.g., 95th percentile <=5s for interactive ops) and what constitutes 'normal load' (number of concurrent users/jobs)?"
+    },
+    {
+      "requirement": "The UI shall be obvious and support guided workflows, inline help, predictable actions, minimal clicks for common tasks, and keyboard-friendly interactions to minimize training needs.",
+      "source_citation": "So the UI should be obvious, with guided workflows that resemble the mental model they already use. Inline help, predictable actions, and minimal clicks for common tasks. Also keyboard-friendly for power users, but not a steep learning curve for occasional users.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Explicit usability requirements aimed at low training overhead. Missing specifics: metrics for 'minimal clicks', accessibility standards, and supported keyboard shortcuts.",
+      "follow_up_question": "Are there specific accessibility standards (e.g., WCAG level) or measurable UI metrics (maximum clicks for core workflows) you want us to meet?"
+    },
+    {
+      "requirement": "New administrators should be able to perform core daily tasks after a single hands-on training session of one to two hours; deeper features should not require extensive classroom training.",
+      "source_citation": "I think a single hands-on session that lasts an hour or two should be enough for most admins to get comfortable with daily tasks; deeper features shouldn't require extensive classroom training.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "Training expectation constrains UI design and discoverability. Missing specifics: definition of 'core daily tasks', assessment method to verify readiness after training.",
+      "follow_up_question": "Can you define the 'core daily tasks' that should be learnable in that session and how you'd like to validate that admins are adequately trained?"
+    },
+    {
+      "requirement": "The system shall integrate with CampusConnect using their official APIs/SSO (OAuth-based flows or supported alternatives) and reconcile student enrollment changes rather than duplicating authoritative identity data.",
+      "source_citation": "We need it to integrate with CampusConnect ... So we should use the official APIs or a supported interface ... Single sign-on is a must so users don't have multiple passwords, and we should reconcile student enrollment changes coming from CampusConnect rather than duplicating authoritative data.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 5,
+      "rationale": "Stakeholder mandates integration approach to avoid duplicate identity and require SSO. Missing specifics: exact API endpoints, authentication flows supported, sync frequency and error handling.",
+      "follow_up_question": "Please provide CampusConnect API documentation or the exact authentication flows supported, and specify acceptable sync modes and frequencies (real-time vs batch) for different datasets."
+    },
+    {
+      "requirement": "The system shall support OAuth-based SSO integration and provide a fallback administrative account or emergency access mechanism that is tightly controlled and audited.",
+      "source_citation": "They typically expose REST endpoints and an SSO solution, so OAuth-based flows ... fall back to batch sync ... Preferably rely on CampusConnect as the primary identity provider ... but having a fallback administrative account or emergency access mechanism is sensible if CampusConnect is down. That fallback should be tightly controlled and audited.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder wants SSO primary and secure fallback admin access. Missing specifics: how fallback is invoked, authentication (2FA?), and audit details.",
+      "follow_up_question": "What are the exact controls required for the fallback account (e.g., 2FA, time-limited tokens, approval workflow) and what audit retention/alerting is expected when fallback is used?"
+    },
+    {
+      "requirement": "The system shall be a pure web application supporting modern HTML5-capable browsers (Chrome, Edge, Safari supported) with no heavy client installs required.",
+      "source_citation": "Modern HTML5-capable browsers is what I'd expect. ... It should be pure web — no heavy client installs.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 5,
+      "rationale": "Limits technology choices to web standards and supported browsers. Missing specifics: minimum supported versions and mobile support expectations.",
+      "follow_up_question": "Please confirm minimum supported browser versions and whether mobile/tablet browsers must be fully supported or only desktop is required."
+    },
+    {
+      "requirement": "The system shall target approximately 95% availability (uptime) and avoid frequent outages, particularly during business hours.",
+      "source_citation": "If you want a target, aiming for around ninety-five percent availability is reasonable for our context. We don't need carrier-grade five-nines, but we also can't be flaky.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "Explicit uptime target provided. Missing specifics: measurement period (monthly/yearly), maintenance window policies, and acceptable downtime during business hours.",
+      "follow_up_question": "Do you want the 95% availability measured monthly or yearly, and what are acceptable maintenance windows or blackout periods for planned downtime?"
+    },
+    {
+      "requirement": "The system shall be designed for a minimum operational lifetime of five years and support manageable upgrades and schema changes without full replacement.",
+      "source_citation": "We should design for at least a multi-year horizon so upgrades and schema changes are manageable ... I'd say a minimum of five years.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "Stakeholder expects long-term viability requiring upgrade/migration planning. Missing specifics: target practices for backward compatibility, deprecation policies, or expected change rate.",
+      "follow_up_question": "What backward compatibility and deprecation policies do you expect (e.g., minimum API stability guarantees, migration windows) over the five-year horizon?"
+    },
+    {
+      "requirement": "Access to student information shall be strictly role-based, granting program administrators broad access and restricting clinical site coordinators and instructors to only the data necessary for their roles; all access and changes must be audited.",
+      "source_citation": "Very strictly. Not everyone should see everything ... Access should be role-based ... Also, there should be audit trails so we can see who viewed or changed critical data.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder demands RBAC and auditability to protect privacy. Missing specifics: role definitions, least-privilege policies, and retention period for audit logs.",
+      "follow_up_question": "Please provide a prioritized list of roles with required permissions and the required retention period and access controls for audit logs."
+    },
+    {
+      "requirement": "All data in transit shall be encrypted using industry-standard TLS and data at rest shall use standard disk/database encryption aligned with organizational policies; audit logs shall be stored in append-only storage with retention policies.",
+      "source_citation": "Use industry-standard TLS for all transport, and standard disk/database encryption for data at rest. For audit logs, append-only storage with retention policy is preferred. ... follow the organization's info-security guidelines so compliance reviewers are happy.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Specific security technologies/standards requested for encryption and audit storage. Missing specifics: minimum TLS version, encryption algorithms, key management, and retention durations.",
+      "follow_up_question": "Which exact TLS versions/ciphers and at-rest encryption standards does the organization require, and what retention period and WORM (write-once-read-many) requirements apply to audit logs?"
+    },
+    {
+      "requirement": "The system shall validate basic invalid entries up front and block obviously invalid data (e.g., impossible dates, overlapping assignments, missing prerequisites); more complex rules may produce warnings requiring confirmation.",
+      "source_citation": "The system must catch basic invalid entries up front with validation — things like impossible dates, overlapping assignments, or missing prerequisites should be blocked or corrected before saving. For more complex consistency rules, it can warn and require confirmation.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "correctness",
+      "confidence": 5,
+      "rationale": "Stakeholder requires proactive validation to prevent data corruption and reduce cleanup. Missing specifics: full list of validation rules, client vs server validation, and error messaging standards.",
+      "follow_up_question": "Can you provide a prioritized list of validation rules to block versus warn, and should validation be enforced server-side in all cases?"
+    },
+    {
+      "requirement": "Architecturally, the system shall be service-oriented: a stateless web front end, APIs that handle scheduling logic, a persistent store with strong constraints and transactions, caching for common reads, an asynchronous event bus for long-running tasks, robust logging/audit trails, and horizontal scalability behind a load balancer.",
+      "source_citation": "A service-oriented approach makes sense: a stateless web front end that works in any browser, backed by APIs that handle scheduling logic, and a persistent store with strong constraints and transactions. Use caching for common reads ... an asynchronous event bus for long-running tasks ... implement robust logging and an audit trail, and design for horizontal scalability with a load balancer so we can add capacity if usage grows.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "Stakeholder prescribes architectural patterns to meet NFRs. Missing specifics: technology choices, required transaction isolation levels, caching TTLs, and event processing semantics (at-least-once vs exactly-once).",
+      "follow_up_question": "Do you have preferred technologies or requirements for transaction isolation, event bus delivery semantics, and acceptable cache TTLs for different data classes?"
+    },
+    {
+      "requirement": "For asynchronous long-running operations, the system shall provide real-time progress indicators in the UI, a job queue with history, and notifications (email as baseline with retries and durable delivery) when jobs complete.",
+      "source_citation": "Provide real-time progress indicators in the UI where applicable, and also send notifications when long jobs complete. Users should be able to queue jobs and see a history. For notifications, email is fine; ... email with retries and durable delivery is the baseline.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Explicit UX and reliability requirements for async tasks and notifications. Missing specifics: expected SLA for notification delivery, retry strategy, and visibility of job-state transitions.",
+      "follow_up_question": "What are acceptable notification delivery SLAs and retry policies, and what job-state details must be exposed in the UI job history?"
+    },
+    {
+      "requirement": "Cache read-heavy static reference data aggressively, but for schedule and other mutable data use short TTLs or invalidate caches on writes to avoid serving stale schedule information.",
+      "source_citation": "Cache read-heavy, mostly static reference data aggressively, but for schedule data we need short TTLs or cache invalidation on writes so users see near-real-time changes. We can't serve stale schedule info for clinical placement decisions, so cache strategy must be conservative for mutable data.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder specifies caching strategy trade-offs to balance performance and freshness. Missing specifics: exact TTLs, invalidation mechanisms, and consistency guarantees (eventual vs strong consistency).",
+      "follow_up_question": "Please specify TTLs or acceptable staleness windows for schedule data and the preferred cache invalidation approach (synchronous invalidation, pub/sub, or TTL-only)."
+    },
+    {
+      "requirement": "The system shall expose a documented, versioned REST API surface and support data export/import for reporting and archiving.",
+      "source_citation": "Yes, we should design a clean API surface from day one. ... having documented REST endpoints with versioning will save a lot of work. Also, think about data export/import for reporting or archiving.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "API-first design and data portability are required for future integrations and reporting. Missing specifics: API versioning policy, authentication for APIs, and export formats.",
+      "follow_up_question": "What API versioning policy do you prefer (URI versioning, header-based), and which authentication/authorization methods and export formats (CSV, JSON, XML) are required?"
+    },
+    {
+      "requirement": "Comprehensive cross-year or heavy reports shall be executed as offline batch jobs that do not lock or impede day-to-day operations; routine reports should be quick and interactive.",
+      "source_citation": "Routine reports should be quick — similar to other small tasks — but comprehensive, cross-year reports can be generated as batch jobs. The key is they shouldn't lock day-to-day operations. We can run heavy reports off-line and provide them as downloadable artifacts.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder requires separation of heavy workloads from interactive usage to protect availability and responsiveness. Missing specifics: scheduling policies for batch jobs, resource isolation, and SLAs for report completion.",
+      "follow_up_question": "How often will heavy reports run, and what maximum job durations and delivery timeframes are acceptable for batch reports?"
+    },
+    {
+      "requirement": "All access and configuration changes shall be logged with a tamper-resistant audit trail (append-only storage) and be discoverable for compliance reviewers per organizational retention policies.",
+      "source_citation": "Also, there should be audit trails so we can see who viewed or changed critical data. For audit logs, append-only storage with retention policy is preferred. ... follow the organization's info-security guidelines so compliance reviewers are happy.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder requires auditable logs for access and changes; append-only storage indicated. Missing specifics: retention duration, access controls to logs, and log format/fields required.",
+      "follow_up_question": "What is the required retention period and access control model for audit logs, and which fields must be captured for each audited event?"
+    },
+    {
+      "requirement": "The system shall reduce manual reconciliation work by surfacing automated conflict detection and exception handling, shifting staff workflows from scanning spreadsheets to addressing exceptions surfaced by the system.",
+      "source_citation": "The workflow should shift from manual reconciliation to exception handling. ... staff will get immediate feedback when they try to schedule, automated conflict detection will surface issues up front, and standardized placement workflows will reduce ad hoc changes.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "Stakeholder expects operational efficiency improvements and reduced manual effort; this guides UX/workflow design. Missing specifics: metrics for time saved, what exceptions should be surfaced, and how escalation occurs.",
+      "follow_up_question": "Which reconciliation tasks are highest priority to automate, and what KPIs (e.g., hours/week saved) should we track to measure improvement?"
+    },
+    {
+      "requirement": "The system shall be configurable (not hard-code program rules) so that program and clinical rules can evolve without code changes, enabling administrators to modify rules where appropriate.",
+      "source_citation": "So don't hard-code assumptions into the core. Make rules configurable where it makes sense.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "Stakeholder requires configurability to support evolving rules, impacting design for rule engines or admin UIs. Missing specifics: which rules must be configurable vs developer-maintained and how changes are validated.",
+      "follow_up_question": "Please enumerate which scheduling/business rules must be configurable by admins (e.g., shift length limits, placement constraints) and which should remain code-level to prevent misuse."
+    }
+  ]
+}

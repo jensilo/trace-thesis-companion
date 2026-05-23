@@ -1,0 +1,150 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_6_re_novice_stakeholder_nontechnical_enduser_20260227_110947.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_175301",
+  "requirements": [
+    {
+      "requirement": "The system should provide clear and understandable feedback for all user actions, including confirmations and error messages.",
+      "source_citation": "If there's no good feedback, they don't trust it.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for clear feedback to build user trust. However, the exact nature of the feedback (e.g., visual, auditory) is not specified.",
+      "follow_up_question": "What specific types of feedback (e.g., visual, auditory) would be most effective for users?"
+    },
+    {
+      "requirement": "The system should support mobile access for users.",
+      "source_citation": "Oh, and sorry, I keep jumping around—one last tiny thing: mobile access would be handy, but I didn't think to mention it earlier.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions mobile access as an afterthought, indicating its importance but not providing specific details.",
+      "follow_up_question": "What specific mobile platforms (e.g., iOS, Android) and devices should the system support?"
+    },
+    {
+      "requirement": "The system should have a response time of under 5 seconds for basic actions and under 10 seconds for most tasks.",
+      "source_citation": "small actions should be almost immediate. Maybe, um, five minutes is a reasonable maximum for someone to figure it out if they're new? But small actions should be almost immediate. [...] most quick tasks should finish in just a few seconds. I don't know the exact numbers, but under ten seconds for most things feels okay, and under five is ideal for the really basic stuff.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder provides specific time frames for acceptable response times, but the exact definition of 'basic' and 'most' tasks is unclear.",
+      "follow_up_question": "What specific actions are considered 'basic' and 'most' tasks, and what are the acceptable response times for each?"
+    },
+    {
+      "requirement": "The system should be tested on at least eight different browsers or versions, with a rendering success rate of around 80%.",
+      "source_citation": "I think a minimum suite would be good—like at least eight different browsers or versions should be checked, given how many we have floating around. And as for passing, it should render correctly on most of them. If I had to guess, maybe around eighty percent should display properly in tests.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the number of browsers and a rough success rate, but the exact browsers and versions are not mentioned.",
+      "follow_up_question": "Which specific browsers and versions should be included in the testing suite?"
+    },
+    {
+      "requirement": "The system should support multiple languages with accurate translations, not machine-generated.",
+      "source_citation": "translations should be good and not machine gibberish.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "internationalization",
+      "confidence": 3,
+      "rationale": "The stakeholder emphasizes the importance of accurate translations but does not specify which languages or the extent of translation coverage.",
+      "follow_up_question": "Which specific languages should the system support, and what is the expected coverage of translations?"
+    },
+    {
+      "requirement": "The system should handle international users by supporting multiple languages, date formats, time zones, and week-starting days.",
+      "source_citation": "Also the calendar should show the right week starting day and time zone stuff should be clear so people don't join at the wrong time.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "internationalization",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for international support but does not provide specific details on the formats or time zones.",
+      "follow_up_question": "What specific date formats, time zones, and week-starting days should the system support?"
+    },
+    {
+      "requirement": "The system should be available with a very high uptime, close to 100%, such as 99.99%.",
+      "source_citation": "very close to one hundred. We can't have meetings fail because the booking site is down.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a very high uptime requirement but does not provide an exact percentage.",
+      "follow_up_question": "What is the exact uptime percentage requirement, and what are the acceptable downtime periods for maintenance?"
+    },
+    {
+      "requirement": "The system should support screen readers, keyboard navigation, high-contrast themes, and ADA compliance.",
+      "source_citation": "Screen readers, yes, but also high-contrast themes, keyboard-only navigation, clear focus outlines, that sort of stuff. We have teammates who rely on those features and it's not optional. It should follow whatever the ADA requires, at least meet those standards so people can actually use it without workarounds.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "accessibility",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for accessibility features and ADA compliance, providing clear evidence.",
+      "follow_up_question": "What specific ADA guidelines and accessibility standards should the system comply with?"
+    },
+    {
+      "requirement": "The system should provide clear, actionable error messages that explain what went wrong and suggest next steps.",
+      "source_citation": "Error messages should say what went wrong and what to do next. Not just codes or 'operation failed,' because people get stuck.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "error_handling",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for clear and actionable error messages but does not provide examples or specific scenarios.",
+      "follow_up_question": "What specific error scenarios should the system handle, and what are the expected error messages for each?"
+    },
+    {
+      "requirement": "The system should suggest alternative times or rooms when a booking conflict occurs.",
+      "source_citation": "For example, if a booking fails because of a conflict, it should explain that and suggest alternatives or let you pick a different time without leaving the page.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "error_handling",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for suggestions during booking conflicts but does not specify the exact mechanism or user interface.",
+      "follow_up_question": "What specific suggestions or alternatives should the system provide, and how should they be presented to the user?"
+    },
+    {
+      "requirement": "The system should support different email servers, both internal and external, for sending invites and reminders.",
+      "source_citation": "Yes, it needs to interface with whatever email servers we have. Our IT uses a couple of different setups in different offices, and clients might be on something else, so the invites and reminders need to leave the system and get delivered properly.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for compatibility with different email servers but does not provide specific details on the servers or email protocols.",
+      "follow_up_question": "Which specific email servers and protocols should the system support?"
+    },
+    {
+      "requirement": "The system should support international users by displaying times in both local and organizer time zones to avoid meeting conflicts.",
+      "source_citation": "We have remote folks in other countries, so the system should show both local and organizer times in a way that doesn't confuse people.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "internationalization",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for time zone support but does not specify the exact implementation or user interface.",
+      "follow_up_question": "How should the system display both local and organizer times to avoid confusion?"
+    },
+    {
+      "requirement": "The system should provide clear and intuitive UI labels, such as using 'cancel' instead of 'release' for booking actions.",
+      "source_citation": "the UI labels should be clear. I once had to show someone how to cancel a booking and the button said 'release' and they didn't get it.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder provides an example of a confusing label but does not specify other labels that need improvement.",
+      "follow_up_question": "What other UI labels should be reviewed and improved for clarity?"
+    }
+  ]
+}

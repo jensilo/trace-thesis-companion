@@ -1,0 +1,260 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_8_re_novice_stakeholder_technical_junior_20260227_111309.txt",
+  "model": "openai/gpt-5-mini",
+  "timestamp": "20260302_172756",
+  "requirements": [
+    {
+      "requirement": "The user interface shall be simple enough that inexperienced users can find a movie, pay, and start watching without more than minimal steps or confusion.",
+      "source_citation": "it just has to be simple. Like, people who haven't used the internet much should be able to find a movie, pay, and be watching without fuss.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly demands simplicity for inexperienced users and an end-to-end minimal-effort flow. This is a usability requirement; however it lacks precise quantitative limits (allowed number of steps, exact wording of help, or measurable usability metric).",
+      "follow_up_question": "What measurable usability criteria should we use (e.g., maximum number of steps, target success rate in a simple usability test, or task completion time for novice users)?"
+    },
+    {
+      "requirement": "The purchase-and-play (click-to-play) flow shall complete within three minutes for a straightforward, known-movie scenario.",
+      "source_citation": "I think three minutes would be the outer limit for a straightforward purchase-and-play flow.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder gave a clear upper bound (3 minutes) for end-to-end time from decision to playback. Still unclear whether this includes payment gateway external delays or only application-side processing; scope needs clarification.",
+      "follow_up_question": "Should the three-minute target include external third-party payment/provider latency, or only the system-controlled components? If third-party latency is excluded, what fallback/UX should be shown?"
+    },
+    {
+      "requirement": "Small UI interactions (e.g., search results, opening movie details) shall respond in approximately five seconds or less to avoid user annoyance.",
+      "source_citation": "For regular clicks and small requests, if it takes more than a few seconds, users feel annoyed. I'd say around five seconds is when people start to lose patience for simple stuff.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder specified ~5s threshold for small interactions. Does not define perceived performance expectations for different platforms (mobile vs desktop) or network conditions; also doesn't specify SLO (percentile).",
+      "follow_up_question": "Do you want this five-second threshold expressed as an SLO (e.g., 95th percentile of requests) and should it vary by client type (mobile/desktop)?"
+    },
+    {
+      "requirement": "Card payment authorisation shall return a definitive result within fifteen seconds from submission to avoid payment abandonment.",
+      "source_citation": "Card processing needs to be fast but secure. ... I'd put card authorisation at maybe under, say, fifteen seconds from submit to result.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder provided a clear maximum acceptable latency for card authorisations. It doesn't specify how to handle retries/soft-failures or how SLAs with payment providers will be handled.",
+      "follow_up_question": "Should the 15s target be an SLO (e.g., 99% of authorisations) and what retry/backoff/UX should be used when a provider exceeds this limit?"
+    },
+    {
+      "requirement": "Initial playback startup (time to first frame / usable playback) shall be a matter of seconds and not tens of seconds; specifically, initial buffering should be no more than ten seconds in typical network conditions.",
+      "source_citation": "Buffering is a big one. ... It should be a matter of seconds — not tens of seconds.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder emphasized short startup times and later gives a 10s maximum tolerant threshold. The requirement lacks definition of 'typical network conditions' and percentile goals (e.g., 90th percentile).",
+      "follow_up_question": "Define the network profile for 'typical network conditions' (e.g., 3G/4G with X kbps) and the percentile SLO (e.g., 95% of sessions start within 10s)."
+    },
+    {
+      "requirement": "If initial buffering exceeds the tolerable threshold, the player shall attempt a low-resolution starter stream quickly to reduce perceived startup delay.",
+      "source_citation": "If it hits that, we should try to show something like a low-res starter stream quickly.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "Stakeholder requests progressive degrade to low-res to improve perceived performance. Implementation details (when to switch, exact resolutions, automatic vs user-selectable) are unspecified.",
+      "follow_up_question": "What conditions should trigger the low-res starter (e.g., >10s buffer), and what minimum resolution/bitrate should be offered as the starter stream?"
+    },
+    {
+      "requirement": "Pre-paid card redemption from the user perspective shall be as simple as typing a PIN/code with minimal form friction.",
+      "source_citation": "entering the code and getting access should be as easy as typing a PIN; they shouldn't wrestle with forms.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Stakeholder wants a low-friction UX for prepaid codes. Missing specifics: validation rules, error messages, copy, and steps for users with invalid codes.",
+      "follow_up_question": "Specify the exact redemption UX (single input field, client-side validation, keyboard focus behavior) and the maximum allowed steps/errors tolerated during redemption."
+    },
+    {
+      "requirement": "Admin tools shall provide generation and tracking of pre-paid codes; this process shall not be manual (no reliance on spreadsheets).",
+      "source_citation": "we need a way to generate those codes and track which have been used. It shouldn't be a manual spreadsheet job — that gets messy fast.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "Stakeholder requires automated admin tooling for code generation and tracking to avoid manual spreadsheet-based processes. Lacks detail on scale, reporting, and integration with auditing.",
+      "follow_up_question": "What volume of codes and concurrency do you expect (e.g., codes/day), and what admin views/reports are required for tracking redemption and status?"
+    },
+    {
+      "requirement": "Sensitive payment data (e.g., credit card information) shall not be stored in plain text in the database and shall be protected by encryption and access controls.",
+      "source_citation": "The credit card info shouldn't be sitting in plain text on the database.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Clear demand for encrypted storage of card info. Does not specify encryption standards, key management, or whether tokenization/Pci compliance will be used.",
+      "follow_up_question": "Do you require PCI-DSS compliance and specific encryption standards (e.g., AES-256 at rest, TLS 1.2+ in transit) and who will manage keys?"
+    },
+    {
+      "requirement": "Access to sensitive payment data shall be limited by role-based access control so that only a small set of trusted admin roles can view or access full payment details.",
+      "source_citation": "And access should be limited to a few admin roles — not the person who just answers support calls.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder requests RBAC restricting sensitive data to trusted admins. Lacks specifics about role definitions, approval workflows, and how segregation of duties is enforced.",
+      "follow_up_question": "Please define the admin roles and the exact privileges each role requires (e.g., view masked vs full PAN) and whether approvals are needed for role changes."
+    },
+    {
+      "requirement": "High-privilege admin accounts that can access sensitive data shall require stronger authentication, including two-factor authentication.",
+      "source_citation": "Two-factor seems sensible for those users who can see sensitive data.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly requests 2FA for high-privilege accounts. Missing details: accepted 2FA mechanisms (TOTP, SMS, hardware), enforcement policy, and account recovery procedures.",
+      "follow_up_question": "Which 2FA methods are acceptable (TOTP apps, hardware tokens, SMS) and what is the account recovery process for admins who lose their second factor?"
+    },
+    {
+      "requirement": "The system shall log and retain raw transaction logs and administrative access logs so individual movie sale records and access events can be retrieved for dispute resolution and audits.",
+      "source_citation": "We should be able to pull up individual movie sale records if there's a dispute or to reconcile revenue.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Stakeholder requires raw logs and the ability to retrieve individual sale records. Missing retention periods, format, and access controls for those logs.",
+      "follow_up_question": "What retention period and log formats do you require for transaction and access logs, and who should have access to raw logs for investigations?"
+    },
+    {
+      "requirement": "The system shall provide daily business metrics (e.g., daily stream counts, revenue, active users) and the ability to query historical daily aggregates for reporting.",
+      "source_citation": "Daily aggregates like stream counts, revenue, active users ... ability to look back at daily numbers ... when the marketing team asks 'what happened last Tuesday' we can tell them.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Stakeholder requests daily aggregated metrics and historical lookup. Lacks specifics regarding retention duration, freshness SLA (when daily numbers are available each day), and acceptable query performance.",
+      "follow_up_question": "What is the required retention for daily aggregates, what freshness SLA is needed (e.g., daily report ready by 06:00), and expected query performance for ad-hoc lookups?"
+    },
+    {
+      "requirement": "The site shall target an availability uptime of approximately 99.5% over measurement period.",
+      "source_citation": "they'd probably expect around ninety-nine and a half percent uptime.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "Stakeholder provided a numeric availability target (99.5%). Missing: measurement window (monthly/yearly), allowed maintenance windows, and downstream SLA expectations.",
+      "follow_up_question": "Should the 99.5% uptime target be measured monthly or annually, and what planned maintenance windows (if any) should be excluded from this calculation?"
+    },
+    {
+      "requirement": "The system shall detect and mitigate automated abuse (e.g., bots brute-forcing pre-paid codes, card-testing attacks, content scraping) and generate timely alerts to admins.",
+      "source_citation": "Bots trying to brute-force pre-paid codes, or card testing attacks that spike transactions, or crawlers scraping content — we need protections. Ideally, the system blocks or mitigates attacks and alerts admins when something weird happens.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder requests automated abuse detection & mitigation and alerting. Details missing on detection methods, acceptable false-positive rates, blocking actions, and thresholds for alerting.",
+      "follow_up_question": "What detection/mitigation measures do you expect (rate-limiting, CAPTCHA, WAF) and what thresholds/alerting rules (e.g., X failed redemptions/minute) should trigger automated actions or notifications?"
+    },
+    {
+      "requirement": "Operational alerts (e.g., abuse incidents, server health problems) shall be timely and visible via email and a dashboard so multiple admins can see recent incidents.",
+      "source_citation": "Any of those should work, as long as it's visible and timely. Email's okay for alerts, but a dashboard with recent incidents is helpful when multiple things happen at once.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Stakeholder requests multiple alert channels and a dashboard for incident visibility. Missing specifics on SLA for alert delivery, escalation paths, and on-call expectations.",
+      "follow_up_question": "What are the required alert delivery SLAs and escalation procedures (who gets notified, at what times, and how are incidents escalated)?"
+    },
+    {
+      "requirement": "Privacy practices shall be clearly documented and a visible privacy policy link shall be present on every page and during signup/checkout.",
+      "source_citation": "A clear privacy policy that people can find before they give us anything. ... Uh, yeah, on every page is safer.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 5,
+      "rationale": "Stakeholder insists on visible privacy policy on every page and during key flows. Does not specify legal compliance requirements (e.g., GDPR) or language/localization of the policy.",
+      "follow_up_question": "Which legal/privacy frameworks must we comply with (e.g., GDPR) and should the privacy policy be localized per market/language?"
+    },
+    {
+      "requirement": "Administrative access and data access events shall be auditable; the system shall log who accessed sensitive data and when so actions can be audited.",
+      "source_citation": "And of course logs of who accessed what, so we can audit if something looks off.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder requires audit logging of admin access. Missing retention policy, log integrity/tamper-evidence, and the level of detail to be captured.",
+      "follow_up_question": "What retention period and level of detail do you require for access audit logs, and do you need tamper-evident storage or external archiving for compliance?"
+    },
+    {
+      "requirement": "The admin dashboards and reporting tools shall support a small number of concurrent users (a handful) without performance degradation during reporting windows.",
+      "source_citation": "Maybe a handful of people at peak times. They won't all be doing heavy queries constantly, but during reporting windows there could be a few.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "Stakeholder gives a rough sizing hint (a handful of concurrent admin users). This helps capacity planning but lacks exact concurrency numbers, query complexity, and SLA for dashboard response times.",
+      "follow_up_question": "Please confirm the expected peak concurrent admin users and the acceptable dashboard response time (e.g., <5s for summary, <30s for heavy reports)."
+    },
+    {
+      "requirement": "The visual design shall use big clear buttons, limited choices per screen, helpful defaults, prominent play flow, tooltips, and friendly error messages to support novice users.",
+      "source_citation": "Big clear buttons, not too many choices at once, helpful defaults, and an obvious prominent 'play' flow... tooltips and simple error messages — not scary technical text.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 5,
+      "rationale": "Stakeholder specifies several UI design patterns to increase usability for novices. Lacks precise design standards, accessibility/contrast requirements, and localization considerations.",
+      "follow_up_question": "Do you have a design system or accessibility standards to follow (e.g., WCAG AA), and are there priority languages/markets for localized UI text and tooltips?"
+    },
+    {
+      "requirement": "The UI shall support localization for key markets including localized language and local currency display in the user interface.",
+      "source_citation": "we'd want local languages for key markets... Also support for local currencies in the UI helps reduce confusion.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 5,
+      "rationale": "Stakeholder asks for localization and currency support for trust/usability. Missing specifics: which languages/currencies, fallback rules, formatting, and translation workflow.",
+      "follow_up_question": "Which languages and currencies must be supported at launch, and what are the requirements for currency formatting and exchange rate updates?"
+    },
+    {
+      "requirement": "Operational monitoring from day one shall include server uptime, error rates, and unusual traffic pattern detection, with notifications sent to responsible staff when alerts fire (including night-time alerts).",
+      "source_citation": "Track basic health stuff — server uptime, error rates, and unusual traffic patterns. ... If an alert fires at night, someone should get notified; we can't just find out in the morning after revenue is lost.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Stakeholder specifies essential monitoring metrics and the need for timely notifications including night alerts. Does not specify thresholds, retention for metrics, or on-call rotation responsibilities.",
+      "follow_up_question": "What thresholds should trigger alerts for uptime, error rates, and traffic anomalies, and who should be on-call to receive night-time notifications?"
+    },
+    {
+      "requirement": "The system shall include protections against duplicate transactions or unintended duplicates caused by retries (e.g., idempotency on payment callbacks) to prevent duplicate records and revenue reconciliation issues.",
+      "source_citation": "like that one time the payment gateway retried and created duplicate records.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "Stakeholder provided an incident example indicating a need for idempotent handling of payment retries. Implementation specifics (idempotency key semantics, reconciliation workflow) are not defined.",
+      "follow_up_question": "Should we enforce idempotency keys for payment requests and what is the acceptable reconciliation process or window if duplicates occur?"
+    }
+  ]
+}

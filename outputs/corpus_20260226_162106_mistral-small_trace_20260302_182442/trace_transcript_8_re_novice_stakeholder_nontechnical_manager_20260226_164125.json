@@ -1,0 +1,227 @@
+{
+  "transcript_file": "outputs/corpus-20260226_162106/transcript_8_re_novice_stakeholder_nontechnical_manager_20260226_164125.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_182629",
+  "requirements": [
+    {
+      "requirement": "The system shall have a startup buffering time of up to ten seconds for streaming content.",
+      "source_citation": "It should feel immediate... up to around ten seconds for initial buffering",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions a target buffering time of up to ten seconds, which is a clear performance requirement. The confidence is high because the requirement is explicitly stated.",
+      "follow_up_question": "What are the acceptable buffering times for subsequent buffering events after initial playback?"
+    },
+    {
+      "requirement": "The system shall have a general UI responsiveness of around five seconds as the upper bound for user-facing responses.",
+      "source_citation": "Pages and actions should feel snappy... around five seconds as the upper bound for the user-facing response",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a target response time of around five seconds for general UI responsiveness, which is a clear performance requirement. The confidence is high because the requirement is explicitly stated.",
+      "follow_up_question": "Are there any specific user interactions that should have a different response time target?"
+    },
+    {
+      "requirement": "The system shall generate a batch of pre-paid PINs and export them within a couple of minutes.",
+      "source_citation": "The expectation is that the system can produce a batch and the export within a couple of minutes",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a target time of a couple of minutes for generating and exporting pre-paid PINs, which is a clear performance requirement. The confidence is high because the requirement is explicitly stated.",
+      "follow_up_question": "What is the maximum acceptable time for generating and exporting a batch of pre-paid PINs?"
+    },
+    {
+      "requirement": "The system shall allow managers to pull up sales and usage statistics in under two minutes.",
+      "source_citation": "Managers can pull up sales and usage statistics in under two minutes",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a target time of under two minutes for pulling up sales and usage statistics, which is a clear performance requirement. The confidence is high because the requirement is explicitly stated.",
+      "follow_up_question": "Are there any specific reports or statistics that should have a different response time target?"
+    },
+    {
+      "requirement": "The system shall encrypt card information in storage and only make it visible to authorized staff.",
+      "source_citation": "Card info must be encrypted in storage and only visible to authorized staff... controls and audit trails",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies that card information must be encrypted and only visible to authorized staff, which is a clear security requirement. The confidence is high because the requirement is explicitly stated.",
+      "follow_up_question": "What specific encryption standards or protocols should be used for encrypting card information?"
+    },
+    {
+      "requirement": "The system shall implement access controls to ensure that sensitive payment information is only visible to certain admins.",
+      "source_citation": "Not everyone should see everything... sensitive payment information should only be visible to certain admins",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies that sensitive payment information should only be visible to certain admins, which is a clear security requirement. The confidence is high because the requirement is explicitly stated.",
+      "follow_up_question": "What specific access control mechanisms or roles should be implemented to restrict access to sensitive payment information?"
+    },
+    {
+      "requirement": "The system shall store credit card data on the company's servers, subject to legal and security input.",
+      "source_citation": "The business leans toward having the cards on our servers... but subject to legal and security input",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions a preference for storing credit card data on the company's servers, but indicates that this is subject to legal and security input. The confidence is medium because the requirement is not explicitly confirmed and is subject to further input.",
+      "follow_up_question": "What specific legal and security considerations need to be addressed before deciding to store credit card data on the company's servers?"
+    },
+    {
+      "requirement": "The system shall have a success rate of nine out of ten typical novice users completing key tasks on their own during usability tests.",
+      "source_citation": "Nine out of ten typical novice users can complete key tasks on their own",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a target success rate of nine out of ten novice users, which is a clear usability requirement. The confidence is high because the requirement is explicitly stated.",
+      "follow_up_question": "What specific key tasks should be included in the usability tests to measure the success rate?"
+    },
+    {
+      "requirement": "The system shall allow users to reach their streaming content within two clicks after logging in.",
+      "source_citation": "Reach their streaming content within two clicks after logging in",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a target of two clicks to reach streaming content after logging in, which is a clear usability requirement. The confidence is high because the requirement is explicitly stated.",
+      "follow_up_question": "Are there any specific user flows or scenarios that should be considered when measuring the two-click requirement?"
+    },
+    {
+      "requirement": "The system shall have a simple and obvious UI with fewer fields, clearer language, and native language options.",
+      "source_citation": "The UI must be simple and obvious... fewer fields, clearer language, and native language options",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies that the UI must be simple and obvious with fewer fields, clearer language, and native language options, which are clear usability requirements. The confidence is high because the requirements are explicitly stated.",
+      "follow_up_question": "What specific guidelines or standards should be followed to ensure the UI is simple, obvious, and includes native language options?"
+    },
+    {
+      "requirement": "The system shall have an uptime target of ninety-nine point five percent availability measured over the usual monthly window.",
+      "source_citation": "Ninety-nine point five percent availability as a public target, measured over the usual monthly window",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a target uptime of ninety-nine point five percent, which is a clear availability requirement. The confidence is high because the requirement is explicitly stated.",
+      "follow_up_question": "What specific measures or protocols should be implemented to ensure the system meets the ninety-nine point five percent availability target?"
+    },
+    {
+      "requirement": "The system shall allow planned maintenance but should be minimal and announced ahead of time.",
+      "source_citation": "Allowed but should be minimal and announced ahead of time",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies that planned maintenance should be minimal and announced ahead of time, which is a clear availability requirement. The confidence is high because the requirement is explicitly stated.",
+      "follow_up_question": "What specific protocols or communication channels should be used to announce planned maintenance to users?"
+    },
+    {
+      "requirement": "The system shall allow staff to run the business without waiting on IT every time.",
+      "source_citation": "Staff should be able to run the business without waiting on IT every time",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies that staff should be able to run the business without waiting on IT, which is a clear maintainability requirement. The confidence is high because the requirement is explicitly stated.",
+      "follow_up_question": "What specific features or functionalities should be included in the system to enable staff to run the business without waiting on IT?"
+    },
+    {
+      "requirement": "The system shall surface progress indicators to users during long-running operations.",
+      "source_citation": "Surface that to the user with progress indicators",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies that progress indicators should be surfaced to users during long-running operations, which is a clear maintainability requirement. The confidence is high because the requirement is explicitly stated.",
+      "follow_up_question": "What specific types of progress indicators or user feedback mechanisms should be implemented?"
+    },
+    {
+      "requirement": "The system shall be ready for a fairly quick global launch.",
+      "source_citation": "We’re aiming for a fairly quick global launch",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions a goal of a fairly quick global launch, which implies a scalability requirement. The confidence is medium because the requirement is not explicitly stated and lacks specific details.",
+      "follow_up_question": "What specific scalability targets or performance metrics should the system meet to support a global launch?"
+    },
+    {
+      "requirement": "The system shall support language options for major languages.",
+      "source_citation": "Language options for major languages are important",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies that language options for major languages are important, which is a clear scalability requirement. The confidence is high because the requirement is explicitly stated.",
+      "follow_up_question": "What specific major languages should the system support, and what localization features should be included?"
+    },
+    {
+      "requirement": "The system shall display the privacy policy on every page and make it visible before collecting personal data.",
+      "source_citation": "The privacy policy should be visible on every page... before collecting personal data",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies that the privacy policy should be visible on every page and before collecting personal data, which is a clear legal requirement. The confidence is high because the requirement is explicitly stated.",
+      "follow_up_question": "What specific content or information should be included in the privacy policy to comply with legal requirements?"
+    },
+    {
+      "requirement": "The system shall keep enough history for accounting and disputes while respecting privacy and legal retention limits.",
+      "source_citation": "We need to keep enough history for accounting and disputes, but also respect privacy and legal retention limits",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 3,
+      "rationale": "The stakeholder specifies a need to keep history for accounting and disputes while respecting privacy and legal retention limits, which is a clear legal requirement. The confidence is medium because the requirement lacks specific details and is subject to legal input.",
+      "follow_up_question": "What specific retention periods or data management practices should be implemented to comply with legal requirements?"
+    },
+    {
+      "requirement": "The system shall have a startup buffering time of up to ten seconds for streaming content.",
+      "source_citation": "Buffering kills conversion... up to around ten seconds for initial buffering",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "other",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a target buffering time of up to ten seconds, which is a clear quality requirement related to streaming quality. The confidence is high because the requirement is explicitly stated.",
+      "follow_up_question": "What specific measures or protocols should be implemented to ensure the system meets the ten-second buffering target?"
+    },
+    {
+      "requirement": "The system shall export pre-paid PINs in an Excel-compatible file format.",
+      "source_citation": "Partners expect an Excel-compatible file",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "other",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies that partners expect an Excel-compatible file format for pre-paid PIN exports, which is a clear quality requirement. The confidence is high because the requirement is explicitly stated.",
+      "follow_up_question": "What specific Excel file format or data structure should be used for exporting pre-paid PINs?"
+    }
+  ]
+}

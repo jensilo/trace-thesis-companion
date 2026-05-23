@@ -1,0 +1,194 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_6_re_novice_stakeholder_technical_senior_20260227_110846.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_175645",
+  "requirements": [
+    {
+      "requirement": "The system should be portable and run on various operating systems including Linux, Windows, and Solaris.",
+      "source_citation": "It should run on whatever servers we have in-house... play nicely with Linux, Windows, Solaris.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for the system to run on multiple operating systems, indicating a clear requirement for portability.",
+      "follow_up_question": "Are there any specific versions of these operating systems that the system must be compatible with?"
+    },
+    {
+      "requirement": "The system should be packaged to deploy onto various web or application servers such as Tomcat or JBoss.",
+      "source_citation": "It should be packaged to deploy onto whatever web or application server we use.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for the system to be deployable on various web or application servers.",
+      "follow_up_question": "Are there any specific versions of these web or application servers that the system must be compatible with?"
+    },
+    {
+      "requirement": "The system should work with various DBMSs including Postgres, Oracle, and SQL Server.",
+      "source_citation": "It needs to work against whatever DBMS the company already runs.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for the system to work with various DBMSs.",
+      "follow_up_question": "Are there any specific versions of these DBMSs that the system must be compatible with?"
+    },
+    {
+      "requirement": "The system should be responsive, with routine tasks feeling basically immediate and heavier tasks not exceeding eight seconds.",
+      "source_citation": "Most routine tasks should be basically immediate; five seconds is a threshold for small things, and even for heavier tasks we shouldn't go much beyond that — eight seconds is a point where you know you need to look at the design or caching.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder provides specific time thresholds for system responsiveness, indicating a clear performance requirement.",
+      "follow_up_question": "Are there any specific scenarios or tasks that have different performance requirements?"
+    },
+    {
+      "requirement": "The system should handle high concurrency, supporting thousands of concurrent requests today and scaling to handle roughly double that by the next release.",
+      "source_citation": "The system has to handle high concurrency... think about supporting on the order of thousands of concurrent requests today and more in the next release.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for the system to handle high concurrency and provides specific numbers for current and future requirements.",
+      "follow_up_question": "Are there any specific peak usage times or scenarios that the system should be designed to handle?"
+    },
+    {
+      "requirement": "The system should aim for very high availability, targeting four nines (99.99%) uptime excluding server-level failures.",
+      "source_citation": "We should aim for very high availability so people don't get surprised during the day. We should target four nines availability for the software component — in other words, about 99.99% uptime excluding server-level failures.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for very high availability and provides a specific target.",
+      "follow_up_question": "Are there any specific maintenance windows or downtime schedules that should be considered?"
+    },
+    {
+      "requirement": "The system should only allow access to company employees or explicitly approved external users, with no anonymous access.",
+      "source_citation": "Only company employees or external people who we've explicitly approved should be able to log in. No anonymous access.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for restricted access and no anonymous access.",
+      "follow_up_question": "Are there any specific authentication methods or protocols that should be supported?"
+    },
+    {
+      "requirement": "The system should sanitize inputs, validate everything server-side, and assume attackers will try to inject malicious data.",
+      "source_citation": "The app must sanitize inputs, validate everything server-side, and assume attackers will try to inject SQL or malformed payloads.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for input sanitization, server-side validation, and assuming malicious intent.",
+      "follow_up_question": "Are there any specific types of malicious input or attacks that the system should be particularly defensive against?"
+    },
+    {
+      "requirement": "The system should ensure that malicious input does not result in corrupted product data.",
+      "source_citation": "We need guarantees that malicious input won't result in corrupted product data.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for data integrity and protection against malicious input.",
+      "follow_up_question": "Are there any specific data integrity checks or validation mechanisms that should be implemented?"
+    },
+    {
+      "requirement": "The system should capture exceptions and operational problems in logs with enough context to reproduce and diagnose issues.",
+      "source_citation": "Exceptions and operational problems should be captured in logs with enough context to reproduce and diagnose issues.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for detailed logging and context for diagnosing issues.",
+      "follow_up_question": "Are there any specific logging formats or standards that should be followed?"
+    },
+    {
+      "requirement": "The system should follow standard design patterns and best practices, with good layering, clear interfaces, and test coverage.",
+      "source_citation": "The code should follow standard design patterns and best practices. Good layering, clear interfaces, and test coverage are key.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for maintainable code with specific qualities.",
+      "follow_up_question": "Are there any specific design patterns or best practices that should be followed?"
+    },
+    {
+      "requirement": "The system should support localization and be brandable to allow different offices to apply their company look and feel.",
+      "source_citation": "The UI must support localization and be brandable so different offices can apply their company look and feel.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for localization and brandability.",
+      "follow_up_question": "Are there any specific languages or branding guidelines that should be supported?"
+    },
+    {
+      "requirement": "The system should comply with accessibility standards, including screen reader support, keyboard navigation, and proper semantics.",
+      "source_citation": "Accessibility compliance is necessary — screen reader support, keyboard navigation, proper semantics, the usual.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for accessibility compliance with specific features.",
+      "follow_up_question": "Are there any specific accessibility standards or guidelines that should be followed?"
+    },
+    {
+      "requirement": "The system should be operable in clustered setups for high availability, with monitoring of key metrics and rolling upgrades.",
+      "source_citation": "Ops needs to be able to run the app in clustered setups for high availability, monitor key metrics, and perform rolling upgrades.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for operability in clustered setups with specific features.",
+      "follow_up_question": "Are there any specific monitoring tools or upgrade procedures that should be supported?"
+    },
+    {
+      "requirement": "The system should be stateless where feasible, with session state externalized and documentation of what needs to be backed up.",
+      "source_citation": "The app should be stateless where feasible so instances can be replaced without data loss and so backups are straightforward. Session state should be externalized, and we should document what needs to be backed up.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for statelessness, externalized session state, and backup documentation.",
+      "follow_up_question": "Are there any specific backup procedures or tools that should be supported?"
+    },
+    {
+      "requirement": "The system should not send PII or full user content in external reports, focusing on actionable telemetry with sensitive fields scrubbed.",
+      "source_citation": "Don't send PII or full user content in external reports. We want actionable telemetry — stack traces, timestamps, environment, but scrub sensitive fields.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "privacy",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for privacy protection and specific telemetry requirements.",
+      "follow_up_question": "Are there any specific privacy laws or regulations that should be complied with?"
+    },
+    {
+      "requirement": "The system should provide health endpoints for automated checks.",
+      "source_citation": "We should provide health endpoints for automated checks.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for health endpoints for automated checks.",
+      "follow_up_question": "Are there any specific health check standards or protocols that should be followed?"
+    }
+  ]
+}

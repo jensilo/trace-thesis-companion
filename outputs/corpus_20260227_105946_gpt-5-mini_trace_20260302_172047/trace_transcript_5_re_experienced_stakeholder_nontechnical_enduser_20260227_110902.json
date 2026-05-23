@@ -1,0 +1,172 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_5_re_experienced_stakeholder_nontechnical_enduser_20260227_110902.txt",
+  "model": "openai/gpt-5-mini",
+  "timestamp": "20260302_172321",
+  "requirements": [
+    {
+      "requirement": "Parts search shall return results so that the perceived search operation completes within 15 seconds for interactive users.",
+      "source_citation": "The search part is the worst. It just... drags. I mean, I think it should feel instant, but right now I sit there clicking my pen, you know? It breaks my flow. And finding help while I'm in the middle of an estimate is a pain — sometimes I give up and call someone. Oh, and sorry, tangent — my coffee went cold waiting the other day because I was stuck waiting for a search.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly complains about parts search latency and characterizes it as interrupting workflow. Later they quantify acceptable latency as ~15 seconds. Missing specifics: whether this is 95th percentile, median, or under what load conditions.",
+      "follow_up_question": "Do you expect the 15-second target to apply to median, 95th-percentile, or absolute maximum response times, and under what concurrency (e.g., peak load) should this be measured?"
+    },
+    {
+      "requirement": "Facility lookup (preferred repair facilities by vehicle location) shall return results within 10 seconds, with an ideal target of 8 seconds for interactive phone calls.",
+      "source_citation": "That one should be snappier than parts, I think. When I'm on the phone with a customer I can't be waiting. If it takes forever, the call drags and the customer gets annoyed. I'd say it should be back in a few seconds — like under ten seconds. Eight seconds would be nice, actually.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder clearly distinguishes facility lookup as requiring faster response than parts search and gives numeric targets. Gap: doesn't specify percentile, data size, or geographic variability.",
+      "follow_up_question": "Should the 8–10 second target be measured as median or 95th-percentile response time, and does it apply for both office and field network conditions?"
+    },
+    {
+      "requirement": "Audit reports for recycled parts shall generate and return results within 10 seconds so the user can remain in the active estimate without switching tasks.",
+      "source_citation": "It took ages to produce the report, so I started it, had to walk away, came back, and then had to re-run something because the session timed out. It felt clunky. I need those reports while I'm still in the file, not after lunch. If I think about it, getting that audit back should be fast — like, under maybe ten seconds? Quick enough that I don't have to switch tasks.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder describes slow report generation causing session timeouts and gives a concrete acceptable threshold of under 10 seconds. Missing: report complexity, rows/pages size, and acceptable variability under load.",
+      "follow_up_question": "What is the typical size/complexity of the audit report (records scanned), and should the 10-second target apply for small/medium/large audits or across all report sizes?"
+    },
+    {
+      "requirement": "System availability shall be at least approximately 98% during business hours (i.e., 'up pretty much all the time we're working').",
+      "source_citation": "I don't want this happening during business hours. Ideally it should be up pretty much all the time we're working. If I had to say — and I'm guessing — it should be available almost always. Like, ninety-something percent of the time. Ninety-eight percent would probably be okay in my head, I think.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "Stakeholder offers an availability target (~98%) and emphasizes avoidance of downtime during business hours. Gaps: definition of business hours, whether 98% is overall or only during business hours, and acceptable maintenance windows.",
+      "follow_up_question": "Please confirm the exact definition of 'business hours' for your organization and whether the 98% target applies to overall uptime or specifically to those hours."
+    },
+    {
+      "requirement": "System shall support concurrent usage of up to approximately 1,500 simultaneous users without unacceptable degradation of interactive performance.",
+      "source_citation": "If you ask me for numbers, I think at peak we could have... a very large group, maybe in the low thousands? One four-nine-zero? No, wait, that's not right. Hmm. Okay, to be honest, I'd say about fifteen hundred people at the same time in the worst-case scenario. It sounds high, but between adjusters, estimators, and office folks — it gets crowded.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "Stakeholder provides an estimate of peak concurrent users (approx. 1500) and reports current slowdown under load. Missing: distribution of activities per user, peak duration, and acceptable per-operation latency under this load.",
+      "follow_up_question": "Can you provide expected activity mix per concurrent user (e.g., percent performing searches vs. lookups vs. reports) and typical peak duration?"
+    },
+    {
+      "requirement": "Save operations for actions like ratings or notes shall provide a visible confirmation and complete within 5 seconds to avoid duplicate submissions and user confusion.",
+      "source_citation": "Sometimes I hit save, and it lags or I wonder if it worked, so I click again — and then later there are duplicates or nothing saved. I need confidence that when I hit save it actually saved. It should feel immediate — like you click and it's done. If I'm pressed, I'd expect it to save in just a couple of seconds. Not a long wait.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "reliability",
+      "confidence": 5,
+      "rationale": "Stakeholder reports duplicate or missing saves due to perceived lag and specifies a 5-second threshold for confidence. Gaps: transactional guarantees (idempotency), offline behavior, and exact user-visible confirmation format.",
+      "follow_up_question": "Do you require transactional idempotency (prevent duplicate records if user retries) and should saves be synchronous (blocking) or can they be acknowledged optimistically with background persistence?"
+    },
+    {
+      "requirement": "Save confirmation must appear within 5 seconds; if no confirmation is shown within 5 seconds the user will likely re-submit.",
+      "source_citation": "If I don't see confirmation within, say, five seconds, I start poking around and double-saving. So, under five seconds would keep me calm.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Stakeholder gives explicit interaction threshold for user confidence. Gap: whether this applies across all networks (office vs field) and what UI element constitutes confirmation.",
+      "follow_up_question": "Should the 5-second confirmation target apply equally in poor network conditions (field), and what form of confirmation (toast, modal, status icon) do you prefer?"
+    },
+    {
+      "requirement": "The system shall enforce strict data partitioning so that insurer-specific claims are accessible only to authorized users of that insurer and not visible to other companies.",
+      "source_citation": "So, the system needs to keep each insurer's claims separated. I mean, nobody wants to get in trouble over a privacy slip.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder recounts an incident and explicitly demands separation of insurer claims to avoid privacy breaches. Gaps: definition of separation (logical tenancy, database-level), audit logging, and acceptable admin cross-access rules.",
+      "follow_up_question": "Do you require physical tenant separation or is logical multi-tenant isolation with strong access controls and auditing acceptable?"
+    },
+    {
+      "requirement": "Role-based access control must be implemented so program admins have cross-company access for audits/reports, while adjusters/estimators see only their company's claims and shop coordinators have limited assignment/contact views.",
+      "source_citation": "We have program admins who need access across the board for audits and reporting. Most of us are adjusters or estimators and only need to see our own company's claims. Shop coordinators need limited views — just the assignments and basic contact stuff. So, sort of tiered access — admins wide, most folks narrow.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder describes required role separation and different access scopes. Gap: exact permissions per role, approval workflows for admin access, and audit requirements for privileged access.",
+      "follow_up_question": "Please provide a detailed role/permission matrix listing specific actions and data each role should be allowed to perform/view and any approval or logging requirements for admin access."
+    },
+    {
+      "requirement": "In field (spotty network) conditions the application shall handle flaky connectivity gracefully by allowing viewing of recently fetched results and maintaining session continuity where possible (e.g., caching and not breaking the session).",
+      "source_citation": "If I'm on-site with a customer, I can't have an app that times out or requires constant reloading. So it needs to handle spotty networks gracefully — maybe cache things or allow me to at least view the last results. In the office we expect full speed, but out in the field, even if it's a little slower, it must not break my session.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Stakeholder is explicit about field reliability and suggests caching/last-results viewing and session robustness. Gaps: exact offline capabilities (read-only vs. write with sync), cache size/time, and conflict resolution.",
+      "follow_up_question": "Should field mode support offline edits with later synchronization, or only read-only cached data? If offline edits are allowed, how should conflicts be resolved?"
+    },
+    {
+      "requirement": "The system shall warn users before session timeouts with a visible countdown and provide a 'stay signed in' option; it shall also autosave drafts of in‑progress work to prevent data loss on timeout.",
+      "source_citation": "Definitely warnings before session timeouts — like a countdown or a 'stay signed in' button. And if I'm in the middle of something it should save drafts so I don't lose work. Losing half an estimate because of a timeout is the worst.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 5,
+      "rationale": "Stakeholder requests pre-timeout warnings, an extend-session control, and draft autosave to avoid losing work. Gaps: autosave interval, retention period for drafts, and security considerations of persisted drafts.",
+      "follow_up_question": "What autosave interval and draft retention period do you consider acceptable, and should drafts be encrypted or restricted to user-only access?"
+    },
+    {
+      "requirement": "When aggregated cross-company features (e.g., shop ratings) are shared, they shall be anonymized or aggregated so individual company claims or identifying details cannot be traced back.",
+      "source_citation": "If ratings are shared, they should be anonymized or aggregated so you can't trace back to a company's claim. But when it comes to claims and sensitive details, no — keep them separated by company.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "privacy",
+      "confidence": 5,
+      "rationale": "Stakeholder accepts aggregated/anonymous sharing but insists on non-traceability to specific companies; wants strict separation for claims. Gaps: acceptable aggregation levels, minimum group size for anonymization, and legal/regulatory requirements.",
+      "follow_up_question": "What minimum aggregation or anonymization rules would satisfy you (e.g., minimum N records per aggregate) and are there regulatory constraints we must follow?"
+    },
+    {
+      "requirement": "Help content (inline tips or a help button) shall be available in approximately 90% of screens to support discoverability and reduce support calls.",
+      "source_citation": "What I want is something right there — a little help button or tips where I am. Not for everything, but in most places you'd need it. If I had to guess, I'd say help should be available almost everywhere you might be stuck — like most of the screens.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Stakeholder requests contextual help across most screens and later quantifies this as ~90%. Gap: definition of which screens are included, types of help (tooltips vs. short steps vs. videos), and localization needs.",
+      "follow_up_question": "Can you provide a prioritized list of screens that must include inline help (to realize the ~90% coverage), and which help formats (short bullets, tooltips, short videos) are preferred per screen?"
+    },
+    {
+      "requirement": "Training/onboarding shall enable the majority (~95%) of adjusters and estimators to be comfortable using the system after two days of hands-on, onsite training, measured by a skills check or survey.",
+      "source_citation": "I don't want a week-long class. If I had to guess, two days of hands-on, onsite training would get most of us comfortable. ... Maybe, I don't know, ninety-five percent? That number's just my gut.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 3,
+      "rationale": "Stakeholder states training duration (2 days) and an expected success rate (~95%) and suggests measurement via skills checks/surveys. Gaps: curriculum, assessment criteria, ongoing learning resources, and accommodations for different skill levels.",
+      "follow_up_question": "Which core tasks should be included in the skills check, what pass threshold defines 'comfortable', and should training be role-specific?"
+    },
+    {
+      "requirement": "User interface shall be uncluttered and minimize visible buttons/elements to reduce cognitive load and user mistakes.",
+      "source_citation": "Make the UI uncluttered. I can't stand screens with too many buttons. If it's clean, I'll be happier and make fewer mistakes.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 5,
+      "rationale": "Stakeholder expresses preference for clean UI to reduce errors. Gaps: specific UI standards, accessibility requirements, or metrics for clutter (e.g., number of primary actions per screen).",
+      "follow_up_question": "Do you have specific examples of screens you consider cluttered and any guidelines (e.g., max primary actions per screen or font/spacing/accessibility rules) we should follow?"
+    }
+  ]
+}

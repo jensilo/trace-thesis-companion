@@ -1,0 +1,161 @@
+{
+  "transcript_file": "outputs/corpus-20260226_162106/transcript_6_re_experienced_stakeholder_technical_senior_20260226_163638.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_182542",
+  "requirements": [
+    {
+      "requirement": "The system should support searching availability, viewing room details, creating a simple booking, canceling a booking, and sending meeting invites within 5 seconds for 90% of routine operations and within 8 seconds for 99% of routine operations.",
+      "source_citation": "For the routine stuff — looking up availability, quick calendar views — if users wait more than about five seconds it interrupts their flow and support tickets spike. So small, common operations need to be snappy. For less frequent, heavier tasks, we'd accept a bit longer, but most day-to-day tasks should meet that shorter threshold.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the performance expectations for routine operations, including specific time thresholds and percentiles. This provides a clear and measurable requirement for performance.",
+      "follow_up_question": "Can you provide more details on what constitutes a 'routine operation' versus a 'heavier task' to ensure accurate load testing and performance optimization?"
+    },
+    {
+      "requirement": "The system must support SSO via SAML, with an option for OAuth flows for integrations. TLS must be enforced everywhere, DB connections should be secured, and role-based access control (RBAC) is required.",
+      "source_citation": "SSO via SAML is the primary requirement, with an option for OAuth flows for integrations. TLS must be enforced everywhere; DB connections should be secured. Role-based access control is needed...",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder clearly outlines the security requirements, including authentication methods, encryption, and access control, which are critical for system security.",
+      "follow_up_question": "Are there any specific compliance standards or regulations that the system must adhere to regarding security and access control?"
+    },
+    {
+      "requirement": "Users should be able to find rooms, book them, attach equipment needs, and send invites without ten manual steps.",
+      "source_citation": "People should be able to find rooms, book them, attach equipment needs, and send invites without ten manual steps.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for a streamlined workflow with minimal manual steps, which is a key usability requirement.",
+      "follow_up_question": "Can you provide more details on the specific steps that should be minimized or automated to improve usability?"
+    },
+    {
+      "requirement": "Users should be able to pick their preferred language, and tenants should be able to set defaults for their organization.",
+      "source_citation": "Users should be able to pick their preferred language; tenants should also be able to set defaults for their organization.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the need for language selection at both the user and tenant levels, which is a usability requirement.",
+      "follow_up_question": "Are there any specific languages or localization requirements that need to be supported initially?"
+    },
+    {
+      "requirement": "The system should achieve 99.99% uptime (four nines) on a monthly basis, with redundancy, clustering, and load balancers to ensure high availability.",
+      "source_citation": "We need an aggressive availability target — our legal and facilities teams expect enterprise-grade uptime. Practically speaking, aside from catastrophic server or hardware failures, the service should be up almost all the time; think in terms of four nines or better on a monthly basis.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the uptime requirement and the need for redundancy and clustering to achieve it.",
+      "follow_up_question": "Are there any specific redundancy or failover mechanisms that the system should implement to meet the uptime requirement?"
+    },
+    {
+      "requirement": "The application should be deployable in both Tomcat and JBoss scenarios without requiring server-specific hacks, avoiding deep coupling to proprietary app-server extensions unless there's a very good reason.",
+      "source_citation": "The app should be deployable in both [Tomcat and JBoss] scenarios without requiring server-specific hacks. Avoid deep coupling to proprietary app-server extensions unless there's a very good reason.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for flexibility in deployment scenarios and avoiding vendor lock-in, which is a maintainability requirement.",
+      "follow_up_question": "Are there any specific middleware or deployment constraints that need to be considered for different environments?"
+    },
+    {
+      "requirement": "The system should include structured exception logging with context, including request IDs, user or tenant context, timestamps, server instance identifiers, and stack traces where appropriate, sanitized of PII.",
+      "source_citation": "We need structured exception logging with context — request IDs, user or tenant context, timestamps, server instance identifiers, and stack traces where appropriate.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "The stakeholder clearly outlines the requirements for structured logging and the need for sanitization of PII, which are critical for maintainability and debugging.",
+      "follow_up_question": "Are there any specific logging formats or standards that the system should adhere to for exception logging?"
+    },
+    {
+      "requirement": "The system should support about a thousand concurrent requests for Release 1 and roughly double that for Release 2, with architecture that can scale horizontally.",
+      "source_citation": "We need capacity for about a thousand concurrent requests to be safe on day one. And, well, we plan to roughly double that in the next major release as more offices come online. We want architecture that can scale horizontally so the same code base handles both numbers with configuration and capacity changes.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the scalability requirements, including the number of concurrent requests and the need for horizontal scaling.",
+      "follow_up_question": "Are there any specific scaling mechanisms or technologies that the system should implement to meet the scalability requirements?"
+    },
+    {
+      "requirement": "The system should comply with WCAG 2.1 level AA for accessibility, including keyboard navigation, ARIA roles, color contrast, and screen reader compatibility.",
+      "source_citation": "We need ADA compliance, which practically means implementing WCAG conformance. Targeting WCAG 2.1 level AA is a reasonable and defensible goal...",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "accessibility",
+      "confidence": 5,
+      "rationale": "The stakeholder clearly outlines the accessibility requirements, including the specific WCAG standard and key features that need to be implemented.",
+      "follow_up_question": "Are there any specific assistive technologies or tools that the system should be tested with for accessibility compliance?"
+    },
+    {
+      "requirement": "The system should support wide browser compatibility, aiming for around 80% coverage across at least eight browsers, including desktop Chrome, Edge, Firefox, Safari, and mobile variants.",
+      "source_citation": "We need wide browser compatibility because users bring various browsers. Practically, we should define a supported matrix and make sure the experience degrades gracefully for older browsers. As for coverage, I expect a majority of commonly used browsers to render correctly; a ballpark rule of thumb from past projects that I trust is aiming for around eighty percent compatibility measured across a set of at least eight representative browsers.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "compatibility",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for wide browser compatibility and provides a specific coverage target, which is a compatibility requirement.",
+      "follow_up_question": "Can you provide more details on the specific browsers and versions that should be included in the supported matrix?"
+    },
+    {
+      "requirement": "The system should include load tests that simulate realistic user behavior, including peak bursts, and map to the performance percentiles discussed (90% under 5 seconds, high nineties under 8 seconds).",
+      "source_citation": "For concurrency and performance, we require load tests that simulate realistic user behavior including peak bursts. The acceptance criteria should map to the percentiles we discussed — ninety percent under five seconds, high nineties under eight seconds — and run against a production-like cluster.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "testability",
+      "confidence": 5,
+      "rationale": "The stakeholder clearly outlines the requirements for load testing and performance acceptance criteria, which are critical for testability.",
+      "follow_up_question": "Are there any specific load testing tools or methodologies that the system should use for performance testing?"
+    },
+    {
+      "requirement": "User email addresses, personal phone numbers, and any calendar descriptions that might include private info should be masked in logs to protect PII.",
+      "source_citation": "User email addresses, personal phone numbers, any calendar descriptions that might include private info — basically anything that could be considered personally identifiable under our privacy policy.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "privacy",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for PII masking in logs, which is a privacy requirement.",
+      "follow_up_question": "Are there any specific privacy regulations or standards that the system must adhere to regarding PII protection?"
+    },
+    {
+      "requirement": "The system must integrate with primary relational databases (Oracle, PostgreSQL, MSSQL), SMTP/Exchange systems for outbound invites, and SAML for identity management.",
+      "source_citation": "By ops stack I mean our primary relational databases, our SMTP/Exchange systems for outbound invites, and our identity layer — we use SAML today, kind of enterprise standard. Those are all critical; if the scheduler can't write bookings into our DBs or can't send invites to Exchange, it's no good.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "integration",
+      "confidence": 5,
+      "rationale": "The stakeholder clearly outlines the integration requirements, including specific systems and their criticality, which are essential for system functionality.",
+      "follow_up_question": "Are there any specific integration protocols or standards that the system should adhere to for database and mail server integration?"
+    },
+    {
+      "requirement": "The system should be deployable in environments where a supported JVM runs, including Linux servers, Windows for smaller sites, and containers, with support for Java 11 and 17.",
+      "source_citation": "From an ops perspective we expect the product to run anywhere a supported JVM runs — our environments are a mix, mostly Linux servers, some Windows for smaller sites, and increasingly containers. We'd prefer support for current LTS Java versions; my ops team has standardized around Java 11 and is evaluating Java 17, so supporting those two would be ideal.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "deployability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the deployability requirements, including specific operating environments and Java versions, which are critical for system deployment.",
+      "follow_up_question": "Are there any specific deployment constraints or requirements that need to be considered for different environments?"
+    }
+  ]
+}

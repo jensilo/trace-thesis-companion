@@ -1,0 +1,161 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_3_re_novice_stakeholder_nontechnical_manager_20260227_110114.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_180011",
+  "requirements": [
+    {
+      "requirement": "The system should be straightforward to use and not feel clunky.",
+      "source_citation": "Also, it should feel straightforward to use — people here get frustrated with clunky tools.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states that the system should be straightforward to use and not feel clunky, indicating a clear usability requirement.",
+      "follow_up_question": "Can you provide examples of tools that are considered clunky and what specific features make them so?"
+    },
+    {
+      "requirement": "The system should be learnable quickly, with users able to pick it up after a short training session.",
+      "source_citation": "They're generally competent, not tech wizards. I really want this to be learnable quickly — they should be able to pick it up after a short training and then manage schedules without calling IT every other day.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder emphasizes the importance of the system being learnable quickly and mentions the need for minimal IT support, which directly relates to usability.",
+      "follow_up_question": "What specific training duration and methods do you envision for this system?"
+    },
+    {
+      "requirement": "The system should use clear and consistent terminology, avoiding different names for the same thing in different places.",
+      "source_citation": "It should be clear and use Standard English... consistent wording — don't call the same thing different names in different places.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for clear and consistent terminology, which is a key aspect of usability.",
+      "follow_up_question": "Can you provide examples of terminology that should be consistent across the system?"
+    },
+    {
+      "requirement": "The system should be available during business hours with high uptime, aiming for around 95% uptime.",
+      "source_citation": "We need it to be available during business hours... aiming for high nineties in percent uptime is what I'd expect — something around ninety-five percent would be acceptable.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for high availability during business hours and provides a specific uptime target.",
+      "follow_up_question": "What specific business hours are you referring to, and are there any peak periods that require higher availability?"
+    },
+    {
+      "requirement": "The system should not fail during critical scheduling periods.",
+      "source_citation": "I don't want it flaking out during schedule crunch time.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of reliability during critical scheduling periods, indicating a need for fault tolerance.",
+      "follow_up_question": "Can you define what constitutes a 'schedule crunch time' and what specific reliability measures are expected during these periods?"
+    },
+    {
+      "requirement": "The system should feel fast, with routine tasks completing within around five seconds and larger operations within thirty seconds.",
+      "source_citation": "It just needs to feel fast... for routine student management stuff, around five seconds is what feels acceptable to users. For bigger operations like generating a whole term's schedule, I think up to thirty seconds is reasonable.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder provides specific performance targets for routine and larger operations, indicating clear performance requirements.",
+      "follow_up_question": "Are there any specific performance metrics or benchmarks you would like to achieve for these operations?"
+    },
+    {
+      "requirement": "The system should control access to sensitive student information and respect university information policies.",
+      "source_citation": "Some of the student info is sensitive, so access needs to be controlled in practice. We have an information policy at the university that spells it out, so the system needs to respect those limits.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for controlled access to sensitive information and compliance with university policies.",
+      "follow_up_question": "Can you provide more details on the specific university information policies that need to be respected?"
+    },
+    {
+      "requirement": "The system should implement role-based visibility to protect student privacy.",
+      "source_citation": "Well, we have to protect student privacy according to our university policy... role-based visibility is important.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for role-based visibility to protect student privacy, indicating a clear security requirement.",
+      "follow_up_question": "Can you provide examples of different roles and their corresponding access levels?"
+    },
+    {
+      "requirement": "The system should prevent the export of sensitive lists and ensure external partners do not receive more data than they should.",
+      "source_citation": "It's a risk if someone can export sensitive lists or if an external partner gets more data than they should.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the risk of exporting sensitive lists and the need to control data access for external partners.",
+      "follow_up_question": "Can you provide examples of sensitive lists and the specific data that should be restricted from external partners?"
+    },
+    {
+      "requirement": "The system should include basic checks to prevent invalid input and guard against duplicates.",
+      "source_citation": "Basic checks to prevent obviously invalid input and to guard against duplicates would save hours of cleanup.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for basic checks to prevent invalid input and duplicates, which relates to maintainability.",
+      "follow_up_question": "Can you provide specific examples of invalid input and duplicate issues that have caused problems in the past?"
+    },
+    {
+      "requirement": "The system should sync often enough to avoid stale rosters during enrollment changes, with more frequent updates during peak times.",
+      "source_citation": "Ideally it would sync often enough that we don't have stale rosters during enrollment changes, but it doesn't have to be instantaneous. During peak times we might want more frequent updates.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for frequent syncs to avoid stale data and the possibility of more frequent updates during peak times, indicating scalability requirements.",
+      "follow_up_question": "Can you define what constitutes 'peak times' and what specific sync frequency is expected during these periods?"
+    },
+    {
+      "requirement": "The system should provide warnings and prevent actions that could lead to data integrity issues, such as assigning a student to two places at once.",
+      "source_citation": "Warnings help, yes, like if you try to put a student in two places at once it should stop you or at least flag it loudly.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "data_integrity",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for warnings and prevention of actions that could lead to data integrity issues.",
+      "follow_up_question": "Can you provide more examples of actions that should be flagged or prevented to ensure data integrity?"
+    },
+    {
+      "requirement": "The system should interface with the central campus system (CampusConnect) for student records and enrollment.",
+      "source_citation": "We use the central campus system for student records and enrollment — CampusConnect — so this needs to interface with that.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "interoperability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for the system to interface with CampusConnect, indicating an interoperability requirement.",
+      "follow_up_question": "Can you provide more details on the specific data and functionalities that need to be integrated with CampusConnect?"
+    },
+    {
+      "requirement": "The system should automate notifications for changes to assignment times, cancellations, confirmations of site placements, and reminders before clinical shifts.",
+      "source_citation": "Automated things like changes to assignment times, cancellations, or confirmations of site placements. It should be automatic because relying on staff to email each person is error-prone.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "error_prevention_and_recovery",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for automated notifications to prevent errors and ensure timely communication.",
+      "follow_up_question": "Can you provide more details on the specific types of notifications and their delivery methods?"
+    }
+  ]
+}

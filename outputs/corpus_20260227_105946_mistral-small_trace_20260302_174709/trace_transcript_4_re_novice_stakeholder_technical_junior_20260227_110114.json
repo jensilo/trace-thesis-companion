@@ -1,0 +1,117 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_4_re_novice_stakeholder_technical_junior_20260227_110114.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_174711",
+  "requirements": [
+    {
+      "requirement": "The disputes app should have a responsive UI with screen load times under five seconds for small tasks.",
+      "source_citation": "For the small stuff it should be under five seconds. Anything longer and people notice and complain.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions a specific time frame for acceptable performance, indicating a clear expectation for responsiveness.",
+      "follow_up_question": "Are there any specific scenarios or screen transitions that are particularly critical for performance?"
+    },
+    {
+      "requirement": "The disputes app should be available during all business hours, with maintenance windows scheduled during early morning hours to minimize disruption.",
+      "source_citation": "We need it to be basically available all the time because disputes can come in any day. But, um, we do schedule maintenance sometimes — usually in the really quiet hours so it doesn't interrupt folks.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for high availability and specifies maintenance windows to ensure minimal disruption.",
+      "follow_up_question": "Are there any specific uptime targets or service level agreements (SLAs) that the app must meet?"
+    },
+    {
+      "requirement": "The disputes app should support around 350 concurrent users during peak loads without performance degradation.",
+      "source_citation": "The app really needs to handle around three hundred and fifty users at once during peak loads, otherwise things get sluggish.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder provides a specific number of concurrent users that the app should handle, indicating a clear scalability requirement.",
+      "follow_up_question": "Are there any specific performance metrics or benchmarks that should be used to measure scalability?"
+    },
+    {
+      "requirement": "The disputes app should follow corporate UI patterns and maintain consistency in navigation and visual design to avoid confusing users.",
+      "source_citation": "It has to look and feel like our other internal apps; we can't just invent a new UI every time, that causes confusion.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of following corporate UI patterns to ensure consistency and avoid user confusion.",
+      "follow_up_question": "Are there any specific UI guidelines or design systems that the app should adhere to?"
+    },
+    {
+      "requirement": "The disputes app should implement role-based access control to restrict sensitive actions to authorized roles.",
+      "source_citation": "Not everyone should be able to kick off every action. Some of the data is sensitive, so only certain roles should initiate chargebacks or make account adjustments.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for role-based access control to restrict sensitive actions.",
+      "follow_up_question": "Can you provide more details on the specific roles and their corresponding permissions?"
+    },
+    {
+      "requirement": "The disputes app should maintain a detailed audit trail of all meaningful actions, including status changes, letters requested, and account adjustments.",
+      "source_citation": "We should log everything meaningful — status changes, who initiated chargebacks, letters requested, account adjustments. Even small notes are useful later when someone reviews a case.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for detailed logging to support audit and compliance requirements.",
+      "follow_up_question": "Are there any specific audit or compliance standards that the app must adhere to?"
+    },
+    {
+      "requirement": "The disputes app should use authoritative systems for core data and reconcile adjustments to ensure data integrity.",
+      "source_citation": "We can cache read-only stuff for performance, but reconciliation and adjustments should use the authoritative systems.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "data_integrity",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need to use authoritative systems for core data and adjustments to ensure data integrity.",
+      "follow_up_question": "Can you provide more details on the specific authoritative systems that should be used?"
+    },
+    {
+      "requirement": "The disputes app should preserve context between screens to avoid disrupting the user's workflow.",
+      "source_citation": "If context isn't preserved between screens — like jumping to a merchant profile and losing the original case view — that disrupts the call.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the importance of preserving context to avoid disrupting the user's workflow.",
+      "follow_up_question": "Are there any specific scenarios or screen transitions where context preservation is particularly critical?"
+    },
+    {
+      "requirement": "The disputes app should clearly segregate internal and external user views to prevent unauthorized access to internal-only notes.",
+      "source_citation": "We need clear segregation between internal and external users; external support folks shouldn't see internal-only notes.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for clear segregation between internal and external users to prevent unauthorized access.",
+      "follow_up_question": "Are there any specific access control mechanisms or policies that should be implemented to achieve this segregation?"
+    },
+    {
+      "requirement": "The disputes app should be predictable and consistent in both visual design and backend behavior to build user trust.",
+      "source_citation": "Whatever we build, make it predictable and consistent. I mean, consistency reduces mistakes, which is really the point here.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of predictability and consistency to reduce mistakes and build user trust.",
+      "follow_up_question": "Are there any specific guidelines or best practices that should be followed to ensure predictability and consistency?"
+    }
+  ]
+}

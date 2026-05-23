@@ -1,0 +1,141 @@
+{
+  "extraction_file": "outputs/corpus_20260227_105946_mistral-small_trace_20260302_174709/trace_transcript_4_re_experienced_stakeholder_technical_senior_20260227_110538.json",
+  "ground_truth_source": "outputs/corpus-20260227_105946/transcript_4_re_experienced_stakeholder_technical_senior_20260227_110538.json",
+  "eval_model": "openai/gpt-5-mini",
+  "per_requirement": [
+    {
+      "extracted_requirement": "The system must respond to user interactions within five seconds to avoid productivity drops.",
+      "matched_ground_truth": "'The maximum wait time for a user navigating from one screen to another within the Disputes application shall be no more than 5 seconds.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 5,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system must be available during all operational hours, with planned maintenance windows limited to early pre-dawn slots on weekdays through Saturday (3-4 AM Eastern) and a longer window on Sunday (1-5 AM Eastern).",
+      "matched_ground_truth": "'The Disputes application shall be available 24x7x365 with the exception of the following scheduled maintenance windows. Monday â€“ Saturday 3:00am to 4:00am EST Sunday 1:00amd to 5:00am EST'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 5,
+      "rationale_quality": 4,
+      "gap_detection_quality": 3,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system must use authoritative data sources for critical actions and allow caching for non-authoritative display with tight staleness rules.",
+      "matched_ground_truth": "'The Disputes application shall interface with the Statement Database. The Statement Database provides the transaction details to the Disputes System. All transaction details must be obtained from the Statement Database'",
+      "overlap_score": 4,
+      "overlap_label": "High",
+      "quality_attribute_match": false,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system must provide at-least-once delivery semantics with idempotency keys for queued actions and offer an admin view for reprocessing or reconciling queued items.",
+      "matched_ground_truth": null,
+      "overlap_score": 1,
+      "overlap_label": "Very Low",
+      "quality_attribute_match": false,
+      "confidence_quality": 3,
+      "rationale_quality": 3,
+      "gap_detection_quality": 4,
+      "is_hit": false,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system must record every meaningful user action in an append-only and tamper-evident audit trail, including actor identity, timestamp, action type, dispute and transaction references, state changes, payload hashes, and downstream correlation IDs.",
+      "matched_ground_truth": "'The Disputes application must maintain a detailed history of every action that a user takes on a dispute case. This ensures a complete audit trail if questions arise later on with regard to a particular dispute case.'",
+      "overlap_score": 4,
+      "overlap_label": "High",
+      "quality_attribute_match": false,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 3,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system must integrate with the corporate identity provider for internal reps using SAML or OIDC and enforce role-based, scoped authorization at the API gateway and data layer.",
+      "matched_ground_truth": "'The Disputes application shall ensure that only authorized users are allowed to logon to the application.'",
+      "overlap_score": 4,
+      "overlap_label": "High",
+      "quality_attribute_match": true,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system must be horizontally scalable for web and API layers, with decoupled async processing, backpressure management, and graceful degradation during high load.",
+      "matched_ground_truth": null,
+      "overlap_score": 1,
+      "overlap_label": "Very Low",
+      "quality_attribute_match": false,
+      "confidence_quality": 4,
+      "rationale_quality": 3,
+      "gap_detection_quality": 4,
+      "is_hit": false,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system must avoid generating letters locally and rely on the Letters subsystem for template, branding, and legal wording consistency.",
+      "matched_ground_truth": "'The Disputes application shall interface with the Letters application. This will allow the Disputes application to request letters as part of the dispute initiation and dispute follow up process. All letter requests must be sent to the Print Letter Utility application.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": false,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system must enforce access controls at multiple layers, including application-level checks and database-level safeguards, to prevent unauthorized access to dispute cases.",
+      "matched_ground_truth": "'The Disputes System must prevent users from accessing any dispute cases that do not belong to their cardholder base.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system must ensure that planned downtimes do not cause loss of records or opaque statuses, with clear communication and guarantees for in-flight actions.",
+      "matched_ground_truth": null,
+      "overlap_score": 1,
+      "overlap_label": "Very Low",
+      "quality_attribute_match": false,
+      "confidence_quality": 3,
+      "rationale_quality": 3,
+      "gap_detection_quality": 4,
+      "is_hit": false,
+      "is_duplicate": false
+    }
+  ],
+  "metrics": {
+    "hit_count": 7,
+    "extracted_count": 10,
+    "ground_truth_count": 10,
+    "precision": 0.7,
+    "recall": 0.7,
+    "f1": 0.7,
+    "quality_attribute_accuracy": 0.571,
+    "avg_confidence": 4.2,
+    "avg_overlap_score": 3.5,
+    "avg_confidence_quality": 4.0,
+    "avg_rationale_quality": 3.7,
+    "avg_gap_detection_quality": 3.8
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_5_re_experienced_stakeholder_technical_senior_20260227_110738.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_180053",
+  "requirements": [
+    {
+      "requirement": "The parts search response time must be under 15 seconds.",
+      "source_citation": "users expect results in the low tens of seconds... acceptable would be under fifteen seconds for a parts search.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the requirement for parts search response time, specifying 'under fifteen seconds' as the acceptable threshold.",
+      "follow_up_question": "Are there any specific scenarios or data volumes that might impact this response time requirement?"
+    },
+    {
+      "requirement": "The repair facility lookup response time must be under 8 seconds for cellular users.",
+      "source_citation": "I'd want the preferred facility lookup to come back in under about eight seconds.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the requirement for repair facility lookup response time, specifying 'under about eight seconds' as the acceptable threshold.",
+      "follow_up_question": "Are there any specific scenarios or data volumes that might impact this response time requirement?"
+    },
+    {
+      "requirement": "The system must use the corporate identity provider for Single Sign-On (SSO).",
+      "source_citation": "We should use the identity provider for SSO.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the requirement to use the corporate identity provider for SSO.",
+      "follow_up_question": "Are there any specific authentication or authorization requirements beyond SSO that need to be considered?"
+    },
+    {
+      "requirement": "The system must implement rate limiting, WAF controls, and DDoS mitigation.",
+      "source_citation": "We should have rate limiting, WAF controls, and DDoS mitigation in front of the service.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the requirement to implement rate limiting, WAF controls, and DDoS mitigation.",
+      "follow_up_question": "Are there any specific threat scenarios or attack vectors that need to be addressed beyond these controls?"
+    },
+    {
+      "requirement": "The system must adhere to corporate UI guidelines, including components, accessibility, color contrast, and keyboard navigation.",
+      "source_citation": "For UI, there are a set of components and accessibility rules — color contrast, keyboard nav, that kind of thing.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the requirement to adhere to corporate UI guidelines, including components, accessibility, color contrast, and keyboard navigation.",
+      "follow_up_question": "Are there any specific UI components or accessibility requirements that need to be prioritized?"
+    },
+    {
+      "requirement": "The system must have a 98% availability target.",
+      "source_citation": "They're asking for ninety-eight percent availability.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the requirement for a 98% availability target.",
+      "follow_up_question": "Are there any specific availability requirements or SLAs that need to be considered beyond this target?"
+    },
+    {
+      "requirement": "The system must be designed to handle 1,500 concurrent users initially and scale to 10,000 users within two years.",
+      "source_citation": "For initial capacity planning the ask is to handle fifteen hundred concurrent users comfortably. And within two years, they want the platform to be capable of supporting up to ten thousand concurrent users as adoption ramps.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the requirement to handle 1,500 concurrent users initially and scale to 10,000 users within two years.",
+      "follow_up_question": "Are there any specific scalability requirements or constraints that need to be considered beyond these numbers?"
+    },
+    {
+      "requirement": "The system must implement tenant-scoped encryption keys, row-level security, and tenant-aware queries for data isolation.",
+      "source_citation": "Tenant-scoped encryption keys would be ideal for extra protection... We need strong separation. One insurance company must not be able to see another company's claims.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the requirement to implement tenant-scoped encryption keys, row-level security, and tenant-aware queries for data isolation.",
+      "follow_up_question": "Are there any specific data isolation requirements or constraints that need to be considered beyond these mechanisms?"
+    },
+    {
+      "requirement": "The system must provide clear indicators when data might be stale.",
+      "source_citation": "Also, we should provide clear indicators when data might be stale so adjusters know when to revalidate.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the requirement to provide clear indicators when data might be stale.",
+      "follow_up_question": "Are there any specific scenarios or data states that need to be considered for stale data indicators?"
+    },
+    {
+      "requirement": "The system must be designed as a set of small, well-scoped services with clear contracts.",
+      "source_citation": "We should design this as a set of small, well-scoped services with clear contracts so future changes — like swapping out the parts provider or adding new insurers — are low-friction.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the requirement to design the system as a set of small, well-scoped services with clear contracts.",
+      "follow_up_question": "Are there any specific service design principles or architectural constraints that need to be considered beyond these requirements?"
+    }
+  ]
+}

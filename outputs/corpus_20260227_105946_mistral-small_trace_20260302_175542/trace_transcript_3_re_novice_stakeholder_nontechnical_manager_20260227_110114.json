@@ -1,0 +1,117 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_3_re_novice_stakeholder_nontechnical_manager_20260227_110114.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_175544",
+  "requirements": [
+    {
+      "requirement": "The system should be straightforward to use, avoiding clunky tools that frustrate users.",
+      "source_citation": "Also, it should feel straightforward to use — people here get frustrated with clunky tools.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for the system to be straightforward to use, indicating a strong focus on usability.",
+      "follow_up_question": "What specific usability features or design principles would make the system feel straightforward to use?"
+    },
+    {
+      "requirement": "The system should be learnable quickly, with users able to pick it up after a short training session.",
+      "source_citation": "I really want this to be learnable quickly — they should be able to pick it up after a short training and then manage schedules without calling IT every other day.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of quick learning and minimal reliance on IT support, which are key usability concerns.",
+      "follow_up_question": "What specific training methods or materials would be most effective for quick learning?"
+    },
+    {
+      "requirement": "The system should use clear and consistent terminology, including Standard English and nursing-specific terms.",
+      "source_citation": "It should be clear and use Standard English, and it should also speak the language of nurses... consistent wording — don't call the same thing different names in different places.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for clear, consistent, and domain-specific terminology, which is crucial for usability.",
+      "follow_up_question": "Are there specific nursing terminology standards or glossaries that should be referenced?"
+    },
+    {
+      "requirement": "The system should be available during business hours with high uptime, aiming for around 95% uptime.",
+      "source_citation": "We need it to be available during business hours when staff are working, and outages are disruptive... aiming for high nineties in percent uptime is what I'd expect — something around ninety-five percent would be acceptable.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for high availability during business hours, with a specific target uptime.",
+      "follow_up_question": "Are there specific business hours or peak usage times that the system should prioritize?"
+    },
+    {
+      "requirement": "The system should feel fast, with small tasks completing in a few seconds and larger operations like schedule generation completing in up to thirty seconds.",
+      "source_citation": "For small tasks like updating a student record or adding someone to a cohort, a pause longer than a few seconds feels slow. For schedule generation, I think up to thirty seconds is reasonable.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder provides specific performance expectations for different types of tasks, indicating a clear focus on performance.",
+      "follow_up_question": "Are there specific performance metrics or benchmarks that should be used to measure and ensure the system's speed?"
+    },
+    {
+      "requirement": "The system should control access to sensitive student information based on roles, ensuring that only authorized users can view or export sensitive data.",
+      "source_citation": "Not everyone needs to see everything; some of the student info is sensitive, so access needs to be controlled in practice.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for role-based access control to protect sensitive student information.",
+      "follow_up_question": "What specific roles and access levels should be defined for different types of users?"
+    },
+    {
+      "requirement": "The system should prevent invalid input and duplicates, providing warnings or blocking actions that could lead to data errors.",
+      "source_citation": "Basic checks to prevent obviously invalid input and to guard against duplicates would save hours of cleanup.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "data_integrity",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of data integrity and the need for basic checks to prevent errors.",
+      "follow_up_question": "What specific types of invalid input or duplicates have been problematic in the past?"
+    },
+    {
+      "requirement": "The system should handle aliases or mapping for clinical partners' naming conventions to avoid creating duplicate sites.",
+      "source_citation": "Our clinical partners sometimes use different naming conventions for their units. So it'd be great if the system could handle aliases or mapping...",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for the system to handle different naming conventions, which is a maintainability concern.",
+      "follow_up_question": "What specific naming conventions or aliases should the system be able to handle?"
+    },
+    {
+      "requirement": "The system should interface with the central campus system (CampusConnect) to ensure accurate student lists and enrollment statuses.",
+      "source_citation": "We use the central campus system for student records and enrollment — CampusConnect — so this needs to interface with that...",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for integration with CampusConnect, which is a scalability concern.",
+      "follow_up_question": "What specific data or functionalities should be synchronized between the systems?"
+    },
+    {
+      "requirement": "The system should provide simple exports for accreditation and internal reviews, avoiding the need to build reports from scratch.",
+      "source_citation": "We need simple exports for accreditation and internal reviews so we don't have to build reports from scratch every time.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "reporting",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for simple exports, which is a reporting concern.",
+      "follow_up_question": "What specific types of reports or data exports are needed for accreditation and internal reviews?"
+    }
+  ]
+}

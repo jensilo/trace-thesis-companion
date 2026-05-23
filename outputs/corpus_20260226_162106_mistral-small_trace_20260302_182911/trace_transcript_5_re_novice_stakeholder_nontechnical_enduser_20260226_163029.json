@@ -1,0 +1,117 @@
+{
+  "transcript_file": "outputs/corpus-20260226_162106/transcript_5_re_novice_stakeholder_nontechnical_enduser_20260226_163029.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_183000",
+  "requirements": [
+    {
+      "requirement": "The system shall display search results within 15 seconds to avoid user impatience.",
+      "source_citation": "If it takes more than a handful of seconds I start getting impatient. Fifteen seconds would feel long to me.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states a timeframe for acceptable search performance, indicating a clear expectation for system responsiveness.",
+      "follow_up_question": "Are there specific scenarios or search types that are more time-sensitive than others?"
+    },
+    {
+      "requirement": "The system shall support progressive loading of search results to provide immediate partial results while continuing to load additional data.",
+      "source_citation": "Progressive results—showing some hits quickly while more load—work for you?",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder confirms that progressive loading is a desirable feature for improving perceived performance.",
+      "follow_up_question": "What percentage of results should be displayed initially to be useful?"
+    },
+    {
+      "requirement": "The system shall provide a clear indication when it is operating offline and displaying cached results.",
+      "source_citation": "Tell me. Don’t pretend. Show a small banner: 'Offline: showing cached results' or a spinner with an estimate.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for clear communication about the system's offline status and cached data.",
+      "follow_up_question": "What specific UI elements or messages would be most effective for communicating offline status?"
+    },
+    {
+      "requirement": "The system shall adhere to corporate UI guidelines to ensure consistency and familiarity for users.",
+      "source_citation": "It should look and behave like other company apps so people don’t get thrown off.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of consistency with corporate UI guidelines for better user adoption.",
+      "follow_up_question": "Are there specific UI guidelines or design systems that should be followed?"
+    },
+    {
+      "requirement": "The system shall provide in-app help, including tooltips, a help button on screens, and a searchable help center.",
+      "source_citation": "Help should be right where I work. Tooltips, a help button on screens, and a searchable help center.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder outlines specific requirements for in-app help to support ease of use.",
+      "follow_up_question": "What specific types of help content or features are most needed?"
+    },
+    {
+      "requirement": "The system shall provide contextual help on most important screens, such as search, part details, estimate audit, and ratings.",
+      "source_citation": "Most screens I use should have some sort of quick help; not every tiny dialog, but the important ones.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for contextual help on key screens to assist users effectively.",
+      "follow_up_question": "How should contextual help be triggered or displayed on these screens?"
+    },
+    {
+      "requirement": "The system shall restrict the ability to change official ratings to supervisors only.",
+      "source_citation": "That should be restricted. Only supervisors should be able to change the official ratings.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder clearly states the need for role-based access control to prevent unauthorized changes.",
+      "follow_up_question": "What specific roles or permissions should be defined for rating management?"
+    },
+    {
+      "requirement": "The system shall maintain an audit trail of rating changes, including who made the change, when, and the reason.",
+      "source_citation": "And yes, we need an audit trail — who changed ratings, when, and maybe a reason.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the need for logging and accountability for rating changes.",
+      "follow_up_question": "What specific details should be included in the audit trail for compliance purposes?"
+    },
+    {
+      "requirement": "The system shall provide a clear indicator for pending offline operations, such as queued rating changes.",
+      "source_citation": "Show a clear indicator on the item that it’s pending, maybe a small icon.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for visual feedback to inform users about the status of offline operations.",
+      "follow_up_question": "What specific UI elements or notifications would be most effective for indicating pending operations?"
+    },
+    {
+      "requirement": "The system shall provide a summary of audit reports quickly and allow detailed reports to load or be emailed later.",
+      "source_citation": "Give me the summary fast, then let the heavy details load or email the full export later.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder outlines a strategy for handling large reports efficiently to meet performance expectations.",
+      "follow_up_question": "What specific timeframes or thresholds should be set for summary and detailed report delivery?"
+    }
+  ]
+}

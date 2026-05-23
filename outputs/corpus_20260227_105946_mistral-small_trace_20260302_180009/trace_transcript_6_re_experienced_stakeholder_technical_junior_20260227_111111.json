@@ -1,0 +1,150 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_6_re_experienced_stakeholder_technical_junior_20260227_111111.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_180100",
+  "requirements": [
+    {
+      "requirement": "The application must be portable across Windows, Linux, and macOS operating systems.",
+      "source_citation": "So portability, I guess. I think that was the intent from day one.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for portability across different operating systems, indicating a clear requirement for the application to run on various platforms. The confidence is high due to the direct statement.",
+      "follow_up_question": "Are there any specific versions of Windows, Linux, or macOS that the application must support?"
+    },
+    {
+      "requirement": "The application must be able to connect to both local and remote databases without assuming fixed hostnames or immediate consistency.",
+      "source_citation": "So our code has to play nicely whether the DB is local or remote.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the need for flexibility in database connections, indicating a requirement for the application to handle both local and remote databases. The confidence is high due to the explicit mention of connection handling and configurable endpoints.",
+      "follow_up_question": "Are there any specific database management systems (DBMS) that the application must support?"
+    },
+    {
+      "requirement": "The application must be deployable on common Java web/app servers such as Tomcat and JBoss.",
+      "source_citation": "The app needs to deploy on those common Java servers without too much fuss.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for the application to be deployable on common Java servers, indicating a clear requirement for server compatibility. The confidence is high due to the direct statement.",
+      "follow_up_question": "Are there any specific versions of Tomcat or JBoss that the application must support?"
+    },
+    {
+      "requirement": "The application must be compatible with at least eight distinct browsers and render correctly in approximately eighty percent of those tests.",
+      "source_citation": "We need to test across at least eight distinct browsers, and we'd like the pages to render correctly in, say, around eighty percent of those tests.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for browser compatibility and sets a target for rendering correctness, indicating a clear requirement for usability across different browsers. The confidence is high due to the direct statement.",
+      "follow_up_question": "Are there any specific browsers that the application must support?"
+    },
+    {
+      "requirement": "The application must support flexible SMTP settings and common auth/TLS scenarios for email notifications.",
+      "source_citation": "Flexible SMTP settings and support for common auth/TLS scenarios is important.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the need for flexible SMTP settings and support for common auth/TLS scenarios, indicating a clear requirement for email integration. The confidence is high due to the explicit mention of these requirements.",
+      "follow_up_question": "Are there any specific email servers or protocols that the application must support?"
+    },
+    {
+      "requirement": "The application must complete routine interactions such as checking room availability or saving a quick booking in under five seconds for ninety percent of tasks and under eight seconds for ninety-eight percent of tasks.",
+      "source_citation": "Roughly ninety percent of tasks complete in under five seconds, and about ninety-eight percent should finish in under eight seconds.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions performance targets for routine interactions, indicating a clear requirement for the application's responsiveness. The confidence is very high due to the precise performance metrics provided.",
+      "follow_up_question": "Are there any specific scenarios or user interactions that require even faster response times?"
+    },
+    {
+      "requirement": "The application must handle at least one thousand concurrent requests currently and scale up to two thousand concurrent requests by the next release.",
+      "source_citation": "Currently the target was to handle around one thousand concurrent requests, and by the next release that should scale up to around two thousand.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions scalability targets for concurrent requests, indicating a clear requirement for the application's capacity. The confidence is high due to the direct statement.",
+      "follow_up_question": "Are there any specific peak usage scenarios that the application must be prepared for?"
+    },
+    {
+      "requirement": "The application must achieve ninety-nine point nine nine percent availability, excluding situations where the whole server hardware fails.",
+      "source_citation": "The number we were aiming for was ninety-nine point nine nine percent availability, not counting situations where the whole server hardware fails.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions an availability target, indicating a clear requirement for the application's uptime. The confidence is high due to the direct statement.",
+      "follow_up_question": "Are there any specific availability requirements during peak usage times?"
+    },
+    {
+      "requirement": "The application must enforce access control to allow only employees or externally vetted users with company IDs to log in.",
+      "source_citation": "Only employees, or external users we've explicitly approved and given company IDs, should get in. No anonymous or unapproved accounts.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions access control requirements, indicating a clear requirement for the application's security. The confidence is very high due to the direct statement.",
+      "follow_up_question": "Are there any specific authentication or authorization mechanisms that the application must support?"
+    },
+    {
+      "requirement": "The application must comply with applicable accessibility laws, including support for screen readers, keyboard navigation, and color contrast.",
+      "source_citation": "We should be compliant with the applicable accessibility laws, making sure screen readers work, keyboard navigation, color contrast, that sort of thing.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions accessibility requirements, indicating a clear requirement for the application's usability. The confidence is high due to the direct statement.",
+      "follow_up_question": "Are there any specific accessibility standards or guidelines that the application must adhere to?"
+    },
+    {
+      "requirement": "The application must be reliable in sending email notifications, with sensible retry and backoff mechanisms, and admin alerts for persistent failures.",
+      "source_citation": "It should be reliable; if an email notification fails because of a transient mail server issue, it should retry. But we also don't want to clog queues or spam people if something is misconfigured. So sensible retry and backoff, maybe admin alerts if delivery keeps failing.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the need for reliable email notifications with retry mechanisms and admin alerts, indicating a clear requirement for the application's operability. The confidence is high due to the explicit mention of these requirements.",
+      "follow_up_question": "Are there any specific email notification scenarios or failure conditions that the application must handle?"
+    },
+    {
+      "requirement": "The application must be deployable on open-source Java web/app servers such as Tomcat and JBoss.",
+      "source_citation": "Ops likes open-source where possible. We often use Tomcat in dev because it's lightweight and free, and JBoss shows up in some places, so compatibility with those is a plus.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the preference for open-source servers and compatibility with specific servers, indicating a clear requirement for the application's maintainability. The confidence is high due to the direct statement.",
+      "follow_up_question": "Are there any specific versions of Tomcat or JBoss that the application must support?"
+    },
+    {
+      "requirement": "The application must support simple and user-friendly booking flows, ideally with one-click functionality.",
+      "source_citation": "When we design booking flows, keep them simple. Users want one-click if possible.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for simple and user-friendly booking flows, indicating a clear requirement for the application's usability. The confidence is high due to the direct statement.",
+      "follow_up_question": "Are there any specific user interface or user experience guidelines that the application must follow?"
+    }
+  ]
+}

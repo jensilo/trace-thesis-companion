@@ -1,0 +1,144 @@
+Interviewer: Thanks for sitting down with me. Could you start by confirming your role and what you want from this scheduling system at a high level?
+
+Stakeholder: Sure — I’m the product manager for the nursing program systems. I, uh, want something that actually makes life easier for the admin team and for students. Right now, scheduling is a mess, and the goal is practical adoption: people actually use it and it reduces the admin burden and student issues. We also need it to talk to the university systems we already use — we can’t reinvent that wheel.
+
+Interviewer: Okay. Who are the primary users we should be designing for? And who else will touch the system?
+
+Stakeholder: The primary users are the program administrators and the nursing staff who do scheduling and coordinator tasks. There are instructors who need rosters and clinical site coordinators who need to see assignments, and obviously students who receive schedule notifications. Central IT and the CampusConnect folks are sort of secondary but critical because their data will feed into this. Oh — and occasionally the dean’s office will want reports, but they don’t use it day to day.
+
+Interviewer: Got it. What are your top business objectives for this system?
+
+Stakeholder: We want to reduce manual work so staff can focus on higher-value things, cut down the frequency of student-facing scheduling errors so trust goes up, and make reporting straightforward so leadership can see progress. Also, it has to be adopted quickly — if it’s clunky people will go back to spreadsheets.
+
+Interviewer: Great. To dig in, can you tell me how you currently do scheduling and what goes wrong most often?
+
+Stakeholder: Honestly, it’s mostly spreadsheets, emails, and phone calls. Someone exports a roster, someone else edits it, and then there’s this juggling act to match students to clinical sites and class sections. The usual failures are double-booked students, last-minute changes that don’t propagate, and people at sites not getting the updated lists. We get a fair number of student complaints each term about conflicting assignments or missing clinical placements. It’s time-consuming to reconcile and it embarrasses us with students.
+
+Interviewer: Can you walk me through a recent problem? Like a concrete incident?
+
+Stakeholder: Yeah, last term we had a case where a cohort assignment changed after a site had already prepared orientation for a set of students. The students were notified by email, but some instructors weren’t — so two schedules existed for the same students. It was noticed because a student emailed saying they were supposed to be somewhere else. We ended up manually reconciling with the site coordinator and a lot of phone calls. It took days to sort out. That was one of those “we should have stopped this earlier” moments.
+
+Interviewer: When you say “we get complaints,” do you know how many or how often?
+
+Stakeholder: I don’t have the exact count in my head, but it’s enough that leadership notices each term. I can pull the logs for you — there are definite peaks around registration and the start of term.
+
+Interviewer: Okay, that would be helpful. Moving to usability — you mentioned adoption. What does “easy to use” mean for your team?
+
+Stakeholder: Well, the people doing the work are busy and, honestly, not always comfortable with complex systems. “Easy” means clear language, minimal clicks to do common tasks, and inline help so someone isn’t guessing what a field means. I think contextual prompts and sensible defaults go a long way. It should feel like a tool, not another bureaucratic thing.
+
+Interviewer: What about training? How much training is realistic?
+
+Stakeholder: We can’t do multi-day onboarding for everyone. It needs to be short — like, people should be comfortable with core tasks after a single day of training.
+
+Interviewer: When you say “core tasks,” which tasks do you mean specifically?
+
+Stakeholder: Things like enrolling or moving a student into a cohort, assigning a student to a clinical site, generating a roster, and sending notifications. Not every edge case — just the day-to-day stuff.
+
+Interviewer: And how will you know someone is “able to use” the system after that training? Any measures?
+
+Stakeholder: Hmm, I think we’d do a checklist or a quick observation. If they can complete a handful of common tasks without help that’s good enough. We don’t need a formal exam, just a practical thumbs-up.
+
+Interviewer: Understood. On to scheduling rules — what kinds of conflicts or constraints do you need the system to catch or prevent?
+
+Stakeholder: It should stop the obvious stuff: students double-booked in two places at once, assigning beyond a clinical site's capacity, or placing students into clinicals when they haven’t met pre-reqs. I want the system to flag those and, ideally, prevent saves when it’s a clear hard conflict. For softer issues, warnings and suggested fixes would be great.
+
+Interviewer: Who should be able to override a blocked save when there is a hard conflict?
+
+Stakeholder: Senior program admins should have override ability, but it should be gated and logged. You don’t want someone just bypassing rules without accountability. If they override, there should be a required note explaining why.
+
+Interviewer: What kinds of automatic help do you want? Like templating or suggestions?
+
+Stakeholder: Templates for typical rotations would be helpful. Also, if a conflict occurs, the system could suggest alternative slots or sites with capacity instead of leaving the admin to hunt around. Anything that reduces the back-and-forth.
+
+Interviewer: About data quality — what validation should be done at input?
+
+Stakeholder: At minimum, validate IDs so we don’t create ghost students, require key fields, and check referential links — like course codes actually existing and clinical site IDs matching an internal list. That would cut down on the weird errors we see from free-text entries.
+
+Interviewer: How do you currently track mistakes and incidents? Is there a baseline we can use to measure improvement?
+
+Stakeholder: We have a mix of helpdesk tickets and ad-hoc logs — the data is messy but it’s there. The baseline’s not great, but I can pull the counts. We need better instrumentation so the system itself can report on these incidents going forward.
+
+Interviewer: You said earlier you want to cut down on student-reported mistakes — any target you have in mind?
+
+Stakeholder: Yes, I want to reduce those reports significantly; to be specific, my goal is to cut student-noted scheduling mistakes by half within the first year after launch.
+
+Interviewer: Half in the first year — understood. How will we define a “mistake” for that metric?
+
+Stakeholder: A mistake would be an incorrect or conflicting assignment — like a student told to be somewhere they aren’t assigned, or missing mandatory clinical placement. We should count both student-reported incidents and those detected automatically by the system.
+
+Interviewer: Okay. Let’s talk performance — how fast does this need to feel?
+
+Stakeholder: The system must be snappy. Admins won’t tolerate waiting, especially during registration windows. For small day-to-day actions it needs to feel instant; for heavier operations like generating a full schedule, it can take a bit longer but still shouldn’t make people step away.
+
+Interviewer: Can you make that more concrete? What’s too long for a routine task, and for schedule generation?
+
+Stakeholder: For routine student management stuff — enrollments, updates — I’d say anything beyond about five seconds starts to feel slow. For full schedule generation, I’d consider up to around thirty seconds acceptable; beyond that people get distracted and open spreadsheets again.
+
+Interviewer: How about availability — when does it have to be up and how resilient should it be?
+
+Stakeholder: It needs to be reliable when our office is open. If it’s down during business hours it causes chaos. We can tolerate some maintenance outside those hours, but we need an availability target the IT team can aim at — somewhere in the mid-nineties percentage-wise for uptime so we don’t have frequent disruptions. Also, we should have monitoring and alerts when things go wrong.
+
+Interviewer: When you say “our office is open,” what hours are we talking about? And how many people use it at peak?
+
+Stakeholder: Generally our business window is roughly eight in the morning to six in the evening on weekdays. Peak is during mornings when the scheduling team and a few other stakeholders are online — probably around ten people at the busiest moments.
+
+Interviewer: Noted. Now about integrations — you mentioned CampusConnect earlier. How do you see that working?
+
+Stakeholder: CampusConnect is our authoritative source for student records. We need an interface so the system can get student rosters, course codes, instructor records — ideally without manual exports. We can’t change CampusConnect, so we’ll have to integrate with whatever they expose.
+
+Interviewer: Do you know who owns the CampusConnect integration or whether there are APIs available?
+
+Stakeholder: Central IT owns that. I can give you the contact — they’ll have API docs or, if not, at least the protocol we’ll use. We’ll need to work with them on authentication and data mapping.
+
+Interviewer: When data flows from CampusConnect, how often should it sync? Real-time, hourly, nightly?
+
+Stakeholder: I’d like near-real-time for changes that affect placements, but if we have to start with hourly or nightly syncs that’s okay as a stepping stone. The key is minimizing manual copying.
+
+Interviewer: Got it. On privacy and data protection — what policies apply and what safeguards do you expect?
+
+Stakeholder: We have FERPA for student records and there are HIPAA-like sensitivities for clinical placements because of patient exposure and site agreements. So the system needs to respect the university’s information policy. Practically, that means role-based access so not everyone sees everything, encryption when appropriate — both in transit and at rest ideally — and audit trails so we can show who accessed or changed data.
+
+Interviewer: Who signs off on security and compliance? Is there a contact for those policies?
+
+Stakeholder: Central information security will sign off. I’ll point you to the policy documents and the security contact who handles app reviews. They’ll tell you what’s mandatory.
+
+Interviewer: For auditing, how much detail do you need? Like, every change recorded?
+
+Stakeholder: I want enough so that if something went wrong we could reconstruct who changed what and when. We don’t need forensic-level detail for every mouse move, but every assignment change, override, or permission change should be logged and kept for a reasonable period.
+
+Interviewer: Okay. A few wrap-up things — can you provide the current spreadsheets and the mistake logs you mentioned? Also CampusConnect contacts and the information policy?
+
+Stakeholder: Yes, I’ll send the active scheduling spreadsheets and the helpdesk ticket extract. I’ll also include the list of users in the scheduling team and the CampusConnect contact info. And I’ll link the information security policy. One tangent — we also have a few clinical sites that still insist on paper sign-in sheets; that complicates data capture, but we can point that out in the artifacts.
+
+Interviewer: Thanks. Who else should I talk to next?
+
+Stakeholder: Talk to the lead program administrator and the senior clinical site coordinator — they’ll give you the operational detail. Also a session with central IT about CampusConnect is key.
+
+Interviewer: Is it okay if I schedule follow-up sessions to validate UI flows with real users?
+
+Stakeholder: Absolutely. I want a quick prototype so users can validate workflows. If you can get something basic in front of them, we’ll learn fast.
+
+Interviewer: Perfect. Any timeline or priority notes for MVP vs later enhancements?
+
+Stakeholder: MVP should cover cohort management, basic scheduling, site assignments, and notifications. Other stuff like advanced optimization and fancy analytics can come later — but we should instrument for metrics from day one so we can measure that 50% reduction I mentioned.
+
+Interviewer: Great. Anything else I missed?
+
+Stakeholder: Hmm, I think you covered the big stuff. Just remember — if it’s slow, if it’s hard to train, or if people can’t trust the data, they’ll go back to spreadsheets. So focus on ease, obvious guardrails to prevent mistakes, and clean integration with CampusConnect. Oh, and one last small thing — make the notification language simple; students get freaked out by technical jargon. That’s it.
+
+Interviewer: Thanks — I’ll follow up for the artifacts and schedule the next interviews. Appreciate your time.
+
+Stakeholder: Perfect. I’ll send those documents this afternoon.
+
+---
+Selected Requirements:
+1. [NICE.csv line 70] [quality, usability] 'The system shall be easy to use by the Program Administrators/Nursing Staff Members.'
+2. [NICE.csv line 71] [quality, usability] 'All of the users shall be able to use the system after one day of training.'
+3. [NICE.csv line 72] [quality, usability] 'The system shall help the user avoid making mistakes while scheduling classes and clinicals for the nursing students.'
+4. [NICE.csv line 73] [quality, usability] 'The number of mistakes noted by the students shall be decreased by 50% in the first year.'
+5. [NICE.csv line 79] [quality, performance] 'The response time of general student management tasks shall take no longer than 5 seconds and the response time of schedule generation shall take no longer than 30 seconds.'
+6. [NICE.csv line 81] [quality, availability] 'The system shall achieve 95% up time.'
+7. [NICE.csv line 82] [quality, availability, scalability] 'system shall be able to handle all of the user requests/usage during business hours.'
+8. [NICE.csv line 89] [quality, operability] The system shall interface with CampusConnect's central server'
+9. [NICE.csv line 99] [quality, functional, security] 'The system shall have basic data integrity checking to reduce the possibility of incorrect or invalid data being introduced.'
+10. [NICE.csv line 100] [quality, functional, legal, security] The system shall protect private information in accordance with the organization's information policy.'

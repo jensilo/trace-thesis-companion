@@ -1,0 +1,170 @@
+{
+  "project_id": "6",
+  "project_name": "Web-Based Conference Room and Meeting Management System",
+  "project_description": "A web-based conference room and meeting management system for office environments, enabling employees to reserve conference rooms, schedule meetings, manage equipment, and receive notifications. Built on Java-based application servers, the system integrates with multiple database systems and email servers, and is accessible via standard web browsers. It supports multi-language localization, organizational branding customization, and accessibility compliance. The solution is designed for high availability, strong performance, and security, serving diverse user populations across various operating environments.",
+  "model": "gpt-5-mini",
+  "timestamp": "20260227_111111",
+  "interviewer_persona": "re_experienced",
+  "stakeholder_persona": "stakeholder_technical_senior",
+  "no_refine": true,
+  "selected_requirements": [
+    {
+      "text": "'The product must work with most database management systems (DBMS) on the market whether the DBMS is colocated with the product on the same machine or is located on a different machine on the computer network.'",
+      "line": 277,
+      "categories": [
+        "quality",
+        "operability",
+        "portability"
+      ]
+    },
+    {
+      "text": "'The product will function alongside server software on any operating system where the Java runtime can be installed.'",
+      "line": 278,
+      "categories": [
+        "quality",
+        "portability"
+      ]
+    },
+    {
+      "text": "'The product must make use of web/application server technology. Open source examples include Apache web server Tomcat and the JBoss application server.'",
+      "line": 280,
+      "categories": [
+        "quality",
+        "operability"
+      ]
+    },
+    {
+      "text": "The response shall be fast enough to avoid interrupting the user's flow of thought. 90% of tasks shall complete within 5 seconds. 98% of tasks shall complete within 8 seconds.'",
+      "line": 293,
+      "categories": [
+        "quality",
+        "performance"
+      ]
+    },
+    {
+      "text": "'Aside from server failure the software product shall achieve 99.99% up time.'",
+      "line": 294,
+      "categories": [
+        "quality",
+        "availability"
+      ]
+    },
+    {
+      "text": "'The product shall create an exception log of problems encountered within the product for transmission to our company for analysis and resolution.'",
+      "line": 295,
+      "categories": [
+        "quality",
+        "functional",
+        "maintainability"
+      ]
+    },
+    {
+      "text": "'The product shall be capable of handling up to 1 000 concurrent requests. This number will increase to 2 000 by Release 2. The concurrency capacity must be able to handle peak scheduling times such as early morning and late afternoon hours.'",
+      "line": 296,
+      "categories": [
+        "quality",
+        "scalability"
+      ]
+    },
+    {
+      "text": "'The product must be able to interface with various email servers. The product shall be able to send email.'",
+      "line": 302,
+      "categories": [
+        "quality",
+        "operability",
+        "portability"
+      ]
+    },
+    {
+      "text": "'The product shall ensure that only company employees or external users with company-approved user IDs may have product access. 100% of all logons shall be by either company employees or external users with company-approved user IDs.'",
+      "line": 315,
+      "categories": [
+        "quality",
+        "security"
+      ]
+    },
+    {
+      "text": "The product shall prevent the input of malicious data. The product and/or adjacent hardware/software systems' data shall remain 100% uncorrupted each time malicious data is input into the product.'",
+      "line": 318,
+      "categories": [
+        "quality",
+        "security"
+      ]
+    }
+  ],
+  "evaluation": {
+    "g_eval_quality": {
+      "judge_model": "openai/gpt-5-mini",
+      "overall_mean": 7.5,
+      "overall_std_dev": 0.58,
+      "dimensions": {
+        "structuring": {
+          "mean": 7.0,
+          "std_dev": 0.0,
+          "samples": [
+            7.0,
+            7.0,
+            7.0
+          ]
+        },
+        "clarity": {
+          "mean": 8.0,
+          "std_dev": 0.0,
+          "samples": [
+            8.0,
+            8.0,
+            8.0
+          ]
+        },
+        "responsiveness": {
+          "mean": 8.0,
+          "std_dev": 0.0,
+          "samples": [
+            8.0,
+            8.0,
+            8.0
+          ]
+        },
+        "rigor": {
+          "mean": 7.0,
+          "std_dev": 0.0,
+          "samples": [
+            7.0,
+            7.0,
+            7.0
+          ]
+        }
+      }
+    },
+    "g_eval_meta": {
+      "judge_model": "openai/gpt-5-mini",
+      "overall_mean": 9.0,
+      "overall_std_dev": 0.0,
+      "dimensions": {
+        "completeness": {
+          "mean": 9.0,
+          "std_dev": 1.0,
+          "samples": [
+            10.0,
+            9.0,
+            8.0
+          ]
+        },
+        "realism": {
+          "mean": 9.0,
+          "std_dev": 0.0,
+          "samples": [
+            9.0,
+            9.0,
+            9.0
+          ]
+        }
+      }
+    },
+    "bert_score": {
+      "precision": 0.8070577383041382,
+      "recall": 0.8092910647392273,
+      "f1": 0.808172881603241
+    }
+  }
+}

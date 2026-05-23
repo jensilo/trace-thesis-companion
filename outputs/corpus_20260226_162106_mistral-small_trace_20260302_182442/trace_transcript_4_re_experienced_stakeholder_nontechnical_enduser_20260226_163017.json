@@ -1,0 +1,227 @@
+{
+  "transcript_file": "outputs/corpus-20260226_162106/transcript_4_re_experienced_stakeholder_nontechnical_enduser_20260226_163017.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_182444",
+  "requirements": [
+    {
+      "requirement": "The app should follow corporate UI standards (header, search box, toolbar actions) to reduce learning time.",
+      "source_citation": "If it looks and behaves like our other company apps, I don’t have to hunt for buttons or settings. Also, fonts and spacing that don’t feel cramped. If the new app follows our corporate look, new hires pick it up faster.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the importance of following corporate UI standards to reduce learning time and improve usability. This is a clear indication of a usability requirement.",
+      "follow_up_question": "Can you provide examples of specific corporate UI standards that should be followed?"
+    },
+    {
+      "requirement": "The app should be colorblind-friendly with icons + text labels and high contrast.",
+      "source_citation": "I’m colorblind so colors alone won’t cut it — there should be icons or short labels too. And, uh, I’m colorblind so colors alone won’t cut it — there should be icons or short labels too. Also make sure contrast is high enough and that there are keyboard shortcuts — I find those speed things up.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions being colorblind and the need for icons and text labels to ensure accessibility. This is a clear usability requirement.",
+      "follow_up_question": "Can you provide specific examples of icons and text labels that would be most helpful?"
+    },
+    {
+      "requirement": "The app should provide hover previews for case details to avoid opening each one.",
+      "source_citation": "I’d like color flags so I can scan and spot urgent ones. But, uh, I’m colorblind so colors alone won’t cut it — there should be icons or short labels too. And hovering over a result should give me a quick preview so I can decide which to open.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for hover previews to quickly assess case details without opening each one. This is a clear usability requirement.",
+      "follow_up_question": "Can you describe the specific information that should be included in the hover preview?"
+    },
+    {
+      "requirement": "The app should not have overly strict forms where all fields are mandatory.",
+      "source_citation": "please don’t make forms where every field is required when it doesn’t need to be.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need to avoid overly strict forms, indicating a usability concern. However, the specific fields that should not be mandatory are not detailed.",
+      "follow_up_question": "Which specific fields should not be mandatory, and why?"
+    },
+    {
+      "requirement": "The app should support two days of hands-on training for full adoption.",
+      "source_citation": "If the app follows our standards and is intuitive, two days of hands-on training with practice cases should do it.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for two days of hands-on training for full adoption, indicating a usability requirement.",
+      "follow_up_question": "What specific topics or scenarios should be covered in the two days of training?"
+    },
+    {
+      "requirement": "The app should have a maximum of five seconds for screen transitions; faster for small actions (e.g., tab switching).",
+      "source_citation": "Hmm, numbers aren’t my thing, but, um, when it’s a small move I can tell after a few seconds if it’s lagging. Maybe... five seconds feels like the outer limit before it’s annoying. For small things like opening a case preview or switching between tabs, I’d want it quicker — ideally faster than that.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions a five-second limit for screen transitions and the need for faster transitions for small actions. This is a clear performance requirement.",
+      "follow_up_question": "Are there specific transitions that should be faster than five seconds?"
+    },
+    {
+      "requirement": "The app should show progress indicators during slow operations (e.g., loading transaction history).",
+      "source_citation": "For big things like loading a full transaction history, a little longer is okay, but the UI should show progress so I know it’s working.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for progress indicators during slow operations. This is a clear performance requirement.",
+      "follow_up_question": "What specific types of progress indicators would be most helpful?"
+    },
+    {
+      "requirement": "The app must be available 24/7 with minimal downtime.",
+      "source_citation": "We need it most of the time, every day. Planned maintenance is okay if it’s in the very late night hours and we get warned, because sometimes I’m finishing a case and I don’t want to get kicked out halfway through.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for 24/7 availability with minimal downtime. This is a clear availability requirement.",
+      "follow_up_question": "What specific measures should be taken to ensure 24/7 availability?"
+    },
+    {
+      "requirement": "The app should have acceptable maintenance windows: 3 AM (Mon-Sat) for 1 hour; Sunday early morning for longer backups.",
+      "source_citation": "Well, the quietest windows are the early morning hours. I think most teams wouldn’t mind some maintenance then. If you want specifics, early mornings like the 3 a.m. hour during weekdays feel least disruptive, and a longer window on Sunday early morning works for backups.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions specific maintenance windows that are acceptable. This is a clear availability requirement.",
+      "follow_up_question": "Are there any specific tasks that should be prioritized during these maintenance windows?"
+    },
+    {
+      "requirement": "The app should allow read-only access during maintenance to finish work.",
+      "source_citation": "Read-only would be helpful. If I can at least pull up a case I was working on and copy notes to finish later, that’s better than getting booted out.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for read-only access during maintenance. This is a clear availability requirement.",
+      "follow_up_question": "What specific read-only functionalities should be available during maintenance?"
+    },
+    {
+      "requirement": "Transaction details, member info, and merchant data must pull from master systems (not cached copies).",
+      "source_citation": "I mean, if the app shows a transaction amount or a member’s address, that needs to be pulled from the master systems we already use — the statement records, the member database, and the merchant directory. If it shows something else, I’ll waste time chasing a phantom error. So the screen has to be tied to those source systems, not some copy someone pasted.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "data_accuracy",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for data to be pulled from master systems to ensure accuracy. This is a clear data accuracy requirement.",
+      "follow_up_question": "What specific fields from each master system should be included?"
+    },
+    {
+      "requirement": "Cached data must be clearly labeled with a timestamp if shown.",
+      "source_citation": "I’d want a clear warning. It can show cached info if necessary, but it must say it’s cached and timestamp it so I know when it was last verified. I don’t want to assume data is fresh when it isn’t.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "data_freshness",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for cached data to be clearly labeled with a timestamp. This is a clear data freshness requirement.",
+      "follow_up_question": "What specific format should the timestamp be in?"
+    },
+    {
+      "requirement": "Only certain roles (reps, supervisors, investigators) should initiate disputes.",
+      "source_citation": "Not everyone should. Right now some people try to open disputes who aren’t assigned to the same cardholder group, and then it becomes a mess. We have to call a supervisor to get it opened for them. I think only certain roles should start a dispute — reps handling those accounts, supervisors, and maybe investigators — but, uh, supervisors sometimes need to act across different account pools.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for role-based access control to initiate disputes. This is a clear security requirement.",
+      "follow_up_question": "What specific roles should be allowed to initiate disputes?"
+    },
+    {
+      "requirement": "All actions (who opened/viewed/edited cases, timestamps, escalations) must be logged for audit trails.",
+      "source_citation": "I need to see who opened the case, who viewed it, what they changed, and timestamps for each action. If notes were edited, show that too. If something was escalated or an override happened, that has to be in the record so we can explain our steps to a member or an auditor.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for detailed audit trails. This is a clear security requirement.",
+      "follow_up_question": "What specific actions should be logged?"
+    },
+    {
+      "requirement": "Supervisors need logged, approved exceptions for cross-base access.",
+      "source_citation": "supervisors sometimes need to act across different account pools. That should be controlled and logged. Logged for sure. Ideally there’s an exception workflow — like a request button that sends a note and supervisor approval, and every override is recorded with who did it and why.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for logged and approved exceptions for cross-base access. This is a clear security requirement.",
+      "follow_up_question": "What specific process should be followed for requesting and approving cross-base access?"
+    },
+    {
+      "requirement": "Correspondence must use approved templates with required language.",
+      "source_citation": "We have a set of required language for certain letters and time frames for responses. The app should use the approved templates so we don’t accidentally send something that gets us in trouble. And like I said, every sent letter should be logged on the case.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for approved templates with required language for correspondence. This is a clear legal requirement.",
+      "follow_up_question": "What specific templates and required language should be included?"
+    },
+    {
+      "requirement": "100% of reps (including temps) should use the app post-training.",
+      "source_citation": "In an ideal world, yes, everyone on the front lines would be using it as their tool after the course. Temps or rotating staff should be included in the onboarding plan so they’re not left using the old spreadsheets. I realize in practice there will always be exceptions, but the goal should be full adoption.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the goal of 100% adoption of the app by all reps, including temps. This is a clear maintainability requirement.",
+      "follow_up_question": "What specific measures should be taken to ensure full adoption?"
+    },
+    {
+      "requirement": "Usage stats and manager enforcement to prevent resistance to app adoption.",
+      "source_citation": "Also, having managers enforce use and removing the old tools will help. And, uh, incentives or showing usage stats helps keep people honest.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for usage stats and manager enforcement to prevent resistance to app adoption. This is a clear maintainability requirement.",
+      "follow_up_question": "What specific incentives or enforcement measures should be implemented?"
+    },
+    {
+      "requirement": "The UI should support juggling multiple disputes efficiently (e.g., tabbed navigation).",
+      "source_citation": "I’m on the cardmember services team. I, uh, handle disputes and chargebacks most of the day; I’d say I’m juggling several at once, and I move between systems to pull up transactions, member profiles and merchant details. It’s... well, it’s a pain sometimes because nothing is in one place, so I keep hopping around to confirm what happened and then I have to call or email other teams if something’s missing.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need to juggle multiple disputes efficiently, indicating a scalability concern. However, the specific UI features required are not detailed.",
+      "follow_up_question": "What specific UI features would help in juggling multiple disputes efficiently?"
+    },
+    {
+      "requirement": "All correspondence (letters, notes) must be logged on the case.",
+      "source_citation": "And like I said, every sent letter should be logged on the case.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "auditability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for all correspondence to be logged on the case. This is a clear auditability requirement.",
+      "follow_up_question": "What specific types of correspondence should be logged?"
+    }
+  ]
+}

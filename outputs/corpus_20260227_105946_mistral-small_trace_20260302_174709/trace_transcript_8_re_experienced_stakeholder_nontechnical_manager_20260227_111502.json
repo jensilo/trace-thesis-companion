@@ -1,0 +1,205 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_8_re_experienced_stakeholder_nontechnical_manager_20260227_111502.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_174802",
+  "requirements": [
+    {
+      "requirement": "Pages should load within 5 seconds for routine interactions to prevent user frustration and abandonment.",
+      "source_citation": "For the small interactions — like loading a movie detail or moving between pages — I think it should feel instant. If I had to pick a threshold, maybe about five seconds for those routine actions.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states a 5-second threshold for page load times, which is a clear performance requirement. This is a direct quote and leaves no ambiguity.",
+      "follow_up_question": "Are there specific types of interactions or pages that should be prioritized for this 5-second load time?"
+    },
+    {
+      "requirement": "Video streaming should have a maximum initial buffering time of 10 seconds to ensure a continuous viewing experience.",
+      "source_citation": "Well, streaming should feel continuous. I'd expect any initial buffering to be short, like only a few seconds. If it takes much longer than that, people will assume the stream is broken. So perhaps around ten seconds max to get started, plus whatever their own internet adds.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies a 10-second maximum for initial buffering, which is a clear performance requirement. This is a direct quote and leaves no ambiguity.",
+      "follow_up_question": "Are there specific scenarios or network conditions under which this 10-second buffering time should be strictly enforced?"
+    },
+    {
+      "requirement": "The system should be designed to handle up to 1,000 simultaneous users during peak times.",
+      "source_citation": "If you need a ballpark number for capacity planning, I'd say around one thousand simultaneous users at peak. That feels like a comfortable target for our initial runway.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder provides a specific number for peak load capacity, which is a clear scalability requirement. This is a direct quote and leaves minimal ambiguity.",
+      "follow_up_question": "Are there specific features or user activities that should be prioritized during peak times?"
+    },
+    {
+      "requirement": "The system should monitor performance metrics and alert operations when pages or streams slow down.",
+      "source_citation": "Monitoring is critical. We need to know when pages or streams slow down, and we need daily usage stats for trend detection. If we see slowdowns or unusual patterns, ops must be alerted so we can react before customers complain.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for monitoring and alerting for performance issues, which is a clear operability requirement. This is a direct quote and leaves minimal ambiguity.",
+      "follow_up_question": "What specific performance metrics should be monitored, and what thresholds should trigger alerts?"
+    },
+    {
+      "requirement": "Payment data should be encrypted and accessible only to authorized staff with strict access controls.",
+      "source_citation": "We need to make it crystal clear we treat card data seriously. We shouldn't be in a position where any random employee can look up card numbers. Only very specific, authorised staff should be able to access payment records, and the data should be stored in a way that a leak would be meaningless. From a business-risk point of view, that means encryption and strict access controls — I don't want a single careless admin to create reputational damage.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for encryption and strict access controls for payment data, which is a clear security requirement. This is a direct quote and leaves no ambiguity.",
+      "follow_up_question": "What specific roles or functions should be granted access to payment data, and what encryption standards should be used?"
+    },
+    {
+      "requirement": "Sensitive actions, such as unlocking raw payment data or refunds over a certain threshold, should require two-person approvals.",
+      "source_citation": "I think for the most sensitive things, like unlocking raw payment data or doing refunds over a certain threshold, additional approvals make sense.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for additional approvals for sensitive actions, which is a clear security requirement. This is a direct quote but lacks specific details on thresholds.",
+      "follow_up_question": "What specific actions should require two-person approvals, and what thresholds should trigger this requirement?"
+    },
+    {
+      "requirement": "The system should include a visible privacy notice on every page and during signup or payment processes.",
+      "source_citation": "We need to be upfront before we collect anything — a clear privacy notice that people can find easily. I want it visible on every page in a simple link and, especially during signup or payment, users should be reminded what we're collecting and why.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the need for a visible privacy notice, which is a clear legal requirement. This is a direct quote but lacks specific details on the content and placement of the notice.",
+      "follow_up_question": "What specific information should be included in the privacy notice, and where exactly should it be placed on the pages?"
+    },
+    {
+      "requirement": "The system should be designed to be easy to use for non-tech-savvy users, with big buttons, clear language, and local language support.",
+      "source_citation": "Yeah, design needs to be simple and familiar — big buttons, clear language, and local language support where possible.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for a simple and familiar design, which is a clear usability requirement. This is a direct quote but lacks specific details on the implementation.",
+      "follow_up_question": "What specific design elements should be included to ensure ease of use for non-tech-savvy users?"
+    },
+    {
+      "requirement": "The system should have a 99.5% availability target to ensure high reliability and trust.",
+      "source_citation": "From a business credibility standpoint, we need very high availability. Downtime erodes trust quickly. If I had to pick a target for SLAs and investor conversations, I'd aim for something like ninety-nine point five percent availability — low enough risk that our customers don't notice routine maintenance, but realistic.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states a 99.5% availability target, which is a clear availability requirement. This is a direct quote and leaves no ambiguity.",
+      "follow_up_question": "What specific measures will be taken to ensure this availability target is met?"
+    },
+    {
+      "requirement": "The system should include both a dashboard for immediate checks and the ability to pull detailed records for audits or financial reconciliation.",
+      "source_citation": "Both, ideally. A dashboard for immediate checks and the ability to pull detailed records for audits or financial reconciliation. Admins should be able to slice by title, date, and payment type without calling engineering.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the need for a dashboard and detailed records, which is a clear maintainability requirement. This is a direct quote and leaves minimal ambiguity.",
+      "follow_up_question": "What specific data should be included in the dashboard and detailed records?"
+    },
+    {
+      "requirement": "The system should be resilient to vendor failures, with fallback paths for payment gateways and streaming servers.",
+      "source_citation": "If the payment gateway hiccups, we shouldn't go dark. Users should still be able to browse, redeem pre-paid cards, access their purchased titles, and maybe queue purchases to complete later. Ideally, the customer experience doesn't grind to a halt just because a vendor is flaky; we need fallback paths so the business can still make money and customers aren't frustrated.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for resilience to vendor failures, which is a clear fault tolerance requirement. This is a direct quote but lacks specific details on the implementation of fallback paths.",
+      "follow_up_question": "What specific fallback paths should be implemented for payment gateways and streaming servers?"
+    },
+    {
+      "requirement": "The system should handle streaming server failures by providing clear messaging, automatic retry, or a fallback stream.",
+      "source_citation": "For playback, we need clear messaging and either automatic retry or a fallback stream so that most people can still watch.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the need for clear messaging, automatic retry, or a fallback stream, which is a clear fault tolerance requirement. This is a direct quote but lacks specific details on the implementation.",
+      "follow_up_question": "What specific messaging and retry mechanisms should be implemented for streaming server failures?"
+    },
+    {
+      "requirement": "The system should prioritize paying customers who are mid-playback and critical admin functions during outages.",
+      "source_citation": "If there has to be prioritisation, we should prioritise paying customers who are mid-playback and critical admin functions.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the need to prioritize paying customers and critical admin functions, which is a clear fault tolerance requirement. This is a direct quote and leaves minimal ambiguity.",
+      "follow_up_question": "What specific prioritization mechanisms should be implemented for paying customers and critical admin functions?"
+    },
+    {
+      "requirement": "The system should comply with data residency and local privacy laws, with the ability to restrict access based on region if required.",
+      "source_citation": "Data residency and local privacy laws are a concern. In some countries, customer data has to be handled a certain way. We need legal to weigh in, but from product side, let's assume we must be able to show compliance and restrict access based on region if required.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the need for compliance with data residency and local privacy laws, which is a clear legal requirement. This is a direct quote but lacks specific details on the implementation.",
+      "follow_up_question": "What specific measures should be taken to ensure compliance with data residency and local privacy laws?"
+    },
+    {
+      "requirement": "The system should include comprehensive logging and daily usage metrics for trend detection and business decisions.",
+      "source_citation": "We need to know when pages or streams slow down, and we need daily usage stats for trend detection. If we see slowdowns or unusual patterns, ops must be alerted so we can react before customers complain.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for comprehensive logging and daily usage metrics, which is a clear operability requirement. This is a direct quote but lacks specific details on the implementation.",
+      "follow_up_question": "What specific metrics should be included in the daily usage stats, and what thresholds should trigger alerts?"
+    },
+    {
+      "requirement": "The system should retain financial records for as long as required by auditors and local tax rules, and usage analytics for at least months.",
+      "source_citation": "For financial records, long enough to satisfy auditors and local tax rules — so not short-lived. For usage analytics, I want daily aggregates kept for trend analysis for at least months.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the need for long-term retention of financial records and usage analytics, which is a clear maintainability requirement. This is a direct quote but lacks specific details on the exact retention periods.",
+      "follow_up_question": "What specific retention periods should be implemented for financial records and usage analytics?"
+    },
+    {
+      "requirement": "The system should support pre-paid cards as a major payment channel, especially in markets where credit cards are not universal.",
+      "source_citation": "Yes, pre-paid cards are important in markets where credit cards aren't universal. So it's not just a niche; it's a core acquisition route.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the importance of pre-paid cards, which is a clear usability requirement. This is a direct quote and leaves minimal ambiguity.",
+      "follow_up_question": "What specific features should be implemented to support pre-paid cards as a major payment channel?"
+    },
+    {
+      "requirement": "The system should be designed to be lightweight to ensure fast loading on low-bandwidth connections.",
+      "source_citation": "Also, pages should be lightweight so they load well on low-bandwidth connections.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the need for lightweight pages, which is a clear performance requirement. This is a direct quote and leaves minimal ambiguity.",
+      "follow_up_question": "What specific measures should be taken to ensure the system is lightweight and loads quickly on low-bandwidth connections?"
+    }
+  ]
+}

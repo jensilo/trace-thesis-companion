@@ -1,0 +1,172 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_4_re_experienced_stakeholder_nontechnical_manager_20260227_110525.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_180011",
+  "requirements": [
+    {
+      "requirement": "The system shall complete routine navigation tasks within 5 seconds.",
+      "source_citation": "For routine navigation — moving from one screen to another, looking up a transaction, that sort of thing — if a rep has to wait more than about five seconds, they get annoyed, productivity drops, and we start hearing complaints. So, five seconds is my threshold for the small stuff.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states a 5-second threshold for routine navigation tasks, which is a clear performance requirement.",
+      "follow_up_question": "Are there any specific routine navigation tasks that are more critical than others and require even faster response times?"
+    },
+    {
+      "requirement": "The system shall queue and provide progress feedback for long-running operations such as generating letters or bulk exports.",
+      "source_citation": "For heavier operations like generating large correspondence packages or bulk exports, I accept longer, but they should be queued and give progress feedback. The problem today is people click and stare at a spinner with no indication, and they call support.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for queuing and progress feedback for long-running operations, indicating a performance requirement.",
+      "follow_up_question": "What is the acceptable duration for long-running operations before users expect progress feedback?"
+    },
+    {
+      "requirement": "The system shall implement role-based access control (RBAC) with strict data segregation between different user roles.",
+      "source_citation": "Not everyone should see every piece of data — there's personal information and settlement details that only a few people should touch. So, roles need to be tighter than what we have now; otherwise we keep exposing stuff that shouldn't be visible for a routine call.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for tighter roles and data segregation, which is a clear security requirement.",
+      "follow_up_question": "Can you provide more details on the specific data elements that need to be segregated for each role?"
+    },
+    {
+      "requirement": "The system shall prevent sensitive data exposure to unauthorized users, including external vendors and merchants.",
+      "source_citation": "External-facing interactions — when a merchant rep or a third-party vendor accesses the tool — need to be segmented so they only see what's necessary. Internally, only those with a legitimate business need should see full cardmember data.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need to segment external interactions and limit internal access to sensitive data, indicating a security requirement.",
+      "follow_up_question": "What specific sensitive data elements should be protected from unauthorized access?"
+    },
+    {
+      "requirement": "The system shall support temporary elevated access with audit trails for exceptional cases, such as fraud incidents.",
+      "source_citation": "There should be a controlled way to grant temporary elevated rights, with clear approval and automatic reversion. But those temporary grants must themselves be audited so we can see who approved them and why.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for temporary elevated access with audit trails, indicating a security requirement.",
+      "follow_up_question": "What is the process for requesting and approving temporary elevated access?"
+    },
+    {
+      "requirement": "The system shall be consistent with corporate UI standards for forms, error messages, and accessibility.",
+      "source_citation": "We have brand and usability guidelines — forms, error messaging, accessibility standards — and they must be followed for both internal and external surfaces.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need to follow corporate UI standards, which is a clear usability requirement.",
+      "follow_up_question": "Can you provide specific examples of corporate UI standards that must be adhered to?"
+    },
+    {
+      "requirement": "The system shall generate standardized correspondence to avoid freeform errors.",
+      "source_citation": "Well, the app should generate standard letters and emails so reps aren't composing freeform messages every time — that reduces error and keeps the tone consistent.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for standardized correspondence, indicating a usability requirement.",
+      "follow_up_question": "What specific types of correspondence need to be standardized?"
+    },
+    {
+      "requirement": "The system shall be available 24/7 with minimal downtime, except during scheduled maintenance windows.",
+      "source_citation": "We operate across time zones and occasionally have reps working outside standard hours. So, it effectively needs to be available all the time, except for planned maintenance.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for 24/7 availability with minimal downtime, indicating an availability requirement.",
+      "follow_up_question": "What is the maximum acceptable downtime during scheduled maintenance windows?"
+    },
+    {
+      "requirement": "The system shall not use stale data copies and must reference authoritative sources in real time.",
+      "source_citation": "I don't want a situation where the disputes tool has its own stale copy and people are reconciling differences.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "data_integrity",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need to avoid stale data copies and reference authoritative sources, indicating a data integrity requirement.",
+      "follow_up_question": "What are the specific authoritative sources that the system should reference?"
+    },
+    {
+      "requirement": "The system shall implement controlled workflows for account adjustments, including approvals, evidence attachment, and audit trails.",
+      "source_citation": "For account adjustments, there has to be a controlled workflow: someone creates the adjustment request, supporting evidence is attached, and an authorized person approves and executes it.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for controlled workflows for account adjustments, indicating a maintainability requirement.",
+      "follow_up_question": "What specific steps should be included in the controlled workflow for account adjustments?"
+    },
+    {
+      "requirement": "The system shall comply with data retention and purge policies based on legal requirements.",
+      "source_citation": "We have legal retention requirements, so cases need to be kept for the statutory period, and certain notes should be retained longer; after that, we should purge or anonymize.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need to comply with legal retention requirements, indicating a maintainability requirement.",
+      "follow_up_question": "Can you provide more details on the specific data retention and purge policies?"
+    },
+    {
+      "requirement": "The system shall support 350+ concurrent users without noticeable slowdowns.",
+      "source_citation": "Okay, let's be precise — design for three hundred and fifty concurrent users without noticeable slowdowns.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need to support 350+ concurrent users without noticeable slowdowns, which is a clear scalability requirement.",
+      "follow_up_question": "What specific performance metrics should be used to measure noticeable slowdowns?"
+    },
+    {
+      "requirement": "The system shall provide a full audit trail for all actions, including case openings, edits, approvals, and data views.",
+      "source_citation": "We need a record of every action taken on a case — who opened it, edits, status changes, who viewed sensitive fields, when letters were sent, approvals, everything.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "compliance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for a full audit trail, indicating a compliance requirement.",
+      "follow_up_question": "What specific actions should be included in the audit trail?"
+    },
+    {
+      "requirement": "The system shall comply with regulatory timelines and notice requirements for disputes.",
+      "source_citation": "Make sure the workflows reflect the timelines and notice requirements from those rules. If the tool doesn't bake them in, reps will miss steps.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "compliance",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need to comply with regulatory timelines and notice requirements, indicating a compliance requirement.",
+      "follow_up_question": "Can you provide more details on the specific regulatory timelines and notice requirements?"
+    },
+    {
+      "requirement": "The system shall reference real-time authoritative data sources for transactions, cardmembers, and merchants.",
+      "source_citation": "We really want it to reference the authoritative sources. For transaction details, that's the Statement system — anything about a posted transaction should come from there.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "data_integrity",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need to reference real-time authoritative data sources, indicating a data integrity requirement.",
+      "follow_up_question": "What specific authoritative data sources should the system reference?"
+    }
+  ]
+}

@@ -1,0 +1,117 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_4_re_experienced_stakeholder_technical_senior_20260227_110538.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_174711",
+  "requirements": [
+    {
+      "requirement": "The system must respond to user interactions within five seconds to avoid productivity drops.",
+      "source_citation": "for normal navigation and small detail fetches I'd say around five seconds is the threshold. If a screen takes more than that, users start complaining and productivity drops.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly defines the performance threshold for user interactions, which is a clear and measurable requirement.",
+      "follow_up_question": "Are there any specific user interactions or screen transitions that should be prioritized for performance optimization?"
+    },
+    {
+      "requirement": "The system must be available during all operational hours, with planned maintenance windows limited to early pre-dawn slots on weekdays through Saturday (3-4 AM Eastern) and a longer window on Sunday (1-5 AM Eastern).",
+      "source_citation": "we typically target early pre-dawn slots. For weekdays through Saturday, think of a short window around three to four in the morning Eastern. And on Sunday we allow a slightly longer window in the very early morning, roughly between one and five a.m. Eastern.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the allowed maintenance windows, which defines the system's availability requirements.",
+      "follow_up_question": "Are there any specific operational hours or peak usage times that should be considered when scheduling maintenance windows?"
+    },
+    {
+      "requirement": "The system must use authoritative data sources for critical actions and allow caching for non-authoritative display with tight staleness rules.",
+      "source_citation": "I think caching is fine for non-authoritative display — e.g., to speed up the UI — provided caches are explicitly marked as such and have tight staleness rules. But critical actions, like initiating a chargeback or posting an adjustment, must use the authoritative systems.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "data_integrity",
+      "confidence": 4,
+      "rationale": "The stakeholder distinguishes between authoritative and non-authoritative data usage, which impacts data integrity and performance.",
+      "follow_up_question": "What are the specific tight staleness rules for cached data, and how should the system handle cache invalidation?"
+    },
+    {
+      "requirement": "The system must provide at-least-once delivery semantics with idempotency keys for queued actions and offer an admin view for reprocessing or reconciling queued items.",
+      "source_citation": "Hmm, reps should always know whether an action completed to the external system or was queued. So if an adjustment couldn't be delivered, the UI should show it as pending with a correlation identifier and an ETA for retries. Also, ops must have an admin view to reprocess or reconcile queued items.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the delivery semantics and the need for an admin view, which are crucial for fault tolerance and operability.",
+      "follow_up_question": "What are the specific retry mechanisms and policies for queued actions, and how should the admin view be designed?"
+    },
+    {
+      "requirement": "The system must record every meaningful user action in an append-only and tamper-evident audit trail, including actor identity, timestamp, action type, dispute and transaction references, state changes, payload hashes, and downstream correlation IDs.",
+      "source_citation": "each audit record needs to include the actor identity, a timestamp with timezone, the action type, a reference to the dispute and transaction involved, the state change or payload (or a hash of it if payloads get large), and any downstream correlation IDs from the posting or letters systems.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "auditability",
+      "confidence": 5,
+      "rationale": "The stakeholder provides a detailed list of elements that must be included in audit records, which is a clear and specific requirement.",
+      "follow_up_question": "Are there any additional elements or specific formats for audit records that should be considered?"
+    },
+    {
+      "requirement": "The system must integrate with the corporate identity provider for internal reps using SAML or OIDC and enforce role-based, scoped authorization at the API gateway and data layer.",
+      "source_citation": "We need to integrate with the corporate identity provider for internal reps, probably SAML or OIDC, and use strong multi-factor authentication for external partners. Beyond authentication, authorization must be role-based and scoped: reps should only see customers they are assigned to, and managers get broader visibility. The enforcement should live both at the API gateway and be reinforced at the data layer — I like row-level security approaches so data can't leak via misbehaving APIs.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the authentication and authorization mechanisms, which are critical for security.",
+      "follow_up_question": "Are there any specific role-based access control policies or row-level security rules that should be implemented?"
+    },
+    {
+      "requirement": "The system must be horizontally scalable for web and API layers, with decoupled async processing, backpressure management, and graceful degradation during high load.",
+      "source_citation": "The architecture should be horizontally scalable for web and API layers, and the async processing should be decoupled — think message queues and worker pools with autoscaling. Backpressure must be managed so the UI degrades gracefully when backlog grows; for example, show delayed processing indicators rather than blocking the rep entirely.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder outlines the scalability requirements, which are essential for handling varying loads and ensuring system performance.",
+      "follow_up_question": "Are there any specific scalability targets or performance metrics that should be considered?"
+    },
+    {
+      "requirement": "The system must avoid generating letters locally and rely on the Letters subsystem for template, branding, and legal wording consistency.",
+      "source_citation": "It's mostly about consistency and compliance. The Letters subsystem owns templates, branding, and legal wording. If reps generate ad-hoc content in the disputes app, we risk inconsistent messaging and compliance violations. So, the disputes app should only request predefined templates or fill authorized placeholders; anything else should be blocked or subject to strict approval workflows.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "compliance",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of consistency and compliance in letter generation, which is a clear requirement.",
+      "follow_up_question": "Are there any specific approval workflows or exceptions that should be considered for letter generation?"
+    },
+    {
+      "requirement": "The system must enforce access controls at multiple layers, including application-level checks and database-level safeguards, to prevent unauthorized access to dispute cases.",
+      "source_citation": "It has to be multi-layered. Application-level checks are necessary for business logic, but we should enforce the binding at the database level too, so a buggy service can't bypass controls. That means every request carries a tenant or assignment context and we apply row-level filtering based on that context.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for multi-layered access controls, which are crucial for security.",
+      "follow_up_question": "Are there any specific access control policies or row-level security rules that should be implemented?"
+    },
+    {
+      "requirement": "The system must ensure that planned downtimes do not cause loss of records or opaque statuses, with clear communication and guarantees for in-flight actions.",
+      "source_citation": "Planned downtimes shouldn't cause loss of records or opaque statuses. If we disrupt integrations during maintenance, the audit trail must reflect that—who started the action, when maintenance began, and the final fate.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of clear communication and guarantees during planned downtimes, which impacts availability and reliability.",
+      "follow_up_question": "Are there any specific communication protocols or guarantees that should be considered for planned downtimes?"
+    }
+  ]
+}

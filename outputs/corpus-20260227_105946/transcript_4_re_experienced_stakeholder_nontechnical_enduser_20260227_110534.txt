@@ -1,0 +1,96 @@
+Interviewer: Walk me through a typical day using the dispute system. What are the biggest pain points for you right now?
+
+Stakeholder: Hmm, well, I start my day pulling up the case list for my portfolio and, honestly, it’s frustrating. The screens feel... clunky, and sometimes I can’t tell at a glance which cases are urgent. I think the way the results show up is part of the problem — everything looks the same. And, um, it’s slow sometimes, like I’m waiting while the whole team stares at me. Also, we get calls from members and merchants and I have to switch between several other systems just to find a transaction or their details. It’s a lot of clicking around.
+
+Interviewer: When you say “everything looks the same,” can you describe specifically what you’d like to see changed on the list view? How would you know it’s better?
+
+Stakeholder: You know, I want it to pop. Right now I have to open each case to see if it’s pending, escalated, or closed. If the list used colors or something, I could scan much faster. Like, um, if pending is one way and escalated is another — just, you know, obvious. I’d know it’s better when I stop opening ten things to find the three that actually need action.
+
+Interviewer: You mentioned it’s “slow.” Can you put a number on how long is too long when you navigate between screens or run a search?
+
+Stakeholder: Hmm, that’s a good question. I guess when a simple click takes ages — maybe around five seconds I start feeling impatient. Anything longer than that and it interrupts the call with the member because I have to ask them to hold and that’s awkward.
+
+Interviewer: Okay, five seconds for those small transitions. Earlier you said you have to switch to other systems to find transaction and member details. Where do you expect the dispute system to pull that information from?
+
+Stakeholder: Well, I don’t have a technical name for everything, but there’s one system that always has the transaction details we need — the statement system — and there’s another place where the member info lives. It would be so much better if the dispute screen showed the transaction details and the cardmember info right there, pulled from those authoritative places. Oh, and the merchant info too — we call merchants and sometimes need their business name or address, and that’s in a separate merchant system.
+
+Interviewer: When you say “pulled from those authoritative places,” do you mean the dispute system should always use those other systems as the source, rather than storing its own copy?
+
+Stakeholder: Yeah, exactly. I don’t want to be looking at stale info. If the statement system is the place where transactions are recorded, the dispute screen should show whatever is in there. Same for member and merchant details. Otherwise you get discrepancies and then we’re arguing with members about what’s right.
+
+Interviewer: You also mentioned you sometimes have to ask members to hold because the system is slow. How often does the application become unavailable or require downtime?
+
+Stakeholder: Well, outages don’t happen all the time, but there are times we can’t get in — usually overnight or early morning when… I think IT does maintenance. Most days it’s fine during our shift, but once in a while I’ve had to tell a member I can’t pull their case because the system’s down. It’s really inconvenient when that happens.
+
+Interviewer: Are there particular windows when it’s acceptable for the system to be taken down for maintenance? What would be okay versus what’s not?
+
+Stakeholder: Um, maintenance late at night is fine, like when most members aren’t calling. I guess weekends are okay too if it’s early morning hours. But I don’t want it down during our busiest support hours. If it were predictable, with a posted schedule, that would help me plan. Oh, and if it has to be down for longer than the usual short window, we need heads up so we can reroute calls.
+
+Interviewer: You said predictable, with a posted schedule — can you be specific about what times are acceptable for maintenance? When you say “late at night” or “early morning,” what do you mean?
+
+Stakeholder: Hmm, okay, if you want specifics — I’d say maintenance in those very early pre-dawn hours is fine. Like... between one in the morning and five in the morning on Sundays is okay, and on other days maybe a much smaller window around three to four in the morning. Those times rarely affect our lines. Again, though, communicating it ahead of time matters.
+
+Interviewer: Understood. You mentioned you work with a team and have a “portfolio” of cardholders. Can you tell me about access — who should be able to see or act on which cases?
+
+Stakeholder: Right, so we each have our own book of cardmembers. I can’t and shouldn’t see every representative’s cases because some of those are for other teams or regions. It’s happened before — I opened a case that didn’t belong to our portfolio and it was a mess. Also, not everyone should be able to initiate a dispute. Some of the newer hires shouldn’t submit certain chargebacks without a supervisor’s sign-off. And, um, when external partners log in, they should only see what they’re allowed to see, not the whole member history.
+
+Interviewer: When you say “not everyone should initiate a dispute,” can you describe who should be able to start one versus who should only be able to view or escalate? Be specific about the roles or responsibilities.
+
+Stakeholder: Okay, yeah. The frontline reps who take calls need to start standard disputes, but for more sensitive things — like retrieval ticket escalations or any chargebacks with large amounts — we need a manager or senior rep to approve. There are also vendor users, like some merchant services folks, who see a limited view for verification but they can’t change member account details or initiate adjustments. It’s kind of a hierarchy in practice.
+
+Interviewer: You mentioned earlier that sometimes you can’t see who changed a case or when. Can you describe what happened and what you need instead?
+
+Stakeholder: Hmm, it’s annoying. We had a case where a refund was applied and the member swore it wasn’t authorized, but when I checked the dispute notes, there were gaps — no record of who approved the adjustment and why. That led to a compliance call. I need to be able to see a clear history of every action, who did it, timestamps, and any comments added, so when someone asks “why was this done?” I can answer without digging through emails.
+
+Interviewer: When you say "clear history," do you envision brief notes and a name, or do you need more detailed entries like the exact field changes and previous values?
+
+Stakeholder: I think both would be useful. At minimum, who did what and when, and a short note explaining the reason. But if the system could show what actually changed — like the old and new status or amount — that would stop a lot of back-and-forth. We had one case where the status was changed and no one knew why; seeing the before-and-after would’ve resolved it faster.
+
+Interviewer: You also talked about external users earlier — can you expand on the difference between internal and external users from your perspective? How should their screens or data differ?
+
+Stakeholder: Sure. Internal users like us should see the full dispute thread, member contact info, and internal notes. External users — say a merchant dispute liaison — should only see what’s necessary for their interaction: transaction details, maybe the dispute status, but not sensitive member data like full account numbers or certain personal info. It should feel like the same system, but with appropriate parts hidden depending on who’s on the other end.
+
+Interviewer: Earlier you said “it should look like other corporate apps.” What do you mean by that? How strict should the look-and-feel be?
+
+Stakeholder: I mean, the buttons, fonts, and layout should feel familiar. We use a few corporate tools every day and they have consistent menus, spacing, and help links. When a new app looks completely different, it’s disorienting and causes mistakes. So, following the corporate template would make training and daily use easier. Also, anything that’s customer-facing — like letters or emails the system generates — should match our branding so members don’t get suspicious.
+
+Interviewer: You mentioned the list coloring earlier — tying that back to performance and visibility, how would color coding interact with the other things you want, like access controls and the audit trail?
+
+Stakeholder: Good point. The colors should reflect the status that the system knows and logs. So if a case is escalated and I see it in red, the history should show when it went red and who escalated it. And if a case is outside my portfolio I shouldn’t even see it in my list — that would mess up the colors and my workflow. So visibility, coloring, and the history all have to line up; otherwise it’s misleading.
+
+Interviewer: You said earlier that sometimes the system shows cases that aren’t in your portfolio. How often does that happen and what are the consequences when it does?
+
+Stakeholder: It’s not every day, thankfully, but maybe a few times a month. The problem is it creates confusion — I might act on something I’m not authorized to, or I waste time before realizing it’s not mine. It also causes compliance headaches if sensitive member info is exposed to someone outside the correct book. We had to escalate once because a rep accessed a merchant’s info they shouldn’t have.
+
+Interviewer: One last area — correspondence and account adjustments. How do you want those to work from your side?
+
+Stakeholder: I want the system to generate letters and emails that I can review and send, using templates so they’re consistent. If I make an account adjustment, it should be reflected in the case history automatically, and any generated correspondence should reference the same details that are in the transaction and member views. Nothing worse than sending a letter that doesn’t match what’s in the system. Oh, and being able to attach evidence — like a scanned receipt or a call recording link — directly to the case is hugely helpful.
+
+Interviewer: Thanks — that’s really comprehensive. Quick recap to make sure I heard you correctly: you want faster navigation that feels under five seconds for small actions; a color-coded, scannable list tied to the real status; single-source-of-truth data pulled live from the statement, member, and merchant systems; strict portfolio-based visibility; role-based controls for initiating disputes with manager approval for sensitive actions; a full, detailed audit trail including before-and-after values; predictable maintenance windows in the very early morning; corporate-consistent UI and branded correspondence; and evidence attachment. Did I miss anything or misstate any priority?
+
+Stakeholder: No, that’s pretty much it. Umm, well, just one more thing — if the system could save my most-used searches or filters so I don’t have to recreate them each morning, that would be a tiny quality-of-life win. Sorry, bit of a tangent, but it would save time.
+
+Interviewer: Noted — that’s helpful. For the maintenance windows we discussed, you specified specific hours earlier. Should those windows be enforced strictly, or is there room for exceptions with advance notice?
+
+Stakeholder: I’d be okay with exceptions if we get advance notice — like, we’d need an email or banner telling us at least a day ahead for planned longer maintenance. Emergency outages are different, but planned ones should be communicated.
+
+Interviewer: Great. One more specificity check: when you talked about managers approving higher-risk disputes, how do you envision that approval happening? Is it a digital sign-off in the case, an email, or something else?
+
+Stakeholder: Ideally, a digital approval inside the case — a button or workflow that records the manager’s name and gives a timestamp. It should prevent anyone from bypassing it and also show up in the audit history, so we don’t have to chase down a separate email.
+
+Interviewer: Perfect. That gives me what I need to write draft requirements that reflect how you actually work and the pain points. Thanks — anything else that would make your day easier that we haven’t touched on?
+
+Stakeholder: Hmm, maybe better search. Sometimes I type partial info and the system doesn’t find the case. So smarter search would help. Oh, and, um — sorry — just the small stuff like not losing my place during a call. Basically, make it feel seamless and trustworthy. And coffee. No, not really — just kidding.
+
+---
+Selected Requirements:
+1. [NICE.csv line 149] [quality, legal, look_and_feel] 'The Disputes application shall comply with the corporate standards for user interface creation for internally and externally used applications.'
+2. [NICE.csv line 151] [quality, look_and_feel] 'The list of dispute cases that are displayed after a search is performed must be color coded for easy identification of dispute cases based upon the dispute case status.'
+3. [NICE.csv line 155] [quality, performance] 'The maximum wait time for a user navigating from one screen to another within the Disputes application shall be no more than 5 seconds.'
+4. [NICE.csv line 157] [quality, availability, operability] 'The Disputes application shall be available 24x7x365 with the exception of the following scheduled maintenance windows. Monday â€“ Saturday 3:00am to 4:00am EST Sunday 1:00amd to 5:00am EST'
+5. [NICE.csv line 158] [quality, operability] 'The Disputes application shall interface with the Statement Database. The Statement Database provides the transaction details to the Disputes System. All transaction details must be obtained from the Statement Database'
+6. [NICE.csv line 159] [quality, operability] 'The Disputes application shall interface with the Cardmember Information Database. The Cardmember Information Database provides detailed information with regard to a cardmember. All cardmember detail information must be obtained from the Cardmember Information Database.'
+7. [NICE.csv line 160] [quality, operability] 'The Disputes applications shall interface with the Merchant Information Database. The Merchant Information Database provides detailed information with regard to the merchant. All merchant detail information shall be obtained from the Merchant Information Database.'
+8. [NICE.csv line 163] [quality, security] 'The Disputes application shall ensure that only users with the appropriate access level are allowed to initiate dispute requests.'
+9. [NICE.csv line 177] [quality, functional, legal] 'The Disputes application must maintain a detailed history of every action that a user takes on a dispute case. This ensures a complete audit trail if questions arise later on with regard to a particular dispute case.'
+10. [NICE.csv line 180] [quality, security] 'The Disputes System must prevent users from accessing any dispute cases that do not belong to their cardholder base.'

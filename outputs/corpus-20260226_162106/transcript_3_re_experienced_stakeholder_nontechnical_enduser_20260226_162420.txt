@@ -1,0 +1,170 @@
+Interviewer: Thanks for meeting with me. To start, can you tell me about your role and a typical day managing the nursing program schedules?
+
+Stakeholder: Sure — hi, I'm one of the schedulers for the nursing department. I handle cohort assignments, coordinate with clinical sites, and... well, I juggle a lot of spreadsheets and a lot of emails. Mornings are usually checking whether anyone emailed about a last-minute site change and then trying to find where that student is on my master spreadsheet. It’s messy, honestly.
+
+Interviewer: When you say "a lot of spreadsheets," can you describe what those spreadsheets are used for and which ones you open first each day?
+
+Stakeholder: I open the roster spreadsheet first, then a spreadsheet for clinical site availability, and another one for instructor assignments. They’re separate because nothing talks to anything else. So if someone moves a student from one clinical slot to another, I have to update three different files and then send an email to the site, the student, and the instructor. It takes forever and I keep fearing I missed something.
+
+Interviewer: You mentioned it takes forever — what are the parts that take the most time or cause the most stress? Can you give a recent example?
+
+Stakeholder: Yeah, just last month we had a double-booking — I think because I updated the roster but forgot to change the site sheet. Two students showed up for the same slot at the hospital. I had to call them, apologize, scramble to reassign one student, and then write an apology email to the clinical coordinator. It was embarrassing and time-consuming. I want us to stop doing that, like, completely.
+
+Interviewer: Who else is involved when you manage schedules — how many people are typically touching these spreadsheets during those hectic times?
+
+Stakeholder: There's me, another full-time scheduler, our program director who looks over changes, and sometimes instructors jump in. On busy days there are a few adjunct schedulers too. Mmm, I’d say the mornings are when everyone’s online trying to make changes.
+
+Interviewer: Thanks — that’s helpful context. Let’s talk about usability. You said it’s messy now. How simple does a new system need to be for your team to adopt it?
+
+Stakeholder: It needs to be super intuitive. Like, if I can’t show someone how to do the basic tasks in a short training and have them actually use it without calling me every five minutes, we’ll just keep using spreadsheets. We don’t have time for a giant manual.
+
+Interviewer: When you say "short training," what would that mean in practice? How long should the training be before someone can be productive?
+
+Stakeholder: Hmm, put me on the spot — okay — I mean, I should be able to train a brand-new scheduler in one workday and have them do the essentials alone by the end of that day. Not everything, but enroll a student, assign a clinical, and run a roster without holding their hand.
+
+Interviewer: That’s specific and useful. Which "essentials" do you expect someone to complete after a single day of training? You mentioned enrollments and assigning clinicals — any other must-haves?
+
+Stakeholder: They should be able to enroll or unenroll a student, put them into a cohort, assign them to a clinical site slot, and see if there are conflicts. Also run a class roster and print or export it for instructors. If they can do those things, we can handle the rest with experience.
+
+Interviewer: What’s the baseline tech comfort of your staff? Any folks who struggle with web apps or need accessibility considerations?
+
+Stakeholder: Most are fine with email and basic web stuff, but we have one person who still prefers paper and needs a bit more hand-holding. Also, some of our adjuncts use older devices. So the interface really should be simple and not assume everyone is tech-savvy.
+
+Interviewer: Understood. Moving to error prevention: you mentioned double-bookings earlier. What other scheduling mistakes happen frequently today?
+
+Stakeholder: We get students assigned without required immunization docs being flagged, instructors double-booked across clinical and lab times, and sometimes we over-fill a site because the site spreadsheet wasn't updated. Oh, and occasionally someone gets scheduled into a clinical that doesn’t match their prerequisites — like being placed in a level-two clinical before they've passed level one — which is a nightmare during accreditation checks.
+
+Interviewer: Which of those do you want the system to stop automatically versus just warn you about? For example, should it block scheduling someone without prerequisites, or just show a warning?
+
+Stakeholder: Blocking would be good for the really bad stuff — prerequisites and sites over capacity — because humans miss warnings. For other things, like an instructor conflict, maybe a big, obvious warning that you have to acknowledge before saving is enough. And, um, there should be a way to override if there's a legitimate reason, but only with a note about why.
+
+Interviewer: You mentioned overrides — who should be able to override, and what should the system do when an override happens?
+
+Stakeholder: The program director and senior schedulers should be able to override. If someone overrides, the system should record who did it, why, and time-stamp it. That way if accreditation folks or auditors ask, we can show the trail. Also, I want an easy way to undo a change if we realize it was a mistake.
+
+Interviewer: Good — you used "big warning" and "obvious" a couple times. Can you give an example of what made a warning obvious to you in a system you like?
+
+Stakeholder: I used an online booking tool once where if there was a conflict it popped a red modal that you couldn't miss, with the conflicted items side-by-side. It also required me to either cancel or confirm. That was useful. So visual and blocking when it's critical.
+
+Interviewer: Earlier you said the system should use language consistent with the national nursing community. What terms have caused confusion in your current tools?
+
+Stakeholder: Oh, plenty. People call preceptors a lot of different things — some systems say "mentor" and some say "clinical instructor." Cohorts are sometimes called "groups" or "batches," which is confusing when we talk to accreditation. If the system used our standard terms it would cut down on clarification emails. We also get tripped up by odd abbreviations — people assume meanings that vary.
+
+Interviewer: Are there specific authoritative sources we should align labels with — like accrediting bodies or state boards?
+
+Stakeholder: Yes, align with the national nursing accreditor and our state board terminology. I can point you to the glossary they use. Also, tooltips or a glossary inside the app would help, because adjuncts sometimes forget acronyms.
+
+Interviewer: Great — we’ll follow up for that glossary. Now about speed: you said earlier "it takes forever" and "we want it fast." What does "fast" feel like to you, and are there particular tasks that must be instant?
+
+Stakeholder: I hate waiting. When I search for a student or update a contact, it should feel immediate so I can keep going. If I have to click and wait around, I get distracted and make mistakes. Generating an entire schedule for a term can take longer, but it shouldn’t keep me waiting all afternoon.
+
+Interviewer: Can you put a number on "immediate" and "longer"? For acceptance testing it's helpful to have target times.
+
+Stakeholder: Okay, if you really want numbers... for the small stuff like looking up a student or changing a contact, under five seconds feels right. And for generating a full schedule, maybe under thirty seconds — anything much longer and people will just go get coffee and forget to check it. But, uh, if a big generation is taking longer, as long as I get a notification when it's done, that's acceptable.
+
+Interviewer: That's very helpful. You also mentioned earlier that several people are on the system at once in the mornings. How many simultaneous users are we talking about at peak?
+
+Stakeholder: It’s usually the schedulers and a few program staff — I'd say around ten people at the busiest time. Sometimes a few more during registration crunches, but ten is typical.
+
+Interviewer: And the system needs to be available during your office hours. Which hours are most critical?
+
+Stakeholder: Our core hours are basically standard office hours — nine to five on weekdays. That's when all the coordination happens. If it's down in the morning, we get stuck.
+
+Interviewer: Regarding uptime, what level of availability do you expect? You mentioned "down in the morning" is a problem — how tolerant are you of outages?
+
+Stakeholder: Hmm. I mean, I don't expect perfection, but we need it to be reliable during business hours. If it’s frequently down, it's useless. I'd be okay with occasional maintenance outside of our hours, but not during the day when we're scheduling.
+
+Interviewer: To be specific: would you be comfortable if the system was available most of the time during business hours but had rare outages? Can you say whether a target like 95 percent sounds acceptable, or do you want higher?
+
+Stakeholder: Ninety-five percent during business hours sounds okay to me. I guess I worry about how that actually maps to reality — like what an outage looks like — but yeah, 95 percent during our workday seems reasonable as a baseline if it's dependable most mornings.
+
+Interviewer: Thanks — pushing on that helps. Back to access control: you said not everyone should see everything. Which pieces of clinical site or student information should be restricted?
+
+Stakeholder: Student health info, immunization records, private contact details — that stuff shouldn't be public to everyone. Clinical site contact details are sensitive too; we only share those with people who need them. Program admins need full access, but a site coordinator should only see the students assigned to their site and contact details for their own preceptors.
+
+Interviewer: Can you name roles you expect — how would you describe them, without getting too technical?
+
+Stakeholder: There's program admin — that's the full-access people. Schedulers like me who need most of the scheduling screens. Instructors who need rosters for their classes. Clinical site coordinators who need a limited view. And students who should see their own schedules only. Oh — and maybe auditors or accreditation reviewers who get read-only access for a period.
+
+Interviewer: Are there regulatory frameworks we must consider for this private information? You mentioned health info — do FERPA or HIPAA come to mind?
+
+Stakeholder: Yes, FERPA for student education records and, depending on what health information is stored, HIPAA might be relevant. At minimum, the system should follow the university’s information security policies about encryption and limited access. I don’t know all the technical stuff, but those names come up in our IT meetings.
+
+Interviewer: Would you expect the system to integrate with your university identity system for login — like single sign-on — or do you prefer separate accounts for external site users?
+
+Stakeholder: For staff and students, SSO with our university credentials would be ideal. For external site coordinators, a separate account with limited permissions would be fine — maybe some way to invite them and give time-limited access.
+
+Interviewer: On auditing: you said you want to know who made changes. How detailed should that audit trail be?
+
+Stakeholder: It should show who made the change, what the change was, when it happened, and an optional note explaining why. That’s important for accreditation and if something goes wrong.
+
+Interviewer: Let's talk about data longevity. You said earlier accreditation asks about historical records. How long do you need to keep schedules and related records?
+
+Stakeholder: We need to keep records for a few years because accreditation reviews often ask for past cohorts. If someone asks for their schedule from a couple years ago, we need to pull it. I think five years should cover most of it.
+
+Interviewer: When you reference old data, how often do you pull it up? Are there reports that run on historical data?
+
+Stakeholder: Not daily, but we run audits and accreditation reports annually, and sometimes alumni ask for proof of placements. So we should be able to query and export older schedules and student progression. It doesn't have to be instant, but it should be accessible.
+
+Interviewer: About integration with other systems — which systems do you want this to connect to, and what kind of data flow should happen?
+
+Stakeholder: It would be great if it could talk to our student information system so enrollments and student IDs sync, and to our LMS so course rosters are consistent. Calendar invites that push to Outlook or Google Calendar would save us from sending manual invites. I’m not sure about the APIs available, but those are the things we’d expect.
+
+Interviewer: For notifications, what channels should be supported? Email only, or also SMS and calendar invites?
+
+Stakeholder: Email and calendar invites are musts for us. SMS would be nice for urgent last-minute changes, but that might be optional. Whatever channels we use, the messages should be templated and include the critical details so students aren’t confused.
+
+Interviewer: How do you want schedule change notifications to behave — immediate or batched?
+
+Stakeholder: Immediate for changes that affect a student's clinical slot or a site's roster. If it's a minor change, batching daily might be okay. But if a student's clinical site changes, they should get an alert right away.
+
+Interviewer: You mentioned reports for accreditation. What report types are most important and in what formats?
+
+Stakeholder: We need reports that show student progression, site utilization, and any scheduling conflicts or overrides. PDFs for official reports and CSV for data analysis would be helpful. It should be easy to generate a report for a cohort or for a term.
+
+Interviewer: Earlier you talked about staff availability to test prototypes. Would you and your team participate in reviewing wireframes and usability testing?
+
+Stakeholder: Yes, absolutely. I'm happy to sit in on usability sessions, and I can get a few schedulers to test. I can also provide anonymized sample data so you can prototype realistic scenarios.
+
+Interviewer: Before we wrap up, can you rank your top priorities for this system — in your words, not a strict list — what matters most to you?
+
+Stakeholder: Well, usability is top — if people can't use it, nothing else matters. Right behind that is preventing scheduling mistakes because those cause our biggest headaches. Notifications that stop us from emailing twenty people manually are also near the top, and security is important too because we handle sensitive info. Performance and uptime matter as well, mainly during our workday. So usability, error prevention, notifications, security, and reliable performance — those are the things I worry about most.
+
+Interviewer: You mentioned earlier that double-bookings led to apology emails to site coordinators. How would you want the system to change that specific workflow? Walk me through ideal behavior.
+
+Stakeholder: Ideally, when I try to place a student into a slot and that slot is already at capacity, the system should block or flag it so I can't save it by accident. If I have to make a manual change, it should automatically draft and queue notifications to the impacted people — the student and the site — with the option for me to edit the message before sending. And if something slips through, I should be able to see an audit trail and roll back quickly.
+
+Interviewer: One last push on uptime: you said 95 percent during business hours sounds acceptable. To be clear, are you okay with scheduled maintenance outside business hours? And would you want a read-only fallback if the system is down?
+
+Stakeholder: Yes, scheduled maintenance outside business hours is fine. A read-only mode would be great — at least if instructors or sites can view schedules even during an outage, that would minimize chaos.
+
+Interviewer: Great. I’ll summarize what I heard and check a few follow-ups. You want an intuitive interface so a new scheduler can be productive after one day of training; strong conflict detection with blocking for prerequisites and capacity; clear, nursing-standard terminology with a glossary; fast responses for small tasks (under five seconds) and schedule generation under thirty seconds or at least asynchronous with notifications; availability concentrated during 9-to-5 weekdays with about ten concurrent users at peak and an expected baseline uptime around 95 percent during business hours; role-based access limiting clinical site and student health data; retention of records for about five years; integrations with the SIS and LMS plus email/calendar notifications; and audit trails and override logging. Did I capture that correctly, or is anything off?
+
+Stakeholder: Yes, that's pretty much it. Oh, and one more thing — please make the language consistent and not full of weird abbreviations. And, um, if you want, I can pull some of our sample spreadsheets and a glossary to send you after this meeting. That might help make prototypes feel real.
+
+Interviewer: Please do send those. Also, can you make available one or two staff members for a one-hour usability test next week, and an anonymized dataset for performance testing?
+
+Stakeholder: I can get two people next Thursday and I'll anonymize a dataset and email it to you. It might take me a bit to scrub everything, but I’ll get it done.
+
+Interviewer: Perfect. Last quick question: who else should I talk to next to fill gaps — clinical site coordinators, IT, or someone in records?
+
+Stakeholder: Definitely the clinical site coordinator at our largest hospital and someone from university IT who handles SSO. Maybe also an instructor who’s new to our program — they always have good feedback about rosters.
+
+Interviewer: Thank you. I’ll schedule those follow-ups and draft acceptance criteria based on what we discussed. Any final thoughts before we end?
+
+Stakeholder: Just that if this thing actually reduces the number of times I have to write an apology email, I will throw a small party in the office. No, seriously — make it simple and safe, and we'll use it.
+
+Interviewer: Noted — party possibly on the roadmap. Thanks for your time and detailed input. I’ll send meeting notes and the next steps later today.
+
+---
+Selected Requirements:
+1. [NICE.csv line 70] [quality, usability] 'The system shall be easy to use by the Program Administrators/Nursing Staff Members.'
+2. [NICE.csv line 71] [quality, usability] 'All of the users shall be able to use the system after one day of training.'
+3. [NICE.csv line 72] [quality, usability] 'The system shall help the user avoid making mistakes while scheduling classes and clinicals for the nursing students.'
+4. [NICE.csv line 77] [quality, look_and_feel, usability] 'The verbiage used within the system shall be consistent with Standard English and the terminology of the national Nursing Community.'
+5. [NICE.csv line 79] [quality, performance] 'The response time of general student management tasks shall take no longer than 5 seconds and the response time of schedule generation shall take no longer than 30 seconds.'
+6. [NICE.csv line 81] [quality, availability] 'The system shall achieve 95% up time.'
+7. [NICE.csv line 83] [quality, availability, scalability] 'The system shall cater to 10 simultaneous users from 9am to 5pm.'
+8. [NICE.csv line 85] [quality, functional, scalability] 'The system shall be expected to manage the nursing program curriculum and class/clinical scheduling for a minimum of 5 years.'
+9. [NICE.csv line 93] [quality, security] 'Only authorized users shall have access to clinical site information.'
+10. [NICE.csv line 100] [quality, functional, legal, security] The system shall protect private information in accordance with the organization's information policy.'

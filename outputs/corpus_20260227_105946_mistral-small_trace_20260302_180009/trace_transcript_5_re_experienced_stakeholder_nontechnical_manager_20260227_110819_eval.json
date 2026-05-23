@@ -1,0 +1,153 @@
+{
+  "extraction_file": "outputs/corpus_20260227_105946_mistral-small_trace_20260302_180009/trace_transcript_5_re_experienced_stakeholder_nontechnical_manager_20260227_110819.json",
+  "ground_truth_source": "outputs/corpus-20260227_105946/transcript_5_re_experienced_stakeholder_nontechnical_manager_20260227_110819.json",
+  "eval_model": "openai/gpt-5-mini",
+  "per_requirement": [
+    {
+      "extracted_requirement": "The system must ensure that the parts search response time is ≤15 seconds.",
+      "matched_ground_truth": "'The search for recycled parts shall take no longer than 15 seconds. The search results shall be returned in under 15 seconds.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 5,
+      "rationale_quality": 4,
+      "gap_detection_quality": 3,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system must ensure that the repair facility search response time is ≤8-10 seconds.",
+      "matched_ground_truth": "'The search for the preferred repair facility shall take no longer than 8 seconds. The preferred repair facility is returned within 8 seconds'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 5,
+      "rationale_quality": 4,
+      "gap_detection_quality": 3,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system must provide a seamless experience for both field and desk users.",
+      "matched_ground_truth": "'The user shall easily locate instructions while using the product. User help can be found within 90% of the system.'",
+      "overlap_score": 4,
+      "overlap_label": "High",
+      "quality_attribute_match": true,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 5,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system must achieve a 95% user satisfaction rate regarding ease of use, as measured by post-rollout surveys.",
+      "matched_ground_truth": null,
+      "overlap_score": 1,
+      "overlap_label": "Very Low",
+      "quality_attribute_match": false,
+      "confidence_quality": 2,
+      "rationale_quality": 3,
+      "gap_detection_quality": 4,
+      "is_hit": false,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system must provide contextual help on approximately 90% of screens to reduce support calls.",
+      "matched_ground_truth": "'The user shall easily locate instructions while using the product. User help can be found within 90% of the system.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 3,
+      "is_hit": true,
+      "is_duplicate": true
+    },
+    {
+      "extracted_requirement": "The system must ensure that the feed from the Choice Parts database is reliable and feels current to the users.",
+      "matched_ground_truth": "'The product shall interface with the Choice Parts System. This provides the feed of recycled parts data.'",
+      "overlap_score": 4,
+      "overlap_label": "High",
+      "quality_attribute_match": false,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system must achieve 98% uptime to ensure high availability.",
+      "matched_ground_truth": "'The product shall achieve a 98% uptime. The product shall not fail more than 2% of the available online time.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 5,
+      "rationale_quality": 4,
+      "gap_detection_quality": 3,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system must prevent non-compliant workflows and provide audit trails for exceptions.",
+      "matched_ground_truth": "'The product shall comply with insurance regulations regarding claims processing.'",
+      "overlap_score": 3,
+      "overlap_label": "Medium",
+      "quality_attribute_match": true,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system must integrate with the Choice Parts feed and handle data in a way that preserves trust in availability info.",
+      "matched_ground_truth": "'The product shall interface with the Choice Parts System. This provides the feed of recycled parts data.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": false,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": true,
+      "is_duplicate": true
+    },
+    {
+      "extracted_requirement": "The system must follow corporate UI/UX standards to avoid rework and ensure consistency.",
+      "matched_ground_truth": "'The product shall comply with corporate User Interface Guidelines'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": false,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system must adhere to accessibility standards as part of corporate UI guidelines.",
+      "matched_ground_truth": "'The product shall comply with corporate User Interface Guidelines'",
+      "overlap_score": 4,
+      "overlap_label": "High",
+      "quality_attribute_match": false,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": true,
+      "is_duplicate": true
+    }
+  ],
+  "metrics": {
+    "hit_count": 7,
+    "extracted_count": 11,
+    "ground_truth_count": 10,
+    "precision": 0.636,
+    "recall": 0.7,
+    "f1": 0.667,
+    "quality_attribute_accuracy": 0.714,
+    "avg_confidence": 4.364,
+    "avg_overlap_score": 4.182,
+    "avg_confidence_quality": 4.091,
+    "avg_rationale_quality": 3.909,
+    "avg_gap_detection_quality": 3.727
+  }
+}

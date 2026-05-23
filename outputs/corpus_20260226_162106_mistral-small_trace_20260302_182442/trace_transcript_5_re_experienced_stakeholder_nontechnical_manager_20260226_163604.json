@@ -1,0 +1,172 @@
+{
+  "transcript_file": "outputs/corpus-20260226_162106/transcript_5_re_experienced_stakeholder_nontechnical_manager_20260226_163604.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_182444",
+  "requirements": [
+    {
+      "requirement": "The system should respond to parts searches within 15 seconds end-to-end.",
+      "source_citation": "For parts searches I'd expect results back within about fifteen seconds end-to-end.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states a target time for parts searches, which is a clear performance requirement. The context suggests this is a critical metric for user satisfaction and adoption.",
+      "follow_up_question": "Are there specific scenarios or data volumes that would make this target unachievable, and if so, what alternative targets would be acceptable?"
+    },
+    {
+      "requirement": "The system should respond to facility lookups within 8 seconds end-to-end.",
+      "source_citation": "for preferred repair facility lookups I'd want that under eight seconds.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states a target time for facility lookups, which is a clear performance requirement. The context suggests this is a critical metric for user trust and satisfaction.",
+      "follow_up_question": "Are there specific scenarios or data volumes that would make this target unachievable, and if so, what alternative targets would be acceptable?"
+    },
+    {
+      "requirement": "The system should handle 1,500 concurrent users, with peak bursts during incidents.",
+      "source_citation": "at peak I’d expect the system to handle roughly fifteen-hundred people online at the same time.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the expected number of concurrent users, which is a clear scalability requirement. The context suggests this is a critical metric for system capacity and performance under load.",
+      "follow_up_question": "What specific actions or features are expected to be used by these concurrent users, and are there any patterns or distributions in their usage?"
+    },
+    {
+      "requirement": "The UI must handle slow/mobile connections gracefully, with offline caching for short outages.",
+      "source_citation": "So the UI must handle slow networks gracefully, and there should be a minimal offline or caching capability for very short outages.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for the UI to handle slow networks and provides a specific solution (offline caching) for short outages. This is a clear usability requirement, especially for field users.",
+      "follow_up_question": "What is the maximum duration of an outage that the offline caching should cover, and what specific functionalities should remain available during offline periods?"
+    },
+    {
+      "requirement": "The look and feel of the system should match other corporate applications.",
+      "source_citation": "The look and feel should match our other apps so users don't feel like they're in a weird island.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the importance of the system's look and feel matching other corporate applications. This is a clear requirement for user familiarity and adoption.",
+      "follow_up_question": "Are there specific design guidelines or branding standards that the system should adhere to, and who is the owner of these guidelines?"
+    },
+    {
+      "requirement": "The system should be easy to use, with 95% of trained users reporting it is easy to use.",
+      "source_citation": "we want ninety-five percent of the adjusters and estimators who attend training to report that the product is easy to use on immediate post-training surveys.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states a target for usability, which is a clear requirement for user satisfaction and adoption. The context suggests this is a critical metric for measuring the system's success.",
+      "follow_up_question": "What specific criteria or questions will be used in the post-training surveys to measure ease of use, and who will conduct these surveys?"
+    },
+    {
+      "requirement": "Basic workflows should be learned within 2 days of onsite training.",
+      "source_citation": "the basic workflows are learned within two days of onsite training; after that users should be productive.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states a target for training time, which is a clear requirement for user productivity and adoption. The context suggests this is a critical metric for measuring the system's usability.",
+      "follow_up_question": "What specific workflows are considered basic, and what criteria will be used to measure user productivity after training?"
+    },
+    {
+      "requirement": "Key tasks (e.g., part search + attachment) should take a few minutes end-to-end.",
+      "source_citation": "finding a candidate part, attaching it to an estimate, and recording usage should be done quickly — within a few minutes end-to-end.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states a target time for key tasks, which is a clear requirement for user efficiency and satisfaction. The context suggests this is a critical metric for measuring the system's performance.",
+      "follow_up_question": "What specific tasks are considered key, and what criteria will be used to measure the time taken for these tasks?"
+    },
+    {
+      "requirement": "The system should follow corporate standards for architecture, SSO, cloud/ops model, etc.",
+      "source_citation": "The product must sit within corporate architecture constraints and follow the enterprise UI guidelines.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for the system to follow corporate standards, which is a clear requirement for maintainability and compliance. The context suggests this is a critical metric for system integration and approval.",
+      "follow_up_question": "What specific corporate standards or guidelines should the system adhere to, and who is the owner of these standards?"
+    },
+    {
+      "requirement": "The system should have 98% availability as per the internal SLA.",
+      "source_citation": "the expectation we've set internally is for about ninety-eight percent availability as a minimum.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states an availability target, which is a clear requirement for system reliability. The context suggests this is a critical metric for measuring the system's uptime.",
+      "follow_up_question": "What specific measures or monitoring tools will be used to ensure and verify the system's availability, and who is responsible for this?"
+    },
+    {
+      "requirement": "The system should inherit corporate baseline security (SSO, encryption, DoS protections).",
+      "source_citation": "The app should inherit the corporate security posture — things like SSO, encryption in transit and at rest, and standard protections.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for the system to inherit corporate security posture, which is a clear requirement for system security. The context suggests this is a critical metric for protecting sensitive data and ensuring compliance.",
+      "follow_up_question": "What specific security measures or protocols should the system implement, and who is responsible for ensuring these are in place?"
+    },
+    {
+      "requirement": "Audit logs should be tamper-resistant and detailed enough for dispute resolution.",
+      "source_citation": "We need enough detail to investigate disputes: who changed what, when, and why — with attachments where relevant.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the need for detailed and tamper-resistant audit logs, which is a clear requirement for system maintainability and compliance. The context suggests this is a critical metric for ensuring data integrity and facilitating dispute resolution.",
+      "follow_up_question": "What specific details should be included in the audit logs, and what criteria will be used to measure their tamper-resistance?"
+    },
+    {
+      "requirement": "The system must handle bursts of concurrent searches during regional incidents.",
+      "source_citation": "Peak load will often be after large incidents in a region where many adjusters are logging claims at once.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for the system to handle bursts of concurrent searches during regional incidents, which is a clear requirement for system scalability. The context suggests this is a critical metric for ensuring system performance under high load.",
+      "follow_up_question": "What specific measures or strategies should be implemented to handle these bursts of concurrent searches, and who is responsible for ensuring these are in place?"
+    },
+    {
+      "requirement": "PII must comply with privacy/regulatory rules; data residency may apply.",
+      "source_citation": "PII must be protected according to our usual privacy and regulatory obligations. There may be regional handling rules, so data residency could come into play.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the need for PII protection and compliance with privacy/regulatory rules, which is a clear requirement for system security and compliance. The context suggests this is a critical metric for ensuring data protection and regulatory compliance.",
+      "follow_up_question": "What specific privacy/regulatory rules or data residency requirements should the system adhere to, and who is responsible for ensuring these are in place?"
+    },
+    {
+      "requirement": "The system should follow corporate UI guidelines for accessibility.",
+      "source_citation": "the same branding and accessibility rules applied",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for the system to follow corporate UI guidelines for accessibility, which is a clear requirement for system usability. The context suggests this is a critical metric for ensuring the system is accessible to all users.",
+      "follow_up_question": "What specific UI guidelines or accessibility standards should the system adhere to, and who is responsible for ensuring these are in place?"
+    }
+  ]
+}

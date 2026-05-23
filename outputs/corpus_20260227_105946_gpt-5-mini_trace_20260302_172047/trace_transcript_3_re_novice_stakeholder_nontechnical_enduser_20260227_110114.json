@@ -1,0 +1,183 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_3_re_novice_stakeholder_nontechnical_enduser_20260227_110114.txt",
+  "model": "openai/gpt-5-mini",
+  "timestamp": "20260302_172049",
+  "requirements": [
+    {
+      "requirement": "The system shall respond to routine interactions (e.g., search or update) within a couple of seconds, and complete large schedule-building operations within approximately 30 seconds.",
+      "source_citation": "For the little things, it should feel almost instant — a couple of seconds at most before I can move on. If I’m doing a big schedule run, I can tolerate waiting a bit longer, but, um, not forever. Thirty seconds or so for something that builds a whole rotation seems okay; beyond that people start wandering off.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder gives explicit latency targets for small and large operations indicating perceived acceptable response times. This provides concrete performance constraints useful for UI and backend sizing. Gaps: exact definition of 'routine interactions' and how to measure timing (client vs server, network latency, perceived vs measured).",
+      "follow_up_question": "Which specific user actions should meet the 'couple of seconds' target (e.g., search, save, open rotation) and should the times be measured end-to-end for the user or only server-side?"
+    },
+    {
+      "requirement": "The system shall be available during business hours (approximately 09:00–17:00) with uptime of at least 95% during those hours.",
+      "source_citation": "We need it to be there when the office is open. If it goes down a lot, it’s a real problem. ... Sure — hmm — I’d be comfortable with it being available the vast majority of the time, like maybe around ninety-five percent. If it's below that, we’d notice.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "Stakeholder specifies dependency on system being up during office hours and states an explicit availability percentage (~95%). Gaps: whether 95% applies to overall time or only business hours, acceptable maintenance windows, and RTO/RPO expectations for outages.",
+      "follow_up_question": "Should the 95% availability target apply only to business hours (09:00–17:00) or to overall calendar time, and what are acceptable maintenance windows and notification lead times for planned downtime?"
+    },
+    {
+      "requirement": "The system shall support at least 10 concurrent users performing scheduling activities without performance degradation during peak morning periods.",
+      "source_citation": "Definitely mornings. Everyone is checking rosters and making last-minute tweaks before clinicals start. ... On busy mornings, probably around ten of us are working in it at the same time.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "Stakeholder identifies peak concurrency (~10 users) and peak window (mornings), indicating capacity needs for simultaneous edits and UI responsiveness. Gaps: nature of concurrent operations (read vs write), tolerance for queuing, and growth projections beyond current staff.",
+      "follow_up_question": "Please confirm the mix of concurrent operations (e.g., read-heavy vs many concurrent writes/edits) and expected growth in concurrent users over the next 1–3 years."
+    },
+    {
+      "requirement": "The system shall prevent conflicting assignments by performing pre-save validation and by blocking clearly invalid actions (hard stops) and presenting warnings with suggested fixes for borderline cases.",
+      "source_citation": "If it could catch obvious problems before I save, that would save so much time. ... For something clearly wrong it should block you and explain why. For borderline things, a warning with suggested fixes would be nice.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Stakeholder requests inline validation to prevent double-booking and other conflicts, with a combination of hard stops and warnings. This is about preventing user errors and improving workflow. Gaps: precise validation rules, timing (real-time vs on-save), and whether validation must run server-side, client-side, or both.",
+      "follow_up_question": "Which specific validation rules should be enforced as hard stops (e.g., double-booking, out-of-hours shift) versus warnings, and should validation occur in real time as users edit or only on attempted save?"
+    },
+    {
+      "requirement": "The system shall enforce role-based access control so that program administrators have broad/full access while site coordinators and instructors only see information necessary for their roles (e.g., instructors see schedules and contact info but not full student files).",
+      "source_citation": "Program administrators need the full picture — they handle enrollments and progression — but a site coordinator doesn’t need full student files, just the info relevant to the rotation. Instructors might only need class and clinical schedules and maybe contact info for students in their group. It should feel like permissions: broad for admins, narrower for others.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly requests differentiated visibility by role to protect student and site-sensitive information. Gaps: exact permission matrix, administrative delegation, auditing, and whether there are external users (site contacts) with limited access.",
+      "follow_up_question": "Please provide a detailed list of user roles and the specific data fields or modules each role should be able to view, edit, or administer (including external site contacts)."
+    },
+    {
+      "requirement": "The system shall restrict access to sensitive student personal information and site internal notes so only authorized roles can view them.",
+      "source_citation": "Student personal information is sensitive; not every adjunct or site contact should see that. Clinical site details are also sensitive in their own way — some sites don’t want every student or external person to have access to their internal notes.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder emphasizes privacy concerns and the need to limit exposure of PII and site-internal notes—indicates confidentiality requirements. Gaps: regulatory requirements (FERPA, HIPAA), encryption, and data retention policies.",
+      "follow_up_question": "Are there legal or regulatory constraints (e.g., FERPA, HIPAA) that apply to student or site data, and do you require encryption at rest/in transit or audit logging for access to sensitive fields?"
+    },
+    {
+      "requirement": "The system shall provide integration capabilities with existing university systems (registrar, student records, learning platforms) to exchange basic information and avoid retyping.",
+      "source_citation": "It would be great if it could exchange basic info so I’m not retyping the same things. ... It just needs to play nicely with the systems we already use.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 4,
+      "rationale": "Stakeholder requests interoperability to reduce duplicate data entry. This implies APIs, import/export, or connectors. Gaps: data fields to exchange, push vs pull, authentication methods, and whether real-time sync is required.",
+      "follow_up_question": "Which specific systems and data fields should be integrated, what direction should data flow (one-way or two-way), and what authentication methods (e.g., SAML, OAuth, API keys) are required?"
+    },
+    {
+      "requirement": "The system shall validate data formats (e.g., dates) and business rules (e.g., shift within normal clinical hours, site accepts the program) and block or warn on invalid entries to prevent bad data from propagating.",
+      "source_citation": "I want it to stop obvious mistakes, like entering a shift outside normal clinical hours or assigning someone to a site that doesn’t accept that program. Even small things like a bad date format should be caught because once bad data gets in it spreads, and then cleaning it up is a nightmare.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "Stakeholder stresses data quality to avoid costly cleanup; indicates need for format validation and business-rule checking. Gaps: definition of 'normal clinical hours', list of program-site compatibility rules, and expected validation messages.",
+      "follow_up_question": "Can you provide the business rules (normal clinical hours, site-program compatibility) and preferred date/time formats to be enforced, and which errors should be blocked versus warned?"
+    },
+    {
+      "requirement": "The system shall provide notifications via email as the baseline, in-app reminders while users are logged in, and optional SMS for urgent last-minute changes, with controls to limit what is sent to external sites versus internal staff.",
+      "source_citation": "Email is the baseline because that’s what students and sites check. In-app reminders would be great too when you're logged in, and maybe text for urgent last-minute changes. But, um, we’d need to be careful with what's sent to external sites versus internal staff.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Stakeholder identifies preferred notification channels and raises concern about controlling external communication to avoid information leakage. Gaps: opt-in/opt-out preferences, frequency controls, message templates, and cost/consent for SMS.",
+      "follow_up_question": "Which events should trigger each channel (email, in-app, SMS), who can configure notification recipients, and do external recipients require different templates or opt-in consent?"
+    },
+    {
+      "requirement": "The system shall implement automatic saving of edits and provide a mechanism to roll back changes (versioning/undo) and backups to recover lost or corrupted entries.",
+      "source_citation": "So automatic saving and a way to roll back changes would be reassuring. ... one time our old spreadsheet corrupted and we lost a day’s entries; I still get nervous thinking about backups.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 5,
+      "rationale": "Stakeholder requests autosave, rollback, and backups to protect against data corruption and accidental loss; suggests need for recovery features and possibly audit/history. Gaps: granularity of rollback (per-field, per-record, transactional), retention period, and RPO/RTO for backups.",
+      "follow_up_question": "What rollback granularity do you need (single change undo, per-user session, or historical versions), how long should backups/versions be retained, and what are acceptable recovery time objectives?"
+    },
+    {
+      "requirement": "The system shall provide clear, inline warnings and error messages that explain issues and suggest fixes to help non-technical users avoid mistakes, minimizing the need for lengthy training or manuals.",
+      "source_citation": "I’d like it to kind of stop me from doing dumb things — give a clear warning and suggest fixes. ... Most of the folks here aren’t technical — we’re used to simple things. It needs to be intuitive so we don’t dread using it. I mean, I’d prefer that people can pick it up quickly without feeling overwhelmed.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Stakeholder emphasizes need for intuitive UI and helpful messages to reduce training overhead; they prefer short practical training. Gaps: specifics about language, accessibility, localization, and how much guidance vs automation is desired.",
+      "follow_up_question": "Do you have preferred wording/examples for inline messages or any accessibility/localization requirements, and what level of contextual help (tooltips, walkthroughs) would you like?"
+    },
+    {
+      "requirement": "The system shall be tested under realistic peak load scenarios (e.g., busy morning with ~10 concurrent users) to identify failures and ensure reliability under peak usage.",
+      "source_citation": "Test it in a busy morning scenario so you see what breaks. That’s when we’ll really know if it works.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "reliability",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly requests load/peak scenario testing to validate behavior under real-world stress. Gaps: acceptance thresholds for tests, which specific operations to stress-test, and who will run/verify tests.",
+      "follow_up_question": "Which exact workflows should be included in peak-load testing (e.g., simultaneous edits, report generation), and what acceptance criteria (response time, error rate) should be met?"
+    },
+    {
+      "requirement": "The system shall provide audit logging of changes and access so administrators can trace who made edits and when, aiding recovery and investigating mistakes.",
+      "source_citation": "I have to save, close, re-open, and then I’m worried I lost something. ... it should feel responsive ... automatic saving and a way to roll back changes would be reassuring.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 3,
+      "rationale": "While not stated verbatim as 'audit log', the stakeholder's concern about lost changes, backups, and rollbacks implies need for traceability and history to support recovery and accountability. Gaps: explicit request for auditing, retention period, and required log fields.",
+      "follow_up_question": "Do you require audit logs listing user, timestamp, and change details for all schedule edits, and how long should those logs be retained?"
+    },
+    {
+      "requirement": "The system shall allow administrators to configure permissions and the level of information shared with external site contacts to avoid accidental disclosure (e.g., prevent sending full student spreadsheets externally).",
+      "source_citation": "But, um, we’d need to be careful with what's sent to external sites versus internal staff. Lately I’ve sent the wrong spreadsheet one too many times — that was awkward.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "Stakeholder notes risk of accidentally sharing sensitive data externally and requests controls to prevent this; implies need for configurable sharing rules and possibly export restrictions. Gaps: specifics on export controls, approval workflows, and masking fields for externals.",
+      "follow_up_question": "What specific data should be blocked or redacted when sending information to external site contacts, and do you need export approval workflows or automated redaction rules?"
+    },
+    {
+      "requirement": "Training for end users shall consist of a short hands-on session plus a concise cheat sheet and follow-up support for the first week; long manuals should be avoided.",
+      "source_citation": "Ideally a short hands-on session from whoever implements it, and then a quick cheat sheet. ... Follow-up support for the first week would be helpful because questions always pop up. I don’t love long manuals — keep it practical.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Stakeholder indicates preferred training approach and acceptable duration, which informs deployment and change management planning. Gaps: exact duration of session, number of sessions, and success metrics for training.",
+      "follow_up_question": "How long should the hands-on session be, how many attendees per session, and what success criteria (e.g., tasks completed unaided) would indicate training was effective?"
+    },
+    {
+      "requirement": "The system shall prioritize correctness (preventing scheduling conflicts and inaccurate assignments) over aesthetic features like dashboards and reports during initial rollout.",
+      "source_citation": "Preventing conflicts, definitely. Dashboards are nice for a quick view, but if someone shows up at the wrong hospital that’s the real problem. Reports can come later; accuracy comes first.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "other",
+      "confidence": 5,
+      "rationale": "Stakeholder ranks correctness/reliability as the top priority relative to look-and-feel; useful for release planning and feature prioritization. Gaps: which reporting/dashboard features can be deferred and what minimum reporting is required initially.",
+      "follow_up_question": "Which specific reporting or dashboard features are essential in the first release and which can be deferred until accuracy/validation features are established?"
+    }
+  ]
+}

@@ -1,0 +1,117 @@
+{
+  "transcript_file": "outputs/corpus-20260226_162106/transcript_6_re_novice_stakeholder_technical_junior_20260226_163609.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_183027",
+  "requirements": [
+    {
+      "requirement": "The system should be portable across any OS that can run Java.",
+      "source_citation": "My gut says it should run wherever Java can run. We've been treating it as OS-agnostic because we don’t use native code, so as long as you can install a JRE or JDK you can run the server pieces. That’s been the working assumption, at least.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states that the system should be portable across any OS that can run Java, indicating a clear requirement for portability. The confidence is high due to the explicit statement.",
+      "follow_up_question": "Are there any specific Java versions or configurations that must be supported for portability?"
+    },
+    {
+      "requirement": "The system should support at least eight different browser/version combinations for UI rendering.",
+      "source_citation": "I'd say testing at least several major browsers across platforms makes sense, and aiming to have the UI render correctly in the majority of those is important. I think testing across about eight different browser/version combinations would give decent coverage, and we should expect most of them to display properly — maybe around eighty percent of that set.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need to test across multiple browser/version combinations and aims for a high percentage of correct rendering, indicating a clear usability requirement.",
+      "follow_up_question": "Which specific browsers and versions should be included in the testing matrix?"
+    },
+    {
+      "requirement": "Routine interactions should complete within about five seconds, and nearly all tasks should finish within about eight seconds.",
+      "source_citation": "For routine interactions like saving a booking or loading a calendar view, I’d expect most of those to complete within about five seconds. For almost all tasks, say ninety percent, that feels right. And for nearly everything, maybe ninety-eight percent, they should finish within about eight seconds.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder provides specific performance targets for routine interactions and nearly all tasks, indicating a clear performance requirement with high confidence.",
+      "follow_up_question": "Are there any specific tasks or interactions that require even faster response times?"
+    },
+    {
+      "requirement": "The system should handle around a thousand concurrent requests as a starting point.",
+      "source_citation": "We should design for around a thousand concurrent requests as a starting point, and plan to double that by the next release, because usage tends to grow quickly at the office.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a target for concurrent requests, indicating a clear scalability requirement with high confidence.",
+      "follow_up_question": "Are there any specific peak times or usage patterns that should be considered for scalability testing?"
+    },
+    {
+      "requirement": "The system should have near four nines (99.99%) availability.",
+      "source_citation": "It should be very high — like, near four nines — but obviously hardware failures can happen. So aside from server-level crashes, it should practically never be down.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a target for system availability, indicating a clear availability requirement with high confidence.",
+      "follow_up_question": "Are there any specific uptime guarantees or service level agreements (SLAs) that need to be met?"
+    },
+    {
+      "requirement": "Exception logs should include enough context to reproduce issues, including error stack, timestamps, and endpoint failure information.",
+      "source_citation": "They should include enough context to reproduce issues, like the error stack, timestamps, and which endpoint failed, maybe the user ID and tenant context, but anything that could be PII should be handled cautiously.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for detailed exception logs to aid in issue reproduction, indicating a clear maintainability requirement with high confidence.",
+      "follow_up_question": "Are there any specific logging frameworks or tools that should be used for capturing and transmitting logs?"
+    },
+    {
+      "requirement": "Every login should map to an approved account, with no exceptions.",
+      "source_citation": "Yes, every login should map to an approved account. It should be one hundred percent of logons, no exceptions, so we can ensure only authorized people get in.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states that all logins must map to approved accounts, indicating a clear security requirement with very high confidence.",
+      "follow_up_question": "Are there any specific authentication methods or protocols that should be supported for login approval?"
+    },
+    {
+      "requirement": "The system should support different email servers and authentication methods for SMTP.",
+      "source_citation": "So the app needs to be flexible enough to connect to different email servers and negotiate TLS, username/password or other auth as required.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for flexibility in connecting to different email servers and authentication methods, indicating a clear operability requirement with high confidence.",
+      "follow_up_question": "Are there any specific email servers or authentication methods that must be supported?"
+    },
+    {
+      "requirement": "Users should be able to pick their preferred language in their profile or via a selector.",
+      "source_citation": "We built the UI with resource bundles, so users should be able to pick their preferred language in their profile or via a selector.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for language selection by users, indicating a clear usability requirement with high confidence.",
+      "follow_up_question": "Which specific languages should be supported initially, and how should language selection be implemented?"
+    },
+    {
+      "requirement": "The system should be prepared for GDPR-type constraints and have documentation for data handling.",
+      "source_citation": "Also, some customers will want firm compliance with privacy rules, so we should be prepared for GDPR-type constraints and have documentation for data handling.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for compliance with privacy rules and documentation for data handling, indicating a clear legal requirement with high confidence.",
+      "follow_up_question": "Are there any specific GDPR or other regulatory requirements that must be addressed?"
+    }
+  ]
+}

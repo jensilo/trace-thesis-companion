@@ -1,0 +1,172 @@
+{
+  "transcript_file": "outputs/corpus-20260226_162106/transcript_6_re_experienced_stakeholder_nontechnical_manager_20260226_164052.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_183011",
+  "requirements": [
+    {
+      "requirement": "The system should respond to small interactions within five seconds.",
+      "source_citation": "If you force me to be specific, I'd say around five seconds for the quick stuff, maybe slightly longer for heavier operations, but anything much beyond that is risky.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions a five-second response time for small interactions, which is a clear performance requirement. The rationale is supported by the context of user adoption and satisfaction.",
+      "follow_up_question": "What specific interactions are considered 'small' and what are the acceptable response times for those?"
+    },
+    {
+      "requirement": "The system should respond to complex operations within eight seconds.",
+      "source_citation": "For more complex things, like pulling full calendar views or running reports, I’d be comfortable with something under eight seconds most of the time.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies an eight-second response time for complex operations, which is a clear performance requirement. The rationale is supported by the context of user experience and flow.",
+      "follow_up_question": "What specific operations are considered 'complex' and what are the acceptable response times for those?"
+    },
+    {
+      "requirement": "The system should aim for near-continuous availability, targeting four nines of uptime, excluding planned maintenance and major server/catastrophic failures.",
+      "source_citation": "We’re aiming for near-continuous availability — practically no downtime. If pressed, I'd say we should target four nines if possible, excluding planned maintenance and major server/catastrophic failures.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the target uptime and the exclusions, which is a clear availability requirement. The rationale is supported by the context of user trust and reliability.",
+      "follow_up_question": "What are the specific planned maintenance windows and how often do major server/catastrophic failures occur?"
+    },
+    {
+      "requirement": "The system should handle one thousand concurrent requests at launch and be ready to double that in the next major release.",
+      "source_citation": "To be concrete, plan for one thousand concurrent requests at launch. And we need to be ready to double that in the next major release — so two thousand in our roadmap.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the number of concurrent requests the system should handle, which is a clear scalability requirement. The rationale is supported by the context of peak usage and user adoption.",
+      "follow_up_question": "What are the specific peak usage scenarios and how do they map to the number of concurrent requests?"
+    },
+    {
+      "requirement": "The system should be able to handle about ten thousand transactions per hour within a couple of years of launch and scale up to about twenty thousand in the following release cycle.",
+      "source_citation": "I expect the system should be able to handle about ten thousand transactions per hour within a couple of years of launch, and then scale up to about twenty thousand in the following release cycle as more offices adopt it.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the number of transactions per hour the system should handle, which is a clear scalability requirement. The rationale is supported by the context of user adoption and growth.",
+      "follow_up_question": "What are the specific types of transactions and how do they map to the number of transactions per hour?"
+    },
+    {
+      "requirement": "Access to the system should be tightly controlled, with only company employees and externally approved identities allowed to log in.",
+      "source_citation": "Access has to be tightly controlled. Only our employees and external people we explicitly approve should be able to log in and take actions.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the access control requirements, which is a clear security requirement. The rationale is supported by the context of user trust and reliability.",
+      "follow_up_question": "What are the specific processes for approving external identities and how are they managed?"
+    },
+    {
+      "requirement": "The system should support single sign-on (SSO) and integrate with the corporate identity system for employees and approved partners' credentials.",
+      "source_citation": "We'll need to hook into the corporate identity system for employees and support our partners' approved credentials. SSO is a must — people don't want another password.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the SSO and identity integration requirements, which are clear security requirements. The rationale is supported by the context of user convenience and security.",
+      "follow_up_question": "What are the specific identity systems and SSO protocols that need to be supported?"
+    },
+    {
+      "requirement": "The system should support the mainstream browsers that people actually use in the company, with acceptable rendering in about four-fifths of the tested browsers.",
+      "source_citation": "We need to support the mainstream browsers that people actually use in the company. It has to render correctly in most of them... if the product displays properly in about four-fifths of the tested browsers, that would be acceptable.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the browser support requirements, which are clear usability requirements. The rationale is supported by the context of user experience and accessibility.",
+      "follow_up_question": "What are the specific mainstream browsers and versions that need to be supported?"
+    },
+    {
+      "requirement": "The system should integrate with the main on-prem Exchange and cloud providers for email, and be flexible enough to use different SMTP relays per tenant if necessary.",
+      "source_citation": "We use a mix internally, and our partners use different systems too. At launch, it should be able to work with our main on-prem Exchange and cloud providers we use, and be flexible enough to use different SMTP relays per tenant if necessary.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the email integration requirements, which are clear operability requirements. The rationale is supported by the context of user experience and reliability.",
+      "follow_up_question": "What are the specific email systems and SMTP configurations that need to be supported?"
+    },
+    {
+      "requirement": "The system should feel like the company's product, with customizable logos, colors, and basic identity elements.",
+      "source_citation": "It should feel like our product, not a foreign app. The customer must be able to put their logo and align colors and basic identity elements so employees recognize it.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the branding and look and feel requirements, which are clear usability requirements. The rationale is supported by the context of user experience and adoption.",
+      "follow_up_question": "What are the specific branding and customization options that need to be supported?"
+    },
+    {
+      "requirement": "The system should comply with the Americans with Disabilities Act (ADA) and meet WCAG 2.1 at the AA level for accessibility.",
+      "source_citation": "Accessibility is legally and ethically important. We have to comply with the Americans with Disabilities Act, so design and development should meet accepted accessibility standards. If you need a specific technical standard, meeting recognized web accessibility guidelines at a strong level makes sense... aiming for WCAG 2.1 at the AA level is appropriate.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the accessibility requirements, which are clear legal requirements. The rationale is supported by the context of user experience and compliance.",
+      "follow_up_question": "What are the specific accessibility standards and guidelines that need to be followed?"
+    },
+    {
+      "requirement": "The system should be easy to evolve, with new maintenance developers able to integrate routine functionality within a couple of working days in most cases.",
+      "source_citation": "We want the engineering side to be able to add or change small features quickly without spending a week deciphering spaghetti code. New maintenance developers should be able to integrate routine functionality within a couple of working days in most cases, assuming they know our tech stack.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the maintainability requirements, which are clear maintainability requirements. The rationale is supported by the context of developer productivity and cost of change.",
+      "follow_up_question": "What are the specific types of routine functionality and how are they integrated?"
+    },
+    {
+      "requirement": "The system should have dashboards that show live health, including response times, error rates, queue depth, and email delivery problems, and alerts that notify before users are impacted.",
+      "source_citation": "I need dashboards that show live health: response times, error rates, queue depth, and email delivery problems. Alerts should let us know before users are impacted, so the ops team can scale or troubleshoot.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the monitoring and alerting requirements, which are clear operability requirements. The rationale is supported by the context of system reliability and user experience.",
+      "follow_up_question": "What are the specific metrics and thresholds for alerts?"
+    },
+    {
+      "requirement": "The system should support automated self-registration with explicit approval for external users and manual approval for sensitive access.",
+      "source_citation": "We should support a controlled flow. Automated self-registration that requires explicit approval is useful for scale, but for sensitive access I want manual approval.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the provisioning and approval requirements, which are clear security requirements. The rationale is supported by the context of user trust and reliability.",
+      "follow_up_question": "What are the specific processes for automated and manual approval and how are they managed?"
+    },
+    {
+      "requirement": "The system should aim for a good experience on both desktop and mobile browsers, with separate targets for each device category if necessary.",
+      "source_citation": "Hmm, put simply, we want a good experience on both. If forced to pick, I'd say aim for that level per device category, but I can be pragmatic if there are technical constraints. Let’s start with separate targets and we can prioritize which devices matter most.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the browser support requirements for different device categories, which are clear usability requirements. The rationale is supported by the context of user experience and accessibility.",
+      "follow_up_question": "What are the specific desktop and mobile browsers and versions that need to be supported?"
+    }
+  ]
+}

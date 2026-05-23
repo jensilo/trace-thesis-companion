@@ -1,0 +1,141 @@
+{
+  "extraction_file": "outputs/corpus_20260227_105946_mistral-small_trace_20260302_174709/trace_transcript_4_re_novice_stakeholder_technical_senior_20260227_110120.json",
+  "ground_truth_source": "outputs/corpus-20260227_105946/transcript_4_re_novice_stakeholder_technical_senior_20260227_110120.json",
+  "eval_model": "openai/gpt-5-mini",
+  "per_requirement": [
+    {
+      "extracted_requirement": "The application should respond to routine navigations and small queries within five seconds.",
+      "matched_ground_truth": "'The maximum wait time for a user navigating from one screen to another within the Disputes application shall be no more than 5 seconds.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 5,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The application should support 350 concurrent users without performance degradation.",
+      "matched_ground_truth": "'The Disputes application shall support 350 concurrent users without any degradation of performance in the application.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 5,
+      "rationale_quality": 4,
+      "gap_detection_quality": 3,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The application should be essentially always available, with scheduled maintenance windows.",
+      "matched_ground_truth": null,
+      "overlap_score": 1,
+      "overlap_label": "Very Low",
+      "quality_attribute_match": false,
+      "confidence_quality": 2,
+      "rationale_quality": 2,
+      "gap_detection_quality": 4,
+      "is_hit": false,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The application should gate actions based on the user's role and entitlements, integrated with the identity and access management system.",
+      "matched_ground_truth": "'The Disputes application shall ensure that only users with the appropriate access level are allowed to initiate dispute requests.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 5,
+      "rationale_quality": 4,
+      "gap_detection_quality": 3,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The application should follow corporate UI standards for both internal and external-facing components.",
+      "matched_ground_truth": "'The Disputes application shall comply with the corporate standards for user interface creation for internally and externally used applications.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": false,
+      "confidence_quality": 5,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "Every action that affects case state or triggers an external request must be recorded in an audit trail.",
+      "matched_ground_truth": null,
+      "overlap_score": 1,
+      "overlap_label": "Very Low",
+      "quality_attribute_match": false,
+      "confidence_quality": 2,
+      "rationale_quality": 2,
+      "gap_detection_quality": 2,
+      "is_hit": false,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The application should degrade gracefully when backend systems are unavailable, providing clear diagnostics and retry mechanisms.",
+      "matched_ground_truth": null,
+      "overlap_score": 1,
+      "overlap_label": "Very Low",
+      "quality_attribute_match": false,
+      "confidence_quality": 2,
+      "rationale_quality": 2,
+      "gap_detection_quality": 3,
+      "is_hit": false,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The application should ensure data segregation so internal-only fields aren't exposed to merchants or cardmembers.",
+      "matched_ground_truth": null,
+      "overlap_score": 1,
+      "overlap_label": "Very Low",
+      "quality_attribute_match": false,
+      "confidence_quality": 2,
+      "rationale_quality": 2,
+      "gap_detection_quality": 2,
+      "is_hit": false,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The application should use authoritative data from backend systems for core transaction attributes like amount and timestamps.",
+      "matched_ground_truth": "'The Disputes application shall interface with the Statement Database. The Statement Database provides the transaction details to the Disputes System. All transaction details must be obtained from the Statement Database'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": false,
+      "confidence_quality": 5,
+      "rationale_quality": 4,
+      "gap_detection_quality": 3,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The application should facilitate compliance reviews without exposing unnecessary PII to reviewers.",
+      "matched_ground_truth": null,
+      "overlap_score": 1,
+      "overlap_label": "Very Low",
+      "quality_attribute_match": false,
+      "confidence_quality": 2,
+      "rationale_quality": 2,
+      "gap_detection_quality": 3,
+      "is_hit": false,
+      "is_duplicate": false
+    }
+  ],
+  "metrics": {
+    "hit_count": 5,
+    "extracted_count": 10,
+    "ground_truth_count": 10,
+    "precision": 0.5,
+    "recall": 0.5,
+    "f1": 0.5,
+    "quality_attribute_accuracy": 0.6,
+    "avg_confidence": 5.0,
+    "avg_overlap_score": 3.0,
+    "avg_confidence_quality": 3.5,
+    "avg_rationale_quality": 3.0,
+    "avg_gap_detection_quality": 3.1
+  }
+}

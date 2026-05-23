@@ -1,0 +1,160 @@
+Interviewer: Thanks for meeting with me. To start, can you tell me briefly what the main goals are for this conference room and meeting system and who will use it?
+
+Stakeholder: Sure — I think the main goal is straightforward: provide a browser-accessible service so employees and some external partners can book rooms, schedule meetings, and manage equipment without fighting spreadsheets or confusing email chains. We need it to slot into our existing Java ecosystem, so it should run on a standard web/application server and talk to corporate databases and mail systems. My priorities are interoperability, reliability, and security — those are the things that make or break adoption in an enterprise. Oh, and delivery-wise, we should plan for a staged rollout: basics first, then fancier integrations later.
+
+Interviewer: Okay. Who are the primary users and are there secondary users like contractors or partners?
+
+Stakeholder: Primarily internal employees — people who sit in offices and need rooms during the workday. There will also be contractors and some external collaborators who need access sometimes, but their accounts should be handled distinctly from employees. The system must respect the company’s identity requirements for anyone who logs in.
+
+Interviewer: Which systems should it integrate with first? Like directories, email, calendars, databases?
+
+Stakeholder: At minimum it needs to integrate with our identity directory for authentication, with corporate mail servers to send invites and notifications, and with whatever databases we use for persistent data. Calendar integration is desirable, but we can phase it. The critical thing is to use standard interfaces so we’re not stuck with proprietary glue.
+
+Interviewer: Got it. Release targets — rough idea what should be included day one versus later?
+
+Stakeholder: Day one should be the booking flow, room inventory, basic equipment assignment, and notifications. After that we can add federation with partner directories, richer analytics, and scaling for larger loads. We should be explicit about what “after” means in the project plan, but that’s a roadmap discussion.
+
+Interviewer: Given that environment, let’s dig into data and database choices. How should the product work with our databases?
+
+Stakeholder: We need DB-agnosticism at the data access layer. In practice that means using standard Java APIs and an abstraction like a well-defined repository layer or an ORM with dialect support so we can plug in different DB engines. It has to work whether the database runs on the same host as the application or sits across the network in a DB cluster somewhere else. That implies connection pooling, sensible timeouts, and logic to deal with network hiccups. Also, we must be mindful of driver licensing and the test matrix for major platforms.
+
+Interviewer: Which specific database products should we support initially? Do we need cloud DBs too?
+
+Stakeholder: For initial support we should target the usual enterprise systems — things like the major commercial engines as well as popular open-source RDBMS. And yes, managed/cloud offerings should be supported too; many teams will want RDS-style services. We shouldn’t rely on vendor-specific stored-procedures for core features, because that limits portability.
+
+Interviewer: Okay. About the data access strategy — do you have a strong preference, like JDBC versus JPA/Hibernate?
+
+Stakeholder: I’d lean toward JPA with a proven implementation to speed development and maintainability, but keep DAO/Repository boundaries so we can switch strategies if needed. The design must avoid tight coupling to a single vendor API.
+
+Interviewer: You mentioned driver licensing and testing — should we plan a big compatibility test matrix?
+
+Stakeholder: Yes, but we can be pragmatic about it. Cover the major engines and a cloud-managed option for each category to start, then expand as customers demand.
+
+Interviewer: Moving up the stack — what about web/application servers and hosting model?
+
+Stakeholder: The product should be built for a standard Java servlet container or app server. For a lightweight footprint we can use a servlet container like Tomcat; if we need full Java EE services then a full app server like WildFly/JBoss makes sense. Design the services to be stateless where possible so the app tier can scale horizontally behind a load balancer. Containerization is attractive for consistent deployments, but we need to ensure JVM tuning and session management strategies are clear.
+
+Interviewer: Do we need to support both Tomcat and JBoss, or pick one?
+
+Stakeholder: I think we should be flexible; supporting either is fine as long as we document the deployment expectations. Many customers will already have a preferred runtime.
+
+Interviewer: Is Kubernetes or container orchestration a requirement?
+
+Stakeholder: It’s on the roadmap for many teams, and container orchestration is useful for large-scale deployments. But it’s acceptable to support VMs initially as long as the app is stateless and deployment artifacts are container-friendly.
+
+Interviewer: All right. On to performance and scalability — any targets for concurrent usage or response time?
+
+Stakeholder: We have to size for peak usage — mornings and late afternoons are busy when everyone books rooms — so planning for significant concurrency is important. The system should scale horizontally, use aggressive caching for read-heavy flows, and have clear performance budgets per operation. We’ll need load tests to validate assumptions.
+
+Interviewer: How many concurrent requests do we need to plan for now and in a future release?
+
+Stakeholder: Right now we should design for about one thousand concurrent requests, and the next release should double that capacity.
+
+Interviewer: When you say “concurrent requests,” do you mean simultaneous active HTTP requests or logged-in users?
+
+Stakeholder: I mean active simultaneous HTTP requests — the number of requests being processed at the same time during peak minutes. Sessions are a different metric and matter for stateful behavior, but capacity planning should focus on active request concurrency.
+
+Interviewer: And how fast should typical tasks be? Like, how long is too long for a booking or a search?
+
+Stakeholder: It needs to feel snappy — we don’t want people waiting. For the small, routine tasks I’d say most should finish in a handful of seconds; we can define exact targets for QA. Larger reports can run in the background.
+
+Interviewer: Can you be more specific — what do you want as a performance target for routine tasks?
+
+Stakeholder: A reasonable target would be that the vast majority of routine tasks complete within about five seconds, and almost all should complete within a slightly longer window. Those numbers help us set SLIs and load-test goals.
+
+Interviewer: Okay, thanks. On availability — what uptime do we aim for and do we exclude certain failures?
+
+Stakeholder: We aim for very high availability — downtime should be extremely rare. We should clarify what’s excluded, like scheduled maintenance or catastrophic datacenter loss. Architecturally, this pushes us toward active-active patterns, automatic failover for databases, and health checks so traffic doesn't get sent to unhealthy nodes.
+
+Interviewer: Can you give the uptime target as a percent?
+
+Stakeholder: The expectation is basically four nines of availability, excluding certain catastrophic hardware failures. That’s a tough SLA, so we need to agree on what exceptions are acceptable.
+
+Interviewer: Noted. For outages, should we document RTO and RPO?
+
+Stakeholder: Absolutely — we need explicit recovery objectives and runbooks. That’s part of operations readiness.
+
+Interviewer: On security and access control — who should be able to access the product?
+
+Stakeholder: Only company employees or external people who have been explicitly approved should be able to log in. Anonymous access isn’t allowed. The product must integrate with corporate identity systems and support federation for partners. Every authentication should be auditable.
+
+Interviewer: Should every login come from verified company or approved external IDs — like, do we require 100% of logons to be that?
+
+Stakeholder: Yes, every single login should be linked to an approved identity — there shouldn’t be exceptions.
+
+Interviewer: How should we authenticate — AD/LDAP, SAML, OAuth? MFA?
+
+Stakeholder: Integrate with the company’s IdP, which currently supports directory services and federation protocols. MFA should be enforced where the security policy requires it — especially for administrative roles. For external partners, federation works well.
+
+Interviewer: You mentioned audits — how long should auth logs be kept or how detailed?
+
+Stakeholder: We need sufficient detail to investigate incidents: timestamps, user identity, source IP, and the outcome. Retention policies come from security governance, so we should align with those.
+
+Interviewer: Okay. Moving to localization and accessibility: what are the expectations?
+
+Stakeholder: The UI must support multiple languages with a selector so users can pick their preferred language. Strings should be externalized and encoded in UTF-8 so translators can work without code changes. On accessibility, we must comply with applicable laws — in practice that means designing for keyboard-only navigation, ARIA roles, and testing with screen readers. I’d interpret compliance as meeting standard accessibility guidelines used for ADA conformance.
+
+Interviewer: Do we need automatic language detection, or will users choose manually?
+
+Stakeholder: Manual selection is okay to start; we can add auto-detection later if customers want it. Prioritize full UI localization first, then emails and help text.
+
+Interviewer: For accessibility, any specific standard you want targeted?
+
+Stakeholder: Targeting the common level used in enterprise accessibility efforts makes sense, and we should include accessibility acceptance tests as part of QA.
+
+Interviewer: About logging and exception reporting — how should the product handle problems?
+
+Stakeholder: The app should create structured exception logs with correlation IDs and context so we can trace issues. Logs need to be transmitted securely back to our analysis systems for root cause work, and we must be careful to mask sensitive data. Metrics for error rates and response times should feed into alerts.
+
+Interviewer: How should logs be transmitted — push or pull? Any preferred format?
+
+Stakeholder: Secure push is preferable, but we can work with operations teams on a pull model if needed. JSON-structured logs are easiest to parse, but the key point is consistent, secure delivery to whatever central system the company uses.
+
+Interviewer: Okay. For maintainability and development practices — any expectations on design patterns, documentation, and developer onboarding?
+
+Stakeholder: The codebase must follow established design patterns and be modular so maintenance developers can add or change features quickly. We need good unit tests, CI pipelines, static analysis, and clear module READMEs. That will let teams pick up work without a long ramp.
+
+Interviewer: Is there a target for how quickly a maintenance developer should be able to integrate new functionality?
+
+Stakeholder: Yes — the expectation is that a typical maintenance developer should be able to integrate a new feature within a couple of working days in most cases. That informs how we structure APIs and documentation.
+
+Interviewer: Can you quantify "most cases" into a percent and the time window?
+
+Stakeholder: The goal is that about ninety percent of maintenance developers should be able to integrate new functionality within two working days. That should be a measurable target for our onboarding and code quality efforts.
+
+Interviewer: Good to know. A few operational items: how should email notifications and calendar invites be handled?
+
+Stakeholder: Email should be pluggable — support authenticated SMTP relays and handle retries gracefully. Calendar invites should be supported at least as ICS attachments or via calendar APIs later. We need robust error handling for delivery failures and retry queues.
+
+Interviewer: Which email servers or calendar systems must we support initially?
+
+Stakeholder: Start with the common enterprise mail servers in use at our customers and generic SMTP relays. For calendar integrations, prioritize Exchange/Office365 and Google Calendar as later integrations.
+
+Interviewer: For backups and schema migrations, any preferences?
+
+Stakeholder: Use automated schema migration tools and documented backup/restore procedures. Those runbooks are part of the deliverables for operations readiness.
+
+Interviewer: Wrap-up time. Can you confirm the top three priorities you want me to capture and who I should talk to next for details on identity and DB admin?
+
+Stakeholder: Priorities are security and access control, availability and scalability, and DB interoperability — in that order. For identity specifics talk to the security team lead; for DB operational details talk to the DBAs. I can introduce you to both. Also, please produce a draft of acceptance tests for performance and availability so we can iterate.
+
+Interviewer: Okay. Anything else I missed or should follow up on?
+
+Stakeholder: Hmm — you might also want to capture policy constraints like log retention and data masking rules from compliance. And, uh, one small digression: don’t forget the digital signage folks in facilities; they sometimes want a simple read-only feed of room status, which is a different integration pattern. That’s not core, but it comes up and can change API design.
+
+Interviewer: Right. I’ll include those contacts and the draft acceptance tests. When do you want to review the draft requirements?
+
+Stakeholder: Send me the draft in a few days and we’ll schedule a short review. I’ll coordinate with infra and security for the follow-ups.
+
+---
+Selected Requirements:
+1. [NICE.csv line 277] [quality, operability, portability] 'The product must work with most database management systems (DBMS) on the market whether the DBMS is colocated with the product on the same machine or is located on a different machine on the computer network.'
+2. [NICE.csv line 280] [quality, operability] 'The product must make use of web/application server technology. Open source examples include Apache web server Tomcat and the JBoss application server.'
+3. [NICE.csv line 287] [quality, functional, usability] 'The product shall allow the user to select a chosen language from one of the target market countries.'
+4. [NICE.csv line 292] [quality, legal] 'The product shall conform to the Americans with Disabilities Act.'
+5. [NICE.csv line 293] [quality, performance] The response shall be fast enough to avoid interrupting the user's flow of thought. 90% of tasks shall complete within 5 seconds. 98% of tasks shall complete within 8 seconds.'
+6. [NICE.csv line 294] [quality, availability] 'Aside from server failure the software product shall achieve 99.99% up time.'
+7. [NICE.csv line 295] [quality, functional, maintainability] 'The product shall create an exception log of problems encountered within the product for transmission to our company for analysis and resolution.'
+8. [NICE.csv line 296] [quality, scalability] 'The product shall be capable of handling up to 1 000 concurrent requests. This number will increase to 2 000 by Release 2. The concurrency capacity must be able to handle peak scheduling times such as early morning and late afternoon hours.'
+9. [NICE.csv line 307] [quality, maintainability] 'The product must be designed using Design Patterns and coding best practices. 90% of maintenance software developers are able to integrate new functionality into the product with 2 working days.'
+10. [NICE.csv line 315] [quality, security] 'The product shall ensure that only company employees or external users with company-approved user IDs may have product access. 100% of all logons shall be by either company employees or external users with company-approved user IDs.'

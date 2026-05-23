@@ -1,0 +1,183 @@
+{
+  "transcript_file": "outputs/corpus-20260226_162106/transcript_4_re_experienced_stakeholder_technical_junior_20260226_163008.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_182444",
+  "requirements": [
+    {
+      "requirement": "The application should follow a consistent component library and conventions to ensure predictable UI behavior.",
+      "source_citation": "The things that bite us the most are inconsistent UI patterns — like buttons in different places — and, hmm, data coming from different systems where we’re not always sure which is the source of truth.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions inconsistent UI patterns and the need for a consistent component library. This indicates a usability concern related to the predictability and consistency of the user interface.",
+      "follow_up_question": "Can you provide specific examples of UI patterns that are currently inconsistent and how they impact user experience?"
+    },
+    {
+      "requirement": "The application should ensure that search results behave consistently regardless of the integration used last time.",
+      "source_citation": "For example, the search results screen behaves slightly differently depending on which integration was used last time, and that confuses reps.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights functional inconsistencies in search results behavior, which affects usability and user confidence.",
+      "follow_up_question": "Can you provide specific examples of how search results differ based on the integration used and what impact this has on user workflows?"
+    },
+    {
+      "requirement": "The application should ensure that color coding for quick identification is accessible to color-blind users and complies with corporate accessibility rules.",
+      "source_citation": "Reps love color coding; it’s how they triage at a glance. So when they search and get a list, different statuses should be visually distinct. But we can’t rely on color alone because of color-blind users and corporate accessibility rules.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for accessible color coding that complies with corporate accessibility rules, indicating a usability concern.",
+      "follow_up_question": "Can you provide specific guidelines or standards that the application should follow to ensure accessibility for color-blind users?"
+    },
+    {
+      "requirement": "The application should log supervisor overrides with justification and notify the case owner.",
+      "source_citation": "Maybe supervisors get a special permission to 'escalate view' but every time they use it we create an audit record and notify the case owner.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder suggests logging and notifying for supervisor overrides, which is a security measure to ensure accountability and transparency.",
+      "follow_up_question": "Can you provide more details on the audit record format and the notification mechanism for case owners?"
+    },
+    {
+      "requirement": "The application should enforce authorization checks server-side to prevent unauthorized access to cases.",
+      "source_citation": "It’s a mix — sometimes a client-side bug shows a link it shouldn’t, but the real problem is we rely too much on client-side filtering. Server-side enforcement is patchy.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for server-side enforcement to prevent unauthorized access, indicating a security concern.",
+      "follow_up_question": "Can you provide specific examples of incidents where server-side enforcement was lacking and the impact it had?"
+    },
+    {
+      "requirement": "The application should use role-based access control for actions and attribute-based access control for case access.",
+      "source_citation": "Well, I think role-based is simpler to start with — it’s what ops and the identity team are used to. But for fine-grained restrictions like cardholder base, we’ll need attributes.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder suggests a combination of role-based and attribute-based access control, indicating a security concern related to fine-grained access restrictions.",
+      "follow_up_question": "Can you provide more details on the attributes that should be used for fine-grained access control?"
+    },
+    {
+      "requirement": "The application should maintain an audit trail that captures who did what, the before-and-after values, and any reason codes.",
+      "source_citation": "When a rep edits a dispute or applies an adjustment, we need a clear timestamped record that captures who did what, the before-and-after values, and any reason codes.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for a clear audit trail, indicating a security concern related to accountability and traceability.",
+      "follow_up_question": "Can you provide more details on the format and retention period for audit logs?"
+    },
+    {
+      "requirement": "The application should ensure that correspondence templates are stored consistently and can be retrieved for review.",
+      "source_citation": "For correspondence, templates are managed in a separate system and we should pull them in and save copies of what was actually sent to cardmembers or merchants.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for consistent storage and retrieval of correspondence templates, indicating a security concern related to compliance and auditability.",
+      "follow_up_question": "Can you provide more details on the current inconsistencies in correspondence template storage and retrieval?"
+    },
+    {
+      "requirement": "The application should load essential data first and then stream in secondary details asynchronously to meet the five-second response time target.",
+      "source_citation": "We need to design the UI to load essential data first and then stream in secondary details asynchronously, or allow short caching for lists and force real-time reads on the case detail screen.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder suggests a strategy to meet the five-second response time target, indicating a performance concern.",
+      "follow_up_question": "Can you provide more details on the essential data that should be loaded first and the secondary details that can be streamed in asynchronously?"
+    },
+    {
+      "requirement": "The application should have SLAs or known latencies for the Statement, Cardmember, and Merchant services to plan for retries and timeouts.",
+      "source_citation": "We need SLAs from the Statement, Cardmember and Merchant services so we can plan for retries and timeouts.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for SLAs or known latencies, indicating a performance concern related to backend service reliability.",
+      "follow_up_question": "Can you provide more details on the current latencies and reliability issues with the backend services?"
+    },
+    {
+      "requirement": "The application should handle backend failures gracefully by showing stale data banners and preventing inconsistent writes.",
+      "source_citation": "If the Statement DB is down, maybe lists can show cached results with a 'data may be stale' banner and the case detail view should be read-only with clear info about what’s missing and next steps for the rep.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "The stakeholder suggests a strategy for handling backend failures gracefully, indicating a fault tolerance concern.",
+      "follow_up_question": "Can you provide more details on the specific backend failures that need to be handled and the impact on the user experience?"
+    },
+    {
+      "requirement": "The application should implement optimistic locking with conflict resolution to prevent concurrent updates from overwriting each other's changes.",
+      "source_citation": "Optimistic locking feels lighter for the user experience, as long as we handle conflicts with a clear merge UI or a 'someone else changed this' message.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "The stakeholder suggests implementing optimistic locking with conflict resolution, indicating a fault tolerance concern related to concurrent updates.",
+      "follow_up_question": "Can you provide more details on the specific scenarios where concurrent updates are a problem and the impact on the user experience?"
+    },
+    {
+      "requirement": "The application should support a peak of 350 concurrent users with no degradation in performance or error rates.",
+      "source_citation": "Peak happens during business hours when multiple teams are working but also in some overlap windows. I’m not sure exactly, but it’s a few hundred people at the same time during peaks. I remember someone mentioning a specific number during a planning meeting, but I can’t recall it now.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need to support a peak of 350 concurrent users, indicating a scalability concern.",
+      "follow_up_question": "Can you provide more details on the specific performance and error rate thresholds that should be maintained under peak load?"
+    },
+    {
+      "requirement": "The application should have clear ownership for load testing and maintenance windows to ensure consistent performance and availability.",
+      "source_citation": "Historically dev helped, QA owns functional tests, and ops or a performance engineering team ran heavy load tests for big releases. We could use clearer ownership so tests don’t get skipped.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for clear ownership of load testing and maintenance windows, indicating a maintainability concern.",
+      "follow_up_question": "Can you provide more details on the current ownership structure and the impact of unclear ownership on performance and availability?"
+    },
+    {
+      "requirement": "The application should be available around the clock with scheduled maintenance windows clearly defined and communicated.",
+      "source_citation": "The expectation is the app should basically be available around the clock, because reps in different time zones and some night operations rely on it. There are scheduled maintenance windows where we can take it down, but we need those defined and communicated clearly.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for around-the-clock availability with clearly defined maintenance windows, indicating an availability concern.",
+      "follow_up_question": "Can you provide more details on the specific maintenance windows and the impact of downtime on user operations?"
+    },
+    {
+      "requirement": "The application should comply with multi-year retention requirements for audit logs and correspondence.",
+      "source_citation": "Compliance mentioned multi-year retention for some records, but I’d rather confirm with them. I don’t want to guess on legal retention windows.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need to comply with multi-year retention requirements, indicating a legal concern related to audit logs and correspondence.",
+      "follow_up_question": "Can you provide more details on the specific retention periods and the impact of non-compliance on legal and regulatory requirements?"
+    }
+  ]
+}

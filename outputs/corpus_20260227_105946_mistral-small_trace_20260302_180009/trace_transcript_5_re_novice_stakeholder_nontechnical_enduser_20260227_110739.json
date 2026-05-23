@@ -1,0 +1,172 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_5_re_novice_stakeholder_nontechnical_enduser_20260227_110739.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_180055",
+  "requirements": [
+    {
+      "requirement": "The system shall complete parts search queries in less than 15 seconds.",
+      "source_citation": "For the parts search anything longer than, um, say fifteen seconds feels like forever when I'm on the phone.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states that parts search should take less than 15 seconds, indicating a clear performance requirement.",
+      "follow_up_question": "Are there any specific parts search scenarios or data volumes that should be considered for performance testing?"
+    },
+    {
+      "requirement": "The system shall complete facility search queries in less than 8 seconds.",
+      "source_citation": "For finding a preferred repair facility, I expect it to be quicker—maybe eight seconds is reasonable.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states that facility search should take less than 8 seconds, indicating a clear performance requirement.",
+      "follow_up_question": "Are there any specific facility search scenarios or data volumes that should be considered for performance testing?"
+    },
+    {
+      "requirement": "The system shall generate audit reports in less than 10 seconds.",
+      "source_citation": "The audit report needs to be something I can get before I move on. If I have to wait more than, hmm, ten seconds it interrupts my flow.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states that audit reports should be generated in less than 10 seconds, indicating a clear performance requirement.",
+      "follow_up_question": "Are there any specific audit report scenarios or data volumes that should be considered for performance testing?"
+    },
+    {
+      "requirement": "The system shall provide in-context help on at least 90% of screens.",
+      "source_citation": "If I had to guess, maybe help should be available in the vast majority of screens—so users don't get stuck. I mean, ninety percent of the system having in-context help would be brilliant.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states that in-context help should be available on 90% of screens, indicating a clear usability requirement.",
+      "follow_up_question": "What specific types of in-context help (e.g., tooltips, guided tours) would be most useful for users?"
+    },
+    {
+      "requirement": "The system shall be trainable in a maximum of 2 days of onsite, hands-on training.",
+      "source_citation": "It can't be one of those big, drawn-out trainings. Most folks are busy, so it should be short and practical, done onsite with hands-on stuff. I'd say two days of onsite training should get people comfortable, but it should also be obvious enough that people pickup the basics quickly.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states that training should be short and practical, with a maximum of 2 days of onsite training, indicating a clear usability requirement.",
+      "follow_up_question": "What specific training materials or methods would be most effective for users?"
+    },
+    {
+      "requirement": "The system shall integrate directly with the Direct Choice Parts feed to avoid manual updates and sync issues.",
+      "source_citation": "If it doesn't tap into the Choice Parts data directly we'll end up with old availability all the time. I mean, I've been on a call with a shop where they said a part was in stock, but our system didn't show it because someone forgot to update an export. That kills trust. So it needs to use the same feed we rely on now.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the importance of direct integration with the Direct Choice Parts feed, indicating a clear maintainability requirement.",
+      "follow_up_question": "What specific data or updates from the Direct Choice Parts feed are most critical for the system to maintain?"
+    },
+    {
+      "requirement": "The system shall handle concurrent usage during peak times, such as the lunch rush.",
+      "source_citation": "Oh, and I forgot to mention, there's usually a lunch rush where everybody's trying to pull parts at the same time — it's a small thing but it matters.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for the system to handle concurrent usage during peak times, indicating a clear scalability requirement.",
+      "follow_up_question": "What specific peak usage scenarios or user loads should be considered for scalability testing?"
+    },
+    {
+      "requirement": "The system shall provide notifications for part status changes to reduce manual checking.",
+      "source_citation": "Notifications when a part changes status would be good, because I don't want to keep checking.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "other",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for notifications for part status changes, indicating a clear requirement for reducing manual checking.",
+      "follow_up_question": "What specific part status changes or notification methods would be most useful for users?"
+    },
+    {
+      "requirement": "The system shall function offline and allow users to view recent searches with poor cell service.",
+      "source_citation": "Sometimes I'm standing in a parking lot with sketchy cell service, and I just want the app to still let me view recent searches or at least not choke.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "other",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for offline functionality and the ability to view recent searches with poor cell service, indicating a clear requirement for system availability in low-connectivity environments.",
+      "follow_up_question": "What specific offline functionalities or data access methods would be most useful for users?"
+    },
+    {
+      "requirement": "The system shall adhere to the company's UI guidelines to ensure consistency and avoid user confusion.",
+      "source_citation": "If the layout, colors, and controls are different from our other corporate apps people get confused and make mistakes. It should feel like one of our apps so it's intuitive. Also, for compliance and branding it's just easier if it's consistent.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the importance of adhering to the company's UI guidelines, indicating a clear usability requirement.",
+      "follow_up_question": "What specific UI guidelines or design patterns should be prioritized for consistency?"
+    },
+    {
+      "requirement": "The system shall have an uptime of at least 98%.",
+      "source_citation": "If you're asking for a metric, I'd say we need it up almost always, with very little downtime—maybe around ninety-eight percent uptime would be acceptable.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the need for an uptime of at least 98%, indicating a clear availability requirement.",
+      "follow_up_question": "What specific uptime metrics or downtime scenarios should be considered for availability testing?"
+    },
+    {
+      "requirement": "The system shall provide undo or easy correction features to be forgiving of user mistakes.",
+      "source_citation": "Maybe just that it should be forgiving. People make mistakes, so undo or easy corrections are nice.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for the system to be forgiving and provide undo or easy correction features, indicating a clear usability requirement.",
+      "follow_up_question": "What specific undo or correction features would be most useful for users?"
+    },
+    {
+      "requirement": "The system shall not allow cross-company visibility of claims or customer details.",
+      "source_citation": "We absolutely cannot see another insurance company's claims. That would be a nightmare. Each company needs its own space so claims and customer details are private.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the need for data privacy and the prevention of cross-company visibility, indicating a clear security requirement.",
+      "follow_up_question": "What specific data privacy measures or access controls should be implemented to prevent cross-company visibility?"
+    },
+    {
+      "requirement": "The system shall implement role-based access control to restrict data visibility based on user roles.",
+      "source_citation": "Within a company, people should see different things depending on their role—some folks need full view, others only the basics. I don't have the org chart memorized, but you get the idea—no need for everyone to see everything.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the need for role-based access control, indicating a clear security requirement.",
+      "follow_up_question": "What specific roles or access levels should be defined for role-based access control?"
+    },
+    {
+      "requirement": "The system shall not crash on tablets during field use.",
+      "source_citation": "It crashes on my tablet once in a while, which is annoying when I'm standing at a shop.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "reliability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for the system to not crash on tablets during field use, indicating a clear reliability requirement.",
+      "follow_up_question": "What specific tablet models or field use scenarios should be considered for reliability testing?"
+    }
+  ]
+}

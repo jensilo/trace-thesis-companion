@@ -1,0 +1,158 @@
+Interviewer: Thanks for joining. To start, tell me briefly what you've been working on for IzognMovies and what pieces are already in place.
+
+Stakeholder: Yeah, sure — I’ve been on the project about a year now. We have front-end prototypes, a REST API backend, and a separate streaming server that we spin up for content. We already integrated one payment gateway for card payments, and the pre-paid card feature is, uh, half-built — the generation UI exists but the backend redemption flow is still messy. Also there’s an admin console with basic movie metadata management, but analytics are pretty thin right now.
+
+Interviewer: When you say the pre-paid card backend is "messy," can you be more specific? Which part fails or causes the problems?
+
+Stakeholder: Hmm, yeah. The redemption endpoint was rushed; it has a couple of race conditions and sometimes the balance update doesn’t persist if two redemptions happen nearly simultaneously. Also the UI doesn’t handle failures gracefully — it just throws a generic error. So support gets tickets saying "I used my code and it says failed" and we have to manually reconcile. It's annoying.
+
+Interviewer: Who are the primary users you’ve seen so far — region, device types, connection quality?
+
+Stakeholder: Mostly folks across a few African countries and the diaspora — a lot of low-end Android phones, older browsers, and on flaky mobile networks. We also have some users in Europe and North America on good connections. The thing is, many customers are novice internet users; they don’t know browser settings or how to troubleshoot buffering. So the site needs to be forgiving.
+
+Interviewer: You mentioned novice users — what do you mean by that? Can you describe their capabilities or constraints?
+
+Stakeholder: I think of them as people who only use basic apps and get nervous with too many options. They might be on cheap handsets, possibly on slow cellular, and they may get confused by multi-step forms. Hmm, we should probably define that more formally, but in practice it means keep flows simple and not rely on advanced browser features.
+
+Interviewer: Okay. Let's talk about the account creation flow you mentioned. Walk me through the current steps a new user takes to sign up.
+
+Stakeholder: Right now it’s a little clunky. Land on home, click sign up, then a page for personal details, then email verification, then a payment or free-plan selection, then profile setup. So users go through several screens and, well, we see a drop-off at the verification email step a lot. People don’t check email immediately or can’t find the message. We lose them there.
+
+Interviewer: When you say "several screens," roughly how many is that? And is email verification considered a page in your success metric?
+
+Stakeholder: Uh — the current flow is five screens if you count the verification step as a separate screen. For success metrics, I wasn’t sure if verification should count because it’s asynchronous, but from the user’s perspective it’s an extra step that causes abandonment.
+
+Interviewer: If we wanted to reduce abandonment, what would you consider an acceptable maximum number of pages to create an account?
+
+Stakeholder: I think we’d like it to be shorter — ideally no more than four pages. That feels like a threshold product would buy into.
+
+Interviewer: Good. Is social login an option to reduce steps, or do you have concerns about that?
+
+Stakeholder: We can add social logins, but some regions block Google or Facebook or users don’t have those accounts. Also, for older devices the OAuth flows can be bumpy. So social login helps some users but can’t be the only approach.
+
+Interviewer: You said earlier pages felt slow and cause abandonment. What does "too slow" mean to you in practice?
+
+Stakeholder: Users just leave if they wait around a few seconds. I think for the small UI interactions it should feel almost instant. If you press a button and nothing happens for a while, people click back or try again. But I’m a bit hand-wavy about the exact timing.
+
+Interviewer: Can you put a number on "a few seconds"? For the routine page interactions you just described — what's the upper bound you'd accept before people start abandoning?
+
+Stakeholder: Uh, yeah — if pushed, I’d say around five seconds for small things like form submissions or switching pages. Longer than that and we start losing users.
+
+Interviewer: Noted. Now streaming: what are you seeing with initial buffering and rebuffering on the streaming server?
+
+Stakeholder: Buffering is all over the place. On decent connections it’s fine, but in some places initial play can take ages. We thought about adaptive bitrate and CDN, but right now segments are a bit large so startup can feel slow. Users tell us they won’t wait long for a movie to start.
+
+Interviewer: What's "won't wait long"? For initial play, what threshold do you consider acceptable for buffering before playback starts?
+
+Stakeholder: I think the goal we had in mind was that startup buffering shouldn't take more than about ten seconds, plus whatever the user's own connection adds.
+
+Interviewer: Okay. You've mentioned a couple of third-party dependencies — the streaming server and the payment gateway. What happens now when either of those is down?
+
+Stakeholder: If the streaming origin is down, playback fails, obviously. But the website is still running — users can browse, read descriptions, and do account stuff. For the payment gateway, if it’s down card payments fail; right now that prevents some purchases entirely. We do have pre-paid card redemptions that are internal and they usually still work because they don’t go through the gateway, but we’ve had murky behavior with subscription renewals if the gateway is down.
+
+Interviewer: So you expect the site to keep being usable even if those services fail?
+
+Stakeholder: Yeah. I mean, we don’t want the whole website to die because a single third-party has issues. People should still be able to browse, manage their account, and use pre-paid balances if the gateway or streaming origin is flaky. Only the actual playback or live card charges should be affected. That’s the user expectation.
+
+Interviewer: Do you have a target for overall availability the business wants?
+
+Stakeholder: Marketing insisted we aim high. I think the number floating around was ninety-nine point something — specifically, I remember them saying 99.5% as a goal.
+
+Interviewer: Thanks. Let’s dig into payments and security: you said earlier the gateway supports tokenization, but there's talk of storing cards on our servers. What have you been told and what worries you about that?
+
+Stakeholder: Right, so the gateway can vault cards, but product people mentioned that finance wants cards available internally for some recon processes — basically they wanted the data accessible on our side. That sets off alarm bells for me because it drags us into PCI scope. My thought is we should encrypt any card info we store, and only allow a very small number of senior Izogn admins to access it. I don’t love the idea of storing raw card data, but if it’s a requirement we’ll need strong key management and strict access controls.
+
+Interviewer: Who do you mean by "very small number of senior admins"? Can you be specific about roles or titles that should have access?
+
+Stakeholder: Uh, I’d say basically finance leads and a senior ops person — not support agents or junior staff. I’m fuzzy on exact titles, but the idea is a minimal, tightly controlled group. And everything should be logged. We don’t want casual eyeballing of card numbers.
+
+Interviewer: How do you imagine encrypting and managing those keys? Any thoughts on KMS or HSM?
+
+Stakeholder: We’d prefer a managed KMS, like cloud KMS. Using an HSM would be great but might be expensive. The important part is keys not living in app configs, and having rotation and access policies. I’m not an expert though — that’s more for our security lead.
+
+Interviewer: Understood. Back to fraud and abuse: you mentioned bots on signup and suspicious purchases. What sort of protections do you think are necessary?
+
+Stakeholder: We definitely need rate limiting and probably a CAPTCHA on signup because bots are banging the endpoints. For payments we need fraud scoring — some logic to flag big purchases or weird shipping info and maybe block or challenge them. Also a WAF would help for basic filtering. But honestly, we don't want to overwhelm admins with alerts.
+
+Interviewer: You just said "we don't want to overwhelm admins" — earlier you also said the site should notify an administrator at all occurrences of abuse. That sounds contradictory. Can you clarify what you meant by notifying admins "at all occurrences"?
+
+Stakeholder: Ah, yeah, sorry. I guess what I meant at first was that we want to be aware whenever abuse happens, not that every single blocked request should create an alert. Realistically, low-level events could be aggregated, but critical incidents — like a sudden spike in failed payments or a DDoS-level traffic surge — should generate immediate alerts. So we need both aggregate dashboards and urgent notifications for high-severity incidents.
+
+Interviewer: Good clarification. For urgent notifications, which channels should we use — email, SMS, pager — and who gets paged?
+
+Stakeholder: Hmm. Email for summaries, and SMS or a paging tool for critical incidents. The on-call ops person and security lead should get the pager, I think. But we need to tune thresholds so it’s not noisy.
+
+Interviewer: Switching to privacy: how should we present the privacy policy and consent during signup and checkout?
+
+Stakeholder: The policy should be easy to find — a link in the footer on every page. Also before we collect personal data, like at signup or checkout, we should show the policy or at least an explicit notice. We should capture consent during registration and keep a record of which policy version the user agreed to. For cookies and marketing, I think explicit opt-ins are safer — especially for email marketing.
+
+Interviewer: When you say "before we collect personal data," do you mean a banner on the landing page, or a checkbox at the time of signup?
+
+Stakeholder: Ideally both. A banner for general notice and an explicit checkbox at signup or checkout indicating consent, with the policy link right there.
+
+Interviewer: On admin features: besides movie metadata and pre-paid card generation, what operational tools do admins need?
+
+Stakeholder: Admins need the ability to add and remove titles, upload posters and trailers, set pricing, and generate pre-paid codes in bulk. They also need sales reports and some streaming metrics so product can see what’s popular. And security alerts need to be accessible there. Any admin action that affects users or payments should be audited.
+
+Interviewer: Which admin roles should exist? Who does what?
+
+Stakeholder: We haven’t formalized it, but intuitively there should be content people who can manage metadata, finance who can view sales and refunds, and ops/security folks who handle system incidents and have broader access. Again, I’m not an HR or policy person — that needs to be nailed down.
+
+Interviewer: For pre-paid cards, do you have expectations about how they’re generated and redeemed? For example, single-use versus reusable, expiration — anything in mind?
+
+Stakeholder: The current idea is single-use codes for purchases that add credit to a user account. They should be generatable in bulk and downloadable for printing. Expiration is likely, but I don’t know the legal constraints. That’s on product/finance to confirm.
+
+Interviewer: We need to be explicit later, but that’s fine for now. Let's turn to monitoring and acceptance: how should we measure whether performance and availability goals are met?
+
+Stakeholder: We should use a mix of synthetic tests, real user monitoring, and streaming logs. Synthetic can run checks from different regions to catch CDN or origin issues. RUM helps us see actual user experience. For acceptance tests, load tests can validate the infrastructure and synthetic tests can verify startup times. For the usability target, we should run usability studies with novice users and measure success rates. We haven’t decided the exact numbers for those tests yet.
+
+Interviewer: You said earlier that the product should work for most novice users. What proportion would you be happy with as a success criterion?
+
+Stakeholder: Hmm, the marketing team pushed for something concrete — I recall the target being that about ninety percent of novice users should be able to complete core tasks without help.
+
+Interviewer: Ninety percent — good to note. And for performance/availability metrics, you gave five seconds for page interactions and ten seconds for streaming startup. Which percentile should those apply to? Median, 95th?
+
+Stakeholder: We hadn’t settled that. My gut says we should look at the 95th percentile so we’re not just optimizing for the median, but I’d want ops to confirm what's realistic for our hosting setup.
+
+Interviewer: And for uptime, you cited 99.5% — over what period should that be measured, and do we exclude scheduled maintenance windows?
+
+Stakeholder: The 99.5% figure I heard was probably annual, but monthly could be used for monitoring. Scheduled maintenance should be excluded but it needs to be limited and announced. We should define those details with SRE.
+
+Interviewer: A few quick clarifying challenges: you mentioned earlier that "the website shall continue to operate if the streaming server goes down" — earlier you also said browsing and account management should work. Should any of the streaming-related features remain available, like cached trailers or queued playback?
+
+Stakeholder: Yes, showing cached metadata and trailers is useful. Queuing a playback request so the user can be notified later could be helpful, too. Downloads are tricky because of rights. But definitely read-only browsing and account features should stay up.
+
+Interviewer: And if the payment gateway is down, do you want to allow subscription renewals to proceed or be deferred?
+
+Stakeholder: If users have pre-paid balances, let renewals use that. For card-based recurring charges, I think the safe route is to queue retries and inform users. We shouldn’t silently fail a renewal and charge later without notice. Clear messaging is important.
+
+Interviewer: Last area: abuse notifications. You clarified that not every blocked request should page ops. Can you suggest a short set of criteria that would trigger immediate paging versus email summary?
+
+Stakeholder: Immediate paging should be for things like a sustained spike in traffic that looks like DDoS, a sudden flood of failed login attempts across many accounts, or a large pattern of failed payments that looks like fraud. Email summaries can cover daily aggregates of blocked bot attempts or CAPTCHA triggers. We’ll need to tune those thresholds so the pager isn’t abused.
+
+Interviewer: Good. To wrap up — what artifacts can you provide after this session to help me flesh out the spec?
+
+Stakeholder: I can send screenshots of the current signup flow, the API docs we have, the architecture diagram showing the streaming origin and CDN stub, and our current dashboards — though they’re basic. I can also get a list of admin tasks we already implemented. Oh, and note — a bit off-topic — the design team is working on an African-inspired theme; they keep asking for larger hero images which worries me performance-wise. So I’ll include the design mockups too.
+
+Interviewer: Thanks. One follow-up: you mentioned the signup currently takes five screens and we want it under four — and you gave performance thresholds and availability targets. I’ll capture these as candidate SLOs but we’ll need SRE and security to confirm feasibility. Who should I talk to next to lock down PCI and KMS choices?
+
+Stakeholder: Talk to our security lead and the finance manager — they’ve been pushing for the card storage requirement. I’ll introduce you. And also ops for the CDN and monitoring details.
+
+Interviewer: Perfect. I’ll draft a requirements summary with the items we clarified and list the open decisions (PCI storage vs tokenization, exact alert thresholds, admin role definitions, pre-paid card rules) and send it back for review. Anything else you want to add now?
+
+Stakeholder: Just that we should plan a quick usability test early — I can help recruit some novice users locally. Other than that, thanks — and I’ll get those artifacts over. Sorry if I was a bit scattershot; I’m still learning to think in formal requirements.
+
+Interviewer: No problem — that was very helpful. Talk soon.
+
+---
+Selected Requirements:
+1. [NICE.csv line 397] [quality, fault_tolerance, performance] 'Any interface between a user and the automated system shall have a maximum response time of 5 seconds unless noted by an exception below.'
+2. [NICE.csv line 399] [quality, performance] When streaming a movie the buffering time should take no longer than 10 seconds (plus any latency on the user's connection.)'
+3. [NICE.csv line 403] [quality, availability] 'The website shall achieve 99.5% up time.'
+4. [NICE.csv line 405] [quality, availability, fault_tolerance] 'The website shall continue to operate if the streaming server goes down.'
+5. [NICE.csv line 406] [quality, availability, fault_tolerance] 'The website shall continue to operate if the payment gateway goes down.'
+6. [NICE.csv line 401] [quality, security] 'All credit card information will be secured on the server and only accessible by authorized Izogn administrators. Information will be encrypted in the database.'
+7. [NICE.csv line 432] [quality, maintainability, security] 'The website shall protect itself from intentional abuse and notify the administrator at all occurrences.'
+8. [NICE.csv line 434] [quality, functional, security, usability] 'The website shall make its user aware of its information practices before collection data from them via a Privacy Policy accessible on all pages of the website.'
+9. [NICE.csv line 388] [quality, usability] 'The product should be able to be used by 90% of novice users on the Internet.'
+10. [NICE.csv line 389] [quality, look_and_feel, usability] 'Users should only have to navigate through a maximum of 4 pages to create an account with the website.'

@@ -1,0 +1,116 @@
+Interviewer: Thanks for meeting with me. To start broadly — what do you think is the most important thing this site has to get right for customers?
+
+Stakeholder: Hmm, I think — well, it just has to be simple. Like, people who haven't used the internet much should be able to find a movie, pay, and be watching without fuss. I keep imagining someone at a cybercafe or on a slow phone; they shouldn't get lost in a thousand clicks.
+
+Interviewer: When you say "without fuss," can you give an example of what that looks like in practice? Like number of steps, or how long it should take from deciding to watch to actually playing?
+
+Stakeholder: Uh, yeah. I mean, it should be quick. If someone already knows the movie, they shouldn't have to wait ages — maybe a few minutes from click to play. Not a whole afternoon, you know.
+
+Interviewer: A few minutes sounds reasonable. How many minutes exactly would be acceptable, roughly?
+
+Stakeholder: I think three minutes would be the outer limit for a straightforward purchase-and-play flow. If it takes longer than that, it's too clunky for less experienced users.
+
+Interviewer: Got it. About speed — you mentioned not waiting. Are you thinking about page load, search, or the payment flow — or all of it?
+
+Stakeholder: All of it, honestly. The UI interactions should feel snappy so people don't think something broke. Small things like searching or opening a movie detail shouldn't make you stare at a spinner. Big jumps like payment can take a little longer, but overall it should feel fast.
+
+Interviewer: When you say "snappy," how fast do you mean for those small interactions? Is there a point where it's definitely too slow?
+
+Stakeholder: Hmm, yeah. For regular clicks and small requests, if it takes more than a few seconds, users feel annoyed. I'd say around five seconds is when people start to lose patience for simple stuff.
+
+Interviewer: Okay. And for the payment flow you said could be a little slower — any thoughts on acceptable processing delays for card payments?
+
+Stakeholder: Card processing needs to be fast but secure. People abandon if the card keeps hanging. I'd put card authorisation at maybe under, say, fifteen seconds from submit to result. Longer than that and you risk drop-off.
+
+Interviewer: Understood. Switching to streaming itself — how do you expect the playback start to behave? Any pain points you've seen?
+
+Stakeholder: Buffering is a big one. We can't promise users' networks, but the player should get them into the movie quickly. If the initial buffer takes forever, they'll bail or think the file is broken. It should be a matter of seconds — not tens of seconds.
+
+Interviewer: Seconds — can you be more specific on what's acceptable for buffering before playback starts?
+
+Stakeholder: Ten seconds is about the maximum that feels tolerable to me, assuming the user's own connection isn't the problem. If it hits that, we should try to show something like a low-res starter stream quickly.
+
+Interviewer: Good point. About payments: the platform supports credit cards and pre-paid cards, right? How should pre-paid cards work from a user and admin perspective?
+
+Stakeholder: Yeah, pre-paid cards are popular where people don't want to use cards online. From the user side, entering the code and getting access should be as easy as typing a PIN; they shouldn't wrestle with forms. On the admin side, we need a way to generate those codes and track which have been used. It shouldn't be a manual spreadsheet job — that gets messy fast.
+
+Interviewer: How do admins need to see those transactions and cards? Like, do they need to view raw card numbers, or just know which codes were redeemed?
+
+Stakeholder: Hmm, well, sensitive stuff like real card details should be locked down. Admins who manage the platform need transaction visibility for business reasons, but not everyone should be able to read full payment details. Only trusted admins, and the data needs to be protected. Sorry, getting a bit fuzzy — but the point is, keep it secure and restricted.
+
+Interviewer: That makes sense. Are you thinking encryption, or role-based screens, or both?
+
+Stakeholder: Both, I guess. The credit card info shouldn't be sitting in plain text on the database. And access should be limited to a few admin roles — not the person who just answers support calls.
+
+Interviewer: Okay. On the topic of admin capabilities, besides pre-paid cards and transactions, what else should admins be able to do or see?
+
+Stakeholder: Admins should be able to manage the movie catalog, like add or remove titles, update metadata, and see sales. Also, we need daily usage insights — how many streams, where traffic is coming from — because that's what the business will rely on to make decisions. It's annoying when you don't have day-to-day numbers and have to guess.
+
+Interviewer: When you say "see sales," do you mean a high-level dashboard or the ability to drill down into individual sale records?
+
+Stakeholder: I mean both, but if I had to pick one it's critical to have the raw logs somewhere. We should be able to pull up individual movie sale records if there's a dispute or to reconcile revenue. Dashboards are great for quick checks, but the detailed data needs to exist.
+
+Interviewer: Got it. About availability — you mentioned users in different places. How available does the site need to be? Any targets?
+
+Stakeholder: The site needs to be reliable. Downtime kills trust and revenue, especially if people plan to watch something and it fails. We can't be down a lot; the business expects high availability. Not constantly perfect, but pretty close to always up.
+
+Interviewer: "Pretty close" — can you give a percentage target for uptime the business would aim for?
+
+Stakeholder: Hmm, yeah — they talk about near-continuous availability. If I put a number on it, they'd probably expect around ninety-nine and a half percent uptime. That's what I've heard in meetings before.
+
+Interviewer: Thanks. On security and abuse — what kinds of threats worry you and how should the system respond?
+
+Stakeholder: Well, automated abuse is a nightmare. Bots trying to brute-force pre-paid codes, or card testing attacks that spike transactions, or crawlers scraping content — we need protections. Ideally, the system blocks or mitigates attacks and alerts admins when something weird happens. It's annoying when you only find out after damage is done.
+
+Interviewer: And alerts — do you mean emails, dashboards, logs?
+
+Stakeholder: Any of those should work, as long as it's visible and timely. Email's okay for alerts, but a dashboard with recent incidents is helpful when multiple things happen at once.
+
+Interviewer: About user privacy — how should the site communicate its practices to users?
+
+Stakeholder: We should be upfront. A clear privacy policy that people can find before they give us anything. I don't like those hidden pages — make it visible, maybe linked in the footer and during signup. Users should know what data we collect and how we use it.
+
+Interviewer: Should that link be on every page, or just during signup and checkout?
+
+Stakeholder: Uh, yeah, on every page is safer. It's unpredictable who will want to check it and when, so having it everywhere avoids surprises.
+
+Interviewer: Okay. For logging and metrics you mentioned daily stats — what kinds of metrics should be stored day-to-day?
+
+Stakeholder: Daily aggregates like stream counts, revenue, active users — the usual business stuff. But again, it's the ability to look back at daily numbers that matters, so when the marketing team asks "what happened last Tuesday" we can tell them.
+
+Interviewer: When you say "the marketing team," how many people will use those admin dashboards at peak? Just curious for load planning.
+
+Stakeholder: Uh, it's not a huge team. Maybe a handful of people at peak times. They won't all be doing heavy queries constantly, but during reporting windows there could be a few. I'm not great at sizing infra though — that's more ops territory.
+
+Interviewer: No problem. A few more quick things: you mentioned support for novice users — do you have thoughts about design or UI patterns that help them?
+
+Stakeholder: Simplicity is key. Big clear buttons, not too many choices at once, helpful defaults, and an obvious prominent "play" flow. Also the visual style should feel familiar and warm; an African-inspired aesthetic would help users feel at home. Oh, and tooltips and simple error messages — not scary technical text.
+
+Interviewer: That sounds good. Anything about localization or languages?
+
+Stakeholder: Yeah, we'd want local languages for key markets — at least the big ones. Also support for local currencies in the UI helps reduce confusion. Sorry, wandering a bit — but it's important for trust.
+
+Interviewer: No worries. Back to security and access: if only trusted admins can see payment details, how do you see that being enforced? Roles, passwords, two-factor?
+
+Stakeholder: Roles for sure, and stronger authentication for high-privilege accounts. Two-factor seems sensible for those users who can see sensitive data. And of course logs of who accessed what, so we can audit if something looks off.
+
+Interviewer: Final question: any specific operational monitoring or reporting you think is critical from day one?
+
+Stakeholder: Track basic health stuff — server uptime, error rates, and unusual traffic patterns. And daily business stats so the team knows if something's trending up or down. If an alert fires at night, someone should get notified; we can't just find out in the morning after revenue is lost.
+
+Interviewer: Thanks, that helps a lot. I'll take this forward and write up what we've discussed.
+
+Stakeholder: No problem. And, uh, if you need logs or examples of weird bugs we've seen, I can dig up a couple of incidents — like that one time the payment gateway retried and created duplicate records. Little things like that will help shape requirements.
+
+---
+Selected Requirements:
+1. [NICE.csv line 394] [quality, functional, performance, usability] 'The product shall be easy for customers with novice skills on the Internet to purchase and watch streaming movies. Customers should be able to purchase and watch a pre-determined movie in under 3 minutes.'
+2. [NICE.csv line 397] [quality, fault_tolerance, performance] 'Any interface between a user and the automated system shall have a maximum response time of 5 seconds unless noted by an exception below.'
+3. [NICE.csv line 398] [quality, performance] 'When purchasing a streaming movie or pre-paid card via credit card the processing time should have a maximum response time of 15 seconds.'
+4. [NICE.csv line 399] [quality, performance] When streaming a movie the buffering time should take no longer than 10 seconds (plus any latency on the user's connection.)'
+5. [NICE.csv line 401] [quality, security] 'All credit card information will be secured on the server and only accessible by authorized Izogn administrators. Information will be encrypted in the database.'
+6. [NICE.csv line 403] [quality, availability] 'The website shall achieve 99.5% up time.'
+7. [NICE.csv line 432] [quality, maintainability, security] 'The website shall protect itself from intentional abuse and notify the administrator at all occurrences.'
+8. [NICE.csv line 434] [quality, functional, security, usability] 'The website shall make its user aware of its information practices before collection data from them via a Privacy Policy accessible on all pages of the website.'
+9. [NICE.csv line 462] [quality, functional, availability] 'All streaming movie sales will be logged in the database and accessible by the administrator.'
+10. [NICE.csv line 464] [quality, functional, maintainability] 'Daily usage statistics should be logged and accessible by the administrator.'

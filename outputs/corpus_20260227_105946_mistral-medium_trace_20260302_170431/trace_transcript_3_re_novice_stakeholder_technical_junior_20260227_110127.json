@@ -1,0 +1,172 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_3_re_novice_stakeholder_technical_junior_20260227_110127.txt",
+  "model": "mistral/mistral-medium-latest",
+  "timestamp": "20260302_170433",
+  "requirements": [
+    {
+      "requirement": "The system shall restrict access to personal data based on user roles, ensuring only authorized personnel can view sensitive information.",
+      "source_citation": "Program admins need a full view, but site coordinators only need the information relevant to their site... anything sensitive, like social security numbers or medical notes, should be hidden unless you really need it.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for role-based access control and the protection of sensitive information, which are clear security requirements.",
+      "follow_up_question": "What specific roles and permissions are needed for each type of user?"
+    },
+    {
+      "requirement": "The system shall comply with the university’s information policy on privacy.",
+      "source_citation": "There should be clear restrictions so only authorized people can see personal data... follow our university’s information policy on privacy.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need to follow the university’s information policy on privacy, which is a clear security requirement.",
+      "follow_up_question": "Can you provide the specific university information policy on privacy that needs to be followed?"
+    },
+    {
+      "requirement": "The system shall respond to small management tasks within five seconds and generate full term schedules within thirty seconds.",
+      "source_citation": "For the small things... people expect almost immediate feedback... For generating an entire schedule, maybe up to thirty seconds is acceptable.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder provides specific response time expectations for different tasks, which are clear performance requirements.",
+      "follow_up_question": "Are there any specific tasks that are considered small management tasks and full term schedule generation?"
+    },
+    {
+      "requirement": "The system shall support up to ten concurrent users during peak hours (9 AM to 5 PM).",
+      "source_citation": "The whole scheduling team tends to be on it at once in the mornings... about ten people at peak.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies the number of concurrent users and the peak hours, which are clear performance requirements.",
+      "follow_up_question": "Are there any specific tasks that are performed during peak hours that might require additional resources?"
+    },
+    {
+      "requirement": "The system shall have an availability of 95% during working hours.",
+      "source_citation": "It needs to be reliable during working hours... aiming for around ninety-five percent availability.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder provides a specific target for uptime, which is a clear availability requirement.",
+      "follow_up_question": "What are the working hours during which the system needs to be reliable?"
+    },
+    {
+      "requirement": "The system shall be designed to last at least five years of active use.",
+      "source_citation": "This needs to last... plan on at least five years of active use.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies the expected lifespan of the system, which is a clear maintainability requirement.",
+      "follow_up_question": "Are there any specific maintenance tasks or updates that are expected to be performed during these five years?"
+    },
+    {
+      "requirement": "The system shall integrate with CampusConnect using a stable, authorized connection.",
+      "source_citation": "We need a stable, authorized connection [to CampusConnect] rather than manual CSV imports.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies the need for a stable and authorized connection to CampusConnect, which is a clear maintainability requirement.",
+      "follow_up_question": "What specific protocols or methods should be used for the stable, authorized connection to CampusConnect?"
+    },
+    {
+      "requirement": "The system shall support all major HTML browsers (Chrome, Edge, Safari, Firefox).",
+      "source_citation": "It should work in any HTML browser... all the typical ones (Chrome, Edge, Safari, Firefox)... no exotic requirements.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies the need to support all major HTML browsers, which is a clear usability requirement.",
+      "follow_up_question": "Are there any specific browser versions that need to be supported?"
+    },
+    {
+      "requirement": "The system shall include basic integrity checks and validation to catch obvious mistakes.",
+      "source_citation": "Basic integrity checks... validation to catch obvious mistakes (e.g., overlapping dates, double-bookings, cross-checks against master student data).",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies the need for basic integrity checks and validation, which are clear usability requirements.",
+      "follow_up_question": "What specific types of obvious mistakes should the system catch?"
+    },
+    {
+      "requirement": "The system shall provide automatic notifications that are clear and actionable.",
+      "source_citation": "Notifications need to be automatic... clear, actionable, and not spam for tiny tweaks.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies the need for automatic, clear, and actionable notifications, which are clear usability requirements.",
+      "follow_up_question": "What specific events or changes should trigger automatic notifications?"
+    },
+    {
+      "requirement": "The system shall maintain an audit trail of who changed what and when.",
+      "source_citation": "We should have a history of who changed what and when... helps with compliance.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies the need for an audit trail, which is a clear security requirement.",
+      "follow_up_question": "What specific information should be included in the audit trail?"
+    },
+    {
+      "requirement": "The system shall protect private information in line with the organization’s information policy, including controlled access, encryption, and minimal exposure of personal identifiers.",
+      "source_citation": "It must protect private information... controlled access, encryption where required, minimal exposure of personal identifiers.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies the need to protect private information in line with the organization’s information policy, which is a clear security requirement.",
+      "follow_up_question": "What specific encryption methods should be used to protect private information?"
+    },
+    {
+      "requirement": "The system shall be built to support future curriculum updates and more cohorts.",
+      "source_citation": "It should be built so we can support future curriculum updates and maybe more cohorts.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies the need to support future growth, which is a clear scalability requirement.",
+      "follow_up_question": "What specific types of curriculum updates and additional cohorts should the system be prepared to handle?"
+    },
+    {
+      "requirement": "The system shall have a simple and intuitive UI with minimal clicks, clear error messages, and predictable workflows.",
+      "source_citation": "Keep it simple enough that admins who aren't technical can use it without weeks of training... minimal clicks, clear error messages, predictable workflows.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies the need for a simple and intuitive UI, which is a clear usability requirement.",
+      "follow_up_question": "Are there any specific UI elements or workflows that should be simplified or made more intuitive?"
+    },
+    {
+      "requirement": "The system shall include routine backups and a recovery plan to restore to a recent state.",
+      "source_citation": "Backups should be routine... need a way to restore to a recent state... some recovery plan is required.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies the need for routine backups and a recovery plan, which are clear availability requirements.",
+      "follow_up_question": "How frequently should backups be performed, and what specific recovery procedures should be in place?"
+    }
+  ]
+}

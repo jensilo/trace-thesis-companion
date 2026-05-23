@@ -1,0 +1,80 @@
+Interviewer: Hi, thanks for taking the time. Can you tell me, at a high level, what you need from this nursing scheduling and management system?
+
+Stakeholder: Yeah, sure. I think, well, first and foremost it needs to be practical — not some research project. It should let program staff model cohorts and the curriculum, schedule clinicals and classroom sessions, and keep track of who’s where and when. Oh, and it must play nicely with the other university pieces we already use, otherwise we’ll end up retyping things forever. Sorry, that was a bit broad, but those are the main pain points.
+
+Interviewer: Okay, play nicely with other systems — can you say which ones it should connect to or what kinds of integrations you expect?
+
+Stakeholder: Right. We have a couple of systems that are non-negotiable. It needs to talk to CampusConnect — that’s the central coordination hub — and to the student master system so enrollment and student records don’t get out of sync. I mean, if it can pull the roster and push attendance or placements back, that would save a ton of time. Also it should use standard APIs and secure channels; we don't want ad-hoc exports.
+
+Interviewer: Got it. You mentioned security and secure channels. Who should be able to see student personal information in the system?
+
+Stakeholder: Not everyone. Program administrators need comprehensive access, because they’re responsible for progression and exceptions, but clinical site coordinators should only see what’s relevant to placements and student contact info for logistics. Instructors need their class lists and maybe limited student notes, but sensitive stuff should be limited. And, um, audit trails would be good so we can see who looked at what. I think that’s important for accountability.
+
+Interviewer: Makes sense. About the users themselves — how easy should it be for staff to learn the system?
+
+Stakeholder: It should be straightforward. We don’t have time for a week-long onboarding. Ideally people pick it up quickly, you know? The interface needs to be intuitive enough for folks who aren’t technical. If we can train someone in, say, a short hands-on session and they can do basic tasks by the next day, that would be perfect.
+
+Interviewer: By the next day — okay. How responsive should the system feel when staff are doing routine tasks versus heavier things like generating schedules?
+
+Stakeholder: For day-to-day things it just needs to feel snappy. I hate waiting around — clicking and staring at a spinner is already a productivity killer. When it does heavy operations like building full schedules with constraints, those can take a bit longer, but even then we shouldn’t be waiting forever. If you need exact cutoffs for testing, I can give numbers, but the user experience should be fast for small tasks and acceptably timed for the big jobs.
+
+Interviewer: Yes, please — what would you consider acceptable, in seconds, for routine tasks and for schedule generation?
+
+Stakeholder: Hmm, for the small management tasks something like five seconds or less feels instant. For full schedule generation, I’d expect something that finishes within, say, thirty seconds. That way people can iterate without losing momentum.
+
+Interviewer: Thanks. Now, how many people usually work on scheduling at the same time? Any peak hours we should design for?
+
+Stakeholder: The scheduling and admin team tends to all be online in the mornings when cohorts are being reviewed. There’s not the whole campus, just the team — roughly ten of us at peak, and that’s mostly during normal business hours, like nine to five. Outside those hours usage drops off a lot.
+
+Interviewer: Okay. How long do you expect this system to be useful before needing replacement or major overhaul?
+
+Stakeholder: We’re not building something with a two-year shelf life. It should be expected to manage curriculum and scheduling for several years. If you need a specific planning horizon, five years is what we’d hope it can handle without having to replatform.
+
+Interviewer: Understood. What about reliability — how often can it be down for updates or failures?
+
+Stakeholder: It needs to be reliable during our working day. We can tolerate some downtime for maintenance, but the system should be up almost all the time when we’re using it. If you want an SLA figure for procurement, I’d say we should aim for something in the mid-nineties percentage-wise for availability. We can get exact targets in procurement, but that gives you the flavor.
+
+Interviewer: Mid-nineties — can you be specific? What percent uptime should we target?
+
+Stakeholder: Ninety-five percent would be a reasonable target to start with, given scheduled maintenance windows and support realities.
+
+Interviewer: Great. You mentioned audit trails earlier — any other data quality or integrity needs we should be aware of?
+
+Stakeholder: Definitely. We need basic checks so people don’t enter impossible things, like a student assigned to two different concurrent clinicals at the same time or a placement with an end date before the start. Referential integrity with the student master and site lists is important so dangling references don’t proliferate. And simple validation rules and some sanity checks will cut down on the manual clean-up we do now.
+
+Interviewer: That sounds useful. About privacy and compliance: are there specific policies or regulations the system must follow?
+
+Stakeholder: Yes, we must protect private information according to the university’s information policy. That means encryption in transit, sensible storage protections, and access controls. We’re not trying to reinvent HIPAA here, but we do have to treat student data as sensitive and follow the existing institutional rules.
+
+Interviewer: Okay. On notifications — how should the system communicate schedule changes to students, instructors, and clinical sites?
+
+Stakeholder: It should send automated notifications for key events — assignments, cancellations, changes. Email is the baseline, and a push or SMS option would be nice for urgent changes. But importantly, there should be clear, configurable triggers so we don’t spam people. Oh, and a digest option so site coordinators can get daily summaries instead of a dozen single emails. Sorry, tangent — I once had to call a site coordinator because they never got an individual message and it was a mess. We don’t want that again.
+
+Interviewer: No worries. For integrations you mentioned APIs earlier — any expectations about standards, authentication, or the way data is exchanged?
+
+Stakeholder: It should use secure, standard APIs — RESTful endpoints are fine — and authenticate reliably, ideally with the university’s existing identity service. Token-based approaches and mutual TLS for some backend links would be sensible. Also, payloads should be well-formed and versioned so we can evolve without breaking things. I don’t expect a deep dive now, but those are the architectural preferences.
+
+Interviewer: Understood. Who on the technical side will manage those integrations? Is there an internal team?
+
+Stakeholder: Information Services will be involved; they control CampusConnect and the student master. We’ll need their buy-in and probably their keys or service accounts. They’re used to these sorts of projects, so coordination won’t be novel, but it’s essential.
+
+Interviewer: Okay, that gives me a lot to work with. Anything else you think is important that we haven’t touched on?
+
+Stakeholder: One more thing — the solution should be maintainable. We don’t want a black box that only one person can fix. Clear logging, modular components, and decent documentation will save us headaches. Also, flexibility to adapt curriculum changes without code rewrites is critical. And, uh, please make it mobile-friendly at least for viewing schedules; staff and students look at schedules on their phones a lot these days.
+
+Interviewer: Thanks, that’s helpful. I might follow up later with more questions.
+
+Stakeholder: Sure, happy to. And if you need the exact API specs or to talk to Information Services, I can set that up.
+
+---
+Selected Requirements:
+1. [NICE.csv line 71] [quality, usability] 'All of the users shall be able to use the system after one day of training.'
+2. [NICE.csv line 79] [quality, performance] 'The response time of general student management tasks shall take no longer than 5 seconds and the response time of schedule generation shall take no longer than 30 seconds.'
+3. [NICE.csv line 81] [quality, availability] 'The system shall achieve 95% up time.'
+4. [NICE.csv line 83] [quality, availability, scalability] 'The system shall cater to 10 simultaneous users from 9am to 5pm.'
+5. [NICE.csv line 85] [quality, functional, scalability] 'The system shall be expected to manage the nursing program curriculum and class/clinical scheduling for a minimum of 5 years.'
+6. [NICE.csv line 89] [quality, operability] The system shall interface with CampusConnect's central server'
+7. [NICE.csv line 91] [quality, operability] 'The system shall interface with the student master server.'
+8. [NICE.csv line 95] [quality, security] Only authorized users shall have access to students' personal information.'
+9. [NICE.csv line 99] [quality, functional, security] 'The system shall have basic data integrity checking to reduce the possibility of incorrect or invalid data being introduced.'
+10. [NICE.csv line 100] [quality, functional, legal, security] The system shall protect private information in accordance with the organization's information policy.'

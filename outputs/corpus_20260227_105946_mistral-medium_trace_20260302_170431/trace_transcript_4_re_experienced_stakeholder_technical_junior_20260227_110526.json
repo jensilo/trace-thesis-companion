@@ -1,0 +1,150 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_4_re_experienced_stakeholder_technical_junior_20260227_110526.txt",
+  "model": "mistral/mistral-medium-latest",
+  "timestamp": "20260302_170546",
+  "requirements": [
+    {
+      "requirement": "The system shall ensure that transitions between screens, such as moving from a case list to case details, complete within 5 seconds.",
+      "source_citation": "If I'm just moving from a case list to the case detail, I don't want to sit there. I'd say, um, maybe five seconds for those small transitions feels acceptable to me.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states a performance requirement for screen transitions, providing a specific time threshold.",
+      "follow_up_question": "Are there any specific performance metrics or benchmarks we should be aware of for other common tasks?"
+    },
+    {
+      "requirement": "The system shall support up to 350 concurrent users without degradation in performance.",
+      "source_citation": "Design for a few hundred simultaneous users — specifically, three hundred and fifty concurrent users as what we should support without degradation.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "The stakeholder provides a specific number of concurrent users the system should support without performance degradation.",
+      "follow_up_question": "What are the expected usage patterns and peak times for the system?"
+    },
+    {
+      "requirement": "The system shall maintain average and percentile response times for common tasks within acceptable thresholds under peak load.",
+      "source_citation": "We should track both average and percentile response times for common tasks (e.g., opening a case) and an acceptable error rate threshold.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need to track response times and error rates, but does not provide specific thresholds.",
+      "follow_up_question": "What are the acceptable thresholds for response times and error rates?"
+    },
+    {
+      "requirement": "The system shall implement role-based access control (RBAC) with distinct permission tiers: basic rep, senior rep, supervisor, admin, and external partner.",
+      "source_citation": "Maybe a handful of tiers: basic rep, senior rep, supervisor, admin, and an external partner role.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly lists the roles that need to be supported, indicating a clear requirement for RBAC.",
+      "follow_up_question": "What specific permissions and access levels should each role have?"
+    },
+    {
+      "requirement": "The system shall enforce data segregation and access control at the backend level, not relying solely on frontend controls.",
+      "source_citation": "The back end must enforce role-based views, not the front end alone.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder emphasizes the need for backend enforcement of data segregation due to a past security incident.",
+      "follow_up_question": "Are there any specific data elements or fields that require special handling or additional security measures?"
+    },
+    {
+      "requirement": "The system shall maintain an immutable audit log of all actions performed by representatives, including user ID, timestamp, previous and new values, notes, and linkages to outbound items.",
+      "source_citation": "We need to keep a full history of everything a rep does on a case... immutable audit entries.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "auditability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for an immutable audit log with specific details to be recorded.",
+      "follow_up_question": "How long should audit logs be retained, and are there any specific compliance requirements for audit logging?"
+    },
+    {
+      "requirement": "The system shall comply with credit card dispute regulations, including timelines, notice requirements, and record-keeping.",
+      "source_citation": "We have to follow specific credit card dispute regulations (timelines, notice requirements, record-keeping).",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need to comply with regulations but does not provide specific details.",
+      "follow_up_question": "What specific regulations and compliance requirements need to be adhered to?"
+    },
+    {
+      "requirement": "The system shall be available 24/7 with scheduled maintenance windows: Monday through Saturday from 3:00 AM to 4:00 AM Eastern, and Sunday from 1:00 AM to 5:00 AM Eastern.",
+      "source_citation": "Monday through Saturday from 3:00 AM to 4:00 AM Eastern, and on Sunday from 1:00 AM to 5:00 AM Eastern.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder provides specific maintenance windows, indicating clear availability requirements.",
+      "follow_up_question": "Are there any additional availability requirements or service level agreements (SLAs) we should be aware of?"
+    },
+    {
+      "requirement": "The system shall adhere to corporate UI standards for look-and-feel, accessibility, and component usage.",
+      "source_citation": "The UI needs to look and behave like other corporate apps — we keep getting flagged in reviews for mismatched components and accessibility stuff.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need to adhere to corporate UI standards but does not provide specific details.",
+      "follow_up_question": "Are there specific corporate UI standards or guidelines that we need to follow?"
+    },
+    {
+      "requirement": "The system shall minimize the number of clicks and repetitive forms for representatives, pre-filling information from the cardmember database where possible.",
+      "source_citation": "Reps hate extra clicks and repetitive forms — if we can pre-fill stuff from the cardmember DB and keep the flow short, they’ll love us.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need to minimize clicks and repetitive forms, indicating a usability requirement.",
+      "follow_up_question": "Are there specific forms or workflows that are particularly problematic or could benefit from pre-filling information?"
+    },
+    {
+      "requirement": "The system shall ensure reliable status syncs after maintenance windows to avoid stale indicators.",
+      "source_citation": "On Sundays, support teams do manual reconciliation, so reliable status syncs after the longer maintenance window are important.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "reliability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for reliable status syncs after maintenance but does not provide specific details.",
+      "follow_up_question": "What specific status indicators or data elements need to be synced reliably after maintenance?"
+    },
+    {
+      "requirement": "The system shall use caching patterns or batched retrievals to avoid synchronous calls to the statement database under high load.",
+      "source_citation": "The statement DB team warned us against hammering them with synchronous calls during peak; they asked for caching patterns or batched retrievals.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need to use caching or batched retrievals to avoid performance issues but does not provide specific details.",
+      "follow_up_question": "Are there specific caching strategies or batched retrieval methods that we should consider?"
+    },
+    {
+      "requirement": "The system shall validate or re-fetch cached data when formalizing or escalating a dispute to ensure data accuracy.",
+      "source_citation": "Any cached data must be validated or re-fetched when formalizing/escalating a dispute.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "data_freshness",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need to validate or re-fetch cached data but does not provide specific details on how this should be done.",
+      "follow_up_question": "What specific validation or re-fetching mechanisms should be implemented for cached data?"
+    }
+  ]
+}

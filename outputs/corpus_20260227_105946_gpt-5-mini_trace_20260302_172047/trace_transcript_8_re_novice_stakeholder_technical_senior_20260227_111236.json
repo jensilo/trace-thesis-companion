@@ -1,0 +1,205 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_8_re_novice_stakeholder_technical_senior_20260227_111236.txt",
+  "model": "openai/gpt-5-mini",
+  "timestamp": "20260302_172815",
+  "requirements": [
+    {
+      "requirement": "Small interactions (page loads, menu clicks) shall be perceived as instantaneous; any such interaction shall not take longer than 5 seconds to complete from the user's perspective.",
+      "source_citation": "I mean small interactions, things like page loads and menu clicks, should be perceived as instantaneous. To be concrete, if you're looking for a hard number for the small stuff, I'd say anything longer than about five seconds feels slow to me.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly defines perceived performance target for small UI interactions and gives a numeric threshold (5 seconds). This is a clear non-functional performance requirement. Gaps: doesn't specify measurement method (client-side vs server-side), percentiles (p95/p99) or geographic differentiation.",
+      "follow_up_question": "Should the 5-second target be measured at the client (end-to-end) under typical network conditions, and which percentile (e.g., 95th, median) of user requests should meet this threshold?"
+    },
+    {
+      "requirement": "The payment processing step for card-based purchases shall complete within 15 seconds.",
+      "source_citation": "For card-based purchases — whether it's buying a single movie or a pre-paid card using a card — the whole processing step should finish within about fifteen seconds.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder gives an explicit maximum acceptable latency for payment processing. Gaps: does not define retries, what constitutes 'processing step' (authorisation, settlement), nor measurement percentile or actions on exceedance.",
+      "follow_up_question": "Does the 15-second target include external payment gateway round-trips and retries, and which percentile of transactions must meet this (e.g., 99th percentile)?"
+    },
+    {
+      "requirement": "Startup buffering for video playback shall begin playback within 10 seconds (not counting ISP-added latency).",
+      "source_citation": "For startup buffering, aim for no more than about ten seconds before playback begins, not counting whatever latency their ISP adds.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder specifies a numeric target for video startup time and explicitly excludes ISP latency. Gaps: lacks percentile goals, conditions (bitrate/resolution), and measurement location (client-side).",
+      "follow_up_question": "Should the 10-second startup target apply at a specific bitrate/resolution and which percentile of playback starts must meet this (e.g., 95th)?"
+    },
+    {
+      "requirement": "Streaming playback shall use adaptive bitrate and handle high-latency and poor-network conditions to minimize stalls and keep playback smooth.",
+      "source_citation": "Startup buffering needs to be short, and then adaptive bitrate should keep things playing even on poor networks. We also should be mindful that some of our viewers are on high-latency networks, so the playback system has to account for that.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "Stakeholder requires adaptive bitrate streaming and resilience to poor/high-latency networks to preserve playback continuity. Gaps: no specifics on algorithms, target stall rate, or supported codecs/players.",
+      "follow_up_question": "What maximum acceptable rebuffering rate or mean time between stalls should we target (e.g., <1 stall per 10 minutes), and are there preferred streaming protocols or codecs (HLS/DASH, HEVC/AV1)?"
+    },
+    {
+      "requirement": "The site shall remain functional (catalogue, accounts, search, reviews, purchasing where feasible) when the streaming backend is degraded or unavailable; the UI shall display informative messaging and allow queuing of purchases or viewing receipts.",
+      "source_citation": "We don't want the catalogue or account functions to stop just because the streaming backend has a problem. ... at worst we show informative messaging and let users queue purchases or download receipts. Ideally we'd use CDNs and a decoupled streaming tier so the main website isn't tightly coupled to a single streaming node. If the streaming service is down, people should still be able to search, read reviews, and buy content where feasible.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly requires graceful degradation and decoupling so non-streaming features remain available when streaming fails. Gaps: which purchase actions are allowed when streaming is down, acceptable user experience degradation, and SLA during partial outages.",
+      "follow_up_question": "Which specific purchase and account operations must remain writable during a streaming outage, and should queued purchases be auto-processed on recovery or require user confirmation?"
+    },
+    {
+      "requirement": "A failure of the primary payment gateway shall not render the site unusable; the system shall accept pre-paid cards, queue transactions for retry where appropriate, and clearly inform users about payment service issues.",
+      "source_citation": "Again, we should not let a single external payment provider take the whole site offline. We should accept pre-paid cards as an alternate purchase route, queue card transactions for retry where appropriate, and make it clear to users what's happening.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 5,
+      "rationale": "Stakeholder requires redundancy and fallback paths for payments and clear user communication during payment-provider outages. Gaps: how long to queue, retry policy, and consistency/ordering guarantees for deferred payments.",
+      "follow_up_question": "What retry policy and maximum queue duration are acceptable for deferred card transactions, and should users be notified/required to re-confirm queued payments upon recovery?"
+    },
+    {
+      "requirement": "Payment data (credit card details) stored on servers shall be encrypted at rest using AES-256 and keys must be managed by a dedicated key management service; tokenization shall be used so routine operations do not require decrypting primary data.",
+      "source_citation": "We should encrypt card data at rest with a strong algorithm — in our environment I'd specify industry-standard AES-256 for data at rest, and the keys should be managed in a dedicated key management service. ... Tokenization for routine operations is preferable so business flows don't require decrypting the primary data.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder specifies encryption algorithm, KMS use, and preference for tokenization to minimize decrypted access. Gaps: key rotation frequency, encryption in transit, compliance standards (PCI-DSS) not explicitly mentioned but implied.",
+      "follow_up_question": "Do you require PCI-DSS compliance, and what are the key rotation, backup, and multi-region KMS requirements for the encryption keys?"
+    },
+    {
+      "requirement": "Access to raw card details shall be restricted by role-based access control so that only a very small set of administrators can view decrypted card data, and all access to such data shall be audited and monitored.",
+      "source_citation": "Only a very small set of admin roles should ever see raw card details, and everything should be encrypted in storage. Access should be audited so we know who looked at what and when.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder requires RBAC limiting who can see sensitive payment data and that all access is logged. Gaps: definition of 'very small set', separation of duties, retention period for audit logs, and monitoring/alert thresholds.",
+      "follow_up_question": "Which specific admin roles require access to raw card data, and how long must audit logs be retained and monitored for anomalous access?"
+    },
+    {
+      "requirement": "The system shall be designed for high availability with appropriate redundancy and failover and shall target an availability metric of approximately 99.5%.",
+      "source_citation": "So we should design for high availability and measure it, with appropriate redundancy and failover in place. ... I suggest aiming for around ninety-nine and a half percent availability.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "Stakeholder gives a clear availability goal and requests redundancy/failover design. Gaps: measurement window (monthly/annual), allowed maintenance windows, per-component SLAs, and geographic considerations.",
+      "follow_up_question": "Should the 99.5% availability target be measured monthly or yearly, and are there different SLA targets for critical subsystems (e.g., payments vs browse)?"
+    },
+    {
+      "requirement": "The UI and workflows shall be usable by approximately 90% of novice Internet users for common tasks without help.",
+      "source_citation": "If I had to put it as a goal, we should aim so that a very large majority of novice Internet users can complete common tasks without help. Roughly, the benchmark I'd use is that it should be usable by ninety percent of novice users.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "Stakeholder sets a measurable usability benchmark (90% of novice users). Gaps: definition of 'novice Internet users', which 'common tasks' are in scope, and testing methodology (usability testing metrics).",
+      "follow_up_question": "Which specific 'common tasks' should be included in the 90% usability benchmark and what user demographics/regions define 'novice Internet users' for testing?"
+    },
+    {
+      "requirement": "The site shall follow web standards (semantic HTML, W3C recommendations) and use ARIA where appropriate to ensure accessibility and maintainability.",
+      "source_citation": "Absolutely — we should follow web standards and accessibility guidelines. Semantic HTML, W3C recommendations, and ARIA where appropriate are important so screen readers and assistive tech work well. Also, adhering to standards makes the site more maintainable and easier to test.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly mandates adherence to web and accessibility standards for compatibility with assistive tech and maintainability. Gaps: which WCAG level (A/AA/AAA) is expected and any regional legal requirements.",
+      "follow_up_question": "What WCAG conformance level (A/AA/AAA) do you require, and are there any regional accessibility laws we must satisfy?"
+    },
+    {
+      "requirement": "Privacy practices and the privacy policy shall be visible to users before personal data is collected and be easily findable from every page.",
+      "source_citation": "We should be transparent. The privacy practices need to be visible before we collect personal data, and it should be easy to find from anywhere on the site so users aren't surprised. Put it where people expect to see it on every page.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 5,
+      "rationale": "Stakeholder requires proactive visibility of privacy policy and site-wide discoverability. Gaps: exact placement ('where people expect'), language/localization, and consent flow details (opt-in/opt-out).",
+      "follow_up_question": "Should privacy notices be presented inline at each collection point with consent capture, and which languages/regions must the notices cover?"
+    },
+    {
+      "requirement": "Admin UI shall enable operators to manage catalogue, customer accounts, pre-paid cards, and analytics without touching production code, and all admin actions shall respect role-based access controls.",
+      "source_citation": "The admin UI should let operators do those tasks without touching production code. Oh — and everything admin-related has to obey the same access controls I mentioned, so only authorized staff get sensitive views.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Stakeholder requires admin operations via UI (no code changes) and RBAC enforcement for admin actions. Gaps: granularity of roles, audit requirements for admin actions, and acceptable performance of admin operations.",
+      "follow_up_question": "Please list the admin roles and the exact capabilities each role needs, and what audit/logging retention is required for admin actions?"
+    },
+    {
+      "requirement": "Reviews shall be tied to purchase or viewing history to reduce fake reviews, and the system shall support moderation and admin removal of abusive content.",
+      "source_citation": "Also, reviews should be tied to purchase or viewing history so we can reduce fake reviews; that's a policy and a technical design consideration. ... We should let users submit reviews, moderate them, and allow admins to take down abusive content.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "integrity",
+      "confidence": 4,
+      "rationale": "Stakeholder requests integrity controls for reviews linking them to confirmed views/purchases and moderation capabilities. Gaps: exact tie criteria (purchase only, watch %), moderation workflow and SLA for removals.",
+      "follow_up_question": "Should reviews be allowed only from users who purchased the item, or also from users who watched a minimum percentage, and what is the expected moderation turnaround time?"
+    },
+    {
+      "requirement": "The UI/UX shall be optimized for low-bandwidth and limited-data users by defaulting to lower-bitrate previews, using clear typography and patterns that read well under poor connections, and providing obvious controls to switch quality.",
+      "source_citation": "That influences choices like defaulting to lower bitrate previews and giving clear options to switch quality. ... clear typography that reads well in low-bandwidth situations. ... thinking about users who might be on limited data plans",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "Stakeholder emphasizes low-bandwidth sensitivity: default lower bitrate previews, readable typography, and explicit quality controls. Gaps: specific bitrate defaults, thresholds for switching, and locales/data-cost considerations.",
+      "follow_up_question": "What default preview bitrate/resolution should be used for low-bandwidth mode, and should the site auto-detect data-constrained networks or rely on user selection?"
+    },
+    {
+      "requirement": "System observability and maintainability shall be implemented: instrument key services, provide health checks, and enable safe rollbacks and predictable graceful degradation when subsystems fail.",
+      "source_citation": "Maintainability and observability. We should instrument everything, have health checks, and make sure we can roll back safely. Also, the service should degrade gracefully so the user experience is predictable even when subsystems fail.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "Stakeholder requires instrumentation, health checks, rollback capabilities, and graceful degradation for predictable UX during failures. Gaps: which metrics to instrument, alerting thresholds, rollback mechanisms (blue/green, canary), and RTO/RPO targets.",
+      "follow_up_question": "Which specific metrics and traces must be instrumented (e.g., error rates, latency p95/p99), what alert thresholds do you want, and which deployment/rollback strategy should be used?"
+    },
+    {
+      "requirement": "The user interface shall reflect African-inspired modern aesthetics (patterns, layout rhythm, clear typography) as part of the product's UX and branding requirements.",
+      "source_citation": "Oh, and the design should reflect African aesthetics — that matters to our brand, but that’s more on the UX side. ... 'African-inspired modern aesthetic' ... means patterns, rhythm in layout, and clear typography that reads well in low-bandwidth situations.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 4,
+      "rationale": "Stakeholder requests brand-aligned look-and-feel with African-inspired patterns and typography; this is a UX quality requirement. Gaps: concrete style guides, color palettes, and accessibility contrast constraints relative to the aesthetic.",
+      "follow_up_question": "Can you provide a style guide or examples that define the African-inspired patterns, color palettes, and typography constraints we must follow while meeting accessibility contrast requirements?"
+    },
+    {
+      "requirement": "Sensitive actions and access (e.g., viewing/decrypting card data) shall be logged and monitored to provide auditable records of who accessed what and when.",
+      "source_citation": "Access should be audited so we know who looked at what and when.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder requires auditing of sensitive data access; part of security controls. Gaps: log format, retention period, tamper-resistance, monitoring/alerting rules.",
+      "follow_up_question": "What retention period and tamper-resistance level do you require for audit logs, and which events should trigger immediate alerts?"
+    }
+  ]
+}

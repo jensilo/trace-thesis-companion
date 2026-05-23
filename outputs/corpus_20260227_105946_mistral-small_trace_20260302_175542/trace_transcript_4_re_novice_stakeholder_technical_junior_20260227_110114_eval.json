@@ -1,0 +1,141 @@
+{
+  "extraction_file": "outputs/corpus_20260227_105946_mistral-small_trace_20260302_175542/trace_transcript_4_re_novice_stakeholder_technical_junior_20260227_110114.json",
+  "ground_truth_source": "outputs/corpus-20260227_105946/transcript_4_re_novice_stakeholder_technical_junior_20260227_110114.json",
+  "eval_model": "openai/gpt-5-mini",
+  "per_requirement": [
+    {
+      "extracted_requirement": "The disputes app must feel snappy and responsive, with navigation between screens taking less than five seconds.",
+      "matched_ground_truth": "'The maximum wait time for a user navigating from one screen to another within the Disputes application shall be no more than 5 seconds.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The disputes app must handle around three hundred and fifty concurrent users during peak loads without performance degradation.",
+      "matched_ground_truth": "'The Disputes application shall support 350 concurrent users without any degradation of performance in the application.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 5,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The disputes app must be available during all business hours, with maintenance windows scheduled during early morning hours to minimize disruption.",
+      "matched_ground_truth": null,
+      "overlap_score": 1,
+      "overlap_label": "Very Low",
+      "quality_attribute_match": false,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 5,
+      "is_hit": false,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The disputes app must follow the corporate UI guidance to ensure consistency with other internal apps and to minimize confusion for users.",
+      "matched_ground_truth": "'The Disputes application shall comply with the corporate standards for user interface creation for internally and externally used applications.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": false,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The disputes app must preserve context between screens to minimize disruptions during workflows.",
+      "matched_ground_truth": null,
+      "overlap_score": 1,
+      "overlap_label": "Very Low",
+      "quality_attribute_match": false,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 3,
+      "is_hit": false,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The disputes app must provide clear and unambiguous confirmation messages to prevent accidental actions, such as creating duplicate disputes.",
+      "matched_ground_truth": null,
+      "overlap_score": 1,
+      "overlap_label": "Very Low",
+      "quality_attribute_match": false,
+      "confidence_quality": 4,
+      "rationale_quality": 3,
+      "gap_detection_quality": 3,
+      "is_hit": false,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The disputes app must log all meaningful actions and changes, including status changes, chargeback initiations, letter requests, and account adjustments, with timestamps and user IDs.",
+      "matched_ground_truth": null,
+      "overlap_score": 2,
+      "overlap_label": "Low",
+      "quality_attribute_match": false,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 3,
+      "is_hit": false,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The disputes app must ensure that only authorized roles can perform sensitive actions, such as initiating chargebacks or making account adjustments.",
+      "matched_ground_truth": "'The Disputes application shall ensure that only users with the appropriate access level are allowed to initiate dispute requests.'",
+      "overlap_score": 4,
+      "overlap_label": "High",
+      "quality_attribute_match": true,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The disputes app must clearly segregate internal and external users to prevent external users from accessing internal-only notes.",
+      "matched_ground_truth": "'The Disputes application shall ensure that only users with the appropriate access level are allowed to initiate dispute requests.'",
+      "overlap_score": 3,
+      "overlap_label": "Medium",
+      "quality_attribute_match": true,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": true,
+      "is_duplicate": true
+    },
+    {
+      "extracted_requirement": "The disputes app must be predictable and consistent in both visual patterns and backend behavior to help users trust the system.",
+      "matched_ground_truth": "'The Disputes application shall comply with the corporate standards for user interface creation for internally and externally used applications.'",
+      "overlap_score": 3,
+      "overlap_label": "Medium",
+      "quality_attribute_match": false,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 3,
+      "is_hit": true,
+      "is_duplicate": true
+    }
+  ],
+  "metrics": {
+    "hit_count": 4,
+    "extracted_count": 10,
+    "ground_truth_count": 10,
+    "precision": 0.4,
+    "recall": 0.4,
+    "f1": 0.4,
+    "quality_attribute_accuracy": 0.75,
+    "avg_confidence": 4.0,
+    "avg_overlap_score": 3.0,
+    "avg_confidence_quality": 4.1,
+    "avg_rationale_quality": 3.9,
+    "avg_gap_detection_quality": 3.7
+  }
+}

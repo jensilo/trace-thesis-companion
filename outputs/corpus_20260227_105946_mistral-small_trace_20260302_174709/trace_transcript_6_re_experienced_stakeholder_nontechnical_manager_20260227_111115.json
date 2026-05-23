@@ -1,0 +1,150 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_6_re_experienced_stakeholder_nontechnical_manager_20260227_111115.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_174757",
+  "requirements": [
+    {
+      "requirement": "First-time users should complete a simple booking within 5 minutes.",
+      "source_citation": "People shouldn't need a training session to do the basic things... figure it out in just a few minutes.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states that users should be able to figure out the system in a few minutes, and later specifies that 5 minutes is the target for a simple booking. This is a clear usability requirement.",
+      "follow_up_question": "What specific tasks should be included in the 5-minute onboarding scenario?"
+    },
+    {
+      "requirement": "90% of routine tasks should complete within 5 seconds, and 98% within 8 seconds.",
+      "source_citation": "Ninety percent of routine tasks should finish within roughly five seconds... ninety-eight percent within eight seconds.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder provides specific percentages and timeframes for task completion, which are clear performance requirements.",
+      "follow_up_question": "Which specific tasks are considered 'routine' for this percentage target?"
+    },
+    {
+      "requirement": "The system should be usable with screen readers, keyboard navigation, and high-contrast modes, complying with ADA standards.",
+      "source_citation": "Accessibility is non-negotiable... usable with screen readers, keyboard navigation, and high-contrast modes.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for accessibility features and compliance with ADA standards.",
+      "follow_up_question": "Are there any specific ADA compliance levels or guidelines that should be followed?"
+    },
+    {
+      "requirement": "The system should handle 1,000 concurrent requests initially, scaling to 2,000 by the next release.",
+      "source_citation": "The product should handle about a thousand concurrent requests initially... by the next release, roughly double to around two thousand.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder provides specific numbers for concurrent requests, indicating a scalability requirement.",
+      "follow_up_question": "What specific actions or tasks should be supported under these concurrency targets?"
+    },
+    {
+      "requirement": "The system should have near-continuous uptime with a target of 99.99% availability.",
+      "source_citation": "We expect near-continuous uptime... four nines (99.99%) availability.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the target availability percentage.",
+      "follow_up_question": "Are there any specific maintenance windows or planned downtime periods to consider?"
+    },
+    {
+      "requirement": "The system should automatically transmit logs and exceptions to the support team for analysis.",
+      "source_citation": "If invites bounce or the system runs into errors, we want a record... automatic transmission of logs.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for automatic transmission of logs for support and analysis.",
+      "follow_up_question": "What specific types of logs and exceptions should be automatically transmitted?"
+    },
+    {
+      "requirement": "Access to the system should be restricted to company employees and approved external users.",
+      "source_citation": "Access needs to be restricted... only company employees and approved external users.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the need for restricted access.",
+      "follow_up_question": "What specific authentication methods should be used for validating identities?"
+    },
+    {
+      "requirement": "Reporting should respect privacy and access controls to prevent unauthorized calendar visibility.",
+      "source_citation": "Any reporting that exposes personal calendars needs to respect privacy and access controls.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for privacy and access controls in reporting.",
+      "follow_up_question": "What specific role-based access controls should be implemented?"
+    },
+    {
+      "requirement": "The system should have automated alerts for critical failures and a central console for exception collection.",
+      "source_citation": "Automated alerts for critical failures, a central console where exceptions are collected.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for automated alerts and a central console for exceptions.",
+      "follow_up_question": "What specific types of critical failures should trigger automated alerts?"
+    },
+    {
+      "requirement": "The system should support multilingual capabilities for English, Spanish, French, and German at launch.",
+      "source_citation": "We need multilingual support... English, Spanish, French, and German at launch.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "localization",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the need for multilingual support and specifies the languages.",
+      "follow_up_question": "Are there any specific localization standards or guidelines that should be followed?"
+    },
+    {
+      "requirement": "The system should comply with data residency and export rules for different countries.",
+      "source_citation": "We have to make sure data residency and export rules are clear for customers in different countries.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for compliance with data residency and export rules.",
+      "follow_up_question": "What specific data residency and export rules should be considered?"
+    },
+    {
+      "requirement": "The system should provide a smooth onboarding process to ensure quick adoption.",
+      "source_citation": "If we make onboarding clunky, customers lose patience quickly.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the importance of smooth onboarding for customer adoption.",
+      "follow_up_question": "What specific onboarding steps or processes should be streamlined?"
+    },
+    {
+      "requirement": "The system should display room layouts and equipment availability to prevent double-booking.",
+      "source_citation": "When someone searches, they should see rooms with the right layout and the equipment availability baked in.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for equipment visibility to prevent double-booking.",
+      "follow_up_question": "What specific equipment types and room layouts should be displayed?"
+    }
+  ]
+}

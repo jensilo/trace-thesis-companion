@@ -1,0 +1,249 @@
+{
+  "transcript_file": "outputs/corpus-20260226_162106/transcript_5_re_experienced_stakeholder_technical_junior_20260226_163546.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_182944",
+  "requirements": [
+    {
+      "requirement": "The system shall display top matches immediately and then load the rest of the results for parts search to improve perceived performance.",
+      "source_citation": "Showing top matches immediately and then loading the rest would feel much faster.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for progressive rendering to improve perceived performance during parts search. This is a clear indication of a performance-related requirement.",
+      "follow_up_question": "What specific metrics or thresholds should be used to define 'immediately' and 'the rest' in terms of time and number of results?"
+    },
+    {
+      "requirement": "The system shall handle API timeouts gracefully by retrying requests and displaying cached results with a clear message indicating potential staleness.",
+      "source_citation": "Currently if a part record is missing required fields we filter it out server-side, and the UI gets only the clean records. For timeouts we retry a couple of times in the background; if it still fails we show cached results with a little banner saying 'data may be stale.'",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder describes the current behavior for handling API timeouts, which includes retrying requests and displaying cached results. This indicates a performance and reliability requirement.",
+      "follow_up_question": "What is the maximum number of retry attempts that should be made before falling back to cached results?"
+    },
+    {
+      "requirement": "The system shall provide provenance information, including the source and timestamp of parts data, to ensure data trustworthiness.",
+      "source_citation": "Adjusters sometimes ask 'Is this current?' so I think we need provenance info — like where the part came from and a timestamp — so users can trust it.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "data_quality",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for provenance information to ensure users can trust the data. This is a clear indication of a data quality requirement.",
+      "follow_up_question": "What specific provenance information should be displayed to users, and in what format?"
+    },
+    {
+      "requirement": "The system shall store an audit field in the model to trace back to the original feed record in the database for auditing purposes.",
+      "source_citation": "We should store an audit field in the model so you can trace back to the original feed record in the DB.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for an audit field to trace back to the original feed record. This is a clear indication of a maintainability requirement.",
+      "follow_up_question": "What specific information should be included in the audit field, and how should it be structured?"
+    },
+    {
+      "requirement": "The system shall use the corporate-approved front-end framework and design tokens to ensure branding consistency.",
+      "source_citation": "We have to use the corporate component library and design tokens, which is great for branding consistency.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need to use the corporate component library and design tokens for branding consistency. This is a clear indication of a look and feel requirement.",
+      "follow_up_question": "What specific components and design tokens should be used, and are there any exceptions or customizations allowed?"
+    },
+    {
+      "requirement": "The system shall follow accessibility rules, including color contrast and keyboard navigation guidelines, and conduct screen reader testing.",
+      "source_citation": "Accessibility rules are enforced — we follow the color contrast and keyboard navigation guidance, though we could do more screen reader testing.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need to follow accessibility rules and conduct screen reader testing. This is a clear indication of a usability requirement.",
+      "follow_up_question": "What specific accessibility standards and guidelines should be followed, and what is the planned scope for screen reader testing?"
+    },
+    {
+      "requirement": "The system shall provide a simple default view with big buttons and simplified filter controls to improve usability for adjusters.",
+      "source_citation": "Adjusters want big buttons and a simple default view; the current components are sometimes dense. We’ve had to extend a few components to get larger tap targets and simplify the filter controls.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for a simple default view with big buttons and simplified filter controls. This is a clear indication of a usability requirement.",
+      "follow_up_question": "What specific design changes should be made to the default view and filter controls to meet these requirements?"
+    },
+    {
+      "requirement": "The system shall provide two full days of on-site training with exercises and a sandbox to ensure adjusters are comfortable with the system.",
+      "source_citation": "Two full days of on-site training with exercises and a sandbox would be my recommendation based on the pilots and feedback. It gives time for practice and Q&A, and the trainers can cover edge cases.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for two full days of on-site training to ensure adjusters are comfortable with the system. This is a clear indication of a usability requirement.",
+      "follow_up_question": "What specific topics and exercises should be included in the two-day training program?"
+    },
+    {
+      "requirement": "The system shall complete parts search queries within 15 seconds and facility lookup queries within 10 seconds to meet user expectations.",
+      "source_citation": "For parts search, it just needs to feel fast — users get impatient if they stare at a spinner. If pressed, I’d say for a typical parts query, anything above maybe a dozen to fifteen seconds is unacceptable. Facility lookup should be snappier — they expect results in just a few seconds.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for parts search to be completed within 15 seconds and facility lookup within a few seconds. This is a clear indication of a performance requirement.",
+      "follow_up_question": "What specific performance metrics should be used to measure and ensure these response times?"
+    },
+    {
+      "requirement": "The system shall be designed to handle up to 1,500 concurrent active users at peak times with horizontal scaling and stateless services.",
+      "source_citation": "The business has talked about sizing for a few thousand concurrent active users, but the concrete number I’ve heard in planning is roughly fifteen hundred active users at peak, which would really exercise autoscaling and caches.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need to handle up to 1,500 concurrent active users at peak times. This is a clear indication of a scalability requirement.",
+      "follow_up_question": "What specific scaling strategies and technologies should be used to achieve this level of concurrency?"
+    },
+    {
+      "requirement": "The system shall achieve 98% uptime measured monthly, with monitoring and graceful degradation in case of failures.",
+      "source_citation": "The target we were given is ninety-eight percent uptime measured monthly. I know it sounds low compared to three-nines or more, but that’s what was communicated, given the external feed and current ops constraints.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need to achieve 98% uptime measured monthly. This is a clear indication of an availability requirement.",
+      "follow_up_question": "What specific monitoring and graceful degradation strategies should be implemented to achieve this uptime target?"
+    },
+    {
+      "requirement": "The system shall be protected against malicious activity, including denial-of-service attacks, through the use of WAF protections and rate-limiting.",
+      "source_citation": "We put the app behind the corporate API gateway and the CDN, which gives us WAF protections and the ability to do rate-limiting. The platform folks recommended per-IP and per-user rate limits and WAF signatures.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for WAF protections and rate-limiting to protect against malicious activity. This is a clear indication of a security requirement.",
+      "follow_up_question": "What specific WAF rules and rate-limiting thresholds should be implemented to achieve this level of security?"
+    },
+    {
+      "requirement": "The system shall pass regular security scans and penetration tests before production deployment.",
+      "source_citation": "We also have to pass regular security scans and pen tests before production.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need to pass regular security scans and penetration tests. This is a clear indication of a security requirement.",
+      "follow_up_question": "What specific security standards and guidelines should be followed, and what is the planned scope for penetration testing?"
+    },
+    {
+      "requirement": "The system shall use the corporate-approved front-end framework and design tokens to ensure branding consistency.",
+      "source_citation": "We have to use the corporate component library and design tokens, which is great for branding consistency.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need to use the corporate component library and design tokens for branding consistency. This is a clear indication of a look and feel requirement.",
+      "follow_up_question": "What specific components and design tokens should be used, and are there any exceptions or customizations allowed?"
+    },
+    {
+      "requirement": "The system shall follow accessibility rules, including color contrast and keyboard navigation guidelines, and conduct screen reader testing.",
+      "source_citation": "Accessibility rules are enforced — we follow the color contrast and keyboard navigation guidance, though we could do more screen reader testing.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need to follow accessibility rules and conduct screen reader testing. This is a clear indication of a usability requirement.",
+      "follow_up_question": "What specific accessibility standards and guidelines should be followed, and what is the planned scope for screen reader testing?"
+    },
+    {
+      "requirement": "The system shall provide a simple default view with big buttons and simplified filter controls to improve usability for adjusters.",
+      "source_citation": "Adjusters want big buttons and a simple default view; the current components are sometimes dense. We’ve had to extend a few components to get larger tap targets and simplify the filter controls.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for a simple default view with big buttons and simplified filter controls. This is a clear indication of a usability requirement.",
+      "follow_up_question": "What specific design changes should be made to the default view and filter controls to meet these requirements?"
+    },
+    {
+      "requirement": "The system shall provide two full days of on-site training with exercises and a sandbox to ensure adjusters are comfortable with the system.",
+      "source_citation": "Two full days of on-site training with exercises and a sandbox would be my recommendation based on the pilots and feedback. It gives time for practice and Q&A, and the trainers can cover edge cases.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for two full days of on-site training to ensure adjusters are comfortable with the system. This is a clear indication of a usability requirement.",
+      "follow_up_question": "What specific topics and exercises should be included in the two-day training program?"
+    },
+    {
+      "requirement": "The system shall complete parts search queries within 15 seconds and facility lookup queries within 10 seconds to meet user expectations.",
+      "source_citation": "For parts search, it just needs to feel fast — users get impatient if they stare at a spinner. If pressed, I’d say for a typical parts query, anything above maybe a dozen to fifteen seconds is unacceptable. Facility lookup should be snappier — they expect results in just a few seconds.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for parts search to be completed within 15 seconds and facility lookup within a few seconds. This is a clear indication of a performance requirement.",
+      "follow_up_question": "What specific performance metrics should be used to measure and ensure these response times?"
+    },
+    {
+      "requirement": "The system shall be designed to handle up to 1,500 concurrent active users at peak times with horizontal scaling and stateless services.",
+      "source_citation": "The business has talked about sizing for a few thousand concurrent active users, but the concrete number I’ve heard in planning is roughly fifteen hundred active users at peak, which would really exercise autoscaling and caches.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need to handle up to 1,500 concurrent active users at peak times. This is a clear indication of a scalability requirement.",
+      "follow_up_question": "What specific scaling strategies and technologies should be used to achieve this level of concurrency?"
+    },
+    {
+      "requirement": "The system shall achieve 98% uptime measured monthly, with monitoring and graceful degradation in case of failures.",
+      "source_citation": "The target we were given is ninety-eight percent uptime measured monthly. I know it sounds low compared to three-nines or more, but that’s what was communicated, given the external feed and current ops constraints.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need to achieve 98% uptime measured monthly. This is a clear indication of an availability requirement.",
+      "follow_up_question": "What specific monitoring and graceful degradation strategies should be implemented to achieve this uptime target?"
+    },
+    {
+      "requirement": "The system shall be protected against malicious activity, including denial-of-service attacks, through the use of WAF protections and rate-limiting.",
+      "source_citation": "We put the app behind the corporate API gateway and the CDN, which gives us WAF protections and the ability to do rate-limiting. The platform folks recommended per-IP and per-user rate limits and WAF signatures.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for WAF protections and rate-limiting to protect against malicious activity. This is a clear indication of a security requirement.",
+      "follow_up_question": "What specific WAF rules and rate-limiting thresholds should be implemented to achieve this level of security?"
+    },
+    {
+      "requirement": "The system shall pass regular security scans and penetration tests before production deployment.",
+      "source_citation": "We also have to pass regular security scans and pen tests before production.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need to pass regular security scans and penetration tests. This is a clear indication of a security requirement.",
+      "follow_up_question": "What specific security standards and guidelines should be followed, and what is the planned scope for penetration testing?"
+    }
+  ]
+}

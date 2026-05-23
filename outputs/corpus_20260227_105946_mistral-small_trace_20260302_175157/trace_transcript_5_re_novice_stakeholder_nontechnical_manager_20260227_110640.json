@@ -1,0 +1,150 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_5_re_novice_stakeholder_nontechnical_manager_20260227_110640.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_175246",
+  "requirements": [
+    {
+      "requirement": "The system should be easy to use, with 95% of adjusters and estimators reporting it is easy to use in surveys.",
+      "source_citation": "We aim for something like ninety-five percent of adjusters and estimators reporting that it's easy to use in our surveys.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states a target for usability, which is a clear non-functional requirement. The source citation directly provides the target metric.",
+      "follow_up_question": "What specific usability metrics or methods will be used to measure and ensure the 95% target is met?"
+    },
+    {
+      "requirement": "The recycled parts search should respond within 15 seconds, with a preference for faster response times.",
+      "source_citation": "For the recycled parts search, people told me they'd tolerate up to about fifteen seconds, but they'd prefer it much faster.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder provides a specific performance target for the recycled parts search, indicating a non-functional requirement related to performance.",
+      "follow_up_question": "What are the specific performance benchmarks for different types of searches within the system?"
+    },
+    {
+      "requirement": "The repair facility search should respond within 8 seconds.",
+      "source_citation": "I think under eight seconds is where users stop fidgeting — again, they'd love faster, but that's the practical cutoff.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder provides a specific performance target for the repair facility search, indicating a non-functional requirement related to performance.",
+      "follow_up_question": "What are the specific performance benchmarks for different types of searches within the system?"
+    },
+    {
+      "requirement": "The system should have high availability, with a target of 98% availability over the year.",
+      "source_citation": "The business expects something in the high nineties — around ninety-eight percent availability over the year is what leadership considers acceptable.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states a target for system availability, which is a clear non-functional requirement. The source citation directly provides the target metric.",
+      "follow_up_question": "What are the specific availability requirements during peak business hours, and what measures will be taken to ensure this target is met?"
+    },
+    {
+      "requirement": "The system should handle up to 1,500 concurrent users at peak times.",
+      "source_citation": "We sized it for roughly fifteen hundred concurrent users at peak.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder provides a specific scalability target, indicating a non-functional requirement related to the system's ability to handle concurrent users.",
+      "follow_up_question": "What are the specific performance and scalability benchmarks for different user loads, and what measures will be taken to ensure the system can handle peak loads?"
+    },
+    {
+      "requirement": "The system should ensure data isolation, with each insurance company only able to see their own claims and related data.",
+      "source_citation": "Each company must only see their own claims and related data, period.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states a requirement for data isolation, which is a clear non-functional requirement related to security.",
+      "follow_up_question": "What specific technical measures will be implemented to ensure data isolation and prevent unauthorized access?"
+    },
+    {
+      "requirement": "The system should be protected against denial of service and automated scraping of parts data.",
+      "source_citation": "We have to assume people will try to break or overload things, whether maliciously or by accident. Denial of service or automated scraping of parts data would be bad.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions concerns about security threats, indicating a non-functional requirement related to system security.",
+      "follow_up_question": "What specific security measures will be implemented to protect against denial of service and automated scraping?"
+    },
+    {
+      "requirement": "The system should meet corporate security expectations from day one.",
+      "source_citation": "Security is a shared responsibility, but the product needs to meet corporate security expectations from day one.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need to meet corporate security expectations, indicating a non-functional requirement related to system security.",
+      "follow_up_question": "What specific corporate security standards and expectations must the system meet, and how will compliance be ensured?"
+    },
+    {
+      "requirement": "The system should be deployable and supportable with practical operations, without requiring a special ops team.",
+      "source_citation": "Deployment and support have to be practical. If we build something fancy that requires a special ops team, it'll never fly.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for practical deployment and support, indicating a non-functional requirement related to system maintainability.",
+      "follow_up_question": "What specific operational and support requirements must the system meet, and what measures will be taken to ensure practical deployment and support?"
+    },
+    {
+      "requirement": "The system should provide monitoring and audit trails to show who changed what, for internal reviews and compliance.",
+      "source_citation": "Monitoring and audit trails — we need to be able to show who changed what, both for internal reviews and for compliance.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for monitoring and audit trails, indicating a non-functional requirement related to system maintainability and compliance.",
+      "follow_up_question": "What specific monitoring and audit trail requirements must the system meet, and what measures will be taken to ensure compliance?"
+    },
+    {
+      "requirement": "The system should provide near-real-time or frequently updated parts data to ensure data freshness.",
+      "source_citation": "Freshness matters. If a part is listed but gone in a few hours, that creates bad experiences. So ideally it's near-real-time or updated frequently enough that adjusters trust availability.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for data freshness, indicating a non-functional requirement related to system performance and data management.",
+      "follow_up_question": "What specific data freshness requirements must the system meet, and what measures will be taken to ensure near-real-time or frequent updates?"
+    },
+    {
+      "requirement": "The system should provide offline access for field staff, allowing basic lookups and recent cache functionality when signal is lost.",
+      "source_citation": "Field staff sometimes lose signal at body shops or salvage yards. It would be great to have a resilient experience — at least the basic lookups and recent cache working offline.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "resilience",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for offline access, indicating a non-functional requirement related to system resilience and usability in field conditions.",
+      "follow_up_question": "What specific offline access requirements must the system meet, and what measures will be taken to ensure basic lookups and recent cache functionality?"
+    },
+    {
+      "requirement": "The system should comply with corporate UI look-and-feel guidelines to ensure trust and supportability.",
+      "source_citation": "The user interface has to match our corporate UI patterns so users don't feel like they're in a different universe. It's more than cosmetics; it's about trust and supportability.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need to match corporate UI patterns, indicating a non-functional requirement related to system usability and user experience.",
+      "follow_up_question": "What specific UI guidelines and patterns must the system follow, and how will compliance be ensured?"
+    }
+  ]
+}

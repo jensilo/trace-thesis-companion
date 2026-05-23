@@ -1,0 +1,161 @@
+{
+  "transcript_file": "outputs/corpus-20260226_162106/transcript_6_re_experienced_stakeholder_nontechnical_enduser_20260226_164046.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_183006",
+  "requirements": [
+    {
+      "requirement": "The system should provide immediate, clear feedback on screen when a booking is successful, including the time and attendees.",
+      "source_citation": "I want immediate, clear feedback on screen — a pop-up that says \"reserved\" and shows the time and attendees, not some tiny line at the top.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for immediate and clear feedback on screen for successful bookings, indicating a usability concern.",
+      "follow_up_question": "What specific information should be included in the pop-up feedback to ensure clarity for users?"
+    },
+    {
+      "requirement": "The system should provide immediate feedback on screen when a booking fails, including the reason for the failure.",
+      "source_citation": "If it fails, tell me why — like \"equipment not available\" or \"conflict with recurring meeting\" — so I know what to do next.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for immediate feedback on failures and the reasons behind them, which is a clear usability requirement.",
+      "follow_up_question": "What specific types of failure reasons should the system be prepared to communicate to users?"
+    },
+    {
+      "requirement": "The system should send automatic calendar invites to attendees when a booking is made.",
+      "source_citation": "I expect the system to send the invites automatically. I mean, otherwise people don't show up.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of automatic calendar invites for ensuring attendees show up, which is a usability concern.",
+      "follow_up_question": "What specific calendar systems should the automatic invites be compatible with?"
+    },
+    {
+      "requirement": "The system should retry sending failed calendar invites and notify the user if the invites cannot be delivered.",
+      "source_citation": "If an email fails to send, the system should at least tell me it couldn’t be delivered so I can follow up.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for the system to notify users if calendar invites fail to send, which is a usability concern.",
+      "follow_up_question": "What specific notification mechanism should be used to inform users of failed calendar invites?"
+    },
+    {
+      "requirement": "The system should support integration with Outlook/Exchange and Google Workspace for email and calendar functionality.",
+      "source_citation": "Whatever we build, it has to work with both [Outlook/Exchange and Google], otherwise those teams will complain.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for compatibility with Outlook/Exchange and Google Workspace, which is a portability concern.",
+      "follow_up_question": "Are there any specific versions or configurations of Outlook/Exchange and Google Workspace that the system should be compatible with?"
+    },
+    {
+      "requirement": "The system should complete most small actions within five seconds and almost all actions within eight seconds.",
+      "source_citation": "I’d say a few seconds — maybe five seconds for the normal stuff, and if it’s longer, show me a progress indicator or let me continue doing other things. Actually, to be specific, I’d expect most small actions to complete within five seconds, and almost all within eight seconds.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder provides specific performance targets for action completion times, which is a clear performance requirement.",
+      "follow_up_question": "What specific actions should be prioritized to meet the five-second completion target?"
+    },
+    {
+      "requirement": "The system should be available with an uptime of 99.99% outside of server failure exceptions.",
+      "source_citation": "If I had to pick a number for an SLA conversation, I’d aim for something like \"close to perfect\" — actually, maybe an uptime target that’s significantly above 99.9 percent. [...] Okay, okay, if I have to pick, let's say 99.99% uptime outside of server failure exceptions.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder provides a specific uptime target, indicating a clear availability requirement.",
+      "follow_up_question": "What specific measures will be taken to ensure the system meets the 99.99% uptime target?"
+    },
+    {
+      "requirement": "The system should support multiple languages and locale-aware date formats.",
+      "source_citation": "We have offices in a few countries, so the UI should be available in the users’ languages. Also, the calendar display should match what they're used to, or they'll misread meeting times.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for multi-language support and locale-aware date formats, which is a portability concern.",
+      "follow_up_question": "What specific languages and date formats should the system support?"
+    },
+    {
+      "requirement": "The system should allow users to explicitly select their preferred language.",
+      "source_citation": "I'd like users to be able to pick their language explicitly so they can change it themselves.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for users to be able to select their preferred language, which is a usability concern.",
+      "follow_up_question": "What specific language selection mechanism should be implemented?"
+    },
+    {
+      "requirement": "The system should conform to ADA and WCAG accessibility standards.",
+      "source_citation": "It has to work with screen readers and keyboard-only workflows. High-contrast and scalable fonts would help. I don’t know the exact standards by heart, but we should at least meet the legal expectations — so, conforming to ADA, and I think following WCAG guidelines would be sensible.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for ADA and WCAG compliance, which is a clear accessibility and usability requirement.",
+      "follow_up_question": "What specific ADA and WCAG guidelines should the system adhere to?"
+    },
+    {
+      "requirement": "The system should store user preferences server-side to sync across devices.",
+      "source_citation": "Server-side would be best. I switch between my laptop and a desktop at the office, so syncing would be helpful.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for server-side storage of user preferences, which is a maintainability concern.",
+      "follow_up_question": "What specific user preferences should be stored server-side?"
+    },
+    {
+      "requirement": "The system should handle conflicts and overlapping bookings by suggesting alternatives and notifying affected parties.",
+      "source_citation": "If there's a conflict, tell me right away and suggest alternatives — other rooms, different times, or maybe the same room but without the projector.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for conflict resolution and suggestions for alternatives, which is a fault tolerance concern.",
+      "follow_up_question": "What specific conflict resolution strategies should the system implement?"
+    },
+    {
+      "requirement": "The system should provide a fallback manual process (e.g., phone number, sign-up sheet) during downtime.",
+      "source_citation": "If it’s down, we need a fallback — a posted phone number to call facilities, or a simple manual sign-up sheet at the reception.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for a fallback manual process during system downtime, which is a fault tolerance concern.",
+      "follow_up_question": "What specific fallback mechanisms should be implemented?"
+    },
+    {
+      "requirement": "The system should avoid running maintenance during critical times, such as 3 p.m. during fire alarm tests.",
+      "source_citation": "Oh, and a small tangent — our building sometimes has that weird fire alarm test at 3 p.m., so the system shouldn't try to run maintenance then. That would be chaotic.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need to avoid maintenance during specific critical times, which is an operability concern.",
+      "follow_up_question": "What specific critical times should the system avoid for maintenance?"
+    }
+  ]
+}

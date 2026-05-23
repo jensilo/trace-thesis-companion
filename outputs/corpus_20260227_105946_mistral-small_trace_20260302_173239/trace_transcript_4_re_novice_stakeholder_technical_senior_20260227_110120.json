@@ -1,0 +1,194 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_4_re_novice_stakeholder_technical_senior_20260227_110120.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_173241",
+  "requirements": [
+    {
+      "requirement": "The application must enforce who can do what while keeping a full audit trail for compliance.",
+      "source_citation": "The application must enforce who can do what while keeping a full audit trail for compliance.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "This requirement is explicitly stated and clearly indicates a need for access control and auditability.",
+      "follow_up_question": "What specific roles and permissions need to be defined for the application?"
+    },
+    {
+      "requirement": "It needs to feel responsive. I think, well, reps get frustrated if screens hang; small navigations should be nearly instantaneous.",
+      "source_citation": "It needs to feel responsive. I think, well, reps get frustrated if screens hang; small navigations should be nearly instantaneous.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "This requirement indicates a need for the application to be responsive and performant, but lacks specific metrics.",
+      "follow_up_question": "What specific performance metrics should be used to measure responsiveness?"
+    },
+    {
+      "requirement": "For routine navigations and small queries, let's design for roughly five seconds as the upper bound.",
+      "source_citation": "For routine navigations and small queries, let's design for roughly five seconds as the upper bound.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "This requirement provides a specific performance metric for routine navigations and small queries.",
+      "follow_up_question": "Are there any specific scenarios or user interactions that should be prioritized for performance optimization?"
+    },
+    {
+      "requirement": "Peak concurrency is important because the operations floor can be busy. We should size for a few hundred simultaneous active users so that the system doesn't slow when everyone is working.",
+      "source_citation": "Peak concurrency is important because the operations floor can be busy. We should size for a few hundred simultaneous active users so that the system doesn't slow when everyone is working.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "This requirement indicates a need for the application to handle peak concurrency, but lacks a specific number of users.",
+      "follow_up_question": "What is the exact number of simultaneous active users the system should be designed to handle?"
+    },
+    {
+      "requirement": "Design and load tests should target support for 350 concurrent users without application-level performance degradation.",
+      "source_citation": "Design and load tests should target support for 350 concurrent users without application-level performance degradation.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "This requirement provides a specific target for load testing and performance degradation.",
+      "follow_up_question": "Are there any specific scenarios or user interactions that should be prioritized for load testing?"
+    },
+    {
+      "requirement": "It needs to be essentially always available because cardmembers and merchants can open or escalate matters at any time, and there are external systems that expect availability.",
+      "source_citation": "It needs to be essentially always available because cardmembers and merchants can open or escalate matters at any time, and there are external systems that expect availability.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "This requirement clearly states the need for high availability and provides a rationale for it.",
+      "follow_up_question": "What specific availability targets (e.g., uptime percentage) should the application aim for?"
+    },
+    {
+      "requirement": "The windows we've coordinated with operations are early morning slots, Monday through Saturday, a one-hour window overnight, and a longer window on Sunday mornings.",
+      "source_citation": "The windows we've coordinated with operations are early morning slots, Monday through Saturday, a one-hour window overnight, and a longer window on Sunday mornings.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "This requirement provides specific maintenance windows, but lacks details on how these windows impact availability.",
+      "follow_up_question": "How should the application handle scheduled maintenance windows to minimize disruption?"
+    },
+    {
+      "requirement": "The app should degrade gracefully... We should avoid partial state that can't be reconciled; that's why idempotency, retries, and compensation flows are important.",
+      "source_citation": "The app should degrade gracefully... We should avoid partial state that can't be reconciled; that's why idempotency, retries, and compensation flows are important.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "This requirement indicates a need for graceful degradation and fault tolerance, but lacks specific strategies or metrics.",
+      "follow_up_question": "What specific strategies or metrics should be used to ensure graceful degradation and fault tolerance?"
+    },
+    {
+      "requirement": "Not everyone can. Internal reps have a broader set of actions, while external users — if we expose anything externally — have tighter access.",
+      "source_citation": "Not everyone can. Internal reps have a broader set of actions, while external users — if we expose anything externally — have tighter access.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "This requirement indicates a need for different access levels for internal and external users, but lacks specific details on what actions are allowed.",
+      "follow_up_question": "What specific actions should be allowed for internal reps and external users?"
+    },
+    {
+      "requirement": "Role-based access control is the baseline; we can extend with attribute checks where necessary.",
+      "source_citation": "Role-based access control is the baseline; we can extend with attribute checks where necessary.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "This requirement indicates a need for role-based access control and potential attribute checks, but lacks specific details on how these will be implemented.",
+      "follow_up_question": "What specific roles and attributes should be defined for the application?"
+    },
+    {
+      "requirement": "We need data segregation so internal-only fields aren't exposed to merchants or cardmembers.",
+      "source_citation": "We need data segregation so internal-only fields aren't exposed to merchants or cardmembers.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "This requirement indicates a need for data segregation, but lacks specific details on how this will be implemented.",
+      "follow_up_question": "What specific fields should be segregated and how should this be implemented?"
+    },
+    {
+      "requirement": "The design should facilitate compliance reviews without exposing unnecessary PII to reviewers.",
+      "source_citation": "The design should facilitate compliance reviews without exposing unnecessary PII to reviewers.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 4,
+      "rationale": "This requirement indicates a need for compliance reviews and protection of PII, but lacks specific details on how this will be implemented.",
+      "follow_up_question": "What specific measures should be taken to facilitate compliance reviews and protect PII?"
+    },
+    {
+      "requirement": "Yes, we have to follow corporate UI standards, both for internal tools and anything external-facing so users have a consistent experience.",
+      "source_citation": "Yes, we have to follow corporate UI standards, both for internal tools and anything external-facing so users have a consistent experience.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 4,
+      "rationale": "This requirement indicates a need to follow corporate UI standards, but lacks specific details on what these standards are.",
+      "follow_up_question": "What specific UI standards should be followed for internal and external-facing tools?"
+    },
+    {
+      "requirement": "Every action that affects case state or triggers an external request must be recorded with who performed it, when, and what the payload was, plus any responses.",
+      "source_citation": "Every action that affects case state or triggers an external request must be recorded with who performed it, when, and what the payload was, plus any responses.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 5,
+      "rationale": "This requirement clearly states the need for detailed audit logging and provides specific details on what should be recorded.",
+      "follow_up_question": "What specific actions should be logged and how should this logging be implemented?"
+    },
+    {
+      "requirement": "The audit trail needs to be tamper-evident in practice, kept according to retention policies, and searchable for e-discovery.",
+      "source_citation": "The audit trail needs to be tamper-evident in practice, kept according to retention policies, and searchable for e-discovery.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 5,
+      "rationale": "This requirement clearly states the need for tamper-evident audit trails, retention policies, and searchability for e-discovery.",
+      "follow_up_question": "What specific retention policies and searchability requirements should be implemented?"
+    },
+    {
+      "requirement": "The application should not treat its own copy of those details as the source of truth.",
+      "source_citation": "The application should not treat its own copy of those details as the source of truth.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "data_integrity",
+      "confidence": 4,
+      "rationale": "This requirement indicates a need for the application to rely on authoritative data sources, but lacks specific details on how this will be implemented.",
+      "follow_up_question": "What specific data sources should be considered authoritative and how should this be implemented?"
+    },
+    {
+      "requirement": "For core transaction attributes like amount and timestamps, yes, always authoritative from the statement DB.",
+      "source_citation": "For core transaction attributes like amount and timestamps, yes, always authoritative from the statement DB.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "data_integrity",
+      "confidence": 5,
+      "rationale": "This requirement clearly states the need for authoritative data sources for core transaction attributes.",
+      "follow_up_question": "What specific core transaction attributes should be considered authoritative and how should this be implemented?"
+    }
+  ]
+}

@@ -1,0 +1,139 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_3_re_novice_stakeholder_technical_senior_20260227_110121.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_175544",
+  "requirements": [
+    {
+      "requirement": "The system should respond to routine tasks within 5 seconds and generate full schedules within 30 seconds.",
+      "source_citation": "For day-to-day things it just needs to feel snappy. I hate waiting around — clicking and staring at a spinner is already a productivity killer. For full schedule generation, I’d expect something that finishes within, say, thirty seconds.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the desired response times for routine tasks and schedule generation, indicating a clear performance requirement.",
+      "follow_up_question": "Are there any specific scenarios or tasks that should be prioritized for performance optimization?"
+    },
+    {
+      "requirement": "The system should use standard APIs and secure channels for integrations.",
+      "source_citation": "It should use standard APIs and secure channels; we don't want ad-hoc exports.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for secure and standard APIs, which is a clear security requirement.",
+      "follow_up_question": "Are there any specific security protocols or standards that the system should adhere to?"
+    },
+    {
+      "requirement": "The system should protect private information according to the university’s information policy, including encryption in transit, storage protections, and access controls.",
+      "source_citation": "We must protect private information according to the university’s information policy. That means encryption in transit, sensible storage protections, and access controls.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for encryption, storage protections, and access controls, which are critical security requirements.",
+      "follow_up_question": "Are there any specific encryption standards or access control mechanisms that the university mandates?"
+    },
+    {
+      "requirement": "The system should have an intuitive interface that allows users to pick up basic tasks within a day of training.",
+      "source_citation": "It should be straightforward. We don’t have time for a week-long onboarding. Ideally people pick it up quickly... The interface needs to be intuitive enough for folks who aren’t technical.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for an intuitive interface and quick user onboarding, which are clear usability requirements.",
+      "follow_up_question": "Are there any specific usability guidelines or standards that the system should follow?"
+    },
+    {
+      "requirement": "The system should be mobile-friendly for viewing schedules.",
+      "source_citation": "And, uh, please make it mobile-friendly at least for viewing schedules; staff and students look at schedules on their phones a lot these days.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for mobile-friendliness, which is a usability requirement.",
+      "follow_up_question": "Are there any specific mobile platforms or devices that the system should be optimized for?"
+    },
+    {
+      "requirement": "The system should have an availability of at least 95% during working hours.",
+      "source_citation": "It needs to be reliable during our working day... Ninety-five percent would be a reasonable target to start with, given scheduled maintenance windows and support realities.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the desired availability percentage, which is a clear reliability requirement.",
+      "follow_up_question": "Are there any specific maintenance windows or downtime schedules that should be considered?"
+    },
+    {
+      "requirement": "The system should be maintainable with clear logging, modular components, and decent documentation.",
+      "source_citation": "The solution should be maintainable. We don’t want a black box that only one person can fix. Clear logging, modular components, and decent documentation will save us headaches.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for maintainability, which is a clear maintainability requirement.",
+      "follow_up_question": "Are there any specific maintainability standards or practices that the system should follow?"
+    },
+    {
+      "requirement": "The system should support up to 10 concurrent users during peak hours.",
+      "source_citation": "The scheduling and admin team tends to all be online in the mornings when cohorts are being reviewed. There’s not the whole campus, just the team — roughly ten of us at peak, and that’s mostly during normal business hours, like nine to five.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the expected number of concurrent users, which is a scalability requirement.",
+      "follow_up_question": "Are there any specific scalability tests or performance benchmarks that the system should meet?"
+    },
+    {
+      "requirement": "The system should include basic checks to prevent impossible entries and ensure referential integrity with the student master and site lists.",
+      "source_citation": "We need basic checks so people don’t enter impossible things... Referential integrity with the student master and site lists is important.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "data_integrity",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for data integrity checks, which is a clear data integrity requirement.",
+      "follow_up_question": "Are there any specific validation rules or integrity constraints that the system should enforce?"
+    },
+    {
+      "requirement": "The system should comply with the university’s information policy for protecting private information.",
+      "source_citation": "We must protect private information according to the university’s information policy. That means encryption in transit, sensible storage protections, and access controls.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "compliance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for compliance with the university’s information policy, which is a clear compliance requirement.",
+      "follow_up_question": "Are there any specific compliance standards or regulations that the system should adhere to?"
+    },
+    {
+      "requirement": "The system should integrate with existing university systems such as CampusConnect and the student master system.",
+      "source_citation": "It must play nicely with the other university pieces we already use, otherwise we’ll end up retyping things forever.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "interoperability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for interoperability with existing systems, which is a clear interoperability requirement.",
+      "follow_up_question": "Are there any specific integration standards or protocols that the system should follow?"
+    },
+    {
+      "requirement": "The system should use secure, standard APIs and authenticate reliably with the university’s existing identity service.",
+      "source_citation": "It should use secure, standard APIs — RESTful endpoints are fine — and authenticate reliably, ideally with the university’s existing identity service.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "interoperability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for secure and standard APIs, which is a clear interoperability requirement.",
+      "follow_up_question": "Are there any specific authentication standards or protocols that the system should adhere to?"
+    }
+  ]
+}

@@ -1,0 +1,183 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_8_re_novice_stakeholder_technical_senior_20260227_111236.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_180148",
+  "requirements": [
+    {
+      "requirement": "Small interactions (page loads, menu clicks) should be perceived as instantaneous (≤5 seconds).",
+      "source_citation": "if you're looking for a hard number for the small stuff, I'd say anything longer than about five seconds feels slow to me.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states a target time for small interactions, providing a clear and measurable requirement.",
+      "follow_up_question": "What specific metrics or user testing methods will be used to validate that interactions are perceived as instantaneous?"
+    },
+    {
+      "requirement": "The payment flow should be very quick and obvious, with no ambiguous spinners.",
+      "source_citation": "the flow needs to be very quick and obvious. No one should be stuck staring at a spinner wondering if they were charged.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of a quick and obvious payment flow, but does not provide specific metrics or examples.",
+      "follow_up_question": "What specific design patterns or user interface elements will be used to ensure the payment flow is quick and obvious?"
+    },
+    {
+      "requirement": "Card-based purchases should complete within about fifteen seconds.",
+      "source_citation": "for card-based purchases — whether it's buying a single movie or a pre-paid card using a card — the whole processing step should finish within about fifteen seconds.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder provides a clear and specific target time for card-based purchases, making this a measurable requirement.",
+      "follow_up_question": "What specific performance optimization techniques will be used to ensure card-based purchases complete within fifteen seconds?"
+    },
+    {
+      "requirement": "Startup buffering should be ≤10 seconds before playback begins.",
+      "source_citation": "For startup buffering, aim for no more than about ten seconds before playback begins, not counting whatever latency their ISP adds.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder provides a clear and specific target time for startup buffering, making this a measurable requirement.",
+      "follow_up_question": "What specific buffering optimization techniques will be used to ensure startup buffering is ≤10 seconds?"
+    },
+    {
+      "requirement": "The system should be resilient to failures of parts (e.g., streaming, payment gateway).",
+      "source_citation": "the site should keep working when parts of the system misbehave.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of system resilience, but does not provide specific examples or metrics.",
+      "follow_up_question": "What specific resilience mechanisms (e.g., retries, fallbacks, graceful degradation) will be implemented to handle failures?"
+    },
+    {
+      "requirement": "The web front end should keep serving pages and storefront functionality if the streaming backend has a problem.",
+      "source_citation": "We don't want the catalogue or account functions to stop just because the streaming backend has a problem. So the web front end should keep serving pages and storefront functionality; at worst we show informative messaging and let users queue purchases or download receipts.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 5,
+      "rationale": "The stakeholder provides a clear and specific description of the expected behavior during a streaming backend failure.",
+      "follow_up_question": "What specific mechanisms (e.g., caching, queuing, informative messaging) will be used to ensure the web front end remains functional during a streaming backend failure?"
+    },
+    {
+      "requirement": "The system should accept pre-paid cards as an alternate purchase route if the payment gateway dies.",
+      "source_citation": "Again, we should not let a single external payment provider take the whole site offline. We should accept pre-paid cards as an alternate purchase route, queue card transactions for retry where appropriate, and make it clear to users what's happening.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of accepting pre-paid cards as an alternate purchase route, but does not provide specific examples or metrics.",
+      "follow_up_question": "What specific mechanisms (e.g., queuing, retry logic, informative messaging) will be used to ensure the system remains functional during a payment gateway failure?"
+    },
+    {
+      "requirement": "Credit card details must be encrypted (AES-256 at rest), access-controlled, and audited.",
+      "source_citation": "we should encrypt card data at rest with a strong algorithm — in our environment I'd specify industry-standard AES-256 for data at rest, and the keys should be managed in a dedicated key management service. For access, implement role-based controls so only authorized Izogn administrators have permission to decrypt or view that data, and all access should be logged and monitored.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder provides a clear and specific description of the encryption, access control, and auditing requirements for credit card details.",
+      "follow_up_question": "What specific encryption, access control, and auditing mechanisms will be used to ensure credit card details are secure?"
+    },
+    {
+      "requirement": "The system should aim for around ninety-nine and a half percent availability.",
+      "source_citation": "we should set a measurable target. I suggest aiming for around ninety-nine and a half percent availability.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder provides a clear and specific target for system availability, making this a measurable requirement.",
+      "follow_up_question": "What specific mechanisms (e.g., redundancy, failover, load balancing) will be used to ensure the system achieves ninety-nine and a half percent availability?"
+    },
+    {
+      "requirement": "The system should be usable by ninety percent of novice Internet users.",
+      "source_citation": "we should aim so that a very large majority of novice Internet users can complete common tasks without help. Roughly, the benchmark I'd use is that it should be usable by ninety percent of novice users.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder provides a clear and specific target for system usability, making this a measurable requirement.",
+      "follow_up_question": "What specific user testing methods will be used to validate that the system is usable by ninety percent of novice Internet users?"
+    },
+    {
+      "requirement": "The system should follow web standards and accessibility guidelines (semantic HTML, W3C recommendations, ARIA).",
+      "source_citation": "we should follow web standards and accessibility guidelines. Semantic HTML, W3C recommendations, and ARIA where appropriate are important so screen readers and assistive tech work well.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder provides a clear and specific description of the web standards and accessibility guidelines that should be followed.",
+      "follow_up_question": "What specific mechanisms (e.g., automated testing, manual review) will be used to ensure the system follows web standards and accessibility guidelines?"
+    },
+    {
+      "requirement": "The privacy policy should be visible and accessible from anywhere on the site.",
+      "source_citation": "The privacy practices need to be visible before we collect personal data, and it should be easy to find from anywhere on the site so users aren't surprised. Put it where people expect to see it on every page.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of making the privacy policy visible and accessible, but does not provide specific examples or metrics.",
+      "follow_up_question": "What specific mechanisms (e.g., links, buttons, pop-ups) will be used to ensure the privacy policy is visible and accessible from anywhere on the site?"
+    },
+    {
+      "requirement": "Admins should manage content, accounts, and analytics without touching production code.",
+      "source_citation": "The admin UI should let operators do those tasks without touching production code.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of admins being able to manage content, accounts, and analytics without touching production code, but does not provide specific examples or metrics.",
+      "follow_up_question": "What specific mechanisms (e.g., configuration management, automation, self-service portals) will be used to ensure admins can manage content, accounts, and analytics without touching production code?"
+    },
+    {
+      "requirement": "The system should have health checks, observability, and rollback safety.",
+      "source_citation": "We should instrument everything, have health checks, and make sure we can roll back safely.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of health checks, observability, and rollback safety, but does not provide specific examples or metrics.",
+      "follow_up_question": "What specific mechanisms (e.g., monitoring, logging, version control) will be used to ensure the system has health checks, observability, and rollback safety?"
+    },
+    {
+      "requirement": "The system should degrade gracefully so the user experience is predictable even when subsystems fail.",
+      "source_citation": "the service should degrade gracefully so the user experience is predictable even when subsystems fail.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of graceful degradation, but does not provide specific examples or metrics.",
+      "follow_up_question": "What specific mechanisms (e.g., fallbacks, informative messaging, graceful degradation patterns) will be used to ensure the system degrades gracefully?"
+    },
+    {
+      "requirement": "Default to lower bitrate previews for users on limited data plans.",
+      "source_citation": "I keep thinking about users who might be on limited data plans; that influences choices like defaulting to lower bitrate previews and giving clear options to switch quality.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of defaulting to lower bitrate previews for users on limited data plans, but does not provide specific examples or metrics.",
+      "follow_up_question": "What specific mechanisms (e.g., adaptive bitrate streaming, user preferences, network detection) will be used to ensure the system defaults to lower bitrate previews for users on limited data plans?"
+    }
+  ]
+}

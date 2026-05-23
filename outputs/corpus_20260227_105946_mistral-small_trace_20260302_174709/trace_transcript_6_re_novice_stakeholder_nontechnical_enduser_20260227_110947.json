@@ -1,0 +1,95 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_6_re_novice_stakeholder_nontechnical_enduser_20260227_110947.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_174800",
+  "requirements": [
+    {
+      "requirement": "The system should provide clear and reliable feedback to users during and after booking a room, including email confirmations.",
+      "source_citation": "People get stuck and call reception. And, uh, I hate when it takes ages to find a room that actually fits what we need. ... Also a lot of people want clear confirmation. If there's no good feedback, they don't trust it.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for clear feedback and trustworthy confirmations, indicating a usability concern. The lack of clear feedback leads to user frustration and reliance on other communication channels.",
+      "follow_up_question": "What specific types of feedback (e.g., visual, auditory, email) are most important for users to trust the system?"
+    },
+    {
+      "requirement": "The system should respond to user actions within 5 seconds for basic tasks and within 10 seconds for most tasks.",
+      "source_citation": "It just needs to be snappy. If I'm adding a meeting or checking availability, it should happen while I'm thinking. If it drags, people lose their train of thought. I guess most quick tasks should finish in just a few seconds. I don't know the exact numbers, but under ten seconds for most things feels okay, and under five is ideal for the really basic stuff.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies performance expectations in terms of response times, which are critical for user satisfaction and productivity.",
+      "follow_up_question": "Are there specific tasks that are more time-sensitive than others, and should they have different performance targets?"
+    },
+    {
+      "requirement": "The system should be accessible to users with disabilities, including support for screen readers, keyboard navigation, and high-contrast themes, and should comply with ADA standards.",
+      "source_citation": "Broader. Screen readers, yes, but also high-contrast themes, keyboard-only navigation, clear focus outlines, that sort of stuff. We have teammates who rely on those features and it's not optional. It should follow whatever the ADA requires, at least meet those standards so people can actually use it without workarounds.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for accessibility features and compliance with ADA standards, indicating a strong usability concern.",
+      "follow_up_question": "Are there specific accessibility standards or guidelines that the system should adhere to beyond ADA compliance?"
+    },
+    {
+      "requirement": "The system should be available with very high uptime, targeting 99.99% availability to minimize downtime.",
+      "source_citation": "Downtime is a nightmare. We rely on it all day, so it has to be up almost all the time. Besides scheduled maintenance or a server outage, it should almost never be unavailable. If I had to say, we want it to be available at the level that makes people stop worrying about outages—very, very high uptime. I guess people talk about targets like nearly one hundred percent—maybe something like ninety-nine point nine something.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the criticality of high availability and provides a specific target for uptime, indicating a strong reliability concern.",
+      "follow_up_question": "What are the acceptable downtime windows for scheduled maintenance, and how should the system communicate these to users?"
+    },
+    {
+      "requirement": "The system should provide clear and actionable error messages that explain what went wrong and suggest next steps.",
+      "source_citation": "Error messages should say what went wrong and what to do next. Not just codes or 'operation failed,' because people get stuck. For example, if a booking fails because of a conflict, it should explain that and suggest alternatives or let you pick a different time without leaving the page.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for clear and actionable error messages, indicating a usability concern related to error handling.",
+      "follow_up_question": "Are there specific types of errors that occur more frequently and should be prioritized in the error message design?"
+    },
+    {
+      "requirement": "The system should support at least eight different browsers and ensure that it renders correctly on at least 80% of them.",
+      "source_citation": "I think a minimum suite would be good—like at least eight different browsers or versions should be checked, given how many we have floating around. And as for passing, it should render correctly on most of them. If I had to guess, maybe around eighty percent should display properly in tests.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for cross-browser compatibility and provides a specific target for the number of browsers and rendering success rate.",
+      "follow_up_question": "Are there specific browsers or versions that are more critical to support due to user demographics or organizational policies?"
+    },
+    {
+      "requirement": "The system should support internationalization, including locale-aware dates/times, translations, and time zones.",
+      "source_citation": "People from different countries here, so some want the interface in their language, and the calendar should show dates and times the way they're used to. It gets confusing when the format is different and someone misreads the date. ... Just that translations should be good and not machine gibberish. People notice when things are badly translated. Also the calendar should show the right week starting day and time zone stuff should be clear so people don't join at the wrong time.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for internationalization features, including translations and locale-aware dates/times.",
+      "follow_up_question": "Are there specific languages or regions that should be prioritized for localization efforts?"
+    },
+    {
+      "requirement": "The system should support mobile access for users.",
+      "source_citation": "Oh, and sorry, I keep jumping around—one last tiny thing: mobile access would be handy, but I didn't think to mention it earlier.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 2,
+      "rationale": "The stakeholder mentions mobile access as an afterthought, indicating it is a lower-priority usability concern.",
+      "follow_up_question": "What specific mobile devices or operating systems should the system support, and what are the key mobile use cases?"
+    }
+  ]
+}

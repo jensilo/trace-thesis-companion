@@ -1,0 +1,194 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_6_re_novice_stakeholder_technical_junior_20260227_110912.txt",
+  "model": "openai/gpt-5-mini",
+  "timestamp": "20260302_172611",
+  "requirements": [
+    {
+      "requirement": "The application must run on any host that provides a compatible Java runtime.",
+      "source_citation": "I think of it as the thing that has to run wherever folks happen to put it, as long as the Java runtime is there — that’s been our mental model from day one.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly states the mental model that the system must run wherever deployed provided a Java runtime is present. This implies a portability constraint across hosts that support Java. Missing specifics: required Java versions, supported JVM vendors, OSs, container support, and any library/native dependency constraints.",
+      "follow_up_question": "Which Java versions and JVM vendors must be supported, and are there required OS/distribution, container (Docker/Kubernetes), or native dependency constraints we should document?"
+    },
+    {
+      "requirement": "The application must be deployable on standard Java web/application servers (e.g., Tomcat, JBoss) and support front-end proxying via web servers such as Apache.",
+      "source_citation": "Hosting is via web and application servers — we run it on typical Java app stacks. So people mention Tomcat or JBoss when they talk about examples, and, uh, Apache is in the mix sometimes for frontend proxying.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 5,
+      "rationale": "Stakeholder names specific server technologies as the intended hosting environment, indicating deployment compatibility requirements. Gaps: supported versions of those servers, required connector/configuration settings, and whether alternative hosting models (serverless, PAAS) are acceptable.",
+      "follow_up_question": "Which exact versions/configurations of Tomcat, JBoss, and Apache must be supported, and do we need to support PAAS or container-based hosting models as well?"
+    },
+    {
+      "requirement": "The application must interoperate with a variety of customer database systems and handle database-specific compatibility quirks.",
+      "source_citation": "We’ve had to make the code work with whatever the IT team prefers, so the app can talk to different database systems; I’ve been fixing little compatibility quirks as they come up. Sorry, I’m getting ahead — I mean, it’s supposed to be flexible there.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 5,
+      "rationale": "Stakeholder indicates the app must work with different DB systems at client sites, implying interoperability and portability across databases. Missing specifics: which RDBMS/versions are required, supported connection methods, expected SQL dialect coverage, and fallback/adapter strategy.",
+      "follow_up_question": "Please provide a prioritized list of supported database products and versions, and indicate which SQL features or behaviors we must explicitly handle for compatibility."
+    },
+    {
+      "requirement": "The application must hand off email to the customer's mail infrastructure (e.g., Exchange clusters or SMTP relays) and log failed sends for retry and support analysis.",
+      "source_citation": "It needs to send notifications — confirmations, reminders, cancellations — and that means it has to hand off mail to whatever mail server the company uses. For us that’s usually an Exchange cluster or some SMTP relay, so we plug into that. Oh, and we log failed sends so we can retry or help support figure out why a mail didn’t go out.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Stakeholder describes requirements for email interoperability and observability: must integrate with customer mail servers and log failures to enable retries/support. Missing specifics: delivery latency SLAs, retry policy, queueing, security (TLS/auth), and log retention/format.",
+      "follow_up_question": "What SMTP/Exchange protocols, authentication methods, TLS requirements, retry policy, and delivery-time expectations should we support, and how long must failed-send logs be retained?"
+    },
+    {
+      "requirement": "The UI must render correctly in common company-used web browsers, degrade gracefully for older browsers, and avoid layout breakage.",
+      "source_citation": "People use normal web browsers — desktops mostly, but sometimes laptops or tablets. The UI should just render correctly in the common browsers companies use, and not fall apart when someone has, like, an older browser. We try to keep the HTML and CSS fairly standard so it’s broadly compatible. I mean, it’s annoying when layouts break, so we try to avoid that.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Stakeholder specifies cross-browser compatibility and graceful degradation as usability requirements. Gaps: exact supported browsers/versions, responsive behavior, minimum device capabilities, and acceptance criteria for 'render correctly'.",
+      "follow_up_question": "Which specific browsers and versions (desktop/tablet) must be supported, and what are the acceptance criteria for 'render correctly' and graceful degradation?"
+    },
+    {
+      "requirement": "The system must be tested against a representative set of browsers covering the ones users rely on.",
+      "source_citation": "We do some testing against a representative set of browsers; teams generally run it through the ones they care about. I don’t run the whole matrix myself, but the idea is that it shouldn’t be a mystery which browsers will work — we try to cover the ones users rely on.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "Stakeholder indicates a testing practice to ensure browser compatibility; this is a QA/testability requirement to support usability. Missing specifics: test coverage targets, automated vs manual testing, and responsibilities for maintaining test matrix.",
+      "follow_up_question": "What automated browser tests and coverage targets do we require, and which team is responsible for maintaining the browser compatibility test matrix?"
+    },
+    {
+      "requirement": "The application must log exceptions (stack traces and contextual information) centrally and provide a mechanism to aggregate and send logs for analysis to avoid losing diagnostic context when servers change.",
+      "source_citation": "It should definitely log exceptions — stack traces, context, whatever — and keep a record the ops or our support team can pull. Ideally the app will capture enough info so we can reproduce and fix the issue, and there’s a mechanism to send those logs back for analysis rather than leaving them scattered on a single server, because, well, people move servers and you lose context.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly requests robust logging with contextual data and centralized aggregation for diagnostics. Missing specifics: log format, retention, privacy of logged data, transport (push/pull), and logging infrastructure (ELK, Splunk, etc.).",
+      "follow_up_question": "Which centralized logging solution should we integrate with, what log format and retention policy are required, and are there any privacy/security constraints on what can be logged?"
+    },
+    {
+      "requirement": "The application must capture sufficient diagnostic information in error reports to reproduce issues and support remote debugging.",
+      "source_citation": "Ideally the app will capture enough info so we can reproduce and fix the issue, and there’s a mechanism to send those logs back for analysis rather than leaving them scattered on a single server...",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Stakeholder emphasizes need for rich diagnostics to enable reproduction and fixing of faults. Gaps: exact data to capture (user actions, request IDs, environment), privacy considerations, and mechanisms for secure transmission.",
+      "follow_up_question": "What specific diagnostic fields (e.g., request IDs, user IDs, timestamps, environment config, payloads) must be captured, and are there restrictions on capturing user data for privacy/compliance?"
+    },
+    {
+      "requirement": "The application must provide responsive performance so that common interactions 'feel snappy' and heavy operations complete quickly.",
+      "source_citation": "It just needs to feel snappy, honestly — waiting around kills productivity. Heavy operations should be quick.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder sets a responsiveness expectation but without numeric targets. Missing specifics: response time targets (e.g., <200ms for UI actions), throughput, and which operations are 'heavy'.",
+      "follow_up_question": "Can you specify measurable performance targets (e.g., maximum page load times, API response times, or acceptable latencies for heavy operations) under normal conditions?"
+    },
+    {
+      "requirement": "The system must remain available and responsive during predictable peak usage periods (e.g., mornings and before big meetings) and must scale to handle growth.",
+      "source_citation": "Also mornings and right before big meetings are when the most people hit it, so it needs to not choke during those peaks. And we want it to scale forward a bit as the company grows, not be a one‑off that flails when usage increases.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "Stakeholder calls out peak-load availability and scalability over time. Missing specifics: expected concurrent users, peak loads, scaling model (vertical/horizontal), auto-scaling requirements, and SLA for availability during peaks.",
+      "follow_up_question": "What are expected peak concurrent user counts and transaction rates, and do we require automatic horizontal scaling or specific availability SLAs during peak periods?"
+    },
+    {
+      "requirement": "Access to the application must be restricted to authorized company employees and approved external partners, integrating with the customer's identity system or an approved account list.",
+      "source_citation": "Access needs to be controlled. Mostly it’s company employees, and then occasionally external partners who’ve been set up with approved accounts. We shouldn’t be letting random people in, so integration with whatever company identity system or approved account list is important.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder requires controlled access and integration with external identity systems, implying authentication/authorization needs. Missing specifics: supported identity providers/protocols (SAML, OAuth, LDAP), password policies, MFA, and provisioning workflows.",
+      "follow_up_question": "Which identity providers and authentication protocols (e.g., SAML, OAuth2, LDAP) must be supported, and are multi-factor authentication and provisioning/deprovisioning workflows required?"
+    },
+    {
+      "requirement": "The system must maintain audit trails for user actions (e.g., meeting changes) to support accountability and investigations.",
+      "source_citation": "Also audit trails are useful when someone says, 'Hey, why was my meeting moved?'",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly requests auditability for accountability. Missing specifics: which events to audit, audit retention periods, tamper-resistance, and access controls for audit logs.",
+      "follow_up_question": "Which specific events must be audited, how long must audit records be retained, and what tamper-evidence or protection is required for those logs?"
+    },
+    {
+      "requirement": "The codebase must follow common design patterns, best practices, and be documented and consistent to ease future maintenance and onboarding.",
+      "source_citation": "We try to follow common design patterns and best practices so the codebase is predictable, not some custom spaghetti. That makes it easier for someone new to jump in and add a feature without undoing half the app. I mean, I’ve been the new person before and it’s awful when nothing is documented or consistent.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "Stakeholder wants maintainable, consistent, and documented code to ease future work. Missing specifics: coding standards, documentation levels, required design patterns, code review processes, and test coverage targets.",
+      "follow_up_question": "Which coding standards, documentation requirements, and minimum test coverage targets should we enforce, and are there mandated design patterns or architectural guidelines?"
+    },
+    {
+      "requirement": "The application must correctly handle locale and timezone settings to prevent incorrect calendar times and double bookings, and provide clear, non-cryptic error messages.",
+      "source_citation": "That taught us to pay attention to locale and timezone handling and to make the error messages less cryptic.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Stakeholder cites a real incident caused by incorrect timezone/locale handling and requests better error messages, indicating correctness and usability requirements. Missing specifics: supported locales/timezones, canonical storage format (UTC), conversion rules, and user-visible error message standards.",
+      "follow_up_question": "Which timezones/locales must be supported, should times be stored in UTC with client conversion, and what standards/guidelines should we follow for user-facing error message clarity?"
+    },
+    {
+      "requirement": "The system must provide reliable diagnostic data so support can effectively debug issues remotely.",
+      "source_citation": "Also, we sometimes get oddities when support tries to debug without the full logs; so getting reliable diagnostic data out of the system is a recurring gripe.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 4,
+      "rationale": "Stakeholder emphasizes need for reliable diagnostics for support; overlaps with logging requirement but focuses on completeness and reliability of diagnostic exports. Missing specifics: diagnostic export mechanisms, trace correlation, and support access controls.",
+      "follow_up_question": "What mechanisms should we provide for exporting or accessing diagnostic data (e.g., on-demand dumps, remote access, or automatic uploads), and how should trace correlation be handled?"
+    },
+    {
+      "requirement": "The application must be customizable for client branding and must support multiple languages.",
+      "source_citation": "Yeah, it should be customizable so clients can put their branding on it and it should support multiple languages.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 5,
+      "rationale": "Stakeholder requests theming/branding and internationalization support. Missing specifics: theming scope (colors, logos, CSS), localization coverage (which languages), right-to-left support, and translation workflow.",
+      "follow_up_question": "What branding elements must be customizable (logos, colors, CSS, fonts) and which languages (and locales) must be supported initially, including any RTL language requirements?"
+    },
+    {
+      "requirement": "The UI must be accessible, supporting keyboard navigation and screen readers.",
+      "source_citation": "Accessibility is important too — keyboard navigation and screen reader friendliness — because different offices have different needs and we don’t want to exclude people.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly requires accessibility features (keyboard nav, screen reader compatibility). Missing specifics: target accessibility standard (e.g., WCAG level), testing requirements, and remediation timelines.",
+      "follow_up_question": "Which accessibility standard (e.g., WCAG 2.1 AA) must we meet, and what acceptance tests or compliance evidence are required?"
+    }
+  ]
+}

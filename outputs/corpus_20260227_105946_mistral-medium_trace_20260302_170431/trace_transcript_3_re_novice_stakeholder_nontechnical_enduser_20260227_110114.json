@@ -1,0 +1,106 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_3_re_novice_stakeholder_nontechnical_enduser_20260227_110114.txt",
+  "model": "mistral/mistral-medium-latest",
+  "timestamp": "20260302_170433",
+  "requirements": [
+    {
+      "requirement": "The system shall respond to routine tasks within 2 seconds and complex operations within 30 seconds.",
+      "source_citation": "For the little things, it should feel almost instant — a couple of seconds at most before I can move on. [...] Thirty seconds or so for something that builds a whole rotation seems okay",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the desired response times for different types of tasks, providing clear evidence for performance requirements.",
+      "follow_up_question": "What specific tasks are considered routine versus complex operations?"
+    },
+    {
+      "requirement": "The system shall be available 95% of the time during business hours.",
+      "source_citation": "We need it to be there when the office is open. [...] it should be dependable most of the time — we can’t have it flaky. [...] maybe around ninety-five percent [availability]",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder provides a specific percentage for system availability, indicating a clear requirement.",
+      "follow_up_question": "What are the specific business hours during which this availability is required?"
+    },
+    {
+      "requirement": "The system shall be intuitive and easy to use for non-technical users, requiring less than one day of training.",
+      "source_citation": "Most of the folks here aren’t technical — we’re used to simple things. It needs to be intuitive so we don’t dread using it. [...] I think with a good demo and some hands-on time everyone could be comfortable pretty fast. [...] I think about a day [of training].",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for an intuitive system that can be learned quickly, indicating a strong usability requirement.",
+      "follow_up_question": "What specific aspects of the system should be intuitive and easy to use?"
+    },
+    {
+      "requirement": "The system shall implement role-based access control to protect sensitive student and site information.",
+      "source_citation": "Student personal information is sensitive; not every adjunct or site contact should see that. [...] only people who need to know should see those parts. [...] Program administrators need the full picture [...] but a site coordinator doesn’t need full student files",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder clearly outlines the need for different access levels based on roles, indicating a strong security requirement.",
+      "follow_up_question": "What specific roles and their corresponding access levels should be defined?"
+    },
+    {
+      "requirement": "The system shall prevent errors by providing clear warnings and suggested fixes for obvious mistakes.",
+      "source_citation": "I’d like it to kind of stop me from doing dumb things [...] give a clear warning and suggest fixes. [...] It should stop obvious mistakes, like entering a shift outside normal clinical hours or assigning someone to a site that doesn’t accept that program.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for error prevention and data validation, indicating a strong maintainability requirement.",
+      "follow_up_question": "What specific types of errors should the system prevent and how should it suggest fixes?"
+    },
+    {
+      "requirement": "The system shall support at least 10 concurrent users during peak hours.",
+      "source_citation": "On busy mornings, probably around ten of us are working in it at the same time.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "The stakeholder provides a specific number of concurrent users, indicating a clear scalability requirement.",
+      "follow_up_question": "What are the specific peak hours during which this concurrency is required?"
+    },
+    {
+      "requirement": "The system shall provide automatic saving and a way to roll back changes to prevent data loss.",
+      "source_citation": "automatic saving and a way to roll back changes would be reassuring.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for data backup and recovery, indicating a strong availability requirement.",
+      "follow_up_question": "How far back should the system allow rollbacks and how should they be initiated?"
+    },
+    {
+      "requirement": "The system shall provide notifications via email, in-app messages, and text for urgent last-minute changes.",
+      "source_citation": "Email is the baseline [...] in-app reminders would be great too when you're logged in, and maybe text for urgent last-minute changes",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for different types of notifications, indicating a usability requirement.",
+      "follow_up_question": "What specific events or changes should trigger notifications and through which channels?"
+    },
+    {
+      "requirement": "The system shall provide hands-on training and a quick cheat sheet for users.",
+      "source_citation": "Ideally a short hands-on session [...] and then a quick cheat sheet. People learn by doing",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 3,
+      "rationale": "The stakeholder emphasizes the need for practical training materials, indicating a usability requirement.",
+      "follow_up_question": "What specific topics should the hands-on training and cheat sheet cover?"
+    }
+  ]
+}

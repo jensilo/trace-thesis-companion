@@ -1,0 +1,227 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_6_re_novice_stakeholder_technical_senior_20260227_110846.txt",
+  "model": "openai/gpt-5-mini",
+  "timestamp": "20260302_172648",
+  "requirements": [
+    {
+      "requirement": "The system shall be portable and run on whatever servers we have in-house as long as the Java runtime can be installed there.",
+      "source_citation": "it has to be portable — it should run on whatever servers we have in-house, as long as the Java runtime can be installed there.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly requires platform independence tied to Java runtime to support heterogeneous OS environments (Linux, Windows, Solaris). This implies no OS-specific/native dependencies. Missing specifics: exact supported versions of Java and OS releases, and whether containers are considered equivalent.",
+      "follow_up_question": "Which Java versions and OS versions must be supported at launch, and should container images (Docker) be officially supported?"
+    },
+    {
+      "requirement": "The product shall be packaged to deploy onto existing web or application servers (e.g., Tomcat, JBoss) and follow usual servlet standards without embedding exotic native dependencies.",
+      "source_citation": "packaged to deploy onto whatever web or application server we use, you know, the usual Tomcat or JBoss-type setups",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "deployability",
+      "confidence": 5,
+      "rationale": "Stakeholder wants standard packaging and compatibility with common Java app servers to allow drop-in deployment. Gaps: accepted packaging formats (WAR, EAR, container image), supported server versions, and CI/CD constraints are unspecified.",
+      "follow_up_question": "Do you require specific packaging formats (WAR, EAR, Docker image) and which versions of Tomcat/JBoss must be supported?"
+    },
+    {
+      "requirement": "The system shall work against whatever DBMS the company runs (e.g., Postgres, Oracle, SQL Server) and must be able to connect over the network or to a local DB instance.",
+      "source_citation": "It needs to work against whatever DBMS the company already runs. Some sites are running Postgres, some are on Oracle, some have SQL Server. The product needs to connect over the network or to a local DB instance; it shouldn't assume the database is on the same machine.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 5,
+      "rationale": "Explicit requirement for DBMS interoperability and networked connections; implies use of DB abstraction and configurable drivers. Missing: supported driver versions, expected SQL dialect limitations, transactional/consistency expectations across DB types.",
+      "follow_up_question": "Which specific DB versions are required initially, and are there any DB features (e.g., stored procedures, specific SQL features) the product must avoid or require?"
+    },
+    {
+      "requirement": "Small UI actions shall feel instantaneous; typical UI button actions should complete within 5 seconds, and heavier tasks should not exceed 8 seconds without design changes or caching.",
+      "source_citation": "If you press a normal UI button and it's still loading after, say, five seconds, that's getting into the 'ugh' territory. Most routine tasks should be basically immediate; five seconds is a threshold for small things, and even for heavier tasks we shouldn't go much beyond that — eight seconds is a point where you know you need to look at the design or caching.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder provided explicit latency thresholds for UX responsiveness (5s for small actions, 8s for heavier tasks). Gaps: whether these are server-side response times, end-to-end perceived latency, percentiles (median, 95th), and load conditions under which these must hold.",
+      "follow_up_question": "Do the 5s/8s targets refer to server response time, end-to-end page load, or perceived UI responsiveness, and what percentile (e.g., 95th) should these targets apply to under expected peak load?"
+    },
+    {
+      "requirement": "The system shall support approximately 1,000 simultaneous requests at launch and be scalable to roughly 2,000 simultaneous requests by the next release.",
+      "source_citation": "today we should be able to handle about one thousand simultaneous requests. And then by the next release we should be able to handle roughly double that.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "Stakeholder provided concrete concurrency numbers for capacity planning. Missing: definition of 'simultaneous requests' (concurrent connections, concurrent active users, requests per second), workload mix, and acceptable degradation behavior under overload.",
+      "follow_up_question": "Please clarify whether 'simultaneous requests' means concurrent open connections, requests per second, or active users, and provide expected request mix for capacity testing."
+    },
+    {
+      "requirement": "The software component shall target 99.99% availability (four nines) excluding server-level failures.",
+      "source_citation": "We should target four nines availability for the software component — in other words, about 99.99% uptime excluding server-level failures.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "Stakeholder sets explicit uptime target for the software. Gaps: measurement method, included/excluded failure types beyond server-level, maintenance windows, and recovery time objectives (RTO) and recovery point objectives (RPO).",
+      "follow_up_question": "How should availability be measured (which endpoints/transactions), what maintenance windows are acceptable, and what RTO/RPO targets do you expect for recoveries?"
+    },
+    {
+      "requirement": "Only company employees or explicitly approved external people shall be allowed to authenticate; anonymous access and public sign-ups shall be rejected. Authentication shall integrate with corporate identity providers (LDAP, SAML, etc.).",
+      "source_citation": "Only company employees or external people who we've explicitly approved should be able to log in. No anonymous access. Authentication should tie into corporate identity — LDAP, SAML, or whatever the customer uses — so every logon is from a recognized, approved ID.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder requires strict access control integrated with corporate identity systems and forbids anonymous/public signup. Missing: authorization model details, session lifetimes, MFA requirements, and audit logging specifics.",
+      "follow_up_question": "Which identity federation protocols must be supported at launch (LDAP, SAML, OIDC), and are multi-factor authentication and role-based access controls required?"
+    },
+    {
+      "requirement": "The application shall sanitize inputs, validate everything server-side, and assume attackers may attempt SQL injection or malformed payloads; it shall reject malicious input to prevent data corruption.",
+      "source_citation": "Very defensive. The app must sanitize inputs, validate everything server-side, and assume attackers will try to inject SQL or malformed payloads. We can't allow malicious input to corrupt our data stores or adjacent systems; integrity is critical.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder mandates defensive programming and input validation to protect data integrity. Gaps: specific validation rules, allowed encodings, use of parameterized queries/ORM, and testing requirements (e.g., security testing, fuzzing).",
+      "follow_up_question": "Do you require specific protections (e.g., OWASP controls, parameterized queries, input schemas), and should we run regular security tests (static analysis, penetration testing, fuzzing)?"
+    },
+    {
+      "requirement": "The system shall guarantee that malicious input will not result in corrupted product data; data integrity shall be treated as sacrosanct.",
+      "source_citation": "Yes — we need guarantees that malicious input won't result in corrupted product data. That's non-negotiable; we should treat data integrity as sacrosanct.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 5,
+      "rationale": "Explicit requirement for data integrity against malicious input. Missing: specific transactional guarantees, consistency levels, and mechanisms (constraints, transactions, validation) to ensure integrity under concurrent operations and failures.",
+      "follow_up_question": "What transactional/consistency guarantees are required (e.g., ACID for booking operations), and are there specific constraints that must be enforced at DB level?"
+    },
+    {
+      "requirement": "Exceptions and operational problems shall be captured in logs with enough context to reproduce issues, and aggregated exception data shall be transmittable to central support without leaking sensitive information.",
+      "source_citation": "Exceptions and operational problems should be captured in logs with enough context to reproduce and diagnose issues. There should be a mechanism to transmit aggregated exception data back to central support for analysis. We want telemetry that doesn't leak sensitive information but gives us stack traces, environment details, and frequency so we can fix root causes.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Stakeholder requires detailed logging and aggregated telemetry for support, with privacy constraints. Gaps: retention periods, transport/security of telemetry, logging levels, and what constitutes sufficient context.",
+      "follow_up_question": "What telemetry transport and storage mechanisms do you require, what retention/rotation policies should apply, and which specific fields must be scrubbed before export?"
+    },
+    {
+      "requirement": "Logs and external reports shall not contain PII or full user content; sensitive fields must be scrubbed by default to comply with varying regional privacy laws.",
+      "source_citation": "Don't send PII or full user content in external reports. We want actionable telemetry — stack traces, timestamps, environment, but scrub sensitive fields. Privacy laws vary per region, so default to safe redaction.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 5,
+      "rationale": "Explicit privacy constraint on telemetry and logging with default safe redaction. Missing: definition of PII for different regions, certification or compliance needs (e.g., GDPR, CCPA), and allowable anonymization techniques.",
+      "follow_up_question": "Which jurisdictions and privacy regulations must we comply with initially (e.g., GDPR), and can you provide a list of fields considered PII that must be scrubbed?"
+    },
+    {
+      "requirement": "The codebase shall follow standard design patterns and best practices, have good layering, clear interfaces, and test coverage so that a new maintenance developer can integrate a small feature within a couple of working days.",
+      "source_citation": "The code should follow standard design patterns and best practices. New developers should be able to understand and extend it quickly; we don't want a monolith that's a mystery. Good layering, clear interfaces, and test coverage are key so an incoming maintenance developer can add a feature in days rather than weeks.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "Stakeholder sets maintainability and productivity expectations tied to code quality and tests with a target ramp-up time. Gaps: concrete metrics (test coverage percentage, code review standards), onboarding materials, and definition of 'small feature'.",
+      "follow_up_question": "What code quality metrics (e.g., minimum unit test coverage percentage, lint rules) and documentation/onboarding materials do you require to meet the 'couple of days' productivity target?"
+    },
+    {
+      "requirement": "The UI shall support localization and be brandable so different offices can apply their company look and feel.",
+      "source_citation": "Yes, the UI must support localization and be brandable so different offices can apply their company look and feel.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Explicit requirement for internationalization and theming support. Gaps: which languages/locales, directionality (RTL), metrics for brandability (configurable CSS, themes), and translation workflow are unspecified.",
+      "follow_up_question": "Which locales/languages must be supported at launch, and what level of theming/branding (CSS overrides, logo assets, color palettes) do you expect to be configurable?"
+    },
+    {
+      "requirement": "The UI shall meet accessibility requirements, including screen reader support, keyboard navigation, and proper semantics.",
+      "source_citation": "Accessibility compliance is necessary — screen reader support, keyboard navigation, proper semantics, the usual. I won't pretend it's simple, but it's non-optional.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Stakeholder mandates accessibility compliance and lists key features. Gaps: target accessibility standard (e.g., WCAG level AA), testing approach, and required certification or audit.",
+      "follow_up_question": "What accessibility standard (e.g., WCAG 2.1 AA) should we meet, and do you require assisted testing or certification before release?"
+    },
+    {
+      "requirement": "The web UI shall work on modern, standards-compliant browsers, degrade gracefully where features aren't supported, and be responsive to support mobile access.",
+      "source_citation": "It should work on modern, standards-compliant browsers. We don't need to chase every legacy browser forever, but it should be usable on current mainstream browsers and degrade gracefully where features aren't supported. Mobile access via responsive web UI is useful; a native app isn't required to start.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 5,
+      "rationale": "Stakeholder requires cross-browser compatibility and responsive design with graceful degradation. Gaps: list of supported browsers and versions, mobile breakpoints, and acceptable behavior on unsupported browsers.",
+      "follow_up_question": "Please specify which browser versions and mobile devices must be supported at launch and what 'graceful degradation' behaviors are acceptable."
+    },
+    {
+      "requirement": "Operations shall be able to run the app in clustered setups for high availability, monitor key metrics, perform rolling upgrades, and use health endpoints for automated checks.",
+      "source_citation": "Ops needs to be able to run the app in clustered setups for high availability, monitor key metrics, and perform rolling upgrades. Backups are handled at the DB and infrastructure layer, but the app should not make assumptions that prevent safe backups and restores. Also, we should provide health endpoints for automated checks.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Stakeholder lists operational requirements for clustering, monitoring, rolling upgrades, and health endpoints. Gaps: specific metrics to expose, health endpoint semantics, supported clustering models, and upgrade strategies.",
+      "follow_up_question": "Which health endpoint semantics and monitoring metrics are required (e.g., Liveness, Readiness, latency, error rates), and are there preferred protocols (Prometheus, JMX) for metrics?"
+    },
+    {
+      "requirement": "The application shall be stateless where feasible; session state shall be externalized and the application must document what needs to be backed up so instances can be replaced without data loss.",
+      "source_citation": "the app should be stateless where feasible so instances can be replaced without data loss and so backups are straightforward. Session state should be externalized, and we should document what needs to be backed up.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "Stakeholder requires statelessness and externalized sessions to support easy instance replacement and backups. Gaps: allowed stateful components, session store options, and required documentation format/contents.",
+      "follow_up_question": "Which external session stores are preferred (e.g., Redis), and which application-specific artifacts must be documented for backup/restore procedures?"
+    },
+    {
+      "requirement": "The app shall not make assumptions that prevent safe backups and restores; backups are handled at the DB and infrastructure layer but the application must be compatible with those processes.",
+      "source_citation": "Backups are handled at the DB and infrastructure layer, but the app should not make assumptions that prevent safe backups and restores.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Stakeholder emphasizes integration with ops backup strategy and avoidance of assumptions that complicate restores. Gaps: specific backup/restore SLAs, support for point-in-time recovery, and coordination with schema migrations.",
+      "follow_up_question": "Are there required backup/restore SLAs (e.g., RPO/RTO) and must the application support point-in-time recovery or versioned schema migrations?"
+    },
+    {
+      "requirement": "Telemetry and exception reports sent externally shall include stack traces, timestamps, environment details, and frequency, but must have sensitive fields scrubbed to avoid leaking PII.",
+      "source_citation": "We want telemetry that doesn't leak sensitive information but gives us stack traces, environment details, and frequency so we can fix root causes.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Stakeholder specifies the balance between actionable telemetry and privacy. Gaps: precise list of fields allowed/disallowed, aggregation levels, and secure transmission/encryption requirements.",
+      "follow_up_question": "What exact fields are required in telemetry exports, and what encryption/transport/security standards must be used for transmitting telemetry?"
+    },
+    {
+      "requirement": "The system design shall allow future integration of room sensors for occupancy as an enhancement, implying reliable sensor integration and accurate occupancy data handling.",
+      "source_citation": "room sensors for occupancy could be an enhancement later.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "other",
+      "confidence": 3,
+      "rationale": "This is a future-facing remark implying requirements for reliability/accuracy and extensibility for sensor integration, but it's not a hard requirement now. Gaps: sensor interfaces, protocols, expected data rates, and error handling.",
+      "follow_up_question": "If sensor integration is planned, which sensor protocols and reliability/accuracy targets should we plan for, and should the system provide an abstraction layer for external telemetry?"
+    }
+  ]
+}

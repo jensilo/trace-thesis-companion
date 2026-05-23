@@ -1,0 +1,227 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_5_re_novice_stakeholder_technical_senior_20260227_110558.txt",
+  "model": "openai/gpt-5-mini",
+  "timestamp": "20260302_172457",
+  "requirements": [
+    {
+      "requirement": "The system shall present a clean, quick interface optimized for field users and a deeper analysis interface for office users, integrated into the users' workflow so they do not have to switch systems.",
+      "source_citation": "Field users need a clean, quick interface; office users might do deeper analysis. I should say, not everyone should see everything — some data is sensitive and only admins should have the broad view.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly describes different UI needs for field vs office users and the desire to integrate the parts feed into workflow to avoid context switching. Scope remains broad (no UI mockups, performance of UI, or metrics of 'clean' defined).",
+      "follow_up_question": "Can you list specific user tasks for field vs office users and provide concrete usability acceptance criteria (e.g., maximum number of clicks, screen designs, or task completion times)?"
+    },
+    {
+      "requirement": "The system shall enforce role-based access control integrated with corporate identity so that sensitive data is only visible to authorized administrators and role/permission changes are auditable.",
+      "source_citation": "Not everyone should see everything — some data is sensitive and only admins should have the broad view.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder states need for restricted visibility and later explicitly requests integration with corporate identity and auditable permission changes. Missing details: exact roles, granularity of permissions, and approval process for role changes.",
+      "follow_up_question": "Please provide the initial role catalog and examples of which data fields or actions each role must be able to access, and confirm the corporate identity protocol (e.g., SAML, OIDC) to use."
+    },
+    {
+      "requirement": "The system shall conform to corporate architecture patterns and UI standards, including accessibility guidelines, approved technologies, and the corporate design language.",
+      "source_citation": "We can't reinvent the stack; we need to align with the corporate architecture patterns and the UI standards... Also accessibility and consistent UI behavior — follow the corporate guidelines...",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "Stakeholder mandates alignment with corporate tech stack and UI/accessibility standards to ensure supportability and consistency. Missing specifics: exact corporate standards, versions, and who validates conformance.",
+      "follow_up_question": "Please provide the relevant corporate architecture and UI/accessibility standard documents (or links) and identify the approver(s) for compliance verification."
+    },
+    {
+      "requirement": "The system shall integrate directly with the company's canonical recycled parts feed (single source of truth) rather than maintaining independent synchronized copies.",
+      "source_citation": "The new app has to consume that feed rather than try to build its own inventory. We've had issues in the past when teams tried to sync copies — messy reconciliation. So, it should be a direct integration so we can rely on a single source of truth.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "Stakeholder insists on direct consumption to avoid reconciliation problems; clarifies that provider is canonical. Missing details: exact API specs, SLAs of provider, and allowed caching/fallback behavior.",
+      "follow_up_question": "Please provide the feed's API/specification, provider SLAs, and any contractual limits on request rates or allowed caching windows."
+    },
+    {
+      "requirement": "Parts search results shall be returned in well under 15 seconds under expected load.",
+      "source_citation": "For parts, waiting around more than a few tens of seconds is unacceptable. We should aim to have search results returned well under ... something like fifteen seconds.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder gives an explicit numeric target for parts search latency. Gaps: metric (95th/99th percentile), exact definition of 'under expected load', and measurement method.",
+      "follow_up_question": "Should the <15s target be measured as median, 95th percentile, or 99th percentile, and under what load profile (e.g., 1,500 concurrent users)?"
+    },
+    {
+      "requirement": "Preferred repair facility search shall return results within roughly 8 seconds so field staff are not kept waiting.",
+      "source_citation": "For the preferred repair facility search, that should be noticeably quicker — it should return within roughly eight seconds so the field person isn't standing there awkwardly.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder provides a concrete latency target for facility lookups. Missing precision on percentile and load conditions and whether network conditions (mobile) are accounted for.",
+      "follow_up_question": "Specify whether the 8-second target is for median/95th/99th percentile and whether this must hold under constrained mobile network conditions (e.g., 3G/4G)."
+    },
+    {
+      "requirement": "The system shall provide at least 98% availability as a baseline, with downtime not exceeding two percent of total time.",
+      "source_citation": "Yes — to be concrete, our operations group will expect ninety-eight percent availability as the baseline. That implies downtime of about two percent of the time as the maximum tolerated.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly states the uptime SLA baseline of 98%. Gaps: whether this is measured monthly/yearly, components included (API/UI/database), and maintenance windows policy.",
+      "follow_up_question": "Over what measurement window should the 98% availability be calculated (monthly, quarterly, yearly), and which system components and scheduled maintenance windows count as downtime?"
+    },
+    {
+      "requirement": "The system shall be architected to comfortably handle 1,500 concurrent users at launch and be scalable to approximately 10,000 concurrent users within about two years.",
+      "source_citation": "Today we should plan to comfortably handle fifteen hundred concurrent users, and architect it so we can scale to around ten thousand concurrent users within about two years of launch.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "Stakeholder gives explicit current and future concurrency sizing requirements. Missing details: growth timeline, expected peak session durations, and throughput per user.",
+      "follow_up_question": "Provide expected growth curve, peak transaction rates per user, and session characteristics so we can define capacity and autoscaling rules."
+    },
+    {
+      "requirement": "The system shall implement layered defensive measures (application and network) including rate limiting, input validation, web application firewalls, and traffic scrubbing to mitigate DoS and noisy services.",
+      "source_citation": "We need to harden the perimeter, filter bad traffic, and architect so that one noisy service or attack doesn't take down the whole platform. Rate limiting, web application firewalls, traffic scrubbing — those kinds of defensive measures should be part of the plan.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder calls out specific security controls and architectural resilience to attacks. Missing specifics: thresholds for rate limiting, integration points with corporate scrubbing, and monitoring/alerting specifics.",
+      "follow_up_question": "What are the acceptable rate-limit thresholds per endpoint and the contact/hand-off procedure with corporate DDoS mitigation when thresholds are exceeded?"
+    },
+    {
+      "requirement": "The application shall implement in-app throttling and input validation, and also integrate with corporate DDoS mitigation layers (defense-in-depth).",
+      "source_citation": "Both. Relying only on the network team is risky, and vice versa. The application should implement sensible throttling and input validation, and then hand off to the corporate DDoS mitigation layers for large-scale attacks.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly requests both application-level and corporate-level defenses. Gaps: what 'sensible' means in numeric terms and how failover/hand-off is coordinated.",
+      "follow_up_question": "Please define the expected in-app throttling rules (requests/sec per IP/API key) and the escalation/hand-off process to the corporate security team."
+    },
+    {
+      "requirement": "The system shall maintain detailed, auditable logs of who viewed and changed estimates and which parts were selected, conforming to corporate retention and export rules.",
+      "source_citation": "We need detailed logging of who viewed and changed an estimate or which parts were selected, and those logs must meet the company's retention and export rules.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 5,
+      "rationale": "Stakeholder specifies audit/logging and retention/export compliance needs. Missing specifics: retention periods, log formats, access controls for logs, and archival/export APIs.",
+      "follow_up_question": "What are the required log retention durations, acceptable export formats, and who is authorized to access/export audit logs?"
+    },
+    {
+      "requirement": "All personal and sensitive data shall be handled per corporate privacy controls and encrypted both in transit and at rest, with keys managed in the central secrets store.",
+      "source_citation": "Any personal information must be handled per the privacy rules — again, follow the corporate controls... Transport encryption is baseline, and sensitive data at rest should be encrypted per corporate policy. Keys and certificates must be managed with the central secrets store.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder requires privacy-compliant handling and specific encryption requirements. Gaps: which data fields are considered sensitive, encryption algorithms, and key rotation policies.",
+      "follow_up_question": "Please provide the data classification list identifying which fields require at-rest encryption, the corporate encryption standards (algorithms/key lengths), and key rotation frequency."
+    },
+    {
+      "requirement": "The system shall consume the parts provider via real-time APIs or message feeds with a lightweight sync/proxy layer and careful caching to balance freshness and performance (avoid daily batch polling).",
+      "source_citation": "Real-time-ish APIs are preferable... polling big batch files daily won't cut it because inventory changes quickly. Ideally, we have an API or message feed and build a lightweight sync or proxy layer with caching so searches are fast and we don't hammer the provider.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder prefers near-real-time integration and warns against daily batch polling; requests caching/proxy to avoid overloading provider. Missing details: acceptable staleness window and cache invalidation rules.",
+      "follow_up_question": "What is the acceptable maximum data staleness for parts inventory (e.g., seconds/minutes), and does the provider support push events or webhooks for cache invalidation?"
+    },
+    {
+      "requirement": "The system shall use server-side caching (in-memory or distributed) for hot items, with optional short-lived client caching for local repeated lookups and a CDN for static assets.",
+      "source_citation": "Server-side caching is the primary lever, with opportunity for short-lived client caching for repeated local lookups. We should use an in-memory cache or a distributed cache for hot items and a CDN for static assets.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder prescribes caching locations and technologies to meet performance needs. Missing specifics: TTL values, cache invalidation strategies, and cache size/capacity targets.",
+      "follow_up_question": "What TTLs are acceptable for server and client caches for parts and facility data, and are there size/eviction policies required for the distributed cache?"
+    },
+    {
+      "requirement": "The system shall be built using cloud-native patterns (containerized services, orchestration, well-defined service boundaries) and integrate with central platform services for logging, identity, and monitoring to ensure observability, deployability, and maintainability.",
+      "source_citation": "The corporate guidance leans toward cloud-native patterns: containerized services, orchestration, and well-defined service boundaries. We should align with the approved cloud provider and use the central platform services for logging, identity, and monitoring. ... We need to think in terms of observability, deployability, and maintainability from day one.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Stakeholder requests cloud-native architecture and use of corporate platform services to support operations and maintenance. Missing specifics: which cloud provider, orchestration tooling, observability stack, and deployment pipeline requirements.",
+      "follow_up_question": "Which approved cloud provider and platform services should we target (e.g., Kubernetes flavor, logging/monitoring stack), and are there mandatory CI/CD/deployment pipelines to integrate with?"
+    },
+    {
+      "requirement": "All permission changes and role assignments shall be auditable and enforced centrally via the corporate identity service rather than ad-hoc checks in application code.",
+      "source_citation": "It has to be auditable, meaning changes to permissions are logged, and the enforcement should be centralized via an identity service rather than ad-hoc checks sprinkled through code.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder wants centralized, auditable permission management to avoid decentralized authorization logic. Missing details: API for identity service, latency constraints, and fallback behavior if identity service is unavailable.",
+      "follow_up_question": "Which corporate identity service/API must we integrate with, and what are expected latency and availability expectations for authorization calls?"
+    },
+    {
+      "requirement": "The user interface shall be mobile-friendly (responsive) and adhere to corporate accessibility guidelines; an offline-first capability is optional and considered expensive (nice-to-have) to be evaluated against budget.",
+      "source_citation": "Mobile-friendly is a must because field adjusters use tablets and phones. Offline mode is nice-to-have but expensive; it depends on budget. ... Also, the UI should follow corporate accessibility guidelines — color contrast, keyboard navigation, standard components...",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Stakeholder mandates responsive mobile UI and accessibility compliance; offline is explicitly deprioritized for initial release. Missing specifics: supported devices/browsers, accessibility standard conformance level (e.g., WCAG 2.1 AA), and offline feature list if later adopted.",
+      "follow_up_question": "Which device models/browsers and minimum network types must be supported, and what accessibility conformance level (e.g., WCAG 2.1 AA) is required?"
+    },
+    {
+      "requirement": "For the initial release, the system shall be a responsive web app with good caching and quick reconnection behavior; full offline-first capabilities shall be scoped separately as a later project.",
+      "source_citation": "For an initial release, I think we can focus on responsive web with good caching and quick reconnection behavior. If the business insists on full offline-first capabilities, that's a different project slice.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "Stakeholder provides a release-level trade-off prioritizing responsive web and caching over full offline support. Missing specifics: reconnection behavior requirements (queueing, retry intervals) and which features must work during transient offline.",
+      "follow_up_question": "Which operations must work during temporary offline/reconnection (e.g., view last-search results, submit estimate) and what are the expected reconnection/queueing semantics?"
+    },
+    {
+      "requirement": "The system shall be resilient to provider schema/identifier changes by keeping mappings explicit and designing for schema evolution rather than caching everything locally without robust reconciliation.",
+      "source_citation": "In a previous integration we tried to cache everything locally, and when the provider changed their identifiers the data went out of sync and our claims people spent a week reconciling. So, rely on the provider as the source of truth, keep mappings explicit, and design for schema changes.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "Stakeholder recounts past failures and demands design-for-change and explicit mapping to avoid data drift. Missing specifics: acceptable schema-change notification mechanisms and versioning strategy.",
+      "follow_up_question": "Does the provider offer schema versioning or change notifications, and what minimum compatibility/validation rules should we enforce before accepting a provider change?"
+    },
+    {
+      "requirement": "The system shall provide reporting and export capabilities for auditors and business KPIs to track recycled-part utilization metrics and facility ratings over time.",
+      "source_citation": "Reporting and export for auditors and business KPIs are important — we need to track recycled-part utilization metrics and facility ratings over time.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 4,
+      "rationale": "Stakeholder identifies analytics/reporting as necessary non-functional requirement. This borders functional but is quality-related for audit/analysis. Missing specifics: report types, export formats, frequency, and retention.",
+      "follow_up_question": "Please provide required report types and KPIs, preferred export formats (CSV/PDF/etc.), and expected report generation performance/SLA."
+    }
+  ]
+}

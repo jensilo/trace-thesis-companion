@@ -1,0 +1,128 @@
+Interviewer: Thanks for meeting with me. To start, can you tell me how you typically use the current room-booking system during a day? What are the main things you do and what frustrates you?
+
+Stakeholder: Sure — I use it a few times every day, mostly to grab a room for quick team huddles or to book a bigger room when we need a projector. Um, I think the biggest frustration is that it’s clunky — sometimes I click and nothing obvious happens, or I get an email late and then people show up and the room’s not actually reserved. It just wastes time. Also, new people get lost — I don’t want to be the person walking someone through it every week.
+
+Interviewer: When you say "clunky" and "click and nothing obvious happens," can you describe a recent example? Walk me through one booking step‑by‑step as you would do it now.
+
+Stakeholder: Okay, like yesterday I needed a room for a client call. I went to the booking page, tried to filter for a room with a projector, and — hmm — it showed rooms that didn’t have one, so I had to open each room to check the equipment. Then I picked one, hit "book," waited… and nothing popped up. After a while I got an in‑app message that said "booking failed" but it didn’t say why. Then I got an email much later confirming it. I mean, that was lucky; other times I never get an email and people arrive and it’s chaos.
+
+Interviewer: You mentioned the search showing rooms that don't have the projector — when you say "filter," what filters do you expect to use? And which are the most important to you?
+
+Stakeholder: Mostly time, capacity — like how many people — and equipment, like a projector or video conferencing. Floor or building matters sometimes, but equipment and whether it's available right now are the big ones for me. I want a quick way to say "available now with projector" and see those rooms only.
+
+Interviewer: Good — that helps. You also said new people get lost. What does “get lost” mean exactly? How much time should it take for someone to make their first booking and not need help?
+
+Stakeholder: Hmm, well, I think new hires shouldn’t need a manual. If I had to say, most should be able to figure it out within a few minutes. Uh, to be precise, for acceptance testing, I’d be comfortable if, say, nine out of ten people can make a booking in about five minutes when they first try it. That feels reasonable to me.
+
+Interviewer: Thanks — that’s a useful target. Back to feedback: you said the system sometimes doesn’t explain failures. What kinds of confirmations or feedback would make you feel confident a booking really happened?
+
+Stakeholder: I want immediate, clear feedback on screen — a pop-up that says "reserved" and shows the time and attendees, not some tiny line at the top. And an email or calendar invite so people actually get the meeting on their calendars. If it fails, tell me why — like "equipment not available" or "conflict with recurring meeting" — so I know what to do next.
+
+Interviewer: Do you expect attendees to get invites automatically, or do you prefer sending invites separately?
+
+Stakeholder: I expect the system to send the invites automatically. I mean, otherwise people don't show up. And if an email fails to send, the system should at least tell me it couldn’t be delivered so I can follow up.
+
+Interviewer: You mentioned Outlook and sometimes Gmail in the past. Which email or calendar systems does your organization use? Can you name them or should I follow up with IT?
+
+Stakeholder: Hmm, our office mainly uses Outlook/Exchange, and a couple of teams use Google. I don’t know versions or server details — IT would know the specifics. But whatever we build, it has to work with both, otherwise those teams will complain.
+
+Interviewer: Understood. Earlier you said you waited and then eventually got a confirmation email. How long is too long to wait between clicking "book" and getting that on‑screen confirmation? Put a number on "too long" for you.
+
+Stakeholder: It’s gotta feel instant. If I have to stop and think about something else while it loads, I lose my train of thought. So, um, I’d say a few seconds — maybe five seconds for the normal stuff, and if it’s longer, show me a progress indicator or let me continue doing other things. Actually, to be specific, I’d expect most small actions to complete within five seconds, and almost all within eight seconds. Anything longer than that and I get frustrated.
+
+Interviewer: That’s clear — thank you. Now about availability: you said the system needs to be almost always available. "Almost always" can mean different things. Can you be more specific about how much downtime is tolerable before people are seriously impacted?
+
+Stakeholder: Right, yeah — I mean, we rely on it during office hours. We can tolerate rare, short outages if there’s good notice, but it has to be very, very rare. I don’t want to be telling people "the booking system is down" more than once in a blue moon. If I had to pick a number for an SLA conversation, I’d aim for something like "close to perfect" — actually, maybe an uptime target that’s significantly above 99.9 percent. Sorry, that's vague, but I mean it needs to be nearly continuous outside of planned maintenance.
+
+Interviewer: I’m going to press you a bit — when you say "close to perfect," are you thinking in the 99.9s range or something else? For planning, IT will need a figure.
+
+Stakeholder: Okay, okay, if I have to pick, let's say 99.99% uptime outside of server failure exceptions. That seems like the bar where outages would be extremely rare and tolerable.
+
+Interviewer: Thank you. You also mentioned localization earlier — people in different countries getting confused by dates. What language and date/time behavior do you want when users in different regions use the system?
+
+Stakeholder: We have offices in a few countries, so the UI should be available in the users’ languages. Also, the calendar display should match what they're used to, or they'll misread meeting times. Like, a UK person shouldn't think March is April because of formatting. For acceptance, I’d expect most users in each country to say the dates look correct — maybe nine out of ten people find the formatting correct for their locale.
+
+Interviewer: Do you want language selection to be manual per user, or inferred from browser settings? Which do you prefer?
+
+Stakeholder: I'd like users to be able to pick their language explicitly so they can change it themselves. If it can infer from the browser and set a sensible default, that’s fine, but I want the choice available in case it's wrong.
+
+Interviewer: Noted. On accessibility: you mentioned colleagues using screen readers and keyboard navigation earlier. What level of accessibility do you expect? Any standards we should aim for?
+
+Stakeholder: It has to work with screen readers and keyboard-only workflows. High-contrast and scalable fonts would help. I don’t know the exact standards by heart, but we should at least meet the legal expectations — so, conforming to ADA, and I think following WCAG guidelines would be sensible. We can test with the people who use assistive tech to be sure.
+
+Interviewer: Great. You also talked about personalization — what would you like to customize when you log in?
+
+Stakeholder: Personally, I’d like my start page to be either my calendar or a "find room now" panel depending on the day. Sometimes I'm booking for others, sometimes I just check my schedule. If I could set that preference and have it stick across devices, that would save clicks. Also, saved searches or default filters would be good so I don’t have to reselect "projector" every time.
+
+Interviewer: Should those preferences be stored on the server so you see them everywhere, or only locally on the device?
+
+Stakeholder: Server-side would be best. I switch between my laptop and a desktop at the office, so syncing would be helpful.
+
+Interviewer: Earlier you described people not getting invites and rooms being double-booked. How should the system handle conflicts and overlapping bookings, especially with recurring meetings or last-minute changes?
+
+Stakeholder: If there's a conflict, tell me right away and suggest alternatives — other rooms, different times, or maybe the same room but without the projector. For recurring meetings, I want an easy way to edit one occurrence or the whole series; changing one shouldn't be a puzzle. And if someone cancels, attendees should automatically get notified. If the system can detect double-bookings before they happen, that’d be great — I hate those awkward moments when two teams show up.
+
+Interviewer: On emails failing to send: you said the system should tell you. What behavior would you expect if sending an invite fails temporarily?
+
+Stakeholder: I’d want it to retry and queue the invite, and if it still fails after some attempts, show me an on-screen warning and maybe provide a manual retry option. Also log it somewhere IT can see so they can diagnose the mail server issue.
+
+Interviewer: Who should we involve from IT and facilities to get the specifics on mail servers, room inventory, and access rules?
+
+Stakeholder: IT can tell you about Exchange and Google and the server details; facilities manages the room list and AV equipment. I can introduce you to both — there’s also a site coordinator, Jenna, who knows the room priorities and recurring bookings rules. I’ll get her on the list.
+
+Interviewer: Good. A couple of process questions: how would you like us to validate that the system meets your expectations? You mentioned user tests earlier — who should participate and what success looks like?
+
+Stakeholder: Run a short usability test with a mix of new hires, regular users like me, and site coordinators. If nine out of ten people in each cohort can reserve a room without help within five minutes, I’d call that acceptable. Also, run a small survey asking whether they felt confirmations were accurate; I’d expect at least eight out of ten to say confirmations reflect what actually happened. And measure system responsiveness — most tasks should feel fast, like we discussed.
+
+Interviewer: When you say "most tasks should feel fast," is that the five seconds/ eight seconds target you mentioned earlier?
+
+Stakeholder: Yes, exactly — around five seconds for common actions, and nearly everything should be done within eight seconds. If something takes longer, show progress and let me continue other work.
+
+Interviewer: Earlier you mentioned compliance with ADA and using assistive tech. Can you identify people we can test with, or should we arrange a broader accessibility review?
+
+Stakeholder: We have at least a couple of colleagues who use screen readers and a disability network in the company. I can reach out and set up a couple of sessions for testing. Also, our legal/compliance folks might want to sign off, so we should include them.
+
+Interviewer: Good. A little challenge: you said at the start that the search shows irrelevant rooms. How does that connect to the need for confirmations and emails? In other words, is search quality the single biggest cause of failed bookings, or are confirmations the problem?
+
+Stakeholder: Hmm, good point. I'd say they’re related. Bad search causes me to pick the wrong room, and then confirmations that are delayed or missing compound the problem. So both need fixing: the search should filter reliably so I don't choose an unsuitable room, and confirmations should be immediate so I know it’s actually reserved.
+
+Interviewer: That makes sense. A few practical follow-ups: which equipment do you commonly need to book with rooms? Is it usually attached to the room, or do you reserve equipment separately?
+
+Stakeholder: Usually projector, video conferencing codec, maybe a conference phone. Ideally, equipment would be associated with the room so if the room has a built-in projector, it shows up automatically. But sometimes we bring portable gear that needs separate booking, so the system should handle both scenarios.
+
+Interviewer: Are there edge cases we should document now — like what happens if the system is down during a booking-heavy time?
+
+Stakeholder: If it’s down, we need a fallback — a posted phone number to call facilities, or a simple manual sign-up sheet at the reception. And notify users in advance for planned maintenance, and use email and maybe Slack to inform people when an outage happens. Oh, and a small tangent — our building sometimes has that weird fire alarm test at 3 p.m., so the system shouldn't try to run maintenance then. That would be chaotic.
+
+Interviewer: (laughs) Noted — avoid 3 p.m. fire alarms. For acceptance, you mentioned surveys for locale correctness. Which locales are critical at launch so we can prioritize translation and date formats?
+
+Stakeholder: We need English for the U.S. site, British English for the UK office, and then Spanish for our team in Spain and maybe Latin America. Also German for one office. If you need exact language codes, IT or HR can give the official list, but those are the main ones.
+
+Interviewer: Thanks. As next steps, I’ll summarize action items. Can you confirm you’ll introduce me to IT, facilities, Jenna the site coordinator, and the accessibility contacts? Also, can you provide a pilot group for usability testing?
+
+Stakeholder: Yes, I can do that. I’ll email IT and facilities and cc you. For the pilot group, I can pull together a mix of new hires, power users, and a couple of site coordinators. Give me a week to assemble names.
+
+Interviewer: Perfect. Last quick question: if you had to pick the single most important thing for this system to get right, what would it be?
+
+Stakeholder: Hmm, I think reliability of the booking — meaning you can find an appropriate room quickly and be sure it’s actually reserved. If I trust the booking, everything else becomes easier.
+
+Interviewer: Great. To recap what I’ll document and bring back: we’ll record your usability target that nine of ten users should be able to book within about five minutes, the need for intuitive search with equipment and availability filters, immediate on‑screen confirmations plus automatic calendar invites with robust retry/notification on failures, responsiveness targets around five to eight seconds for most tasks, very high availability (you suggested 99.99%), per‑user language selection and correct locale-aware date/time formatting (you suggested about 90% user satisfaction per locale), ADA/accessibility conformance with real user testing, server‑side user preference persistence, and support for Outlook/Exchange and Google-style calendars. Does that capture everything, or am I missing something?
+
+Stakeholder: That sounds right. Just make sure the report reads like "people want it to feel fast and reliable" and not like a bunch of techy requirements — that’s how my team will react. And, uh, thanks for asking about the fire alarm thing — random, I know, but someone needs to say it.
+
+Interviewer: (smiles) Noted. I’ll send the summary and the list of follow-up interviews. Thanks for your time and for being so specific — that helps a lot.
+
+Stakeholder: No problem. Talk soon — and if you need those pilot users quickly, say the word and I’ll push it.
+
+---
+Selected Requirements:
+1. [NICE.csv line 285] [quality, usability] 'The product shall be easy to use. 90% of users will be able to successfully reserve a conference room within 5 minutes of product use.'
+2. [NICE.csv line 291] [quality, functional, usability] 'The product shall allow for intuitive searching of available conference rooms.'
+3. [NICE.csv line 286] [quality, performance, usability] 'The product shall give users feedback when necessary. 80% of the users surveyed report that the product accurately confirms their actions.'
+4. [NICE.csv line 293] [quality, performance] The response shall be fast enough to avoid interrupting the user's flow of thought. 90% of tasks shall complete within 5 seconds. 98% of tasks shall complete within 8 seconds.'
+5. [NICE.csv line 294] [quality, availability] 'Aside from server failure the software product shall achieve 99.99% up time.'
+6. [NICE.csv line 287] [quality, functional, usability] 'The product shall allow the user to select a chosen language from one of the target market countries.'
+7. [NICE.csv line 322] [quality, functional, usability] The product shall be able to display calendar dates and times according to the user's locale. 90% of survey respondents from each target market country will find that the date and time formatting of the product is correct.'
+8. [NICE.csv line 292] [quality, legal] 'The product shall conform to the Americans with Disabilities Act.'
+9. [NICE.csv line 288] [quality, usability] 'The product shall allow for customization of start page and views preferences.'
+10. [NICE.csv line 302] [quality, operability, portability] 'The product must be able to interface with various email servers. The product shall be able to send email.'

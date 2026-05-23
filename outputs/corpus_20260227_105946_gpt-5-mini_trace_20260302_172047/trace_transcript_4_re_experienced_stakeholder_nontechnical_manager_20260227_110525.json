@@ -1,0 +1,227 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_4_re_experienced_stakeholder_nontechnical_manager_20260227_110525.txt",
+  "model": "openai/gpt-5-mini",
+  "timestamp": "20260302_172049",
+  "requirements": [
+    {
+      "requirement": "Routine UI interactions such as moving between screens and looking up a transaction shall respond within 5 seconds.",
+      "source_citation": "For routine navigation — moving from one screen to another, looking up a transaction, that sort of thing — if a rep has to wait more than about five seconds, they get annoyed… So, five seconds is my threshold for the small stuff.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly gives a numeric threshold for perceived responsiveness for routine operations. Missing specifics: percentile (e.g., 95th), measurement method, definition of 'routine' scope, and test conditions (concurrent load).",
+      "follow_up_question": "Do you require the 5-second threshold to apply to a particular percentile (e.g., 95% or 99%) and under the design load of 350 concurrent users, and which specific screens/actions are in scope as 'routine'?"
+    },
+    {
+      "requirement": "The system shall enforce role-based access controls so that users only see and perform actions appropriate to their role (e.g., cardmember reps can open cases and attach evidence but cannot finalize account adjustments or issue refunds without supervisor approval).",
+      "source_citation": "Not everyone should see every piece of data — there's personal information and settlement details that only a few people should touch. So, roles need to be tighter…",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder clearly requires RBAC and least-privilege, with examples showing difference between cardmember reps and supervisors. Missing specifics: complete role matrix, approval workflow details, and enforcement mechanisms (centralized auth, policy engine).",
+      "follow_up_question": "Can you provide a complete role/action matrix (roles, allowed read/write actions, and approval requirements) and indicate whether roles must integrate with an existing identity provider?"
+    },
+    {
+      "requirement": "The system shall implement fine-grained authorization such that certain actions (e.g., finalizing account adjustments, issuing refunds, approving overrides) require supervisor approval and only supervisors can perform approval/override actions.",
+      "source_citation": "the typical cardmember rep should be able to open a case, attach evidence, and request retrievals, but they shouldn't be able to finalize account adjustments or issue refunds without supervisor approval. Supervisors should have the ability to approve those follow-up actions and to override in exceptional cases.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder specifies separation of duties and explicit approval requirements for sensitive actions. Missing specifics: approval workflows (single approver vs multiple), time-to-approve expectations, and whether overrides must be logged with reasons.",
+      "follow_up_question": "For approval-required actions, do you require single-person approval or multi-step approvals, and should approvals include mandatory reason fields and SLA constraints?"
+    },
+    {
+      "requirement": "The system shall reference authoritative data sources in real time for transactions, cardmember profiles, and merchant details rather than maintaining independent, stale copies.",
+      "source_citation": "We really want it to reference the authoritative sources. For transaction details, that's the Statement system — anything about a posted transaction should come from there. For cardmember profiles, we need the canonical cardmember database... And similarly, merchant details have their own database that must be used for merchant identities and descriptors. I don't want a situation where the disputes tool has its own stale copy and people are reconciling differences.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "Stakeholder wants single source of truth and real-time referencing to avoid inconsistencies. Missing specifics: expected latency tolerance for lookups, offline/fallback behavior, and integration patterns (sync vs live API).",
+      "follow_up_question": "Should all authoritative data reads be live API calls (no caching), or is short-term caching allowed with a specified freshness SLA; also, what maximum staleness is acceptable if caching is used?"
+    },
+    {
+      "requirement": "When displaying a transaction, the system shall reflect the Statement system's version of record in real time so that amounts and dates always match the statement system.",
+      "source_citation": "Yes, exactly. If a rep pulls up a claim and the amount or date doesn't match what's on the statement system, that's a breakdown. It should always reflect the statement system's version of the truth.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "integrity",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly demands real-time consistency with Statement system. Missing specifics: acceptable reconciliation windows, error handling when Statement system is unavailable.",
+      "follow_up_question": "If the Statement system is temporarily unreachable, what is the acceptable behavior (fail lookup with error, retry with cached data and flag as potentially stale, or queue lookup), and how should such incidents be logged/alerted?"
+    },
+    {
+      "requirement": "The application shall generate standardized letters and emails from templates to prevent freeform messages and ensure consistent tone and reduced errors.",
+      "source_citation": "Well, the app should generate standard letters and emails so reps aren't composing freeform messages every time — that reduces error and keeps the tone consistent.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Stakeholder wants template-driven correspondence to reduce errors and enforce consistency. Missing specifics: template management (who edits), localization, variable substitution rules, and approval process for templates.",
+      "follow_up_question": "Who should manage and approve correspondence templates (legal, business), do templates require localization, and should templates be versioned and auditable?"
+    },
+    {
+      "requirement": "Account adjustments must follow a controlled workflow where a request is created with supporting evidence and an authorized approver must approve and execute the adjustment; all steps must be auditable.",
+      "source_citation": "For account adjustments, there has to be a controlled workflow: someone creates the adjustment request, supporting evidence is attached, and an authorized person approves and executes it. We need the business to be able to audit who did what and why, so a clear trail on both correspondence and account changes is essential.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Stakeholder requires controlled, auditable workflows for sensitive financial actions. Missing specifics: SLA for approval, rollback capabilities, and exact auditable fields required.",
+      "follow_up_question": "Please specify required workflow states, required metadata for each step, approval SLAs, and whether automated rollback is required if an adjustment is later revoked."
+    },
+    {
+      "requirement": "The system shall record a complete, detailed audit trail of every action on a case, including who opened it, edits, status changes, views of sensitive fields, when letters were sent, and approvals, sufficient to reconstruct the timeline precisely.",
+      "source_citation": "We need a record of every action taken on a case — who opened it, edits, status changes, who viewed sensitive fields, when letters were sent, approvals, everything. If we can't reconstruct the timeline precisely, that's a big problem… Incomplete or spotty history is a dealbreaker.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Stakeholder declares audit trail completeness a dealbreaker and lists required events. Missing specifics: retention duration for audit logs, export formats, tamper-resistance requirements, and access controls for logs.",
+      "follow_up_question": "What retention duration and export formats do auditors require for case event histories, and do you require tamper-evident/tamper-proof logs (e.g., write-once storage or cryptographic signing)?"
+    },
+    {
+      "requirement": "The system shall implement workflows and data retention that comply with applicable card dispute regulations and statutory timelines; these workflows should bake in required notices and deadlines.",
+      "source_citation": "We have to follow the card dispute rules in our industry — the consumer protections and timelines that come from the relevant credit and electronic funds regulations. If we don't follow those, we risk consumer complaints and potential fines. So, the workflows and data retention need to align with those rules.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly ties workflows and retention to regulatory compliance and mentions timelines and notices. Missing specifics: which regulations and exact timelines/notice text; legal retention periods.",
+      "follow_up_question": "Please provide the specific regulatory citations and the exact timelines and retention periods we must implement (or authorize us to consult legal for the retention table)."
+    },
+    {
+      "requirement": "The system shall be designed to support 350 concurrent users without noticeable slowdowns.",
+      "source_citation": "Okay, let's be precise — design for three hundred and fifty concurrent users without noticeable slowdowns.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "Stakeholder gives a precise concurrent-user capacity target. Missing specifics: definition of 'noticeable slowdowns' (quantitative), expected geographic distribution, and peak usage patterns.",
+      "follow_up_question": "Define 'noticeable slowdowns' quantitatively (e.g., 95th percentile page load < 5s) and provide expected geographic distribution and peak concurrency patterns for load testing."
+    },
+    {
+      "requirement": "The system shall be available 24/7 except for planned maintenance windows; routine maintenance windows shall be Mon–Sat 03:00–04:00 Eastern and longer Sunday 01:00–05:00 Eastern for deeper updates.",
+      "source_citation": "We operate across time zones and occasionally have reps working outside standard hours. So, it effectively needs to be available all the time, except for planned maintenance... For routine maintenance, keep it to the early-morning slot Monday through Saturday between three and four a.m. Eastern. On Sundays, allow a larger window from about one a.m. to five a.m. Eastern so we can do upgrades that require a longer outage.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "Stakeholder specifies availability expectation and explicit maintenance windows. Missing specifics: target uptime percentage (e.g., 99.9%), acceptable duration/frequency of unplanned outages, outage notification SLA, and rollback/rollback procedures.",
+      "follow_up_question": "What target uptime (e.g., 99.9%) do you require, what is the notification lead time for planned maintenance, and what are acceptable SLAs for unplanned outage detection and resolution?"
+    },
+    {
+      "requirement": "Long-running operations (e.g., generating large correspondence packages or bulk exports) shall be queued and provide progress feedback to the user instead of an indefinite spinner.",
+      "source_citation": "For heavier operations like generating large correspondence packages or bulk exports, I accept longer, but they should be queued and give progress feedback. The problem today is people click and stare at a spinner with no indication…",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Stakeholder expects UX for long-running tasks to provide queuing and progress/status so users are not left uncertain. Missing specifics: progress granularity, notification methods (email, in-app), retry policies, and SLA for completion.",
+      "follow_up_question": "What level of progress feedback is required (percent complete, step names), should users be notified on completion via email/in-app, and what maximum acceptable completion times do you expect for bulk jobs?"
+    },
+    {
+      "requirement": "External user access (merchant reps, third-party vendors) shall be segmented so external users only see required fields; exported reports must mask or limit sensitive information unless explicitly authorized.",
+      "source_citation": "External-facing interactions — when a merchant rep or a third-party vendor accesses the tool — need to be segmented so they only see what's necessary. … any exported reports mask or limit sensitive information unless explicitly authorized.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder emphasizes data segregation and data minimization for exports to mitigate compliance and reputational risk. Missing specifics: which fields are considered sensitive, masking rules, and authorization process for full export access.",
+      "follow_up_question": "Please provide a list of sensitive fields that must be masked in external views/exports and define the authorization workflow for allowing unmasked exports."
+    },
+    {
+      "requirement": "All UI for internal and external surfaces shall conform to corporate brand, usability, and accessibility guidelines.",
+      "source_citation": "We have brand and usability guidelines — forms, error messaging, accessibility standards — and they must be followed for both internal and external surfaces… So, follow the corporate standards for UI creation; that's a must…",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 5,
+      "rationale": "Stakeholder requires adherence to corporate UI and accessibility standards. Missing specifics: link to style guide, accessibility level required (e.g., WCAG 2.1 AA), and acceptance criteria for UI conformance testing.",
+      "follow_up_question": "Can you supply the corporate UI/style guide and state the accessibility conformance level required (e.g., WCAG 2.1 AA) and any automated/acceptance tests you expect?"
+    },
+    {
+      "requirement": "Auditors shall be able to export complete case histories showing raw events (original transaction, dispute, retrievals/chargebacks, correspondence, approvals, timestamps for views/edits).",
+      "source_citation": "Auditors want to be able to see the entire chain: the original transaction, the dispute, any retrievals or chargebacks, correspondence, approvals for adjustments, and timestamps for views and edits. They should be able to export a case history and see the raw events.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Stakeholder clearly expects exportable, raw event-level audit/trace data for auditors. Missing specifics: export formats (CSV, JSON), filtering capabilities, access controls for exports, and retention period for exported data.",
+      "follow_up_question": "What export formats and fields are required for auditor exports, and who should have permission to perform exports (and under what justification)?"
+    },
+    {
+      "requirement": "The system shall support controlled, temporary elevation of privileges (just-in-time access) with approval, automatic reversion, and auditing of who approved and why.",
+      "source_citation": "There should be a controlled way to grant temporary elevated rights, with clear approval and automatic reversion. But those temporary grants must themselves be audited so we can see who approved them and why.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder requests JIT privilege elevation with controls and audit. Missing specifics: max duration for elevation, emergency escalation paths, and integration with existing PAM/identity systems.",
+      "follow_up_question": "What maximum duration should temporary elevations have, who can approve them, and do you want integration with an existing privileged access management (PAM) system?"
+    },
+    {
+      "requirement": "The system shall provide data segregation and strict role enforcement to prevent unauthorized access and to reduce the need for users to resort to offline workarounds during incidents.",
+      "source_citation": "Last year we had a merchant dispute spike and our old system couldn't keep up; people started using spreadsheets to track cases... That experience made me insist we get data segregation, strict roles, and a full audit trail right from day one.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "Stakeholder cites operational incidents and wants resilience and governance to prevent manual workarounds and exposure. Missing specifics: intended resilience requirements (auto-scaling, failover), telemetry to detect capacity issues, and encouraged fallback behaviors.",
+      "follow_up_question": "Do you require automated scaling/failover to avoid manual spreadsheets during spikes, and what monitoring/alerting thresholds should trigger capacity or incident responses?"
+    },
+    {
+      "requirement": "Cases and associated data shall be retained for statutory/legal retention periods; after retention expires data shall be purged or anonymized; business users shall not be allowed to delete case history — deletions must be controlled and logged.",
+      "source_citation": "We have legal retention requirements, so cases need to be kept for the statutory period, and certain notes should be retained longer; after that, we should purge or anonymize. I can pull the specific retention table from legal, but don't let business users delete case history — deletions should be controlled and logged.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 5,
+      "rationale": "Stakeholder requires legal retention, controlled deletion, and anonymization. Missing specifics: exact retention durations per data type, purge/anonymization algorithms, and deletion authorization workflow.",
+      "follow_up_question": "Please provide the legal retention table by data type and specify whether anonymization or secure deletion is preferred, and which roles (if any) can request deletions with what approval process."
+    },
+    {
+      "requirement": "Project success shall be measured by operational metrics including average handle time per dispute, reduction in callbacks, time to resolution, percentage of cases with full audit trails, user satisfaction from reps, and fewer compliance exceptions in audits.",
+      "source_citation": "I'll look at average handle time per dispute, reduction in callbacks, time to resolution, percentage of cases with full audit trails, and user satisfaction from reps. Also, fewer compliance exceptions in audits — that's a big one.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 4,
+      "rationale": "Stakeholder provides a set of measurable success metrics. Missing specifics: target values/thresholds, measurement periods, and instrumentation requirements to collect these metrics.",
+      "follow_up_question": "For each metric please provide target values (e.g., % reduction in callbacks, target average handle time) and the reporting cadence and owner for these KPIs."
+    },
+    {
+      "requirement": "The project team shall explicitly surface trade-offs and staging decisions early so the business can plan processes around phased functionality or deferred non-functional capabilities.",
+      "source_citation": "Please flag any trade-offs early — if something has to be staged, I'd rather know so we can plan the business processes around it.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "Stakeholder asks for early visibility into technical trade-offs and staged delivery impacting operations. Missing specifics: acceptable staging approaches, which attributes can be deferred, and how trade-offs should be presented.",
+      "follow_up_question": "Which non-functional attributes (e.g., full audit exports, JIT elevation, 350-user load) are highest priority so we can propose staged delivery options, and how would you like trade-offs documented (impact/mitigation/timeframe)?"
+    }
+  ]
+}

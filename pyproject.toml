@@ -1,0 +1,35 @@
+[project]
+name = "squire"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "bert-score>=0.3.13",
+    "langroid[litellm]>=0.59.34",
+    "pingouin>=0.6.1",
+    "pydantic>=2.12.5",
+    "python-dotenv>=1.2.1",
+    "rich>=13.9.4",
+    "statsmodels>=0.14.6",
+    "typer>=0.23.0",
+]
+
+[project.scripts]
+squire = "squire.main:app"
+trace = "reqtrace.main:app"
+iso-label = "iso_labeller.main:app"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = [
+    "ipykernel>=7.2.0",
+    "jupyter>=1.1.1",
+    "matplotlib>=3.10.8",
+    "scipy>=1.17.1",
+    "seaborn>=0.13.2",
+    "sentence-transformers>=5.2.3",
+]

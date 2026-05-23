@@ -1,0 +1,152 @@
+Interviewer: Hi — thanks for meeting. Could you start by telling me, in your words, what success looks like for this disputes system?
+
+Stakeholder: Sure, I think, um, success is pretty simple at a high level — we need a reliable, auditable tool so reps can resolve disputes quickly and customers don't churn, and so we don't get nailed in an exam. Basically the reps need to feel supported, supervisors need visibility, and compliance needs to sleep at night. Right now our tools are a bit cobbled together — slow screens, gaps in history, people poking around spreadsheets — so fixing that is the priority.
+
+Interviewer: Okay. Who are the main users we’re designing for? And what business outcomes are most important — like the KPIs?
+
+Stakeholder: The core users are the frontline cardmember reps and merchant services folks, and then supervisors and some fraud and investigation teams. Outcomes are about customer experience and operational risk — faster dispute resolution, higher first-contact resolution so customers aren't bounced around, and a clean audit trail so we can demonstrate compliance to regulators. Also lowering our operational backlog and avoiding fines is a big driver.
+
+Interviewer: Got it. Are there existing systems this has to work with or replace?
+
+Stakeholder: Yes, we have some legacy case tools and the master data systems for transactions and members. We don't want to redo those masters — the disputes tool should sit on top and use them as the source of truth. Oh, and there are a few homegrown scripts and tactical workarounds ops uses today that we want to retire, because they're risky.
+
+Interviewer: Thanks. Let’s talk about when the application needs to be available. Do you have expectations for uptime or planned maintenance?
+
+Stakeholder: We need it up all the time — customers and reps use it at odd hours and across time zones. Scheduled maintenance is fine but it must be small, predictable, and communicated, because operations coordinates across teams. We can't have surprise downtime during busy billing windows.
+
+Interviewer: Can you be specific about the allowed maintenance windows? Like what hours?
+
+Stakeholder: Yeah, um, we worked this out with ops — maintenance is OK in the very early morning hours so it won't impact support. On most days it's a short window in the pre-dawn hour, and on Sunday it's a longer early-morning block. Those are the only times ops should schedule intrusive maintenance.
+
+Interviewer: When you say “short window” and “longer early-morning block,” are you able to give the exact times and the time zone we should use?
+
+Stakeholder: Sure — it's Eastern time. Monday through Saturday we agreed on a one-hour window starting at three in the morning, and on Sunday we allow a few hours starting around one in the morning. We expect the app to be available outside of those slots.
+
+Interviewer: Thanks. Moving to responsiveness — what does “fast” mean to your teams? How patient are reps?
+
+Stakeholder: Reps are pretty intolerant of lag — they’re on the phone with cardmembers or merchants, so any delay costs minutes and frustrates customers. It just needs to feel snappy; waiting around is a morale killer and increases call handle times.
+
+Interviewer: How long is too long? Do you have a target for screen-to-screen navigation?
+
+Stakeholder: If I had to put a number on it, for the small navigation stuff like moving from the case list to case details, anything over a few seconds feels slow. I'd say about five seconds is our threshold for those routine transitions.
+
+Interviewer: Okay. How about how many people might be using it at the same time — any concurrency expectations?
+
+Stakeholder: We see peaks during billing cycles and when statements hit inboxes. The system has to handle a couple of hundred active reps at peak without slowing down. We don't want the system to bog down when everyone logs in the morning.
+
+Interviewer: Can you tell me the specific peak headcount we should design for?
+
+Stakeholder: We pegged it at three hundred and fifty concurrent users for capacity planning, so the user experience must not degrade at that level.
+
+Interviewer: Understood. On access controls — who should be able to initiate disputes or perform sensitive actions in the system?
+
+Stakeholder: Only people with the right role should start a dispute. We can't have a rep filing disputes for accounts they don't manage — that's an exposure. So front-line reps need the ability to initiate and update their assigned cases, supervisors need broader oversight and approval actions, and fraud or investigations teams need certain elevated privileges. There should be clear separation so people only do what they're authorized to.
+
+Interviewer: How is a rep’s assignment or “cardholder base” determined?
+
+Stakeholder: It's mostly organizational assignment — reps are mapped to a portfolio or a set of accounts by product line and region, and sometimes by BINs. That mapping comes from our workforce assignment process and must be enforced by the system, not left to manual checks.
+
+Interviewer: Should the system let managers override those assignments or let people cover for each other temporarily?
+
+Stakeholder: Managers should be able to approve exceptions in rare cases, but there needs to be an auditable approval flow. Temporary cross-coverage happens, and that's fine as long as it's controlled and logged.
+
+Interviewer: Speaking of access, can users poke at database tables or files if they need something?
+
+Stakeholder: No, that's one of the things I really want to eliminate. Users should interact only through the app — no direct DB browsing or file drops. We have too many stories of someone pulling a file and losing context or exposing data. Admin troubleshooting can be supported by controlled tools, but not free rein into raw databases.
+
+Interviewer: Do any internal teams need DB access for troubleshooting though? Like support or DBAs?
+
+Stakeholder: DBAs and a very small set of support engineers may need read access for diagnostics, but it should be controlled, time-limited, and logged. Most of the day-to-day work needs to be done through the application and its APIs.
+
+Interviewer: On integrations: where should the disputes app get transaction and cardmember data? From those legacy systems you mentioned?
+
+Stakeholder: Absolutely. Transaction details must come from the statement system — that's our canonical transaction record — and member details must come from the cardmember master. We can't rely on manual entry or replicated, stale spreadsheets. The app has to pull from those masters so the dispute reflects what was actually billed and who owns the account.
+
+Interviewer: Are these systems available via APIs? And are we allowed to store copies or should we always query them?
+
+Stakeholder: They have service interfaces, yes. For most fields we should read from those services live or from a well-controlled cache; we shouldn't have user-facing data that's not traceable back to the masters. There may be some flags or small write-backs — like marking a dispute status — but the authoritative transaction and member attributes should remain sourced from their respective systems.
+
+Interviewer: When you say “all transaction details should come from the statement system,” do you mean never allow manual edits to those fields in the disputes UI?
+
+Stakeholder: We should avoid edits to authoritative fields. If a rep believes the master is wrong, there should be a documented process to request correction upstream, with a temporary note or flag in the dispute rather than changing the original transaction in the disputes tool.
+
+Interviewer: Let’s talk about auditability. What level of history do you expect the system to keep for each dispute?
+
+Stakeholder: We need a complete, detailed history — every action recorded, who did it, when, and why — so if a regulator or an internal investigator asks we can produce the chain of events. It should be easy to see notes, changes, and correspondence, and produce that history for an audit without rummaging through shared drives.
+
+Interviewer: Can you be specific about what should be captured for each action — like which fields or attributes?
+
+Stakeholder: For each recorded action we should capture the actor, the time, and the nature of the change — so you can see before and after if a value was changed, and any comment that explains why. Also, context like the session or location is helpful for investigations. The point is to be able to reconstruct what happened without ambiguity.
+
+Interviewer: How long should we retain those audit records? Any legal requirements there?
+
+Stakeholder: Retention follows our legal and compliance rules. We need to confirm exact retention periods with the compliance team, but it won't be short — regulators expect years of traceability for dispute cases.
+
+Interviewer: On legal frameworks, which regulations are most relevant for how we design dispute workflows?
+
+Stakeholder: The big ones for card disputes are the consumer dispute rules — the regs that govern timelines for investigations and the required notices. We need the app to make it straightforward to follow those timelines, keep evidence, and generate required communications, otherwise we risk fines and customer harm.
+
+Interviewer: Do you want the app to enforce those timelines automatically?
+
+Stakeholder: Yes, wherever possible. Automatic escalations, reminders, and required correspondence make compliance practical. Humans will still have judgment calls, but the app should prevent missed deadlines or at least surface them loudly.
+
+Interviewer: For end-to-end workflows — can you walk me through a typical happy-path dispute flow?
+
+Stakeholder: A rep logs in, pulls up the member's account, selects the statement transaction from the canonical view, starts a dispute, captures the member's reason, attaches supporting documents, and either issues a ticket retrieval or initiates a chargeback where appropriate. The system should generate any required correspondence, update status as we hear back from the merchant or backend systems, and ultimately close with a documented resolution and any account adjustment applied. Throughout, everything is logged and the underlying transaction and member info remain traceable to the masters.
+
+Interviewer: And how do you want the app to behave if a backend like the statement system is down while the rep is creating a dispute?
+
+Stakeholder: It should degrade gracefully. If the canonical service is temporarily unavailable, the app should tell the rep clearly, allow them to work with limited functionality — maybe capture the dispute request and queue it — and then reconcile or synchronize once the backend is back. But we must avoid allowing creation of disputes with unverified transaction data.
+
+Interviewer: What about things like correspondence and templates — are there specific requirements for generating letters or emails?
+
+Stakeholder: We need templated correspondence that can be personalized with case data and that becomes part of the case history. Those templates should be legal-reviewed and versioned so we can show which template was used in any given communication.
+
+Interviewer: For monitoring and ops — what do you need to see in production to feel comfortable?
+
+Stakeholder: We need dashboards for availability, user experience, and integration health. Ops should get alerts when latency or error rates spike, and we need visibility into how many users are active. Runbooks for common failures and agreed escalation paths are essential so incidents get handled consistently.
+
+Interviewer: Any specific alert thresholds you want defined now?
+
+Stakeholder: I don't have precise numbers off the top of my head — ops will want to set thresholds based on the performance targets we agree on. But the system should expose metrics that map to those targets so we can set thresholds later.
+
+Interviewer: On privacy and PII — any fields that must be masked in the UI or in exported reports?
+
+Stakeholder: Sensitive fields like full account numbers and certain personal identifiers should be masked for general users; investigators with the right privileges can view unmasked data. Exports need to be controlled and redacted as needed. Again, compliance will have the final say on exact masking rules.
+
+Interviewer: For acceptance and priorities — what's the order of must-haves versus nice-to-haves for the initial release?
+
+Stakeholder: The must-haves are compliance and auditability, role-based access and data segregation so reps only touch their assigned accounts, and integrating with canonical data sources so we don't duplicate truth. After that, availability and performance are critical so operations can run smoothly. Nice-to-haves are advanced reporting, bulk workflows, and some bells-and-whistles for supervisor productivity.
+
+Interviewer: Could you rank those top items in order? Like which is the single most critical?
+
+Stakeholder: If I had to pick one, compliance and having a full auditable trail is the top priority — that's the foundation. Next is making sure only authorized people can touch cases and that data comes from the masters, then availability and performance so ops and CX aren't degraded.
+
+Interviewer: Okay. For follow-ups, who should I bring into future conversations — legal/compliance and the owners of the statement and cardmember systems?
+
+Stakeholder: Yes — bring in legal/compliance for Reg E/Z specifics, and the technical leads for the statement system and the cardmember master so we can lock down the integration contracts. Also involve ops to confirm maintenance windows and monitoring. I'll send you the contact names for those folks.
+
+Interviewer: Would you like me to produce a written summary of what we discussed and the open questions?
+
+Stakeholder: Yes please. A clear summary of decisions, open items, and the list of SMEs to talk to would be great. That will help us move quickly and schedule the workshops.
+
+Interviewer: Great — last quick thing, any recent incidents or examples that highlight what we must avoid?
+
+Stakeholder: Hmm, yeah — last quarter we had an exam that flagged a case where a rep had edited a transaction record outside the master and the logs were incomplete. That was painful — took weeks to untangle and we had to produce evidence. So no more of that. Also, once a rep had to wait so long for a lookup that the member hung up; that kind of friction directly impacts churn. Oh, and small aside, the coffee machine in ops died last week so everyone was grumpy during the outage — not relevant to the app, but, you know, morale matters.
+
+Interviewer: Thanks — that's helpful. I'll send the summary and invite the SMEs you mentioned. Anything else I missed?
+
+Stakeholder: No, I think that's the main set. Just make sure we get legal and the backend owners in the next meeting and capture the exact retention periods and masking rules from compliance. Other than that, we've got a good starting point.
+
+---
+Selected Requirements:
+1. [NICE.csv line 157] [quality, availability, operability] 'The Disputes application shall be available 24x7x365 with the exception of the following scheduled maintenance windows. Monday â€“ Saturday 3:00am to 4:00am EST Sunday 1:00amd to 5:00am EST'
+2. [NICE.csv line 155] [quality, performance] 'The maximum wait time for a user navigating from one screen to another within the Disputes application shall be no more than 5 seconds.'
+3. [NICE.csv line 156] [quality, performance, scalability] 'The Disputes application shall support 350 concurrent users without any degradation of performance in the application.'
+4. [NICE.csv line 177] [quality, functional, legal] 'The Disputes application must maintain a detailed history of every action that a user takes on a dispute case. This ensures a complete audit trail if questions arise later on with regard to a particular dispute case.'
+5. [NICE.csv line 175] [quality, legal] 'The Disputes application must conform to the legal requirements as specified by Regulation E and Regulation Z that govern credit card disputes processing.'
+6. [NICE.csv line 163] [quality, security] 'The Disputes application shall ensure that only users with the appropriate access level are allowed to initiate dispute requests.'
+7. [NICE.csv line 180] [quality, security] 'The Disputes System must prevent users from accessing any dispute cases that do not belong to their cardholder base.'
+8. [NICE.csv line 171] [quality, functional, security] 'The Disputes application shall manipulate and view business data. Users will not have direct access to data files or databases.'
+9. [NICE.csv line 158] [quality, operability] 'The Disputes application shall interface with the Statement Database. The Statement Database provides the transaction details to the Disputes System. All transaction details must be obtained from the Statement Database'
+10. [NICE.csv line 159] [quality, operability] 'The Disputes application shall interface with the Cardmember Information Database. The Cardmember Information Database provides detailed information with regard to a cardmember. All cardmember detail information must be obtained from the Cardmember Information Database.'

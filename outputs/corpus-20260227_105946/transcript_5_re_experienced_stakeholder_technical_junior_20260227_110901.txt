@@ -1,0 +1,92 @@
+Interviewer: Thanks for making time. To start, tell me about what you've been doing on this project and what keeps coming up as the biggest pain points.
+
+Stakeholder: Yeah, sure — I think, well, I've been on the team about a year, mostly wiring up front-end pages and trying to hook the UI into the parts feed. The recurring headaches are around the parts feed integration, making the screens match corporate style, and, uh, performance — people complain when searches take too long. Also, adjusters keep telling us they don't want to fiddle with complicated screens in the yard, so usability keeps coming up.
+
+Interviewer: When you say "parts feed integration," what exactly are you referring to? Which system and what kind of feed?
+
+Stakeholder: Right, right — sorry, I should've been clearer. We're pulling recycled parts data from that Choice Parts system — it's the canonical source. So I mean the app needs to consume that feed reliably, keep part availability up to date, and show compatibility info. It's been tricky because the feed format sometimes changes and we have to reconcile fields.
+
+Interviewer: You mentioned corporate style and the UI — can you put more detail on what "match corporate style" means in practice? Do we have guidelines or a component library to follow?
+
+Stakeholder: We do have corporate UI guidelines, yes — colors, spacing, approved widgets, accessibility rules, that sort of thing. The designers say we must follow them, and the architecture group has a set of components. So the app isn't free to invent its own layout; it has to fit into those patterns so other teams see it as consistent. I think some of my earlier work accidentally drifted from the components and that caused redesigns.
+
+Interviewer: Earlier you said adjusters don't want complicated screens in the yard. What do you mean by "don't want complicated" — can you give an example of a workflow that currently felt complicated?
+
+Stakeholder: Hmm, for example, the search results page used to show every single attribute about a part in a dense table. Adjusters told us they only care about a few things on site — whether the part is available, its compatibility, and distance to the pick-up. Having to scroll through technical fields and click into details felt slow. They said it should be a simple actionable list. I think they meant something like "one glance, make a decision," not fiddly drill-downs.
+
+Interviewer: How will you know when the UI is simple enough? What metric or signal would convince you it's acceptable?
+
+Stakeholder: Um, good question. The product owner talked about user acceptance — we'd run sessions with adjusters, get their thumbs-up. Ideally, almost all of them would say it's easy to use. I can't remember the exact target off the top of my head, but the expectation is that the vast majority find it straightforward. We planned some training too; adjusters shouldn't need a week to learn it.
+
+Interviewer: Can you put a number on "the vast majority" and on "shouldn't need a week"? How many users should find it easy, and how long is acceptable for training?
+
+Stakeholder: Okay, yes — when pressed the product owner said we should aim that ninety-five percent of adjusters and collision estimators report the product is easy to use. And training-wise, the goal was that people can be up to speed after two days of onsite training.
+
+Interviewer: Good, that's helpful. You flagged performance earlier — searches taking too long. Which searches are most sensitive, and how long is too long in real terms?
+
+Stakeholder: There are two hot searches: the recycled parts search and the "find preferred repair facility" lookup. Adjusters run parts searches a lot and get impatient. I mean, it just needs to feel fast — nobody likes waiting. But to be specific, for parts searches the business wants results back within what they consider a tolerable time, and for the repair facility lookup it's even more time-critical because it's tied to location and recommendations. I think the team agreed on concrete targets but I should say them only if you want numbers.
+
+Interviewer: Please give the numbers — what were the agreed targets for each search?
+
+Stakeholder: For parts searches, the target is that search results are returned in under fifteen seconds. And for the preferred repair facility search, the target they gave was under eight seconds.
+
+Interviewer: Understood. You also mentioned the feed format changing — how do we handle synchronization with Choice Parts? Do we cache, poll, or rely on push updates?
+
+Stakeholder: Right now we're caching results to reduce latency and limit calls to Choice Parts. We poll the feed on a schedule and then refresh caches. There's talk about subscribing to a push if Choice Parts can send deltas, but that's not implemented. Honestly, the caching strategy complicates freshness, so adjusters sometimes see stale availability and get annoyed.
+
+Interviewer: You said "complicates freshness" — how fresh does the data need to be? Is it acceptable if the cache lags by an hour, or must it be near real-time?
+
+Stakeholder: The business wants it pretty fresh — adjusters expect inventory to be current during the workday. I remember the product owner saying near real-time is preferred, but they gave us leeway to balance load. If I have to quote a figure, I think the expectation was sub-minute for updates in most cases, but we allowed slightly longer for edge cases.
+
+Interviewer: Let's talk about scale. You mentioned people using it in the yard and in the office. How many simultaneous users should the system be able to handle at peak?
+
+Stakeholder: Uh, yeah, there's a bunch — in office peaks and then field peaks when lots of claims come in. The ops team set a target after looking at traffic: one thousand five hundred concurrent users at maximum load. We tested to that scale in a sandbox.
+
+Interviewer: And availability — earlier you said "almost always up." Can you be specific about acceptable downtime or uptime?
+
+Stakeholder: The stakeholders want it reliable; downtime impacts claims processing. The target that was stated for SLAs is ninety-eight percent availability. So they expect it to be available most of the time and not to fail more than a small percentage of the online time.
+
+Interviewer: Security came up briefly. When you said "prevent attacks" what kinds of threats are you most worried about, and what protections are expected?
+
+Stakeholder: We worry about the usual web stuff — injection, broken auth, that kind of thing, but the big worry from ops is denial-of-service and malicious traffic that could take the service down. So we need protections like rate limiting, WAF rules, and DDoS mitigation. Also, sensitive customer data must be protected by role-based access — not everyone should see everything.
+
+Interviewer: Earlier you mentioned following corporate architecture guidelines. How strict are those, and what happens if a proposed design doesn't align?
+
+Stakeholder: They're pretty strict. The architecture review board expects adherence to their patterns — deployment models, authentication mechanisms, logging standards. If we deviate, the app goes through a change control process and can get pulled back. I guess I should say it's both governance and practical constraints; like, we have to integrate with the corporate single sign-on and logging pipeline.
+
+Interviewer: You talked about measuring "easy to use" with user acceptance sessions earlier. How would you measure usability formally? Surveys, task completion times, NPS?
+
+Stakeholder: Hmm, the plan was surveys after training sessions, maybe combined with task success rates in usability tests. The product owner mentioned a target percentage of users reporting ease of use — that's the main metric. I don't have a formal protocol written up, but we'd probably do short questionnaires right after training and after a couple of weeks in production.
+
+Interviewer: You noted that sometimes the Choice Parts feed format changes and that causes problems. How do you expect the system to handle feed schema changes — strict validation, backward compatibility, or some adapter layer?
+
+Stakeholder: From a developer view, an adapter layer is ideal — some transformation service that normalizes the feed before it hits our main app. We also want schema validation and graceful degradation if a field disappears. Ops asked for alerts when the feed structure changes so we can react quickly.
+
+Interviewer: You mentioned earlier that you cache to reduce calls and that leads to staleness. How does that connect to the expectation of near-real-time updates you mentioned later — is there a reconciliation plan?
+
+Stakeholder: Yeah, good point — you mentioned that earlier and I should tie them together. Our idea is to cache aggressively for search responsiveness but to have background syncs and a way to expire critical fields faster, like availability status. So, basically, the UI reads from cache for speed, but availability gets updated more frequently. It's a bit of a compromise between speed and freshness.
+
+Interviewer: One more thing — you said training would be onsite. Is remote or online training acceptable, or does it have to be in-person?
+
+Stakeholder: The business asked for onsite training — they feel hands-on is better, especially for older adjusters. That said, some regions might prefer remote, so we should support both, but the baseline expectation was two days of onsite training to get people comfortable.
+
+Interviewer: Thanks. To wrap up, what's the single biggest risk you see right now that could derail meeting those performance, freshness, and availability expectations?
+
+Stakeholder: Honestly, I think the biggest risk is the reliance on the Choice Parts feed and our caching strategy. If the feed becomes flaky or changes format and our adapters aren't ready, we'll either serve stale data or overload Choice Parts with too many requests trying to stay fresh. That, plus not following the architecture and security guidelines, could blow up into outages or compliance problems. Also, um, small tangent — we sometimes underestimate how much training the adjusters want; one regional manager once asked for three refresher sessions, so user adoption is a real risk too.
+
+Interviewer: That's very helpful. I'll capture these points and follow up with a short list of clarifying questions about the caching TTLs and the adapter design, and we'll schedule a session with the ops team about DDoS mitigation. Anything else you want to add before I finish?
+
+Stakeholder: No, that's it for now. Oh — except that the UI guidelines also include accessibility, which we should not forget; adjusters sometimes use screen magnifiers. So if we meet the corporate UI rules, we cover that. Otherwise, I'm happy to walk through the current integration code with you later.
+
+---
+Selected Requirements:
+1. [NICE.csv line 206] [quality, operability] 'The product shall interface with the Choice Parts System. This provides the feed of recycled parts data.'
+2. [NICE.csv line 208] [quality, legal] 'The product shall adhere to the corporate Architecture guidelines'
+3. [NICE.csv line 209] [quality, legal, look_and_feel] 'The product shall comply with corporate User Interface Guidelines'
+4. [NICE.csv line 212] [quality, usability] 'The product shall be easy to use by Adjusters and Collision Estimators. 95% of Adjusters and Collision Estimators shall find the product easy to use.'
+5. [NICE.csv line 215] [quality, usability] 'The product shall be easy to learn by Adjusters and Collision Estimators. The product shall be learned with two days onsite training'
+6. [NICE.csv line 217] [quality, performance] 'The search for recycled parts shall take no longer than 15 seconds. The search results shall be returned in under 15 seconds.'
+7. [NICE.csv line 218] [quality, performance] 'The search for the preferred repair facility shall take no longer than 8 seconds. The preferred repair facility is returned within 8 seconds'
+8. [NICE.csv line 222] [quality, availability, fault_tolerance] 'The product shall achieve a 98% uptime. The product shall not fail more than 2% of the available online time.'
+9. [NICE.csv line 223] [quality, scalability] 'The product shall be able to handle up to 1500 simultaneous users. The system shall perform with 1500 users as a time.'
+10. [NICE.csv line 237] [quality, security] 'The system shall prevent malicious attacks including denial of service.'

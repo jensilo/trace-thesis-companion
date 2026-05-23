@@ -1,0 +1,183 @@
+{
+  "project_id": "3",
+  "project_name": "DePaul University Nursing Program Scheduling and Management System",
+  "project_description": "A scheduling and management system for DePaul University's Nursing Department, enabling Program Administrators and Nursing Staff to manage nursing cohorts, curriculum structures, clinical and non-clinical classes, clinical site assignments, and student enrollments. The system tracks student progression, generates scheduling reports, reduces administrative errors and scheduling conflicts, and integrates with existing university systems. It provides automated notifications to students, instructors, and clinical site administrators regarding schedule changes and program updates.",
+  "model": "gpt-5-mini",
+  "timestamp": "20260226_162354",
+  "interviewer_persona": "re_novice",
+  "stakeholder_persona": "stakeholder_nontechnical_manager",
+  "no_refine": true,
+  "selected_requirements": [
+    {
+      "text": "'The system shall be easy to use by the Program Administrators/Nursing Staff Members.'",
+      "line": 70,
+      "categories": [
+        "quality",
+        "usability"
+      ]
+    },
+    {
+      "text": "'All of the users shall be able to use the system after one day of training.'",
+      "line": 71,
+      "categories": [
+        "quality",
+        "usability"
+      ]
+    },
+    {
+      "text": "'The system shall help the user avoid making mistakes while scheduling classes and clinicals for the nursing students.'",
+      "line": 72,
+      "categories": [
+        "quality",
+        "usability"
+      ]
+    },
+    {
+      "text": "'The number of mistakes noted by the students shall be decreased by 50% in the first year.'",
+      "line": 73,
+      "categories": [
+        "quality",
+        "usability"
+      ]
+    },
+    {
+      "text": "'The response time of general student management tasks shall take no longer than 5 seconds and the response time of schedule generation shall take no longer than 30 seconds.'",
+      "line": 79,
+      "categories": [
+        "quality",
+        "performance"
+      ]
+    },
+    {
+      "text": "'The system shall achieve 95% up time.'",
+      "line": 81,
+      "categories": [
+        "quality",
+        "availability"
+      ]
+    },
+    {
+      "text": "'system shall be able to handle all of the user requests/usage during business hours.'",
+      "line": 82,
+      "categories": [
+        "quality",
+        "availability",
+        "scalability"
+      ]
+    },
+    {
+      "text": "The system shall interface with CampusConnect's central server'",
+      "line": 89,
+      "categories": [
+        "quality",
+        "operability"
+      ]
+    },
+    {
+      "text": "'The system shall have basic data integrity checking to reduce the possibility of incorrect or invalid data being introduced.'",
+      "line": 99,
+      "categories": [
+        "quality",
+        "functional",
+        "security"
+      ]
+    },
+    {
+      "text": "The system shall protect private information in accordance with the organization's information policy.'",
+      "line": 100,
+      "categories": [
+        "quality",
+        "functional",
+        "legal",
+        "security"
+      ]
+    }
+  ],
+  "evaluation": {
+    "g_eval_quality": {
+      "judge_model": "openai/gpt-5-mini",
+      "overall_mean": 7.3,
+      "overall_std_dev": 0.62,
+      "dimensions": {
+        "structuring": {
+          "mean": 7.0,
+          "std_dev": 0.0,
+          "samples": [
+            7.0,
+            7.0,
+            7.0,
+            7.0,
+            7.0
+          ]
+        },
+        "clarity": {
+          "mean": 8.0,
+          "std_dev": 0.0,
+          "samples": [
+            8.0,
+            8.0,
+            8.0,
+            8.0,
+            8.0
+          ]
+        },
+        "responsiveness": {
+          "mean": 7.6,
+          "std_dev": 0.55,
+          "samples": [
+            8.0,
+            7.0,
+            8.0,
+            8.0,
+            7.0
+          ]
+        },
+        "rigor": {
+          "mean": 6.6,
+          "std_dev": 0.55,
+          "samples": [
+            7.0,
+            6.0,
+            7.0,
+            7.0,
+            6.0
+          ]
+        }
+      }
+    },
+    "g_eval_meta": {
+      "judge_model": "openai/gpt-5-mini",
+      "overall_mean": 8.6,
+      "overall_std_dev": 0.28,
+      "dimensions": {
+        "completeness": {
+          "mean": 8.8,
+          "std_dev": 0.45,
+          "samples": [
+            9.0,
+            9.0,
+            9.0,
+            9.0,
+            8.0
+          ]
+        },
+        "realism": {
+          "mean": 8.4,
+          "std_dev": 0.55,
+          "samples": [
+            8.0,
+            8.0,
+            9.0,
+            8.0,
+            9.0
+          ]
+        }
+      }
+    },
+    "bert_score": {
+      "precision": 0.8040716648101807,
+      "recall": 0.799160361289978,
+      "f1": 0.8016084432601929
+    }
+  }
+}

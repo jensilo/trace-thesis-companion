@@ -1,0 +1,136 @@
+Interviewer: Thanks for meeting with me. To start, can you tell me in your own words what the main goal of this new conference room and meeting management system should be?
+
+Stakeholder: Sure, I think — well, the main goal is pretty simple: we want people to actually use it every day. It should feel like part of their workplace, not some foreign app. So quick bookings, clear confirmations, and it should match the company’s look so people trust it. Oh, and we have offices in a few countries, so rollout will be phased over a couple of releases.
+
+Interviewer: Okay, phased rollout and matching the company look — got it. Who are the primary users we should think about when designing this?
+
+Stakeholder: Mostly regular employees who need rooms, executive assistants who schedule for others, and the facilities or site coordinators who manage rooms and equipment. There are also occasional external participants invited to meetings. That’s the mix that will drive adoption.
+
+Interviewer: Right. Let’s talk about branding and the look and feel. What do you expect customers to be able to change without calling support?
+
+Stakeholder: They should be able to make it feel like theirs — add their logo, adjust colors, maybe put company legal text in a footer. I don’t want customers to need a developer to do basic branding. Admins should be able to upload assets and change themes from an admin screen. It’s about trust; if it looks like the company, people are more likely to use it.
+
+Interviewer: Got it. Should we worry about different divisions wanting different themes, or is one theme per customer fine?
+
+Stakeholder: Hmm, I think one theme per organization will solve most cases, but some very large customers might want division-level tweaks. We can start simple, though — low lift for them is the priority.
+
+Interviewer: Moving on to usability — how will we know the product is easy to use?
+
+Stakeholder: We measure it by whether people can reserve a room without asking for help. If most people can do a reservation quickly on their own, that’s success. We don’t want long training or lots of support tickets about basic bookings.
+
+Interviewer: When you say "quickly," how quick is too slow? Any specific time targets we should aim for?
+
+Stakeholder: Yeah, hmm, I’d say we should be aiming for, you know, minutes, not tens of minutes. For the simple reserve-a-room flow, I’d expect something like five minutes as a reasonable maximum for most users. If they can’t do it in that window, they’ll get frustrated.
+
+Interviewer: And who counts as "most users"? First-time users or frequent users?
+
+Stakeholder: Good question. I’m mostly worried about first-time or occasional users — people who don’t book rooms every day. Those folks need to be able to figure it out without training.
+
+Interviewer: Okay. How about confirmations and feedback — what should users see after they book or cancel?
+
+Stakeholder: They should get immediate, unambiguous feedback. If you book, I want a clear confirmation on-screen and an email or calendar invite so you know it’s real. If there’s a conflict, show why and suggest alternatives. The point is fewer double-bookings and fewer angry emails to facilities.
+
+Interviewer: How will we judge whether the confirmations are good enough? Any target for satisfaction?
+
+Stakeholder: We’ll run quick surveys and usability checks. My gut is that if most users say the app confirms their actions accurately, we’re good. I’d like a high majority — maybe around eighty percent positive on that specific question in surveys.
+
+Interviewer: Understood. On emails — do you expect the system to send email directly, or use the customer’s email servers?
+
+Stakeholder: Customers will expect us to play nicely with their mail. Some will want the app to send through their own servers so invites and notices come from corporate addresses. Others might be okay with a vendor-managed outbound. It needs to support both modes so deliverability and branding are clean — people shouldn’t get invites that look like spam.
+
+Interviewer: That makes sense. Do you have particular email systems in mind that we must work with?
+
+Stakeholder: Yes, the usual corporate stuff — Exchange-based environments and cloud mail services, and plain SMTP relays in some places. We should make calendar invites standard so they show up in users’ calendars.
+
+Interviewer: Okay. You mentioned offices in other countries earlier — what do you expect for language options?
+
+Stakeholder: Users should be able to choose their language. For global customers, language switching has to be easy and we must handle locale details like date and time formats so bookings aren’t misinterpreted. We don’t need every language day one, but the app must support selecting a language and we should plan to add the main market languages early.
+
+Interviewer: Should language be per-user, or set at the organization level?
+
+Stakeholder: Per-user preference is ideal, although allowing org-level defaulting is useful. People travel and some want English even in other regions, so flexibility matters.
+
+Interviewer: Now, accessibility — how important is it for this product?
+
+Stakeholder: It’s critical. We have public sector prospects and contracts that will require it, and frankly it’s the right thing to do. Keyboard navigation, screen-reader friendliness, contrast — the main booking flows must work for people using assistive tech. We can phase some of the less-used screens, but the core reservation flow can’t ignore accessibility.
+
+Interviewer: Do you expect us to target a particular accessibility standard?
+
+Stakeholder: I’d target a widely accepted baseline. I’m thinking the usual corporate standard — the middle level of conformance that most customers expect. We should plan automated checks and some manual audits with real users.
+
+Interviewer: On performance — you said earlier the app should feel fast. Can you be more specific about what "fast" means to users?
+
+Stakeholder: Sure. It just needs to feel immediate — I hate waiting around. For small interactions, like loading the calendar or making a simple reservation, I’d say if things finish in roughly a few seconds people won’t notice. Maybe five seconds for the small stuff feels right, and almost everything should be done within a little longer than that so there aren’t awkward pauses. We want the user’s train of thought to keep going.
+
+Interviewer: So five seconds for most tasks and a slightly higher threshold for nearly everything? That sounds doable. Do you mean perceived client-side time or server processing time?
+
+Stakeholder: Perceived time is what matters — what the user experiences. Of course the team will want server metrics, but our acceptance will be based on what users feel.
+
+Interviewer: Got it. About scale — how many concurrent users should the system handle at launch?
+
+Stakeholder: We need to size it for peak usage — mornings and late afternoons when everyone is booking or changing meetings. Start capacity should handle a sizeable simultaneous load for the whole tenant pool. I’d say plan for about a thousand concurrent requests initially, and we’ll need to double that in the next release as adoption grows.
+
+Interviewer: When you say "concurrent requests," do you mean people actively using the app, or raw HTTP calls? Also, when is that next release scheduled?
+
+Stakeholder: I’m not being prescriptive about the exact metric there — engineering can define concurrent sessions versus requests — but the point is capacity planning for bursts. The next release is within our first year after launch; we’ll scale as adoption increases.
+
+Interviewer: Ok, noted. On availability — what uptime expectations do we have?
+
+Stakeholder: We want customers to feel they can rely on it. Downtime should be virtually non-existent, aside from genuine infrastructure failures. In business terms, near-continuous availability is the goal; we’ll be held to a tight standard in SLAs.
+
+Interviewer: Can you quantify "near-continuous"? Any percent target?
+
+Stakeholder: Yes, I’d set a very high bar — the kind of number that gives customers confidence. Think in the high four-nines of availability. But we should also be clear about exclusions, like infrastructure outages or scheduled maintenance.
+
+Interviewer: Understood. On security and who can access the product — who exactly should be able to log in?
+
+Stakeholder: Only company employees and external collaborators that the company has approved should get access. No anonymous or public accounts. Also, we need full auditability so every login maps to a known identity; that’s non-negotiable from a compliance point of view.
+
+Interviewer: Do you expect all logins to be from those approved accounts, with no exceptions?
+
+Stakeholder: Yes — one hundred percent of logins should be by either employees or approved external IDs. If anyone else can get in, that’s a serious issue. We’ll work with customers on provisioning, invitations, and federation options so that’s enforced.
+
+Interviewer: Which authentication methods should we support — should we integrate with corporate single sign-on?
+
+Stakeholder: Absolutely — integrate with their identity systems. Some customers will want federation, others will want direct provisioning. We should support the standard enterprise approaches so it plugs into their existing access controls.
+
+Interviewer: Okay. For acceptance and monitoring, how will we prove we meet these goals — like usability, confirmations, performance, uptime and so on?
+
+Stakeholder: We need dashboards and objective measures. Track booking success rates, response times seen by users, email delivery rates, and uptime. Also, run quick post-action surveys to measure perceived confirmation accuracy. For sign-off, we’ll want a mix of synthetic tests and real-user metrics plus some usability test reports.
+
+Interviewer: Are there particular reporting cadences or who signs off?
+
+Stakeholder: Regular weekly dashboards at first, monthly summaries for SLAs, and product/ops will jointly sign off on release acceptance. I’ll work with ops to define the exact evidence we need for each target.
+
+Interviewer: For Release 1 versus Release 2, which features are must-haves and which can wait?
+
+Stakeholder: For R1, focus on the core booking flow, basic branding, English and the top couple of market languages, accessibility for the main flows, email notifications, and the initial capacity target. More extensive theming, broader language coverage, and the doubled capacity can be scheduled for Release 2. We want to get something solid and reliable in front of users first.
+
+Interviewer: That’s helpful. What artifacts do you expect us to collect from the customer to move forward?
+
+Stakeholder: Send them a simple checklist: branding assets like logos, preferred colors, a list of target languages for the rollout, identity provider details, and their preferred mail server setup. Also ask for estimated user counts by office so we can size things.
+
+Interviewer: Great — I’ll put that together. Any other stakeholders you want me to talk to next?
+
+Stakeholder: Yes, loop in IT/security for the identity and mail integration, and facilities for the room and equipment definitions. Also, schedule a session with a UX person for a quick usability run-through. Oh, and a small aside — one of our sites has quirky room naming conventions, so we’ll need some flexibility there; that tripped us up in a previous project.
+
+Interviewer: Thanks. One last quick question — for surveys and user feedback, how often should we run those?
+
+Stakeholder: Start with short, immediate post-action prompts for a subset of users and then a quarterly survey for broader sentiment. Keep them lightweight so people actually respond.
+
+Interviewer: Okay, I’ll draft the checklist and reach out to IT and facilities. Thanks for your time.
+
+Stakeholder: Great — thanks. Oh, and please don’t forget to include example calendar invite formatting in the checklist; little things like subject lines matter more than you’d think.
+
+---
+Selected Requirements:
+1. [NICE.csv line 282] [quality, look_and_feel] The product's Look and Feel shall be able to incorporate aspects of the customer's organization such as logo branding and identity'
+2. [NICE.csv line 285] [quality, usability] 'The product shall be easy to use. 90% of users will be able to successfully reserve a conference room within 5 minutes of product use.'
+3. [NICE.csv line 286] [quality, performance, usability] 'The product shall give users feedback when necessary. 80% of the users surveyed report that the product accurately confirms their actions.'
+4. [NICE.csv line 287] [quality, functional, usability] 'The product shall allow the user to select a chosen language from one of the target market countries.'
+5. [NICE.csv line 292] [quality, legal] 'The product shall conform to the Americans with Disabilities Act.'
+6. [NICE.csv line 293] [quality, performance] The response shall be fast enough to avoid interrupting the user's flow of thought. 90% of tasks shall complete within 5 seconds. 98% of tasks shall complete within 8 seconds.'
+7. [NICE.csv line 294] [quality, availability] 'Aside from server failure the software product shall achieve 99.99% up time.'
+8. [NICE.csv line 296] [quality, scalability] 'The product shall be capable of handling up to 1 000 concurrent requests. This number will increase to 2 000 by Release 2. The concurrency capacity must be able to handle peak scheduling times such as early morning and late afternoon hours.'
+9. [NICE.csv line 302] [quality, operability, portability] 'The product must be able to interface with various email servers. The product shall be able to send email.'
+10. [NICE.csv line 315] [quality, security] 'The product shall ensure that only company employees or external users with company-approved user IDs may have product access. 100% of all logons shall be by either company employees or external users with company-approved user IDs.'

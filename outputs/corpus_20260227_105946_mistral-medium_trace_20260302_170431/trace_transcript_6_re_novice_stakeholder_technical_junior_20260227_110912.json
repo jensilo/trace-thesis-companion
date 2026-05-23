@@ -1,0 +1,271 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_6_re_novice_stakeholder_technical_junior_20260227_110912.txt",
+  "model": "mistral/mistral-medium-latest",
+  "timestamp": "20260302_171203",
+  "requirements": [
+    {
+      "requirement": "The system shall run on any platform where the Java runtime is available.",
+      "source_citation": "I think of it as the thing that has to run wherever folks happen to put it, as long as the Java runtime is there.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the system's ability to run on any platform with Java runtime, indicating a portability requirement.",
+      "follow_up_question": "Are there any specific Java runtime versions or configurations that the system requires?"
+    },
+    {
+      "requirement": "The system shall be compatible with common web and application servers such as Tomcat, JBoss, and Apache.",
+      "source_citation": "Hosting is via web and application servers—we run it on typical Java app stacks. So people mention Tomcat or JBoss... Apache is in the mix sometimes for frontend proxying.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 4,
+      "rationale": "The stakeholder lists specific server technologies, indicating a requirement for compatibility with these environments.",
+      "follow_up_question": "Are there any specific versions or configurations of these servers that the system requires?"
+    },
+    {
+      "requirement": "The system shall be compatible with common web browsers and render correctly even on older browser versions.",
+      "source_citation": "The UI should just render correctly in the common browsers companies use, and not fall apart when someone has... an older browser.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for the UI to render correctly across different browsers, including older versions.",
+      "follow_up_question": "Which specific browsers and versions does the system need to support?"
+    },
+    {
+      "requirement": "The system shall use standard HTML and CSS to ensure broad compatibility.",
+      "source_citation": "We try to keep the HTML and CSS fairly standard so it’s broadly compatible.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the use of standard HTML and CSS, indicating a requirement for broad compatibility.",
+      "follow_up_question": "Are there any specific HTML and CSS standards that the system must adhere to?"
+    },
+    {
+      "requirement": "The system shall be compatible with different database systems as preferred by the client's IT team.",
+      "source_citation": "We’ve had to make the code work with whatever the IT team prefers, so the app can talk to different database systems.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "interoperability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for the system to work with various database systems, indicating an interoperability requirement.",
+      "follow_up_question": "Are there any specific database systems that the system must be compatible with?"
+    },
+    {
+      "requirement": "The system shall be able to send notifications via different mail servers, including Exchange clusters and SMTP relays.",
+      "source_citation": "It needs to send notifications... hand off mail to whatever mail server the company uses. For us that’s usually an Exchange cluster or some SMTP relay.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "interoperability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need to send notifications via different mail servers, indicating an interoperability requirement.",
+      "follow_up_question": "Are there any specific mail servers or configurations that the system must support?"
+    },
+    {
+      "requirement": "The system shall be compatible with various company identity systems for authentication and authorization.",
+      "source_citation": "Integration with whatever company identity system or approved account list is important.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "interoperability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need to integrate with different company identity systems, indicating an interoperability requirement.",
+      "follow_up_question": "Are there any specific identity systems or protocols that the system must support?"
+    },
+    {
+      "requirement": "The system shall have fast response times to ensure productivity.",
+      "source_citation": "It just needs to feel snappy, honestly—waiting around kills productivity. Heavy operations should be quick.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for the system to feel snappy and have quick heavy operations, indicating a performance requirement.",
+      "follow_up_question": "Are there any specific response time targets or performance benchmarks that the system must meet?"
+    },
+    {
+      "requirement": "The system shall handle peak loads effectively, particularly during mornings and before big meetings.",
+      "source_citation": "Mornings and right before big meetings are when the most people hit it, so it needs to not choke during those peaks.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for the system to handle peak loads effectively, indicating a performance requirement.",
+      "follow_up_question": "Are there any specific load handling or peak performance targets that the system must meet?"
+    },
+    {
+      "requirement": "The system shall be scalable to accommodate company growth and increased usage.",
+      "source_citation": "We want it to scale forward a bit as the company grows, not be a one-off that flails when usage increases.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for the system to scale with company growth, indicating a scalability requirement.",
+      "follow_up_question": "Are there any specific scalability targets or growth projections that the system must support?"
+    },
+    {
+      "requirement": "The system shall control access to ensure only company employees and approved external partners can log in.",
+      "source_citation": "Access needs to be controlled. Mostly it’s company employees, and then occasionally external partners who’ve been set up with approved accounts. We shouldn’t be letting random people in.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need to control access to the system, indicating a security requirement.",
+      "follow_up_question": "Are there any specific access control mechanisms or security protocols that the system must implement?"
+    },
+    {
+      "requirement": "The system shall maintain audit trails for tracking changes and resolving disputes.",
+      "source_citation": "Audit trails are useful when someone says, ‘Hey, why was my meeting moved?’",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the usefulness of audit trails, indicating a security requirement for tracking changes.",
+      "follow_up_question": "Are there any specific audit trail requirements or logging standards that the system must adhere to?"
+    },
+    {
+      "requirement": "The system shall log exceptions and maintain records for support and debugging purposes.",
+      "source_citation": "It should definitely log exceptions—stack traces, context, whatever—and keep a record the ops or our support team can pull.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need to log exceptions and maintain records, indicating a fault tolerance requirement.",
+      "follow_up_question": "Are there any specific logging requirements or standards that the system must adhere to?"
+    },
+    {
+      "requirement": "The system shall have a mechanism to send logs back for analysis rather than leaving them scattered on a single server.",
+      "source_citation": "There’s a mechanism to send those logs back for analysis rather than leaving them scattered on a single server.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for a mechanism to send logs back for analysis, indicating a fault tolerance requirement.",
+      "follow_up_question": "Are there any specific log analysis or centralized logging requirements that the system must support?"
+    },
+    {
+      "requirement": "The system shall log failed email sends for retry or support purposes.",
+      "source_citation": "We log failed sends so we can retry or help support figure out why a mail didn’t go out.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need to log failed email sends, indicating a fault tolerance requirement.",
+      "follow_up_question": "Are there any specific email retry or recovery mechanisms that the system must implement?"
+    },
+    {
+      "requirement": "The system shall provide reliable diagnostic data for debugging purposes.",
+      "source_citation": "Getting reliable diagnostic data out of the system is a recurring gripe.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for reliable diagnostic data, indicating a fault tolerance requirement.",
+      "follow_up_question": "Are there any specific diagnostic data requirements or debugging standards that the system must adhere to?"
+    },
+    {
+      "requirement": "The system shall follow common design patterns and best practices to ensure a predictable and maintainable codebase.",
+      "source_citation": "We try to follow common design patterns and best practices so the codebase is predictable, not some custom spaghetti.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need to follow common design patterns and best practices, indicating a maintainability requirement.",
+      "follow_up_question": "Are there any specific design patterns or best practices that the system must adhere to?"
+    },
+    {
+      "requirement": "The system shall be documented and consistent to facilitate onboarding and extensibility.",
+      "source_citation": "That makes it easier for someone new to jump in and add a feature without undoing half the app. I mean, I’ve been the new person before and it’s awful when nothing is documented or consistent.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for documentation and consistency to facilitate onboarding and extensibility, indicating a maintainability requirement.",
+      "follow_up_question": "Are there any specific documentation or consistency standards that the system must adhere to?"
+    },
+    {
+      "requirement": "The system shall render correctly in common browsers and not fail on older browser versions.",
+      "source_citation": "The UI should just render correctly in the common browsers companies use, and not fall apart when someone has, like, an older browser.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for the UI to render correctly across different browsers, including older versions, indicating a usability requirement.",
+      "follow_up_question": "Are there any specific browser compatibility or rendering standards that the system must adhere to?"
+    },
+    {
+      "requirement": "The system shall be tested against a representative set of browsers to ensure compatibility.",
+      "source_citation": "We do some testing against a representative set of browsers; teams generally run it through the ones they care about.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need to test against a representative set of browsers, indicating a usability requirement.",
+      "follow_up_question": "Are there any specific browser testing or compatibility standards that the system must adhere to?"
+    },
+    {
+      "requirement": "The system shall provide clear error messages and handle locale and timezone settings correctly.",
+      "source_citation": "That taught us to pay attention to locale and timezone handling and to make the error messages less cryptic.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need to handle locale and timezone settings correctly and provide clear error messages, indicating a usability requirement.",
+      "follow_up_question": "Are there any specific locale, timezone, or error message standards that the system must adhere to?"
+    },
+    {
+      "requirement": "The system shall support multiple languages.",
+      "source_citation": "It should support multiple languages.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need to support multiple languages, indicating a usability requirement.",
+      "follow_up_question": "Are there any specific language support or localization standards that the system must adhere to?"
+    },
+    {
+      "requirement": "The system shall be accessible, including support for keyboard navigation and screen reader friendliness.",
+      "source_citation": "Accessibility is important too—keyboard navigation and screen reader friendliness.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for accessibility support, including keyboard navigation and screen reader friendliness, indicating a usability requirement.",
+      "follow_up_question": "Are there any specific accessibility standards or guidelines that the system must adhere to?"
+    },
+    {
+      "requirement": "The system shall be customizable to allow clients to apply their branding.",
+      "source_citation": "It should be customizable so clients can put their branding on it.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for customization to allow clients to apply their branding, indicating a usability requirement.",
+      "follow_up_question": "Are there any specific branding or customization standards that the system must support?"
+    }
+  ]
+}

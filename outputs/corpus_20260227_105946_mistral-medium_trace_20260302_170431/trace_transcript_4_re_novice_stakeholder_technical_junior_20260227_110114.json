@@ -1,0 +1,161 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_4_re_novice_stakeholder_technical_junior_20260227_110114.txt",
+  "model": "mistral/mistral-medium-latest",
+  "timestamp": "20260302_170629",
+  "requirements": [
+    {
+      "requirement": "The system shall follow corporate UI guidelines to ensure consistency with other internal applications.",
+      "source_citation": "it needs to look and feel like our other internal apps; we can't just invent a new UI every time, that causes confusion.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for the UI to be consistent with other internal apps to avoid confusion.",
+      "follow_up_question": "Can you provide specific corporate UI guidelines that need to be followed?"
+    },
+    {
+      "requirement": "The system shall load screens within five seconds to ensure a snappy and responsive user experience.",
+      "source_citation": "for the small stuff, it should be under five seconds [for screen navigation].",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies a clear performance requirement for screen navigation.",
+      "follow_up_question": "Are there any specific screens or actions that are particularly critical for performance?"
+    },
+    {
+      "requirement": "The system shall support up to 350 concurrent users during peak loads without performance degradation.",
+      "source_citation": "the app really needs to handle around 350 concurrent users during peak loads, otherwise things get sluggish.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "The stakeholder provides a specific number for concurrent users during peak loads.",
+      "follow_up_question": "What are the typical peak load times and durations?"
+    },
+    {
+      "requirement": "The system shall be available 24/7 with maintenance windows scheduled during Mon–Sat 3–4 AM and Sun 1–5 AM.",
+      "source_citation": "We schedule maintenance in quiet hours: Mon–Sat 3–4 AM, Sun 1–5 AM.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies exact maintenance windows and the need for high availability.",
+      "follow_up_question": "Are there any specific uptime percentages or SLAs that need to be met?"
+    },
+    {
+      "requirement": "The system shall integrate with the Statement Database for transaction details, Cardmember Information Database for cardmember details, Merchant Information Database for merchant info, Letters app or Print Letter Utility for letters, and the posting and billing system for account adjustments.",
+      "source_citation": "transaction details come from the Statement Database... Cardmember details are pulled from the Cardmember Information Database... Merchant info similarly comes from the Merchant Information Database... letters must go through the Print Letter Utility... adjustments must be sent to the posting and billing system.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Functional",
+      "quality_attribute": null,
+      "confidence": 5,
+      "rationale": "The stakeholder lists specific backend systems that the disputes app needs to integrate with.",
+      "follow_up_question": "Are there any specific APIs or protocols that need to be used for these integrations?"
+    },
+    {
+      "requirement": "The system shall implement role-based access control to limit who can initiate chargebacks or make account adjustments.",
+      "source_citation": "Not everyone should be able to kick off every action. Some data is sensitive, so only certain roles should initiate chargebacks or make account adjustments.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for role-based access control to limit sensitive actions.",
+      "follow_up_question": "Can you provide a list of roles and their corresponding permissions?"
+    },
+    {
+      "requirement": "The system shall maintain a full audit trail of all meaningful actions, including notes, status changes, letters sent, and adjustments requested.",
+      "source_citation": "We need a full trail... who did what and when—notes, status changes, letters sent, adjustments requested.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for a full audit trail for compliance and audit purposes.",
+      "follow_up_question": "Are there any specific regulations or standards that the audit trail needs to comply with?"
+    },
+    {
+      "requirement": "The system shall cache read-only data for performance but always pull core details from authoritative databases.",
+      "source_citation": "We can cache read-only stuff for performance, but for core details like transaction data, we always want it coming from the Statement Database.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the use of caching for performance but specifies that core details should come from authoritative databases.",
+      "follow_up_question": "Are there any specific caching strategies or technologies that should be used?"
+    },
+    {
+      "requirement": "The system shall ensure that letters are requested through the Print Letter Utility and adjustments are sent to the posting and billing system to maintain data consistency.",
+      "source_citation": "letters must go through the Print Letter Utility... adjustments must be sent to the posting and billing system so the ledger changes actually happen...",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Functional",
+      "quality_attribute": null,
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for letters and adjustments to be processed through specific systems to ensure consistency.",
+      "follow_up_question": "Are there any specific error handling or retry mechanisms that need to be in place for these integrations?"
+    },
+    {
+      "requirement": "The system shall follow corporate UI patterns to ensure consistent navigation and reduce user errors.",
+      "source_citation": "When screens look different or buttons are in odd places, reps get tripped up.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the importance of consistent UI patterns to reduce user errors.",
+      "follow_up_question": "Are there any specific UI patterns or components that are particularly important for consistency?"
+    },
+    {
+      "requirement": "The system shall preserve context between screens to avoid disrupting the user's workflow.",
+      "source_citation": "if context isn't preserved between screens—like jumping to a merchant profile and losing the original case view—that disrupts the call.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need to preserve context between screens to maintain workflow efficiency.",
+      "follow_up_question": "Are there any specific screens or transitions where context preservation is particularly critical?"
+    },
+    {
+      "requirement": "The system shall provide clear confirmations for critical actions to prevent accidental duplicates or errors.",
+      "source_citation": "once we had a rep accidentally create duplicate disputes because the confirmation was unclear.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions an incident where unclear confirmations led to duplicate disputes.",
+      "follow_up_question": "Are there any specific actions or screens where clear confirmations are particularly important?"
+    },
+    {
+      "requirement": "The system shall segregate internal and external user views to prevent external users from seeing internal-only notes.",
+      "source_citation": "We need clear segregation between internal and external users; external support folks shouldn’t see internal-only notes.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for clear segregation between internal and external user views.",
+      "follow_up_question": "Are there any specific data elements or screens that need to be segregated?"
+    },
+    {
+      "requirement": "The system shall behave predictably and consistently in both UI and backend operations to build user trust.",
+      "source_citation": "consistent backend behavior—like always getting the right source for data and predictable error handling—helps reps trust the system.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the importance of consistent and predictable behavior for building user trust.",
+      "follow_up_question": "Are there any specific areas where consistency and predictability are particularly important?"
+    }
+  ]
+}

@@ -1,0 +1,117 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_3_re_novice_stakeholder_nontechnical_enduser_20260227_110114.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_173241",
+  "requirements": [
+    {
+      "requirement": "The system shall respond to routine actions (e.g., searching for a student or updating an assignment) within 2 seconds.",
+      "source_citation": "For the little things, it should feel almost instant — a couple of seconds at most before I can move on.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the desired response time for routine actions, providing a clear and specific requirement.",
+      "follow_up_question": "What specific actions should be considered 'routine' and measured against this 2-second response time?"
+    },
+    {
+      "requirement": "The system shall be available during business hours with an uptime of at least 95%.",
+      "source_citation": "I’d be comfortable with it being available the vast majority of the time, like maybe around ninety-five percent.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the desired uptime percentage, indicating the importance of system availability during business hours.",
+      "follow_up_question": "What specific measures will be taken to ensure and monitor the 95% uptime requirement?"
+    },
+    {
+      "requirement": "The system shall be intuitive and require minimal training, with users able to perform tasks independently after one day of training.",
+      "source_citation": "Most of the folks here aren’t technical — we’re used to simple things. It needs to be intuitive so we don’t dread using it. I think about a day [of training]. If it’s designed well and the screens are obvious, a day of training and then people should be fine on their own.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for an intuitive interface and provides a specific timeframe for training, indicating the importance of usability.",
+      "follow_up_question": "What specific usability testing methods will be used to ensure the system meets the one-day training requirement?"
+    },
+    {
+      "requirement": "The system shall implement role-based access control to restrict access to sensitive information, such as student personal information and clinical site details.",
+      "source_citation": "Student personal information is sensitive; not every adjunct or site contact should see that. Only people who need to know should see those parts. Program administrators need the full picture — they handle enrollments and progression — but a site coordinator doesn’t need full student files.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for role-based access control and provides examples of sensitive information that should be restricted.",
+      "follow_up_question": "What specific roles and corresponding access levels will be defined in the system?"
+    },
+    {
+      "requirement": "The system shall prevent obvious mistakes, such as entering shifts outside normal clinical hours or assigning students to sites that do not accept their program.",
+      "source_citation": "I want it to stop obvious mistakes, like entering a shift outside normal clinical hours or assigning someone to a site that doesn’t accept that program.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the importance of data quality and provides examples of mistakes that the system should prevent.",
+      "follow_up_question": "What specific validation rules will be implemented to prevent these obvious mistakes?"
+    },
+    {
+      "requirement": "The system shall support concurrent use by at least 10 users during peak morning hours.",
+      "source_citation": "On busy mornings, probably around ten of us are working in it at the same time.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the number of concurrent users during peak times, indicating the need for the system to handle concurrent access.",
+      "follow_up_question": "What specific performance testing will be conducted to ensure the system can handle 10 concurrent users?"
+    },
+    {
+      "requirement": "The system shall integrate with existing university systems, such as the registrar, student records, and learning platforms, to exchange basic information and avoid manual data entry.",
+      "source_citation": "It would be great if it could exchange basic info so I’m not retyping the same things.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "interoperability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for integration with other systems but does not provide specific details, indicating a need for further clarification.",
+      "follow_up_question": "What specific data fields and formats will be used for integration with existing university systems?"
+    },
+    {
+      "requirement": "The system shall provide both warnings and hard stops for data entry errors, with explanations and suggested fixes for borderline cases.",
+      "source_citation": "For something clearly wrong it should block you and explain why. For borderline things, a warning with suggested fixes would be nice.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for both warnings and hard stops for data entry errors, indicating the importance of data quality and error prevention.",
+      "follow_up_question": "What specific criteria will be used to determine when to provide a warning versus a hard stop for data entry errors?"
+    },
+    {
+      "requirement": "The system shall implement automatic saving and provide a way to roll back changes to prevent data loss.",
+      "source_citation": "automatic saving and a way to roll back changes would be reassuring.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the importance of data backup and rollback capabilities, indicating a need for data loss prevention.",
+      "follow_up_question": "What specific backup and rollback mechanisms will be implemented in the system?"
+    },
+    {
+      "requirement": "The system shall be responsive, ensuring that users do not feel like they are waiting for it to perform actions.",
+      "source_citation": "it should feel responsive so you don’t feel like you’re waiting for it.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 3,
+      "rationale": "The stakeholder emphasizes the need for system responsiveness but does not provide specific performance metrics.",
+      "follow_up_question": "What specific performance metrics will be used to measure and ensure system responsiveness?"
+    }
+  ]
+}

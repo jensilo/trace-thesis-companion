@@ -1,0 +1,144 @@
+Interviewer: Thanks for taking the time. To start, in your own words, what are the primary business goals this conference-room and meeting system needs to achieve?
+
+Stakeholder: Sure — uh, I think at the top level it's got to replace the spreadsheet-and-email chaos we have now. People should be able to find rooms, book them, attach equipment needs, and send invites without ten manual steps. We also need it to play nicely with our existing ops stack — our DBs, mail servers, and SSO — and be robust enough to not fall over during the morning booking rush. Oh, and accessibility is non-negotiable; we have mandates on that front.
+
+Interviewer: When you say "play nicely with our existing ops stack," which systems do you mean specifically, and how critical are each of those integrations?
+
+Stakeholder: By ops stack I mean our primary relational databases, our SMTP/Exchange systems for outbound invites, and our identity layer — we use SAML today, kind of enterprise standard. Those are all critical; if the scheduler can't write bookings into our DBs or can't send invites to Exchange, it's no good. We can tolerate some integration work phased in, but the core booking flow must work with at least one DB and with our mail flow from day one.
+
+Interviewer: You mentioned morning booking rush and "not falling over." Give me a picture of that pattern — how many simultaneous users are we talking about at peak, and how do you count them?
+
+Stakeholder: Hmm, okay — it's busy. There's a real crunch when people schedule follow-ups right after stand-ups. I think we need capacity for about a thousand concurrent requests to be safe on day one. And, well, we plan to roughly double that in the next major release as more offices come online. When I say concurrent requests I mean active HTTP requests — not just logged-in sessions; it’s the traffic hitting the app during those 10–20 minute spikes that matters.
+
+Interviewer: Thanks — that's helpful. You said "double in the next release" — do you have a target release for that scaling, or is it more of a vague roadmap?
+
+Stakeholder: It's planned for Release 2, so it's a concrete target in our roadmap, not just a wish. We want architecture that can scale horizontally so the same code base handles both numbers with configuration and capacity changes.
+
+Interviewer: Earlier you said the system must run "where our Java stack is." Can you clarify the operating environments you expect support for initially? Which Java versions, and do you expect container support?
+
+Stakeholder: From an ops perspective we expect the product to run anywhere a supported JVM runs — our environments are a mix, mostly Linux servers, some Windows for smaller sites, and increasingly containers. We'd prefer support for current LTS Java versions; my ops team has standardized around Java 11 and is evaluating Java 17, so supporting those two would be ideal. And yes, container images would be a big plus — makes deployments much easier for us.
+
+Interviewer: When you say "support Java 11 and 17," do you want the vendor to certify both, or is compatibility enough with our validation?
+
+Stakeholder: Ideally certified by the vendor for at least one LTS and compatibility guarantees for the other, but we'll accept documented compatibility and tests we can run in our CI if certification isn't possible for both immediately.
+
+Interviewer: On the middleware side, how do you envision the app being deployed — lightweight servlet containers or full Java EE application servers? Any preferences?
+
+Stakeholder: We’ve used Tomcat for most web apps because it's lightweight, but for some tenants we also run full app servers like JBoss/EAP for features like managed transactions and enterprise JMS. So the app should be deployable in both scenarios without requiring server-specific hacks. Avoid deep coupling to proprietary app-server extensions unless there's a very good reason.
+
+Interviewer: Good. Let's talk databases. You mentioned collaboration with your DBs. Which DBMS platforms must we support at launch, and will databases be co-located with the app or remote?
+
+Stakeholder: Our environment is mixed — we have heavy Oracle presence in a couple of divisions, PostgreSQL in cloud projects, and some legacy MSSQL in a few sites. So the product should be DB-agnostic as much as feasible, meaning support for those engines in practice. Databases are mostly on separate hosts in our network — we don't normally put app and DB on the same machine in production for obvious reasons — but for small office demos or trial deployments co-located installs are also useful. We need connection pooling, failover awareness, and options for different JDBC drivers.
+
+Interviewer: When you say "failover awareness" — what are you expecting at the DB level? Active-active, read replicas, or just basic datasource failover?
+
+Stakeholder: I think we need to support typical enterprise patterns. For our high-availability setups we use clustered DBs with replication, and we expect the application to handle datasource failover gracefully. For smaller sites, basic single-instance setups are fine. We shouldn't force a single topology.
+
+Interviewer: Understood. Let's dig into performance. Earlier you emphasized "it should feel fast." Can we put numbers on that? What's "too slow" for a routine interaction like searching room availability?
+
+Stakeholder: Right — sorry, I should be specific. For the routine stuff — looking up availability, quick calendar views — if users wait more than about five seconds it interrupts their flow and support tickets spike. So small, common operations need to be snappy. For less frequent, heavier tasks, we'd accept a bit longer, but most day-to-day tasks should meet that shorter threshold.
+
+Interviewer: So you want most routine tasks under five seconds. Can you quantify "most"? Do we need percentile targets for performance SLAs?
+
+Stakeholder: Yeah, we should use percentiles. My expectation is roughly ninety percent of routine operations should complete within that five-second window, and if we stretch to, say, eight seconds we'd expect nearly all — maybe high nineties percentile — to finish. That gives headroom for occasional spikes.
+
+Interviewer: That's precise — thank you. You mentioned "routine operations" — can you list what those are so we can build representative load tests?
+
+Stakeholder: Sure. I consider searching availability, viewing room details, creating a simple booking, canceling a booking, and sending meeting invites to be routine. More complex flows like bulk imports, calendar sync, or generating reports are heavier and we can treat them differently in load profiles.
+
+Interviewer: Moving to availability: you've hinted at strong uptime expectations. What uptime target do you expect, and are there exclusions like planned maintenance or hardware failures?
+
+Stakeholder: We need an aggressive availability target — our legal and facilities teams expect enterprise-grade uptime. Practically speaking, aside from catastrophic server or hardware failures, the service should be up almost all the time; think in terms of four nines or better on a monthly basis. Planned maintenance needs to be scheduled and communicated. And yes, if a physical server dies we have to assume that could be an outage, but the software architecture should tolerate node failures through redundancy.
+
+Interviewer: When you say "four nines or better," you're indicating 99.99% uptime — is that what you're asking for?
+
+Stakeholder: Yes, that's what I have in mind. It’s a stretch but realistic if we design for clustering, load balancers, DB HA, and proper monitoring.
+
+Interviewer: You mentioned monitoring — what do you want for logging and diagnostic data, especially when something goes wrong?
+
+Stakeholder: From experience, the single biggest time sink is poor logs. We need structured exception logging with context — request IDs, user or tenant context, timestamps, server instance identifiers, and stack traces where appropriate. Also, logs must be scrubbed of PII before any transmission. We want those logs to be exportable to our analysis endpoint — either pushed in near-real-time or batched — so our team can triage issues centrally. If we don't get good logs, debugging takes days.
+
+Interviewer: Who runs the analysis endpoint? Is that your internal ops team or the vendor?
+
+Stakeholder: Our ops team will be the primary consumer, but we also want an option to transmit critical exceptions back to the vendor's support system for deeper cause analysis, provided privacy rules are respected.
+
+Interviewer: On privacy, you said scrub PII. What do you consider PII that must be masked in logs?
+
+Stakeholder: User email addresses, personal phone numbers, any calendar descriptions that might include private info — basically anything that could be considered personally identifiable under our privacy policy. Timestamps and non-sensitive IDs are fine.
+
+Interviewer: Switching to client compatibility — you said it must work with HTML browsers broadly. Which browsers and versions do you want to support on day one, and what's an acceptable coverage metric?
+
+Stakeholder: We need wide browser compatibility because users bring various browsers. Practically, we should define a supported matrix and make sure the experience degrades gracefully for older browsers. As for coverage, I expect a majority of commonly used browsers to render correctly; a ballpark rule of thumb from past projects that I trust is aiming for around eighty percent compatibility measured across a set of at least eight representative browsers. We'll pick the exact browsers based on our user analytics, but desktop Chrome, Edge, Firefox, and Safari are must-haves.
+
+Interviewer: Can you be more specific about the "set of at least eight" — do you have names in mind or should we derive them from analytics?
+
+Stakeholder: We'll derive them from analytics, but the initial list should include current stable releases of Chrome, Edge, Firefox, and Safari, plus a couple of older corporate-stamped browsers like Internet Explorer for legacy clients, and a couple of mobile browser variants. We'll finalize that list quickly after you share a proposed matrix.
+
+Interviewer: You mentioned localization earlier. How should language selection work for users — per-user, per-organization, or both?
+
+Stakeholder: Users should be able to pick their preferred language; tenants should also be able to set defaults for their organization. That way, traveling employees see their language, and tenant admins can apply branding and default locale settings for their sites.
+
+Interviewer: Which languages are in scope for the initial release?
+
+Stakeholder: We need the languages of our largest offices first: English, Spanish, and French are high priority, with German and Japanese planned soon after. But we can finalize based on where the early adopters are.
+
+Interviewer: On accessibility: you said conformance is mandatory. Which standards do you want the product to meet?
+
+Stakeholder: We need ADA compliance, which practically means implementing WCAG conformance. Targeting WCAG 2.1 level AA is a reasonable and defensible goal that covers the common requirements we get audited against. That includes keyboard navigation, ARIA roles, color contrast, and screen reader compatibility.
+
+Interviewer: Will you require testing with specific assistive technologies?
+
+Stakeholder: Yes — both automated checks and manual testing with screen readers like NVDA and VoiceOver would be required. Keyboard-only workflows must be validated too.
+
+Interviewer: Let's talk security quickly: authentication, encryption, and RBAC — what are your expectations?
+
+Stakeholder: SSO via SAML is the primary requirement, with an option for OAuth flows for integrations. TLS must be enforced everywhere; DB connections should be secured. Role-based access control is needed — admins versus site coordinators versus end users — to ensure folks only see what they should. We also need secure defaults and the ability to rotate credentials and certificates.
+
+Interviewer: Regarding logging transmission you mentioned earlier, do you want logs pushed to a vendor endpoint in real time, or batched? Any transport preferences?
+
+Stakeholder: For most exceptions, a batched push every few minutes is fine to reduce noise and bandwidth, but for critical incidents we want near-real-time streaming. HTTPS with mutual TLS or a secured REST endpoint is preferred for transport. We can negotiate formats like JSON with a schema.
+
+Interviewer: How should we handle testability and acceptance? What tests and metrics will you require to sign off on an NFR like concurrency or response time?
+
+Stakeholder: For concurrency and performance, we require load tests that simulate realistic user behavior including peak bursts. The acceptance criteria should map to the percentiles we discussed — ninety percent under five seconds, high nineties under eight seconds — and run against a production-like cluster. For compatibility, automated cross-browser regression against the chosen matrix plus manual checks. For accessibility, a third-party audit with remediation items cleared. For uptime, monitoring from multiple geographies and monthly reports.
+
+Interviewer: You mentioned earlier that databases are sometimes co-located for demos. How will that affect performance testing and acceptance? We need to be clear about the environment.
+
+Stakeholder: Good point — tests must run against the expected production topology. If production DBs are remote and clustered, testing against a co-located single-instance DB would give false positives. So staging should mirror production as much as possible; otherwise, the results are meaningless.
+
+Interviewer: You brought up maintenance windows and planned downtime earlier. How much downtime for maintenance would be acceptable, if any?
+
+Stakeholder: We have to minimize user impact. Small maintenance windows outside core business hours are acceptable if well-communicated, but they should be rare. Automating rolling upgrades and supporting zero-downtime deployments is the goal so maintenance doesn't become a user-visible outage.
+
+Interviewer: Before we wrap up, I want to push on one imprecise claim you made: you said "the app should be DB-agnostic as much as feasible." Given some DBs have different SQL dialects and features, how strict do you want us to be? Do you want full feature parity across all DBs, or do you accept some variance?
+
+Stakeholder: That's a fair challenge. We shouldn't force a lowest-common-denominator that cripples functionality, but we also can't maintain three different code paths forever. So, pragmatic support: core features must work across the supported DBs, implemented via standard SQL or an abstraction layer, and any DB-specific optimizations should be isolated and optional. We'll accept small feature gaps on legacy DBs if justified, but we must document them and have a roadmap to close them.
+
+Interviewer: Noted. A couple of housekeeping items: who will own final decisions on supported browsers, DBMS list, and languages? And what artifacts can you provide after this meeting to help us write acceptance tests?
+
+Stakeholder: The ops lead will own DB and Java version signoffs, the product manager will sign off on browsers and language priorities, and our accessibility lead will own the WCAG acceptance. I can provide the network diagram, our DB inventory, and browser analytics after the meeting — I'll email those attachments. Also, schedule a follow-up in two weeks to review the drafted requirements and test cases.
+
+Interviewer: Great. One last question on exception logs: who in your team will consume vendor-sent logs, and what's the expected SLA for vendor acknowledgement and initial analysis when a critical exception is transmitted?
+
+Stakeholder: Our SRE team will be the primary consumer. For critical exceptions we'd expect the vendor to acknowledge within an hour and provide an initial triage in, say, four business hours — or earlier if it's a production showstopper. We'll formalize SLAs with the vendor contract.
+
+Interviewer: Perfect. To summarize, I'll capture the platform constraints (Java 11/17, container-friendly), app-server neutrality (Tomcat/JBoss-friendly), DB flexibility with production-like topology for testing, concurrency targets for Release 1 and Release 2, percentile-based response-time targets, a strong availability goal with redundancy, browser compatibility target with at least eight browsers aiming for about 80% pass, per-user/per-tenant localization, WCAG-based accessibility, structured and scrubbed exception logging with secure transmission, and SSO/TLS/RBAC security. Anything missing or misrepresented?
+
+Stakeholder: That sounds right. Just one small note — please call out that we need clear definitions for "task" types in the performance tests so everyone is aligned. And, uh, one other thing — we've had a stray case where calendar invites weren't sent because of a mail server mismatch; please make sure mail integration tests are explicit. Otherwise, that's the list.
+
+Interviewer: I'll make sure "task" definitions are explicit and include mail integration scenarios in the test plan. I'll send a draft of the requirements and the acceptance test matrix in a few days. Thanks for your time and the detailed input.
+
+Stakeholder: You're welcome. And, oh — one minor digression before I go: we once had a vendor send logs with full event payloads and it caused a privacy scare, so please, for the love of audits, ensure that log sanitization is part of the contract.
+
+---
+Selected Requirements:
+1. [NICE.csv line 279] [quality, operability, portability] 'The product will require collaboration with a database management system (DBMS). The DBMS may be located on the same machine as the product or on a separate machine residing on the same computer network.'
+2. [NICE.csv line 278] [quality, portability] 'The product will function alongside server software on any operating system where the Java runtime can be installed.'
+3. [NICE.csv line 280] [quality, operability] 'The product must make use of web/application server technology. Open source examples include Apache web server Tomcat and the JBoss application server.'
+4. [NICE.csv line 287] [quality, functional, usability] 'The product shall allow the user to select a chosen language from one of the target market countries.'
+5. [NICE.csv line 292] [quality, legal] 'The product shall conform to the Americans with Disabilities Act.'
+6. [NICE.csv line 293] [quality, performance] The response shall be fast enough to avoid interrupting the user's flow of thought. 90% of tasks shall complete within 5 seconds. 98% of tasks shall complete within 8 seconds.'
+7. [NICE.csv line 294] [quality, availability] 'Aside from server failure the software product shall achieve 99.99% up time.'
+8. [NICE.csv line 295] [quality, functional, maintainability] 'The product shall create an exception log of problems encountered within the product for transmission to our company for analysis and resolution.'
+9. [NICE.csv line 296] [quality, scalability] 'The product shall be capable of handling up to 1 000 concurrent requests. This number will increase to 2 000 by Release 2. The concurrency capacity must be able to handle peak scheduling times such as early morning and late afternoon hours.'
+10. [NICE.csv line 300] [quality, look_and_feel, operability, portability] 'The product must be able to interface with any HTML browser. The product shall transmit data between the user and the product without problems. The product shall display HTML properly in 80% of all HTML browsers tested (minimum is to test 8 browsers).'

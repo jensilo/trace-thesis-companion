@@ -1,0 +1,174 @@
+Interviewer: Thanks for meeting. To start, can you remind me who you are on this project and what parts you’ve been working on?
+
+Stakeholder: Sure — I’m one of the devs on the team, been here about a year. I’ve been mainly implementing pieces of the scheduling UI and some of the backend endpoints that talk to our little sync jobs. I also keep patching ad-hoc scripts that people use when the UI doesn’t do something they need. Mostly I touch the cohort and student management screens and some validator logic.
+
+Interviewer: Good. Who are the primary users you have in mind when you build those screens? Describe them in practice — their roles and how comfortable they are with software.
+
+Stakeholder: The users are mostly program administrators and clinical coordinators — experienced with the nursing program but not very technical. They’re used to spreadsheets and email and kind of expect things to look familiar: a calendar, a table, or something that feels like their Excel worksheets. There are also instructors and site coordinators who see schedules and availability, and students who only need notifications or a simple view. Some of the admins are pretty sharp, but a few really don’t like complex menus or weird jargon.
+
+Interviewer: You mentioned spreadsheets and scripts earlier. Can you walk me through a typical workflow you saw them do manually? For example, creating a cohort and assigning clinicals.
+
+Stakeholder: Yeah, usually they start with a spreadsheet where they list students, then they copy that into an email or a text file, they check clinical site availability by calling or emailing the site coordinators, and they manually block slots on a shared calendar. If a student needs to move, they edit the spreadsheet, then someone runs a small script or manually updates multiple places, and then they email the class. It’s messy and error-prone — there’s a lot of copying between systems.
+
+Interviewer: When you say "messy and error-prone", can you give a concrete recent example of a mistake that happened because of that process?
+
+Stakeholder: Hmm, sure. A few months ago a student ended up double-booked because the spreadsheet had the wrong date format and a slot looked free but wasn’t. It took a couple of days to notice because notifications went to the wrong instructor. I think someone also accidentally removed an instructor from a shift because they edited the wrong row in the sheet. Those kinds of screw-ups are common.
+
+Interviewer: Okay. Let’s talk about usability. You’ve written "needs to be easy to use" in tickets before. When you say "easy to use," what do you mean exactly? What would make an admin say "this is easy" versus "this is painful"?
+
+Stakeholder: I think it should be obvious what to click next. For example, adding a clinical placement should feel like: pick cohort, pick site, pick date — hit save — and you’re done. No hidden dialogs, not ten options in a dropdown they don’t understand. Inline help or tooltips for odd fields would help. They don’t want to have to be trained for days; if it looks like their calendar or a spreadsheet they’ll pick it up. Also, defaults — pre-fill common values — makes them happy.
+
+Interviewer: Can you quantify "not ten options" — how many steps or clicks are acceptable for something like adding a clinical? I want to capture an acceptance criterion.
+
+Stakeholder: Uh — yeah, put a number on it — ideally a couple of clicks, maybe two or three from the main schedule view to create the placement. If it takes more than that, they grumble.
+
+Interviewer: You mentioned defaults and pre-filling. What kind of defaults are most important? And do you have any ideas about the UI patterns they already understand that we should reuse?
+
+Stakeholder: Defaults like the semester dates, typical shift length, or the usual instructor for a cohort. They’re comfortable with a calendar view and a table view; those are familiar. If something looks like a calendar and supports drag-and-drop they get it, but don’t overcomplicate the drag handles or context menus.
+
+Interviewer: You said some users use tablets. Should the UI support mobile or tablet interactions in a first release, or can that be phased?
+
+Stakeholder: Hmm, a responsive layout that works okay on tablets would be good for the first release. Phones are less important right away, I think. But it shouldn’t be unusable on a tablet, because coordinators sometimes walk the site with a tablet.
+
+Interviewer: Understood. Earlier you said the system should help users avoid making mistakes when scheduling. What mechanisms should we include to prevent those errors? Be specific about rules or behaviors you'd expect.
+
+Stakeholder: We need validation and conflict detection. For instance, if a student is already scheduled elsewhere at that time, the UI should block saving and show a clear message. If a clinical site has a max capacity, the system should warn before you overbook it. Also prerequisite checks — if a student isn’t eligible for a clinical, it should flag that. Visual cues like red highlights and inline error messages make a big difference. An "undo" or confirmation for destructive actions would also help.
+
+Interviewer: When you say "block saving" versus "warn", which do you prefer for conflicts — should the system prevent the action entirely or just warn and let them override?
+
+Stakeholder: It depends. For hard constraints like double-booking the student, I think it should block. For soft constraints, like recommended capacity exceeded, maybe a warning with a reason and a way to proceed if authorized. But honestly, we need both behaviors depending on the rule.
+
+Interviewer: Can you give some examples of what you'd label "hard" constraints and what you'd label "soft"?
+
+Stakeholder: Hard would be two placements at the same time for the same student or an instructor double-booked. Soft might be slightly exceeding a site's recommended student count or scheduling a clinical at a site that doesn't typically take that cohort, where an override after confirmation is acceptable.
+
+Interviewer: Good. You mentioned validator logic you’ve been editing. What kinds of integrity checks do you currently have server-side and what’s missing?
+
+Stakeholder: Right now we check basic formats like email and student ID patterns, and we prevent nulls on critical fields. But we lack cross-entity checks — like validating that the student’s enrollment status permits a placement, or that the site is open on that date. There’s also inconsistent handling of timezones and date formats, which causes that spreadsheet issue I mentioned.
+
+Interviewer: That timezone/date problem — you said earlier a student got double-booked due to date format. Can you show or describe how dates are stored now and where the format conversion happens?
+
+Stakeholder: Ugh, it’s a mess. The frontend sends an ISO-ish string, but some of our import scripts assume MM/DD/YYYY, and the DB stores a timestamp without timezone in some tables. So conversions happen in several layers and sometimes get dropped. I went down a rabbit hole fixing one import and then found another script that mapped dates differently — sorry, tangent. Point is, we need a consistent canonical date handling.
+
+Interviewer: No problem — that digression is useful. Let’s move to performance and availability. You said earlier admins “won’t tolerate lags” — what does that mean in terms of acceptable wait times for basic operations and heavier tasks like schedule generation?
+
+Stakeholder: For small actions like adding or editing a student or enrolling someone, it needs to feel instant — I hate waiting. If I have to wait more than a few seconds it becomes annoying. For heavy tasks like a full schedule generation across a cohort, some delay is okay, but it shouldn’t be minutes. I guess small stuff should be under about five seconds, and full schedule runs should finish within maybe thirty seconds or so.
+
+Interviewer: When you say "small stuff" do you mean create/edit/delete on student or cohort records, view profile, enroll/unenroll actions?
+
+Stakeholder: Yes, exactly those routine CRUD tasks and viewing lists. Things that are part of their daily flow.
+
+Interviewer: You mentioned schedule generation — do you mean generating a schedule for a single cohort, a single semester block, or the whole program at once?
+
+Stakeholder: I mean the heavier algorithm that assigns students to sites and shifts. Sometimes they’ll run it for a single cohort, sometimes they try to run it for the whole program when planning a term. Ideally the tool can do both; the full program run is the one that can take longer.
+
+Interviewer: How often are those full-program schedule runs performed, and who runs them?
+
+Stakeholder: Typically admins run them when planning a term — so maybe a few times per planning cycle. Sometimes a faculty lead runs one when they need to test changes. It’s not continuous, but when it happens everyone might be waiting on the results.
+
+Interviewer: Let’s talk about concurrent usage. You mentioned earlier that multiple people work at once. How many users do you see hitting the system at the same time during peak hours?
+
+Stakeholder: During mornings when everyone is scheduling, there’s about ten of us at peak who are actively using the scheduling features.
+
+Interviewer: And what are the hours of that peak activity? When should the system be expected to support that concurrency?
+
+Stakeholder: The core window is weekdays during office hours, roughly from nine in the morning to five in the afternoon.
+
+Interviewer: You also mentioned availability needs. What uptime or availability expectation should we design for? Any tolerance for maintenance windows?
+
+Stakeholder: We need it to be available when the scheduling team is working — they hate losing access mid-day. I’d expect a target uptime in the mid-nineties percentage-wise, but occasional planned maintenance is okay if it’s communicated. Thirty minutes of unexpected downtime in the morning is a big problem.
+
+Interviewer: When you say "mid-nineties", can you be more specific — do you have a percentage or a measurement window in mind for availability?
+
+Stakeholder: Yeah, okay — I’m thinking of something like ninety-five percent availability measured over a month. That’s what I’d be comfortable committing to from an operations standpoint.
+
+Interviewer: Thanks, that’s helpful. You mentioned the scheduler being single-threaded currently and potentially slow. From your perspective, is it acceptable to run full schedule generation as a background job with notifications when ready, or do users expect it to be synchronous?
+
+Stakeholder: Background jobs with notifications are fine and maybe preferable for full runs. For smaller, cohort-only runs, they’d like near-real-time. So a hybrid approach would work.
+
+Interviewer: Let’s talk data lifecycle. How long do stakeholders expect historical data — schedules, student progression, audit logs — to be available?
+
+Stakeholder: For accreditation and reporting, they want historic schedules and progression records kept for a while; it’s not just a few months. I’d say keep core records accessible for multiple years so reports can be run across terms.
+
+Interviewer: "Multiple years" — can you put a number on that? Accreditation often has specific retention windows.
+
+Stakeholder: Sure — I believe the requirement is five years for program records. So we should make sure the system can manage and query five years’ worth of data without degrading performance.
+
+Interviewer: For those five years, should archived data be in an active, editable state, or can it be read-only archives that take longer to retrieve?
+
+Stakeholder: Core records should remain queryable for reporting and reference, but older delivery artifacts like logs could be archived into slower storage. Admins might need to correct a historical record on rare occasions, but normally archived stuff can be read-only.
+
+Interviewer: Understood. Now CampusConnect — what does your integration look like in practice? What data do you need from CampusConnect and how often should we sync?
+
+Stakeholder: CampusConnect is the source of truth for student identity and enrollment. We need to pull basic student identifiers, enrollment status, and possibly course codes. For auth, we should use their SSO. Ideally the sync is near real-time for critical changes like enrollment, but nightly updates for less critical fields would be okay if real-time isn’t possible. The API docs we got are incomplete and sometimes rate-limited, which is an operational pain.
+
+Interviewer: Do we have the CampusConnect API documentation or a contact? Also, what authentication method does CampusConnect use?
+
+Stakeholder: I can share the docs and the admin contact after this meeting. As for auth, they support SAML SSO for users and an OAuth-ish API for machine-to-machine, but I’d need to confirm exact details — their documentation mentions OAuth tokens.
+
+Interviewer: Perfect — please send those. Regarding integration constraints: are there fields that CampusConnect will not provide and we must collect locally?
+
+Stakeholder: They probably won’t give us sensitive health info or clinical competency records. We’ll have to manage some program-specific fields locally, like clinical site preferences and instructor assignments. CampusConnect gives the core student registry but not the program-specific scheduling metadata.
+
+Interviewer: On privacy and data protection, what expectations or policies do we need to follow? Any specific fields that require extra protection?
+
+Stakeholder: We need to protect private student information in line with the university’s info security policy. That means encrypting data in transit, and sensitive fields like social security numbers or health-related notes must be stored securely. Access should be restricted — not everyone should be able to see everything. I’m not the InfoSec lead, but we should definitely consult them for exact controls.
+
+Interviewer: Which roles should be able to see what? For example, who should see a student’s medical notes versus just their schedule?
+
+Stakeholder: Program admins should have broad access for scheduling and tracking progression, but site coordinators should only see the info needed to manage placements — like name, ID, and schedule — not private health notes. Students should only see their own records. We’ll need role-based access controls, maybe with some field-level restrictions.
+
+Interviewer: You mentioned audit logs earlier. What do admins expect to see in an audit trail?
+
+Stakeholder: They want to know who changed a schedule, when it was changed, and the previous value. Sometimes a short reason for the change is helpful. They ask for that when disputes happen between instructors or sites.
+
+Interviewer: How long should audit logs be retained? Same five-year timeframe as records?
+
+Stakeholder: I think audit logs should be available for the same retention window, yeah. But older logs could be archived in a tamper-evident format.
+
+Interviewer: One of the risks you brought up was CampusConnect rate limits and API reliability. How should we handle sync failures or rate limiting in your opinion?
+
+Stakeholder: We should have retry logic and a clear error dashboard so admins know when data is stale. For critical mismatches, maybe a manual re-sync button. Also, we should queue changes and not block the UI if CampusConnect is slow — just show a sync status.
+
+Interviewer: Earlier you said you patch ad-hoc scripts. What artifacts can you share after this interview that will help capture current workflows — spreadsheets, current DB schema, error logs?
+
+Stakeholder: I can share anonymized spreadsheets and the scripts I’ve been fixing, plus snippets of the current DB schema. I also have a few support tickets that show common errors and one of the import logs that demonstrates the date-format problem. I’ll need to scrub anything sensitive first.
+
+Interviewer: Great. To wrap up, if you had to prioritize the requirements we've discussed for an initial release — usability, preventing scheduling errors, response time, availability, CampusConnect integration, five-year retention, data integrity, privacy — how would you rank them, and why?
+
+Stakeholder: Top priority is preventing scheduling mistakes and making the UI simple because that’s what causes the most pain day-to-day. Next would be reliable performance for routine tasks so it feels snappy. CampusConnect integration is mandatory but maybe we can phase the deeper syncs. Retention and auditability are important for accreditation and come next, and privacy is non-negotiable but we’d work with InfoSec to meet standards. Uptime matters but we can allow planned maintenance if communicated.
+
+Interviewer: When you say "reliable performance" — is your earlier five seconds for CRUD and thirty seconds for full runs acceptable as acceptance criteria?
+
+Stakeholder: Yes, those numbers sound right to me — five seconds for routine tasks and thirty seconds for schedule generation.
+
+Interviewer: And the concurrency and hours you mentioned — can you confirm that the system needs to handle ten simultaneous active users roughly between 9am and 5pm on weekdays?
+
+Stakeholder: That’s accurate. Ten concurrent active users during that window is the expectation.
+
+Interviewer: For the availability target you gave — 95% monthly uptime — is that negotiable with Ops, or is it a hard requirement?
+
+Stakeholder: I think it’s a practical target we can start with, but if Ops pushes back we might need to adjust. For now, treat ninety-five percent monthly as the baseline we’d like to meet.
+
+Interviewer: Excellent. Last question: who else should I interview next to clarify business rules — prerequisites, capacity rules, and the "hard" vs "soft" constraint list?
+
+Stakeholder: Talk to the Program Admin lead and the clinical site coordinator. Also loop in InfoSec for privacy and the CampusConnect admin for API constraints. I can introduce you to them and provide the spreadsheets and API docs after I clean them up.
+
+Interviewer: Perfect. Action items from me: I’ll draft the requirements summary from this session, request the artifacts you mentioned, and schedule follow-ups with the Program Admin lead and CampusConnect admin. Anything else you want to add?
+
+Stakeholder: Oh — one more thing. If you can, include a little UX mock of a two- to three-click flow for creating a clinical placement. I can probably build a throwaway prototype to show users; they respond to visuals a lot better than docs. Also, sorry again for rambling sometimes — I tend to go on tangents when thinking through this stuff.
+
+Interviewer: No problem — the tangents were helpful. Thanks, and I look forward to the artifacts and those introductions.
+
+---
+Selected Requirements:
+1. [NICE.csv line 70] [quality, usability] 'The system shall be easy to use by the Program Administrators/Nursing Staff Members.'
+2. [NICE.csv line 72] [quality, usability] 'The system shall help the user avoid making mistakes while scheduling classes and clinicals for the nursing students.'
+3. [NICE.csv line 79] [quality, performance] 'The response time of general student management tasks shall take no longer than 5 seconds and the response time of schedule generation shall take no longer than 30 seconds.'
+4. [NICE.csv line 81] [quality, availability] 'The system shall achieve 95% up time.'
+5. [NICE.csv line 82] [quality, availability, scalability] 'system shall be able to handle all of the user requests/usage during business hours.'
+6. [NICE.csv line 83] [quality, availability, scalability] 'The system shall cater to 10 simultaneous users from 9am to 5pm.'
+7. [NICE.csv line 85] [quality, functional, scalability] 'The system shall be expected to manage the nursing program curriculum and class/clinical scheduling for a minimum of 5 years.'
+8. [NICE.csv line 89] [quality, operability] The system shall interface with CampusConnect's central server'
+9. [NICE.csv line 99] [quality, functional, security] 'The system shall have basic data integrity checking to reduce the possibility of incorrect or invalid data being introduced.'
+10. [NICE.csv line 100] [quality, functional, legal, security] The system shall protect private information in accordance with the organization's information policy.'

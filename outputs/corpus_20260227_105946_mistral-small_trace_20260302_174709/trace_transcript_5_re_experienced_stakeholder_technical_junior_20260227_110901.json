@@ -1,0 +1,139 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_5_re_experienced_stakeholder_technical_junior_20260227_110901.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_174748",
+  "requirements": [
+    {
+      "requirement": "The system shall return recycled parts search results within 15 seconds.",
+      "source_citation": "For parts searches, the target is that search results are returned in under fifteen seconds.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the performance requirement for parts search results, including a specific target time.",
+      "follow_up_question": "Are there any specific conditions or data volumes that would make meeting this target more challenging?"
+    },
+    {
+      "requirement": "The system shall return preferred repair facility search results within 8 seconds.",
+      "source_citation": "And for the preferred repair facility search, the target they gave was under eight seconds.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the performance requirement for repair facility search results, including a specific target time.",
+      "follow_up_question": "Are there any specific conditions or data volumes that would make meeting this target more challenging?"
+    },
+    {
+      "requirement": "The system shall provide search results in a simple, actionable list format.",
+      "source_citation": "Adjusters told us they only care about a few things on site — whether the part is available, its compatibility, and distance to the pick-up. Having to scroll through technical fields and click into details felt slow. They said it should be a simple actionable list.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder describes the usability requirement for search results, emphasizing simplicity and actionability.",
+      "follow_up_question": "Can you provide examples or mockups of what a 'simple, actionable list' would look like?"
+    },
+    {
+      "requirement": "The system shall achieve a 95% user satisfaction rate in terms of ease of use.",
+      "source_citation": "The product owner talked about user acceptance — we'd run sessions with adjusters, get their thumbs-up. Ideally, almost all of them would say it's easy to use. ... when pressed the product owner said we should aim that ninety-five percent of adjusters and collision estimators report the product is easy to use.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the usability requirement, including a specific target percentage for user satisfaction.",
+      "follow_up_question": "How will the 95% user satisfaction rate be measured and validated?"
+    },
+    {
+      "requirement": "The system shall require no more than 2 days of onsite training for users to be proficient.",
+      "source_citation": "And training-wise, the goal was that people can be up to speed after two days of onsite training.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the training requirement, including a specific duration for onsite training.",
+      "follow_up_question": "What specific topics or skills will be covered in the 2 days of onsite training?"
+    },
+    {
+      "requirement": "The system shall provide data freshness with sub-minute updates for critical fields such as availability status.",
+      "source_citation": "The business wants it pretty fresh — adjusters expect inventory to be current during the workday. I remember the product owner saying near real-time is preferred, but they gave us leeway to balance load. If I have to quote a figure, I think the expectation was sub-minute for updates in most cases, but we allowed slightly longer for edge cases.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "data_freshness",
+      "confidence": 4,
+      "rationale": "The stakeholder describes the data freshness requirement, emphasizing the need for near real-time updates and providing a specific target time.",
+      "follow_up_question": "What are the specific critical fields that require sub-minute updates, and how will this be measured?"
+    },
+    {
+      "requirement": "The system shall support 1,500 concurrent users at peak load.",
+      "source_citation": "The ops team set a target after looking at traffic: one thousand five hundred concurrent users at maximum load. We tested to that scale in a sandbox.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the scalability requirement, including a specific target number of concurrent users.",
+      "follow_up_question": "What specific performance metrics will be used to ensure the system can handle 1,500 concurrent users?"
+    },
+    {
+      "requirement": "The system shall achieve 98% uptime.",
+      "source_citation": "The target that was stated for SLAs is ninety-eight percent availability.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the availability requirement, including a specific target uptime percentage.",
+      "follow_up_question": "What specific measures will be put in place to ensure 98% uptime?"
+    },
+    {
+      "requirement": "The system shall implement protections against denial-of-service and malicious traffic, including rate limiting, WAF rules, and DDoS mitigation.",
+      "source_citation": "We worry about the usual web stuff — injection, broken auth, that kind of thing, but the big worry from ops is denial-of-service and malicious traffic that could take the service down. So we need protections like rate limiting, WAF rules, and DDoS mitigation.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder describes the security requirements, emphasizing the need for protections against specific types of attacks.",
+      "follow_up_question": "What specific rate limiting and DDoS mitigation strategies will be implemented?"
+    },
+    {
+      "requirement": "The system shall adhere to corporate architecture guidelines for deployment models, authentication mechanisms, and logging standards.",
+      "source_citation": "They're pretty strict. The architecture review board expects adherence to their patterns — deployment models, authentication mechanisms, logging standards. If we deviate, the app goes through a change control process and can get pulled back.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder describes the maintainability requirement, emphasizing the need to adhere to corporate architecture guidelines.",
+      "follow_up_question": "What specific corporate architecture guidelines will the system need to adhere to?"
+    },
+    {
+      "requirement": "The system shall comply with corporate accessibility rules, including support for screen magnifiers.",
+      "source_citation": "The UI guidelines also include accessibility, which we should not forget; adjusters sometimes use screen magnifiers. So if we meet the corporate UI rules, we cover that.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "accessibility",
+      "confidence": 4,
+      "rationale": "The stakeholder describes the accessibility requirement, emphasizing the need to comply with corporate accessibility rules.",
+      "follow_up_question": "What specific accessibility guidelines will the system need to comply with?"
+    },
+    {
+      "requirement": "The system shall support both onsite and remote training for users.",
+      "source_citation": "The business asked for onsite training — they feel hands-on is better, especially for older adjusters. That said, some regions might prefer remote, so we should support both, but the baseline expectation was two days of onsite training to get people comfortable.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder describes the training requirement, emphasizing the need to support both onsite and remote training.",
+      "follow_up_question": "What specific topics or skills will be covered in both onsite and remote training?"
+    }
+  ]
+}

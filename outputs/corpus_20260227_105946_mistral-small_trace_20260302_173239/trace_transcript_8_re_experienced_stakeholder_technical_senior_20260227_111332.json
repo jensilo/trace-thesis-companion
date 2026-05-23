@@ -1,0 +1,139 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_8_re_experienced_stakeholder_technical_senior_20260227_111332.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_173411",
+  "requirements": [
+    {
+      "requirement": "The system shall respond to routine interactions (browsing, searching, loading movie details) within 5 seconds.",
+      "source_citation": "Users need to feel like the site is fast and professional, otherwise they'll bounce. For the small stuff, maybe five seconds for the page or action to respond feels like the outer edge.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the importance of responsiveness and provides a specific time frame for routine interactions. The confidence is high due to the clear and direct statement.",
+      "follow_up_question": "What specific metrics or tools will be used to measure and ensure that routine interactions meet the 5-second response time?"
+    },
+    {
+      "requirement": "The system shall complete checkout processes within 15 seconds.",
+      "source_citation": "For checkout, I'd tolerate longer because of external payment gateways — perhaps something in the low double-digit seconds is acceptable, but under that is preferable. Fifteen seconds is where I'd draw a line for card processing.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder provides a clear time frame for checkout processes and emphasizes the importance of keeping it under 15 seconds to avoid losing users or getting support tickets.",
+      "follow_up_question": "What specific metrics or tools will be used to measure and ensure that checkout processes meet the 15-second target?"
+    },
+    {
+      "requirement": "The system shall ensure initial buffering for streaming content is within single-digit seconds.",
+      "source_citation": "Streaming is tricky... initial buffering should be short, single-digit seconds ideally.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the importance of short initial buffering times but does not provide a specific number. The confidence is medium due to the lack of a precise time frame.",
+      "follow_up_question": "What specific metrics or tools will be used to measure and ensure that initial buffering times for streaming content are within the desired range?"
+    },
+    {
+      "requirement": "The system shall maintain 99.5% availability.",
+      "source_citation": "We need to be reliable — if the site is flaky during evenings or weekends when people watch, that's a deal-breaker. It should be up almost all the time; I don't want long outages. If you need a target number for SLAs, I'd push for a high nineties percentage uptime. We should plan for redundancy and failover.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the importance of reliability and provides a specific availability target. The confidence is high due to the clear and direct statement.",
+      "follow_up_question": "What specific metrics or tools will be used to measure and ensure that the system meets the 99.5% availability target?"
+    },
+    {
+      "requirement": "The system shall encrypt card data at rest and implement role-based access controls for sensitive data.",
+      "source_citation": "Card data has to be locked down... encrypted at rest, role-based access, audit trails. I mean senior ops and a lead from finance — people with explicit roles. Ideally, raw card numbers should not be casually readable; maybe only tokenized or decrypted under strict process. Access should be role-based and logged every time someone retrieves sensitive data.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder provides detailed requirements for handling card data, including encryption, role-based access, and audit trails. The confidence is very high due to the specific and clear statements.",
+      "follow_up_question": "What specific encryption standards and role-based access control mechanisms will be implemented to ensure the security of card data?"
+    },
+    {
+      "requirement": "The system shall detect and block suspicious traffic, including credential stuffing, scraping, and DDoS attacks.",
+      "source_citation": "Credential stuffing, heavy scraping, card testing, and of course more brutish things like DDoS — those are the ones I'd watch. The system should be able to detect anomalous patterns, rate-limit or block suspicious traffic automatically, and send alerts to the ops/admin team when something abnormal happens.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need to detect and block various types of suspicious traffic and provides specific examples. The confidence is high due to the clear and direct statements.",
+      "follow_up_question": "What specific detection and blocking mechanisms will be implemented to address credential stuffing, scraping, and DDoS attacks?"
+    },
+    {
+      "requirement": "The system shall provide a clear and visible privacy notice, including a banner or modal before collecting sensitive data.",
+      "source_citation": "It should be obvious. Put it in the footer on every page and show a short, plain-language banner or modal before we collect anything sensitive, with a link to the full policy.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder provides specific requirements for the visibility and placement of privacy notices. The confidence is high due to the clear and direct statements.",
+      "follow_up_question": "What specific design and placement guidelines will be followed to ensure that the privacy notice is clear and visible to users?"
+    },
+    {
+      "requirement": "The system shall implement centralized logs, dashboards, and alerts for key health metrics.",
+      "source_citation": "Centralized logs, dashboards, alerts for key health metrics. Basically, we need observability so we can troubleshoot without guessing.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for centralized logs, dashboards, and alerts for troubleshooting. The confidence is high due to the clear and direct statements.",
+      "follow_up_question": "What specific tools and metrics will be used to implement centralized logs, dashboards, and alerts for key health metrics?"
+    },
+    {
+      "requirement": "The system shall implement role-based UIs that are simple and lightweight for reviewer workflows.",
+      "source_citation": "Role-based UIs that are simple... lightweight reviewer workflows.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for role-based UIs and lightweight reviewer workflows but does not provide specific details. The confidence is medium due to the lack of precise information.",
+      "follow_up_question": "What specific role-based UI designs and workflows will be implemented to ensure simplicity and lightweight reviewer workflows?"
+    },
+    {
+      "requirement": "The system shall implement a microservices approach, CDN for static/streaming, and container orchestration to handle load spikes.",
+      "source_citation": "Microservices approach, CDN for static/streaming, container orchestration.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder provides specific architectural patterns for handling load spikes. The confidence is high due to the clear and direct statements.",
+      "follow_up_question": "What specific microservices, CDN, and container orchestration tools will be used to implement the system's scalability requirements?"
+    },
+    {
+      "requirement": "The system shall ensure customer trust is protected through secure handling of payments, privacy, and reliability.",
+      "source_citation": "Customer trust is protected... payments, privacy, reliability are mission-critical.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "other",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the importance of customer trust and provides specific areas of focus. The confidence is very high due to the clear and direct statements.",
+      "follow_up_question": "What specific measures will be implemented to ensure the secure handling of payments, privacy, and reliability to protect customer trust?"
+    },
+    {
+      "requirement": "The system shall have a UI that is forgiving for non-power users, with big buttons, simple language, and an African-inspired aesthetic.",
+      "source_citation": "Design-wise, remember our audience... forgiving UI for non-power users. Big buttons, simple language, African-inspired aesthetic.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder provides specific requirements for the UI design to cater to non-power users. The confidence is high due to the clear and direct statements.",
+      "follow_up_question": "What specific design guidelines and elements will be implemented to ensure the UI is forgiving for non-power users and aligns with the African-inspired aesthetic?"
+    }
+  ]
+}

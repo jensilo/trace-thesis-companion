@@ -1,0 +1,144 @@
+Interviewer: Thanks for taking the time. For this session I want to confirm scope and constraints quickly before we dive into workflows. Are we agreed the focus is a scheduling and management tool for the Nursing Department — cohorts, curriculum structure, clinical and classroom scheduling, site assignments, and student progression tracking? Any immediate scope boundaries I should be aware of?
+
+Stakeholder: Yes, that's the scope as I understand it. Uh, before we dig in, I need to know whether you expect this to be a standalone application or something more like a service that plugs into CampusConnect. That decision drives a lot of architecture assumptions, like ownership of user accounts and who’s responsible for backups and uptime. Also, we should be explicit about how long we must support historical data — that’s going to affect storage and migration plans.
+
+Interviewer: When you say "plug into CampusConnect," what do you mean exactly — live API integration, batch sync, or simply importing CSV exports?
+
+Stakeholder: Ideally live sync so we have a single source of truth for student identities and enrollments. But, uh, if CampusConnect only offers nightly exports we'll need reconciliation logic. I don't want to assume either way yet — can you tell me who owns the CampusConnect side? Is DePaul IT the authoritative contact, or is it a third‑party vendor?
+
+Interviewer: DePaul IT owns CampusConnect. I'll ask them for the API docs and a contact. You mentioned retention — how long do you expect the system to be used for the program's data and scheduling artifacts?
+
+Stakeholder: We should plan for medium to long term. Practically speaking, the curriculum and schedules need to be manageable and queryable for several years; we can't be re‑implementing migrations every couple of years. Let's treat it as something that must be stable for multiple program cycles. I'll be blunt: decide up front whether we're responsible for long‑term archival or the university wants that.
+
+Interviewer: Got it — I'll get the policy from DePaul IT. Now let's walk through how things are done today. Describe the current scheduling process from cohort creation to publish, and who touches each step.
+
+Stakeholder: Right now most of it is manual. Someone creates a cohort in a spreadsheet, another person tries to map clinical slots to students, and we email site coordinators separately. There are frequent back‑and‑forths and CSV handoffs. It's messy, honestly. The clinical coordinator will say "this student needs this placement," but the spreadsheet might have conflicting times or a missing prerequisite. The staff spend a lot of time reconciling and, uh, chasing down inconsistencies. So what I want is deterministic workflows, where the UI guides admins and the system refuses obviously invalid combinations — but still allows documented overrides when there's a legitimate exception.
+
+Interviewer: When you say "conflicting times" and "missing prerequisites," can you give me a recent concrete example of a failure mode that caused real pain?
+
+Stakeholder: Sure — about three months ago an instructor was accidentally scheduled to supervise two separate clinical groups that overlapped by an hour. It wasn't caught until the instructor showed up and had to split time; students missed required clinical hours. Another example: a student was assigned to a site that required a specific vaccine record we didn't have on file; the site turned the student away. Those incidents cost hours of admin time and caused student stress. So preventing overlaps and verifying documentation before confirmation would save a lot of grief.
+
+Interviewer: Those are helpful. Who needs edit permissions versus read or approve? For example, can site coordinators modify schedules, or just receive notifications?
+
+Stakeholder: Generally, program admins and clinical coordinators need full edit capabilities, but we can't let everyone change enrollments casually. Site coordinators should be able to indicate capacity and accept or reject proposed placements, not rewrite the cohort. Instructors should see their assignments and submit evaluations, but not reassign cohorts. We do need an approval step for final publication of a schedule, so changes are explicit and audited.
+
+Interviewer: You mentioned an approval step — how should overrides be handled if a scheduler needs to bypass a guardrail? What level of logging or justification do you expect?
+
+Stakeholder: Overrides should be allowed but gated. When someone overrides a blocking validation, the system should require a reason, record who did it, and keep that in an audit trail. I'd like that rationale retained with the schedule so we can review why exceptions were made. Also, if we see a pattern of frequent overrides, that should flag for us to revisit the rule or the process.
+
+Interviewer: Let's talk validation rules. What validations must be enforced at entry time versus which can be warnings? Which rules would you consider absolute blockers?
+
+Stakeholder: Well, absolutely you can't double‑book an instructor or a student. That's non‑negotiable. Prerequisites for course enrollment should be enforced before a placement is finalized, though you could allow a pending state with a warning if it's in review. Capacity constraints at a clinical site should block new confirms once full; otherwise you end up with more students than the site can handle. For other things — like missing optional documents — a warning is fine. We need client‑side checks to stop obvious mistakes and server‑side invariants to catch race conditions. And, uh, nightly consistency checks to reconcile anything odd that slipped through.
+
+Interviewer: When you say "nightly consistency checks," do you envision automated jobs that correct things or only reports for humans to act on?
+
+Stakeholder: Reports for humans to act on, primarily. Automatic correction worries me because you could change a student's placement unexpectedly. But automated detection with an assigned owner and an actionable ticket would be great. We should be able to generate a daily conflict report that gets emailed to the scheduling team.
+
+Interviewer: On the user experience side, how intuitive does this need to be? What's the acceptable learning curve for program administrators and nursing staff?
+
+Stakeholder: These are busy people; they won't tolerate a steep learning curve. I think the basic scheduling flow should be obvious — like a few guided steps where you pick a cohort, assign sites, then confirm. Power users can have more advanced panels. Tooltips, inline validation, and context help will reduce training time. Also, our staff are mostly on desktops during scheduling, so prioritize that experience. And, uh, accessibility shouldn't be an afterthought — at a minimum follow standard accessibility practices so we're not excluding anyone.
+
+Interviewer: You said "few guided steps" — can you put a number on a target? For example, how long should it take to create a new cohort from scratch?
+
+Stakeholder: Ideally it should be fast. For me, creating a cohort shouldn't take longer than a coffee break. If I had to pick a practical threshold, I'd say under five minutes for a normal cohort creation path, assuming data like curriculum templates are preloaded. But that assumes a polished UI; if the backend is slow, the UI loses value.
+
+Interviewer: That ties into performance. What responsiveness do you expect from the system? What's acceptable latency for routine tasks and heavier operations like schedule generation?
+
+Stakeholder: It needs to feel snappy for routine stuff; waiting around kills productivity. Small edits and lookups should be near instantaneous in human terms. For heavier operations like running the full schedule generation with constraint checks, I'd accept a little more time, but not minutes. If you press me, I think small tasks should finish within a handful of seconds and a full generation should complete within a timeframe I can wait for synchronously. If it ever goes much longer, we should make it an asynchronous job with a progress indicator.
+
+Interviewer: Can you be specific about "a handful of seconds" and "a timeframe I can wait for"? For acceptance testing I need concrete numbers.
+
+Stakeholder: Okay — for routine management actions, something like around five seconds is the upper limit before users notice and complain. For an entire schedule generation, I'd want it to finish under about half a minute if done interactively. If it can't, then do it in the background and notify users when it's done. Those feel like reasonable targets for usability.
+
+Interviewer: Understood. Now about availability: how much uptime do we need? Is occasional downtime acceptable?
+
+Stakeholder: We need it available when the scheduling team is working. It's not a consumer app that has 24/7 demand, but it must be reliable during office hours. For SLAs, I don't want to aim for ultra‑expensive five‑nines unless the university requires that. A realistic uptime target that balances cost and availability is fine, but I need the number to plan redundancy and failover.
+
+Interviewer: What number would you consider realistic?
+
+Stakeholder: For initial planning, something in the mid‑90s percentile is acceptable. If later they demand higher availability we'll need to budget for redundancy across regions, active/active clusters and more ops. But for now mid‑90s gives us room.
+
+Interviewer: That's helpful. You mentioned the scheduling team working concurrently — how many simultaneous users should the system support at peak?
+
+Stakeholder: In practice, we have a handful of schedulers and coordinators active at the same time. Peak mornings are busier. I would say around ten concurrent admins at peak would cover our needs comfortably, though students and instructors will be querying schedules too. The heavy write/load activity will be during office hours.
+
+Interviewer: Let's verify numbers for capacity planning. How many nursing students, instructors, and clinical sites are in scope now, and what growth do you expect over the next decade?
+
+Stakeholder: Today we have a few hundred active nursing students, dozens of instructors, and a couple dozen clinical sites we regularly use. Growth has been modest historically, but programs expand, so we should plan for growth over the next decade — enough that the system won't choke if enrollment increases significantly. I can pull exact counts and a growth projection for you after this meeting.
+
+Interviewer: Please do — I'll need current counts and a conservative projection for ten years to size storage and processing appropriately. Moving to data integrity: what kinds of checks do you want enforced at the database or business layer to prevent invalid data?
+
+Stakeholder: We need constraints that mirror business invariants. For example, foreign key consistency between student records and cohorts, uniqueness where applicable so you don't have duplicate enrollments, and transactional integrity when multiple schedulers update the same cohort concurrently. Also, validation rules for required documentation and data formats so garbage data doesn't propagate. But we should avoid blocking legitimate administrative actions unnecessarily; that's why some checks are warnings while others block.
+
+Interviewer: How should concurrent edits be handled? Do you want locking, optimistic concurrency, or some other mechanism?
+
+Stakeholder: Optimistic concurrency with clear conflict detection is preferable. Locking presents UX problems and can lead to deadlocks. If an edit conflict occurs, the system should show a diff and let the user reconcile. For some critical operations, we might use short‑lived locks, but keep them minimal.
+
+Interviewer: About audit trails — how long should we retain logs of user actions and overrides?
+
+Stakeholder: We should retain enough history to understand decisions across academic years, especially for overrides and approvals. I don't want to specify a fixed retention yet without checking policy, but it should be multiple years. We'll need to align with the university's information policy for retention and deletion.
+
+Interviewer: Speaking of policies, let's discuss integrations and security. What do you expect from CampusConnect integration in terms of authentication and data exchange?
+
+Stakeholder: We should integrate with the campus identity provider for single sign‑on so users don't manage extra passwords. For data exchange, prefer APIs that allow near real‑time updates, using secure protocols. If CampusConnect provides only batch exports, we'll need reconciliation mechanisms. Also, any PII must be protected according to DePaul's policies — encryption in transit and at rest where appropriate, role‑based access controls, and detailed audit logs for sensitive access. If any health data ends up in the system, we'll treat it with the corresponding safeguards.
+
+Interviewer: Do you know which authentication tech the campus uses? SAML, OAuth, LDAP, something else?
+
+Stakeholder: The campus uses SAML for SSO broadly, but I should confirm the exact identity provider details. We'll want to support SAML or OAuth depending on what CampusConnect exposes. I'll coordinate with DePaul IT to get specifics.
+
+Interviewer: On notifications: who should receive automated notifications and via which channels? Email only, or do we need SMS or integrations with other tools?
+
+Stakeholder: Students, instructors, and site administrators should get notifications when schedules change or when action is needed. Email will cover most cases, but an SMS channel could be useful for critical last‑minute changes. Also, providing a notification center in the app is useful so people can see historical notices. We should make notification templates configurable so programs can adapt wording.
+
+Interviewer: For security and privacy: which data elements do you consider sensitive and potentially subject to stricter controls?
+
+Stakeholder: Anything that identifies a student, health or vaccination records, and evaluation notes that could be sensitive. If instructor performance evaluations are stored, treat them carefully too. We'll need to map these elements to privacy classifications in the university policy to determine access controls and retention.
+
+Interviewer: Who will operate and support the system after launch — the university or a vendor?
+
+Stakeholder: We need to decide that early. My preference is a hybrid model where the vendor handles application support and DePaul IT handles infrastructure and identity integration. But if DePaul wants full ownership, we'll transfer operational runbooks and monitoring to them. Let's make that a decision point during procurement.
+
+Interviewer: For acceptance testing, what specific tests should pass before we consider the system ready?
+
+Stakeholder: We should have clear, measurable acceptance tests. Run a synthetic load test simulating peak concurrent admin activity, verify that typical management actions complete within that five‑second window we discussed, and confirm that a full schedule generation completes within the half‑minute target or that the asynchronous pattern works with notifications. Also, an end‑to‑end integration test with CampusConnect is essential to ensure identities and enrollments sync correctly. Security testing and data migration rehearsals should be part of acceptance.
+
+Interviewer: Regarding monitoring and alerts, what metrics and thresholds do you want to see operationally?
+
+Stakeholder: Monitor uptime, request latency for key endpoints, error rates, and queue depth for background jobs. Alert when latency or error rates exceed thresholds during business hours, and when background jobs fall behind. We'll define exact thresholds with the ops team, but they should be tight enough to give us time to react before users notice.
+
+Interviewer: For backups and disaster recovery, any expectations on recovery time or acceptable data loss?
+
+Stakeholder: We need reasonable recovery goals. For critical scheduling data, we shouldn't lose more than a day's worth of changes if something catastrophic happens, and we should be able to recover within a business day. But I need to compare that to DePaul's policy; if they require shorter windows we'll adjust architecture and costs accordingly.
+
+Interviewer: I'll get the information policy and DR requirements. You mentioned earlier you'd provide exact counts for students and growth projections. Can you commit to sending those artifacts and any CampusConnect docs?
+
+Stakeholder: Yes, I'll pull the current student counts, the list of instructors and clinical sites, and a conservative growth projection for ten years. I'll also request the CampusConnect API documentation and the university's info security and privacy policy from DePaul IT. Expect a package within a few business days.
+
+Interviewer: Great. One more thing — you earlier said overrides should be logged and that frequent overrides should flag a review. How would you like the system to surface patterns of overrides?
+
+Stakeholder: It should show a dashboard that aggregates overrides by rule, user, and cohort, with timestamps and rationales. That way we can spot rules that are causing friction or people who are frequently bypassing controls. If we see a trend, we can either change the process or refine the validations.
+
+Interviewer: Thanks, that's helpful. Any other risks or constraints I should capture now?
+
+Stakeholder: Two quick things: first, don't assume academic calendars are identical every year — they shift, so we need flexible scheduling templates. Second, we had a bad experience with a bespoke constraint solver once; it was powerful but impossible to debug. So, keep constraint solving explainable — for instance, prefer deterministic heuristics and clear conflict explanations over opaque optimization that nobody understands. Oh, and sorry — slight tangent — I once spent a whole morning debugging a solver because someone entered a noon‑midnight time range by mistake. Lesson learned: validation matters.
+
+Interviewer: Noted. To wrap up, I'll summarize action items: I'll request CampusConnect contact and API docs from DePaul IT, and you'll provide current datasets, growth projections, and the university info policy. We'll schedule a deep dive on the CampusConnect integration and a UX prototype review. Anything else?
+
+Stakeholder: That covers it. Also, I want a short prioritized list of the validation rules you plan to prototype so we can review before UI work starts. I'll be available for the technical deep dive once you get the CampusConnect materials.
+
+Interviewer: Perfect. I'll send a follow‑up listing the artifacts we discussed and proposed dates for the next sessions. Thank you for your time — very productive.
+
+Stakeholder: Thanks. I'll get those docs and numbers to you, and we'll reconvene.
+
+---
+Selected Requirements:
+1. [NICE.csv line 72] [quality, usability] 'The system shall help the user avoid making mistakes while scheduling classes and clinicals for the nursing students.'
+2. [NICE.csv line 74] [quality, usability] 'The system shall be intuitive to the Program Administrators/Nursing Staff Members.'
+3. [NICE.csv line 79] [quality, performance] 'The response time of general student management tasks shall take no longer than 5 seconds and the response time of schedule generation shall take no longer than 30 seconds.'
+4. [NICE.csv line 81] [quality, availability] 'The system shall achieve 95% up time.'
+5. [NICE.csv line 83] [quality, availability, scalability] 'The system shall cater to 10 simultaneous users from 9am to 5pm.'
+6. [NICE.csv line 84] [quality, scalability] 'The system shall be capable of processing 100% of nursing students and their classes for the next 10 years.'
+7. [NICE.csv line 85] [quality, functional, scalability] 'The system shall be expected to manage the nursing program curriculum and class/clinical scheduling for a minimum of 5 years.'
+8. [NICE.csv line 89] [quality, operability] The system shall interface with CampusConnect's central server'
+9. [NICE.csv line 99] [quality, functional, security] 'The system shall have basic data integrity checking to reduce the possibility of incorrect or invalid data being introduced.'
+10. [NICE.csv line 100] [quality, functional, legal, security] The system shall protect private information in accordance with the organization's information policy.'

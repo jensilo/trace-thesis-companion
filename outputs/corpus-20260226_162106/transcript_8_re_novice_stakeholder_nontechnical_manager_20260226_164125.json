@@ -1,0 +1,187 @@
+{
+  "project_id": "8",
+  "project_name": "IzognMovies: African On-Demand Movie Streaming Platform",
+  "project_description": "IzognMovies is a web-based streaming platform delivering African movies on demand to a global audience. Customers can register, browse, search, and purchase movies via credit card or pre-paid cards, streaming content within a 2-day viewing window. The platform supports subscription and pay-as-you-go monetization models. Administrators can manage movie catalogs, generate pre-paid cards, handle customer accounts, and access business analytics. A review functionality is also included. The design emphasizes accessibility for novice internet users through an African-inspired modern aesthetic, while maintaining robust security for customer and payment data.",
+  "model": "gpt-5-mini",
+  "timestamp": "20260226_164125",
+  "interviewer_persona": "re_novice",
+  "stakeholder_persona": "stakeholder_nontechnical_manager",
+  "no_refine": true,
+  "selected_requirements": [
+    {
+      "text": "'The product should be able to be used by 90% of novice users on the Internet.'",
+      "line": 388,
+      "categories": [
+        "quality",
+        "usability"
+      ]
+    },
+    {
+      "text": "'Any interface between a user and the automated system shall have a maximum response time of 5 seconds unless noted by an exception below.'",
+      "line": 397,
+      "categories": [
+        "quality",
+        "fault_tolerance",
+        "performance"
+      ]
+    },
+    {
+      "text": "When streaming a movie the buffering time should take no longer than 10 seconds (plus any latency on the user's connection.)'",
+      "line": 399,
+      "categories": [
+        "quality",
+        "performance"
+      ]
+    },
+    {
+      "text": "'The website shall achieve 99.5% up time.'",
+      "line": 403,
+      "categories": [
+        "quality",
+        "availability"
+      ]
+    },
+    {
+      "text": "'All credit card information will be secured on the server and only accessible by authorized Izogn administrators. Information will be encrypted in the database.'",
+      "line": 401,
+      "categories": [
+        "quality",
+        "security"
+      ]
+    },
+    {
+      "text": "'The website shall make its user aware of its information practices before collection data from them via a Privacy Policy accessible on all pages of the website.'",
+      "line": 434,
+      "categories": [
+        "quality",
+        "functional",
+        "security",
+        "usability"
+      ]
+    },
+    {
+      "text": "'Users should be able to access their streaming movies in under 2 clicks after logging into the website.'",
+      "line": 390,
+      "categories": [
+        "quality",
+        "functional",
+        "look_and_feel",
+        "usability"
+      ]
+    },
+    {
+      "text": "'System shall let administrators generate unique pre-paid pins in under 2 minutes and generate an Excel file with the generated PINs.'",
+      "line": 384,
+      "categories": [
+        "quality",
+        "functional",
+        "performance",
+        "usability"
+      ]
+    },
+    {
+      "text": "'System shall let Izogn Manager access sales and usage statistics in under 2 minutes.'",
+      "line": 383,
+      "categories": [
+        "quality",
+        "performance"
+      ]
+    },
+    {
+      "text": "'All streaming movie sales will be logged in the database and accessible by the administrator.'",
+      "line": 462,
+      "categories": [
+        "quality",
+        "functional",
+        "availability"
+      ]
+    }
+  ],
+  "evaluation": {
+    "g_eval_quality": {
+      "judge_model": "openai/gpt-5-mini",
+      "overall_mean": 7.4,
+      "overall_std_dev": 0.67,
+      "dimensions": {
+        "structuring": {
+          "mean": 7.2,
+          "std_dev": 0.45,
+          "samples": [
+            7.0,
+            7.0,
+            7.0,
+            8.0,
+            7.0
+          ]
+        },
+        "clarity": {
+          "mean": 8.2,
+          "std_dev": 0.45,
+          "samples": [
+            8.0,
+            8.0,
+            8.0,
+            9.0,
+            8.0
+          ]
+        },
+        "responsiveness": {
+          "mean": 7.6,
+          "std_dev": 0.55,
+          "samples": [
+            8.0,
+            8.0,
+            7.0,
+            8.0,
+            7.0
+          ]
+        },
+        "rigor": {
+          "mean": 6.6,
+          "std_dev": 0.55,
+          "samples": [
+            7.0,
+            6.0,
+            7.0,
+            7.0,
+            6.0
+          ]
+        }
+      }
+    },
+    "g_eval_meta": {
+      "judge_model": "openai/gpt-5-mini",
+      "overall_mean": 8.8,
+      "overall_std_dev": 0.85,
+      "dimensions": {
+        "completeness": {
+          "mean": 9.4,
+          "std_dev": 0.55,
+          "samples": [
+            10.0,
+            9.0,
+            9.0,
+            9.0,
+            10.0
+          ]
+        },
+        "realism": {
+          "mean": 8.2,
+          "std_dev": 0.45,
+          "samples": [
+            8.0,
+            8.0,
+            8.0,
+            8.0,
+            9.0
+          ]
+        }
+      }
+    },
+    "bert_score": {
+      "precision": 0.7922583818435669,
+      "recall": 0.7955814003944397,
+      "f1": 0.7939163446426392
+    }
+  }
+}

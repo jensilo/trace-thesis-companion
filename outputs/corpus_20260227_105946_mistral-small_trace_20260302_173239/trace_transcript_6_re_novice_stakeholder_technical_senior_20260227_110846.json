@@ -1,0 +1,172 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_6_re_novice_stakeholder_technical_senior_20260227_110846.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_173344",
+  "requirements": [
+    {
+      "requirement": "The system should be portable and run on various operating systems including Linux, Windows, and Solaris.",
+      "source_citation": "it should run on whatever servers we have in-house, as long as the Java runtime can be installed there. We don't want to be forced onto a particular OS; teams run Linux, Windows, sometimes Solaris in older shops, so it should play nicely with that.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for the system to run on multiple operating systems, indicating a requirement for portability.",
+      "follow_up_question": "Are there any specific versions of these operating systems that the system must be compatible with?"
+    },
+    {
+      "requirement": "The system should be deployable on various web or application servers such as Tomcat or JBoss.",
+      "source_citation": "it should be packaged to deploy onto whatever web or application server we use, you know, the usual Tomcat or JBoss-type setups.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for the system to be deployable on common web and application servers.",
+      "follow_up_question": "Are there any specific versions of these servers that the system must be compatible with?"
+    },
+    {
+      "requirement": "The system should be compatible with various database management systems including Postgres, Oracle, and SQL Server.",
+      "source_citation": "It needs to work against whatever DBMS the company already runs. Some sites are running Postgres, some are on Oracle, some have SQL Server.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for the system to work with multiple database management systems.",
+      "follow_up_question": "Are there any specific versions of these databases that the system must be compatible with?"
+    },
+    {
+      "requirement": "The system should respond to small actions within 5 seconds and heavier tasks within 8 seconds.",
+      "source_citation": "If you press a normal UI button and it's still loading after, say, five seconds, that's getting into the 'ugh' territory. Most routine tasks should be basically immediate; five seconds is a threshold for small things, and even for heavier tasks we shouldn't go much beyond that — eight seconds is a point where you know you need to look at the design or caching.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder provides specific time thresholds for system responsiveness.",
+      "follow_up_question": "Are there any specific scenarios or actions that require even faster response times?"
+    },
+    {
+      "requirement": "The system should handle at least 1,000 concurrent requests today and scale to handle 2,000 concurrent requests in the next release.",
+      "source_citation": "think about supporting on the order of thousands of concurrent requests today and more in the next release. Sure — today we should be able to handle about one thousand simultaneous requests. And then by the next release we should be able to handle roughly double that.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "The stakeholder provides specific numbers for concurrent request handling and future scaling.",
+      "follow_up_question": "Are there any specific peak usage scenarios that the system should be prepared for?"
+    },
+    {
+      "requirement": "The system should achieve 99.99% availability, excluding hardware failures.",
+      "source_citation": "We should aim for very high availability so people don't get surprised during the day. We should target four nines availability for the software component — in other words, about 99.99% uptime excluding server-level failures.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies the target availability percentage and excludes hardware failures.",
+      "follow_up_question": "Are there any specific maintenance windows or downtime schedules that need to be considered?"
+    },
+    {
+      "requirement": "Only company employees or explicitly approved external users should be able to log in.",
+      "source_citation": "Only company employees or external people who we've explicitly approved should be able to log in. No anonymous access.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder clearly states the access control requirements.",
+      "follow_up_question": "Are there any specific authentication methods or protocols that must be supported?"
+    },
+    {
+      "requirement": "The system should sanitize inputs, validate everything server-side, and ensure data integrity.",
+      "source_citation": "The app must sanitize inputs, validate everything server-side, and assume attackers will try to inject SQL or malformed payloads. We can't allow malicious input to corrupt our data stores or adjacent systems; integrity is critical.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder emphasizes the need for input validation and data integrity.",
+      "follow_up_question": "Are there any specific types of input validation or data integrity checks that must be implemented?"
+    },
+    {
+      "requirement": "The system should capture exceptions and operational problems in logs with sufficient context for diagnosis.",
+      "source_citation": "Exceptions and operational problems should be captured in logs with enough context to reproduce and diagnose issues.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for detailed logging for diagnosis.",
+      "follow_up_question": "Are there any specific logging standards or formats that must be followed?"
+    },
+    {
+      "requirement": "The code should follow standard design patterns and best practices, with good layering, clear interfaces, and test coverage.",
+      "source_citation": "The code should follow standard design patterns and best practices. Good layering, clear interfaces, and test coverage are key so an incoming maintenance developer can add a feature in days rather than weeks.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies the need for maintainable and well-structured code.",
+      "follow_up_question": "Are there any specific design patterns or coding standards that must be followed?"
+    },
+    {
+      "requirement": "The UI should support localization, be brandable, and comply with accessibility standards.",
+      "source_citation": "The UI must support localization and be brandable so different offices can apply their company look and feel. Accessibility compliance is necessary — screen reader support, keyboard navigation, proper semantics, the usual.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder mentions the need for localization, branding, and accessibility compliance.",
+      "follow_up_question": "Are there any specific accessibility standards or guidelines that must be followed?"
+    },
+    {
+      "requirement": "The system should work on modern, standards-compliant browsers and be responsive on mobile devices.",
+      "source_citation": "It should work on modern, standards-compliant browsers. We don't need to chase every legacy browser forever, but it should be usable on current mainstream browsers and degrade gracefully where features aren't supported. Mobile access via responsive web UI is useful; a native app isn't required to start.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for browser compatibility and mobile responsiveness.",
+      "follow_up_question": "Are there any specific browsers or devices that must be supported?"
+    },
+    {
+      "requirement": "The system should be runnable in clustered setups, provide health endpoints for automated checks, and be stateless where feasible.",
+      "source_citation": "Ops needs to be able to run the app in clustered setups for high availability, monitor key metrics, and perform rolling upgrades. Also, we should provide health endpoints for automated checks. It should be stateless where feasible so instances can be replaced without data loss and so backups are straightforward.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "The stakeholder mentions the need for clustering, health checks, and stateless design.",
+      "follow_up_question": "Are there any specific clustering or health check standards that must be followed?"
+    },
+    {
+      "requirement": "The system should not send personally identifiable information (PII) or full user content in external reports.",
+      "source_citation": "Don't send PII or full user content in external reports. We want actionable telemetry — stack traces, timestamps, environment, but scrub sensitive fields.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies the need for privacy and data redaction in telemetry.",
+      "follow_up_question": "Are there any specific privacy laws or regulations that must be complied with?"
+    },
+    {
+      "requirement": "The system should be designed to support future enhancements such as room sensors for occupancy.",
+      "source_citation": "think about equipment as first-class, because people book projectors or video bridges and that affects scheduling. The coffee machine sensor idea we kicked around last year is silly, but room sensors for occupancy could be an enhancement later.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "extensibility",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for future-proof design and potential enhancements.",
+      "follow_up_question": "Are there any specific future enhancements or features that are planned or anticipated?"
+    }
+  ]
+}

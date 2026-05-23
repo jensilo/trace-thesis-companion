@@ -1,0 +1,153 @@
+{
+  "extraction_file": "outputs/corpus_20260227_105946_mistral-small_trace_20260302_173239/trace_transcript_4_re_novice_stakeholder_nontechnical_manager_20260227_110438.json",
+  "ground_truth_source": "outputs/corpus-20260227_105946/transcript_4_re_novice_stakeholder_nontechnical_manager_20260227_110438.json",
+  "eval_model": "openai/gpt-5-mini",
+  "per_requirement": [
+    {
+      "extracted_requirement": "The system must provide data from authoritative sources to ensure accuracy and trustworthiness.",
+      "matched_ground_truth": "'The Disputes application shall interface with the Statement Database. The Statement Database provides the transaction details to the Disputes System. All transaction details must be obtained from the Statement Database'",
+      "overlap_score": 3,
+      "overlap_label": "Medium",
+      "quality_attribute_match": false,
+      "confidence_quality": 4,
+      "rationale_quality": 3,
+      "gap_detection_quality": 4,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system must maintain a full audit log of all user actions for regulatory and internal review purposes.",
+      "matched_ground_truth": "'The Disputes application must maintain a detailed history of every action that a user takes on a dispute case. This ensures a complete audit trail if questions arise later on with regard to a particular dispute case.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": false,
+      "confidence_quality": 5,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system must ensure that only authorized users can perform specific actions based on their roles and responsibilities.",
+      "matched_ground_truth": "'The Disputes application shall ensure that only users with the appropriate access level are allowed to initiate dispute requests.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 5,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system must be available during business hours with minimal downtime, allowing for planned maintenance only during early morning hours.",
+      "matched_ground_truth": null,
+      "overlap_score": 1,
+      "overlap_label": "Very Low",
+      "quality_attribute_match": false,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 5,
+      "is_hit": false,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system must respond to user actions within approximately five seconds to ensure a snappy and responsive user experience.",
+      "matched_ground_truth": "'The maximum wait time for a user navigating from one screen to another within the Disputes application shall be no more than 5 seconds.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 3,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system must handle a peak concurrent user load of 350 users without performance degradation.",
+      "matched_ground_truth": "'The Disputes application shall support 350 concurrent users without any degradation of performance in the application.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 5,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system must integrate with existing systems that are the canonical sources for data and operations.",
+      "matched_ground_truth": "'The Disputes application shall interface with the Statement Database. The Statement Database provides the transaction details to the Disputes System. All transaction details must be obtained from the Statement Database'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": false,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 5,
+      "is_hit": true,
+      "is_duplicate": true
+    },
+    {
+      "extracted_requirement": "The system must ensure data segregation so that users can only see and access data they are authorized to view.",
+      "matched_ground_truth": "'The Disputes System must prevent users from accessing any dispute cases that do not belong to their cardholder base.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system must provide a consistent and aligned look and feel with corporate UI standards for both internal and external users.",
+      "matched_ground_truth": "'The Disputes application shall comply with the corporate standards for user interface creation for internally and externally used applications.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 5,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system must provide quick search, inline case history, and templates for common correspondence to enhance usability.",
+      "matched_ground_truth": "'The Disputes application must maintain a detailed history of every action that a user takes on a dispute case. This ensures a complete audit trail if questions arise later on with regard to a particular dispute case.'",
+      "overlap_score": 3,
+      "overlap_label": "Medium",
+      "quality_attribute_match": false,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 3,
+      "is_hit": true,
+      "is_duplicate": true
+    },
+    {
+      "extracted_requirement": "The system must provide checks and balances for actions that have financial impact, such as mandatory supervisor approval.",
+      "matched_ground_truth": "'The Disputes application shall ensure that only users with the appropriate access level are allowed to initiate dispute requests.'",
+      "overlap_score": 4,
+      "overlap_label": "High",
+      "quality_attribute_match": false,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 5,
+      "is_hit": true,
+      "is_duplicate": true
+    }
+  ],
+  "metrics": {
+    "hit_count": 7,
+    "extracted_count": 11,
+    "ground_truth_count": 10,
+    "precision": 0.636,
+    "recall": 0.7,
+    "f1": 0.667,
+    "quality_attribute_accuracy": 0.714,
+    "avg_confidence": 4.273,
+    "avg_overlap_score": 4.182,
+    "avg_confidence_quality": 4.364,
+    "avg_rationale_quality": 3.909,
+    "avg_gap_detection_quality": 4.091
+  }
+}

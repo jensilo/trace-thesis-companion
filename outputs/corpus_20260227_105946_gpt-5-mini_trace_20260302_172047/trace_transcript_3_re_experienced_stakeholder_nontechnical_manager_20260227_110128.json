@@ -1,0 +1,238 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_3_re_experienced_stakeholder_nontechnical_manager_20260227_110128.txt",
+  "model": "openai/gpt-5-mini",
+  "timestamp": "20260302_172049",
+  "requirements": [
+    {
+      "requirement": "The system shall reduce avoidable scheduling mistakes by consolidating scheduling and tracking of cohorts, clinical placements, and competency status into a single integrated workflow to stop constant firefighting.",
+      "source_citation": "scheduling and tracking everything—cohorts, clinical placements, who’s passed which competency—it's fragmented and people are constantly fixing avoidable mistakes. So, the system needs to bring that all together and stop us firefighting.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "reliability",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly ties fragmentation to frequent avoidable mistakes and wants a single consolidated system to reduce human error. This is a reliability/usability driven quality need rather than a specific functional feature. Missing specifics: what constitutes 'reduced' errors (quantitative target) and which parts must be consolidated first.",
+      "follow_up_question": "What quantitative reduction in scheduling errors (e.g., percentage or absolute count per term) would you consider a success within the first year?"
+    },
+    {
+      "requirement": "The system shall prevent or surface conflicts (e.g., double-booking of preceptors or sites) with built-in checks and block or clearly warn users when a scheduling conflict is detected.",
+      "source_citation": "If someone tries to schedule a student at a time a site or preceptor is already booked, it should block or at least clearly warn.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 5,
+      "rationale": "Stakeholder gave a concrete example of double-booking and explicitly requested conflict detection that either blocks or warns. Gap: criteria for blocking vs warning and which conflicts are non-negotiable.",
+      "follow_up_question": "Which specific conflict types must be blocking (no override) versus which can be warnings with override (e.g., preceptor double-booking, site capacity, prerequisites)?"
+    },
+    {
+      "requirement": "For non-negotiable rules (such as missing prerequisites), the system shall enforce the rule and prevent overrides; for negotiable conflicts (e.g., scheduling collisions), it shall allow authorized overrides but record an audit trail of who overrode and why.",
+      "source_citation": "Warnings are fine in some cases, but for things that are non-negotiable—like missing prerequisite—there shouldn't be a bypass. For scheduling conflicts, maybe an override with an audit trail could be okay, but I want to see who overrides and why.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder differentiates hard constraints from soft ones and requires auditing of overrides. This maps to authorization and accountability. Gap: which roles may override and the required metadata in the audit trail.",
+      "follow_up_question": "Which specific roles should be permitted to perform overrides, and what fields (timestamp, user id, reason code, linked records) must the audit trail capture?"
+    },
+    {
+      "requirement": "The system shall provide an immutable audit trail and reporting capabilities to show who made schedule changes, overrides, and the reasons, and to produce reports for cohort progression, missing competencies, site utilization, and recurring scheduling conflicts.",
+      "source_citation": "I want to see who overrides and why.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "Stakeholder calls out audit trails and a set of required reports tied to operational and external reporting needs. Gaps: report formats, refresh frequency, retention period for audit logs, and access controls for reports.",
+      "follow_up_question": "What data retention period and export formats (CSV, PDF) do you require for audit logs and roster reports, and who should be authorized to access each report type?"
+    },
+    {
+      "requirement": "The system shall authenticate users via the university's central directory / single sign-on (Banner/central directory) and avoid separate logins for staff.",
+      "source_citation": "Ideally, it would sync with the university systems so we don't retype student info, and authenticate staff through the tools we already use. We don't want another login per person.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly requests SSO integration with Banner/central directory to avoid separate credentials. Gap: specific SSO protocol (SAML/OAuth), required attributes, and provisioning behavior.",
+      "follow_up_question": "Which authentication protocols does the university support (SAML, OIDC, LDAP) and which identity attributes (e.g., role, department) must be passed to the application?"
+    },
+    {
+      "requirement": "The system shall synchronize student enrollment and identity data with the university Student Information System (Banner) to avoid manual retyping and ensure data consistency.",
+      "source_citation": "We have the university SIS where student enrollment and IDs live... Ideally, it would sync with the university systems so we don't retype student info",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Stakeholder wants integration to reduce manual errors and duplicate data; this is an interoperability/operability requirement. Gap: sync frequency, direction (one-way or two-way), and reconciliation rules.",
+      "follow_up_question": "Should the sync be near-real-time or batched, and is authoritative data written only from Banner (one-way) or do you need bi-directional updates?"
+    },
+    {
+      "requirement": "The system shall implement role-based access control so program administrators and designated nursing faculty have full access to student records, while site coordinators, instructors, and others see only role-appropriate views and contact/qualification info.",
+      "source_citation": "Program administrators need to see the student records to make placement decisions, but site coordinators shouldn't see personal details beyond what they need to contact the student and confirm qualifications. Instructors probably need to see their assigned students and competency status but not everything like disciplinary notes.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder clearly requires least-privilege access by role. Gaps: exact role definitions, permission matrix, and delegation/role management workflows.",
+      "follow_up_question": "Can you provide a list of roles and an initial permission matrix mapping which data fields each role should be allowed to view, edit, or export?"
+    },
+    {
+      "requirement": "The system shall comply with the university information policy for protection of student records and health information (FERPA/HIPAA-equivalent controls as required by the university).",
+      "source_citation": "We must follow the university's info policy—protections around health info and student records apply. It's not optional. The system should treat private data the way the university expects.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 5,
+      "rationale": "Stakeholder mandates compliance with institutional policies for sensitive data. Gap: specific regulatory frameworks and technical controls (encryption at rest/in transit, data residency) required by the university.",
+      "follow_up_question": "Which specific university/regulatory requirements (e.g., FERPA, HIPAA) and security controls (e.g., encryption, logging, data residency) must the system meet?"
+    },
+    {
+      "requirement": "Small interactive operations (e.g., opening a student profile or updating a status) shall respond within approximately 5 seconds to feel 'snappy' to users.",
+      "source_citation": "For the small stuff, I'd say around five seconds feels acceptable.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder gave a clear latency threshold for lightweight interactions to maintain usability. Gap: definition of 'small operations' in technical terms and acceptable percentiles (median vs 95th).",
+      "follow_up_question": "Please confirm which UI actions count as 'small operations' and whether the 5-second target should apply to median, 95th percentile, or maximum latency."
+    },
+    {
+      "requirement": "Complex operations (e.g., generating an entire term schedule) shall complete within 30 seconds under expected peak load to avoid staff reverting to manual processes.",
+      "source_citation": "For generating a full schedule—I'm comfortable if that's done within half a minute—longer than that and people wander off and start doing other things... If schedule generation takes longer than half a minute, staff start to get distracted and sometimes revert to spreadsheets... So under thirty seconds really keeps everyone focused.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder specifies a concrete acceptable upper bound for heavy batch operations to prevent workarounds. Gap: definition of 'under expected peak load', concurrency levels, and whether this applies to synchronous UI operations or background jobs with notification.",
+      "follow_up_question": "Define expected peak concurrency for schedule generation (e.g., number of concurrent users/batch jobs) and whether schedule generation may run asynchronously with notifications upon completion."
+    },
+    {
+      "requirement": "The system shall handle concurrent use by multiple administrators (typical peak around 10 concurrent users) without degrading responsiveness for the defined performance targets.",
+      "source_citation": "In the mornings when we're finalizing rosters... maybe about ten people at the busiest times.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "Stakeholder mentions concurrency patterns (~10 users) that the system must support especially during peak times. Gap: total user base, concurrent external consumers (sites/students), and batch concurrency.",
+      "follow_up_question": "Beyond the core team of ~10, how many total active users (admins, instructors, site coordinators, students) do you expect concurrently during peak term-start periods?"
+    },
+    {
+      "requirement": "The system shall be available during business hours (weekdays approximately 08:00–18:00) and support off-hour maintenance only; acceptable availability target is approximately 95% over the term.",
+      "source_citation": "It has to be available when our office is open... Roughly eight in the morning to about six in the evening on weekdays.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "Stakeholder gives explicit operational window and a numerical uptime target (95%). Gap: whether 95% is the SLA for all hours or weighted for business hours, and acceptable downtime per month.",
+      "follow_up_question": "Should the 95% uptime target apply to 24x7 or only to the defined business hours, and what maximum allowed downtime per month is acceptable?"
+    },
+    {
+      "requirement": "Maintenance windows shall be scheduled outside of business hours to avoid disrupting scheduling activities.",
+      "source_citation": "We can't have it go down during business hours—it's a disruption. Off-hour maintenance is fine...",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Stakeholder requires maintenance outside of 08:00–18:00 weekdays. Gap: definition of acceptable 'off-hours' (weekends, nights) and notification lead times.",
+      "follow_up_question": "What specific off-hour windows are acceptable for maintenance (e.g., weekdays 22:00–06:00, weekends), and what notification lead time do you require?"
+    },
+    {
+      "requirement": "The system shall send automated notifications (email or in-app) to appropriate audiences when schedules change, with defaults automated but allowing targeting of message audience; triggering notifications shall be restricted to program admins and lead coordinators.",
+      "source_citation": "Automatic notifications are crucial... the default should be automated so we don't have to manually email everyone.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Stakeholder requires automated, targeted notifications and restricted permission to trigger mass communications. Gap: delivery guarantees (retry), expected latency of notifications, and content/privacy handling in messages.",
+      "follow_up_question": "What delivery channels must be supported (email, SMS, in-app) and what latency (e.g., within 5 minutes of change) and retry behavior do you expect for notifications?"
+    },
+    {
+      "requirement": "The system shall allow quick contingency replanning workflows to suggest alternate sites that meet constraints when last-minute cancellations occur, enabling staff to reassign students rapidly.",
+      "source_citation": "The system should make contingency replanning less painful, like quickly showing alternate sites that meet constraints.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "Stakeholder highlighted an edge-case (site cancellations) requiring responsive replanning support; this is a usability and performance concern. Gap: what constraints define 'meet constraints' and acceptable replanning latency.",
+      "follow_up_question": "What constraints (e.g., availability, proximity, prerequisite competencies) should be used to filter alternate sites, and how quickly must the replanning suggestions appear?"
+    },
+    {
+      "requirement": "The system shall integrate with credential verification systems so sites can view only necessary credential information about students.",
+      "source_citation": "If it could integrate with our credential verification so sites can see only what's necessary, that would be ideal.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 3,
+      "rationale": "Stakeholder desires integration to expose limited credential info to sites, implying data minimization and interoperability. Gap: which credential systems and exact data elements permitted for sites.",
+      "follow_up_question": "Which credential verification system(s) do you use and which specific credential fields may be shared with site coordinators?"
+    },
+    {
+      "requirement": "The system shall provide onboarding and user interfaces that are easy to learn such that most program admins can be productive after a single day-long training session; acceptable adoption is two-thirds (2/3) of admins able to perform core scheduling tasks independently after that training.",
+      "source_citation": "Ideally they'd pick it up quickly—like, a day of training... if two out of three of our admins can independently handle scheduling tasks after that one-day training, I’d consider it acceptable.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Stakeholder specifies learnability and an adoption metric tied to a one-day training limit. Gap: definition of 'core scheduling tasks', measurement methods, and total admin population baseline.",
+      "follow_up_question": "Please define the 'core scheduling tasks' and provide the total number of program admins to use for the 2/3 adoption metric and acceptable measurement method (observation/test)."
+    },
+    {
+      "requirement": "The system shall provide reporting and monitoring metrics including monthly uptime, user satisfaction, and counts of scheduling errors to measure success after launch.",
+      "source_citation": "Measure uptime and user satisfaction, and track how many scheduling errors occur compared to today... report uptime monthly.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Stakeholder requests specific observability metrics for post-launch success measurement. Gap: definitions and calculation methods for 'scheduling errors' and 'user satisfaction' (survey frequency/scales).",
+      "follow_up_question": "How should 'scheduling errors' be defined and measured, and what user satisfaction survey cadence and scale (e.g., quarterly NPS or 1–5 Likert) do you prefer?"
+    },
+    {
+      "requirement": "The system shall produce rosters suitable for sending to clinical sites quickly prior to each clinical rotation (exportable in common formats and accessible to authorized site admins).",
+      "source_citation": "Also, before every clinical rotation starts, we need a roster that we can send to sites quickly.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Stakeholder needs timely, exportable rosters as part of operational workflow. Gap: required file formats (CSV, PDF), delivery method (email attachment vs site portal), and which fields included.",
+      "follow_up_question": "What roster file formats are required (CSV, PDF), which fields must be included, and should rosters be delivered automatically to sites or generated for manual sending?"
+    },
+    {
+      "requirement": "The system shall limit the ability to trigger mass notifications to program admins and lead coordinators via role-based permissions to avoid accidental mass communications.",
+      "source_citation": "I think program admins and lead coordinators should trigger them. We don't want everyone firing off mass notifications by accident.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder requests authorization controls for notification actions to prevent accidental mass messages. Gap: audit/logging requirements for such notifications and approval workflows if any.",
+      "follow_up_question": "Do you require approval workflows (secondary confirmation) before mass notifications are sent, and should all notifications be logged with recipient lists for audit?"
+    },
+    {
+      "requirement": "The system shall be reliable and usable such that if it is too slow or confusing, staff will not resort to emails and spreadsheets; student privacy shall not be compromised—these are non-negotiable constraints.",
+      "source_citation": "It has to be reliable and usable. If it's too slow or confusing, people won't use it and we'll be back to emails and spreadsheets. And we can't compromise student privacy—those two things are deal-breakers.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "other",
+      "confidence": 5,
+      "rationale": "Stakeholder states overarching non-negotiable qualities: reliability/usability and privacy. This summarizes multiple attributes and serves as a project constraint. Gap: measurable thresholds for 'reliable' and 'usable' beyond previously stated metrics.",
+      "follow_up_question": "To operationalize these non-negotiables, can you confirm the priority order (privacy first, then reliability/usability) and accept specific measurable thresholds for each?"
+    }
+  ]
+}

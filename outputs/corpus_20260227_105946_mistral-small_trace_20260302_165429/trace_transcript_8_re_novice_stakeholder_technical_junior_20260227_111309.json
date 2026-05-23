@@ -1,0 +1,183 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_8_re_novice_stakeholder_technical_junior_20260227_111309.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_165748",
+  "requirements": [
+    {
+      "requirement": "The system shall complete a straightforward purchase-and-play flow within three minutes.",
+      "source_citation": "three minutes would be the outer limit for a straightforward purchase-and-play flow.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the maximum acceptable time for a purchase-and-play flow, which is a clear performance requirement. The context is about user experience and speed.",
+      "follow_up_question": "What specific steps are included in the 'straightforward purchase-and-play flow' to ensure accurate measurement?"
+    },
+    {
+      "requirement": "The system shall respond to regular clicks and small requests within five seconds.",
+      "source_citation": "For regular clicks and small requests, if it takes more than a few seconds, users feel annoyed. I'd say around five seconds is when people start to lose patience for simple stuff.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the acceptable response time for small interactions, which is a clear performance requirement.",
+      "follow_up_question": "What constitutes a 'regular click' or 'small request' in terms of system resources and user actions?"
+    },
+    {
+      "requirement": "The system shall complete card authorization within fifteen seconds from submission to result.",
+      "source_citation": "Card authorisation at maybe under, say, fifteen seconds from submit to result.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the maximum acceptable time for card authorization, which is a clear performance requirement.",
+      "follow_up_question": "What factors could affect the card authorization time, and how should the system handle delays?"
+    },
+    {
+      "requirement": "The system shall minimize buffering time to a maximum of ten seconds before playback starts.",
+      "source_citation": "Ten seconds is about the maximum that feels tolerable.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the acceptable buffering time, which is a clear performance requirement.",
+      "follow_up_question": "What measures will be taken to ensure buffering time is minimized, considering varying user network conditions?"
+    },
+    {
+      "requirement": "The system shall be designed with simplicity to accommodate novice users.",
+      "source_citation": "It just has to be simple... people who haven't used the internet much should be able to find a movie, pay, and be watching without fuss.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder emphasizes the need for simplicity and ease of use for novice users, which is a clear usability requirement.",
+      "follow_up_question": "What specific design principles or UI patterns will be implemented to ensure simplicity for novice users?"
+    },
+    {
+      "requirement": "The system shall have an African-inspired aesthetic to make users feel at home.",
+      "source_citation": "An African-inspired aesthetic would help users feel at home.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the importance of an African-inspired aesthetic, which is a clear usability requirement related to cultural fit.",
+      "follow_up_question": "What specific design elements will be included to achieve an African-inspired aesthetic?"
+    },
+    {
+      "requirement": "The system shall support local languages for key markets.",
+      "source_citation": "Local languages for key markets... support for local currencies in the UI.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the need for local language support, which is a clear usability requirement.",
+      "follow_up_question": "Which specific languages and markets will be prioritized for localization?"
+    },
+    {
+      "requirement": "The system shall protect sensitive payment data, such as real card details, through encryption and role-based access control.",
+      "source_citation": "The credit card info shouldn't be sitting in plain text on the database. And access should be limited to a few admin roles — not the person who just answers support calls.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for data protection and role-based access control, which are clear security requirements.",
+      "follow_up_question": "What specific encryption methods and role-based access control mechanisms will be implemented?"
+    },
+    {
+      "requirement": "The system shall implement two-factor authentication for high-privilege accounts.",
+      "source_citation": "Two-factor seems sensible for those users who can see sensitive data.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder suggests the use of two-factor authentication for high-privilege accounts, which is a clear security requirement.",
+      "follow_up_question": "What specific two-factor authentication methods will be supported?"
+    },
+    {
+      "requirement": "The system shall include protections against automated abuse, such as brute-force attacks and card testing.",
+      "source_citation": "Automated abuse is a nightmare... Bots trying to brute-force pre-paid codes, or card testing attacks... We need protections.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the need for protections against automated abuse, which is a clear security requirement.",
+      "follow_up_question": "What specific measures will be taken to protect against automated abuse?"
+    },
+    {
+      "requirement": "The system shall have a clear privacy policy visible on every page.",
+      "source_citation": "A clear privacy policy that people can find before they give us anything... on every page is safer.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for a visible privacy policy, which is a clear security requirement related to user privacy.",
+      "follow_up_question": "What specific information will be included in the privacy policy?"
+    },
+    {
+      "requirement": "The system shall maintain an uptime of 99.5%.",
+      "source_citation": "They'd probably expect around ninety-nine and a half percent uptime.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the expected uptime percentage, which is a clear availability requirement.",
+      "follow_up_question": "What measures will be taken to ensure the system meets the 99.5% uptime requirement?"
+    },
+    {
+      "requirement": "The system shall log who accessed what for auditing purposes.",
+      "source_citation": "Logs of who accessed what, so we can audit if something looks off.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for audit logs, which is a clear maintainability requirement.",
+      "follow_up_question": "What specific information will be included in the audit logs?"
+    },
+    {
+      "requirement": "The system shall support a handful of concurrent users on the admin dashboard during peak times.",
+      "source_citation": "Maybe a handful of people at peak times... during reporting windows there could be a few.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 3,
+      "rationale": "The stakeholder provides an estimate of the number of concurrent users, which is a clear scalability requirement.",
+      "follow_up_question": "What specific performance metrics will be used to ensure the system can handle the expected load?"
+    },
+    {
+      "requirement": "The system shall provide tooltips and simple error messages to assist users.",
+      "source_citation": "Tooltips and simple error messages — not scary technical text.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for tooltips and simple error messages, which is a clear usability requirement.",
+      "follow_up_question": "What specific tooltips and error messages will be implemented?"
+    },
+    {
+      "requirement": "The system shall allow admins to pull up individual movie sale records for dispute resolution and revenue reconciliation.",
+      "source_citation": "We should be able to pull up individual movie sale records if there's a dispute or to reconcile revenue.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the need for detailed sale records, which is a clear maintainability requirement.",
+      "follow_up_question": "What specific data will be included in the individual movie sale records?"
+    }
+  ]
+}

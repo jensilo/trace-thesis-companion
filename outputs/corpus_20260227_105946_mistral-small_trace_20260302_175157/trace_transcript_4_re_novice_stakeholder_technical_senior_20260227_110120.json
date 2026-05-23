@@ -1,0 +1,117 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_4_re_novice_stakeholder_technical_senior_20260227_110120.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_175159",
+  "requirements": [
+    {
+      "requirement": "The application must respond to routine navigations and small queries within five seconds to avoid user frustration.",
+      "source_citation": "It needs to feel responsive. I think, well, reps get frustrated if screens hang; small navigations should be nearly instantaneous.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for responsiveness and provides a concrete threshold for performance, indicating a clear expectation for user experience.",
+      "follow_up_question": "Are there specific types of navigations or queries that should be prioritized for performance optimization?"
+    },
+    {
+      "requirement": "The application must support 350 concurrent users without performance degradation.",
+      "source_citation": "Yes, design and load tests should target support for 350 concurrent users without application-level performance degradation.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "The stakeholder provides a specific number for concurrent users, which is a clear and testable requirement for scalability.",
+      "follow_up_question": "Are there any peak usage periods or specific scenarios that should be considered for load testing?"
+    },
+    {
+      "requirement": "The application must be available 24/7, except during scheduled maintenance windows.",
+      "source_citation": "It needs to be essentially always available because cardmembers and merchants can open or escalate matters at any time, and there are external systems that expect availability.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for continuous availability and mentions scheduled maintenance windows, indicating a high expectation for uptime.",
+      "follow_up_question": "Are there any specific availability targets or service level agreements (SLAs) that the application must meet?"
+    },
+    {
+      "requirement": "The application must follow corporate UI standards for internal and external tools to ensure a consistent user experience.",
+      "source_citation": "Yes, we have to follow corporate UI standards, both for internal tools and anything external-facing so users have a consistent experience.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need to follow corporate UI standards, indicating a clear expectation for usability and consistency.",
+      "follow_up_question": "Are there any specific UI standards or guidelines that should be followed?"
+    },
+    {
+      "requirement": "The application must implement role-based access control (RBAC) and attribute-based access control (ABAC) where necessary to restrict access to sensitive actions.",
+      "source_citation": "Role-based access control is the baseline; we can extend with attribute checks where necessary.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for role-based access control and the possibility of extending it with attribute checks, indicating a clear expectation for security.",
+      "follow_up_question": "Are there any specific roles or attributes that should be considered for access control?"
+    },
+    {
+      "requirement": "The application must record every action that affects case state or triggers an external request, including who performed the action, when it was performed, and the payload and responses.",
+      "source_citation": "Every action that affects case state or triggers an external request must be recorded with who performed it, when, and what the payload was, plus any responses.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "compliance",
+      "confidence": 5,
+      "rationale": "The stakeholder provides a detailed description of the audit trail requirements, indicating a clear expectation for compliance and auditability.",
+      "follow_up_question": "Are there any specific retention policies or e-discovery requirements that should be considered?"
+    },
+    {
+      "requirement": "The application must degrade gracefully and provide clear diagnostics when backend systems are unavailable.",
+      "source_citation": "The app should degrade gracefully. For example, if the statement DB is unavailable, we should surface clearly what actions are blocked, queue or retry requests where appropriate, and provide technicians with clear diagnostics.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for graceful degradation and clear diagnostics, indicating a clear expectation for fault tolerance and resilience.",
+      "follow_up_question": "Are there any specific failure scenarios or recovery procedures that should be considered?"
+    },
+    {
+      "requirement": "The application must implement data segregation to ensure that internal-only fields are not exposed to merchants or cardmembers.",
+      "source_citation": "Yes, we need data segregation so internal-only fields aren't exposed to merchants or cardmembers.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for data segregation, indicating a clear expectation for security and data protection.",
+      "follow_up_question": "Are there any specific data fields or categories that should be considered for segregation?"
+    },
+    {
+      "requirement": "The application must implement idempotency and retries for external calls to ensure strong delivery semantics and avoid inconsistent state.",
+      "source_citation": "We call the posting and billing system with adjustment requests. We need strong delivery semantics: requests should be idempotent, retried on transient failures, and reconciled if a response isn't received.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for idempotency and retries, indicating a clear expectation for fault tolerance and resilience.",
+      "follow_up_question": "Are there any specific external systems or calls that should be considered for idempotency and retries?"
+    },
+    {
+      "requirement": "The application must follow corporate UI standards for internal and external tools to ensure a consistent user experience.",
+      "source_citation": "Yes, we have to follow corporate UI standards, both for internal tools and anything external-facing so users have a consistent experience.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need to follow corporate UI standards, indicating a clear expectation for usability and consistency.",
+      "follow_up_question": "Are there any specific UI standards or guidelines that should be followed?"
+    }
+  ]
+}

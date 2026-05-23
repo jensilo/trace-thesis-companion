@@ -1,0 +1,100 @@
+Interviewer: Thanks for meeting with me. To start, can you tell me what environments the system should run in? Like OS, servers, stuff?
+
+Stakeholder: Sure. I think, well, the idea is it has to be portable — it should run on whatever servers we have in-house, as long as the Java runtime can be installed there. We don't want to be forced onto a particular OS; teams run Linux, Windows, sometimes Solaris in older shops, so it should play nicely with that. Also it should be packaged to deploy onto whatever web or application server we use, you know, the usual Tomcat or JBoss-type setups.
+
+Interviewer: Okay, so it needs to work with web servers and app servers. Do you have a specific app server in mind, or is it flexible?
+
+Stakeholder: Flexible. We should be able to drop it into an existing app-server stack without rewriting it. If it's built to the usual servlet standards and doesn't embed an exotic native dependency, ops can run it on lightweight containers or full JEE app servers depending on the site.
+
+Interviewer: Got it. How about databases? Any preferences?
+
+Stakeholder: It needs to work against whatever DBMS the company already runs. Some sites are running Postgres, some are on Oracle, some have SQL Server. The product needs to connect over the network or to a local DB instance; it shouldn't assume the database is on the same machine. Drivers and an abstraction layer — that kind of thing — will keep it portable.
+
+Interviewer: Makes sense. What about performance — like how responsive should common actions be? Is there an expectation?
+
+Stakeholder: Oh, responsiveness is important. Users get annoyed if the calendar or booking doesn't come up quickly — it kills their flow. So it should feel instant for the small actions. Hmm, if you press a button to reserve a room you shouldn't be waiting around.
+
+Interviewer: When you say "quick" — what would you consider acceptable versus too slow?
+
+Stakeholder: If you press a normal UI button and it's still loading after, say, five seconds, that's getting into the "ugh" territory. Most routine tasks should be basically immediate; five seconds is a threshold for small things, and even for heavier tasks we shouldn't go much beyond that — eight seconds is a point where you know you need to look at the design or caching.
+
+Interviewer: Okay, that's helpful. And for concurrent usage — how many people do you think will be using it at the same time, especially during peaks?
+
+Stakeholder: During peaks, mornings and right before lunch, the load can spike. The system has to handle high concurrency; it's not just a handful of users. We should size for the current office footprint and plan to scale. In concrete terms, think about supporting on the order of thousands of concurrent requests today and more in the next release.
+
+Interviewer: Could you be more concrete? Like what "order of thousands" means for planning?
+
+Stakeholder: Sure — today we should be able to handle about one thousand simultaneous requests. And then by the next release we should be able to handle roughly double that. That covers the early-morning booking rush and late-afternoon reschedules.
+
+Interviewer: Thanks. Availability — what are your expectations for uptime?
+
+Stakeholder: Users need to rely on it during business hours; downtime is painful because conference schedules are live. Aside from cases where the physical server is down — you know, catastrophic hardware failure — the software itself should be nearly always up. We should aim for very high availability so people don't get surprised during the day.
+
+Interviewer: How high is "very high"?
+
+Stakeholder: We should target four nines availability for the software component — in other words, about 99.99% uptime excluding server-level failures. That leaves only a very small maintenance window over a year.
+
+Interviewer: Understood. Let's talk about security and access. Who should be able to log in and use the product?
+
+Stakeholder: Only company employees or external people who we've explicitly approved should be able to log in. No anonymous access. Authentication should tie into corporate identity — LDAP, SAML, or whatever the customer uses — so every logon is from a recognized, approved ID.
+
+Interviewer: So no guests or public sign-ups at all?
+
+Stakeholder: Not for the booking system itself. There may be meeting attendees who are external, but if they need to access the product UI they'll need a company-approved credential. We should reject unknown identities at the door.
+
+Interviewer: Got it. About malicious input: how defensive should the system be about bad or hostile data?
+
+Stakeholder: Very defensive. The app must sanitize inputs, validate everything server-side, and assume attackers will try to inject SQL or malformed payloads. We can't allow malicious input to corrupt our data stores or adjacent systems; integrity is critical. If someone tries to send bad data, the system should reject it and keep the database consistent.
+
+Interviewer: When you say "keep the database consistent," do you mean it should never be corrupted by bad input?
+
+Stakeholder: Yes — we need guarantees that malicious input won't result in corrupted product data. That's non-negotiable; we should treat data integrity as sacrosanct.
+
+Interviewer: Okay. If errors occur, how should they be handled and tracked?
+
+Stakeholder: Exceptions and operational problems should be captured in logs with enough context to reproduce and diagnose issues. There should be a mechanism to transmit aggregated exception data back to central support for analysis. We want telemetry that doesn't leak sensitive information but gives us stack traces, environment details, and frequency so we can fix root causes.
+
+Interviewer: And how about the codebase itself — any expectations for maintainability?
+
+Stakeholder: The code should follow standard design patterns and best practices. New developers should be able to understand and extend it quickly; we don't want a monolith that's a mystery. Good layering, clear interfaces, and test coverage are key so an incoming maintenance developer can add a feature in days rather than weeks.
+
+Interviewer: How quickly do you expect a new maintenance developer to be productive?
+
+Stakeholder: Ideally, most maintenance developers should be able to integrate a small new feature within a couple of working days after ramp-up. That implies readable code, good documentation, and consistent patterns.
+
+Interviewer: We're also supporting multiple languages and accessibility, right? Anything special there?
+
+Stakeholder: Yes, the UI must support localization and be brandable so different offices can apply their company look and feel. Accessibility compliance is necessary — screen reader support, keyboard navigation, proper semantics, the usual. I won't pretend it's simple, but it's non-optional.
+
+Interviewer: Any constraints about browsers or devices?
+
+Stakeholder: It should work on modern, standards-compliant browsers. We don't need to chase every legacy browser forever, but it should be usable on current mainstream browsers and degrade gracefully where features aren't supported. Mobile access via responsive web UI is useful; a native app isn't required to start.
+
+Interviewer: How about deployment and operations — monitoring, backups?
+
+Stakeholder: Ops needs to be able to run the app in clustered setups for high availability, monitor key metrics, and perform rolling upgrades. Backups are handled at the DB and infrastructure layer, but the app should not make assumptions that prevent safe backups and restores. Also, we should provide health endpoints for automated checks.
+
+Interviewer: Should the app enforce anything about how backups are done, or is that just ops?
+
+Stakeholder: It's an ops thing mostly, but the app should be stateless where feasible so instances can be replaced without data loss and so backups are straightforward. Session state should be externalized, and we should document what needs to be backed up.
+
+Interviewer: One last thing — logging privacy. You mentioned sending exception data back. Any limits there?
+
+Stakeholder: Don't send PII or full user content in external reports. We want actionable telemetry — stack traces, timestamps, environment, but scrub sensitive fields. Privacy laws vary per region, so default to safe redaction.
+
+Interviewer: Thanks, that's a lot of useful info.
+
+Stakeholder: No problem. Oh, and one more small thing — tangent — when you model rooms, think about equipment as first-class, because people book projectors or video bridges and that affects scheduling. The coffee machine sensor idea we kicked around last year is silly, but room sensors for occupancy could be an enhancement later.
+
+---
+Selected Requirements:
+1. [NICE.csv line 278] [quality, portability] 'The product will function alongside server software on any operating system where the Java runtime can be installed.'
+2. [NICE.csv line 280] [quality, operability] 'The product must make use of web/application server technology. Open source examples include Apache web server Tomcat and the JBoss application server.'
+3. [NICE.csv line 277] [quality, operability, portability] 'The product must work with most database management systems (DBMS) on the market whether the DBMS is colocated with the product on the same machine or is located on a different machine on the computer network.'
+4. [NICE.csv line 293] [quality, performance] The response shall be fast enough to avoid interrupting the user's flow of thought. 90% of tasks shall complete within 5 seconds. 98% of tasks shall complete within 8 seconds.'
+5. [NICE.csv line 296] [quality, scalability] 'The product shall be capable of handling up to 1 000 concurrent requests. This number will increase to 2 000 by Release 2. The concurrency capacity must be able to handle peak scheduling times such as early morning and late afternoon hours.'
+6. [NICE.csv line 294] [quality, availability] 'Aside from server failure the software product shall achieve 99.99% up time.'
+7. [NICE.csv line 315] [quality, security] 'The product shall ensure that only company employees or external users with company-approved user IDs may have product access. 100% of all logons shall be by either company employees or external users with company-approved user IDs.'
+8. [NICE.csv line 318] [quality, security] The product shall prevent the input of malicious data. The product and/or adjacent hardware/software systems' data shall remain 100% uncorrupted each time malicious data is input into the product.'
+9. [NICE.csv line 295] [quality, functional, maintainability] 'The product shall create an exception log of problems encountered within the product for transmission to our company for analysis and resolution.'
+10. [NICE.csv line 307] [quality, maintainability] 'The product must be designed using Design Patterns and coding best practices. 90% of maintenance software developers are able to integrate new functionality into the product with 2 working days.'

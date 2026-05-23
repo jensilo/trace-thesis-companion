@@ -1,0 +1,249 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_4_re_experienced_stakeholder_nontechnical_enduser_20260227_110534.txt",
+  "model": "openai/gpt-5-mini",
+  "timestamp": "20260302_172049",
+  "requirements": [
+    {
+      "requirement": "UI list view shall use distinct visual indicators (e.g., color-coding) so that users can scan and distinguish case statuses (pending, escalated, closed) without opening each case.",
+      "source_citation": "I want it to pop. Right now I have to open each case to see if it’s pending, escalated, or closed.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly requests faster visual scanning via colors so they don't need to open many cases. Missing specifics: exact colors, contrast/accessibility, where indicators appear (row, badge, icon) and whether customizable.",
+      "follow_up_question": "Which specific status types must be color-coded, are there corporate color standards to follow, and what accessibility contrast/assistive-tech requirements must be met?"
+    },
+    {
+      "requirement": "Small UI actions (screen transitions and simple searches) shall complete within 5 seconds as perceived by the user under normal load.",
+      "source_citation": "maybe around five seconds... anything longer... interrupts the call",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder gives an explicit latency threshold (~5s) for small interactions; acceptable under typical conditions. Missing specifics: definition of 'normal load', SLO vs. P95/P99 targets, backend vs. end-to-end timings, network assumptions.",
+      "follow_up_question": "Do you require a target percentile (e.g., 95th percentile <= 5s) and what network/desktop environment assumptions should we use when measuring?"
+    },
+    {
+      "requirement": "The dispute system shall display transaction, cardholder (member), and merchant information live from their authoritative source systems rather than relying on stale local copies.",
+      "source_citation": "the dispute screen should show the transaction details and the cardmember info right there, pulled from those authoritative places.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "Stakeholder requests single source of truth and live pull to avoid discrepancies. Missing specifics: expected freshness (real-time vs. near-real-time), caching policy, failover behavior if source systems are down, and API performance requirements.",
+      "follow_up_question": "What is the acceptable data freshness SLA (real-time, <1 minute, <5 minutes), and what should the UI show if the authoritative system is unavailable?"
+    },
+    {
+      "requirement": "Access to cases and case actions shall be restricted by portfolio and role so users only see and act on cases they are authorized for (least privilege).",
+      "source_citation": "I can’t and shouldn’t see every representative’s cases because some of those are for other teams or regions.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder stresses portfolio-based visibility and prevention of cross-access. Missing specifics: exact role definitions, inheritance, how portfolios are mapped, and enforcement model (server-side checks, UI hiding, logging).",
+      "follow_up_question": "Please provide the canonical list of roles and portfolio mappings and clarify whether access control must be enforced server-side even if the UI hides items."
+    },
+    {
+      "requirement": "The system shall enforce role-based authorization for initiating disputes and require manager/senior approval for higher-risk actions (e.g., large-amount chargebacks) via an in-case digital approval workflow.",
+      "source_citation": "not everyone should be able to initiate a dispute... manager or senior rep to approve... Ideally, a digital approval inside the case — a button or workflow that records the manager’s name",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder requires workflow-level authorization and a digital sign-off that blocks bypass. Missing specifics: thresholds for 'higher-risk', timing constraints, escalation paths, and how approval prevents technical bypass.",
+      "follow_up_question": "What are the exact criteria (e.g., amount thresholds, dispute types) that trigger manager approval and what actions must be blocked until approval is recorded?"
+    },
+    {
+      "requirement": "All case actions shall be recorded in an auditable history including actor identity, timestamp, a short reason/note, and before-and-after values for changed fields.",
+      "source_citation": "I need to be able to see a clear history of every action, who did it, timestamps, and any comments added... If the system could show what actually changed — like the old and new status or amount",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly requests comprehensive audit trail and field-level change history to support compliance and traceability. Missing specifics: retention period, immutability, access to audit logs, and format for exported logs.",
+      "follow_up_question": "What retention period and export/forensic formats do you need for audit logs, and which user roles should be able to view or export full audit details?"
+    },
+    {
+      "requirement": "External users shall be presented with a restricted view that hides sensitive member data (e.g., full account numbers and other personal info) while exposing only the information necessary for their interaction.",
+      "source_citation": "External users... should only see what’s necessary for their interaction: transaction details, maybe the dispute status, but not sensitive member data like full account numbers",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder requires data masking/partial views for external partners to protect PII. Missing specifics: exact fields to mask, masking format (e.g., last 4 digits), consent/audit rules, and integration with access control.",
+      "follow_up_question": "Please provide a field-level data exposure matrix (which fields are visible, masked, or hidden) for each external user type."
+    },
+    {
+      "requirement": "UI layout, controls, and generated member-facing correspondence shall conform to the corporate style/branding guidelines to ensure consistency and trust.",
+      "source_citation": "it should look like other corporate apps... anything that’s customer-facing — like letters or emails the system generates — should match our branding",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 4,
+      "rationale": "Stakeholder requests corporate-consistent UI and branding for trust and reduced training. Missing specifics: which corporate guideline document/version, templating mechanism for correspondence, and approval process for branded templates.",
+      "follow_up_question": "Can you supply the corporate UI/branding guidelines and example templates, and do branded templates require a review workflow before sending?"
+    },
+    {
+      "requirement": "Color indicators and UI-visible status must be consistent with the logged status in the audit/history; any change in status visible in the UI must have a corresponding recorded event showing who made the change and when.",
+      "source_citation": "The colors should reflect the status that the system knows and logs. So if a case is escalated and I see it in red, the history should show when it went red and who escalated it.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Stakeholder wants UI cues and audit trail to be synchronized to avoid misleading displays. Missing specifics: transactional guarantees (atomic updates), eventual consistency allowances, and UI behavior when logs are delayed.",
+      "follow_up_question": "Should status changes and audit log writes be atomic (all-or-nothing), and how should the UI behave if the log write fails or is delayed?"
+    },
+    {
+      "requirement": "The system shall prevent users from seeing cases outside their portfolio and log any attempted cross-portfolio access; visibility errors shall occur less than monthly (target: zero incidents) and be investigate-able.",
+      "source_citation": "sometimes the system shows cases that aren’t in your portfolio... maybe a few times a month... It also causes compliance headaches if sensitive member info is exposed",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "Stakeholder reports an existing frequency ('a few times a month') and expects tighter control. Missing specifics: target acceptable frequency, detection/alerting mechanisms, and remediation procedures.",
+      "follow_up_question": "What is an acceptable incident rate for cross-portfolio visibility, and what automatic alerts or remediation steps do you require when such an incident occurs?"
+    },
+    {
+      "requirement": "The system shall allow attaching evidence (files, scanned receipts, and call recording links) to cases and ensure attachments are stored and linked reliably to the corresponding case entry.",
+      "source_citation": "being able to attach evidence — like a scanned receipt or a call recording link — directly to the case is hugely helpful.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "reliability",
+      "confidence": 5,
+      "rationale": "Stakeholder needs attachments linked and reliably available. Missing specifics: allowed file types/sizes, retention, access control for attachments, and encryption and privacy controls for sensitive attachments.",
+      "follow_up_question": "What file types and max sizes must be supported, what retention/encryption policies apply, and who should be able to download or view attachments?"
+    },
+    {
+      "requirement": "Generated correspondence (letters/emails) shall be produced from templates and must reference the same transaction and member details shown in the case; generated outputs shall be reviewable before sending.",
+      "source_citation": "I want the system to generate letters and emails that I can review and send, using templates so they’re consistent... generated correspondence should reference the same details that are in the transaction and member views.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Stakeholder wants templated, consistent correspondence tied to case data to avoid mismatches. Missing specifics: template editing permissions, variable placeholders, versioning, and audit of sent correspondence.",
+      "follow_up_question": "Who should be allowed to edit templates, must correspondence be versioned/audited, and are there legal language constraints for templates?"
+    },
+    {
+      "requirement": "Planned maintenance shall be scheduled in predictable windows (e.g., Sundays 01:00–05:00 and daily 03:00–04:00 local time) with at least 24 hours advance notice via email or in-app banner for non-emergency extended maintenance.",
+      "source_citation": "predictable, with a posted schedule... between one in the morning and five in the morning on Sundays... on other days maybe a much smaller window around three to four in the morning... we’d need an email or banner telling us at least a day ahead for planned longer maintenance.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "Stakeholder gives specific acceptable windows and notification lead time. Missing specifics: time zone, process for emergency maintenance, and SLA penalties/expectations for unplanned outages.",
+      "follow_up_question": "Which time zone should these windows be scheduled in, and what is the required notification channel and minimum lead time for planned vs. extended maintenance?"
+    },
+    {
+      "requirement": "Planned maintenance exceptions are acceptable only with advance notice; emergency outages are permitted but planned longer maintenance must be communicated at least one day ahead.",
+      "source_citation": "I’d be okay with exceptions if we get advance notice — like, we’d need an email or banner telling us at least a day ahead for planned longer maintenance. Emergency outages are different, but planned ones should be communicated.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 4,
+      "rationale": "Stakeholder distinguishes between planned and emergency outages and requires communication for planned exceptions. Missing specifics: acceptable exception frequency, compensation, or operational escalation procedures.",
+      "follow_up_question": "How much advance notice is acceptable for shorter exceptions, and who should receive the notification (roles or distribution lists)?"
+    },
+    {
+      "requirement": "Search functionality shall support partial/more flexible matching so users can find cases using partial identifiers or incomplete information.",
+      "source_citation": "Sometimes I type partial info and the system doesn’t find the case. So smarter search would help.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Stakeholder requests improved search tolerance for partial input. Missing specifics: which fields should be partial-matchable, ranking, fuzziness thresholds, and performance targets for search queries.",
+      "follow_up_question": "Which fields must support partial or fuzzy search, and what responsiveness (e.g., <2s P95) do you expect for typical search queries?"
+    },
+    {
+      "requirement": "The system shall persist user-specific saved searches/filters so users can restore frequently used queries each morning to reduce repetitive setup.",
+      "source_citation": "if the system could save my most-used searches or filters so I don’t have to recreate them each morning",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "Stakeholder requests saved searches for efficiency. Missing specifics: number of saved queries per user, sharing of saved filters across team, and sync across devices.",
+      "follow_up_question": "How many saved searches per user are needed, and should saved filters be shareable across the team or tied to an individual?"
+    },
+    {
+      "requirement": "The system shall preserve the user's context/state during a call (e.g., not lose open case selection or cursor position) to avoid having to 'find my place' mid-call.",
+      "source_citation": "not losing my place during a call. Basically, make it feel seamless and trustworthy.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "Stakeholder wants session/state preservation to maintain workflow continuity. Missing specifics: what state elements to preserve (open tabs, filters, unsaved form data), session timeout behavior, and cross-device expectations.",
+      "follow_up_question": "Which exact UI state elements must be preserved during a session (open case, unsaved notes, filters) and for how long should the session persist without activity?"
+    },
+    {
+      "requirement": "The system shall provide role-based views that prevent vendor users from editing member account details or initiating adjustments while allowing them limited verification access.",
+      "source_citation": "There are also vendor users, like some merchant services folks, who see a limited view for verification but they can’t change member account details or initiate adjustments.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder specifies differential permissions for vendor users limiting edit capabilities. Missing specifics: vendor role definitions, permitted read-only fields, and cross-audit requirements for vendor access.",
+      "follow_up_question": "Please define the vendor user role(s) and list exactly which fields or actions must be read-only versus editable for those roles."
+    },
+    {
+      "requirement": "Approval workflows and any enforced controls must be non-bypassable and the system must log any attempt to bypass or override approvals.",
+      "source_citation": "It should prevent anyone from bypassing it and also show up in the audit history",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder requires technical enforcement of approval workflows and logging for attempts to bypass. Missing specifics: exception handling for emergencies, delegated approvals, and how overrides are authorized/audited.",
+      "follow_up_question": "Under what circumstances (if any) should an override be permitted, who can perform it, and how should such overrides be captured and justified in the audit trail?"
+    },
+    {
+      "requirement": "The system shall surface failures or outages gracefully during calls (clear messaging) and provide an alternative workflow or contact guidance when authoritative data sources are unavailable.",
+      "source_citation": "once in a while I’ve had to tell a member I can’t pull their case because the system’s down. It’s really inconvenient when that happens.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "Stakeholder experiences inconveniences during outages and expects graceful failure handling and fallback guidance. Missing specifics: exact fallback steps, SLA for recovery, and requirements for in-app messaging content.",
+      "follow_up_question": "What fallback guidance or alternative workflows should be provided to reps during outages, and what messaging do you want displayed to members or reps?"
+    },
+    {
+      "requirement": "Attachments and sensitive data must be protected according to privacy requirements (e.g., masked in external views and encrypted at rest/in transit).",
+      "source_citation": "not sensitive member data... not the whole member history... like full account numbers",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "Stakeholder requests hiding sensitive data for external users; implies need for encryption and masking. Missing specifics: encryption standards, masking rules, compliance frameworks (e.g., PCI, GDPR), and key management.",
+      "follow_up_question": "Which compliance standards apply (e.g., PCI, GDPR), and what encryption/masking standards and key management policies must we follow?"
+    },
+    {
+      "requirement": "Search and list rendering shall remain responsive (meet performance targets) even when integrating live data from external authoritative systems.",
+      "source_citation": "we have to switch between several other systems just to find a transaction or their details. It’s a lot of clicking around.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 3,
+      "rationale": "Stakeholder links performance issues with multi-system integration and increased clicks; expects integrated view without sacrificing responsiveness. Missing specifics: expected concurrency, caching strategy, and acceptable trade-offs between freshness and speed.",
+      "follow_up_question": "Are you willing to accept slight data staleness (with a refresh option) to guarantee sub-5s response, or must data always be live with the same latency guarantees?"
+    }
+  ]
+}

@@ -1,0 +1,238 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_8_re_experienced_stakeholder_technical_junior_20260227_111420.txt",
+  "model": "mistral/mistral-medium-latest",
+  "timestamp": "20260302_171231",
+  "requirements": [
+    {
+      "requirement": "The system shall respond to user interactions within five seconds.",
+      "source_citation": "anything longer than... five seconds feels too slow",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states a performance requirement for user interactions.",
+      "follow_up_question": "Are there any specific user interactions that might have different performance requirements?"
+    },
+    {
+      "requirement": "The system shall complete payment processing within fifteen seconds.",
+      "source_citation": "payment processing needs to complete within about fifteen seconds",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder provides a clear performance requirement for payment processing.",
+      "follow_up_question": "What are the expected performance requirements for different payment methods?"
+    },
+    {
+      "requirement": "The system shall limit initial streaming buffering to ten seconds.",
+      "source_citation": "initial buffering shouldn’t be more than... ten seconds",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies a performance requirement for streaming buffering.",
+      "follow_up_question": "How should the system handle buffering in cases of poor network connectivity?"
+    },
+    {
+      "requirement": "The system shall support adaptive bitrate streaming.",
+      "source_citation": "adaptive bitrate is a must... start with a lower bitrate if the user’s connection is weak",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for adaptive bitrate streaming to handle different network qualities.",
+      "follow_up_question": "What specific bitrates should the system support for adaptive streaming?"
+    },
+    {
+      "requirement": "The system shall achieve 99.5% availability.",
+      "source_citation": "ninety-nine point five percent availability",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder provides a clear availability target for the system.",
+      "follow_up_question": "Are there any specific time periods or regions where higher availability is required?"
+    },
+    {
+      "requirement": "The system shall limit the account creation flow to no more than four pages.",
+      "source_citation": "no more than four pages from landing to a usable account",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a usability requirement for the account creation flow.",
+      "follow_up_question": "What specific steps should be included in the account creation flow?"
+    },
+    {
+      "requirement": "The system shall be usable by 90% of novice users.",
+      "source_citation": "usable by... ninety percent [of novice users]",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 3,
+      "rationale": "The stakeholder provides a usability target for novice users, but the exact definition of 'usable' is unclear.",
+      "follow_up_question": "What specific usability metrics should be used to measure this requirement?"
+    },
+    {
+      "requirement": "The system shall use big buttons, clear labels, and simple language in the UI.",
+      "source_citation": "big buttons, clear labels, simple language",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies design elements to improve usability.",
+      "follow_up_question": "Are there any specific design guidelines or standards that should be followed?"
+    },
+    {
+      "requirement": "The system shall encrypt credit card details and restrict access to authorized personnel.",
+      "source_citation": "stored on the server... encrypted, and only certain people... can see that",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for encryption and access control for credit card details.",
+      "follow_up_question": "What specific encryption standards should be used for credit card details?"
+    },
+    {
+      "requirement": "The system shall implement role-based access control for customer data.",
+      "source_citation": "Program admins... broad access... support staff should only see non-sensitive data",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies different access levels for different roles.",
+      "follow_up_question": "What specific roles and access levels should be defined?"
+    },
+    {
+      "requirement": "The system shall use tokenization for credit card storage.",
+      "source_citation": "using tokenization does sound safer and less headache for PCI stuff",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 3,
+      "rationale": "The stakeholder suggests tokenization as a safer alternative for credit card storage, but the decision is not final.",
+      "follow_up_question": "What specific tokenization standards or services should be used?"
+    },
+    {
+      "requirement": "The system shall detect and alert on suspicious activity.",
+      "source_citation": "repeated failed logins, credential stuffing... trigger alerts",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for detecting and alerting on suspicious activity.",
+      "follow_up_question": "What specific types of suspicious activity should be detected and alerted on?"
+    },
+    {
+      "requirement": "The system shall notify admins of security events via email, SMS, or push notifications.",
+      "source_citation": "notify admins... email baseline, SMS/push for severe stuff",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies notification channels for security events.",
+      "follow_up_question": "What specific criteria should be used to determine the severity of security events?"
+    },
+    {
+      "requirement": "The system shall follow W3C standards for accessibility.",
+      "source_citation": "follow W3C standards... semantic HTML, ARIA where needed",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "accessibility",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need to follow W3C standards for accessibility.",
+      "follow_up_question": "Are there any specific W3C standards or guidelines that should be prioritized?"
+    },
+    {
+      "requirement": "The system shall provide a modern and culturally resonant design.",
+      "source_citation": "modern look that resonates culturally but stays simple",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for a culturally resonant design, but the exact design elements are unclear.",
+      "follow_up_question": "What specific cultural design elements should be incorporated?"
+    },
+    {
+      "requirement": "The system shall allow admins to manage movie metadata, pricing, and pre-paid cards.",
+      "source_citation": "admins should be able to add/edit movie metadata, upload assets, manage pricing",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies admin tasks related to movie management.",
+      "follow_up_question": "What specific metadata fields should be manageable by admins?"
+    },
+    {
+      "requirement": "The system shall provide actionable dashboards for business analytics.",
+      "source_citation": "actionable dashboards... revenue over time, top titles, redemption rates",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for actionable dashboards for business analytics.",
+      "follow_up_question": "What specific metrics should be included in the business analytics dashboards?"
+    },
+    {
+      "requirement": "The system shall fail gracefully and provide clear error messages to users.",
+      "source_citation": "fail gracefully and tell the user what happened",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for graceful failure and clear error messages.",
+      "follow_up_question": "What specific error messages should be provided for different types of failures?"
+    },
+    {
+      "requirement": "The system shall log incidents for admin diagnosis.",
+      "source_citation": "log the incident for admins so we can diagnose it",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for logging incidents for admin diagnosis.",
+      "follow_up_question": "What specific information should be logged for each incident?"
+    },
+    {
+      "requirement": "The system shall notify admins of high-severity events immediately.",
+      "source_citation": "thresholds where actions cross a risk score",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 3,
+      "rationale": "The stakeholder suggests the need for immediate notification of high-severity events, but the exact criteria for severity are unclear.",
+      "follow_up_question": "What specific criteria should be used to determine the severity of events?"
+    },
+    {
+      "requirement": "The system shall allow users to flag inappropriate content and provide admins with a moderation queue.",
+      "source_citation": "way for users to flag inappropriate content, admins need an easy moderation queue",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for user flagging and admin moderation tools.",
+      "follow_up_question": "What specific actions should admins be able to take in the moderation queue?"
+    }
+  ]
+}

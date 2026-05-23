@@ -1,0 +1,84 @@
+Interviewer: Thanks for sitting down with me. Can you tell me, in your own words, what you think this recycled parts and repair facility system should do?
+
+Stakeholder: Yeah, sure — I mean, at a high level, it needs to let adjusters and estimators find recycled parts and pick repair shops without faffing about. Um, it has to talk to our Choice Parts system so the parts data isn't stale, and it should follow our corporate architecture and UI rules — you know, the stuff IT keeps reminding us about. Also, it should make it easy to audit how often recycled parts are used in an estimate and let adjusters give feedback on shops. And, well, it needs to be fast and secure — nobody wants the app to be flaky in the field. Oh, and it should work in both the office and on tablets when someone is out at a shop.
+
+Interviewer: When you say "talk to our Choice Parts system," what does that mean practically? Like, real-time feed or manual import?
+
+Stakeholder: Ideally it's hooked up so the parts feed comes through automatically, so users see availability without having to import CSVs or, you know, open another app. It should feel like one workflow, not five different systems stitched together. But I guess we could have fallbacks if the feed hiccups.
+
+Interviewer: Okay. You mentioned it should be fast — can you say more about acceptable response times for searches? How long would be too long for a recycled parts search?
+
+Stakeholder: Hmm, I think it just needs to feel quick — I hate waiting. If a parts search takes more than, say, a handful of seconds, people get annoyed and start switching to phone calls. So, fast enough that adjusters don't lose focus, that's the bar. If you want a number... maybe around fifteen seconds is about the upper bound before people complain.
+
+Interviewer: And searching for repair facilities, is that similar or do you expect it to be quicker?
+
+Stakeholder: That's a bit different, yeah. When you're standing by a car or talking to an insured, you want the nearest preferred shop to pop up faster than the big parts lists. So it should come back quicker than the parts search. If pressed, I'd say under ten seconds would be nice, but it should feel almost immediate when you're looking up a shop.
+
+Interviewer: You said it should follow corporate architecture and UI guidelines. Is that non-negotiable?
+
+Stakeholder: Oh, absolutely. IT will flag anything that deviates, and honestly we don't want a Frankenstein app. The look and patterns should match our other tools so people recognise it, and the architecture should map to our cloud and security standards so we don't hit governance issues later. It makes deployments and approvals much smoother, so yeah, it's kind of essential.
+
+Interviewer: How about usability — who is this for and how easy should it be to learn?
+
+Stakeholder: It's mainly for adjusters and collision estimators, right? So it has to be dead simple for them. Most of them aren't into fiddly interfaces; they want clear fields, obvious search and a way to attach parts into an estimate without extra clicks. Training should be minimal — we shouldn't be spending weeks. People should be comfortable after a short onsite session and a couple of tries. I think if we do it right, almost everyone will be fine with it.
+
+Interviewer: When you say "short onsite session," how long are you thinking? Days? A week?
+
+Stakeholder: Two days onsite is what I had in mind. That covers hands-on walkthroughs and a bit of practice for the typical user.
+
+Interviewer: You mentioned auditing recycled parts usage in estimates. What does that audit look like in practice?
+
+Stakeholder: It should let adjusters see, kind of at a glance, which parts in an estimate came from recycled sources and whether the supplier matched the parts feed. Also, managers should be able to pick up trends — like if a shop routinely avoids recycled parts or if estimates aren't using available parts. It's about transparency for save opportunities and compliance. Oh, and there should be a way to record a rating or comment about the shop's performance on recycled parts, because that influences future choices.
+
+Interviewer: On the ratings piece — is that formal or informal feedback?
+
+Stakeholder: I'd say semi-formal. People will rate or leave notes, but it shouldn't be overbearing. It needs to be tied to the user's role and saved with the estimate so we can audit later. And, um, not everyone should be able to change everyone else's ratings — that would be messy.
+
+Interviewer: Speaking of roles, who needs what kind of access?
+
+Stakeholder: Well, adjusters need to see parts and edit estimates, estimators need similar access, and managers need broader visibility. There should be guards so administrative or personal data doesn't leak to field staff. I'm not a security expert, but it's clear not everyone should see everything.
+
+Interviewer: You said it should be secure and not flaky. What kinds of failures worry you the most?
+
+Stakeholder: Downtime is the big one — if the system's down when claims are being processed, it slows everything and people revert to old processes. Also, we get targeted stuff sometimes — denial-of-service worries me because it could make the service unusable at critical times. So it needs basic protections against attacks and a support plan when things go sideways.
+
+Interviewer: When you say "downtime," do you have an idea of how much downtime is acceptable over a year?
+
+Stakeholder: Umm, we need it to be reliable — hardly ever down. If you want a percentage, something up in the high nineties for availability is what we'd expect, otherwise business continuity teams will raise concerns.
+
+Interviewer: Okay. How many people do you expect might use this at peak? Like simultaneous users?
+
+Stakeholder: Peak use can be pretty high — mornings and right after lunch everyone logs in. I don't have exact figures off the top of my head, but it needs to cope with a large number of concurrent users without slowing. If you're asking for a target, I'd say something in the low thousands for simultaneous sessions to be safe.
+
+Interviewer: Any particular non-functional constraints we should watch for? Devices, browsers, offline use?
+
+Stakeholder: It should work on standard corporate browsers and on tablets for field staff, and it should degrade gracefully on flaky mobile networks. Offline-first isn't necessary, but we shouldn't force 30MB downloads just to check a part. Also, keep it simple so training is easier, and match the corporate UI so it's familiar.
+
+Interviewer: Is there anything about logging, reporting, or regulatory compliance we should capture?
+
+Stakeholder: Yes, we need to keep audit trails tied to estimates, especially for parts sourcing decisions. Regulators and internal audit like to see who changed what and when. And reports should let managers see recycled parts utilisation across regions. Sorry, that was a tangent — I was just thinking of the last audit we had where it was painful to pull that data.
+
+Interviewer: No problem. A couple quick follow-ups — you mentioned dealing with Denial-of-Service — any specific mitigation you expect?
+
+Stakeholder: Um, I expect standard protections, like rate-limiting and CDN or WAF patterns so the service doesn't become unusable. Again, not my exact domain, but we can't be wide open to simple attacks. And we should have monitoring so ops know immediately if something spikes.
+
+Interviewer: Got it. About the Choice Parts feed: do you expect real-time updates or is a periodic sync okay?
+
+Stakeholder: Real-time or near-real-time would be ideal, because availability changes and you don't want adjusters offering parts that aren't actually available. If we have to do periodic syncs, make them frequent enough that the data is trustworthy.
+
+Interviewer: Thanks — that gives me a lot. Anything else you want to add before we finish?
+
+Stakeholder: Just that the less friction, the better. If it's clunky, people go back to old habits, and then all the benefits vanish. Oh, and one more thing — make the search forgiving: people type weird vehicle codes and shop names, so fuzzy matching is a lifesaver. Also, sorry, I'm rambling — but I've been in the field when the system was slow and it just kills momentum. So intuitive, fast, secure, and aligned with our corporate stuff — that's the gist.
+
+---
+Selected Requirements:
+1. [NICE.csv line 206] [quality, operability] 'The product shall interface with the Choice Parts System. This provides the feed of recycled parts data.'
+2. [NICE.csv line 208] [quality, legal] 'The product shall adhere to the corporate Architecture guidelines'
+3. [NICE.csv line 209] [quality, legal, look_and_feel] 'The product shall comply with corporate User Interface Guidelines'
+4. [NICE.csv line 212] [quality, usability] 'The product shall be easy to use by Adjusters and Collision Estimators. 95% of Adjusters and Collision Estimators shall find the product easy to use.'
+5. [NICE.csv line 215] [quality, usability] 'The product shall be easy to learn by Adjusters and Collision Estimators. The product shall be learned with two days onsite training'
+6. [NICE.csv line 217] [quality, performance] 'The search for recycled parts shall take no longer than 15 seconds. The search results shall be returned in under 15 seconds.'
+7. [NICE.csv line 218] [quality, performance] 'The search for the preferred repair facility shall take no longer than 8 seconds. The preferred repair facility is returned within 8 seconds'
+8. [NICE.csv line 222] [quality, availability, fault_tolerance] 'The product shall achieve a 98% uptime. The product shall not fail more than 2% of the available online time.'
+9. [NICE.csv line 223] [quality, scalability] 'The product shall be able to handle up to 1500 simultaneous users. The system shall perform with 1500 users as a time.'
+10. [NICE.csv line 237] [quality, security] 'The system shall prevent malicious attacks including denial of service.'

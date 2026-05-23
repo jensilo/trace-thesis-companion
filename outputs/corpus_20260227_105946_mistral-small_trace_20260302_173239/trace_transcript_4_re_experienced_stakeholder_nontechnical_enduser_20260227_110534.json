@@ -1,0 +1,139 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_4_re_experienced_stakeholder_nontechnical_enduser_20260227_110534.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_173241",
+  "requirements": [
+    {
+      "requirement": "The system shall display case statuses with distinct color-coding to enable quick visual identification.",
+      "source_citation": "If pending is one way and escalated is another — just, you know, obvious.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for color-coding to distinguish between different case statuses, indicating a usability concern. The requirement is clear but lacks specific color choices.",
+      "follow_up_question": "What specific colors would you prefer for each case status (e.g., pending, escalated, closed)?"
+    },
+    {
+      "requirement": "The system shall complete navigation actions between screens within five seconds to avoid user impatience.",
+      "source_citation": "a simple click takes ages — maybe around five seconds I start feeling impatient.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the acceptable time frame for navigation actions, providing a clear performance requirement.",
+      "follow_up_question": "Are there any specific navigation paths or actions that are more critical to optimize within this time frame?"
+    },
+    {
+      "requirement": "The system shall pull transaction, member, and merchant details from authoritative single sources to ensure data consistency.",
+      "source_citation": "pulled from those authoritative places",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for the system to use authoritative sources to avoid discrepancies, indicating a maintainability concern.",
+      "follow_up_question": "Can you specify the exact systems or data sources that should be considered authoritative for transaction, member, and merchant details?"
+    },
+    {
+      "requirement": "The system shall be available during business hours, with maintenance scheduled during pre-dawn hours (1:00 AM to 5:00 AM on Sundays and 3:00 AM to 4:00 AM on other days).",
+      "source_citation": "maintenance late at night is fine, like when most members aren’t calling. I guess weekends are okay too if it’s early morning hours.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies acceptable maintenance windows, indicating an availability concern. The requirement is clear but could benefit from confirmation of exact times.",
+      "follow_up_question": "Are there any exceptions or additional constraints for the proposed maintenance windows?"
+    },
+    {
+      "requirement": "The system shall implement role-based access control to restrict dispute initiation and case visibility based on user roles and portfolios.",
+      "source_citation": "not everyone should be able to initiate a dispute",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for role-based access control to restrict dispute initiation and case visibility, indicating a security concern.",
+      "follow_up_question": "Can you provide more details on the specific roles and their corresponding access levels?"
+    },
+    {
+      "requirement": "The system shall maintain an audit trail that records all actions, including user identities, timestamps, and reasons for changes.",
+      "source_citation": "I need to be able to see a clear history of every action, who did it, timestamps, and any comments added.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for a clear audit trail, providing a clear maintainability requirement.",
+      "follow_up_question": "Are there any specific types of actions or changes that require more detailed auditing?"
+    },
+    {
+      "requirement": "The system shall scale to handle multiple users simultaneously without significant performance degradation.",
+      "source_citation": "the whole team stares at me while waiting for the system",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 3,
+      "rationale": "The stakeholder implies a scalability concern by mentioning performance issues when multiple users are active. The requirement is implicit and lacks specific details.",
+      "follow_up_question": "How many concurrent users do you anticipate, and what level of performance degradation is acceptable?"
+    },
+    {
+      "requirement": "The system shall generate correspondence (letters and emails) that match corporate branding and include accurate, up-to-date information.",
+      "source_citation": "letters or emails the system generates should match our branding",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for correspondence to match corporate branding, indicating a look-and-feel concern.",
+      "follow_up_question": "Are there specific branding guidelines or templates that should be followed?"
+    },
+    {
+      "requirement": "The system shall allow users to attach evidence, such as scanned receipts or call recording links, directly to cases.",
+      "source_citation": "being able to attach evidence — like a scanned receipt or a call recording link — directly to the case",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for evidence attachment, indicating a usability concern.",
+      "follow_up_question": "Are there any specific types of evidence or file formats that should be supported?"
+    },
+    {
+      "requirement": "The system shall implement a digital approval workflow for manager sign-off on sensitive disputes, recording the manager's name and timestamp.",
+      "source_citation": "a digital approval inside the case — a button or workflow that records the manager’s name and gives a timestamp",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "compliance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for a digital approval workflow, indicating a compliance concern.",
+      "follow_up_question": "Are there any specific approval processes or workflows that should be followed?"
+    },
+    {
+      "requirement": "The system shall save and allow quick access to frequently used searches or filters.",
+      "source_citation": "if the system could save my most-used searches or filters",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for saving and quick access to frequently used searches or filters, indicating a usability concern. The requirement is implicit and lacks specific details.",
+      "follow_up_question": "Are there any specific search or filter criteria that are most frequently used?"
+    },
+    {
+      "requirement": "The system shall provide advanced search capabilities to handle partial or incomplete information.",
+      "source_citation": "Sometimes I type partial info and the system doesn’t find the case.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 3,
+      "rationale": "The stakeholder implies a need for advanced search capabilities, indicating a usability concern. The requirement is implicit and lacks specific details.",
+      "follow_up_question": "Are there any specific search algorithms or techniques that should be implemented?"
+    }
+  ]
+}

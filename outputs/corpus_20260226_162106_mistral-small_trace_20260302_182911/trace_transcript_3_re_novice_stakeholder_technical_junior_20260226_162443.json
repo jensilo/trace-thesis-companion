@@ -1,0 +1,238 @@
+{
+  "transcript_file": "outputs/corpus-20260226_162106/transcript_3_re_novice_stakeholder_technical_junior_20260226_162443.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_182913",
+  "requirements": [
+    {
+      "requirement": "The system should prevent double-booking, over-capacity, and prerequisite violations.",
+      "source_citation": "The system should prevent obvious bad actions — block double-booking, flag over-capacity, and warn if prerequisites aren’t met.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need to prevent common scheduling mistakes, indicating a usability concern to ensure users can perform tasks without errors.",
+      "follow_up_question": "What specific types of prerequisite violations should be blocked or warned about?"
+    },
+    {
+      "requirement": "The system should provide clear, contextual warnings rather than cryptic errors.",
+      "source_citation": "It should also give clear, contextual warnings rather than cryptic errors.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of clear, user-friendly error messages, which is a usability requirement.",
+      "follow_up_question": "Can you provide examples of cryptic errors that should be avoided?"
+    },
+    {
+      "requirement": "The system should suggest fixes for scheduling mistakes, such as the next available slot, and require confirmation for risky changes.",
+      "source_citation": "Ideally it suggests fixes, like the next available slot, and asks for confirmation for risky changes.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the need for the system to assist users in correcting mistakes, which is a usability requirement.",
+      "follow_up_question": "What types of changes should be considered risky and require confirmation?"
+    },
+    {
+      "requirement": "The system should enforce strict constraints for capacity and hard time conflicts.",
+      "source_citation": "I'd say capacity and hard time conflicts should be enforced — you shouldn't be able to save a schedule that double-books an instructor, for instance.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies that certain constraints should be strictly enforced, which is a usability requirement to prevent errors.",
+      "follow_up_question": "Are there any other constraints that should be strictly enforced?"
+    },
+    {
+      "requirement": "The system should feel fast for routine tasks, with small tasks taking ≤5 seconds and schedule generation taking ≤30 seconds.",
+      "source_citation": "For small things like viewing or editing a student record, it should be nearly instantaneous — maybe only a few seconds tops. For generating a full schedule for a cohort, it can take longer but should still finish pretty quickly — on the order of seconds to under a minute.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder provides specific performance targets for routine tasks and schedule generation.",
+      "follow_up_question": "Are there any other performance targets that should be considered?"
+    },
+    {
+      "requirement": "The system should have a 95% uptime target, with critical focus during business hours (8 AM–6 PM weekdays).",
+      "source_citation": "We need it to be reliable during our working day; if it goes down during schedule release week, people panic. I mean, I’ve heard a target of something like ninety-five percent uptime mentioned in meetings, but honestly we care most about being up during peak admin hours.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the uptime target and the critical hours, which are availability requirements.",
+      "follow_up_question": "Are there any specific downtime scenarios that should be considered?"
+    },
+    {
+      "requirement": "The system should support planned maintenance outside business hours with notice.",
+      "source_citation": "Yeah, maintenance outside business hours is fine as long as it’s planned and we give notice.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for planned maintenance outside business hours, which is an availability requirement.",
+      "follow_up_question": "What is the expected notice period for planned maintenance?"
+    },
+    {
+      "requirement": "The system should have a read-only fallback for students during degradation.",
+      "source_citation": "Also a read-only fallback for students would be useful if the system degrades.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder suggests a read-only fallback for students, which is an availability requirement to ensure access during degradation.",
+      "follow_up_question": "What specific scenarios should trigger the read-only fallback?"
+    },
+    {
+      "requirement": "The system should handle peak loads of ~10 concurrent admin users during schedule release and student read-only spikes after schedule posting.",
+      "source_citation": "The big load is during schedule release and a few people working simultaneously; I mentioned maybe ten concurrent admin users at peak. Students hit it when schedules post, so we might see a spike of many read-only accesses — that could be higher.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder provides specific peak load scenarios, which are scalability requirements.",
+      "follow_up_question": "Are there any other peak load scenarios that should be considered?"
+    },
+    {
+      "requirement": "The system should retain historical schedules for audits/accreditation for 5+ years.",
+      "source_citation": "We need to keep historical schedules and progression records for audits and accreditation — I’d say at least several years. I’ve heard planning assumptions of about five years of active data retention, and beyond that we can archive to cheaper storage.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the retention period for historical schedules, which is a maintainability requirement.",
+      "follow_up_question": "Are there any specific audit or accreditation requirements that should be considered?"
+    },
+    {
+      "requirement": "The system should integrate with CampusConnect via API or scheduled file exchange with SSO/SAML for authentication.",
+      "source_citation": "Ideally it’s an authenticated API or SSO integration — whatever central IT supports. It should be the single source of truth for student IDs and course masters.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "interoperability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for integration with CampusConnect, which is an interoperability requirement.",
+      "follow_up_question": "What specific data should be exchanged with CampusConnect?"
+    },
+    {
+      "requirement": "The system should have role-based access control (RBAC) for clinical site details.",
+      "source_citation": "Not everyone should see everything — clinical sites give us contact names, capacities, and sometimes sensitive placement notes. Program admins need full access, clinical site coordinators should see their own details, and students should only see what pertains to them.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for role-based access control, which is a security requirement.",
+      "follow_up_question": "What specific roles and access levels should be defined?"
+    },
+    {
+      "requirement": "The system should integrate with SSO for identities, use role-based access control, and log access.",
+      "source_citation": "We should integrate with SSO for identities, use role-based access control, and log access.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for SSO integration, role-based access control, and access logging, which are security requirements.",
+      "follow_up_question": "What specific SSO and access logging standards should be followed?"
+    },
+    {
+      "requirement": "The system should follow DePaul’s information policy for protecting private data, including encryption in transit and at rest.",
+      "source_citation": "Also, follow DePaul’s information policy for protecting private data — encrypt in transit and at rest, that sort of thing.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need to follow DePaul’s information policy, which is a security requirement.",
+      "follow_up_question": "What specific encryption standards should be followed?"
+    },
+    {
+      "requirement": "The system should have frontend/backend validation for required fields and format checks.",
+      "source_citation": "Basic validations on the front end like required fields and proper formats, and backend checks to prevent orphaned records.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for frontend/backend validation, which is a maintainability requirement.",
+      "follow_up_question": "What specific validation rules should be implemented?"
+    },
+    {
+      "requirement": "The system should have transactional imports for critical data and partial commits for large feeds.",
+      "source_citation": "I think transactional imports are safer for critical data — all-or-nothing — but for some large feeds a partial commit with an error report might be more practical.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for transactional imports and partial commits, which are maintainability requirements.",
+      "follow_up_question": "What specific data should be considered critical for transactional imports?"
+    },
+    {
+      "requirement": "The system should have sanity checks for data integrity, such as non-negative site capacities and valid student IDs.",
+      "source_citation": "Also sanity checks like ensuring site capacities aren't negative and students referenced in an import actually exist in CampusConnect.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for sanity checks, which are maintainability requirements.",
+      "follow_up_question": "What specific sanity checks should be implemented?"
+    },
+    {
+      "requirement": "The system should provide email/SMS notifications for critical changes and in-app notifications for admins/instructors.",
+      "source_citation": "Email is the default; SMS could be useful for urgent stuff. In-app notifications are good too, especially for instructors and admins.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for email/SMS and in-app notifications, which are usability requirements.",
+      "follow_up_question": "What specific types of changes should trigger notifications?"
+    },
+    {
+      "requirement": "The system should provide batched notifications for routine updates.",
+      "source_citation": "Immediate for critical changes, but batched for routine things like weekly summaries.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for batched notifications, which is a usability requirement.",
+      "follow_up_question": "What specific types of updates should be batched?"
+    },
+    {
+      "requirement": "The system should provide reports on site usage, scheduling conflicts, and utilization.",
+      "source_citation": "Also, change logs for audits and reports on utilization and conflicts would be useful — we should be able to run a report showing site usage and scheduling conflicts over a term.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for reports, which is a usability requirement.",
+      "follow_up_question": "What specific types of reports should be provided?"
+    },
+    {
+      "requirement": "The system should comply with university policies and potential HIPAA-like requirements if PHI is involved.",
+      "source_citation": "If any PHI ends up in notes, we may need HIPAA-like controls, but I’m not the policy owner.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need to comply with university policies and potential HIPAA-like requirements, which are legal requirements.",
+      "follow_up_question": "What specific policies and regulations should be followed?"
+    }
+  ]
+}

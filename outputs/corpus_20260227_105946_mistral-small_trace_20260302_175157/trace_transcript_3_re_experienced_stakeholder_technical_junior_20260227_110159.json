@@ -1,0 +1,205 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_3_re_experienced_stakeholder_technical_junior_20260227_110159.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_175159",
+  "requirements": [
+    {
+      "requirement": "The system should prevent obvious mistakes such as scheduling conflicts and invalid enrollments by providing warnings or blocking actions.",
+      "source_citation": "the UI should warn you before you save it, maybe block it outright if it's clearly impossible.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for the system to guide users and prevent mistakes, indicating a focus on usability.",
+      "follow_up_question": "What specific types of warnings or blocks should be implemented for different scenarios?"
+    },
+    {
+      "requirement": "The system should enforce role-based access to restrict sensitive data to appropriate roles.",
+      "source_citation": "Program Admins — the folks who manage the whole program — they need pretty much everything: student progression, rosters, overrides. Nursing instructors need to see their class rosters and schedules, and be able to submit attendance or evaluations. Clinical site coordinators should only see the students assigned to their site and maybe contact info, not full student records.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder clearly defines different roles and their access levels, emphasizing the need for role-based access control.",
+      "follow_up_question": "What specific permissions should each role have, and how should these permissions be managed?"
+    },
+    {
+      "requirement": "The system should be intuitive and require minimal training for users to complete tasks.",
+      "source_citation": "If they can finish common tasks without a manual or training session, that's a win.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of an intuitive interface that does not require extensive training.",
+      "follow_up_question": "What specific usability testing methods will be used to ensure the system is intuitive?"
+    },
+    {
+      "requirement": "Small tasks should be completed in under 5 seconds, and schedule generation should take under 1 minute, ideally around 30 seconds.",
+      "source_citation": "small student management things should come back in a handful of seconds, maybe up to about five seconds. For the heavy lift — like when you press 'Generate Schedule' for a term — people expect it in under a minute; personally, I think around thirty seconds would be reasonable so they don't start clicking again out of impatience.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder provides specific timeframes for task completion, indicating performance expectations.",
+      "follow_up_question": "What are the acceptable performance metrics for other types of tasks?"
+    },
+    {
+      "requirement": "The system should handle peak usage times, such as mornings, with around 10 concurrent users without significant lag.",
+      "source_citation": "Yeah, mornings are peak. The scheduling team and some instructors tend to pile on changes at the same time, so the app needs to handle that burst. We don't need to support some huge campus peak for the whole university, but the nursing office might have, I dunno, about ten people all active at once during certain windows.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions peak usage times and the number of concurrent users, indicating performance requirements.",
+      "follow_up_question": "What specific performance metrics should be used to measure system responsiveness during peak times?"
+    },
+    {
+      "requirement": "The system should use terminology that matches the nursing community's standards.",
+      "source_citation": "the UI said 'enrollment participant' and folks were like, 'what's that?' They prefer 'student' or 'learner,' and clinical chunks called 'placements' instead of 'assignments' — small things but they matter.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder provides examples of terminology that should be used, indicating a focus on usability and user familiarity.",
+      "follow_up_question": "What specific terminology should be used, and how will it be enforced across the system?"
+    },
+    {
+      "requirement": "The system should enforce controlled vocabularies for core fields to ensure consistency.",
+      "source_citation": "I think it should enforce it as much as possible. Like dropdowns and controlled vocabularies for things like course types, clinical roles, and site names.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for controlled vocabularies to ensure consistency and reduce errors.",
+      "follow_up_question": "What specific fields should have controlled vocabularies, and how will they be implemented?"
+    },
+    {
+      "requirement": "The system should be highly available during business hours (8 AM–6 PM, weekdays) with a target of around 95% uptime.",
+      "source_citation": "It needs to be available when the office is open — folks can't do their jobs during downtime. Occasional maintenance overnight is fine. I guess from the users' perspective, if it's up when we need it, that's what matters. I haven't calculated acceptable downtime precisely.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the importance of availability during business hours and provides a target uptime percentage.",
+      "follow_up_question": "What specific measures will be taken to ensure high availability during business hours?"
+    },
+    {
+      "requirement": "The system should integrate with CampusConnect for real-time or near-real-time sync of student records and authentication.",
+      "source_citation": "We need to tie into the university's central systems for student records and authentication. There's this CampusConnect server — it holds the master enrollments and IDs. If we don't sync with CampusConnect, we'll end up with mismatched rosters and duplicate data.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for integration with CampusConnect and the importance of real-time or near-real-time sync.",
+      "follow_up_question": "What specific integration methods and protocols will be used to ensure seamless sync with CampusConnect?"
+    },
+    {
+      "requirement": "The system should prevent bad or inconsistent data through validation and smart matching.",
+      "source_citation": "Basic validation — like rejecting impossible dates, making sure course codes are valid, and preventing duplicates with smart matching. Use picklists where possible.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "data_quality",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for data validation to prevent bad or inconsistent data.",
+      "follow_up_question": "What specific validation rules and smart matching techniques will be implemented?"
+    },
+    {
+      "requirement": "The system should empower program staff to fix day-to-day data issues without involving IT.",
+      "source_citation": "Ideally, program staff can fix most day-to-day things within the app if they have permissions; anything structural or systemic should go to IT.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for program staff to have the autonomy to fix day-to-day issues.",
+      "follow_up_question": "What specific permissions and tools will be provided to program staff to enable them to fix data issues?"
+    },
+    {
+      "requirement": "The system should follow university policies for security and privacy, restricting sensitive information to appropriate roles.",
+      "source_citation": "We have to follow the university's information policy. Students' personal data and health-related info about clinical issues should be restricted.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for compliance with university policies and the restriction of sensitive information.",
+      "follow_up_question": "What specific university policies and regulations should the system comply with?"
+    },
+    {
+      "requirement": "The system should be designed to last for at least five years, accommodating curriculum changes every 1-2 years.",
+      "source_citation": "It should outlast whatever we build now — the department expects to use it for the foreseeable future. I'd say at least a few years; they don't want to redo the whole thing every couple years. If you want an exact horizon, think in the order of multiple academic cycles — maybe around five years of active use before a major rewrite is considered.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the expected lifespan of the system and the frequency of curriculum changes.",
+      "follow_up_question": "What specific design and architectural decisions will be made to ensure the system's longevity?"
+    },
+    {
+      "requirement": "The system should provide immediate notifications for critical changes and digest-style notifications for minor updates.",
+      "source_citation": "Immediate for critical changes, like a cancellation, but for small edits maybe a daily digest would be nicer.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for different types of notifications based on the criticality of changes.",
+      "follow_up_question": "What specific notification methods and channels will be used, and how will they be configured?"
+    },
+    {
+      "requirement": "The system should allow program admins to manage cohorts, update schedules, assign instructors, and run reports without IT intervention.",
+      "source_citation": "They should be able to manage cohorts, update schedules, assign instructors, and run reports without IT.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for program admins to have the autonomy to perform routine tasks without IT intervention.",
+      "follow_up_question": "What specific tools and permissions will be provided to program admins to enable them to perform these tasks?"
+    },
+    {
+      "requirement": "The system should provide stricter uptime guarantees during critical scheduling windows.",
+      "source_citation": "If a downtime hits during a critical scheduling window, even a little outage is a big deal. So maybe we need higher reliability during those windows, or at least scheduled maintenance not to overlap.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for stricter uptime guarantees during critical scheduling windows.",
+      "follow_up_question": "What specific measures will be taken to ensure higher reliability during critical scheduling windows?"
+    },
+    {
+      "requirement": "The system should support CSV or Excel exports for accreditation reports, including historical data.",
+      "source_citation": "They typically want CSV or Excel. The frequency is maybe once a year or during audits, but sometimes ad hoc if accreditation folks ask. So the export needs to be accurate and include historical versions of curriculum and student progression.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "data_quality",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for accurate and comprehensive exports for accreditation purposes.",
+      "follow_up_question": "What specific export formats and data fields will be supported, and how will historical data be managed?"
+    },
+    {
+      "requirement": "The system should provide inline help and examples in forms to reduce support calls.",
+      "source_citation": "I think users will appreciate inline help and a few examples in forms; it cuts down on calls to support.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for inline help and examples to improve usability and reduce support calls.",
+      "follow_up_question": "What specific types of inline help and examples will be provided, and how will they be implemented?"
+    }
+  ]
+}

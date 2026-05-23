@@ -1,0 +1,117 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_6_re_novice_stakeholder_nontechnical_manager_20260227_110919.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_175305",
+  "requirements": [
+    {
+      "requirement": "The system should be highly reliable and available, aiming for four nines (99.99%) uptime.",
+      "source_citation": "Reliability is huge. I mean, hmm, we have a low tolerance for downtime — when it happens it costs us in rescheduling and in trust. I don't expect it to be up if the whole server farm is down or something catastrophic, but aside from that it should be basically always available. We want people to rely on it like email.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the importance of reliability and availability, comparing it to email and stating a target of four nines (99.99%) uptime. This indicates a high confidence in the requirement.",
+      "follow_up_question": "What specific measures or redundancies are expected to achieve this uptime target?"
+    },
+    {
+      "requirement": "The system should respond to user actions within five seconds for quick tasks and within eight seconds for heavier operations.",
+      "source_citation": "It just needs to feel instantaneous. I really hate waiting; if people have to pause while the page loads they start doing other things and don't come back. Maybe five seconds for the quick stuff, I'd say; slightly longer for heavier operations is tolerable but not by much.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder provides specific response time targets, indicating a clear expectation for system performance. The follow-up question clarifies the exact numbers.",
+      "follow_up_question": "Are there any specific tasks or operations that should be prioritized for faster response times?"
+    },
+    {
+      "requirement": "The system should handle a thousand simultaneous requests now and scale to handle two thousand requests in the next release.",
+      "source_citation": "Right now we need it to handle a thousand simultaneous requests without choking, and we'll need to scale that up in the next release to about double that. Basically it has to survive the rush hours.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the current and future scalability requirements, providing clear numbers for simultaneous requests.",
+      "follow_up_question": "What specific metrics or benchmarks will be used to measure and ensure this scalability?"
+    },
+    {
+      "requirement": "The system should only allow access to approved company employees or external users with approved company IDs.",
+      "source_citation": "Only people we trust. Employees, of course, and sometimes external folks who have been given approved company IDs. We can't have anonymous accounts — it's a business tool, not a public calendar. If anyone from outside gets in and changes a booking, that's a big risk to operations and confidentiality.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder clearly states the access control requirements, emphasizing the need for approved IDs and the risks associated with unauthorized access.",
+      "follow_up_question": "What specific authentication mechanisms or protocols should be used to enforce these access controls?"
+    },
+    {
+      "requirement": "The system should support multiple languages based on target markets, with a mechanism for language selection.",
+      "source_citation": "We need multiple languages — people in different countries must be able to use it in their language of choice. The user should be able to select a language from the ones we target in our markets.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "internationalization",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for multiple languages and a language selection mechanism, indicating a clear requirement for internationalization.",
+      "follow_up_question": "Which specific languages should be supported initially, and how will new languages be added in the future?"
+    },
+    {
+      "requirement": "The system should conform to accessibility requirements such as the Americans with Disabilities Act (ADA).",
+      "source_citation": "We must conform to accessibility requirements like the Americans with Disabilities Act. It's not optional; it's about legal compliance and being inclusive.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for compliance with accessibility laws, indicating a high confidence in this requirement.",
+      "follow_up_question": "What specific accessibility standards or guidelines should the system adhere to?"
+    },
+    {
+      "requirement": "The system should run in any normal HTML browser and display correctly in eighty percent of the browsers tested.",
+      "source_citation": "Yes, it needs to run in any normal HTML browser. Users shouldn't have to install plugins or a specific browser. The trick is, we also need it to render correctly across a representative set of browsers — there are always edge cases, but it has to look and work properly in most of the browsers our people use.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder provides clear requirements for browser compatibility and cross-browser consistency, indicating a medium to high confidence in this requirement.",
+      "follow_up_question": "Which specific browsers should be included in the test matrix, and how will cross-browser consistency be ensured?"
+    },
+    {
+      "requirement": "The system should log access attempts for audit purposes.",
+      "source_citation": "Oh, and we should log access attempts for audit — that's something our risk team will ask about.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for logging access attempts for audit purposes, indicating a clear requirement for security and auditability.",
+      "follow_up_question": "What specific data should be logged, and how should these logs be stored and accessed?"
+    },
+    {
+      "requirement": "The system should maintain the same user experience during peak times, especially for core tasks like booking and checking availability.",
+      "source_citation": "It should try to keep the same experience, especially for core tasks like booking and checking availability. If there's a need to shed non-essential work during extreme load, that's acceptable, but the booking flow must remain snappy.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of maintaining performance during peak times, indicating a clear requirement for performance and usability.",
+      "follow_up_question": "What specific measures or strategies should be implemented to ensure performance during peak times?"
+    },
+    {
+      "requirement": "The system should have good validation on imports and a way to clean up oddities quickly.",
+      "source_citation": "So whatever we build, it needs good validation on imports and a way to clean oddities quickly.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for good validation on imports and a way to clean up oddities, indicating a clear requirement for operability and data integrity.",
+      "follow_up_question": "What specific validation rules or mechanisms should be implemented, and how should oddities be identified and cleaned up?"
+    }
+  ]
+}

@@ -1,0 +1,183 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_6_re_novice_stakeholder_nontechnical_manager_20260227_110919.txt",
+  "model": "openai/gpt-5-mini",
+  "timestamp": "20260302_172552",
+  "requirements": [
+    {
+      "requirement": "The system shall be available 99.99% of the time excluding catastrophic full-server-farm failures.",
+      "source_citation": "we're aiming for four nines. So, apart from full server failures, the software itself should be available at that level.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly specified an uptime target of 'four nines' and qualified that catastrophic full-farm failures are excluded. This gives a clear SLA target but lacks details about measurement windows (monthly/annual), acceptable maintenance windows, and failover/DR expectations.",
+      "follow_up_question": "Over what measurement period should 99.99% availability be calculated (monthly/yearly), and what planned maintenance windows or notification SLAs are acceptable?"
+    },
+    {
+      "requirement": "About 90% of user tasks shall complete within 5 seconds and almost all tasks shall complete within 8 seconds.",
+      "source_citation": "about ninety percent of tasks should finish within five seconds, and we want almost all of them done within eight seconds.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder provided explicit performance percentiles for task completion. 'Tasks' is ambiguous (page loads, searches, booking operations); clarity is needed on which operations are included and test conditions.",
+      "follow_up_question": "Please list and prioritize the specific user actions (e.g., search availability, create booking, open dashboard) that are included in the 'tasks' metric and specify the test environment (network latency, client types) for these measurements."
+    },
+    {
+      "requirement": "The system shall support at least 1,000 simultaneous requests at launch and scale to 2,000 simultaneous requests in the next release without service degradation for core booking functions.",
+      "source_citation": "Right now we need it to handle a thousand simultaneous requests without choking, and we'll need to scale that up in the next release to about double that.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "Stakeholder gave explicit concurrent request targets for current and near-future capacity and tied them to peak usage times. Missing: definition of 'simultaneous requests' (concurrent connections vs. transactions), expected request mix, and accepted degradation behavior for non-core functions.",
+      "follow_up_question": "Define 'simultaneous requests' precisely (concurrent HTTP connections, transactions/sec, or active users) and provide the expected request mix per second for core vs. non-core operations during peak."
+    },
+    {
+      "requirement": "Authentication shall be restricted to company employees and vetted external users with company-approved IDs; anonymous accounts are not permitted.",
+      "source_citation": "All logons must be by either company employees or external users who've been vetted and given company-approved IDs.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder stated a non-negotiable restriction that only vetted company or approved external IDs may log on. Lacks detail on identity lifecycle, revocation, and provisioning processes.",
+      "follow_up_question": "What is the expected provisioning and deprovisioning workflow for external users, and are there required approval/granting processes or roles we must integrate with?"
+    },
+    {
+      "requirement": "The system shall integrate with the corporate identity system (SSO) via a standard connector so authentication is tied to the corporate identity process.",
+      "source_citation": "authentication must be tied to our corporate identity process. If there's a standard connector that works with our directory, that's ideal.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "Stakeholder prefers SSO and standardized connector to the corporate directory. Missing: supported protocols (SAML, OIDC, LDAP), fallback options, and multi-tenant/brand considerations.",
+      "follow_up_question": "Which authentication protocols and identity providers must be supported (e.g., SAML, OpenID Connect, LDAP), and is a fallback local account mode allowed for outages?"
+    },
+    {
+      "requirement": "The system shall log access attempts (successful and failed) for audit purposes and make those logs available to the company's risk/compliance teams.",
+      "source_citation": "Oh, and we should log access attempts for audit — that's something our risk team will ask about.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Audit logging of access attempts is explicitly requested. Gaps: retention periods, log format, secure storage, and access controls for logs.",
+      "follow_up_question": "What log retention period, log formats (e.g., JSON/Syslog), and secure access controls are required for access-attempt audit logs?"
+    },
+    {
+      "requirement": "The system shall reliably send email invites, reminders, and cancellations and support integration with multiple email server types/vendors used by different offices.",
+      "source_citation": "If it can't send mail reliably we fail at the basic job. It needs to talk to whatever email servers we use, because different offices use different things, and be able to send invites, reminders, cancellations.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "interoperability",
+      "confidence": 5,
+      "rationale": "Stakeholder emphasized reliable mail delivery and support for various email systems. Missing: acceptable delivery success rates, retry policies, supported protocols (SMTP, Exchange Web Services), and monitoring for delivery failures.",
+      "follow_up_question": "Which email servers/protocols must be supported (e.g., SMTP, Exchange, Office365 APIs), and what delivery success rate and retry/backoff policy do you require?"
+    },
+    {
+      "requirement": "The system shall capture exception records (not only logs) that can be packaged and made available/transmitted to the company's analysis teams on a regular basis.",
+      "source_citation": "When something goes wrong, we want an exception record — something that doesn't just sit in the logs but can be packaged up and sent back to our team for analysis.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "Stakeholder requires structured exception reporting and transmission for trend analysis. Missing: frequency of transmission, data sensitivity/PII handling, and format/spec for exception reports.",
+      "follow_up_question": "What transmission frequency, data format, and sanitization requirements (PII removal) do you require for exception reports sent to your analysis teams?"
+    },
+    {
+      "requirement": "The product's UI shall support incorporation of the company's branding (logo, colors, look-and-feel) to make it feel part of the corporate ecosystem.",
+      "source_citation": "We want our identity there. Clients and employees should feel it's part of our ecosystem — logo, colors, some branding.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 5,
+      "rationale": "Stakeholder requests branded UI to aid adoption. Lacks style guide specifics, customization scope, and whether branding must be configurable per-tenant or per-office.",
+      "follow_up_question": "Provide the corporate branding guidelines and specify which elements must be configurable (logo, primary/secondary colors, fonts) and whether branding needs to vary by office/client."
+    },
+    {
+      "requirement": "The system shall provide user-selectable language support; a language selection mechanism must exist and target languages will be prioritized per release.",
+      "source_citation": "The user should be able to select a language from the ones we target in our markets.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 5,
+      "rationale": "Stakeholder demands multi-language support and explicit mechanism to select language. Missing: which languages for initial release, translation quality standards, and locale-specific formats (dates/times).",
+      "follow_up_question": "Which specific languages must be included in the initial release, and what translation/localization quality standards (human translation vs. machine) and locale formats are required?"
+    },
+    {
+      "requirement": "The system shall conform to applicable accessibility requirements (e.g., ADA) and not exclude users with disabilities.",
+      "source_citation": "We must conform to accessibility requirements like the Americans with Disabilities Act. It's not optional; it's about legal compliance and being inclusive.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly requires legal accessibility compliance. Missing: which standards/levels (e.g., WCAG 2.1 AA), testing approach, and remediation timelines.",
+      "follow_up_question": "Please confirm the accessibility standard and conformance level required (e.g., WCAG 2.1 AA) and any required testing/certification process."
+    },
+    {
+      "requirement": "The system shall run in standard HTML browsers without requiring plugins and shall render correctly across a representative test matrix of at least 8 browsers and at least 80% of browsers tested.",
+      "source_citation": "Yes, it needs to run in any normal HTML browser. Users shouldn't have to install plugins or a specific browser. ... It should display correctly in eighty percent of the browsers tested, and at least eight different browsers should be part of the test matrix.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 5,
+      "rationale": "Stakeholder specified no-plugin requirement and a concrete browser test coverage metric. Missing: list of specific browser versions/platforms, mobile vs desktop requirements, and definition of 'display correctly'.",
+      "follow_up_question": "Provide the initial browser/version list for the test matrix (desktop and mobile), and define acceptance criteria for 'display correctly' (visual/functional checks)."
+    },
+    {
+      "requirement": "Under extreme load the system shall prioritize and keep core booking and availability-check flows responsive; non-essential work may be shed to preserve snappy booking behavior.",
+      "source_citation": "If there's a need to shed non-essential work during extreme load, that's acceptable, but the booking flow must remain snappy.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 5,
+      "rationale": "Stakeholder requires graceful degradation with booking flows preserved. Missing: definition of non-essential work, priority rules, and exact acceptable degradation mechanisms (e.g., suspend notifications, UI animations).",
+      "follow_up_question": "Please enumerate which features are 'core' (must stay fully operational) and which are 'non-essential' and acceptable to shed during extreme load, and specify desired priority rules."
+    },
+    {
+      "requirement": "The system shall validate imported data (e.g., spreadsheet imports) to prevent phantom or corrupt bookings and shall provide tools to quickly detect and clean erroneous import artifacts.",
+      "source_citation": "it needs good validation on imports and a way to clean oddities quickly.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "Stakeholder described prior problems from bad imports and requests validation plus cleanup tools. Missing: validation rules, rollback capabilities, user roles allowed to perform cleanup, and audit trail for import actions.",
+      "follow_up_question": "What validation rules, rollback/reconciliation features, and administrative tools (including permissions and audit trails) do you require for import and cleanup operations?"
+    },
+    {
+      "requirement": "The system shall ensure reliable notification delivery (email invites/reminders) to prevent missed meetings, with monitoring/alerts for failed deliveries.",
+      "source_citation": "We had an incident last year where an invite didn't go out and half the participants missed a launch review — not great.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "reliability",
+      "confidence": 4,
+      "rationale": "Stakeholder recounted an incident emphasizing importance of reliable notifications and implies need for monitoring. Missing explicit delivery SLAs, alerting thresholds, and reconciliation processes.",
+      "follow_up_question": "What are the acceptable notification delivery success rates, and what alerting/escalation thresholds do you require when deliveries fail?"
+    },
+    {
+      "requirement": "The system shall be perceived as low-friction and simple to use (booking and running meetings should be 'boring'—no surprises or fiddly back-and-forth).",
+      "source_citation": "we need something that just makes booking and running meetings boring in a good way — like, no surprises, no fiddly back-and-forth.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "Stakeholder expresses strong UX/usability expectations for low friction and predictability. This is subjective; missing measurable usability goals (success rates, time-to-book, error rates) and user personas.",
+      "follow_up_question": "Can you define measurable usability acceptance criteria (e.g., average time to create a booking, task success rate, acceptable error rate) and target user personas for usability testing?"
+    }
+  ]
+}

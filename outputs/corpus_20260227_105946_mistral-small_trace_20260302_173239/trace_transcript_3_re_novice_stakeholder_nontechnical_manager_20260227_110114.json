@@ -1,0 +1,128 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_3_re_novice_stakeholder_nontechnical_manager_20260227_110114.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_173241",
+  "requirements": [
+    {
+      "requirement": "The system should be straightforward to use, minimizing user frustration with clunky tools.",
+      "source_citation": "It should feel straightforward to use — people here get frustrated with clunky tools.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for the system to be straightforward to use, indicating a clear usability requirement. The evidence is direct and unambiguous.",
+      "follow_up_question": "Can you provide examples of specific tools that are currently considered clunky and what makes them so?"
+    },
+    {
+      "requirement": "The system should be learnable quickly, with users able to manage schedules independently after a short training session.",
+      "source_citation": "They should be able to pick it up after a short training and then manage schedules without calling IT every other day.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of quick learning and independence, which are key usability concerns. The evidence is clear but could benefit from more specifics on what constitutes a 'short training'.",
+      "follow_up_question": "What specific tasks should users be able to perform independently after the training?"
+    },
+    {
+      "requirement": "The system should use clear and consistent terminology, including Standard English and nursing-specific terminology.",
+      "source_citation": "It should be clear and use Standard English, and it should also speak the language of nurses.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the need for clear and consistent terminology, which is crucial for usability. The evidence is strong but could be more specific about the exact terminology to be used.",
+      "follow_up_question": "Can you provide examples of nursing-specific terminology that should be included?"
+    },
+    {
+      "requirement": "The system should provide warnings and prevent invalid actions, such as double-booking students or entering invalid dates.",
+      "source_citation": "Warnings help, yes, like if you try to put a student in two places at once it should stop you or at least flag it loudly.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "data_integrity",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for warnings and prevention of invalid actions, which are clear data integrity requirements. The evidence is direct and unambiguous.",
+      "follow_up_question": "Can you provide more examples of invalid actions that the system should prevent?"
+    },
+    {
+      "requirement": "The system should perform basic checks to prevent invalid input and guard against duplicates.",
+      "source_citation": "Basic checks to prevent obviously invalid input and to guard against duplicates would save hours of cleanup.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "data_integrity",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for basic checks to prevent invalid input and duplicates, which are clear data integrity requirements. The evidence is strong but could be more specific about the types of checks needed.",
+      "follow_up_question": "What specific types of invalid input and duplicates have been problematic in the past?"
+    },
+    {
+      "requirement": "The system should feel fast, with routine tasks completing in around five seconds and schedule generation in up to thirty seconds.",
+      "source_citation": "It just needs to feel fast. People get impatient if they save something and nothing happens.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for the system to feel fast and provides specific time targets, which are clear performance requirements. The evidence is strong but could be more specific about the exact performance metrics.",
+      "follow_up_question": "Can you provide more details on what constitutes a 'routine task' and a 'big operation'?"
+    },
+    {
+      "requirement": "The system should be available during business hours with high uptime, aiming for around ninety-five percent.",
+      "source_citation": "We need it to be available during business hours when staff are working, and outages are disruptive.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for high availability during business hours, which is a clear availability requirement. The evidence is strong but could be more specific about the exact uptime targets.",
+      "follow_up_question": "Can you provide more details on the acceptable downtime periods and frequency?"
+    },
+    {
+      "requirement": "The system should control access to sensitive student information based on roles and ensure that information is not exposed to unauthorized users.",
+      "source_citation": "Some of the student info is sensitive, so access needs to be controlled in practice.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the need for controlled access to sensitive information, which is a clear security requirement. The evidence is strong but could be more specific about the types of sensitive information and the exact access controls needed.",
+      "follow_up_question": "Can you provide more details on the types of sensitive information and the specific access controls required?"
+    },
+    {
+      "requirement": "The system should sync with CampusConnect often enough to avoid stale rosters during enrollment changes.",
+      "source_citation": "Ideally it would sync often enough that we don't have stale rosters during enrollment changes.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for frequent syncs to avoid stale data, which is a maintainability concern. The evidence is clear but could be more specific about the exact sync frequency and the impact of stale data.",
+      "follow_up_question": "What is the acceptable frequency for syncing with CampusConnect to avoid stale rosters?"
+    },
+    {
+      "requirement": "The system should interface with CampusConnect for student records and enrollment information.",
+      "source_citation": "We use the central campus system for student records and enrollment — CampusConnect — so this needs to interface with that.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "interoperability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for interoperability with CampusConnect, which is a clear interoperability requirement. The evidence is direct and unambiguous.",
+      "follow_up_question": "Can you provide more details on the specific data that needs to be interfaced with CampusConnect?"
+    },
+    {
+      "requirement": "The system should provide simple exports for accreditation and internal reviews.",
+      "source_citation": "We need simple exports for accreditation and internal reviews so we don't have to build reports from scratch every time.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "reporting",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the need for simple exports, which is a clear reporting requirement. The evidence is strong but could be more specific about the exact types of reports needed.",
+      "follow_up_question": "Can you provide more details on the specific types of reports and exports required?"
+    }
+  ]
+}

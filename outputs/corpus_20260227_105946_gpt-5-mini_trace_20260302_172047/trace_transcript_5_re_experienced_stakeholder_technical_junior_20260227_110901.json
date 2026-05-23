@@ -1,0 +1,227 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_5_re_experienced_stakeholder_technical_junior_20260227_110901.txt",
+  "model": "openai/gpt-5-mini",
+  "timestamp": "20260302_172326",
+  "requirements": [
+    {
+      "requirement": "Search results for recycled parts shall be returned to the user within 15 seconds under normal operating conditions.",
+      "source_citation": "For parts searches, the target is that search results are returned in under fifteen seconds.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly stated a numeric latency target for parts searches (15 seconds). This is a clear non-functional performance requirement. Gaps: 'normal operating conditions' needs definition (e.g., network conditions, region, backend availability) and whether the target is for first-byte, full render, or perceived responsiveness.",
+      "follow_up_question": "Do you mean 15 seconds end-to-end perceived response time (UI ready for decision), and under what network/operational conditions (e.g., 4G field, office LAN, outage degraded mode) should this be measured?"
+    },
+    {
+      "requirement": "Search for the preferred repair facility shall return results within 8 seconds under normal operating conditions.",
+      "source_citation": "And for the preferred repair facility search, the target they gave was under eight seconds.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly gave an 8-second numeric latency SLA for the repair-facility lookup. Gaps: needs clarification whether this is for cold cache, warm cache, or all situations, and measurement method (95th percentile, median, p99).",
+      "follow_up_question": "Should the 8-second target be measured as median, 95th percentile, or p99, and does it apply to cold-cache requests or only warm-cache scenarios?"
+    },
+    {
+      "requirement": "The system shall handle up to 1,500 concurrent users at peak load without violating availability or performance targets.",
+      "source_citation": "The ops team set a target after looking at traffic: one thousand five hundred concurrent users at maximum load.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "Stakeholder stated a concrete concurrency capacity target used by ops and tested in sandbox. Gaps: concurrency definition (active sessions vs. simultaneous requests per second), and required performance/latency levels at that load.",
+      "follow_up_question": "Do you define 1,500 concurrent users as 1,500 active sessions generating requests, and what latency/throughput SLAs must hold at that concurrency (e.g., 95th percentile search latencies)?"
+    },
+    {
+      "requirement": "The system shall provide at least 98% availability (uptime) measured on a monthly basis.",
+      "source_citation": "The target that was stated for SLAs is ninety-eight percent availability.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "Stakeholder gave an explicit SLA percentage. Gaps: measurement interval (monthly/yearly), maintenance windows allowance, and how availability is calculated (user-visible availability, API-level, or infrastructure-level).",
+      "follow_up_question": "Is the 98% availability target measured monthly or annually, and does it exclude scheduled maintenance windows?"
+    },
+    {
+      "requirement": "The system shall protect against common web attacks (e.g., injection, broken authentication) and implement operational protections such as rate limiting, WAF rules, and DDoS mitigation.",
+      "source_citation": "We worry about the usual web stuff — injection, broken auth, that kind of thing, but the big worry from ops is denial-of-service and malicious traffic that could take the service down. So we need protections like rate limiting, WAF rules, and DDoS mitigation.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly listed security threats and required mitigation controls. Gaps: required thresholds for rate limits, SLAs for mitigation response, and who provides DDoS protection (cloud provider or third-party).",
+      "follow_up_question": "Who is responsible for providing DDoS mitigation (cloud provider, network team, third-party), and what rate-limit thresholds and blocking policies should be enforced?"
+    },
+    {
+      "requirement": "Access to sensitive customer data shall be controlled by role-based access controls (RBAC) so that not all users can view all data.",
+      "source_citation": "Also, sensitive customer data must be protected by role-based access — not everyone should see everything.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly requires RBAC for sensitive data protection. Gaps: specification of roles, permission matrix, audit logging requirements, and enforcement points (UI, API, DB).",
+      "follow_up_question": "Please provide the list of roles and the data each role may access, and whether RBAC enforcement must occur at the API gateway, application layer, or both."
+    },
+    {
+      "requirement": "The application must integrate with corporate single sign-on and conform to corporate authentication and logging standards enforced by the architecture review board.",
+      "source_citation": "I guess I should say it's both governance and practical constraints; like, we have to integrate with the corporate single sign-on and logging pipeline.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Stakeholder states mandatory integration and governance constraints that affect deployment and runtime behavior. Gaps: specific SSO protocol (SAML/OAuth/OIDC), logging formats, retention, and where logs must be shipped.",
+      "follow_up_question": "Which SSO protocol (SAML, OAuth2/OIDC) and what logging format/endpoint and retention policy does the corporate logging pipeline require?"
+    },
+    {
+      "requirement": "The parts feed adapter shall validate incoming feed schema, normalize fields into the application's canonical format, and emit alerts when feed structure changes are detected.",
+      "source_citation": "From a developer view, an adapter layer is ideal — some transformation service that normalizes the feed before it hits our main app. We also want schema validation and graceful degradation if a field disappears. Ops asked for alerts when the feed structure changes so we can react quickly.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "Stakeholder requests an adapter layer with schema validation and alerting to manage upstream schema volatility. Gaps: acceptable fallback behavior on missing fields, alert severity levels, and SLAs for adapter fixes.",
+      "follow_up_question": "What is the required behavior if a critical field is missing (e.g., fail the record, mark as unavailable, or use prior value), and what alerting channels and severity levels should be used?"
+    },
+    {
+      "requirement": "The system's caching strategy shall prioritize search responsiveness while ensuring availability-related fields (e.g., part availability) are refreshed more frequently (target: sub-minute freshness for most updates).",
+      "source_citation": "Our idea is to cache aggressively for search responsiveness but to have background syncs and a way to expire critical fields faster, like availability status. So, basically, the UI reads from cache for speed, but availability gets updated more frequently. ... If I have to quote a figure, I think the expectation was sub-minute for updates in most cases",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "Stakeholder articulated a trade-off: aggressive caching for speed plus faster refresh for critical fields, with a sub-minute freshness expectation. Gaps: precise TTLs per field, consistency model (eventual vs. strong), and how to handle cache invalidation under high load.",
+      "follow_up_question": "Please specify TTLs for cached search results and for availability fields (e.g., cache search results 30s, availability 10s), and whether the system must support immediate cache invalidation on upstream updates."
+    },
+    {
+      "requirement": "The system shall gracefully degrade when feed fields are missing, preserving core discoverability and surfacing errors to operators via alerts.",
+      "source_citation": "We also want schema validation and graceful degradation if a field disappears. Ops asked for alerts when the feed structure changes so we can react quickly.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "Stakeholder requires graceful degradation and operator alerts when upstream schema changes. Gaps: exactly what 'graceful' means (fallback values, partial displays), user-facing messaging, and RTO for fixes.",
+      "follow_up_question": "Define acceptable user-facing behavior when non-critical or critical fields are missing (e.g., show 'unknown' and allow ordering vs. block orders), and what repair-time SLA is expected after an alert?"
+    },
+    {
+      "requirement": "Usability: At least 95% of adjusters and collision estimators shall report that the product is easy to use in post-training/user-acceptance surveys.",
+      "source_citation": "Okay, yes — when pressed the product owner said we should aim that ninety-five percent of adjusters and collision estimators report the product is easy to use.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Stakeholder quotes a concrete usability acceptance metric (95%). Gaps: survey instrument, sampling strategy, timing of survey (immediately after training or after field use), and how 'easy to use' is defined (single question vs. composite).",
+      "follow_up_question": "What exact survey question(s) and Likert scale will be used, when will surveys be administered (immediately after training, after 2 weeks in production), and what sample size is required?"
+    },
+    {
+      "requirement": "Training/learnability: Users shall be up to speed after two days of onsite training; remote training is acceptable for some regions but baseline is two days onsite.",
+      "source_citation": "And training-wise, the goal was that people can be up to speed after two days of onsite training. ... That said, some regions might prefer remote, so we should support both, but the baseline expectation was two days of onsite training to get people comfortable.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Stakeholder provides a concrete learnability/training expectation of two days onsite. Gaps: curriculum, learning objectives, measures of 'up to speed', and allowances for remote-only regions.",
+      "follow_up_question": "What are the concrete learning objectives to be achieved in the two-day training, and what acceptance criteria will indicate a user is 'up to speed'?"
+    },
+    {
+      "requirement": "The system shall comply with corporate UI guidelines including accessibility rules to support assistive technologies (e.g., screen magnifiers).",
+      "source_citation": "We do have corporate UI guidelines, yes — colors, spacing, approved widgets, accessibility rules, that sort of thing. ... Oh — except that the UI guidelines also include accessibility, which we should not forget; adjusters sometimes use screen magnifiers.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 5,
+      "rationale": "Stakeholder requires adherence to corporate UI and accessibility standards; mentions assistive tech usage. Gaps: which accessibility standard (e.g., WCAG level) and whether automated/manual accessibility testing is required.",
+      "follow_up_question": "Which accessibility standard must be met (e.g., WCAG 2.1 AA), and do you require automated checks, manual testing with assistive tech, or both?"
+    },
+    {
+      "requirement": "Operational monitoring and alerting shall be in place for feed health, cache synchronization failures, and suspicious traffic patterns, and logs shall be forwarded to the corporate logging pipeline.",
+      "source_citation": "Ops asked for alerts when the feed structure changes so we can react quickly. ... we have to integrate with the corporate single sign-on and logging pipeline.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 4,
+      "rationale": "Stakeholder requested alerts for feed/schema changes and integration with logging. Gaps: concrete alert thresholds, on-call expectations, log retention, and which monitoring system to use.",
+      "follow_up_question": "Which specific metrics and thresholds should trigger alerts (e.g., feed parse error rate > 1% in 5 minutes), and which monitoring/alerting tooling and escalation path should be used?"
+    },
+    {
+      "requirement": "The architecture and design must follow the corporate architecture review board patterns; deviations require formal change control and may be rejected.",
+      "source_citation": "They're pretty strict. The architecture review board expects adherence to their patterns — deployment models, authentication mechanisms, logging standards. If we deviate, the app goes through a change control process and can get pulled back.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "Stakeholder makes compliance with ARB mandatory, affecting maintainability/governance. Gaps: specific patterns, acceptable exceptions, and timeline for approvals.",
+      "follow_up_question": "Please provide the ARB checklist and expected turnaround times for design reviews and change control approvals, and list any commonly permitted exceptions."
+    },
+    {
+      "requirement": "The system shall employ logging and access audit trails sufficient for compliance and operational troubleshooting, integrated with the corporate logging pipeline.",
+      "source_citation": "we have to integrate with the corporate single sign-on and logging pipeline.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 4,
+      "rationale": "Stakeholder notes logging pipeline integration; implies need for audit trails. Gaps: specific log fields, retention, access controls, and regulatory requirements.",
+      "follow_up_question": "What minimum audit events and fields are required (e.g., user id, action, timestamp, resource), and what retention/compliance requirements apply?"
+    },
+    {
+      "requirement": "The system must be resilient to upstream feed flakiness by avoiding behavioral patterns that would overload the Choice Parts service (e.g., exponential backoff, caching, and throttling), to prevent either stale data or overload.",
+      "source_citation": "If the feed becomes flaky or changes format and our adapters aren't ready, we'll either serve stale data or overload Choice Parts with too many requests trying to stay fresh.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "Stakeholder describes risk of overloading upstream when trying to keep data fresh; expects resilient behavior like backoff/throttling. Gaps: exact backoff strategy, retry policies, and acceptable fallback behavior.",
+      "follow_up_question": "What retry/backoff policy and throttling limits should be applied when Choice Parts responses fail or slow, and what is acceptable fallback behavior for users during upstream outages?"
+    },
+    {
+      "requirement": "Usability testing and measurement shall include surveys after training and task success rates during usability tests, with short questionnaires immediately after training and after a couple of weeks in production.",
+      "source_citation": "The plan was surveys after training sessions, maybe combined with task success rates in usability tests. ... we'd probably do short questionnaires right after training and after a couple of weeks in production.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "Stakeholder describes intended measurement approach for usability; useful for acceptance criteria. Gaps: exact survey questions, success criteria per task, sample sizes, and statistical confidence required.",
+      "follow_up_question": "Please provide the exact usability tasks, success criteria for each, and the survey questions and sample size targets for post-training and 2-week follow-ups."
+    },
+    {
+      "requirement": "The system shall support both onsite and remote training delivery, with onsite two-day sessions as the baseline expectation.",
+      "source_citation": "The business asked for onsite training — they feel hands-on is better, especially for older adjusters. That said, some regions might prefer remote, so we should support both, but the baseline expectation was two days of onsite training to get people comfortable.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "Stakeholder identifies training delivery modes and baseline. Gaps: remote training format, required materials, and acceptance criteria parity between modes.",
+      "follow_up_question": "What content and assessment differences, if any, should exist between onsite and remote training, and must remote attendees achieve the same 'up to speed' acceptance criteria?"
+    },
+    {
+      "requirement": "The system shall detect and mitigate malicious traffic patterns and route suspicious traffic through protections to prevent service degradation.",
+      "source_citation": "the big worry from ops is denial-of-service and malicious traffic that could take the service down. So we need protections like rate limiting, WAF rules, and DDoS mitigation.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder emphasizes operational security protections against malicious traffic. Gaps: detection heuristics, false-positive tolerance, and remediation/playbook.",
+      "follow_up_question": "What are acceptable false-positive/false-negative rates for traffic blocking, and what operational playbook should be followed when a DDoS or large malicious traffic event is detected?"
+    }
+  ]
+}

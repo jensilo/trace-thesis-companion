@@ -1,0 +1,205 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_4_re_experienced_stakeholder_technical_junior_20260227_110526.txt",
+  "model": "openai/gpt-5-mini",
+  "timestamp": "20260302_172231",
+  "requirements": [
+    {
+      "requirement": "The UI must conform to corporate UI standards for look-and-feel, component usage, and accessibility so it behaves like other corporate apps.",
+      "source_citation": "the UI needs to look and behave like other corporate apps — we keep getting flagged in reviews for mismatched components and accessibility stuff — and, well, we really shouldn't be reinventing that every time.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly states the UI must match corporate standards and avoid mismatched components and accessibility failures; implies need for consistent styling, component libraries, and accessibility conformance. Gaps: which exact standards/versions, specific accessibility levels (e.g., WCAG AA) are not specified.",
+      "follow_up_question": "Which corporate UI standard documents and accessibility level (e.g., WCAG 2.1 AA) should we target, and is there a shared component library we must use?"
+    },
+    {
+      "requirement": "Routine screen-to-screen transitions must complete in approximately five seconds or less to provide a snappy user experience.",
+      "source_citation": "maybe five seconds for those small transitions feels acceptable to me — any longer and people start switching tasks or calling in.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder gave an explicit performance target for small UI transitions (5s). Gap: which specific screens/actions qualify as 'small transitions' and whether this is median, average, or percentile SLA.",
+      "follow_up_question": "Please list the common tasks/screens this 5s target applies to and which percentile (e.g., 95th) or average should be used for SLA measurement."
+    },
+    {
+      "requirement": "Transaction details displayed or used for authoritative dispute decisions must be traceable back to the Statement Database as the canonical source; caching is allowed for UX but authoritative reads must map to that DB.",
+      "source_citation": "We are required to get transaction details straight from the Statement Database — like the canonical source. We can cache for UX reason, sure, but any authoritative data for dispute decisions has to be traceable back to that DB.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Stakeholder mandates the Statement DB as source-of-truth and allows caching only for UX; emphasizes traceability for audit. Gaps: cache TTLs, validation strategy, and how mapping/traceability metadata should be recorded.",
+      "follow_up_question": "What cache TTLs or invalidation rules are acceptable, and what metadata (e.g., source DB record ID, timestamp) must be stored to demonstrate traceability to the Statement Database?"
+    },
+    {
+      "requirement": "Cardmember details must be obtained from the Cardmember Information Database as the authoritative source and be traceable to that system; caching may be used for UX but authoritative operations must validate against it.",
+      "source_citation": "Same deal with cardmember details — those come from the Cardmember Information Database.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Mirror of the transaction-source requirement for cardmember data; stakeholder states the Cardmember DB is authoritative. Gaps: which fields are critical to validate and cache invalidation rules.",
+      "follow_up_question": "Which specific cardmember fields require authoritative validation on write/critical operations, and what are the acceptable caching/invalidation policies for cardmember data?"
+    },
+    {
+      "requirement": "The app must not change account balances locally; any financial adjustments must be submitted as requests to the Cardmember Posting and Billing System, and the app must listen for and record confirmations/status updates from that system.",
+      "source_citation": "The app shouldn't change account balances itself. We send adjustment requests to the Cardmember Posting and Billing System and then that system applies them.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 5,
+      "rationale": "Stakeholder clarifies system boundary and authoritative actor for financial adjustments; implies need for reliable request submission and reliable status handling. Gaps: expected confirmation latency, retry semantics, and failure handling protocol.",
+      "follow_up_question": "What are the expected SLA/latency, retry behavior, and error-handling semantics for adjustment requests and confirmations from the Posting and Billing System?"
+    },
+    {
+      "requirement": "Role-based access control must restrict who can create, modify, or view disputes and sensitive data; the backend must enforce role-based views and not rely solely on front-end hiding.",
+      "source_citation": "There's also the whole access-control thing — not everyone should be able to kick off a dispute — and we need to keep a full history of everything a rep does on a case.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder emphasizes RBAC and backend enforcement due to past incident where front-end hiding failed; requires restricting actions and data visibility. Gaps: exact RBAC matrix, permission rules, and enforcement mechanisms.",
+      "follow_up_question": "Please provide the required RBAC roles and a matrix of permissions (create, view, edit, close, override) for each role, and confirm backend enforcement mechanisms (e.g., API authorization checks)."
+    },
+    {
+      "requirement": "Support a small set of role tiers (e.g., basic rep, senior rep, supervisor, admin, external partner) rather than many micro-roles.",
+      "source_citation": "I think we'll need maybe a handful of tiers — basic rep, senior rep, supervisor, admin, and maybe an external partner role for merchant-facing people.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "Stakeholder proposes approximate RBAC roles; useful for scoping access control complexity. Gaps: exact responsibilities and whether additional sub-roles are needed over time.",
+      "follow_up_question": "Are these the definitive roles to implement initially, and should the system support adding more roles or fine-grained permissions later?"
+    },
+    {
+      "requirement": "The backend must enforce data masking and data segregation for external partners and other roles so sensitive fields are never exposed via APIs even if front-end hiding is bypassed.",
+      "source_citation": "we need to hide or mask certain data and change what components are visible ... we can't just rely on front-end hiding; the back end must enforce the data separation too.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder requests backend-enforced masking for external partners to prevent accidental exposure; motivated by prior incident. Gaps: which fields require masking and masking rules (redaction, partial, hashed).",
+      "follow_up_question": "Which specific data fields must be masked or redacted for external partners, and what masking policy (e.g., partial mask, remove entirely) is required per field?"
+    },
+    {
+      "requirement": "The system must be effectively available 24/7 except for scheduled maintenance windows: Mon–Sat 03:00–04:00 ET and Sun 01:00–05:00 ET.",
+      "source_citation": "The maintenance windows were documented as Monday through Saturday from 3:00 AM to 4:00 AM Eastern, and on Sunday from 1:00 AM to 5:00 AM Eastern. Outside those windows we expect it to be available.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "Stakeholder provided explicit maintenance windows and expectation of near-continuous availability outside those windows. Gaps: acceptable SLA percentage uptime and planned emergency maintenance behavior.",
+      "follow_up_question": "What uptime SLA percentage (e.g., 99.9%) should we target outside the scheduled maintenance windows, and what is the process for emergency maintenance notifications?"
+    },
+    {
+      "requirement": "The application must support 350 concurrent users at peak without observable degradation (no increased response times, timeouts, or error rates noticeable to users).",
+      "source_citation": "Specifically, the stakeholder group that set requirements mentioned three hundred and fifty concurrent users as what we should support without degradation.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "Stakeholder gave a concrete concurrency target and definition for 'no degradation'. Gaps: workload mix, transactional intensity per user, and performance metrics to evaluate degradation.",
+      "follow_up_question": "Please provide a profile of typical user activity (requests/sec per user, heavy vs light operations) so we can size load tests for 350 concurrent users."
+    },
+    {
+      "requirement": "Measure and monitor both response times (average and percentiles) for common tasks and error rates; define acceptable error-rate thresholds for operations and alert when exceeded.",
+      "source_citation": "So we should track both — average and percentile response times for common tasks like opening a case and an acceptable error rate threshold that should not be exceeded.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Stakeholder requests observability metrics (response times, percentiles, error rates) to determine degradation. Gaps: exact percentile targets (e.g., 95th), specific numeric error thresholds, and tooling for monitoring/alerting.",
+      "follow_up_question": "Which percentiles (e.g., 95th, 99th) and numerical thresholds for response time and error rates should be considered acceptable for key operations?"
+    },
+    {
+      "requirement": "Maintain an immutable audit trail recording who performed each action (user ID), when (timestamp), what changed (previous and new values), notes/correspondence, and links to outbound items/reference IDs so timelines can be replayed.",
+      "source_citation": "it needs to have who did what and when, like user ID and timestamp, and what changed — so the previous value and the new value — plus any notes or correspondence attached to the action. Also, if an action triggers an outbound item, like a chargeback or an adjustment request, we need to log that linkage along with any reference IDs. ... That history can't be editable — we need immutable audit entries.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly lists required audit data and mandates immutability for compliance and replayability. Gaps: retention period, storage mechanism (append-only, WORM), and access controls for audit logs.",
+      "follow_up_question": "What retention period and storage/legal protections (e.g., WORM storage) are required for audit logs, and who should be allowed to access them?"
+    },
+    {
+      "requirement": "Design flows and recordkeeping to demonstrate compliance with credit card dispute regulations, including preserving records, meeting turnaround times, and specific wording in correspondence as required by legal.",
+      "source_citation": "They insisted we design the flows so that we can show compliance if regulators ask, like keeping records, certain turnaround times, and specific wording in correspondence. ... compliance is non-negotiable.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 4,
+      "rationale": "Stakeholder emphasizes regulatory compliance impacting timelines, records, and correspondence wording. Gaps: which specific regulations/rules apply and concrete timeline targets or wording templates.",
+      "follow_up_question": "Can legal provide the specific regulatory requirements and templates (timelines, required wording, and recordkeeping obligations) we must implement and prove in audit?"
+    },
+    {
+      "requirement": "Cached reads for performance are allowed, but when a dispute is formalized or escalated the system must re-fetch or validate cached data against the authoritative Statement DB (and Cardmember DB as applicable).",
+      "source_citation": "cached data has to be validated or re-fetched when a dispute is formalized... make UX fast with cached reads but fall back to authoritative reads when creating or escalating a dispute.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder requires a caching strategy that trades UX speed with authoritative validation at critical operations. Gaps: validation timing, consistency guarantees (strong vs eventual), and methods (re-fetch, checksum, versioning).",
+      "follow_up_question": "What validation mechanism should be used when re-fetching (full fetch, diffs, version checks), and must the authoritative read be synchronous before finalizing a dispute?"
+    },
+    {
+      "requirement": "Avoid heavy synchronous calls to the Statement Database during peak; prefer caching patterns, batched retrievals, or other load-reducing strategies to comply with upstream constraints.",
+      "source_citation": "The statement DB team warned us against hammering them with synchronous calls for heavy queries during peak; they asked for caching patterns or batched retrievals where possible.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "Stakeholder relays upstream constraint to limit synchronous heavy queries; implies need for batching/caching and careful integration design. Gaps: allowed call rates, batch sizes, and peak windows.",
+      "follow_up_question": "What are the Statement DB team's acceptable call rate limits or recommended batch sizes/windows, and are there agreed throttling/backoff policies?"
+    },
+    {
+      "requirement": "Pre-fill forms and minimize clicks by populating fields from the Cardmember DB where possible to reduce user effort and repetitive actions.",
+      "source_citation": "reps hate extra clicks and repetitive forms — if we can pre-fill stuff from the cardmember DB and keep the flow short, they'll love us.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "Stakeholder requests usability improvements (pre-fill, fewer clicks) tied to using cardmember data for convenience. Gaps: which fields to pre-fill, consent/privacy concerns, and when pre-fill must be overridden.",
+      "follow_up_question": "Which specific form fields should be pre-filled from the Cardmember DB, and are there privacy/consent rules about when pre-filled data must be hidden or confirmed by the rep?"
+    },
+    {
+      "requirement": "Ensure reliable status synchronization after the Sunday maintenance window (01:00–05:00 ET) to prevent stale indicators and reduce manual reconciliation calls.",
+      "source_citation": "on Sundays our support team does some manual reconciliation ... so having reliable status syncs after that longer maintenance window is important; otherwise they'll be looking at stale indicators and it causes a lot of calls.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "Stakeholder notes operational pain when status data is stale after maintenance; requires post-maintenance sync/consistency checks. Gaps: expected sync latency and verification steps post-maintenance.",
+      "follow_up_question": "What maximum acceptable delay for post-maintenance status synchronization is acceptable, and what verification or reconciliation steps should be automated?"
+    },
+    {
+      "requirement": "Frontend and backend development must adhere to code quality standards (linting and corporate UI lint rules) to reduce developer friction and avoid build/regression issues.",
+      "source_citation": "last month I spent an afternoon fixing a styling bug that failed the UI linting rules, which was kind of annoying, but I guess it's necessary.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 3,
+      "rationale": "Stakeholder experienced developer overhead from failing lint rules; indicates a need for enforced coding/UI standards. Gaps: which linters/rules and whether CI enforcement is required.",
+      "follow_up_question": "Which linting and style rules must be enforced, and should CI pipelines block merges on lint failures or only warn?"
+    }
+  ]
+}

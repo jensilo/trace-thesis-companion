@@ -1,0 +1,183 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_3_re_experienced_stakeholder_nontechnical_enduser_20260227_110205.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_173241",
+  "requirements": [
+    {
+      "requirement": "The system shall respond to routine tasks (e.g., pulling up a student's record or changing a shift) in less than five seconds.",
+      "source_citation": "If I click and it takes longer than, say, five seconds, I start clicking again and making mistakes.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states a timeframe for acceptable response times for routine tasks, indicating a clear performance expectation.",
+      "follow_up_question": "What specific routine tasks should be completed within this timeframe, and what are the acceptable response times for more complex tasks?"
+    },
+    {
+      "requirement": "The system shall generate batch schedules in less than 30 seconds.",
+      "source_citation": "For the whole schedule generator — when we batch-create schedules — that one can take longer, but it can't take forever; half a minute-ish feels like the outside of acceptable to me.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a timeframe for batch schedule generation, indicating a clear performance expectation for this specific task.",
+      "follow_up_question": "What are the acceptable response times for other batch processes, and what factors might influence these times?"
+    },
+    {
+      "requirement": "The system shall support concurrent use by 10-15 users during peak times without significant performance degradation.",
+      "source_citation": "Maybe around ten people? Ten to fifteen on busy days... it has to handle that load without choking.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the number of concurrent users the system should support and the expected performance under this load.",
+      "follow_up_question": "What specific performance metrics (e.g., response time, throughput) should be maintained under peak load conditions?"
+    },
+    {
+      "requirement": "The system shall implement role-based access control to restrict data access based on user roles.",
+      "source_citation": "Program admins need a full view... Site coordinators shouldn’t see the full student files... Instructors need rosters but not private notes.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for role-based access control and provides examples of different access levels for various roles.",
+      "follow_up_question": "What specific data elements should be accessible or restricted for each role, and what are the university's policies regarding data access?"
+    },
+    {
+      "requirement": "The system shall protect sensitive student data, such as health information and background-check info, in accordance with university policies.",
+      "source_citation": "Student health or background-check info should be tightly controlled... We have university policies about privacy.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the sensitivity of certain data types and the need to comply with university policies for data protection.",
+      "follow_up_question": "What specific university policies apply to the protection of sensitive student data, and what are the consequences of non-compliance?"
+    },
+    {
+      "requirement": "The system shall be intuitive and require minimal training for users to become productive.",
+      "source_citation": "If it's intuitive, we could get by with a short, focused workshop... the UI is straightforward and the common tasks are obvious.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of an intuitive user interface and minimal training requirements for system usability.",
+      "follow_up_question": "What specific usability heuristics or guidelines should be followed to ensure the system is intuitive, and what are the acceptable training timeframes for different user roles?"
+    },
+    {
+      "requirement": "The system shall be compatible with common web browsers and devices without requiring special plugins or installations.",
+      "source_citation": "It should just open in whatever regular browser people have and behave the same... If a system needs special plugins or only works in one browser, it becomes a training and support nightmare.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the need for cross-browser and cross-device compatibility to minimize training and support efforts.",
+      "follow_up_question": "What specific browsers and devices should be supported, and what are the acceptable performance and functionality levels on these platforms?"
+    },
+    {
+      "requirement": "The system shall be available during business hours with a target availability of 95%.",
+      "source_citation": "We need it when our office is open... it should be up pretty much all the time during our working hours... Ninety-five percent availability sounds about right to me for the start.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the required availability of the system during business hours and provides a target availability percentage.",
+      "follow_up_question": "What are the acceptable downtime windows for maintenance and updates, and what are the consequences of exceeding the target availability percentage?"
+    },
+    {
+      "requirement": "The system shall maintain audit trails to track changes made by users.",
+      "source_citation": "Knowing who changed what and when.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for audit trails, but the specific requirements for tracking changes are not detailed.",
+      "follow_up_question": "What specific information should be included in the audit trails, and how long should this information be retained?"
+    },
+    {
+      "requirement": "The system shall integrate with the university's student records system for enrollments and HR or payroll systems for instructor assignments.",
+      "source_citation": "It should tie into the university's student records for enrollments and probably our HR or payroll for instructor assignments.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the need for integration with existing university systems to avoid manual data entry and ensure data consistency.",
+      "follow_up_question": "What specific data should be exchanged between the system and the university's systems, and what are the technical requirements for these integrations?"
+    },
+    {
+      "requirement": "The system shall handle peak loads without significant performance degradation.",
+      "source_citation": "It has to handle that load without choking... We can't have it slow down just because it's morning and everyone is looking at the same cohort.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for the system to handle peak loads without performance degradation, indicating a scalability requirement.",
+      "follow_up_question": "What specific performance metrics (e.g., response time, throughput) should be maintained under peak load conditions, and what are the expected peak load scenarios?"
+    },
+    {
+      "requirement": "The system shall prevent scheduling conflicts and validate required clearances before allowing changes to be saved.",
+      "source_citation": "It should stop me from scheduling a student in two places at the same time... warn me if a clinical placement requires a clearance the student doesn't have.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "reliability",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the need for the system to prevent common scheduling errors and validate required clearances, indicating a reliability requirement.",
+      "follow_up_question": "What specific validation rules should be implemented to prevent scheduling conflicts and ensure required clearances are met?"
+    },
+    {
+      "requirement": "The system shall provide notifications to users and allow administrators to track acknowledgment status.",
+      "source_citation": "It would be nice if the system could tell me who hasn't confirmed, so I can follow up.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "reliability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for the system to provide notifications and track acknowledgment status, indicating a reliability requirement.",
+      "follow_up_question": "What specific notification methods should be supported, and what are the acceptable response times for notification delivery and acknowledgment tracking?"
+    },
+    {
+      "requirement": "The system shall generate basic reports, such as daily clinical rosters, instructor assignments, and student progression summaries.",
+      "source_citation": "We need basic reports... who is scheduled where, gaps in coverage, maybe a roster per site.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "other",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for basic reports, but the specific report requirements are not detailed.",
+      "follow_up_question": "What specific reports are required, and what are the acceptable formats and delivery methods for these reports?"
+    },
+    {
+      "requirement": "The system shall be usable on tablets for quick checks and receive alerts on mobile devices.",
+      "source_citation": "It should at least be usable on a tablet for quick checks... Phones are useful for receiving alerts but not for heavy lifting like building schedules.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the need for the system to be usable on tablets and mobile devices, indicating a portability requirement.",
+      "follow_up_question": "What specific functionality should be supported on tablets and mobile devices, and what are the acceptable performance and usability levels on these platforms?"
+    },
+    {
+      "requirement": "The system shall reduce the amount of printing required for scheduling and communication.",
+      "source_citation": "It'd be nice if the system reduced the amount we have to print.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "other",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the desire to reduce printing, but the specific requirements for achieving this are not detailed.",
+      "follow_up_question": "What specific features or functionalities should be implemented to reduce printing, and what are the expected benefits of reducing printing?"
+    }
+  ]
+}

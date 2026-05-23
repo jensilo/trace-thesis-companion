@@ -1,0 +1,172 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_6_re_experienced_stakeholder_technical_junior_20260227_111111.txt",
+  "model": "openai/gpt-5-mini",
+  "timestamp": "20260302_172523",
+  "requirements": [
+    {
+      "requirement": "The application shall run on any operating system where Java is supported (e.g., Windows, Linux, macOS) and must not assume a single specific OS.",
+      "source_citation": "Basically, wherever Java can be put, it should run.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly states the app must run wherever Java can be placed and later names Windows, Linux and sometimes macOS. This implies no native binaries or OS-specific assumptions. Missing specifics: which Java versions or JVM vendors are supported and whether any platform-specific features are allowed.",
+      "follow_up_question": "Which Java versions and JVM vendors must be supported (minimum and recommended), and are there any platform-specific constraints we should avoid (e.g., native libraries, OS-specific paths)?"
+    },
+    {
+      "requirement": "The application shall operate correctly whether the database is local or remote, supporting configurable DB endpoints and robust connection handling.",
+      "source_citation": "Sometimes the DB runs on the same machine during dev, sometimes it's a separate box on the same network in staging or prod. So our code has to play nicely whether the DB is local or remote.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "reliability",
+      "confidence": 5,
+      "rationale": "Stakeholder describes mixed DB placements and past issues when assuming fixed hostnames or co-location. This implies configurable endpoints and reliable connection handling. Gaps: exact timeout/retry policies, supported DB types, and consistency expectations across deployments.",
+      "follow_up_question": "Which database products and versions must be supported, and what retry/time‑out policies and consistency guarantees are required when the DB is remote?"
+    },
+    {
+      "requirement": "The application shall provide configurable connection handling (timeouts, retries) and support for schema migration scenarios to tolerate remote DB latencies and avoid failures due to immediate-consistency assumptions.",
+      "source_citation": "Connection handling and configurable endpoints matter. ... when we had schema migrations and the app expected immediate consistency and failed in the other environment.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "Stakeholder recounts failures from chatty queries, timeouts, and schema migration assumptions, indicating need for resilient connection logic and migration-aware behavior. Missing specifics: exact retry/backoff algorithms, migration/version checks, or tolerance windows.",
+      "follow_up_question": "What specific retry/backoff strategy and maximum retry counts are acceptable for DB connections, and should the app detect schema version mismatches and fail gracefully or block until migration completes?"
+    },
+    {
+      "requirement": "The application shall be deployable on common Java application servers (e.g., Tomcat, JBoss) without requiring vendor-specific modifications.",
+      "source_citation": "So the app needs to deploy on those common Java servers without too much fuss.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly names Tomcat and JBoss and says the app must not be tied to one vendor. Gaps: supported versions, required server features (JEE level), and packaging format (WAR, JAR) are unspecified.",
+      "follow_up_question": "Which versions of Tomcat and JBoss must be supported, and what packaging format (WAR, EAR, executable JAR) should we target?"
+    },
+    {
+      "requirement": "The web UI shall render and function in a representative set of browsers (at least eight distinct browsers) and render correctly in approximately 80% of those tests.",
+      "source_citation": "We actually laid out before that we need to test across at least eight distinct browsers, and we'd like the pages to render correctly in, say, around eighty percent of those tests.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Stakeholder provides explicit numeric testing target (8 browsers, ~80% success). Gaps: which specific browsers/versions constitute the set, what constitutes 'render correctly', and acceptance criteria per feature.",
+      "follow_up_question": "Please list the eight specific browsers and versions to be included in the test matrix and define 'render correctly' (visual diff thresholds, functional test pass/fail criteria)."
+    },
+    {
+      "requirement": "The frontend shall avoid relying on bleeding-edge browser features and must transpile/polyfill modern JS/CSS so the UI degrades gracefully on older corporate browsers.",
+      "source_citation": "We shouldn't rely on some bleeding-edge feature that breaks older browsers. ... Mostly things like heavy ES6 modules without transpilation, or CSS grid tricks that older corporate browsers choke on. So we transpile and include polyfills as needed.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 5,
+      "rationale": "Stakeholder specifies technology constraints to maintain compatibility with older browsers, implying transpilation and polyfills. Gaps: which language/feature subsets must be avoided and what browser feature detection/fallback strategy to use.",
+      "follow_up_question": "Which ECMAScript features or CSS capabilities are forbidden without transpilation/polyfills, and are there preferred toolchains (Babel, Autoprefixer) or supported polyfills?"
+    },
+    {
+      "requirement": "The email/notification subsystem shall support configurable SMTP endpoints, authentication methods, TLS versions, and implement sensible retry and backoff behavior with admin alerts on persistent delivery failures.",
+      "source_citation": "Notifications are core; the product must be able to send emails. ... we've had to add configuration options so admins can point to their mail servers. ... older Exchange servers that don't support newer TLS forced us to fall back or add toggles... If a mail server rejects a connection, the app should retry sensibly. ... maybe admin alerts if delivery keeps failing.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "reliability",
+      "confidence": 5,
+      "rationale": "Stakeholder lists email integration requirements covering configuration, TLS/auth variations, retries, and admin notifications. Missing specifics: retry counts, backoff algorithm, when to notify admins, and which auth flows to support (OAuth, NTLM, basic).",
+      "follow_up_question": "Which authentication methods (e.g., plain, STARTTLS, OAuth, NTLM) and TLS versions must be supported, and what exact retry/backoff policy and criteria trigger admin alerts?"
+    },
+    {
+      "requirement": "The system shall target perceived responsiveness such that ~90% of routine tasks complete in under 5 seconds and ~98% complete in under 8 seconds.",
+      "source_citation": "We were targeting that roughly ninety percent of tasks complete in under five seconds, and about ninety-eight percent should finish in under eight seconds.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder provides explicit performance metrics for routine interactions. Gaps: definition of 'task' (API call, page load, booking flow), measurement method, and whether these targets apply under peak load or steady-state.",
+      "follow_up_question": "Please define which specific user actions (API endpoints or UI flows) are included as 'tasks' for these performance targets and whether the metrics apply under peak load conditions."
+    },
+    {
+      "requirement": "The system shall handle approximately 1,000 concurrent requests in the current release and be scalable to handle approximately 2,000 concurrent requests in the next release.",
+      "source_citation": "Currently the target we set was to handle around one thousand concurrent requests, and by the next release that should scale up to around two thousand.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "Stakeholder specifies concurrency targets for capacity planning. Gaps: definition of 'concurrent requests' (sustained, ephemeral), request mix, required response-time SLAs under that load, and expected horizontal/vertical scaling approach.",
+      "follow_up_question": "How are 'concurrent requests' defined (simultaneous active HTTP connections, RPS over a window), what is the expected request mix, and should the performance SLA hold at peak concurrency?"
+    },
+    {
+      "requirement": "The software shall achieve an availability target of 99.99% (excluding hardware/server-level failures).",
+      "source_citation": "The number we were aiming for was ninety-nine point nine nine percent availability, not counting situations where the whole server hardware fails.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "Stakeholder gives a clear availability SLA and excludes hardware failures from the requirement. Gaps: measurement window (monthly/yearly), acceptable maintenance windows, and recovery time objectives for software faults.",
+      "follow_up_question": "Over what measurement period should 99.99% availability be calculated (monthly/annual), what maintenance windows are permitted, and what are the target mean time to recovery (MTTR) and RTO for software incidents?"
+    },
+    {
+      "requirement": "All logins shall be restricted to company employees or externally approved users with vetted company IDs; anonymous or unapproved accounts are prohibited.",
+      "source_citation": "Only employees, or external users we've explicitly approved and given company IDs, should get in. We can't have random public access. ... Yes, every login should be by an employee or an externally vetted ID. No anonymous or unapproved accounts.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly mandates strict access control for every login, citing compliance and privacy concerns. Gaps: authentication mechanisms (SSO, LDAP, SAML), account provisioning workflows, and session management specifics.",
+      "follow_up_question": "Which authentication/identity providers and protocols (e.g., SAML, OAuth2, LDAP, corporate SSO) must be supported, and what are the account provisioning and deprovisioning requirements for external users?"
+    },
+    {
+      "requirement": "The system shall comply with applicable accessibility laws and standards (e.g., screen reader compatibility, keyboard navigation, sufficient color contrast).",
+      "source_citation": "Accessibility is a big one; we have to make sure it meets standards ... screen readers work, keyboard navigation, color contrast...",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 5,
+      "rationale": "Stakeholder cites legal/HR expectations and lists specific accessibility areas. Gaps: which standards (WCAG level A/AA/AAA), required conformance level, and how compliance is validated (automated tests/manual audits).",
+      "follow_up_question": "Which accessibility standard and conformance level must we meet (e.g., WCAG 2.1 AA), and how should compliance be tested and certified?"
+    },
+    {
+      "requirement": "The product shall avoid requiring exotic platform components and should prefer widely used/open-source stacks so it can co-exist with typical enterprise server software.",
+      "source_citation": "Ops likes open-source where possible. ... the product needs to sit alongside other server software in typical enterprise environments, so it shouldn't require exotic platform components.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "Stakeholder expresses operational preference for common/open-source components to ease deployment and maintenance. Gaps: which components are considered acceptable/unacceptable, and policy on third-party dependencies and licensing.",
+      "follow_up_question": "Are there specific platform components or third‑party libraries that are disallowed, and are there preferred open-source stacks or licensing constraints we must follow?"
+    },
+    {
+      "requirement": "The UI/booking workflows shall be designed for simplicity and efficiency, aiming for common actions to be doable in one click where reasonable.",
+      "source_citation": "When we design booking flows, keep them simple. ... users want one-click if possible.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 4,
+      "rationale": "Stakeholder requests simple, efficient workflows to improve usability; implies UX goals but lacks precise measures. Gaps: which flows must be one-click, acceptable trade-offs for complex bookings, and usability metrics to validate.",
+      "follow_up_question": "Which specific booking actions should be optimized to 'one-click', and what usability metrics (e.g., task completion time, clicks per task) will be used to validate workflow simplicity?"
+    },
+    {
+      "requirement": "The system shall implement monitoring and alerting so admins are notified of persistent failures (e.g., repeated email delivery failures or outages) to ensure operational visibility.",
+      "source_citation": "Maybe admin alerts if delivery keeps failing. ... Ops has been pretty clear that outages are a big deal ...",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 4,
+      "rationale": "Stakeholder implies need for admin alerts for email failures and general expectation that ops will be notified of outages. Gaps: which metrics to monitor, alert thresholds, notification channels, and escalation policies are not specified.",
+      "follow_up_question": "Which operational metrics should be monitored, what are the alert thresholds (e.g., X failed emails in Y minutes), and which notification channels/escalation paths should be used?"
+    }
+  ]
+}

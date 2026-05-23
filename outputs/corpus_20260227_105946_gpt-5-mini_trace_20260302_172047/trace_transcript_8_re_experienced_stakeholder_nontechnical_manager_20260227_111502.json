@@ -1,0 +1,260 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_8_re_experienced_stakeholder_nontechnical_manager_20260227_111502.txt",
+  "model": "openai/gpt-5-mini",
+  "timestamp": "20260302_172655",
+  "requirements": [
+    {
+      "requirement": "Pages for routine interactions (e.g. loading a movie detail or moving between pages) shall respond within 5 seconds.",
+      "source_citation": "For the small interactions — like loading a movie detail or moving between pages — I think it should feel instant. If I had to pick a threshold, maybe about five seconds for those routine actions.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly gives a numeric target (5 seconds) for small interactions to avoid user abandonment and frustration. This is a clear performance requirement but omits specifics about percentile (p95/p99), measured client- or server-side, network assumptions, or which exact pages/actions are included.",
+      "follow_up_question": "Should the 5-second target be measured as median, p95, or p99 from the user's device, and does it apply to cold-loads only or both cold and warm interactions?"
+    },
+    {
+      "requirement": "Initial video stream startup (time to first frame/playback start) shall be no more than 10 seconds under normal network conditions.",
+      "source_citation": "Well, streaming should feel continuous. I'd expect any initial buffering to be short, like only a few seconds. If it takes much longer than that, people will assume the stream is broken. So perhaps around ten seconds max to get started, plus whatever their own internet adds.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder specifies an explicit maximum (10 seconds) for initial buffering/startup, tying user perception to business outcomes. Missing: definition of ‘normal network conditions’, acceptable buffering during playback, and measurement percentiles.",
+      "follow_up_question": "Do you want the 10-second target defined for a specific network profile (e.g., 3G/4G at X kbps) and measured as p90/p95/p99?"
+    },
+    {
+      "requirement": "Pages shall be lightweight and optimized to load well on low-bandwidth connections.",
+      "source_citation": "Also, pages should be lightweight so they load well on low-bandwidth connections.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "Stakeholder calls out low-bandwidth optimization as a constraint to support target markets. This implies limits on page weight and asset loading strategy but lacks concrete budgets (KB/requests) or target network profiles.",
+      "follow_up_question": "Do you want explicit page-weight budgets (e.g., <= X KB for critical-path assets) or target network profiles (e.g., 2G/3G/4G) to validate low-bandwidth performance?"
+    },
+    {
+      "requirement": "Monitoring must detect slow pages or streams and alert operations so they can react before customers complain; daily usage metrics must be produced for trend detection.",
+      "source_citation": "Monitoring is critical. We need to know when pages or streams slow down, and we need daily usage stats for trend detection. If we see slowdowns or unusual patterns, ops must be alerted so we can react before customers complain.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Stakeholder requires observability (monitoring, alerts, daily metrics) tied to business response. Lacks detail on alert thresholds, required dashboards, retention of metrics, or who receives alerts and escalation procedures.",
+      "follow_up_question": "Which metrics and alert thresholds should trigger Ops (e.g., p95 page load > 5s for X minutes), and who should receive/own those alerts?"
+    },
+    {
+      "requirement": "Every sale shall be recorded and auditable; admins must be able to access sales/usage data via dashboard and downloadable reports without engineering intervention.",
+      "source_citation": "Every sale should be recorded so we can audit revenue and refund disputes. And I'd want daily rolls of usage metrics — who watched what, how many streams started, that kind of thing — so marketing and ops can act... Both, ideally. A dashboard for immediate checks and the ability to pull detailed records for audits or financial reconciliation. Admins should be able to slice by title, date, and payment type without calling engineering.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "Stakeholder expects comprehensive, auditable recording of transactions and self-serve admin access. Missing specifics: retention periods, access controls for reports, export formats, real-time vs near-real-time data.",
+      "follow_up_question": "What minimum retention period is required for sales records and transaction logs for audit purposes, and what export formats and filters are mandatory for admin reports?"
+    },
+    {
+      "requirement": "Financial records and logs shall be retained long enough to satisfy auditors and local tax rules; usage analytics daily aggregates shall be retained for at least months for trend analysis.",
+      "source_citation": "For financial records, long enough to satisfy auditors and local tax rules — so not short-lived. For usage analytics, I want daily aggregates kept for trend analysis for at least months.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 4,
+      "rationale": "Stakeholder expresses retention needs tied to compliance and analytics. However, numeric retention durations are unspecified and left to legal/finance; 'months' for analytics is vague.",
+      "follow_up_question": "Please confirm minimum retention durations (e.g., financial records: X years; analytics aggregates: Y months) and whether regional/legal differences must be enforced per country."
+    },
+    {
+      "requirement": "Payment card data shall be stored and handled such that unauthorized employees cannot view card numbers; data must be encrypted and access limited to a small set of authorized roles.",
+      "source_citation": "We shouldn't be in a position where any random employee can look up card numbers. Only very specific, authorised staff should be able to access payment records, and the data should be stored in a way that a leak would be meaningless. From a business-risk point of view, that means encryption and strict access controls — I don't want a single careless admin to create reputational damage.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder demands strong protections for payment data including encryption and strict role-limited access. Missing details include encryption standards, key management, whether to use third-party PCI-compliant processors (tokenization), and audit controls.",
+      "follow_up_question": "Do you require full PCI-DSS compliance and tokenization (no raw PAN stored), and which encryption/key-management standards (e.g., AES-256, HSM) should be mandated?"
+    },
+    {
+      "requirement": "Only specific authorised roles (senior finance, a very small number of platform ops, possibly a security officer) shall have access to sensitive payment records; customer service and marketing shall not have such access.",
+      "source_citation": "Right — I mean senior finance people and a very small number of platform ops folks who need it for reconciliation, and maybe a security officer. Not customer service reps or marketers.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder lists allowed roles for sensitive payment access, implying role-based access control and least privilege. Lacks specifics about how roles are provisioned, audited, or time-limited.",
+      "follow_up_question": "Should role assignments be integrated with a central IAM (e.g., SSO + RBAC), require periodic access reviews, and be logged for audit?"
+    },
+    {
+      "requirement": "For high-risk actions (e.g., unlocking raw payment data or refunds above a threshold), additional approvals (e.g., two-person approval) shall be required.",
+      "source_citation": "I think for the most sensitive things, like unlocking raw payment data or doing refunds over a certain threshold, additional approvals make sense.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder wants multi-person approval for sensitive operations. Missing: definition of the refund threshold, approval workflow specifics, emergency overrides, and audit trail requirements.",
+      "follow_up_question": "What is the monetary threshold for two-person approval for refunds, and should approvals be enforced in the system (blocking) or handled as a business process outside the system?"
+    },
+    {
+      "requirement": "When a payment gateway is unavailable, the site shall remain operational for browsing and redemption of pre-paid cards; purchases may be queued for later processing without storing sensitive card data.",
+      "source_citation": "If the payment gateway hiccups, we shouldn't go dark. Users should still be able to browse, redeem pre-paid cards, access their purchased titles, and maybe queue purchases to complete later... I'd prefer queuing where safe — capture intent, but not sensitive payment data if that increases risk. If it's a card, maybe capture a token or ask them to try again later. For pre-paid, process immediately.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 5,
+      "rationale": "Stakeholder requires graceful degradation during third-party payment outages: local redemption for pre-paid cards and queuing intent without storing raw card data. Missing: queue semantics (durability, expiry), user-visible behavior, legal implications of queuing payment intent, and tokenization specifics.",
+      "follow_up_question": "Define queue behavior: how long can a queued purchase persist, how is user notified, and is tokenization required before queuing card-based purchases?"
+    },
+    {
+      "requirement": "Pre-paid card redemptions shall be processed immediately on our side and must not depend on the external payment gateway.",
+      "source_citation": "Redemption should be processed immediately on our side — it shouldn't require the external gateway — so people can buy access in a shop and watch right away.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "Stakeholder states that pre-paid redemptions are a core channel and must function independently of external gateways. Missing: offline/edge redemption needs, reconciliation with external systems, fraud controls for local merchant-issued cards.",
+      "follow_up_question": "What reconciliation and fraud-detection controls do you require for immediate, gateway-independent pre-paid redemptions?"
+    },
+    {
+      "requirement": "If the streaming service degrades or a streaming server goes down, the site shall continue to allow browsing and purchases; playback shall present clear messaging and attempt automatic retry or use fallback streams to preserve viewing for most users.",
+      "source_citation": "At minimum, the rest of the site should stay up so people can browse and buy, and their purchases should be preserved. For playback, we need clear messaging and either automatic retry or a fallback stream so that most people can still watch.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 5,
+      "rationale": "Stakeholder demands graceful handling of streaming outages with fallbacks and preserved purchases. Missing: what counts as a fallback (CDN edge, lower-bitrate stream), retry strategy, and acceptable failure rate.",
+      "follow_up_question": "What fallback streams are acceptable (lower bitrate, alternate CDN/edge), and what retry/backoff policy should the player implement?"
+    },
+    {
+      "requirement": "Some small fraction of users may be affected in an outage, but widespread outages are unacceptable; priority shall be given to paying customers mid-playback and to critical admin functions during degradation.",
+      "source_citation": "I think some small fraction being affected is tolerable, but not widespread outages. We want to avoid mass disruptions. If there has to be prioritisation, we should prioritise paying customers who are mid-playback and critical admin functions.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "Stakeholder expresses tolerance for partial degradation and calls for prioritisation. Missing: definition of 'small fraction', mechanisms for prioritisation (traffic shaping, queues), and how to identify paying customers reliably.",
+      "follow_up_question": "What maximum percentage of users may be affected during a degraded state (e.g., <=1%), and should prioritisation be enforced automatically (e.g., QoS) or manually?"
+    },
+    {
+      "requirement": "System planning shall support approximately 1,000 simultaneous users at peak.",
+      "source_citation": "If you need a ballpark number for capacity planning, I'd say around one thousand simultaneous users at peak.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "Stakeholder gives a concrete capacity planning target. Missing: workload mix (how many streaming vs browsing), geographic distribution, and headroom for unexpected spikes.",
+      "follow_up_question": "Please provide the expected distribution of the 1,000 concurrent users across playbacks, browsing, and admin sessions, and desired headroom (e.g., 2x) for spikes."
+    },
+    {
+      "requirement": "The service shall target 99.5% availability for planning and stakeholder expectations.",
+      "source_citation": "If I had to pick a target for SLAs and investor conversations, I'd aim for something like ninety-nine point five percent availability — low enough risk that our customers don't notice routine maintenance, but realistic.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly sets availability target (99.5%). Missing: measurement window (monthly/annual), excluded maintenance windows, and SLA penalties.",
+      "follow_up_question": "Should the 99.5% availability be measured monthly or annually, and what planned maintenance windows (if any) should be excluded from this calculation?"
+    },
+    {
+      "requirement": "Operations must retain audit logs and records sufficient to reconcile sales and support refund disputes; accesses and changes to payment data must be logged for traceability.",
+      "source_citation": "Every sale should be recorded so we can audit revenue and refund disputes... For the most sensitive things, like unlocking raw payment data or doing refunds over a certain threshold, additional approvals make sense.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 4,
+      "rationale": "Stakeholder requires auditability and traceability for financial and sensitive actions. Missing: log retention duration, tamper-resistance, log access controls, and format/level of detail required for audits.",
+      "follow_up_question": "What retention period and integrity guarantees (e.g., append-only logs, WORM storage) do legal/finance require for audit logs, and who may access them?"
+    },
+    {
+      "requirement": "Privacy notices shall be clearly accessible (a link visible on every page) with a short summary during signup/payment and full policy available immediately if requested.",
+      "source_citation": "We need to be upfront before we collect anything — a clear privacy notice that people can find easily. I want it visible on every page in a simple link and, especially during signup or payment, users should be reminded what we're collecting and why... A link on every page plus a short summary or callout during signup would be fine. The full policy should be accessible immediately if someone wants to drill down.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Stakeholder specifies UI/UX requirement for privacy transparency to build trust. Lacks specifics on wording, localization, and legal disclaimers required per region.",
+      "follow_up_question": "Should the privacy summary be localized per region/language and reviewed/approved by legal for required disclosures in specific countries?"
+    },
+    {
+      "requirement": "Access to customer data shall support regional restrictions and data residency controls to comply with local privacy laws.",
+      "source_citation": "Data residency and local privacy laws are a concern. In some countries, customer data has to be handled a certain way. We need legal to weigh in, but from product side, let's assume we must be able to show compliance and restrict access based on region if required.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 4,
+      "rationale": "Stakeholder flags need for data residency and region-based access controls. Missing: which regions/countries, specific residency requirements, and how strict data locality must be enforced (isolated storage, regional processing).",
+      "follow_up_question": "Which countries or regions are in scope for data residency requirements, and do you require complete regional isolation (data stored/processed only within region)?"
+    },
+    {
+      "requirement": "Admins shall be able to slice sales and usage data by title, date, and payment type through self-serve interfaces.",
+      "source_citation": "Admins should be able to slice by title, date, and payment type without calling engineering.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Stakeholder requests specific admin reporting capabilities for operational independence. Missing: query performance expectations, access control for different admin roles, and export limits.",
+      "follow_up_question": "What response time is acceptable for admin queries (e.g., <5s for typical slices), and which admin roles should have access to which slices?"
+    },
+    {
+      "requirement": "System observability must include daily rolls of usage metrics (who watched what, how many streams started) and produce reports usable by marketing and ops.",
+      "source_citation": "And I'd want daily rolls of usage metrics — who watched what, how many streams started, that kind of thing — so marketing and ops can act.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 4,
+      "rationale": "Stakeholder needs daily aggregated metrics for business functions. Missing: exact metric definitions, required freshness (e.g., end-of-day), format, and delivery method.",
+      "follow_up_question": "Which specific metrics and grain (per-title, per-user anonymized) are required in the daily rolls, and when must they be available each day?"
+    },
+    {
+      "requirement": "The product shall present clear, user-friendly messaging during errors or degraded conditions (e.g., streaming failures) and maintain trust without exposing sensitive system details.",
+      "source_citation": "For playback, we need clear messaging and either automatic retry or a fallback stream so that most people can still watch... Also, if they can't tell what we're doing with their card info, they'll bail.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "Stakeholder wants clear error messaging to preserve user trust and avoid technical exposure. Missing: tone, localization, exact message content, and when to escalate to outage pages.",
+      "follow_up_question": "Do you have preferred tone/language for error messages and required localized versions, and should messages include ETA or automated retry status?"
+    },
+    {
+      "requirement": "The system shall preserve purchases made during partial outages (e.g., streaming or payment gateway failures) so users do not lose entitlement to purchased titles.",
+      "source_citation": "At minimum, the rest of the site should stay up so people can browse and buy, and their purchases should be preserved.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 5,
+      "rationale": "Stakeholder expects purchases to be durable across outages to protect revenue and customer experience. Missing: definition of 'preserved' (queued vs immediate entitlement), reconciliation timing, and conflict resolution.",
+      "follow_up_question": "Do preserved purchases require immediate user entitlement (i.e., ability to play) or is pending entitlement with eventual confirmation acceptable, and how long may confirmation take?"
+    },
+    {
+      "requirement": "Operational dashboards and alerts shall allow ops and business teams to react quickly to anomalies (slowdowns, vendor failures) before customers complain.",
+      "source_citation": "Monitoring is critical. We need to know when pages or streams slow down, and we need daily usage stats... If we see slowdowns or unusual patterns, ops must be alerted so we can react before customers complain.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 4,
+      "rationale": "Stakeholder emphasizes importance of operational visibility to prevent customer-impacting incidents. Missing: specific KPIs, on-call responsibilities, escalation paths, and required dashboard views.",
+      "follow_up_question": "Which KPIs should be on the ops dashboard (e.g., error rates, p95 latency, payment success rate), and what are the expected on-call/response SLAs?"
+    }
+  ]
+}

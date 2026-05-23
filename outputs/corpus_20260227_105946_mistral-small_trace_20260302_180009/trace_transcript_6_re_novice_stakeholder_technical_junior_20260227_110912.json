@@ -1,0 +1,161 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_6_re_novice_stakeholder_technical_junior_20260227_110912.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_180105",
+  "requirements": [
+    {
+      "requirement": "The system should render correctly in common browsers and maintain compatibility with older browsers.",
+      "source_citation": "The UI should just render correctly in the common browsers companies use, and not fall apart when someone has, like, an older browser.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for browser compatibility, including older browsers, which directly impacts usability.",
+      "follow_up_question": "What specific older browsers should be supported, and what is the minimum version of these browsers that should be compatible?"
+    },
+    {
+      "requirement": "The system should support keyboard navigation and be screen reader friendly.",
+      "source_citation": "Accessibility is important too — keyboard navigation and screen reader friendliness — because different offices have different needs and we don’t want to exclude people.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the importance of accessibility features, which are crucial for usability.",
+      "follow_up_question": "What specific accessibility standards or guidelines should the system adhere to?"
+    },
+    {
+      "requirement": "Error messages should be clear and not cryptic.",
+      "source_citation": "That taught us to pay attention to locale and timezone handling and to make the error messages less cryptic.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for clearer error messages, which is a usability concern.",
+      "follow_up_question": "What specific guidelines or examples should be used to ensure error messages are clear and user-friendly?"
+    },
+    {
+      "requirement": "The system should control access to company employees and approved external partners.",
+      "source_citation": "Access needs to be controlled. Mostly it’s company employees, and then occasionally external partners who’ve been set up with approved accounts.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for controlled access, which is a security concern.",
+      "follow_up_question": "What specific authentication and authorization mechanisms should be implemented to control access?"
+    },
+    {
+      "requirement": "The system should maintain audit trails for tracking changes and actions.",
+      "source_citation": "Also audit trails are useful when someone says, 'Hey, why was my meeting moved?'",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the importance of audit trails, which are crucial for security and accountability.",
+      "follow_up_question": "What specific information should be included in the audit trails, and how long should these trails be retained?"
+    },
+    {
+      "requirement": "The system should log exceptions with stack traces and context for debugging and support.",
+      "source_citation": "It should definitely log exceptions — stack traces, context, whatever — and keep a record the ops or our support team can pull.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "reliability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for logging exceptions, which is crucial for reliability and debugging.",
+      "follow_up_question": "What specific logging mechanisms and tools should be used to ensure comprehensive and useful logs?"
+    },
+    {
+      "requirement": "The system should handle locale and timezone settings correctly to avoid scheduling conflicts.",
+      "source_citation": "That taught us to pay attention to locale and timezone handling and to make the error messages less cryptic.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "reliability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the importance of correct locale and timezone handling, which is crucial for reliability.",
+      "follow_up_question": "What specific locale and timezone settings should be supported, and how should they be configured?"
+    },
+    {
+      "requirement": "The system should follow common design patterns and best practices to ensure maintainability.",
+      "source_citation": "We try to follow common design patterns and best practices so the codebase is predictable, not some custom spaghetti.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for following design patterns and best practices, which is crucial for maintainability.",
+      "follow_up_question": "What specific design patterns and best practices should be followed, and are there any specific frameworks or guidelines to adhere to?"
+    },
+    {
+      "requirement": "The system should be documented and consistent to facilitate onboarding and future maintenance.",
+      "source_citation": "I mean, I’ve been the new person before and it’s awful when nothing is documented or consistent.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the importance of documentation and consistency, which are crucial for maintainability.",
+      "follow_up_question": "What specific documentation standards or practices should be followed, and what tools or formats should be used?"
+    },
+    {
+      "requirement": "The system should be compatible with different database systems as preferred by the IT team.",
+      "source_citation": "We’ve had to make the code work with whatever the IT team prefers, so the app can talk to different database systems.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for compatibility with different database systems, which is crucial for portability.",
+      "follow_up_question": "What specific database systems should be supported, and what are the compatibility requirements for each?"
+    },
+    {
+      "requirement": "The system should be tested against a representative set of browsers to ensure compatibility.",
+      "source_citation": "We do some testing against a representative set of browsers; teams generally run it through the ones they care about.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for testing against a representative set of browsers, which is crucial for portability.",
+      "follow_up_question": "What specific browsers and versions should be included in the testing matrix?"
+    },
+    {
+      "requirement": "The system should support customization for client branding and multiple languages.",
+      "source_citation": "It should be customizable so clients can put their branding on it and it should support multiple languages.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "internationalization",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for customization and support for multiple languages, which is crucial for internationalization.",
+      "follow_up_question": "What specific branding customization options should be supported, and what languages should be included?"
+    },
+    {
+      "requirement": "The system should feel snappy and handle peak usage times without performance degradation.",
+      "source_citation": "It just needs to feel snappy, honestly — waiting around kills productivity. Heavy operations should be quick. Also mornings and right before big meetings are when the most people hit it, so it needs to not choke during those peaks.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for snappy performance and handling peak usage times, which is crucial for performance.",
+      "follow_up_question": "What specific performance metrics or benchmarks should be used to ensure the system meets these requirements?"
+    },
+    {
+      "requirement": "The system should scale to accommodate company growth and increased usage.",
+      "source_citation": "And we want it to scale forward a bit as the company grows, not be a one-off that flails when usage increases.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for scalability to accommodate company growth, which is crucial for scalability.",
+      "follow_up_question": "What specific scalability metrics or benchmarks should be used to ensure the system can handle increased usage?"
+    }
+  ]
+}

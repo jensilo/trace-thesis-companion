@@ -1,0 +1,100 @@
+Interviewer: Thanks for meeting with me. To start broadly, can you tell me what success looks like for this recycled parts and repair facility system?
+
+Stakeholder: Sure — success, for me, is that adjusters and estimators actually want to use it. It needs to make their job easier, not be another clunky tool. If they can find parts quickly and pick a good repair shop without a lot of back-and-forth, we're winning. Also, it should fit into how we already operate — so no weird exceptions that force people to change their whole workflow.
+
+Interviewer: When you say "fit into how you already operate," do you mean integrating with other systems we have?
+
+Stakeholder: Yes, absolutely. The parts data has to come from our Choice Parts feed — we rely on that data source today, so whatever we build needs to talk to it. Otherwise we'd be maintaining duplicates and that's a mess.
+
+Interviewer: Got it. Aside from the parts feed, are there other corporate requirements we need to respect?
+
+Stakeholder: Yeah, we can't ignore the corporate architecture and the UI look-and-feel. We have to follow the architecture guidelines so ops and security don't push back, and the user interface has to match our corporate UI patterns so users don't feel like they're in a different universe. It's more than cosmetics; it's about trust and supportability.
+
+Interviewer: Okay. On usability, you mentioned adjusters and estimators should want to use it. How easy is "easy enough"?
+
+Stakeholder: Hmm, well, I think almost everybody who uses it should find it straightforward. We have a pretty experienced user base — if it's clunky, they'll complain loudly. So, I mean, I'd like a very high acceptance rate; most people should say it's easy to use.
+
+Interviewer: When you say "very high," do you have a target or metric in mind?
+
+Stakeholder: Yeah, we do. We aim for something like ninety-five percent of adjusters and estimators reporting that it's easy to use in our surveys. That gives us confidence we're meeting the usability goal.
+
+Interviewer: Good to know. You mentioned finding parts quickly — what do users find acceptable in terms of search speed?
+
+Stakeholder: It just needs to feel fast. I hate waiting around — users hate waiting. If a search drags, they'll call the parts desk or start doing manual workarounds.
+
+Interviewer: Can you be more specific? For a parts search, what's the maximum time that would still feel okay?
+
+Stakeholder: For the recycled parts search, people told me they'd tolerate up to about fifteen seconds, but they'd prefer it much faster. Past that, people get impatient.
+
+Interviewer: And how about when locating a preferred repair facility based on the vehicle location — are expectations different?
+
+Stakeholder: Oh, yeah, that one needs to be quicker. When you're on the phone with a customer or standing at a tow yard, you can't wait long. I think under eight seconds is where users stop fidgeting — again, they'd love faster, but that's the practical cutoff.
+
+Interviewer: Understood. On performance more generally, do you have availability targets? People will be using this during work hours, I imagine.
+
+Stakeholder: We need it to be highly available. Outages are expensive and damage credibility. So minimal downtime, especially during peak business hours — we can't have the whole adjuster base blocked because of an outage.
+
+Interviewer: Any specific uptime target we should aim for?
+
+Stakeholder: Yes, the business expects something in the high nineties — around ninety-eight percent availability over the year is what leadership considers acceptable.
+
+Interviewer: What about load — how many people might be using it at the same time?
+
+Stakeholder: There's a big user base across several insurer clients. At peak times — mornings when everybody's triaging claims — you could have a large number of simultaneous users. We planned for that; the app should handle heavy concurrency without dragging.
+
+Interviewer: Do you have a number for "a large number"?
+
+Stakeholder: Yeah, we sized it for roughly fifteen hundred concurrent users at peak. That’s the ballpark we discussed with operations.
+
+Interviewer: Thanks. Switching to data safety — are there rules about who can see what?
+
+Stakeholder: Definitely. We work with multiple insurance companies on the platform. Each company must only see their own claims and related data, period. It's sensitive stuff; cross-visibility would be a showstopper.
+
+Interviewer: So tenant isolation — got it. And access inside a company — do we need role differences like admins vs adjusters?
+
+Stakeholder: Yes, roles matter. Not everyone should see everything. Some folks just need read-only claim context, while others need full edit rights. That's pretty standard, but it's important we map roles to the business functions correctly.
+
+Interviewer: On security, besides separation, any concerns about attacks or misuse?
+
+Stakeholder: We have to assume people will try to break or overload things, whether maliciously or by accident. Denial of service or automated scraping of parts data would be bad. So we need protections — both because of business continuity and to keep our partners' trust.
+
+Interviewer: Who owns the security posture for this? The product team, or a central team?
+
+Stakeholder: Security is a shared responsibility, but the product needs to meet corporate security expectations from day one. We can't launch and then bolt on controls later; that tends to fail. Ops and InfoSec will have to be in the loop.
+
+Interviewer: You mentioned rating repair facilities earlier—can you tell me how that should work?
+
+Stakeholder: Adjusters should be able to flag when a shop doesn't recommend recycled parts, or when they overcharge, and conversely note when a shop did right by the insurer. Over time, that becomes a reputational signal. It shouldn't be punitive in a vacuum, but we need feedback so preferred partner lists reflect real behavior. Oh, and sometimes folks will rant in the notes — we need to capture useful info without encouraging low-quality comments.
+
+Interviewer: Will those ratings be visible across different insurers, or kept private?
+
+Stakeholder: Hmm, that gets tricky. We can show aggregated, anonymized performance indicators broadly, but individual notes tied to a claim might be restricted to the insurer or to certain roles. We don't want raw, inflammatory comments exported everywhere.
+
+Interviewer: For field use — do adjusters need offline access or something to work from remote spots?
+
+Stakeholder: That's something we've heard about. Field staff sometimes lose signal at body shops or salvage yards. It would be great to have a resilient experience — at least the basic lookups and recent cache working offline. That said, full offline claim editing is complicated and not the highest priority right now. Also, small tangent — our sustainability group would love it if fewer paper printouts happen, but that's more of an outcome than a hard requirement.
+
+Interviewer: Okay. Anything else I should note that I haven't asked about?
+
+Stakeholder: Just that deployment and support have to be practical. If we build something fancy that requires a special ops team, it'll never fly. Also, monitoring and audit trails — we need to be able to show who changed what, both for internal reviews and for compliance. And, oh — we might want periodic usability checks after launch, because what feels easy today can degrade if we pile on features.
+
+Interviewer: Thanks, that's helpful. One last question: you mentioned Choice Parts earlier — are there any constraints around how fresh the parts data needs to be?
+
+Stakeholder: Freshness matters. If a part is listed but gone in a few hours, that creates bad experiences. So ideally it's near-real-time or updated frequently enough that adjusters trust availability. The exact sync cadence we can decide with the Choice Parts team, but it needs to feel current.
+
+Interviewer: Great. That's all from me for now. Thanks for your time.
+
+Stakeholder: No problem — happy to help. If you want, I can pull together a couple of real-world examples from adjusters complaining about slow searches; those anecdotes helped convince leadership on the speed targets.
+
+---
+Selected Requirements:
+1. [NICE.csv line 206] [quality, operability] 'The product shall interface with the Choice Parts System. This provides the feed of recycled parts data.'
+2. [NICE.csv line 208] [quality, legal] 'The product shall adhere to the corporate Architecture guidelines'
+3. [NICE.csv line 209] [quality, legal, look_and_feel] 'The product shall comply with corporate User Interface Guidelines'
+4. [NICE.csv line 212] [quality, usability] 'The product shall be easy to use by Adjusters and Collision Estimators. 95% of Adjusters and Collision Estimators shall find the product easy to use.'
+5. [NICE.csv line 217] [quality, performance] 'The search for recycled parts shall take no longer than 15 seconds. The search results shall be returned in under 15 seconds.'
+6. [NICE.csv line 218] [quality, performance] 'The search for the preferred repair facility shall take no longer than 8 seconds. The preferred repair facility is returned within 8 seconds'
+7. [NICE.csv line 222] [quality, availability, fault_tolerance] 'The product shall achieve a 98% uptime. The product shall not fail more than 2% of the available online time.'
+8. [NICE.csv line 223] [quality, scalability] 'The product shall be able to handle up to 1500 simultaneous users. The system shall perform with 1500 users as a time.'
+9. [NICE.csv line 235] [quality, security] 'One insurance company shall not be able to view another insurance companys claim data.'
+10. [NICE.csv line 237] [quality, security] 'The system shall prevent malicious attacks including denial of service.'

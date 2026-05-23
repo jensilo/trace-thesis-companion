@@ -1,0 +1,282 @@
+{
+  "transcript_file": "outputs/corpus-20260226_162106/transcript_8_re_experienced_stakeholder_technical_senior_20260226_164201.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_183050",
+  "requirements": [
+    {
+      "requirement": "The system shall achieve 99.5% uptime",
+      "source_citation": "ninety-nine and a half percent uptime",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the target uptime percentage, which is a clear and measurable non-functional requirement.",
+      "follow_up_question": "What are the acceptable downtime windows for maintenance and updates?"
+    },
+    {
+      "requirement": "The system shall maintain browsing, search, account management, and purchase functionality during streaming outages",
+      "source_citation": "Browsing, search, account management, and purchases absolutely must remain available.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states that these functionalities must remain available even if streaming fails.",
+      "follow_up_question": "What is the maximum acceptable latency for these functionalities during a streaming outage?"
+    },
+    {
+      "requirement": "The system shall support chaos testing, including simulating streaming server outages, CDN failures, and payment gateway latency spikes",
+      "source_citation": "simulate streaming server outages, CDN edge failures, and payment gateway latency spikes",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for chaos testing to validate resilience.",
+      "follow_up_question": "What are the acceptable failure rates during chaos testing?"
+    },
+    {
+      "requirement": "The system shall respond to routine UI interactions within 5 seconds for the 95th percentile",
+      "source_citation": "under a few seconds... five seconds as the upper bound for regular UI responses",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the target response time for routine UI interactions.",
+      "follow_up_question": "What are the acceptable response times for non-routine UI interactions?"
+    },
+    {
+      "requirement": "The system shall complete the full purchase flow, including fraud checks, within 15 seconds",
+      "source_citation": "up to around fifteen seconds is tolerable",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the target time for the full purchase flow.",
+      "follow_up_question": "What are the acceptable response times for individual steps within the purchase flow?"
+    },
+    {
+      "requirement": "The system shall initiate streaming playback within 10 seconds on typical connections",
+      "source_citation": "under ten seconds to first playback on typical connections",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the target time for streaming startup.",
+      "follow_up_question": "What are the acceptable startup times for poor network connections?"
+    },
+    {
+      "requirement": "The system shall balance performance and cost considerations",
+      "source_citation": "performance matters too — users shouldn't feel the site is sluggish — but we have to balance that against cost",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need to balance performance and cost, but does not provide specific targets or metrics.",
+      "follow_up_question": "What are the acceptable cost thresholds for achieving the desired performance levels?"
+    },
+    {
+      "requirement": "The system shall benchmark decryption performance to avoid bottlenecks in high-throughput workflows",
+      "source_citation": "we should bench the decryption path so it doesn't become a bottleneck in high-throughput workflows",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need to benchmark decryption performance, but does not provide specific targets or metrics.",
+      "follow_up_question": "What are the acceptable decryption performance thresholds?"
+    },
+    {
+      "requirement": "The system shall store encrypted card data server-side with strict access controls",
+      "source_citation": "keep card info on our side but in a vaulted, encrypted form... with strict access controls",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need to store encrypted card data server-side with strict access controls.",
+      "follow_up_question": "What specific encryption standards and access control mechanisms will be used?"
+    },
+    {
+      "requirement": "The system shall limit access to raw payment data to a single-digit number of administrators",
+      "source_citation": "under ten people globally",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the target number of administrators with access to raw payment data.",
+      "follow_up_question": "What specific roles and responsibilities will these administrators have?"
+    },
+    {
+      "requirement": "The system shall use HSM-backed keys or cloud KMS with HSM backing for encryption",
+      "source_citation": "I would prefer HSM-backed keys wherever possible or cloud KMS with HSM backing",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the preferred key management solutions.",
+      "follow_up_question": "What specific HSM-backed keys or cloud KMS solutions will be used?"
+    },
+    {
+      "requirement": "The system shall comply with PCI compliance and data protection laws",
+      "source_citation": "We must at least be prepared for PCI compliance given we handle card payments, and we need to follow applicable data protection laws",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need to comply with PCI and data protection laws, but does not provide specific details.",
+      "follow_up_question": "What specific PCI compliance level and data protection laws will the system need to comply with?"
+    },
+    {
+      "requirement": "The system shall retain audit logs for several months with tamper-evident storage and strict access controls",
+      "source_citation": "We need to keep audit logs long enough for fraud investigation and compliance inquiries. That means several months at a minimum... logs should be tamper-evident and stored separately from production so an attacker can't wipe them easily",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need to retain audit logs for several months with tamper-evident storage and strict access controls.",
+      "follow_up_question": "What specific tamper-evident storage and access control mechanisms will be used?"
+    },
+    {
+      "requirement": "The system shall achieve a 90% success rate for novice users completing core tasks via moderated usability tests",
+      "source_citation": "about ninety percent of novice users on typical tasks like searching, buying a movie, and starting playback",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the target success rate for novice users completing core tasks.",
+      "follow_up_question": "What specific core tasks will be included in the usability tests?"
+    },
+    {
+      "requirement": "The system shall be designed for 100,000 registered users with peak concurrency as a small single-digit percent of that",
+      "source_citation": "size for one hundred thousand registered customers as a realistic initial target and then plan for expected concurrency as a percent of that for peak sizing",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the target number of registered users and peak concurrency.",
+      "follow_up_question": "What specific peak concurrency percentage will be used for planning?"
+    },
+    {
+      "requirement": "The system shall handle burst capacity for release-day spikes several times normal peak",
+      "source_citation": "for release-day spikes we should be ready for higher bursts, maybe several times normal peak",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need to handle burst capacity for release-day spikes, but does not provide specific targets or metrics.",
+      "follow_up_question": "What specific burst capacity targets will be used for planning?"
+    },
+    {
+      "requirement": "The system shall use a hybrid approach for streaming caching, with popular content cached and on-demand for others",
+      "source_citation": "only a working set of content would be cached everywhere... a hybrid approach makes sense",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for a hybrid approach to streaming caching, but does not provide specific details.",
+      "follow_up_question": "What specific caching strategies and mechanisms will be used?"
+    },
+    {
+      "requirement": "The system shall not require rewrites every year",
+      "source_citation": "a platform that people can actually rely on and one we can evolve without rewriting it every year",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for the system to be evolvable without rewrites every year, but does not provide specific targets or metrics.",
+      "follow_up_question": "What specific maintainability and evolvability targets will be used for planning?"
+    },
+    {
+      "requirement": "The system shall monitor and control multi-region and HSM costs to avoid ballooning expenses",
+      "source_citation": "keep an eye on cost estimates for multi-region and HSM stuff; it's easy for that to balloon",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need to monitor and control costs, but does not provide specific targets or metrics.",
+      "follow_up_question": "What specific cost control mechanisms and targets will be used?"
+    },
+    {
+      "requirement": "The system shall protect against credential stuffing, payment fraud, and DDoS attacks",
+      "source_citation": "I'm mainly worried about credential stuffing and payment fraud, and broad volumetric attacks like DDoS that could take the site down",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need to protect against specific types of attacks.",
+      "follow_up_question": "What specific protection mechanisms will be used for each type of attack?"
+    },
+    {
+      "requirement": "The system shall use WAF, rate-limiting, bot detection, and fraud scoring for abuse protection",
+      "source_citation": "layered defenses: WAF, rate-limiting, bot detection, and fraud scoring for purchases",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need to use specific abuse protection mechanisms.",
+      "follow_up_question": "What specific WAF, rate-limiting, bot detection, and fraud scoring solutions will be used?"
+    },
+    {
+      "requirement": "The system shall alert administrators immediately for high-severity incidents via PagerDuty or similar incident channels",
+      "source_citation": "we need push into pager/incident channels with context... we must alert immediately on high-severity incidents",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for immediate alerts for high-severity incidents via specific channels.",
+      "follow_up_question": "What specific incident severity levels and alerting mechanisms will be used?"
+    },
+    {
+      "requirement": "The system shall measure client-perceived metrics, server TTFB, and synthetic transactions for performance acceptance",
+      "source_citation": "Measure from the user's perspective — client-perceived metrics are most meaningful. But for root cause we also need server TTFB and edge metrics. Also synthetic transactions from different regions will help validate cross-region performance",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need to measure specific performance metrics.",
+      "follow_up_question": "What specific client-perceived metrics and synthetic transactions will be used?"
+    },
+    {
+      "requirement": "The system shall meet p95 performance targets for routine UI responses and card purchases",
+      "source_citation": "Let's require p95 to meet those targets during normal load tests",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need to meet p95 performance targets.",
+      "follow_up_question": "What specific p95 performance targets will be used for routine UI responses and card purchases?"
+    },
+    {
+      "requirement": "The system shall validate usability via moderated sessions with novice users and real-user analytics post-launch",
+      "source_citation": "We'll run moderated usability sessions with a representative sample of novice users... Complement that with analytics on real users post-launch and iterate",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need to validate usability via specific methods.",
+      "follow_up_question": "What specific usability metrics and analytics will be used?"
+    }
+  ]
+}

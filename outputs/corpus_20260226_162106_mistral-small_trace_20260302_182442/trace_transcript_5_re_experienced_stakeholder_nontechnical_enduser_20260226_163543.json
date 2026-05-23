@@ -1,0 +1,194 @@
+{
+  "transcript_file": "outputs/corpus-20260226_162106/transcript_5_re_experienced_stakeholder_nontechnical_enduser_20260226_163543.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_182444",
+  "requirements": [
+    {
+      "requirement": "The system should complete parts searches within 15 seconds on a tablet using mobile data.",
+      "source_citation": "For parts search, I’d expect results back within 15 seconds on my tablet.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states a performance requirement for parts search on a tablet using mobile data. The requirement is clear and specific.",
+      "follow_up_question": "Are there any specific conditions under which this performance requirement should be relaxed or tightened?"
+    },
+    {
+      "requirement": "The system should complete shop searches within 8 seconds on a tablet using mobile data.",
+      "source_citation": "For finding preferred repair shops, I’d be unhappy if it was slower than about 8 seconds.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states a performance requirement for shop searches on a tablet using mobile data. The requirement is clear and specific.",
+      "follow_up_question": "Are there any specific conditions under which this performance requirement should be relaxed or tightened?"
+    },
+    {
+      "requirement": "The system should apply performance targets for both mobile data and Wi-Fi.",
+      "source_citation": "I expect the 8 and 15 seconds mostly on mobile data too.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions that performance targets should apply to both mobile data and Wi-Fi, but does not specify exact targets for Wi-Fi.",
+      "follow_up_question": "What are the specific performance targets for Wi-Fi?"
+    },
+    {
+      "requirement": "The system should show a clear progress indicator and allow multitasking if searches are slow.",
+      "source_citation": "Show a clear progress indicator and let me continue other tasks.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states a usability requirement for progress indicators and multitasking during slow searches.",
+      "follow_up_question": "Are there any specific tasks that should be allowed during slow searches?"
+    },
+    {
+      "requirement": "The system's UI should align with corporate UI standards for familiarity.",
+      "source_citation": "If the layout, fonts, and buttons feel familiar, training is easier.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states a usability requirement for UI consistency with corporate standards.",
+      "follow_up_question": "Can you provide specific guidelines or examples of corporate UI standards?"
+    },
+    {
+      "requirement": "The system should allow text sizes to be adjustable for readability.",
+      "source_citation": "Make sure text sizes are adjustable so older colleagues can read on a tablet.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states a usability requirement for adjustable text sizes.",
+      "follow_up_question": "Are there any specific text size ranges or preferences that should be supported?"
+    },
+    {
+      "requirement": "The system should have discoverable help on about 90% of screens.",
+      "source_citation": "Make it so help is discoverable from about 90% of the screens.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states a usability requirement for discoverable help on most screens.",
+      "follow_up_question": "What specific types of help (e.g., tooltips, videos, guided walkthroughs) should be provided?"
+    },
+    {
+      "requirement": "The system should provide two days of hands-on training per cohort.",
+      "source_citation": "Two days of practical onsite training should be enough for my team.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states a usability requirement for training duration and format.",
+      "follow_up_question": "Are there any specific training materials or methods that should be used?"
+    },
+    {
+      "requirement": "The system should have strict access controls to prevent viewing other companies' claims.",
+      "source_citation": "I can’t view other companies’ data. Single sign-on that maps me to my company is fine, as long as it’s locked down.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states a security requirement for strict access controls and data separation.",
+      "follow_up_question": "Are there any specific access control mechanisms or protocols that should be implemented?"
+    },
+    {
+      "requirement": "The system should track who, what, and when for parts selection, ratings, and edits in audit logs.",
+      "source_citation": "The logs should show who did what and when.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states a security requirement for audit logs.",
+      "follow_up_question": "Are there any specific details or formats that should be included in the audit logs?"
+    },
+    {
+      "requirement": "The system should be protected against DoS attacks and unauthorized access on public networks.",
+      "source_citation": "I don’t want our system knocked offline by a malicious attack.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions concerns about DoS attacks and unauthorized access but does not specify exact security measures.",
+      "follow_up_question": "What specific security measures or protocols should be implemented to protect against these threats?"
+    },
+    {
+      "requirement": "The system should have 98% availability.",
+      "source_citation": "We’d expect it to be almost always available — say around ninety-eight percent of the time.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states an availability requirement for the system.",
+      "follow_up_question": "Are there any specific uptime or downtime schedules that should be considered?"
+    },
+    {
+      "requirement": "The system should provide advance notice for maintenance downtime.",
+      "source_citation": "If it’s going to be down for maintenance, tell us in advance.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states an availability requirement for advance notice of maintenance.",
+      "follow_up_question": "What specific notice period or communication methods should be used?"
+    },
+    {
+      "requirement": "The system should allow recycled parts usage to be traceable with supplier details and reasons.",
+      "source_citation": "Every time I pick a recycled part, it should be tagged to the estimate.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states a maintainability requirement for traceability of recycled parts usage.",
+      "follow_up_question": "Are there any specific details or formats that should be included in the traceability records?"
+    },
+    {
+      "requirement": "The system should work automatically with geolocation (with permission) for shop searches.",
+      "source_citation": "Automatic geolocation is handy — but it should ask for permission.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states a scalability requirement for automatic geolocation with permission.",
+      "follow_up_question": "Are there any specific geolocation methods or permissions that should be used?"
+    },
+    {
+      "requirement": "The system should show cached results with timestamps if the Choice Parts feed is down.",
+      "source_citation": "Ideally show the most recent cached inventory with a clear note that it’s cached.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "other",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states a requirement for showing cached results with timestamps when the Choice Parts feed is down.",
+      "follow_up_question": "Are there any specific details or formats that should be included in the cached results?"
+    },
+    {
+      "requirement": "The system should provide monthly summaries (PDF/CSV) on recycled parts usage.",
+      "source_citation": "Monthly summaries showing how often shops used recycled parts.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "other",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states a requirement for monthly summaries on recycled parts usage.",
+      "follow_up_question": "Are there any specific details or formats that should be included in the monthly summaries?"
+    }
+  ]
+}

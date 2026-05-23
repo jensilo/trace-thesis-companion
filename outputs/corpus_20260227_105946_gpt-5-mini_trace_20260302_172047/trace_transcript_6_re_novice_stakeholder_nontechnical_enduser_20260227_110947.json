@@ -1,0 +1,216 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_6_re_novice_stakeholder_nontechnical_enduser_20260227_110947.txt",
+  "model": "openai/gpt-5-mini",
+  "timestamp": "20260302_172548",
+  "requirements": [
+    {
+      "requirement": "The user interface must be easy to use and learn such that occasional users can complete a room reservation without training.",
+      "source_citation": "the biggest thing is that it should just be easy. Right now it feels like you need to be trained to do something that should be simple, and people get stuck and call reception.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly states a need for overall ease-of-use and learnability, particularly for occasional users who currently require training or support. Missing specifics: measurable learnability metrics (task completion rates, error rates, time-to-complete for first-time users) and target user groups.",
+      "follow_up_question": "For occasional users, what measurable targets would satisfy you (e.g., percentage of first-time users who can complete a reservation unassisted within X minutes)?"
+    },
+    {
+      "requirement": "Basic user interactions (e.g., reserving a room, checking availability) must appear instantaneous to the user; most quick tasks should complete in under 10 seconds and very basic tasks under 5 seconds.",
+      "source_citation": "If I'm clicking to reserve, I don't want to think about it. Maybe, um, five minutes is a reasonable maximum for someone to figure it out if they're new? But small actions should be almost immediate... most quick tasks should finish in just a few seconds... under ten seconds for most things feels okay, and under five is ideal for the really basic stuff.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder gives explicit response-time targets and describes impact on user flow. Gaps: backend SLOs vs perceived UI responsiveness, network variability, what constitutes 'basic' vs 'most' tasks.",
+      "follow_up_question": "Please confirm which specific actions you consider 'basic' (e.g., single-click reserve, search filtering) and whether the stated targets (under 5s for basics, under 10s for most) are acceptable as formal SLOs."
+    },
+    {
+      "requirement": "Search results and availability information must be accurate and reliable to prevent double-booking and conflicts.",
+      "source_citation": "sometimes the results are confusing, or they show rooms that are already booked... So people click around, get unsure if the booking went through, and then they either double-book or call someone.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "reliability",
+      "confidence": 5,
+      "rationale": "Stakeholder reports misleading availability causing double-booking and operational chaos. Missing specifics: acceptable error rates, concurrency controls, eventual vs strong consistency, reconciliation behavior.",
+      "follow_up_question": "What is an acceptable maximum rate of incorrect availability in production (e.g., less than 1% of searches showing occupied rooms) and do you require strict locking/transactional guarantees to prevent double-booking?"
+    },
+    {
+      "requirement": "The system must provide clear, unambiguous confirmations and feedback so users are confident a booking has succeeded and know next steps.",
+      "source_citation": "Also a lot of people want clear confirmation. If there's no good feedback, they don't trust it.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Explicit need for trustworthy confirmations. Gaps: preferred channels (UI, email, calendar invite), content/format of confirmation, persistence/visibility of confirmations.",
+      "follow_up_question": "What confirmation channels and message contents do you expect (e.g., immediate UI banner + calendar invite + email) and what must each include to be considered 'clear'?"
+    },
+    {
+      "requirement": "The system must reliably send invites and reminders to internal and external email systems and ensure messages are well-formed and delivered (minimizing bounces or malformed content).",
+      "source_citation": "We need invites and reminders to go out. And not just within our company email—clients use different systems and sometimes the invites never arrive or look broken, so that's a pain. It should talk to whatever email setup we use and actually send messages reliably.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Stakeholder emphasizes interoperability with diverse email systems and reliable delivery. Missing specifics: delivery success rate targets, supported SMTP/Exchange/OAuth setups, DKIM/SPF/DMARC requirements, retry/backoff policies.",
+      "follow_up_question": "Which mail server types and authentication methods must be supported (e.g., SMTP, Exchange/EWS, OAuth), and what delivery success rate or max acceptable bounce rate do you require?"
+    },
+    {
+      "requirement": "The system must interoperate correctly with the organization's varied internal mail servers and external clients so invites and reminders leave the system and are delivered properly.",
+      "source_citation": "it needs to interface with whatever email servers we have. Our IT uses a couple of different setups in different offices, and clients might be on something else, so the invites and reminders need to leave the system and get delivered properly.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 4,
+      "rationale": "Reinforces need for email server compatibility across offices. Gaps: specific configurations, authentication/relay constraints, monitoring of email deliverability.",
+      "follow_up_question": "Can you provide examples of the different internal email setups (e.g., Exchange on-prem, Office365, other SMTP) we must integrate with and whether IT can provide test accounts?"
+    },
+    {
+      "requirement": "The system must maintain very high availability; target uptime should be approximately 99.9% or higher (near continuous availability) to avoid disrupting meetings.",
+      "source_citation": "it has to be up almost all the time... I guess people talk about targets like nearly one hundred percent—maybe something like ninety-nine point nine something. ... We can't have meetings fail because the booking site is down.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly requests near-continuous uptime and suggests 99.9x% as a target. Gaps: exact SLA value (99.9 vs 99.99), acceptable scheduled maintenance windows, recovery time objectives, geographic redundancy.",
+      "follow_up_question": "Do you require a formal SLA and, if so, should the target be 99.9%, 99.99%, or another value, and what are acceptable maintenance windows?"
+    },
+    {
+      "requirement": "Error messages must be actionable and user-friendly: they should explain what went wrong and provide clear next steps or alternatives without forcing users off the current page.",
+      "source_citation": "Error messages should say what went wrong and what to do next. Not just codes or 'operation failed'... if a booking fails because of a conflict, it should explain that and suggest alternatives or let you pick a different time without leaving the page.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Stakeholder requests helpful, in-place error handling to prevent confusion and extra support calls. Gaps: localization of messages, severity categorization, logging/telemetry for support teams.",
+      "follow_up_question": "Do you want localized error messages, and should the system surface suggested alternative times/rooms automatically when conflicts occur?"
+    },
+    {
+      "requirement": "The system must support accessibility features in accordance with ADA/WCAG standards, including screen-reader compatibility, keyboard-only navigation, high-contrast themes, and visible focus indicators.",
+      "source_citation": "accessibility is important—some of our colleagues use screen readers or need keyboard navigation... Screen readers, yes, but also high-contrast themes, keyboard-only navigation, clear focus outlines... follow whatever the ADA requires, at least meet those standards so people can actually use it without workarounds.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 5,
+      "rationale": "Explicit requirement to meet ADA (and implied WCAG) accessibility standards. Gaps: required conformance level (e.g., WCAG 2.1 AA), testing and compliance evidence.",
+      "follow_up_question": "Which accessibility conformance level do you require (e.g., WCAG 2.1 AA), and do you need documented accessibility testing/audit reports?"
+    },
+    {
+      "requirement": "The interface must support multiple languages and locale-specific date/time formats so that at least ~90% of users in each country perceive formatting as correct.",
+      "source_citation": "there are people from different countries here, so some want the interface in their language, and the calendar should show dates and times the way they're used to... If I had to pick a target, maybe around ninety percent of people in each country should find the formatting correct.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 4,
+      "rationale": "Stakeholder asks for localization and gives a rough target (90% perceived correctness). Gaps: which languages/locales, translation quality standards, dynamic locale detection vs user selection.",
+      "follow_up_question": "Which languages/locales must be supported at launch, and do you require human-reviewed translations or is machine translation acceptable with review?"
+    },
+    {
+      "requirement": "Translations must be high quality (not poor machine translations); calendar locale specifics such as week-start day must be correct for each locale.",
+      "source_citation": "translations should be good and not machine gibberish. People notice when things are badly translated. Also the calendar should show the right week starting day...",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 4,
+      "rationale": "Stakeholder stresses translation quality and locale-specific calendar conventions. Gaps: who provides translations, review process, acceptance criteria for translation quality.",
+      "follow_up_question": "Do you require professional/human-reviewed translations for each language, and which locales have non-standard week-start rules we must support?"
+    },
+    {
+      "requirement": "The system must display times and time zones clearly for cross-time-zone meetings (e.g., show both organizer and local participant times) to avoid joining at incorrect times.",
+      "source_citation": "we have remote folks in other countries, so the system should show both local and organizer times in a way that doesn't confuse people.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Stakeholder requests explicit dual time displays for distributed teams. Gaps: exact presentation (inline dual times, hover details), handling of daylight saving changes, timezone selection defaults.",
+      "follow_up_question": "How should dual times be presented (e.g., '09:00 PST / 17:00 CET') and do you require explicit timezone selection for events?"
+    },
+    {
+      "requirement": "The UI must use clear, non-ambiguous labels and terminology to reduce user confusion (e.g., use 'Cancel booking' rather than 'Release').",
+      "source_citation": "the UI labels should be clear. I once had to show someone how to cancel a booking and the button said 'release' and they didn't get it.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Stakeholder gives an example where wording caused confusion. Gaps: style guide, terminology list, internationalization impacts on labels.",
+      "follow_up_question": "Do you have an existing terminology/style guide we should follow, or shall we propose a set of standard labels for review?"
+    },
+    {
+      "requirement": "The booking flow must integrate equipment requests (projector, dongle, conference phone) into the reservation process rather than requiring a separate ticketing workflow.",
+      "source_citation": "Ideally part of the booking, so you can ask for a projector or dial-in setup when you make the reservation. It should feel like one quick task rather than a separate ticket.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "Stakeholder prefers integrated workflow for equipment to reduce effort. Gaps: inventory management, reservation constraints, fulfillment SLAs, whether equipment availability should be shown in real time.",
+      "follow_up_question": "Should equipment availability be shown and reserved in real-time during booking, and what fulfillment SLA do you expect for equipment delivery/setup?"
+    },
+    {
+      "requirement": "The system must prevent or properly handle concurrent booking conflicts so that multiple users are not all confirmed for the same slot.",
+      "source_citation": "we had a very long meeting because five of us showed up at different times thinking the other had booked; the system confirmed for all of them and then... chaos.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 5,
+      "rationale": "Anecdote shows current system allows conflicting confirmations. Gaps: required concurrency model (optimistic vs pessimistic locking), behavior on race (one wins + notifications), reconciliation procedures.",
+      "follow_up_question": "Do you require transactional/locking guarantees to prevent concurrent confirms, and if a conflict occurs, should the system automatically reassign or notify affected users?"
+    },
+    {
+      "requirement": "The application must render and function correctly across a minimum cross-browser test suite (approximately 8 browsers/versions) with an expected rendering pass rate of around 80% in tests.",
+      "source_citation": "I think a minimum suite would be good—like at least eight different browsers or versions should be checked... maybe around eighty percent should display properly in tests.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 4,
+      "rationale": "Stakeholder suggests testing breadth and a rough pass-rate expectation. Gaps: exact browser/version list, prioritization of modern vs legacy, which failures are acceptable.",
+      "follow_up_question": "Please provide the specific browsers and versions to include in the minimum suite and confirm whether 80% pass is acceptable for launch or a target to improve from."
+    },
+    {
+      "requirement": "The system must support mobile access (mobile web or app) so users can book and check rooms from mobile devices.",
+      "source_citation": "one last tiny thing: mobile access would be handy.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 3,
+      "rationale": "Stakeholder briefly requests mobile access but did not specify whether full functionality or limited. Gaps: mobile web vs native app, supported platforms, responsive design requirements.",
+      "follow_up_question": "Do you require a responsive mobile web interface or native mobile apps (iOS/Android), and which booking features must be available on mobile?"
+    },
+    {
+      "requirement": "The system should be friendly and approachable in tone and design so that it does not feel like an admin tool and is welcoming to new/occasional users.",
+      "source_citation": "it shouldn't feel like an admin tool—make it friendly. And, um, remember that some people will only ever use it once in a while, so the experience for newcomers matters a lot.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 4,
+      "rationale": "Stakeholder emphasizes tone and friendliness to improve learnability. Gaps: concrete UI/UX guidelines, metrics for perceived friendliness.",
+      "follow_up_question": "Are there existing UX examples or brand guidelines we should follow to define the desired 'friendly' tone and visual style?"
+    },
+    {
+      "requirement": "Error and failure telemetry should allow support to diagnose mail delivery, booking conflicts, and availability issues to reduce user calls (operational/diagnostic capability).",
+      "source_citation": "If they bounce or get malformed, meetings don't happen as planned... people click around, get unsure if the booking went through... they either double-book or call someone.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 3,
+      "rationale": "User frustration implies need for operational diagnostics so support can reduce manual interventions. Gaps: specific logging, alerting, dashboard needs, data retention.",
+      "follow_up_question": "What level of operational telemetry and alerting do you expect for issues like bounced invites, booking conflicts, and availability mismatches?"
+    }
+  ]
+}

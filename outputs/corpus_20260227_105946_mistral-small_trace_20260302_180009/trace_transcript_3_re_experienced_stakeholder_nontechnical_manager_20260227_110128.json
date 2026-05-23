@@ -1,0 +1,117 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_3_re_experienced_stakeholder_nontechnical_manager_20260227_110128.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_180011",
+  "requirements": [
+    {
+      "requirement": "The system must respond to small operations (e.g., opening a student profile or updating a status) within 5 seconds.",
+      "source_citation": "It needs to feel snappy. For small operations—opening a student profile or updating a status—I hate sitting and watching a spinner. If it takes longer than a few seconds I notice.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions a preference for responsiveness in small operations, citing a few seconds as the threshold for noticeable delay. This indicates a clear performance expectation.",
+      "follow_up_question": "What specific small operations should be prioritized for sub-5-second response times?"
+    },
+    {
+      "requirement": "The system must generate a full schedule within 30 seconds to prevent staff from reverting to manual workarounds.",
+      "source_citation": "For generating a full schedule—I'm comfortable if that's done within half a minute—longer than that and people wander off and start doing other things, which leads to mismatches.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder provides a specific timeframe for schedule generation, indicating a clear performance target to avoid user frustration and manual workarounds.",
+      "follow_up_question": "What are the peak usage times for schedule generation, and how should the system handle concurrent schedule generation requests?"
+    },
+    {
+      "requirement": "The system must be available during business hours (8 AM to 6 PM on weekdays) to support scheduling activities.",
+      "source_citation": "It has to be available when our office is open; those are the times people are making assignments. We can't have it go down during business hours—it's a disruption.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the importance of system availability during business hours, indicating a critical requirement for uptime.",
+      "follow_up_question": "What are the specific business hours for each program, and are there any variations or exceptions?"
+    },
+    {
+      "requirement": "The system must achieve 95% uptime over the term to ensure reliability and user trust.",
+      "source_citation": "We need it to be solid. If I had to set a target, I'd be uncomfortable with anything less than the mid-nineties percentage of availability over the term.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder provides a specific uptime target, indicating a clear expectation for system reliability.",
+      "follow_up_question": "What are the consequences of not meeting the 95% uptime target, and how should downtime be communicated to users?"
+    },
+    {
+      "requirement": "The system must implement role-based access control to restrict access to student records based on user roles.",
+      "source_citation": "Program administrators need to see the student records to make placement decisions, but site coordinators shouldn't see personal details beyond what they need to contact the student and confirm qualifications.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for role-based access control to protect student privacy and comply with university policies.",
+      "follow_up_question": "What specific roles and access levels should be defined for the system?"
+    },
+    {
+      "requirement": "The system must comply with the university's information policy regarding the protection of health information and student records.",
+      "source_citation": "We must follow the university's info policy—so protections around health info and student records apply. It's not optional.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for compliance with the university's information policy, indicating a critical legal and security requirement.",
+      "follow_up_question": "What specific university policies and regulations must the system comply with?"
+    },
+    {
+      "requirement": "The system must handle peak loads, such as roster generation and assignment runs at term starts and mornings before rotations, without significant performance degradation.",
+      "source_citation": "Term starts are heavy—roster generation and assignment runs. People tend to do big batch operations then, and that's when performance matters.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions peak usage times and the importance of performance during these periods, indicating a scalability requirement.",
+      "follow_up_question": "What specific performance metrics should be maintained during peak usage times?"
+    },
+    {
+      "requirement": "The system must provide audit trails for overrides of scheduling conflicts, including who overridden and why.",
+      "source_citation": "For scheduling conflicts, maybe an override with an audit trail could be okay, but I want to see who overrides and why.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "auditability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for audit trails to track overrides, indicating a requirement for auditability and transparency.",
+      "follow_up_question": "What specific information should be included in the audit trails for overrides?"
+    },
+    {
+      "requirement": "The system must provide automated notifications and formal communications for schedule changes to students, instructors, and site administrators.",
+      "source_citation": "Automatic notifications are crucial. If a schedule changes, an email or an in-app alert should go out. For site admins, we need something formal—like an email with the roster—so they can plan staffing.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "notifications",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for automated notifications and formal communications, indicating a requirement for effective communication.",
+      "follow_up_question": "What specific types of notifications and communications should be supported by the system?"
+    },
+    {
+      "requirement": "The system must be intuitive and require minimal training (e.g., a one-day workshop) for program administrators to use effectively.",
+      "source_citation": "We really can't ask for a week of classes for every new admin. Ideally they'd pick it up quickly—like, a day of training and then they can use it.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for minimal training and intuitive design, indicating a usability requirement.",
+      "follow_up_question": "What specific usability features and design principles should be prioritized to ensure minimal training requirements?"
+    }
+  ]
+}

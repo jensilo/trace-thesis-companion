@@ -1,0 +1,172 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_5_re_experienced_stakeholder_nontechnical_enduser_20260227_110902.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_175159",
+  "requirements": [
+    {
+      "requirement": "The parts search should feel instant, ideally under 15 seconds.",
+      "source_citation": "It just drags. I mean, I think it should feel instant, but right now I sit there clicking my pen, you know? It breaks my flow. ... Hmm, I suppose too long is anything where you can make a sandwich. Honestly, though, if someone asked for a number, I'd say... under a quarter of a minute? Maybe around fifteen seconds feels okay to me.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for the parts search to feel instant and provides a specific time frame of under 15 seconds. This is a clear performance requirement.",
+      "follow_up_question": "What specific actions or processes should be optimized to achieve this performance target?"
+    },
+    {
+      "requirement": "Facility lookups should be snappier, ideally under 8-10 seconds.",
+      "source_citation": "That one should be snappier than parts, I think. When I'm on the phone with a customer I can't be waiting. I'd say it should be back in a few seconds — like under ten seconds. Eight seconds would be nice, actually.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies that facility lookups should be faster than parts searches and provides a target time of under 8-10 seconds.",
+      "follow_up_question": "What are the key factors that influence the speed of facility lookups?"
+    },
+    {
+      "requirement": "Audit reports should return in under 10 seconds.",
+      "source_citation": "Getting that audit back should be fast — like, under maybe ten seconds? Quick enough that I don't have to switch tasks.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states that audit reports should return in under 10 seconds to avoid task switching.",
+      "follow_up_question": "What specific data or processes are involved in generating audit reports that need to be optimized?"
+    },
+    {
+      "requirement": "Save actions should confirm in under 5 seconds.",
+      "source_citation": "Hmm, sure. If I don't see confirmation within, say, five seconds, I start poking around and double-saving. So, under five seconds would keep me calm.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies that save actions should confirm within 5 seconds to prevent user frustration and double-saving.",
+      "follow_up_question": "What are the key factors that influence the confirmation time for save actions?"
+    },
+    {
+      "requirement": "Help should be accessible in approximately 90% of screens.",
+      "source_citation": "What I want is something right there — a little help button or tips where I am. Not for everything, but in most places you'd need it. If I had to guess, I'd say... the vast majority. Maybe nine out of ten screens? Ninety percent sounds about right in my head.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for help to be available in most screens, quantifying it as approximately 90%.",
+      "follow_up_question": "What specific types of help (e.g., tooltips, inline guidance, videos) are preferred for different screens?"
+    },
+    {
+      "requirement": "Two days of hands-on, onsite training should be sufficient for approximately 95% of users.",
+      "source_citation": "Well, we're not developers. We learn by doing. I don't want a week-long class. If I had to guess, two days of hands-on, onsite training would get most of us comfortable. ... I think the majority would be good within those two days. There will always be someone who struggles, of course, but I'd expect most adjusters and estimators to be confident after that period. Maybe, I don't know, ninety-five percent?",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 3,
+      "rationale": "The stakeholder suggests that two days of training would be sufficient for most users, but the confidence level is slightly lower due to the vague quantification of 95%.",
+      "follow_up_question": "What specific skills or tasks should be covered in the two days of training to ensure 95% of users are comfortable?"
+    },
+    {
+      "requirement": "The system should have a target uptime of approximately 98%.",
+      "source_citation": "Ugh, downtime is the worst. It's not constant, but it happens — maybe a couple times a month? I mean, I don't want this happening during business hours. Ideally it should be up pretty much all the time we're working. If I had to say — and I'm guessing — it should be available almost always. Like, ninety-something percent of the time. Ninety-eight percent would probably be okay in my head, I think.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for high availability, targeting approximately 98% uptime.",
+      "follow_up_question": "What are the critical periods or operations during which downtime is most unacceptable?"
+    },
+    {
+      "requirement": "The system should handle up to approximately 1,500 simultaneous users without significant slowdown.",
+      "source_citation": "Oh yes, mornings are busy. Everyone logs in and starts pulling parts and facilities. Right now if a bunch of people hit it, everything slows. I can't tell you exactly how many — it's a lot — but on busy days it definitely strains. If you ask me for numbers, I think at peak we could have... a very large group, maybe in the low thousands? One four-nine-zero? No, wait, that's not right. Hmm. Okay, to be honest, I'd say about fifteen hundred people at the same time in the worst-case scenario.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions that the system slows down with many users, estimating up to 1,500 simultaneous users, but the exact number is vague.",
+      "follow_up_question": "What specific performance metrics should be maintained even with 1,500 simultaneous users?"
+    },
+    {
+      "requirement": "Insurer claims must be strictly separated to prevent cross-company data leaks.",
+      "source_citation": "Right — we sometimes work with multiple insurers, and there are shared shop networks. I don't want to accidentally open another company's claim or compare things I shouldn't. There was an incident where someone at a neighboring office could see something they weren't supposed to, and it caused an awkward call. So, the system needs to keep each insurer's claims separated. I mean, nobody wants to get in trouble over a privacy slip.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for strict data separation to prevent privacy issues and cross-company leaks.",
+      "follow_up_question": "What specific mechanisms or protocols should be implemented to ensure data separation?"
+    },
+    {
+      "requirement": "Role-based access control should be implemented with tiered permissions (admins, adjusters/estimators, shop coordinators).",
+      "source_citation": "We have program admins who need access across the board for audits and reporting. Most of us are adjusters or estimators and only need to see our own company's claims. Shop coordinators need limited views — just the assignments and basic contact stuff. So, sort of tiered access — admins wide, most folks narrow.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for role-based access control with different levels of permissions for different roles.",
+      "follow_up_question": "What specific permissions should be granted to each role?"
+    },
+    {
+      "requirement": "Cross-company ratings should be anonymized or aggregated to prevent company-specific details from being revealed.",
+      "source_citation": "I get that aggregate stuff can be useful, but it must not reveal specifics tied to a company. So if ratings are shared, they should be anonymized or aggregated so you can't trace back to a company's claim. But when it comes to claims and sensitive details, no — keep them separated by company. It's just safer.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for anonymization or aggregation of cross-company ratings to prevent privacy issues.",
+      "follow_up_question": "What specific data should be anonymized or aggregated, and what methods should be used?"
+    },
+    {
+      "requirement": "Help should be provided through inline tips, short videos, and a help icon, not lengthy documents.",
+      "source_citation": "Mostly small inline tips and a help icon that opens short steps. Videos are okay for complex stuff but I rarely watch a long video. Quick bullets, examples — like: 'How to search for a part' right where you're entering the VIN. If it's available in most places — again, bright and obvious — that would cut down on calls.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the preferred format for help, emphasizing inline tips, short videos, and a help icon.",
+      "follow_up_question": "What specific types of inline tips or short videos are most effective for different user scenarios?"
+    },
+    {
+      "requirement": "The system should handle spotty networks gracefully, with features like caching and offline drafts.",
+      "source_citation": "Oh yes, in the field the connection is flaky sometimes. If I'm on-site with a customer, I can't have an app that times out or requires constant reloading. So it needs to handle spotty networks gracefully — maybe cache things or allow me to at least view the last results. In the office we expect full speed, but out in the field, even if it's a little slower, it must not break my session.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "field_use",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for the system to handle spotty networks gracefully, suggesting features like caching and offline drafts.",
+      "follow_up_question": "What specific caching mechanisms or offline draft features should be implemented?"
+    },
+    {
+      "requirement": "The system should provide warnings before session timeouts and implement draft autosave to prevent data loss.",
+      "source_citation": "Definitely warnings before session timeouts — like a countdown or a 'stay signed in' button. And if I'm in the middle of something it should save drafts so I don't lose work. Losing half an estimate because of a timeout is the worst.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "recovery",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for warnings before session timeouts and draft autosave to prevent data loss.",
+      "follow_up_question": "What specific warning mechanisms and autosave features should be implemented?"
+    },
+    {
+      "requirement": "The UI should be uncluttered to reduce mistakes.",
+      "source_citation": "Oh — and one more tiny thing: make the UI uncluttered. I can't stand screens with too many buttons. If it's clean, I'll be happier and make fewer mistakes.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for an uncluttered UI to reduce mistakes.",
+      "follow_up_question": "What specific UI design principles or practices should be followed to achieve an uncluttered interface?"
+    }
+  ]
+}

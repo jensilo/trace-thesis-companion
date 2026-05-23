@@ -1,0 +1,161 @@
+{
+  "transcript_file": "outputs/corpus-20260226_162106/transcript_4_re_novice_stakeholder_technical_junior_20260226_162405.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_182444",
+  "requirements": [
+    {
+      "requirement": "The application should adhere to corporate UI standards and use the corporate component library for consistency in fonts, controls, and spacing.",
+      "source_citation": "We were told to follow the corporate UI standards for anything internal or external, but teams have implemented bits differently, which is annoying.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need to follow corporate UI standards and the issues caused by inconsistent implementations. This indicates a strong requirement for consistency in the UI.",
+      "follow_up_question": "Can you provide specific examples or guidelines from the corporate UI standards that need to be adhered to?"
+    },
+    {
+      "requirement": "The application should ensure accessibility compliance, including proper color choices and keyboard navigation.",
+      "source_citation": "Accessibility keeps popping up in reviews; we need to make sure color choices and keyboard navigation meet whatever standard the UX folks expect.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the importance of accessibility in reviews, indicating a clear need for compliance with accessibility standards.",
+      "follow_up_question": "What specific accessibility standards or guidelines should the application comply with?"
+    },
+    {
+      "requirement": "The application should provide a response time of around five seconds for basic transitions like list to detail or switching screens.",
+      "source_citation": "I’d say around five seconds for basic transitions like list to detail or switching screens.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a target response time for basic transitions, indicating a clear performance requirement.",
+      "follow_up_question": "Are there any specific scenarios or conditions under which this response time should be achieved?"
+    },
+    {
+      "requirement": "The application should not rely on local copies of authoritative transaction and cardmember information, but should cache non-authoritative data for performance.",
+      "source_citation": "We can cache some things for performance, but for authoritative transaction and cardmember info we really can’t rely on local copies.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need to avoid duplicating fields and the importance of single source of truth for authoritative data.",
+      "follow_up_question": "What specific data should be cached and what should be fetched directly from the authoritative sources?"
+    },
+    {
+      "requirement": "The application should ensure that all balance adjustments are handled through the Posting and Billing system to maintain ledger consistency.",
+      "source_citation": "All balance adjustments need to go through the Posting and Billing system. If you try to adjust balances outside of that, ledgers diverge and reconciliation becomes a nightmare.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "reliability",
+      "confidence": 5,
+      "rationale": "The stakeholder clearly states the importance of using the Posting and Billing system for balance adjustments to avoid ledger divergence.",
+      "follow_up_question": "Are there any specific scenarios or conditions under which balance adjustments should be handled differently?"
+    },
+    {
+      "requirement": "The application should ensure idempotency for adjustment submissions to prevent duplicate adjustments.",
+      "source_citation": "There should also be idempotency — if a rep clicks submit twice, it shouldn’t post duplicate adjustments.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "reliability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for idempotency to prevent duplicate adjustments.",
+      "follow_up_question": "Are there any specific scenarios or conditions under which idempotency should be ensured?"
+    },
+    {
+      "requirement": "The application should provide a detailed audit trail for all changes, including who made the change, when, what was changed, and why.",
+      "source_citation": "We need a very detailed history. Every change should record who did it, when, what the previous value was, what the new value is, and ideally why it was changed.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder clearly states the need for a detailed audit trail for all changes.",
+      "follow_up_question": "Are there any specific compliance or regulatory requirements that dictate the level of detail in the audit trail?"
+    },
+    {
+      "requirement": "The application should support up to three hundred fifty concurrent users to cover peak call-center load.",
+      "source_citation": "The business asked for something that covers peak call-center load. I’ve heard a specific target from them... I think the number they mentioned was three hundred fifty concurrent users to cover our busiest times.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder provides a specific target for concurrent users, indicating a clear scalability requirement.",
+      "follow_up_question": "Are there any specific scenarios or conditions under which this concurrency target should be achieved?"
+    },
+    {
+      "requirement": "The application should be available round-the-clock, with scheduled maintenance windows for downtime.",
+      "source_citation": "We need the app up round-the-clock because people work different shifts. There are scheduled maintenance windows that ops has used and they told us those are the acceptable times to take it down.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for round-the-clock availability and the importance of scheduled maintenance windows.",
+      "follow_up_question": "Can you provide the exact maintenance windows and timezone?"
+    },
+    {
+      "requirement": "The application should provide dashboards for monitoring response times, queue lengths, CPU and DB metrics, and success/failure rates for integrations.",
+      "source_citation": "We need dashboards for things like response times, queue lengths to backend services, CPU and DB metrics, and success/failure rates for the integrations.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for dashboards to monitor various performance and integration metrics.",
+      "follow_up_question": "Are there any specific metrics or thresholds that should be monitored and alerted on?"
+    },
+    {
+      "requirement": "The application should provide clear, user-friendly messages for failed operations and include retry logic and a way to reconcile failed operations later.",
+      "source_citation": "It should show a clear, user-friendly message explaining that some data is temporarily unavailable and maybe let the rep continue with cached info or create a ticket with a pending state. We shouldn’t expose raw error messages. And we need retry logic and a way to reconcile failed operations later.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for clear, user-friendly messages and retry logic for failed operations.",
+      "follow_up_question": "Are there any specific scenarios or conditions under which these messages and retry logic should be implemented?"
+    },
+    {
+      "requirement": "The application should include a dead-letter or retry queue and an operations view for manual reconciliation of failed transactions.",
+      "source_citation": "There should be a dead-letter or retry queue and an operations view where failed transactions are listed for manual reconciliation.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "reliability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for a dead-letter or retry queue and an operations view for manual reconciliation.",
+      "follow_up_question": "Are there any specific scenarios or conditions under which this reconciliation process should be implemented?"
+    },
+    {
+      "requirement": "The application should document the exact definition of 'concurrent users' and confirm maintenance windows precisely with ops.",
+      "source_citation": "We should document the exact definition of 'concurrent users' and confirm the maintenance windows precisely with ops.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for precise documentation of 'concurrent users' and maintenance windows.",
+      "follow_up_question": "Are there any specific scenarios or conditions under which this documentation should be updated?"
+    },
+    {
+      "requirement": "The application should get the expected SLAs from the Statement and Cardmember teams to design caching and retries appropriately.",
+      "source_citation": "We should get the expected SLAs from the Statement and Cardmember teams so we can design caching and retries appropriately.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need to get SLAs from upstream teams to design caching and retries appropriately.",
+      "follow_up_question": "Are there any specific scenarios or conditions under which these SLAs should be considered?"
+    }
+  ]
+}

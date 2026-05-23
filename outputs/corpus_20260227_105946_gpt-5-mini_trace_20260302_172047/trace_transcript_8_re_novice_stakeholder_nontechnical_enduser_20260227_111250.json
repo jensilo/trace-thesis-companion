@@ -1,0 +1,172 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_8_re_novice_stakeholder_nontechnical_enduser_20260227_111250.txt",
+  "model": "openai/gpt-5-mini",
+  "timestamp": "20260302_172746",
+  "requirements": [
+    {
+      "requirement": "The user interface shall be easy to use for non-technical users, with clear navigation and minimal clicks to complete common tasks (e.g., account creation and starting playback).",
+      "source_citation": "Sometimes it feels clunky though — it should just be easy for anyone to use, even my aunt who only checks Facebook, you know?",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Stakeholder repeatedly stresses that the system must be simple for non-technical users, mentioning clunky navigation, confusing buttons, and impatience with too many clicks. The transcript also gives examples (account creation, starting a movie) and a target success percentage later. Gaps: exact definition of \"minimal clicks\" per task beyond examples and what constitutes \"non-technical\" users.",
+      "follow_up_question": "Which specific tasks should be limited to how many clicks/pages (e.g., account creation ≤ X pages, start playback after login ≤ Y clicks) and how do you define the target novice user group?"
+    },
+    {
+      "requirement": "Common UI interactions (opening a page or clicking a button) shall respond so they feel effectively instantaneous to the user, with a maximum perceived latency of 5 seconds.",
+      "source_citation": "For small things, like opening a page or clicking a button, I think it needs to feel instant. If I'm waiting and it just sits there, it's frustrating. Maybe, uh, five seconds for the little things feels like a lot already, so anything around that or more is annoying.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder gives an explicit acceptable threshold for small UI actions (mentions 5 seconds as already feeling like a lot). This provides a measurable latency target for basic interactions. Gaps: whether this applies to first-load pages, API calls, or perceived rendering; measurable SLA vs. perceived.",
+      "follow_up_question": "Do you mean a technical response time (e.g., server response <5s) or perceived time including client rendering, and should this target apply to all pages or only core flows?"
+    },
+    {
+      "requirement": "Search queries shall return relevant results promptly and filters shall be clear and understandable; search result latency should be low enough that users do not abandon (target to be specified).",
+      "source_citation": "it sometimes it takes time to show results or it shows weird things. Also, the filters are confusing sometimes.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "Stakeholder reports search returning slowly or incorrectly and confusing filters. This implies both performance (latency) and usability (filter clarity). Gaps: no numeric target for search latency or measures for relevance and filter UI design.",
+      "follow_up_question": "What maximum latency for search results would you accept before leaving (numeric target), and can you describe which filters are confusing or how you'd prefer them presented?"
+    },
+    {
+      "requirement": "Streaming startup (time from user play action to media start) shall be under 10 seconds under normal network conditions.",
+      "source_citation": "If I have to wait quite a while for it to start playing, or it keeps pausing, I close it. I suppose under ten seconds to get going feels reasonable to me, although that's just my gut.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly states an acceptable startup buffering time: under ten seconds. This is a clear QoE target for media startup. Gaps: definition of \"normal network conditions\", acceptable rebuffering during playback, and measurement method.",
+      "follow_up_question": "Do you consider 'normal network conditions' to include typical home broadband and slower rural connections, and what rebuffering rate during playback is acceptable (e.g., pauses per hour)?"
+    },
+    {
+      "requirement": "Payment processing for credit card transactions shall complete within 15 seconds from user submission to final confirmation under normal operating conditions.",
+      "source_citation": "Hmm, I'd say it should be done within, I don't know, around fifteen seconds. Longer than that and I start refreshing and panicking.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder gives an explicit acceptable maximum latency for payments (15 seconds). This is measurable and directly tied to user anxiety and behaviour (refreshing). Gaps: handling of partial failures, asynchronous processing, and user feedback during the wait.",
+      "follow_up_question": "Should the system provide intermediate feedback (e.g., 'processing') during this time, and how should asynchronous or delayed payment confirmations be shown to avoid duplicate submissions?"
+    },
+    {
+      "requirement": "The system shall provide clear, unambiguous feedback during payment processing so users know whether a transaction succeeded, failed, or is pending.",
+      "source_citation": "I don't mind waiting a bit while it checks the card, but if it stalls I worry it didn't go through. I've had a payment once where I wasn't sure if it succeeded and that was stressful.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Stakeholder experienced uncertainty about payment outcome and requests clear status. This implies UI/UX requirements for transaction feedback and error handling. Gaps: exact wording, log/audit access, and how to handle eventual consistency or delayed confirmations.",
+      "follow_up_question": "What specific status indicators or messages would reassure you (examples), and should the user receive email/SMS confirmation immediately upon submission or only upon definitive settlement?"
+    },
+    {
+      "requirement": "The service shall be available 24/7 with a target uptime of at least 99.5%.",
+      "source_citation": "I mean all the time — day and night, every day. We shouldn't plan around the site being down, you know?... I'd say something like ninety-nine and a half percent of the time it should be reachable.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly requests continuous availability and gives a numeric uptime target (99.5%). This is a clear operational SLA requirement. Gaps: which components this applies to (checkout, streaming, admin), maintenance windows, and acceptable single outage duration.",
+      "follow_up_question": "Should the 99.5% uptime target apply to all service components (website, streaming, payments) equally, and what is an acceptable maximum continuous outage duration?"
+    },
+    {
+      "requirement": "Credit card and payment data shall be encrypted in storage and access shall be restricted to only authorized Izogn staff with a need-to-know.",
+      "source_citation": "Card details are private; they shouldn't be floating around. Only people who absolutely need to manage payments should have access. And the data should be stored safely, like encrypted, because I've heard stories about leaks and that's scary.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder demands encryption at rest and strict internal access controls to mitigate leaks and insider snooping. This indicates confidentiality and access control requirements. Gaps: encryption standards, key management, audit logging, and regulatory compliance (PCI-DSS) are not specified.",
+      "follow_up_question": "Do you require specific encryption standards, audit logs of all accesses, and compliance with payment regulations (e.g., PCI-DSS), or is 'encrypted and authorized staff only' sufficient?"
+    },
+    {
+      "requirement": "The site shall make its privacy practices and billing/subscription terms clearly discoverable (e.g., visible on signup and accessible from every page).",
+      "source_citation": "The site should tell me up front — like a privacy thing I can read, not hidden. It should be obvious where to find it. ... It should be accessible from anywhere on the site so I'm not surprised later.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 5,
+      "rationale": "Stakeholder wants transparent, discoverable privacy and billing information, explicitly mentioning signup and links on every page. This addresses informed consent and billing clarity. Gaps: exact locations, presentation format, and whether assent is required during signup.",
+      "follow_up_question": "Do you expect an explicit consent step on signup (e.g., checkbox with link) and should billing terms be summarized prominently with full terms available via a standard link?"
+    },
+    {
+      "requirement": "The system shall provide alternative non-card payment methods, including redeemable prepaid/physical cards and promo codes created by admins.",
+      "source_citation": "I sometimes wish there were prepaid cards I could buy in stores, because not everyone has a card or wants to use it online... maybe admins can create codes for online or for promotions, and shops can sell physical cards",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "Stakeholder requests inclusive payment options (prepaid physical cards and admin-created codes). This affects payment system design and operational processes. Gaps: fulfillment, security of code generation, and whether cards must be redeemable offline/online are unspecified.",
+      "follow_up_question": "What redemption flow do you expect for prepaid cards (PIN entry on site, code scanning in-store), and what operational controls should admins have for creating/expiring promo codes?"
+    },
+    {
+      "requirement": "The visual design shall use warm colors, large readable text, and simple icons to improve readability and local appeal, avoiding cluttered 'spreadsheet-like' layouts.",
+      "source_citation": "the design should feel like it's made for people here — warm colors, big text, simple icons — not like those cluttered streaming sites that look like spreadsheets.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 4,
+      "rationale": "Stakeholder gives explicit visual design preferences emphasizing readability and cultural fit. This is a look-and-feel / accessibility requirement. Gaps: accessibility standards (contrast, WCAG), exact type sizes, and localization specifics are not provided.",
+      "follow_up_question": "Should we follow specific accessibility guidelines (e.g., WCAG 2.1 AA) for contrast and text sizing, and can you provide examples of sites/styles you find appropriate?"
+    },
+    {
+      "requirement": "The system shall provide easy-to-find, simple controls for subtitles and language selection.",
+      "source_citation": "subtitles and language options are important to us, sometimes older relatives can't follow accents, so simple toggles for language and subtitles would be lovely.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "accessibility",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly requests accessible subtitle/language toggles for comprehension by older relatives, indicating internationalization and accessibility needs. Gaps: supported languages, subtitle formats, and default behaviors are unspecified.",
+      "follow_up_question": "Which languages and subtitle formats do you require initially, and should subtitles be on by default for certain user profiles?"
+    },
+    {
+      "requirement": "Review features (reading and writing reviews) shall be easy to find and simple to use.",
+      "source_citation": "reviews: being able to read and write reviews helps pick a movie, but they should be easy to find and simple to use.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "Stakeholder values reviews and requires them to be discoverable and usable; this is a UX requirement for social features. Gaps: moderation, abuse controls, and visibility rules are not specified.",
+      "follow_up_question": "Where in the content workflow should review controls appear (e.g., on movie details pages), and what moderation or reporting controls do you expect?"
+    },
+    {
+      "requirement": "The product shall be usable by at least 90% of novice internet users for basic tasks without assistance.",
+      "source_citation": "Maybe around ninety percent of novice users should be able to use it without help.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "Stakeholder gives an explicit usability success metric (90% for novices), which can be used for acceptance testing. Gaps: definition of 'novice internet users', tasks included, and testing method are not defined.",
+      "follow_up_question": "Please define the novice user profile, the set of tasks to be tested, and an acceptable testing protocol (e.g., moderated usability test with N participants) to validate the 90% target."
+    },
+    {
+      "requirement": "Access to customers' credit card information by staff shall be limited by authorization and audited to prevent insider snooping.",
+      "source_citation": "Only people who absolutely need to manage payments should have access... My worry isn't only hackers, it's also, you know, the wrong person at the company snooping.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly worried about insider access and requests restricted, authorized access only; implies need for role-based access control and audit logging. Gaps: required audit retention, review frequency, and RBAC granularity are unspecified.",
+      "follow_up_question": "What level of audit logging and review would satisfy you (e.g., logs retained X months, periodic access reviews), and which staff roles should have payment-data access?"
+    }
+  ]
+}

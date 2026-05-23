@@ -1,0 +1,260 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_5_re_experienced_stakeholder_technical_senior_20260227_110738.txt",
+  "model": "mistral/mistral-medium-latest",
+  "timestamp": "20260302_170833",
+  "requirements": [
+    {
+      "requirement": "The system shall maintain 98% availability.",
+      "source_citation": "They're asking for ninety-eight percent availability.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the required availability percentage.",
+      "follow_up_question": "What are the acceptable downtime windows and maintenance schedules?"
+    },
+    {
+      "requirement": "The system shall return parts search results within 15 seconds.",
+      "source_citation": "acceptable would be under fifteen seconds for a parts search.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder provides a clear performance requirement for parts search.",
+      "follow_up_question": "What is the expected performance under peak load conditions?"
+    },
+    {
+      "requirement": "The system shall return repair facility lookup results within 8 seconds.",
+      "source_citation": "I'd want the preferred facility lookup to come back in under about eight seconds.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder provides a clear performance requirement for facility lookup.",
+      "follow_up_question": "What is the expected performance under varying network conditions?"
+    },
+    {
+      "requirement": "The system shall support 1500 concurrent users initially and scale to 10,000 concurrent users within two years.",
+      "source_citation": "For initial capacity planning the ask is to handle fifteen hundred concurrent users comfortably. And within two years, they want the platform to be capable of supporting up to ten thousand concurrent users as adoption ramps.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "The stakeholder provides clear concurrency and scalability requirements.",
+      "follow_up_question": "What are the expected growth patterns and usage spikes?"
+    },
+    {
+      "requirement": "The system shall implement tenant isolation at both the application and data layers.",
+      "source_citation": "We need strong separation. One insurance company must not be able to see another company's claims. Practically, that means tenant isolation at both the application and data layers.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder emphasizes the need for strong tenant isolation.",
+      "follow_up_question": "What specific mechanisms or technologies should be used for tenant isolation?"
+    },
+    {
+      "requirement": "The system shall use tenant-scoped encryption keys.",
+      "source_citation": "tenant-scoped encryption keys would be ideal for extra protection.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies the need for tenant-scoped encryption keys.",
+      "follow_up_question": "How should the encryption keys be managed and rotated?"
+    },
+    {
+      "requirement": "The system shall implement rate limiting, WAF controls, and DDoS mitigation.",
+      "source_citation": "We should have rate limiting, WAF controls, and DDoS mitigation in front of the service.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder lists specific security measures to be implemented.",
+      "follow_up_question": "What specific tools or services should be used for these security measures?"
+    },
+    {
+      "requirement": "The system shall allow offline review of claims and queue non-critical updates for later sync.",
+      "source_citation": "cache recent searches, allow limited offline review of claims, and queue any non-critical updates for later sync.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder describes the need for offline capabilities and syncing.",
+      "follow_up_question": "What specific data should be available offline and how should conflicts be resolved?"
+    },
+    {
+      "requirement": "The system shall use asynchronous logging and event streams for tracing.",
+      "source_citation": "we should use asynchronous logging and event streams so tracing doesn't block critical paths.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies the need for asynchronous logging to avoid blocking critical paths.",
+      "follow_up_question": "What specific logging and tracing tools should be used?"
+    },
+    {
+      "requirement": "The system shall persist semantic audit events for estimate changes.",
+      "source_citation": "the audit events for estimate changes must always be persisted.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 5,
+      "rationale": "The stakeholder emphasizes the need to persist audit events for compliance.",
+      "follow_up_question": "What specific audit events need to be persisted and for how long?"
+    },
+    {
+      "requirement": "The system shall use corporate UI guidelines and accessibility rules.",
+      "source_citation": "We must adhere to the corporate guidelines for core components and accessibility.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies the need to adhere to corporate UI and accessibility guidelines.",
+      "follow_up_question": "What specific UI components and accessibility rules must be followed?"
+    },
+    {
+      "requirement": "The system shall measure time-to-interactive on a 4G-equivalent connection as the primary metric for UI performance.",
+      "source_citation": "If you push me to pick the primary metric, time-to-interactive on a 4G-equivalent connection is the business-facing metric",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies the primary metric for UI performance.",
+      "follow_up_question": "What specific tools or methods should be used to measure time-to-interactive?"
+    },
+    {
+      "requirement": "The system shall design services with clear contracts to facilitate future changes.",
+      "source_citation": "we should design this as a set of small, well-scoped services with clear contracts so future changes — like swapping out the parts provider or adding new insurers — are low-friction.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "The stakeholder emphasizes the need for clear contracts in service design to facilitate future changes.",
+      "follow_up_question": "What specific design principles or patterns should be used for service contracts?"
+    },
+    {
+      "requirement": "The system shall use corporate service mesh, logging/tracing standards, and identity platform.",
+      "source_citation": "Right, so the company has an approved service mesh, logging and tracing standards, and an identity platform we must use.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies the need to use corporate standards and platforms.",
+      "follow_up_question": "What specific corporate standards and platforms should be used?"
+    },
+    {
+      "requirement": "The system shall show last-known-good snapshot and mark item ages if the Choice Parts feed is down.",
+      "source_citation": "show the last-known-good snapshot and mark item ages.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 5,
+      "rationale": "The stakeholder describes the behavior when the Choice Parts feed is down.",
+      "follow_up_question": "How should the system handle data consistency when the feed is restored?"
+    },
+    {
+      "requirement": "The system shall implement circuit breakers and graceful degradation for resilience.",
+      "source_citation": "the app must implement rate limiting, circuit breakers, and graceful degradation so a protection layer in front plus application-level controls give defense in depth.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies the need for circuit breakers and graceful degradation.",
+      "follow_up_question": "What specific circuit breaker patterns or tools should be used?"
+    },
+    {
+      "requirement": "The system shall use structured logs for audits and regulatory compliance.",
+      "source_citation": "The logs should be structured and ship to corporate analytics and long-term storage for retention policies.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies the need for structured logs for compliance.",
+      "follow_up_question": "What specific log structures and retention policies should be followed?"
+    },
+    {
+      "requirement": "The system shall avoid exposing a single company's ratings to other insurers.",
+      "source_citation": "We should avoid exposing a single company's ratings to other insurers in a way that could be correlated back to claim data.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies the need to avoid exposing single company's ratings.",
+      "follow_up_question": "How should the ratings data be anonymized or aggregated?"
+    },
+    {
+      "requirement": "The system shall use role-based access controls for data access.",
+      "source_citation": "Role-based access controls on top of that are mandatory — adjusters should only see their company's data and only the bits their role allows.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies the need for role-based access controls.",
+      "follow_up_question": "What specific roles and permissions should be defined?"
+    },
+    {
+      "requirement": "The system shall use asynchronous logging and event streams for tracing.",
+      "source_citation": "we should use asynchronous logging and event streams so tracing doesn't block critical paths.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies the need for asynchronous logging to avoid blocking critical paths.",
+      "follow_up_question": "What specific logging and tracing tools should be used?"
+    },
+    {
+      "requirement": "The system shall use corporate UI guidelines and accessibility rules.",
+      "source_citation": "We must adhere to the corporate guidelines for core components and accessibility.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies the need to adhere to corporate UI and accessibility guidelines.",
+      "follow_up_question": "What specific UI components and accessibility rules must be followed?"
+    },
+    {
+      "requirement": "The system shall measure time-to-interactive on a 4G-equivalent connection as the primary metric for UI performance.",
+      "source_citation": "If you push me to pick the primary metric, time-to-interactive on a 4G-equivalent connection is the business-facing metric",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies the primary metric for UI performance.",
+      "follow_up_question": "What specific tools or methods should be used to measure time-to-interactive?"
+    },
+    {
+      "requirement": "The system shall design services with clear contracts to facilitate future changes.",
+      "source_citation": "we should design this as a set of small, well-scoped services with clear contracts so future changes — like swapping out the parts provider or adding new insurers — are low-friction.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "The stakeholder emphasizes the need for clear contracts in service design to facilitate future changes.",
+      "follow_up_question": "What specific design principles or patterns should be used for service contracts?"
+    }
+  ]
+}

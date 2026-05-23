@@ -1,0 +1,152 @@
+Interviewer: Hi—thanks for taking the time. I’m Alex, I’m the requirements person on this project. I’m pretty new at this, so I might ask obvious stuff. Can you quickly say who you are and what you work on for the recycled parts app?
+
+Stakeholder: Yeah, sure. I’m Maya, junior dev on the project for about a year now. Mostly front-end work and I ended up touching our connector to the parts feed, so I know the UI stuff and a bit about how we get parts data. I can point you at code or demos later, but I might need to ping Ops for some infra-specifics.
+
+Interviewer: Great. My goal is to understand the system from your perspective—data flow, how adjusters use it, and any performance or security concerns you’ve seen. Is it okay if I ask follow-ups and possibly request docs after?
+
+Stakeholder: Absolutely. I think I can share repo links and show the running app. And, well, I’ll probably need to check with the team for some things like keys or logs, but I can get you the pointers.
+
+Interviewer: Cool. First, can you describe a typical workflow—how an adjuster or estimator uses the system for recycled parts and picking a repair facility?
+
+Stakeholder: Sure. Usually an adjuster opens the app, searches for a part by make, model, or part number, and then they look at results and pick something to add into the estimate. For facilities, they usually search near the vehicle’s location and then pick a preferred shop — sometimes they use a favourite list, sometimes they filter by distance or vendor agreements. In the field they’re on laptops or tablets, sometimes on flaky mobile. People mainly want the search to be quick and accurate; if it’s slow or the results are messy, they get annoyed and try other ways, which causes mistakes in the estimate. I think training shows them the quick buttons and filters, but I’m not the trainer so I’m fuzzy on the details.
+
+Interviewer: Which systems feed into this? You mentioned a parts feed — can you name it and say how we get the data?
+
+Stakeholder: That’s the Choice Parts system — it’s the source of recycled parts data. We call their API from our backend for searches. I think it’s a REST-ish JSON API, and we use an API key. Sometimes it’s push-like for inventory pushes, but for searches we query it. We also have a local cache on our side so the UI doesn’t have to wait on every single request.
+
+Interviewer: Okay. Who do we contact for Choice Parts or the corporate UI stuff, if I need docs?
+
+Stakeholder: There’s a Choice Parts tech contact in the integration team — I don’t remember the name offhand, I can dig it up. For UI, there’s a corporate design team and they maintain the UI kit; we’re supposed to use that. I can share the link to the UI kit repo after this.
+
+Interviewer: Thanks. Walk me through — from the user’s click — how a parts search happens technically.
+
+Stakeholder: The UI sends the search term to our backend. The backend checks a cache first and, if needed, queries Choice Parts. We do some normalization of part descriptions and then return a ranked list. The UI then renders it and users can inspect details like condition and location. We’ve added client-side filtering so you can narrow results without another roundtrip, which helps on slower connections.
+
+Interviewer: You mentioned caching and normalization. Have you seen problems with Choice Parts responses — like slow responses or pagination quirks?
+
+Stakeholder: Yeah, sometimes the API is slow or paginates in ways that don’t match our UI assumptions. I’ve seen queries, well, take quite a bit longer than we’d like depending on network and backend load. Once in a while a call times out and we surface an error. We worked around that with retries and caching, but it still frustrates users when a search takes too long.
+
+Interviewer: Do you know whether Choice Parts is push or pull for inventory updates? And what auth they use?
+
+Stakeholder: For inventory they can push updates, but for ad-hoc searches we pull. Authentication is via API key; there’s also a rate limit on the Choice Parts side — they told us to batch heavy operations to avoid throttling.
+
+Interviewer: When you say “takes too long,” how long is okay and when does it become a problem for users?
+
+Stakeholder: Hmm, I think for parts searches people will tolerate a little wait, but they don’t want to be standing there digging through slow results. If I had to put a number on it, for the parts search I’d say around a few to mid tens of seconds is where things become painful. For facility lookups, it needs to feel much snappier — those should be close to instant really. If you want exact targets I can say what I’ve heard from the team.
+
+Interviewer: Yes, please — what are the exact response time targets you’ve heard?
+
+Stakeholder: Okay, I’ve heard that parts searches should return within fifteen seconds as a kind of upper limit. And for the preferred repair facility lookup the expectation is tighter — it should return within eight seconds.
+
+Interviewer: Got it. How many users does this need to handle at once? You mentioned spikes.
+
+Stakeholder: On busy days we have a lot of adjusters online. I remember a planning figure the product should support about fifteen hundred users concurrently — that’s what Ops used in sizing notes.
+
+Interviewer: And what about availability — how much uptime do we need to aim for?
+
+Stakeholder: Ops talked about a target, I think it’s around ninety-eight percent uptime. That’s what they tossed out in the last planning meeting, though I’d want them to confirm monitoring windows and maintenance windows.
+
+Interviewer: Okay. Let’s move back to Choice Parts: if their API is down or slow, what do we show users? Do we have a fallback?
+
+Stakeholder: Right now we try to fall back to cached results and show partial matches. If we have nothing, we present a clear message that fresh data isn’t available and offer to save the search for retry. It’s not perfect; I’d prefer a better offline story or a way to continue with local data. Oh, and a tangent — there was one storm weekend where so many people were filing claims that we hit the rate limits and it was messy, so that’s something to consider for peak days.
+
+Interviewer: That makes sense. Switching topics: how do we keep one insurance company’s data from being seen by another? Is multi-tenancy enforced?
+
+Stakeholder: We put a tenant identifier on every record and filter at the service layer. I mean, it’s implemented that way right now, with authorization checks to ensure a requester’s tenant-id matches the data returned. I’m not super confident it’s bulletproof; we could also isolate at the database level if someone pressed for stronger separation, but that’s more ops work.
+
+Interviewer: So, just to be clear — should companies be completely prevented from seeing each others’ claim data?
+
+Stakeholder: Yes, they shouldn’t be able to see each other’s claims. From my side we enforce that tenant-id check everywhere, and we log access. But we should have security reviews and tests to prove the isolation.
+
+Interviewer: Speaking of security, what measures are in place against attacks like DoS?
+
+Stakeholder: We rely on the hosting provider’s protections, a WAF, and we’ve put basic rate-limiting on the APIs. On top of that we’ve tried to make the app sensible about caching so repeated requests don’t hammer Choice Parts. But honestly, heavy attacks need infra-level measures — autoscaling helps, but we need upstream protections too.
+
+Interviewer: Do we have SSO or a particular auth system for users?
+
+Stakeholder: We integrate with the corporate SSO — SAML — so authentication is handled centrally. User provisioning is by the identity team.
+
+Interviewer: For auditing, do we have logs of parts usage and who changes estimates?
+
+Stakeholder: We log search events and estimate changes, and there’s an audit trail stored. The logs go to the central logging stack. I wouldn’t say it’s fully hardened for compliance yet, but the foundations are there.
+
+Interviewer: On the UI side, you mentioned the corporate kit. Do we have to follow it strictly?
+
+Stakeholder: Yes, the design team wants us to use the corporate UI guidelines — fonts, colors, components, and accessibility patterns. Deviations need approval. It makes development a bit easier in some ways, but we do have to spend time matching the kit.
+
+Interviewer: There’s also the usability and learning goals I need to capture. How easy should this be for adjusters and estimators?
+
+Stakeholder: Adjusters want simple flows. From feedback, most should find it easy to use — like the vast majority. As for training, I’ve heard the expectation that new users can be brought up in a couple of days of onsite training if the material is decent.
+
+Interviewer: Can you give me the more specific targets — like percentage for ease-of-use and how long for training?
+
+Stakeholder: Sure. The aim I’ve heard is that ninety-five percent of adjusters and collision estimators should report the product is easy to use, and that staff can be trained and productive after two days of onsite training.
+
+Interviewer: How will we measure that ease-of-use — surveys, SUS, or task completion?
+
+Stakeholder: I think the plan was to use a short survey after a training or a pilot and maybe measure task completion during acceptance testing. But we don’t have a finalized measurement plan yet; I’d expect UX to own that.
+
+Interviewer: For training content, what are the key things that must be covered in those two days?
+
+Stakeholder: They should learn how to search and validate parts, how to pick and book a repair facility, basic troubleshooting for search errors, and how to use the quick templates for estimates. Also some compliance bits like what data they can export. The trainers will flesh that out.
+
+Interviewer: Back to performance — you mentioned caching and client-side filtering. Do we have load tests for the concurrent users number you mentioned?
+
+Stakeholder: We’ve run some basic load tests but nothing that fully mimics production peaks. Ops was supposed to do a more thorough load test for the fifteen hundred concurrent users, but I haven’t seen the final report.
+
+Interviewer: Who owns the uptime and the performance guarantees — is that Ops?
+
+Stakeholder: Ops owns hosting, monitoring, and SLAs, yeah. Devs are responsible for good retry/backoff logic and efficient queries. For long-term reliability, we need Ops to set up alerting and runbook responses.
+
+Interviewer: How do we measure uptime currently — per month, per year, something else?
+
+Stakeholder: Uptime is usually measured per month via monitoring dashboards. I think they calculate it from the health checks in the monitoring system, but again, Ops will have the definitive metric.
+
+Interviewer: For field use: when someone’s offline or has spotty mobile, what minimal features should still work?
+
+Stakeholder: Ideally recent searches and favorite facilities are available offline and you can at least view cached parts. Full search against Choice Parts won’t work offline unless we build a bigger local cache, which has consistency trade-offs. At minimum we should make the UI degrade gracefully and explain what’s available offline.
+
+Interviewer: How long is cached data considered valid? Any rules?
+
+Stakeholder: There wasn’t a hard rule decided. People have suggested anywhere from a day to a week depending on how volatile inventory is, but we need to agree on a policy with Choice Parts and Ops.
+
+Interviewer: Are there regulatory constraints around data residency or PII we need to be aware of?
+
+Stakeholder: The company has general PII rules and we encrypt sensitive data at rest and in transit. There might be regional data residency rules for some clients, so we should check with compliance if any markets need special handling.
+
+Interviewer: What are the biggest risks you see right now?
+
+Stakeholder: The big ones are: if Choice Parts changes their API or has outages, our search experience degrades; our infra sizing for peak loads is uncertain; and we don’t yet have a concrete plan to measure the usability target. Also, if the tenant isolation isn’t thoroughly tested, that could be a compliance problem. Oh, and we need to finalize training ownership — who actually runs the two-day sessions.
+
+Interviewer: For the Choice Parts API, do we have their SLA or rate limit numbers documented somewhere?
+
+Stakeholder: There are docs that mention rate limits and some suggested patterns, but I’d need to fetch the API docs. I can ask the integration contact to share them.
+
+Interviewer: Okay, action items — can you share the UI kit link, the Choice Parts API docs, and point me to whoever in Ops or integration owns uptime and the parts feed?
+
+Stakeholder: Yeah, I can send the UI kit and the repo links. I’ll also message the integration engineer and Ops lead to ask if they can be available for follow-ups and send you the API docs and recent performance logs if Ops is okay with that.
+
+Interviewer: Would you be willing to review a draft of the requirements once I write them up?
+
+Stakeholder: Sure, happy to. I’ll look them over and flag anything that’s off or needs more detail. I’ll probably need to loop in Ops or the integration folks for some specifics, but I can do a first pass.
+
+Interviewer: Thanks. Is there anything else I should know that I didn’t ask about?
+
+Stakeholder: Hmm, maybe that adjusters sometimes workaround the app for speed, which leads to inconsistent data in estimates. Also, we should consider small UX fixes like showing estimated time left for a search — people respond better to progress indicators. That’s a small thing but it reduces calls to support. Oh, and I need to run to a stand-up in five minutes, so I’ll send those links after.
+
+Interviewer: That’s helpful. I appreciate your time and the pointers. I’ll follow up by email for the docs and to schedule Ops and integration interviews.
+
+Stakeholder: Sounds good. Talk soon.
+
+---
+Selected Requirements:
+1. [NICE.csv line 206] [quality, operability] 'The product shall interface with the Choice Parts System. This provides the feed of recycled parts data.'
+2. [NICE.csv line 209] [quality, legal, look_and_feel] 'The product shall comply with corporate User Interface Guidelines'
+3. [NICE.csv line 212] [quality, usability] 'The product shall be easy to use by Adjusters and Collision Estimators. 95% of Adjusters and Collision Estimators shall find the product easy to use.'
+4. [NICE.csv line 215] [quality, usability] 'The product shall be easy to learn by Adjusters and Collision Estimators. The product shall be learned with two days onsite training'
+5. [NICE.csv line 217] [quality, performance] 'The search for recycled parts shall take no longer than 15 seconds. The search results shall be returned in under 15 seconds.'
+6. [NICE.csv line 218] [quality, performance] 'The search for the preferred repair facility shall take no longer than 8 seconds. The preferred repair facility is returned within 8 seconds'
+7. [NICE.csv line 222] [quality, availability, fault_tolerance] 'The product shall achieve a 98% uptime. The product shall not fail more than 2% of the available online time.'
+8. [NICE.csv line 223] [quality, scalability] 'The product shall be able to handle up to 1500 simultaneous users. The system shall perform with 1500 users as a time.'
+9. [NICE.csv line 235] [quality, security] 'One insurance company shall not be able to view another insurance companys claim data.'
+10. [NICE.csv line 237] [quality, security] 'The system shall prevent malicious attacks including denial of service.'

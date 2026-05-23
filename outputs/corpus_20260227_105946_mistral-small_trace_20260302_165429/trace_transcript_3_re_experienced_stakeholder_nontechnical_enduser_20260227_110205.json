@@ -1,0 +1,172 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_3_re_experienced_stakeholder_nontechnical_enduser_20260227_110205.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_165431",
+  "requirements": [
+    {
+      "requirement": "The system should respond to routine tasks (e.g., pulling up a student's record or changing a shift) in a few seconds, ideally less than five seconds.",
+      "source_citation": "For little things like pulling up a student's record or changing a shift, I hate waiting — it should be almost instant. If I had to put a number on it, maybe a few seconds. Like, if I click and it takes longer than, say, five seconds, I start clicking again and making mistakes.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states a desired response time for routine tasks, indicating a clear performance expectation. The confidence is high due to the specific time frame mentioned.",
+      "follow_up_question": "Are there any specific tasks that are more time-sensitive than others, and if so, what are the acceptable response times for those?"
+    },
+    {
+      "requirement": "The system should handle batch operations, such as generating schedules, within a reasonable time frame, ideally not exceeding half a minute.",
+      "source_citation": "For the whole schedule generator — when we batch-create schedules — that one can take longer, but it can't take forever; half a minute-ish feels like the outside of acceptable to me.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a time frame for batch operations, indicating a clear performance expectation. The confidence is high due to the specific time frame mentioned.",
+      "follow_up_question": "Are there any specific batch operations that are more critical than others, and if so, what are the acceptable response times for those?"
+    },
+    {
+      "requirement": "The system should be able to handle concurrent usage by approximately ten to fifteen users during peak times without significant performance degradation.",
+      "source_citation": "In the mornings, when we're all prepping, there's a bunch of us on at once. Maybe around ten people? Ten to fifteen on busy days, I guess. So it has to handle that load without choking.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the number of concurrent users and the expected performance, indicating a clear scalability expectation. The confidence is high due to the specific number of users mentioned.",
+      "follow_up_question": "Are there any specific peak times or usage patterns that the system should be optimized for?"
+    },
+    {
+      "requirement": "The system should be available during business hours with a target availability of ninety-five percent.",
+      "source_citation": "We need it when our office is open. [...] It should be up pretty much all the time during our working hours. I'd say it should be reliable almost always — maybe allow for rare outages, but not frequently. [...] If I had to pick a number, something like ninety-five percent availability sounds about right to me for the start.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the desired availability and a target percentage, indicating a clear availability expectation. The confidence is high due to the specific percentage mentioned.",
+      "follow_up_question": "Are there any specific times or events during which downtime would be more acceptable?"
+    },
+    {
+      "requirement": "The system should be intuitive and require minimal training, ideally no more than one focused training day for regular users and a shorter orientation for adjuncts and site coordinators.",
+      "source_citation": "Oh, we don't have a lot of time for training. People come in, do their work, and that's it. I think if it's intuitive, we could get by with a short, focused workshop. [...] Yes, I think if it's intuitive, one focused training day for regular users and a shorter orientation for adjuncts and site folks should be enough.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the desired level of intuitiveness and the amount of training required, indicating a clear usability expectation. The confidence is high due to the specific training time frame mentioned.",
+      "follow_up_question": "Are there any specific user groups or roles that may require more or less training than others?"
+    },
+    {
+      "requirement": "The system should be compatible with common browsers and devices, including Mac, Windows, and older machines, without requiring special plugins or proprietary software.",
+      "source_citation": "Some of our staff are on Mac, some on Windows, some use older machines. If a system needs special plugins or only works in one browser, it becomes a training and support nightmare. We need something that just opens in whatever regular browser people have and behaves the same.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the desired compatibility and the reasons behind it, indicating a clear portability expectation. The confidence is high due to the specific devices and browsers mentioned.",
+      "follow_up_question": "Are there any specific browsers or devices that are more critical to support than others?"
+    },
+    {
+      "requirement": "The system should be easy to use, requiring no technical expertise from the users.",
+      "source_citation": "It must be easy to use — like, people shouldn't have to be techies to do their jobs.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the desired level of ease of use, indicating a clear usability expectation. The confidence is high due to the explicit statement.",
+      "follow_up_question": "Are there any specific usability features or design principles that should be prioritized?"
+    },
+    {
+      "requirement": "The system should implement role-based access control, allowing program admins full access, site coordinators access to relevant details, and instructors access to rosters and schedule info.",
+      "source_citation": "Well, program admins — the core staff — need a full view. Site coordinators shouldn't see the full student files; they only need the details relevant to the placement. Instructors probably need rosters and schedule info, but not private notes. So, um, some people should have full access, others only a view of what's necessary.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the desired access levels for different roles, indicating a clear security expectation. The confidence is high due to the specific roles and access levels mentioned.",
+      "follow_up_question": "Are there any specific data elements or functionalities that should be restricted or granted based on roles?"
+    },
+    {
+      "requirement": "The system should restrict access to sensitive information, such as clinical site contract terms, contact info, student health, and background-check info, in accordance with university policies.",
+      "source_citation": "Especially if a site shares contract terms or contact info that we don't want public. Also, student health or background-check info should be tightly controlled. We have university policies about privacy, and the system should follow those, not do its own thing.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the desired restrictions on sensitive information and the need to comply with university policies, indicating a clear security expectation. The confidence is high due to the specific types of sensitive information mentioned.",
+      "follow_up_question": "Are there any specific university policies or regulations that the system should comply with?"
+    },
+    {
+      "requirement": "The system should integrate with the university's student records and HR or payroll systems to avoid manual data entry and ensure data consistency.",
+      "source_citation": "It should tie into the university's student records for enrollments and probably our HR or payroll for instructor assignments, so we don't have to enter data twice.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the desired integrations and the reasons behind them, indicating a clear maintainability expectation. The confidence is high due to the specific systems mentioned.",
+      "follow_up_question": "Are there any specific data elements or functionalities that should be prioritized for integration?"
+    },
+    {
+      "requirement": "The system should provide audit trails to track changes made by users, including who changed what and when.",
+      "source_citation": "And, um, audit trails would be great — knowing who changed what and when.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the need for audit trails, indicating a clear maintainability expectation. The confidence is high due to the explicit statement.",
+      "follow_up_question": "Are there any specific types of changes or events that should be tracked more closely than others?"
+    },
+    {
+      "requirement": "The system should prevent scheduling conflicts, such as double-booking students or assigning instructors who are already booked, and warn about missing clearances.",
+      "source_citation": "It should stop me from scheduling a student in two places at the same time, or assign an instructor who is already booked. It could warn me if a clinical placement requires a clearance the student doesn't have.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the desired error prevention mechanisms, indicating a clear usability expectation. The confidence is high due to the specific types of errors mentioned.",
+      "follow_up_question": "Are there any specific types of errors or conflicts that should be prioritized for prevention?"
+    },
+    {
+      "requirement": "The system should provide automatic notifications to students, instructors, and site coordinators when schedules change, and allow follow-up on unconfirmed notifications.",
+      "source_citation": "I think, like, automatic notices. When a schedule changes, students, instructors, and the site people should get told right away. [...] It would be nice if the system could tell me who hasn't confirmed, so I can follow up.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the desired notification mechanisms and the need for follow-up, indicating a clear usability expectation. The confidence is high due to the specific types of notifications and follow-up mentioned.",
+      "follow_up_question": "Are there any specific types of notifications or follow-up actions that should be prioritized?"
+    },
+    {
+      "requirement": "The system should provide basic reports, such as daily clinical rosters, instructor assignments, and student progression summaries, to save time and effort.",
+      "source_citation": "Yes, we need basic reports. Like, who is scheduled where, gaps in coverage, maybe a roster per site. And if a student's progression is behind, we should be able to see that at a glance.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the desired reports and the reasons behind them, indicating a clear usability expectation. The confidence is high due to the specific types of reports mentioned.",
+      "follow_up_question": "Are there any specific reports or data elements that should be prioritized for inclusion?"
+    },
+    {
+      "requirement": "The system should reduce the amount of paper usage by providing digital alternatives for schedules and other documents.",
+      "source_citation": "It'd be nice if the system reduced the amount we have to print. Less paper, fewer trips to the printer, fewer lamination disasters.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "other",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the desire to reduce paper usage, indicating a clear environmental impact expectation. The confidence is high due to the explicit statement.",
+      "follow_up_question": "Are there any specific documents or processes that should be prioritized for digitization?"
+    }
+  ]
+}

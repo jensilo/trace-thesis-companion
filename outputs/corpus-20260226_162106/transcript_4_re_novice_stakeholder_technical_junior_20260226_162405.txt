@@ -1,0 +1,156 @@
+Interviewer: Hi, thanks for taking the time. Can you tell me who you are, what you do on the Disputes project, and how long you've been on it?
+
+Stakeholder: Yeah, sure — I’m on the dev team, been on this project for about a year now. I mostly work on the UI pieces and the integration glue between the front end and a couple of backend services. We’ve got some screens and prototypes, a few integrations wired up in staging, but it's still pretty fragmented. Oh — and I think I should say up front, we were told to follow the corporate UI standards for anything internal or external, but teams have implemented bits differently, which is annoying.
+
+Interviewer: Okay, got it. So what parts are already built and what’s still only design?
+
+Stakeholder: Well, some of the basic search and list screens exist, and there are mockups for the case detail and the dispute creation flow. The integration to the Statement data is partially implemented in a test endpoint, and there’s basic plumbing to Postings/Billing for adjustments, but it’s not reliable yet. A lot of the workflows are half done — people have been riffing on different approaches, so we have code and prototypes, but not a coherent, tested end-to-end flow.
+
+Interviewer: Who else would you say I should talk to — API owners, QA, product?
+
+Stakeholder: Definitely talk to the API owners for the Statement DB and Cardmember service — those two teams own the authoritative data. Also the Posting and Billing folks, and our security person who handles roles. QA is helpful for the load tests. I can point you to them after this.
+
+Interviewer: Great. Who are the users of the app? Internal staff only or external partners too?
+
+Stakeholder: It’s both. Cardmember reps and merchant services reps use it internally, and there are partner interfaces where external users, like merchants or third-party processors, can see limited views. The trick is we have to keep internal and external data separated — external users must not see the same level of detail as our reps. Right now it’s a bit fuzzy which fields to mask when you’re an external user, which has caused some awkward audits.
+
+Interviewer: So different roles need different visibility. Do you know what roles and what they should be able to do?
+
+Stakeholder: I can describe it loosely: internal reps need pretty full access to case details and evidence; some supervisors need extra actions like override or approve adjustments; external users should only see a subset and can’t initiate certain actions. We don’t have a final, agreed role matrix yet — HR and the identity team have some groups defined, but mapping those to actual app permissions is still up in the air.
+
+Interviewer: Okay. You mentioned corporate UI standards earlier — how does that affect the design work?
+
+Stakeholder: It matters a lot. We were told to use the corporate component library and adhere to the branding and accessibility guidelines because this app is used by internal staff and by external users. The problem is early screens ignored the library, so fonts and controls differ, and reps complain it’s jarring when they switch screens. We should be consistent — same patterns, same spacing. Also, accessibility keeps popping up in reviews; we need to make sure color choices and keyboard navigation meet whatever standard the UX folks expect.
+
+Interviewer: When you say color choices, are you already using colors in lists or things like that?
+
+Stakeholder: Yes — the case list is a place where color really helps. Reps need to scan search results quickly to pick out urgent or closed cases, and previously we used color coding to show status. That saved time on calls. We do have to be careful though, because some folks are colorblind and the colors alone aren’t enough, so you need icons or labels or something else as well.
+
+Interviewer: For the case list, do you have ideas about how the statuses are shown besides color?
+
+Stakeholder: I think rows could have a subtle colored bar plus a status label and maybe a small icon. The old tool had a little badge and people liked it, but the implementation was inconsistent. We’d also want that same visual cue on exports and reports where possible, or at least a textual status column so it’s obvious outside the UI.
+
+Interviewer: Switching topics — performance. How fast does the app need to feel when reps navigate between screens?
+
+Stakeholder: Oh, performance is a big gripe. Reps get annoyed when moving between the search results and a case detail takes too long; it breaks the call flow. It should feel snappy — folks will hang up or open another system if it drags. I can’t stand waiting around, personally. Maybe something like a few seconds for the small stuff would be okay.
+
+Interviewer: How many seconds do you think is acceptable before users complain?
+
+Stakeholder: Hmm, I’d say around five seconds for basic transitions like list to detail or switching screens. Longer than that and people notice, so we should aim to hit that in normal conditions.
+
+Interviewer: Good to know. You mentioned the Statement DB and Cardmember services earlier. Do we need to keep copies of that data locally, or should the app always call those sources?
+
+Stakeholder: We can cache some things for performance, but for authoritative transaction and cardmember info we really can’t rely on local copies — we’ve had problems when teams duplicated fields and they got out of sync. So the app needs to get transaction details from the Statement system and cardmember details from the Cardmember service. If the upstream services are slow, that’s a different problem — we need sensible caching and fallback, but single source of truth is important.
+
+Interviewer: So, to be clear, do all transaction details have to come from the Statement system, not from our local DB?
+
+Stakeholder: Yes, all the canonical transaction details should be coming from the Statement system. If we store something locally it should be a cache, not the source of truth.
+
+Interviewer: And the cardmember info similarly must come from the Cardmember DB?
+
+Stakeholder: That’s right. Cardmember profile and account details come from that system. We get into trouble when people manually edit cardmember info in disparate places.
+
+Interviewer: For account adjustments — refunds, chargebacks, credits — how do we handle those?
+
+Stakeholder: All balance adjustments need to go through the Posting and Billing system. If you try to adjust balances outside of that, ledgers diverge and reconciliation becomes a nightmare. So our app should send adjustment requests to Posting/Billing and get a reliable acknowledgement. The callers expect some kind of receipt or correlation ID so we can track it.
+
+Interviewer: Is that a synchronous call where you wait for confirmation, or does Posting/Billing do it asynchronously?
+
+Stakeholder: Posting can do both, but most of our flows prefer an acknowledgement back so the rep knows the action was accepted. Some heavy processes are async, and we need to show the user a pending state and then reconcile later. There should also be idempotency — if a rep clicks submit twice, it shouldn’t post duplicate adjustments.
+
+Interviewer: Can you walk me through a typical dispute lifecycle — from creation to resolution?
+
+Stakeholder: Sure. A rep will create a dispute from a transaction — they’ll pick a reason, attach evidence like receipts or correspondence, and then submit. That triggers a ticket to the merchant or issuer, depending on the flow. We may have to follow up with retrieval requests or escalate to a chargeback if it’s disputed. Correspondence needs to be generated at certain points — like a notification to the cardmember or to the merchant — and sometimes templates are used. If an adjustment is approved, we send the request to Posting/Billing then update the case status. There are manual steps, too, like approvals or supervisor sign-offs, which is where permissions matter.
+
+Interviewer: What triggers correspondence, and do templates need special handling?
+
+Stakeholder: Correspondence is usually triggered by status changes or by specific events like evidence submission or resolution. Templates should be managed somewhere central and we need versioning because we update wording for compliance. Also, localization might be needed down the road.
+
+Interviewer: On permissions — who should be allowed to initiate disputes and who should only view or comment?
+
+Stakeholder: Only users with the right authorization should be able to start a dispute. We had an audit finding where a junior rep accidentally initiated claims they shouldn’t have, and that caused issues. So, supervisors and certain rep groups can initiate and perform escalations; other folks should be limited to viewing or adding notes. Some actions, like adjustments over a threshold or chargebacks, should require supervisor approval.
+
+Interviewer: How is identity provided now? SSO, LDAP, internal accounts?
+
+Stakeholder: We use SSO tied to the corporate directory, so groups from the identity provider should map to our app roles. The mapping isn’t fully complete, though, and there are questions about elevated privileges and whether we need second-factor or extra checks for certain actions.
+
+Interviewer: About audit trails — what do we need to capture when someone acts on a dispute?
+
+Stakeholder: We need a very detailed history. Every change should record who did it, when, what the previous value was, what the new value is, and ideally why it was changed. I’d also include context like the user’s role and maybe workstation information for compliance. Right now our logs are inconsistent, and that bites us during reviews.
+
+Interviewer: Do you have any idea how long those logs need to be kept?
+
+Stakeholder: I don’t know the exact retention policy; it’s usually driven by legal or compliance. We should find out the retention requirement, but I’d expect it to be long enough for audits — years, probably, but we need confirmation.
+
+Interviewer: On scaling — how many users do we need to support concurrently?
+
+Stakeholder: The business asked for something that covers peak call-center load. I’ve heard a specific target from them... I think the number they mentioned was three hundred fifty concurrent users to cover our busiest times, but we haven’t stress-tested end-to-end with all integrations.
+
+Interviewer: And by concurrent, do you mean users actively making requests at the same moment, or just logged-in sessions?
+
+Stakeholder: Good question. I think they mean active concurrent users — people on calls doing lookups and updates at the same time, not just idle sessions, but that was never precisely defined before.
+
+Interviewer: For availability and maintenance, what windows are acceptable?
+
+Stakeholder: We need the app up round-the-clock because people work different shifts. There are scheduled maintenance windows that ops has used and they told us those are the acceptable times to take it down, so they plan around them. It’s important to communicate them because teams in different time zones get caught off guard.
+
+Interviewer: Can you confirm the exact maintenance windows and timezone?
+
+Stakeholder: Yeah, ops specified weekdays and weekends differently. Monday through Saturday they usually plan a small window in the early morning hours, like three to four in the morning Eastern. Sundays they do a longer window, like one in the morning through five. Those are the windows they gave us.
+
+Interviewer: Okay. How will we monitor the system to make sure we meet performance and availability needs?
+
+Stakeholder: We need dashboards for things like response times, queue lengths to backend services, CPU and DB metrics, and success/failure rates for the integrations. Synthetic transactions could help catch regressions before users do. Right now it’s pretty reactive — someone complains, then we dig in. I’d like proactive alerts for latency and integration errors.
+
+Interviewer: What KPIs should trigger alerts?
+
+Stakeholder: Definitely API latency to the Statement and Cardmember services, error rates on posting adjustments, and overall page response times. The thresholds need to be defined, but high latency and error spikes should alert the on-call person immediately.
+
+Interviewer: If an upstream service like the Statement DB is slow or down, what should the UI show to the user?
+
+Stakeholder: It should show a clear, user-friendly message explaining that some data is temporarily unavailable and maybe let the rep continue with cached info or create a ticket with a pending state. We shouldn’t expose raw error messages. And we need retry logic and a way to reconcile failed operations later.
+
+Interviewer: For failed operations like when an adjustment is accepted locally but fails to post, how do we handle reconciliation?
+
+Stakeholder: There should be a dead-letter or retry queue and an operations view where failed transactions are listed for manual reconciliation. Ops or a reconciliation team would pick those up. We need to capture correlation IDs so the Posting/Billing team can help debug.
+
+Interviewer: Regarding testing and acceptance, what types of tests do you think are necessary to validate these needs?
+
+Stakeholder: End-to-end tests with staging endpoints or good mocks for the upstream services, load tests to validate the concurrency target, and security scans for compliance. Also UI acceptance tests; the UX folks want reviews against the corporate library. Load testing should include the external integrations because the real choke points are usually upstream.
+
+Interviewer: Who signs off on acceptance — product, security, ops?
+
+Stakeholder: Product and security usually sign off on functional and compliance bits. Ops signs off on performance and availability stuff after load tests. I can try to pull the right people into a follow-up.
+
+Interviewer: What are the main risks we should call out now?
+
+Stakeholder: The top ones are the Statement DB’s unpredictable latency, the Posting/Billing team’s limited windows and support, and the incomplete mapping of identity groups to app roles. Also the inconsistent UI implementations across teams — that’s more of a process risk. Oh, and the old tool’s habits die hard; reps expect the same shortcuts. Sorry, that was a tangent — coffee ran out earlier and I remembered a day when we had to go patch a hotfix at midnight because of a color mismatch that confused a supervisor.
+
+Interviewer: No problem. For next steps, what can you provide me to help consolidate requirements?
+
+Stakeholder: I can share the mockups, links to the corporate UI library, and the staging API endpoints I mentioned. I’ll also try to get the contact info for the Statement DB owner, Cardmember service owner, and the Posting/Billing lead. If you want, I can demo the current screens and point out where the gaps are.
+
+Interviewer: That would be helpful. Can you also send any notes about the roles you mentioned and who approves them?
+
+Stakeholder: I’ll reach out to the identity owner and see if they can give us the role definitions. I can’t promise they’ll be finalized, but I’ll get what exists.
+
+Interviewer: Okay, thanks. Any other open issues you think we should log now?
+
+Stakeholder: We should document the exact definition of “concurrent users” and confirm the maintenance windows precisely with ops, because I remember a typo in one of their emails once. Also we should get the expected SLAs from the Statement and Cardmember teams so we can design caching and retries appropriately.
+
+Interviewer: Got it. I’ll follow up with those action items. Thanks a lot for your time.
+
+Stakeholder: Sure — happy to help. Send me the follow-up list and I’ll try to chase the docs and owners.
+
+---
+Selected Requirements:
+1. [NICE.csv line 149] [quality, legal, look_and_feel] 'The Disputes application shall comply with the corporate standards for user interface creation for internally and externally used applications.'
+2. [NICE.csv line 151] [quality, look_and_feel] 'The list of dispute cases that are displayed after a search is performed must be color coded for easy identification of dispute cases based upon the dispute case status.'
+3. [NICE.csv line 155] [quality, performance] 'The maximum wait time for a user navigating from one screen to another within the Disputes application shall be no more than 5 seconds.'
+4. [NICE.csv line 156] [quality, performance, scalability] 'The Disputes application shall support 350 concurrent users without any degradation of performance in the application.'
+5. [NICE.csv line 157] [quality, availability, operability] 'The Disputes application shall be available 24x7x365 with the exception of the following scheduled maintenance windows. Monday â€“ Saturday 3:00am to 4:00am EST Sunday 1:00amd to 5:00am EST'
+6. [NICE.csv line 158] [quality, operability] 'The Disputes application shall interface with the Statement Database. The Statement Database provides the transaction details to the Disputes System. All transaction details must be obtained from the Statement Database'
+7. [NICE.csv line 159] [quality, operability] 'The Disputes application shall interface with the Cardmember Information Database. The Cardmember Information Database provides detailed information with regard to a cardmember. All cardmember detail information must be obtained from the Cardmember Information Database.'
+8. [NICE.csv line 162] [quality, operability] The Disputes application shall interface with the Cardmember Posting and Billing System. This will allow the Disputes application to request adjustments to cardmember and merchant's accounts. All adjustment requests must be sent to the Cardmember Posting and Billing System.'
+9. [NICE.csv line 163] [quality, security] 'The Disputes application shall ensure that only users with the appropriate access level are allowed to initiate dispute requests.'
+10. [NICE.csv line 177] [quality, functional, legal] 'The Disputes application must maintain a detailed history of every action that a user takes on a dispute case. This ensures a complete audit trail if questions arise later on with regard to a particular dispute case.'

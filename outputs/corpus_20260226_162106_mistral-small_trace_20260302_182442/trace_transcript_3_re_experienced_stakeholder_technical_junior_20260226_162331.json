@@ -1,0 +1,161 @@
+{
+  "transcript_file": "outputs/corpus-20260226_162106/transcript_3_re_experienced_stakeholder_technical_junior_20260226_162331.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_182444",
+  "requirements": [
+    {
+      "requirement": "The system should support a calendar view and a table view that resembles spreadsheets, with drag-and-drop functionality for ease of use.",
+      "source_citation": "They’re used to spreadsheets and email and kind of expect things to look familiar: a calendar, a table, or something that feels like their Excel worksheets.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for the system to resemble familiar tools like spreadsheets and calendars, which indicates a usability requirement. The mention of drag-and-drop functionality further supports this.",
+      "follow_up_question": "Can you provide examples of specific spreadsheet or calendar features that are most important to users?"
+    },
+    {
+      "requirement": "The system should require no more than two or three clicks from the main schedule view to create a clinical placement.",
+      "source_citation": "Put a number on it — ideally a couple of clicks, maybe two or three from the main schedule view to create the placement. If it takes more than that, they grumble.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the number of clicks acceptable for creating a clinical placement, which is a clear usability requirement.",
+      "follow_up_question": "Are there any specific steps or actions within those two or three clicks that are critical for user satisfaction?"
+    },
+    {
+      "requirement": "The system should have a responsive layout that works on tablets, with less emphasis on phone support in the initial release.",
+      "source_citation": "A responsive layout that works okay on tablets would be good for the first release. Phones are less important right away, I think.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for tablet support and indicates that phone support is less critical initially, which are usability concerns.",
+      "follow_up_question": "What specific tablet interactions or features are most important for the initial release?"
+    },
+    {
+      "requirement": "The system should prevent double-booking of students and instructors, and warn or block actions that violate hard constraints.",
+      "source_citation": "For hard constraints like double-booking the student, I think it should block. For soft constraints, like recommended capacity exceeded, maybe a warning with a reason and a way to proceed if authorized.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "integrity",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for the system to block actions that violate hard constraints and warn for soft constraints, which are integrity requirements.",
+      "follow_up_question": "Can you provide a list of all hard and soft constraints that the system should enforce?"
+    },
+    {
+      "requirement": "The system should have validation and conflict detection mechanisms to prevent scheduling mistakes, including visual cues and undo/confirmation for destructive actions.",
+      "source_citation": "We need validation and conflict detection. For instance, if a student is already scheduled elsewhere at that time, the UI should block saving and show a clear message. Also prerequisite checks — if a student isn’t eligible for a clinical, it should flag that. Visual cues like red highlights and inline error messages make a big difference. An 'undo' or confirmation for destructive actions would also help.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for validation, conflict detection, visual cues, and undo/confirmation, which are all usability requirements.",
+      "follow_up_question": "Can you provide examples of specific validation rules or conflict detection mechanisms that are most important?"
+    },
+    {
+      "requirement": "The system should handle routine tasks (CRUD, viewing lists) in less than five seconds and full schedule generation in thirty seconds or less.",
+      "source_citation": "For small actions like adding or editing a student or enrolling someone, it needs to feel instant — I hate waiting. If I have to wait more than a few seconds it becomes annoying. For heavy tasks like a full schedule generation across a cohort, some delay is okay, but it shouldn’t be minutes. I guess small stuff should be under about five seconds, and full schedule runs should finish within maybe thirty seconds or so.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the acceptable response times for routine tasks and full schedule generation, which are performance requirements.",
+      "follow_up_question": "Are there any specific performance metrics or benchmarks that should be used to measure these response times?"
+    },
+    {
+      "requirement": "The system should support ten concurrent users during peak hours (9 AM–5 PM, weekdays).",
+      "source_citation": "During mornings when everyone is scheduling, there’s about ten of us at peak who are actively using the scheduling features.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the number of concurrent users the system should support during peak hours, which is a performance requirement.",
+      "follow_up_question": "Are there any specific performance metrics or benchmarks that should be used to measure concurrency support?"
+    },
+    {
+      "requirement": "The system should have a monthly availability target of 95%, allowing for planned maintenance but not unexpected downtime.",
+      "source_citation": "We need it to be available when the scheduling team is working — they hate losing access mid-day. I’d expect a target uptime in the mid-nineties percentage-wise, but occasional planned maintenance is okay if it’s communicated. Thirty minutes of unexpected downtime in the morning is a big problem.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the availability target and the tolerance for planned maintenance, which are availability requirements.",
+      "follow_up_question": "Are there any specific availability metrics or benchmarks that should be used to measure uptime?"
+    },
+    {
+      "requirement": "The system should have a canonical date handling approach to prevent inconsistencies and errors caused by different date formats.",
+      "source_citation": "Point is, we need a consistent canonical date handling.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for a consistent date handling approach, which is a maintainability requirement.",
+      "follow_up_question": "Can you provide examples of specific date formats or handling approaches that should be used?"
+    },
+    {
+      "requirement": "The system should support five years of historical data for accreditation, with older data archived in a read-only, slower storage format.",
+      "source_citation": "For accreditation and reporting, they want historic schedules and progression records kept for a while; it’s not just a few months. I’d say keep core records accessible for multiple years so reports can be run across terms.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for historical data retention and the handling of older data, which are scalability requirements.",
+      "follow_up_question": "Are there any specific data retention policies or archiving strategies that should be used?"
+    },
+    {
+      "requirement": "The system should implement role-based access control (RBAC) to restrict data access based on user roles, with admins having broad access and site coordinators and students having limited access.",
+      "source_citation": "Program admins should have broad access for scheduling and tracking progression, but site coordinators should only see the info needed to manage placements — like name, ID, and schedule — not private health notes. Students should only see their own records.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for role-based access control and the specific access levels for different roles, which are security requirements.",
+      "follow_up_question": "Can you provide a detailed list of the specific access levels and permissions for each role?"
+    },
+    {
+      "requirement": "The system should track who changed what, when, and why in audit logs, with logs retained for five years in a tamper-evident format.",
+      "source_citation": "They want to know who changed a schedule, when it was changed, and the previous value. Sometimes a short reason for the change is helpful. They ask for that when disputes happen between instructors or sites.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for audit logs and the specific information that should be tracked, which are security requirements.",
+      "follow_up_question": "Can you provide examples of specific audit log entries or scenarios that are most important?"
+    },
+    {
+      "requirement": "The system should encrypt data in transit and securely store sensitive fields like social security numbers and health-related notes.",
+      "source_citation": "We need to protect private student information in line with the university’s info security policy. That means encrypting data in transit, and sensitive fields like social security numbers or health-related notes must be stored securely.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for data protection and the specific fields that require extra protection, which are security requirements.",
+      "follow_up_question": "Can you provide a detailed list of the specific sensitive fields and the encryption methods that should be used?"
+    },
+    {
+      "requirement": "The system should have retry logic and a clear error dashboard for handling sync failures or rate limiting with CampusConnect, and should not block the UI if CampusConnect is slow.",
+      "source_citation": "We should have retry logic and a clear error dashboard so admins know when data is stale. For critical mismatches, maybe a manual re-sync button. Also, we should queue changes and not block the UI if CampusConnect is slow — just show a sync status.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "other",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for retry logic, error dashboards, and non-blocking UI behavior, which are integration requirements.",
+      "follow_up_question": "Can you provide examples of specific retry logic or error handling mechanisms that should be used?"
+    }
+  ]
+}

@@ -1,0 +1,172 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_3_re_novice_stakeholder_technical_junior_20260227_110127.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_174711",
+  "requirements": [
+    {
+      "requirement": "The system should respond to small management tasks within 5 seconds and to heavy operations like schedule generation within 30 seconds.",
+      "source_citation": "It just needs to feel snappy... For the small things... people expect almost immediate feedback. For the heavier stuff... maybe up to thirty seconds is acceptable.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions response time expectations for different types of tasks, providing clear performance requirements.",
+      "follow_up_question": "Are there specific performance metrics or benchmarks that should be used to measure and ensure these response times?"
+    },
+    {
+      "requirement": "The system should implement role-based access control (RBAC) to restrict access to sensitive student information based on user roles.",
+      "source_citation": "Program admins should have broad access... Site coordinators should only see the basics... Instructors should see academic-relevant info... clear restrictions so only authorized people can see personal data.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder clearly outlines the need for role-based access control and the specific access levels for different user roles.",
+      "follow_up_question": "Are there any specific compliance standards or regulations that the access control mechanisms must adhere to?"
+    },
+    {
+      "requirement": "The system must comply with the university's information policy on privacy, ensuring controlled access, encryption where required, and minimal exposure of personal identifiers.",
+      "source_citation": "It must protect private information in line with our organization’s information policy... controlled access, encryption where required, and minimal exposure of personal identifiers.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for compliance with the university's information policy and outlines specific security measures.",
+      "follow_up_question": "Are there any specific encryption standards or protocols that must be followed?"
+    },
+    {
+      "requirement": "The system should have an intuitive user interface that requires minimal clicks to perform common tasks, provides clear error messages, and has predictable workflows.",
+      "source_citation": "Minimal clicks to perform common tasks, clear error messages, and predictable workflows... If admins can do their job without hunting through menus or reading a manual every time, that's intuitive.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder provides a clear definition of what constitutes an intuitive UI and the expected user experience.",
+      "follow_up_question": "Are there any specific usability testing methods or user feedback mechanisms that should be employed to ensure the UI meets these criteria?"
+    },
+    {
+      "requirement": "The system should have basic integrity checks to validate data entry, ensuring that dates do not overlap, required fields are present, and students are not assigned to multiple places simultaneously.",
+      "source_citation": "Basic integrity checks are important... validation to catch obvious mistakes and prevent garbage getting in.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of data validation to reduce user errors and ensure data integrity.",
+      "follow_up_question": "Are there any specific validation rules or data integrity checks that should be implemented beyond the examples provided?"
+    },
+    {
+      "requirement": "The system should be reliable during working hours, with a target uptime of around 95%.",
+      "source_citation": "It needs to be reliable during working hours... aiming for around ninety-five percent availability makes sense.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the need for reliability during working hours and provides a specific uptime target.",
+      "follow_up_question": "Are there any specific maintenance windows or downtime schedules that should be considered?"
+    },
+    {
+      "requirement": "The system should be designed to be simple enough for non-technical admins to use without extensive training.",
+      "source_citation": "Keep it simple enough that admins who aren't technical can use it without weeks of training.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the need for simplicity and ease of use to reduce the maintenance burden on non-technical users.",
+      "follow_up_question": "Are there any specific usability or design guidelines that should be followed to ensure the system is user-friendly for non-technical users?"
+    },
+    {
+      "requirement": "The system should have routine backups and a disaster recovery plan to prevent data loss and ensure quick recovery in case of data corruption.",
+      "source_citation": "Backups should be routine... some recovery plan is required so we don't lose weeks of scheduling work.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of backups and disaster recovery to ensure data integrity and system reliability.",
+      "follow_up_question": "Are there any specific backup frequency or retention policies that should be followed?"
+    },
+    {
+      "requirement": "The system should be scalable to support future curriculum updates and additional cohorts, ensuring it can handle growth in programs and users over the years.",
+      "source_citation": "It should be built so we can support future curriculum updates and maybe more cohorts... it should survive heavier days and changes over the years.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for scalability to accommodate future growth and changes in the program.",
+      "follow_up_question": "Are there any specific scalability benchmarks or performance metrics that should be used to ensure the system can handle future growth?"
+    },
+    {
+      "requirement": "The system should integrate with CampusConnect for student records and authentication, using a stable and authorized connection rather than manual CSV imports.",
+      "source_citation": "It definitely needs to hook into our campus systems for student records and authentication... stable, authorized connection rather than some manual CSV imports.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "integrations",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the need for integration with CampusConnect and specifies the type of connection required.",
+      "follow_up_question": "Are there any specific API or file exchange standards that should be followed for the integration with CampusConnect?"
+    },
+    {
+      "requirement": "The system should include basic integrity checks to validate data entry, ensuring that dates do not overlap, required fields are present, and students are not assigned to multiple places simultaneously.",
+      "source_citation": "Basic integrity checks are important... ensuring dates don't overlap, required fields are present, and that a student doesn't get assigned to two places at the same time.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "data_quality",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of data validation to reduce user errors and ensure data integrity.",
+      "follow_up_question": "Are there any specific validation rules or data integrity checks that should be implemented beyond the examples provided?"
+    },
+    {
+      "requirement": "The system should maintain audit logs to track changes made to schedules and student data, including who made the changes and when.",
+      "source_citation": "We should have a history of who changed what and when... helps with compliance.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "auditability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the need for audit logs to track changes and ensure compliance.",
+      "follow_up_question": "Are there any specific retention policies or audit log requirements that should be followed?"
+    },
+    {
+      "requirement": "The system should send automatic, clear, and targeted notifications to the appropriate stakeholders when schedules or assignments change, without spamming users with irrelevant updates.",
+      "source_citation": "They need to be automatic... clear and go to the right people... not spam people for tiny, irrelevant tweaks.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "notifications",
+      "confidence": 4,
+      "rationale": "The stakeholder outlines the need for automatic, targeted, and non-spammy notifications to keep stakeholders informed.",
+      "follow_up_question": "Are there any specific notification channels or formats that should be supported beyond email and calendar invites?"
+    },
+    {
+      "requirement": "The system must comply with the university's information policy on privacy, ensuring controlled access, encryption where required, and minimal exposure of personal identifiers.",
+      "source_citation": "It must follow our university’s information policy on privacy... we can't just make ad hoc decisions here.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "compliance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for compliance with the university's information policy and outlines specific security measures.",
+      "follow_up_question": "Are there any specific compliance standards or regulations that the system must adhere to beyond the university's information policy?"
+    },
+    {
+      "requirement": "The system should have routine backups and a disaster recovery plan to prevent data loss and ensure quick recovery in case of data corruption.",
+      "source_citation": "Backups should be routine... some recovery plan is required.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "disaster_recovery",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of backups and disaster recovery to ensure data integrity and system reliability.",
+      "follow_up_question": "Are there any specific backup frequency or retention policies that should be followed?"
+    }
+  ]
+}

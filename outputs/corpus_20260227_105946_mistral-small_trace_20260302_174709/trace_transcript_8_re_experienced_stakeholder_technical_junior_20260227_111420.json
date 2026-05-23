@@ -1,0 +1,205 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_8_re_experienced_stakeholder_technical_junior_20260227_111420.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_174818",
+  "requirements": [
+    {
+      "requirement": "The system shall respond to UI interactions within five seconds.",
+      "source_citation": "Anything longer than, uh, maybe five seconds feels too slow to most people.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions a five-second threshold for UI interactions, indicating a clear performance expectation. However, the specific interactions are not detailed.",
+      "follow_up_question": "Which specific UI interactions are included in this five-second requirement?"
+    },
+    {
+      "requirement": "The system shall complete payment processing within fifteen seconds.",
+      "source_citation": "Payment processing needs to complete within about fifteen seconds.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a fifteen-second limit for payment processing, but the exact steps involved in the payment process are not described.",
+      "follow_up_question": "What are the specific steps in the payment process that must be completed within fifteen seconds?"
+    },
+    {
+      "requirement": "The system shall limit initial streaming buffering to ten seconds.",
+      "source_citation": "Something like ten seconds for the buffering part itself is about the limit.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions a ten-second limit for streaming buffering, but it is unclear if this includes network latency or other factors.",
+      "follow_up_question": "Does the ten-second buffering limit include network latency, or is it exclusive to system processing?"
+    },
+    {
+      "requirement": "The system shall achieve an availability of 99.5%.",
+      "source_citation": "Uptime-wise, ops aims for an availability target of ninety-nine point five percent.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the availability target, but the specific measures to achieve this are not detailed.",
+      "follow_up_question": "What measures will be implemented to ensure 99.5% availability?"
+    },
+    {
+      "requirement": "The system shall encrypt credit card details stored on the server.",
+      "source_citation": "We planned to keep credit card details on our side — like stored on the server — but encrypted.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions encryption for credit card details, but the specific encryption standards and key management practices are not described.",
+      "follow_up_question": "What encryption standards and key management practices will be used for credit card details?"
+    },
+    {
+      "requirement": "The system shall restrict access to customer records to authorized staff only.",
+      "source_citation": "Same with customer records: they all live in a secure database and only authorized staff get access.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions restricted access to customer records, but the specific roles and access levels are not detailed.",
+      "follow_up_question": "What specific roles and access levels will be defined for customer record access?"
+    },
+    {
+      "requirement": "The system shall implement tokenization for credit card processing.",
+      "source_citation": "Using tokenization does sound safer and less headache for PCI stuff.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 2,
+      "rationale": "The stakeholder suggests tokenization as an alternative but does not confirm it as a requirement. The decision seems pending.",
+      "follow_up_question": "Has a final decision been made on whether to implement tokenization for credit card processing?"
+    },
+    {
+      "requirement": "The system shall detect and alert on repeated failed logins, credential stuffing patterns, and suspicious card activity.",
+      "source_citation": "It should defend itself and let us know... things like repeated failed logins, credential stuffing patterns, or suspicious card activity should trigger alerts.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the types of activities that should trigger alerts, but the specific alert mechanisms and thresholds are not detailed.",
+      "follow_up_question": "What specific alert mechanisms and thresholds will be used for detecting and alerting on suspicious activities?"
+    },
+    {
+      "requirement": "The system shall notify admins of high-severity security events immediately.",
+      "source_citation": "For high-severity events, yes, admins should be notified immediately.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions immediate notification for high-severity events, but the specific criteria for high-severity events are not defined.",
+      "follow_up_question": "What specific criteria will be used to define high-severity security events?"
+    },
+    {
+      "requirement": "The system shall be usable by 90% of novice users.",
+      "source_citation": "I'd like the product to be usable by most of them — not perfect, but high. If pressed, maybe around ninety percent usability for that group.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 3,
+      "rationale": "The stakeholder specifies a 90% usability target for novice users, but the specific usability metrics and testing methods are not detailed.",
+      "follow_up_question": "What specific usability metrics and testing methods will be used to measure 90% usability for novice users?"
+    },
+    {
+      "requirement": "The system shall limit the account creation flow to no more than four pages.",
+      "source_citation": "It should be very straightforward. I don't want them clicking through page after page; something like, uh, no more than four pages from landing to a usable account.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 3,
+      "rationale": "The stakeholder specifies a limit of four pages for the account creation flow, but the specific steps and interactions within those pages are not detailed.",
+      "follow_up_question": "What specific steps and interactions will be included in the four-page account creation flow?"
+    },
+    {
+      "requirement": "The system shall follow W3C standards for accessibility.",
+      "source_citation": "We should follow W3C standards so assistive tech works — we talked about that briefly in the scrum.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions W3C standards for accessibility, but the specific standards and compliance levels are not detailed.",
+      "follow_up_question": "Which specific W3C standards and compliance levels will be followed for accessibility?"
+    },
+    {
+      "requirement": "The system shall implement adaptive bitrate streaming.",
+      "source_citation": "I think adaptive bitrate is a must, yeah. Start with a lower bitrate if the user's connection is weak, then ramp up.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions adaptive bitrate streaming, but the specific implementation details are not provided.",
+      "follow_up_question": "What specific adaptive bitrate streaming technologies and algorithms will be used?"
+    },
+    {
+      "requirement": "The system shall offer a low-quality fallback for very poor network connections.",
+      "source_citation": "Also offering a low-quality fallback for very poor links would help.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions a low-quality fallback for poor network connections, but the specific quality levels and triggering conditions are not detailed.",
+      "follow_up_question": "What specific quality levels and triggering conditions will be used for the low-quality fallback?"
+    },
+    {
+      "requirement": "The system shall provide analytics on revenue over time, top titles, and redemption rates for pre-paid cards.",
+      "source_citation": "They should be useful for the business team — like revenue over time, top titles, and redemption rates for pre-paids.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "other",
+      "confidence": 3,
+      "rationale": "The stakeholder specifies the types of analytics required, but the specific data sources and reporting mechanisms are not detailed.",
+      "follow_up_question": "What specific data sources and reporting mechanisms will be used for the analytics?"
+    },
+    {
+      "requirement": "The system shall fail gracefully and provide clear error messages to users.",
+      "source_citation": "It should fail gracefully and tell the user what happened, with steps to retry or contact support.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions graceful failure and clear error messages, but the specific error handling and user communication mechanisms are not detailed.",
+      "follow_up_question": "What specific error handling and user communication mechanisms will be implemented?"
+    },
+    {
+      "requirement": "The system shall log incidents for admin diagnosis.",
+      "source_citation": "Also log the incident for admins so we can diagnose it.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions logging incidents for admin diagnosis, but the specific logging mechanisms and diagnostic tools are not detailed.",
+      "follow_up_question": "What specific logging mechanisms and diagnostic tools will be used?"
+    },
+    {
+      "requirement": "The system shall implement thresholds for alerting on security events.",
+      "source_citation": "There should be thresholds where actions cross a risk score or pattern, and then it's escalated.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions thresholds for alerting on security events, but the specific risk scores and patterns are not detailed.",
+      "follow_up_question": "What specific risk scores and patterns will be used to trigger alerts?"
+    }
+  ]
+}

@@ -1,0 +1,156 @@
+Interviewer: Thanks for sitting down. To start, at a very high level how do you see this disputes application fitting into our ecosystem? Who's it for and where do the truths live?
+
+Stakeholder: Sure — I think of it as a representative-facing workspace, nothing more. It should be a thin, well-governed facade in front of the systems that already hold the truth: statements, cardmember profiles, merchant records, billing/posting. It mustn’t invent card, merchant, or transaction data; if we need a field we should fetch it from the authoritative source or cache it with clear expiry. And, uh, it needs to support both internal reps and merchant-facing reps with different visibility — data segregation is important so people only see what they're allowed to. The overall scope should be focused on case lifecycle, correspondence, adjustments orchestration, and auditability, not on re-implementing backend masters.
+
+Interviewer: When you say "mustn’t invent" data, what do you mean exactly? Does that forbid any local caching or copies for performance?
+
+Stakeholder: Not forbid, no. We can cache, but only under an explicit policy. I mean we shouldn't create local canonical copies that become the system of record. If we cache, it must be clear which fields are authoritative, we must have TTLs or change notification from the owners, and reconcile periodically. Otherwise we'll get conflicts — literally, we've seen teams drift apart because they started trusting caches more than the upstream systems.
+
+Interviewer: Who owns those upstream systems today — statement, cardmember, merchant, billing? And do we already have contracts or APIs to consume?
+
+Stakeholder: The Statement system sits with Transaction Services in the core ledger team; cardmember profiles are owned by Member Data Services; merchants are owned by Merchant Ops; billing/posting is a different Ops team. There are existing endpoints for all of them, but the interfaces are a mixed bag — some are REST APIs, a couple are RPC-like services, and one is still accessed via a controlled DB link. Contracts exist in varying degrees of formality; some teams will expect us to use their current API and adhere to their SLA. We'll need to formalize the contracts early.
+
+Interviewer: Good — that helps. Let's switch to the user experience. You said it needs to feel fast. Can you describe what "fast" means to a rep day-to-day?
+
+Stakeholder: Yeah, reps are impatient — honestly, they want instant feedback. They get frustrated if screens take too long to populate or when search results lag. So, the app should deliver a snappy feel. I don't want them sitting idle waiting for full payloads; where possible use skeletons and progressive rendering. If backends are slow, show partial data and let them continue work. The UX should avoid blocking on distant systems unless absolutely necessary.
+
+Interviewer: "Snappy" is helpful but a bit vague for engineering. Can you put a number on it — what's too long when navigating between screens?
+
+Stakeholder: Hmm, okay, if you insist on a number — for routine screen-to-screen transitions, I'd say around five seconds is the upper bound for perceived wait. Anything noticeably longer and reps complain. That's for typical intra-application navigation after the user is logged in; initial login or heavy reconciliation screens can be different, but the daily flow should feel like five seconds or less.
+
+Interviewer: Thanks — and when you say "five seconds" do you mean end-to-end perceived time in the browser or server response time? Also, is this for all transitions or only certain ones?
+
+Stakeholder: I mean perceived end-to-end latency in the UI — what the user experiences. We should aim to have the page interactive within that window. We should clarify percentiles though; I want typical cases to meet it and edge cases to be rare. Heavy exports or complex multi-system joins are exceptions — those can be allowed more time, but they should show progress. Progressive loading and background refresh are acceptable strategies to stay within that perceived window.
+
+Interviewer: You mentioned percentiles. Which percentile should meet the five-second mark? Is it p50, p95, p99?
+
+Stakeholder: Let's be pragmatic: p95 should meet it. We can tolerate a small number of slow tails, but if 5–10% of operations are slow, that's a problem. So, p95 perceived latency of five seconds for normal screen transitions feels right.
+
+Interviewer: Understood. Moving to load — you said this is for reps. How many concurrent people do you expect using the app at peak?
+
+Stakeholder: Peak is higher than you might think — there are several regional hubs working simultaneously. I don't like throwing numbers around without validation, but for planning we should design for a few hundred concurrent users. Don't under-provision because these workflows are time-sensitive.
+
+Interviewer: Can you be specific? How many concurrent users should we design for?
+
+Stakeholder: Okay, to be concrete — design for 350 concurrent users without user-visible performance degradation. That's the capacity point I'd be comfortable committing to.
+
+Interviewer: When you say "without degradation," what metrics or baselines do you expect to remain stable under that load?
+
+Stakeholder: The same latency targets we just discussed should hold — p95 at or below the five-second perception for normal navigation. Error rates must remain negligible; throughput per operation should stay within SLA. CPU and memory should be well below saturation — we want headroom for spikes. Essentially, the user should not notice slowdown or increased failure rates at that concurrency.
+
+Interviewer: Good. Any constraint on how we count "concurrent users"? Is that active requests per second, sessions with open tabs, or something else?
+
+Stakeholder: Let's count users with an active session and making requests — a sliding-window measure where idle, long-sleep tabs are not counted. But we should correlate this to requests per second profiles in load tests so we understand real RPS impact.
+
+Interviewer: Makes sense. Availability next: what uptime expectations should we design for?
+
+Stakeholder: We need near-continuous availability because reps and merchants operate around the clock. Scheduled maintenance windows are acceptable, though — small windows during low-traffic hours. Outside those windows the app should be available for normal operations.
+
+Interviewer: Which maintenance windows are acceptable? Give me specific times so we can bake them into ops.
+
+Stakeholder: Okay — the windows we can work with are early morning EST. Monday through Saturday a one-hour window in the early morning and on Sunday a slightly larger window. Specifically, Monday to Saturday from 3:00am to 4:00am Eastern, and Sunday from 1:00am to 5:00am Eastern for scheduled maintenance.
+
+Interviewer: Does "available" outside those windows mean full read/write capability, or would read-only access be acceptable during some upgrades?
+
+Stakeholder: For most changes we should aim for full availability; if a change requires temporary read-only mode we'll make that explicit and coordinate. Ideally use rolling upgrades, blue/green, or canary deployments to avoid downtime. But the business tolerates those exact windows for any necessary downtime.
+
+Interviewer: Noted. Earlier you stressed that the app shouldn't invent data and that statement, cardmember, and merchant systems are authoritative. For each of those, do you expect us to call them synchronously for every screen, or can we rely on a cache?
+
+Stakeholder: Design for synchronous read-through where accuracy matters — for example, transaction details should come from the statement source as the authoritative record. Caching is acceptable to meet latency targets, but only under clear staleness rules. For things like display names or merchant descriptions, a short TTL cache is fine; for transaction amounts and dates, prefer authoritative reads or very conservative caching.
+
+Interviewer: When you say transactions should come from the statement source, do you mean we must always read from that database at the time of a dispute, or can a cached copy be used if validated?
+
+Stakeholder: My preference is to obtain transaction details from the Statement system when constructing a dispute or showing transaction facts for adjudication. If using cache for performance, we need a validation step or a freshness guarantee. In practice, we should treat the Statement system as the source of truth and design the UI and flows so that any actionable decision is based on data that either came straight from it or has been verified within an acceptable window.
+
+Interviewer: Understood. Technically, what protocols do these upstream systems expose today? REST, gRPC, direct DB access?
+
+Stakeholder: It's mixed. Most have REST APIs; one of the legacy ones still provides a controlled DB link and another exposes an RPC interface. We should assume we'll need an integration layer with adapters and service virtualization for testing. Authentication will be OAuth/MTLS for APIs and IAM-approved credentials for DB links.
+
+Interviewer: For the billing/posting system — adjustments are a core capability. How should that integration behave? Synchronous real-time confirmation or asynchronous queued processing?
+
+Stakeholder: Adjustments are critical and must be handled carefully. I prefer an asynchronous, durable, idempotent approach. The app should submit an adjustment request to the billing system with a unique request ID and receive an acceptance acknowledgement. The billing system should be the arbiter of posting. We need durable queuing, retries with backoff, and reconciliation reporting so we can guarantee the request was applied or surface exceptions. If the billing system supports synchronous confirmation for smaller adjustments, that's nice to have, but we should design for asynchronous assurances.
+
+Interviewer: You said unique request IDs and idempotency. Does the billing system support idempotency natively, or will we need client-side deduplication?
+
+Stakeholder: I think the billing system has partial support, but don't assume full idempotency everywhere. We need to send a stable unique identifier for each logical adjustment and build client-side guards — durable queues that record status and prevent double submission. Reconciliation processes must detect duplicates or missing postings.
+
+Interviewer: Let's talk security and access control. You mentioned different visibility for internal and external reps and data segregation. How do you propose we enforce that?
+
+Stakeholder: Centralized identity and RBAC is the way to go, integrated with enterprise SSO. Beyond role permissions, we must enforce case-level visibility — row-level security or an application-level authorization layer that filters cases based on rep assignments, territory, or business unit. The 'cardholder base' needs a clear definition — either static territory assignments or dynamic filters from a master mapping service. Also, we need break-glass for escalations with extra approvals and audit trails.
+
+Interviewer: When you say "cardholder base," how is that maintained? Who owns assignment changes and how fast must revocation propagate?
+
+Stakeholder: Typically that mapping is owned by operations — either via a territory management service or HR provisioning workflows. Revocations must be near-immediate; when a rep loses access the change should propagate within minutes. Caching authorization decisions can improve performance, but that introduces staleness risk — short TTLs and forced cache invalidation on role changes are mandatory for sensitive actions like initiating disputes or seeing PII.
+
+Interviewer: You mentioned forbidding access to disputes outside a rep's cardholder base. How strict should that be — are there legitimate cross-boundary cases?
+
+Stakeholder: Strict by default. Cross-boundary access should only happen via explicit escalation and be logged. Shared accounts are an edge case — in those we need business rules to determine who can see which parts. But for ordinary cases, if a rep isn't assigned to that cardholder set, they must not be able to view the case.
+
+Interviewer: On the compliance front, the business flagged Regulation E and Regulation Z. What parts of those regs are we most concerned about for the app?
+
+Stakeholder: We must support the workflows those regs require — acknowledgments, investigation timelines, provisional credits where applicable, proper disclosures in correspondence, and retention of records for audits. The app needs to enforce timing rules, present the right disclosure language, and generate audit evidence that the business complied. Legal will need to provide the exact text and thresholds, but architecturally we must make the timelines and templates configurable and auditable.
+
+Interviewer: Do we need built-in timers or automated escalation if an investigator misses a regulatory deadline?
+
+Stakeholder: Yes. The system should track regulatory clocks per case, send automated reminders, escalate to supervisors, and lock certain actions if timelines are breached. All of these events need audit logging so we can prove compliance or explain exceptions.
+
+Interviewer: On audit trails — what do you expect to be captured?
+
+Stakeholder: Every significant action: case creation, edits, status changes, adjustments requested, approvals, escalations, correspondence sent, and who viewed what and when. For edits we should capture before-and-after states, reasons, and any supporting documents. Logs must be tamper-evident, stored per retention policy, and be queryable for both operational investigations and regulatory audits.
+
+Interviewer: Any thoughts on log retention duration or whether logs must be immutable?
+
+Stakeholder: Retention periods should be set by Legal/Compliance, but for design assume long-term retention — years rather than months. Immutability is preferable for audit logs; if we cannot WORM them, then we must have cryptographic hashing and append-only patterns so tampering is detectable.
+
+Interviewer: Error handling and resiliency: if a downstream system like the Statement DB is unavailable, how should the UI behave?
+
+Stakeholder: The UI must degrade gracefully. If Statement is down, we should show cached data with a clear warning, disable actions that require authoritative writes, and queue any outbound requests that can be retried safely. For adjustments, if the billing system is down we must persist the request locally and retry; the user should see the request queued and have a way to track status. We need circuit breakers, exponential backoff, and operator dashboards to surface issues. And importantly, avoid duplicate adjustments.
+
+Interviewer: How do we prevent duplicate adjustments in the presence of retries and outages?
+
+Stakeholder: Use idempotency keys on requests, durable queues that record submission status, and reconciliation jobs that detect duplicate postings in billing and flag them. The design should assume at-least-once transmission but provide an idempotency mechanism and reconciliation to remove duplicates if they occur.
+
+Interviewer: For testing and acceptance, how do you want us to prove performance and compliance?
+
+Stakeholder: We need realistic load tests with service virtualization of upstream systems — tests that exercise typical workflows at 350 concurrent users and validate p95 latency targets. Also integration test harnesses for billing to validate idempotency and retries. For compliance, do audit scenarios: create cases, simulate timelines, send correspondence, and show evidence of proper notification and retention. Legal/Compliance should sign off on those test cases.
+
+Interviewer: Which percentile and workload will you accept as the test pass for the five-second and concurrency goals?
+
+Stakeholder: For performance acceptance: p95 for typical navigation paths at or below five seconds while sustaining 350 concurrent users, with error rates below a small threshold — say well under one percent. Tests should include mixed transaction types: searches, case creates, and adjustments.
+
+Interviewer: Operational ownership — who will run and support this system? Cloud, on-prem, containers?
+
+Stakeholder: Prefer cloud-native with containerized services and automated CI/CD, using blue/green or canary deployments. The application team should own the app stack; downstream teams own their services. We need clear RACI for integrations, and runbooks for failover. Backup and DR should be tested regularly.
+
+Interviewer: What are the biggest risks you see right now?
+
+Stakeholder: Biggest risks are downstream SLAs and ambiguities in data mappings — if the Statement system is slow or its schema changes, the app will suffer. Another risk is legal interpretation of the regs; we need compliance to define exact timelines. Lastly, connection limits to legacy systems — some have low connection ceilings, so we'll need pooling or proxies. We should validate these early with prototypes.
+
+Interviewer: You mentioned connection limits — can you give an example of a constraint you've seen before and how you mitigated it?
+
+Stakeholder: Sure — in a prior program we had a legacy DB that only allowed a handful of concurrent connections. We used a connection-pooling service and an API gateway that multiplexed requests, plus caching for read-heavy endpoints. It added latency complexity but avoided stomping the DB. We may need a similar pattern here if any of those systems are legacy.
+
+Interviewer: To wrap up, what artifacts or contacts will you provide to help the next steps?
+
+Stakeholder: I'll send the integration contacts for Transaction Services, Member Data, Merchant Ops, and Billing Ops. I can also share existing API specs and any SLAs we have, plus our compliance team's Reg E/Z reference documents. We should schedule follow-ups: an integration deep-dive with each backend owner and an RBAC workshop with IAM and Operations.
+
+Interviewer: Great — let's confirm actions. You'll provide contacts and API specs, we'll draft performance test plans for the p95 five-second and the 350 concurrent scenario, and I'll schedule the RBAC and compliance sessions. Anything else?
+
+Stakeholder: That sounds right. Also, please add an item to validate caching policies with data owners and to get legal's required retention windows. Oh, and one more tiny thing — don't forget to plan for daylight savings in the maintenance windows; timezones bite you if you forget them.
+
+Interviewer: Good catch on DST — we'll include that. Thank you — this was very productive. I'll circulate notes and the action list after we exit.
+
+Stakeholder: Thanks. And, uh, one last thought: keep the first release tight. Better to do a smaller, well-supported MVP that proves integrations and controls than a huge rollout that trips over the edge cases.
+
+---
+Selected Requirements:
+1. [NICE.csv line 155] [quality, performance] 'The maximum wait time for a user navigating from one screen to another within the Disputes application shall be no more than 5 seconds.'
+2. [NICE.csv line 156] [quality, performance, scalability] 'The Disputes application shall support 350 concurrent users without any degradation of performance in the application.'
+3. [NICE.csv line 157] [quality, availability, operability] 'The Disputes application shall be available 24x7x365 with the exception of the following scheduled maintenance windows. Monday â€“ Saturday 3:00am to 4:00am EST Sunday 1:00amd to 5:00am EST'
+4. [NICE.csv line 158] [quality, operability] 'The Disputes application shall interface with the Statement Database. The Statement Database provides the transaction details to the Disputes System. All transaction details must be obtained from the Statement Database'
+5. [NICE.csv line 159] [quality, operability] 'The Disputes application shall interface with the Cardmember Information Database. The Cardmember Information Database provides detailed information with regard to a cardmember. All cardmember detail information must be obtained from the Cardmember Information Database.'
+6. [NICE.csv line 160] [quality, operability] 'The Disputes applications shall interface with the Merchant Information Database. The Merchant Information Database provides detailed information with regard to the merchant. All merchant detail information shall be obtained from the Merchant Information Database.'
+7. [NICE.csv line 162] [quality, operability] The Disputes application shall interface with the Cardmember Posting and Billing System. This will allow the Disputes application to request adjustments to cardmember and merchant's accounts. All adjustment requests must be sent to the Cardmember Posting and Billing System.'
+8. [NICE.csv line 163] [quality, security] 'The Disputes application shall ensure that only users with the appropriate access level are allowed to initiate dispute requests.'
+9. [NICE.csv line 175] [quality, legal] 'The Disputes application must conform to the legal requirements as specified by Regulation E and Regulation Z that govern credit card disputes processing.'
+10. [NICE.csv line 180] [quality, security] 'The Disputes System must prevent users from accessing any dispute cases that do not belong to their cardholder base.'

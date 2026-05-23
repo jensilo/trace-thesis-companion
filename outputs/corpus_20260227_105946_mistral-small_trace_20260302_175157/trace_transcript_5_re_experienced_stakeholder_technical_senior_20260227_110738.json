@@ -1,0 +1,216 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_5_re_experienced_stakeholder_technical_senior_20260227_110738.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_175240",
+  "requirements": [
+    {
+      "requirement": "The parts search must respond within 15 seconds to avoid user annoyance.",
+      "source_citation": "if it takes more than a handful of seconds people get annoyed. Let me be explicit: users expect results in the low tens of seconds for these kinds of queries. Any longer and field adjusters start calling the call center or going back to manual. So short of a catastrophic outage, we need it to return within that window.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the requirement for parts search response time and the consequences of not meeting it.",
+      "follow_up_question": "Are there specific scenarios or types of searches that might require different response time targets?"
+    },
+    {
+      "requirement": "The repair facility lookup must respond within 8 seconds on cellular networks.",
+      "source_citation": "That one needs to feel quicker than the parts search because adjusters make on-the-spot decisions. I'd want the preferred facility lookup to come back in under about eight seconds.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the requirement for repair facility lookup response time and the reasons behind it.",
+      "follow_up_question": "Are there specific scenarios or types of lookups that might require different response time targets?"
+    },
+    {
+      "requirement": "The system should prefer availability over strict real-time consistency for searches.",
+      "source_citation": "We should prefer availability over strict real-time consistency for searches.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the preference for availability over real-time consistency.",
+      "follow_up_question": "What is the maximum acceptable data staleness for searches?"
+    },
+    {
+      "requirement": "The UI should be progressive, caching recent searches, allowing limited offline review, and queuing updates.",
+      "source_citation": "For field users, the UI should be progressive — cache recent searches, allow limited offline review of claims, and queue any non-critical updates for later sync.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the requirement for a progressive UI with specific features.",
+      "follow_up_question": "What are the specific limits for offline review and queued updates?"
+    },
+    {
+      "requirement": "The system must use the corporate identity provider for SSO and logging standards.",
+      "source_citation": "We must use the corporate identity provider for SSO and logging standards.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the requirement for using the corporate identity provider.",
+      "follow_up_question": "Are there any specific SSO or logging standards that need to be followed?"
+    },
+    {
+      "requirement": "Tenant-scoped encryption keys and row-level security are required.",
+      "source_citation": "Tenant-scoped encryption keys and row-level security are required.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the requirement for tenant-scoped encryption keys and row-level security.",
+      "follow_up_question": "Are there any specific encryption standards or row-level security mechanisms that need to be followed?"
+    },
+    {
+      "requirement": "The system must have rate limiting, WAF controls, and DDoS mitigation.",
+      "source_citation": "We should have rate limiting, WAF controls, and DDoS mitigation in front of the service.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the requirement for rate limiting, WAF controls, and DDoS mitigation.",
+      "follow_up_question": "Are there any specific rate limiting, WAF, or DDoS mitigation standards that need to be followed?"
+    },
+    {
+      "requirement": "The UI must adhere to corporate guidelines for accessibility, keyboard navigation, and color contrast.",
+      "source_citation": "The UI must adhere to corporate guidelines (accessibility, keyboard nav, color contrast).",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the requirement for adhering to corporate UI guidelines.",
+      "follow_up_question": "Are there any specific accessibility, keyboard navigation, or color contrast standards that need to be followed?"
+    },
+    {
+      "requirement": "The system must have a high availability target of 98% uptime.",
+      "source_citation": "They're asking for ninety-eight percent availability.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the high availability target.",
+      "follow_up_question": "Are there any specific high availability standards or mechanisms that need to be followed?"
+    },
+    {
+      "requirement": "The system must be designed as small, well-scoped services with clear contracts.",
+      "source_citation": "we should design this as a set of small, well-scoped services with clear contracts",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the requirement for designing the system as small, well-scoped services with clear contracts.",
+      "follow_up_question": "Are there any specific service design or contract standards that need to be followed?"
+    },
+    {
+      "requirement": "The system must integrate with corporate observability and logging standards.",
+      "source_citation": "logging needs to feed into the corporate observability stack",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the requirement for integrating with corporate observability and logging standards.",
+      "follow_up_question": "Are there any specific observability or logging standards that need to be followed?"
+    },
+    {
+      "requirement": "The system must plan for 1,500 concurrent users initially and scale to 10,000 in 2 years.",
+      "source_citation": "For initial capacity planning the ask is to handle fifteen hundred concurrent users comfortably. And within two years, they want the platform to be capable of supporting up to ten thousand concurrent users as adoption ramps.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the requirement for initial and future concurrency planning.",
+      "follow_up_question": "Are there any specific scalability standards or mechanisms that need to be followed?"
+    },
+    {
+      "requirement": "The system must handle peak morning loads.",
+      "source_citation": "peak mornings are busy",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 3,
+      "rationale": "The stakeholder implicitly states the requirement for handling peak morning loads.",
+      "follow_up_question": "What are the specific peak morning load requirements?"
+    },
+    {
+      "requirement": "The system must provide clear indicators when data might be stale.",
+      "source_citation": "we should provide clear indicators when data might be stale",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the requirement for providing clear indicators when data might be stale.",
+      "follow_up_question": "What are the specific indicators that need to be provided?"
+    },
+    {
+      "requirement": "The system must have structured logs for corporate analytics and long-term storage.",
+      "source_citation": "The logs should be structured and ship to corporate analytics and long-term storage for retention policies.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "observability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the requirement for structured logs for corporate analytics and long-term storage.",
+      "follow_up_question": "Are there any specific logging standards or retention policies that need to be followed?"
+    },
+    {
+      "requirement": "The system must have audit trails for estimate changes, including user, timestamp, and change details.",
+      "source_citation": "Every time a part suggestion is used or overridden in an estimate, we need an audit trail linking the action to the user, timestamp, and the change.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "auditing",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the requirement for audit trails for estimate changes.",
+      "follow_up_question": "Are there any specific audit trail standards or mechanisms that need to be followed?"
+    },
+    {
+      "requirement": "The system must use asynchronous logging and event streams to avoid blocking critical paths.",
+      "source_citation": "we should use asynchronous logging and event streams so tracing doesn't block critical paths",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the requirement for using asynchronous logging and event streams.",
+      "follow_up_question": "Are there any specific asynchronous logging or event streaming standards that need to be followed?"
+    },
+    {
+      "requirement": "The system must have pen testing and chaos testing conducted by the corporate security team.",
+      "source_citation": "We'll require security testing from the corporate security team — penetration tests and threat modeling, and ideally some adversarial testing for DDoS resilience. For resilience, we'd want load and chaos testing during pre-prod so we know how it behaves under stress and can tune autoscaling and circuit breakers.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the requirement for pen testing and chaos testing.",
+      "follow_up_question": "Are there any specific pen testing or chaos testing standards or mechanisms that need to be followed?"
+    },
+    {
+      "requirement": "The system must measure time-to-interactive on 4G-equivalent networks as the primary metric for 'lightweight' UI.",
+      "source_citation": "time-to-interactive on a 4G-equivalent connection is the business-facing metric",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the requirement for measuring time-to-interactive on 4G-equivalent networks.",
+      "follow_up_question": "Are there any specific performance metrics or mechanisms that need to be followed?"
+    }
+  ]
+}

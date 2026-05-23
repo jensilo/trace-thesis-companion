@@ -1,0 +1,139 @@
+{
+  "transcript_file": "outputs/corpus-20260226_162106/transcript_3_re_experienced_stakeholder_technical_senior_20260226_162333.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_182444",
+  "requirements": [
+    {
+      "requirement": "The system should respond to routine management actions within five seconds.",
+      "source_citation": "For routine management actions, something like around five seconds is the upper limit before users notice and complain.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the acceptable response time for routine management actions, which is a clear performance requirement.",
+      "follow_up_question": "What specific routine management actions should be considered, and are there any actions that might require a different response time?"
+    },
+    {
+      "requirement": "The system should complete full schedule generation within half a minute if done interactively, otherwise it should be done asynchronously with progress indicators.",
+      "source_citation": "For an entire schedule generation, I'd want it to finish under about half a minute if done interactively. If it can't, then do it in the background and notify users when it's done.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the acceptable response time for a heavy operation like schedule generation, with a fallback to asynchronous processing if the response time cannot be met.",
+      "follow_up_question": "What constitutes a 'full schedule generation' in terms of data size and complexity, and are there any specific constraints or scenarios that might affect this performance requirement?"
+    },
+    {
+      "requirement": "The system should integrate with the campus identity provider for single sign-on (SSO) using SAML or OAuth.",
+      "source_citation": "We should integrate with the campus identity provider for single sign-on so users don't manage extra passwords. For data exchange, prefer APIs that allow near real-time updates, using secure protocols.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for SSO integration with the campus identity provider, which is a security requirement. However, the exact protocol (SAML or OAuth) is not explicitly stated.",
+      "follow_up_question": "Can you confirm whether SAML or OAuth is the preferred protocol for SSO integration with the campus identity provider?"
+    },
+    {
+      "requirement": "Any personally identifiable information (PII) must be protected according to DePaul's policies, including encryption in transit and at rest where appropriate.",
+      "source_citation": "Also, any PII must be protected according to DePaul's policies — encryption in transit and at rest where appropriate.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the requirement for protecting PII according to DePaul's policies, which includes encryption in transit and at rest.",
+      "follow_up_question": "Can you provide more details on DePaul's policies regarding PII protection, including any specific encryption standards or protocols that should be followed?"
+    },
+    {
+      "requirement": "The system should follow standard accessibility practices to ensure it is usable by everyone.",
+      "source_citation": "And, uh, accessibility shouldn't be an afterthought — at a minimum follow standard accessibility practices so we're not excluding anyone.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for standard accessibility practices, which is a clear usability requirement.",
+      "follow_up_question": "What specific accessibility standards or guidelines should the system adhere to, and are there any particular user groups or needs that should be considered?"
+    },
+    {
+      "requirement": "The system should have an uptime target in the mid-90s percentile during office hours.",
+      "source_citation": "For initial planning, something in the mid-90s percentile is acceptable. If later they demand higher availability we'll need to budget for redundancy across regions, active/active clusters and more ops.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the acceptable uptime target for the system, which is a clear availability requirement.",
+      "follow_up_question": "What specific measures or redundancy strategies should be implemented to achieve the mid-90s percentile uptime target?"
+    },
+    {
+      "requirement": "The system should support around ten concurrent admins at peak during office hours.",
+      "source_citation": "In practice, we have a handful of schedulers and coordinators active at the same time. Peak mornings are busier. I would say around ten concurrent admins at peak would cover our needs comfortably.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the expected number of concurrent admins, which is a scalability requirement. However, the exact number is not explicitly stated.",
+      "follow_up_question": "Can you confirm the exact number of concurrent admins the system should support, and are there any specific scenarios or peak usage periods that should be considered?"
+    },
+    {
+      "requirement": "The system should retain enough history to understand decisions across academic years, especially for overrides and approvals.",
+      "source_citation": "We should retain enough history to understand decisions across academic years, especially for overrides and approvals.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for retaining history for decision-making, which is a maintainability requirement. However, the exact retention period is not explicitly stated.",
+      "follow_up_question": "Can you specify the exact retention period for history and decision-making data, and are there any specific regulations or policies that should be followed?"
+    },
+    {
+      "requirement": "The system should use optimistic concurrency with clear conflict detection for handling concurrent edits.",
+      "source_citation": "Optimistic concurrency with clear conflict detection is preferable. Locking presents UX problems and can lead to deadlocks.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the preferred approach for handling concurrent edits, which is a fault tolerance requirement.",
+      "follow_up_question": "Can you provide more details on the specific conflict detection and resolution mechanisms that should be implemented?"
+    },
+    {
+      "requirement": "The system should monitor uptime, request latency for key endpoints, error rates, and queue depth for background jobs.",
+      "source_citation": "Monitor uptime, request latency for key endpoints, error rates, and queue depth for background jobs.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly lists the metrics that should be monitored, which are operability requirements.",
+      "follow_up_question": "Can you specify the exact thresholds for these metrics and the alerting mechanisms that should be implemented?"
+    },
+    {
+      "requirement": "The system should not lose more than a day's worth of changes and should be able to recover within a business day in case of a catastrophic event.",
+      "source_citation": "For critical scheduling data, we shouldn't lose more than a day's worth of changes if something catastrophic happens, and we should be able to recover within a business day.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the acceptable data loss and recovery time in case of a catastrophic event, which are fault tolerance requirements.",
+      "follow_up_question": "Can you provide more details on the specific disaster recovery strategies and backup mechanisms that should be implemented to achieve these goals?"
+    },
+    {
+      "requirement": "The system should keep constraint solving explainable by preferring deterministic heuristics and clear conflict explanations.",
+      "source_citation": "Keep constraint solving explainable — for instance, prefer deterministic heuristics and clear conflict explanations over opaque optimization that nobody understands.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the need for explainable constraint solving, which is a maintainability requirement.",
+      "follow_up_question": "Can you provide more details on the specific deterministic heuristics and conflict explanation mechanisms that should be implemented?"
+    }
+  ]
+}

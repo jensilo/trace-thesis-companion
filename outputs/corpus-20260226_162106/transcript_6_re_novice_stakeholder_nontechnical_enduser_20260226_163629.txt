@@ -1,0 +1,140 @@
+Interviewer: Thanks for meeting with me. Could you start by telling me a little about your role and how you use the current room-booking system day to day?
+
+Stakeholder: Sure. I mean, I’m the person who usually books rooms for my team a few times a week. I think most days I’m hopping between my calendar and whatever booking page we have, trying to find an available room, add equipment, and invite people. Oh, and we have people in different countries and, um, a couple of colleagues who use screen readers, so that matters too.
+
+Interviewer: Okay, and who else uses it — are they on desktops, laptops, phones, that kind of thing?
+
+Stakeholder: Everyone really. Some people use their work laptops, some use desktops, a few look at it on their phones when they’re out. We don’t have a strict rule; it’s a mix. I can’t tell you exact numbers off the top of my head.
+
+Interviewer: Great. Any immediate frustrations you want me to focus on?
+
+Stakeholder: Hmm, yeah—there’s a lot. It should be quick and painless. Right now it feels clunky sometimes; buttons are unclear, confirmations vanish too fast, and a colleague once said the dates looked like nonsense to him. Also, and this is important, it should look like our company — logo in the corner, our colors, not some flashy consumer app. It should feel conservative and professional. If it looks different from other internal tools, people get suspicious and think they’re in the wrong place.
+
+Interviewer: Do you have a corporate style guide or screenshots you could share?
+
+Stakeholder: I do have a branding pack. I can send it. And, uh, some screenshots of the current tool that show the problems. I’ll have to find them, though — give me a little time.
+
+Interviewer: Thanks. Moving on to the booking itself: tell me how you would like the reservation flow to work — what are the steps in your head?
+
+Stakeholder: Ideally I’d open the page, see a calendar or a quick search box, type or pick the time, pick the room, add a note or equipment, invite people, and that’s it. I’m not a fan of lots of extra screens. I want to click, pick a time, and be done. When it’s convoluted, people either give up or call reception, which defeats the point.
+
+Interviewer: How long is too long for a user to complete that booking? Any idea in time?
+
+Stakeholder: Oh, um — it just needs to feel fast. I’d say if it takes more than a few minutes people start losing patience. Maybe five minutes for a simple booking would be the outer limit for most people, I guess.
+
+Interviewer: And in terms of how many people should be able to do that quickly — what would be an acceptable success rate? Like how many out of ten users should manage that?
+
+Stakeholder: Hmm, I’d expect most people to be able to do it without help. Maybe about nine out of ten people should be able to finish a basic booking within that five-minute window. That sounds reasonable to me.
+
+Interviewer: Okay. What fields do you absolutely need on the main booking screen — room, time, attendees, equipment — is that right?
+
+Stakeholder: Yeah, those are the essentials in my head — room, date and time, attendees, and any kit like projectors or dial-in. I’m not fussed about the order as long as it’s obvious. Oh, and a simple way to see if the room is free already; the clash stuff needs to be visible right away so people don’t double-book.
+
+Interviewer: If there’s a conflict, how should the system tell you? Like popups, red messages, or what?
+
+Stakeholder: I want something clear and human — not a scary error code. Like, “That time is taken” and then show alternatives. And if something goes wrong it should say what I can do next. Vague errors are the worst.
+
+Interviewer: What about confirmations — what kinds of confirmations do you expect on screen versus via email or calendar invite?
+
+Stakeholder: Definitely both. I want an immediate on-screen confirmation that stays there until I dismiss it, with the basic details. And then an email or calendar invite so it lands in everyone’s calendars. If that email never shows up, people get confused, so the on-screen part is especially important.
+
+Interviewer: How would you measure whether confirmations are working well? Any target you'd be comfortable with for users reporting that confirmations are accurate?
+
+Stakeholder: Ugh, well, I imagine we’d survey people or look at support tickets. As for a target, I suppose if about four out of five people say the confirmation tells them what happened, that would be okay. If confirmations are wrong or flaky more than that, we’d have complaints.
+
+Interviewer: Thanks. Switching gears to language and dates: you mentioned colleagues in other countries. Do they need the UI in their own language?
+
+Stakeholder: Yes, yes. People expect the interface in their language where possible. Translations have to be complete, not half-done where bits are still in English — that looks sloppy. Also the dates and times get people mixed up. Some people read day-month-year, others month-day-year, and some prefer 24-hour clocks. That confusion causes real mistakes.
+
+Interviewer: Should the user be able to choose their language and time/date format, or should it follow a company default?
+
+Stakeholder: Ideally a user can pick their own, but a company default is fine as a starting point. People should be able to change it if they want.
+
+Interviewer: How will we know when the date/time formatting is right for a market — do you have any target satisfaction level in mind?
+
+Stakeholder: We’d probably run a small survey after launch. If most people in a country find the formatting correct, that’s good. Maybe aim for something like nine out of ten being happy with date and time formats. If a lot of people in one market say it’s wrong, we need to fix it.
+
+Interviewer: For language support, do you know which languages we should include initially?
+
+Stakeholder: I don’t have a final list yet. We work with a few target countries; I can pull together a prioritized list and send it. Sorry — I can’t say which ones right now.
+
+Interviewer: No problem. On navigation: what kind of menu layout feels natural to users here?
+
+Stakeholder: Keep it standard. Don’t invent weird icons or strange labels. People expect common things like Book Room, My Bookings, Calendar, maybe Admin for the few who need it. On mobile, it should still be obvious how to get to booking. If I have to hunt, that’s a problem.
+
+Interviewer: Should there be a search box or quick actions on the main screen?
+
+Stakeholder: A search would be useful; quick actions are nice too, but nothing that confuses people. Simple and familiar is the priority.
+
+Interviewer: About accessibility — you mentioned screen-reader users. What should we make sure works for them?
+
+Stakeholder: Well, pages should be readable by JAWS and NVDA, and keyboard-only navigation must work. Contrast needs to be good and buttons have proper labels — too often screen readers skip things because they’re not labeled. And, um, it needs to conform to the Americans with Disabilities Act so colleagues who rely on assistive tech aren’t left out.
+
+Interviewer: Are there particular booking scenarios that are most important to make accessible first?
+
+Stakeholder: The booking flow is top priority — making a new booking, seeing your upcoming bookings, and responding to invites. Those are the actions people with disabilities need to do every day.
+
+Interviewer: Do you have an accessibility policy or standard like WCAG to point us to?
+
+Stakeholder: I’m not sure of the exact internal policy. We usually aim for commonly accepted guidelines, but I’d need to check and get back to you.
+
+Interviewer: Okay. Let’s talk performance. You said “fast and painless” earlier — what does fast mean to you? Any numbers we should aim for?
+
+Stakeholder: It just has to feel snappy. For little things, I don’t want to wait. If I had to put numbers on it, I’d say most quick actions should finish within about five seconds, and almost everything should complete within a bit longer — say under eight seconds. When it’s slower than that, people notice and it disrupts their flow.
+
+Interviewer: Which actions are the most critical to meet those times? Search, load calendar, submit booking?
+
+Stakeholder: Search and loading calendars and submitting bookings are the big ones. Those are the moments when lag really bothers people.
+
+Interviewer: Understood. On browser compatibility: some folks use older browsers, right? Which browsers should we test against, or how many?
+
+Stakeholder: We have a mix — corporate-managed browsers, personal ones, and a few older setups. I think we should test a decent spread; at minimum maybe eight different browsers or browser/version combos, and the product should display properly in most of them. I’d say if it renders correctly in roughly four out of five browsers we test, that would be acceptable. If things overlap or forms don’t submit, it’s a real problem.
+
+Interviewer: Do you expect support for things like Internet Explorer, or just modern browsers?
+
+Stakeholder: I’d prefer modern browsers, but some teams still use older ones. I’ll try to get you an inventory of what people use so we can decide which legacy ones to include.
+
+Interviewer: How should degraded experiences be handled if an old browser can’t render everything?
+
+Stakeholder: Graceful degradation — it should still let people do the essentials even if some fancy bits aren’t available. If it’s totally broken, that’s not okay.
+
+Interviewer: For acceptance and testing, how do you want to validate the usability and localization numbers we talked about? Surveys, user testing, analytics?
+
+Stakeholder: Probably a mix. Run a small usability test with real users and a short survey after they use it. Also look at analytics to see task completion times and error rates. I’m happy to help recruit users for the tests if you provide a script.
+
+Interviewer: Will you be able to provide that branding guide and a language list, and maybe some users for testing?
+
+Stakeholder: Yes, I can send the branding guide and a prioritized list of languages. I can also get a few people to volunteer for early testing. I’ll need a script from you, though, so they know what to do.
+
+Interviewer: Great. Any other concerns or small things that bother you day to day?
+
+Stakeholder: Little things — like confirmations that disappear before I can copy a booking reference, or dates that default to the wrong timezone. Oh, and one time we had a lunch booked for the wrong room because the UI didn’t make it obvious where the room actually was. That was awkward — pizza showed up in an empty room. Funny in hindsight, but not great in the moment.
+
+Interviewer: Ha, that’s a good anecdote. For the metrics we discussed — the booking success rate, confirmation accuracy, date/time satisfaction, performance, browser coverage — who in your organization will accept those as meeting the requirement? Who signs off?
+
+Stakeholder: Probably the facilities manager and IT, and maybe someone from HR for accessibility. I’d expect a small panel to review test results and say yes or no. I can introduce you to the right folks.
+
+Interviewer: Okay. Do you have any documentation about what devices and browsers people actually use? You mentioned you’d try to get an inventory earlier.
+
+Stakeholder: We might have some analytics in our internal portal, but I don’t have it on hand. I’ll ask IT and see what they can share.
+
+Interviewer: Thanks. To wrap up, I’ll follow up by asking for the branding guide, the language list, some users for testing, and any browser inventory you can get from IT. Does that sound right?
+
+Stakeholder: Yes, that sounds good. I’ll try to get those over. And, uh, if you can send the test script or sample tasks for the users, I’ll circulate them. Also, please remember the simple look — conservative, not flashy — and make sure bookings are obvious and confirmed properly. Those things drive most of our complaints.
+
+Interviewer: Great. I’ll draft the tasks and send them. Thanks very much for your time — this was really helpful.
+
+Stakeholder: Thanks. Happy to help. And if you want, I can sit in on a design review once you have mockups. I’ve got opinions, apparently.
+
+---
+Selected Requirements:
+1. [NICE.csv line 282] [quality, look_and_feel] The product's Look and Feel shall be able to incorporate aspects of the customer's organization such as logo branding and identity'
+2. [NICE.csv line 283] [quality, look_and_feel] 'The product shall have a conservative and professional appearance.'
+3. [NICE.csv line 285] [quality, usability] 'The product shall be easy to use. 90% of users will be able to successfully reserve a conference room within 5 minutes of product use.'
+4. [NICE.csv line 286] [quality, performance, usability] 'The product shall give users feedback when necessary. 80% of the users surveyed report that the product accurately confirms their actions.'
+5. [NICE.csv line 287] [quality, functional, usability] 'The product shall allow the user to select a chosen language from one of the target market countries.'
+6. [NICE.csv line 290] [quality, usability] 'The product shall use a standard navigation menu familiar to most web users.'
+7. [NICE.csv line 292] [quality, legal] 'The product shall conform to the Americans with Disabilities Act.'
+8. [NICE.csv line 293] [quality, performance] The response shall be fast enough to avoid interrupting the user's flow of thought. 90% of tasks shall complete within 5 seconds. 98% of tasks shall complete within 8 seconds.'
+9. [NICE.csv line 300] [quality, look_and_feel, operability, portability] 'The product must be able to interface with any HTML browser. The product shall transmit data between the user and the product without problems. The product shall display HTML properly in 80% of all HTML browsers tested (minimum is to test 8 browsers).'
+10. [NICE.csv line 322] [quality, functional, usability] The product shall be able to display calendar dates and times according to the user's locale. 90% of survey respondents from each target market country will find that the date and time formatting of the product is correct.'

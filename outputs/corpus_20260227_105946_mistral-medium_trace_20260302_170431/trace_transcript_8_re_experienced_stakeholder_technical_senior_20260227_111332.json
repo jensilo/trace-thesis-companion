@@ -1,0 +1,172 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_8_re_experienced_stakeholder_technical_senior_20260227_111332.txt",
+  "model": "mistral/mistral-medium-latest",
+  "timestamp": "20260302_171329",
+  "requirements": [
+    {
+      "requirement": "The system shall respond to routine page interactions within five seconds.",
+      "source_citation": "Five seconds for routine pages (browsing, searching, movie details) to respond.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the performance requirement for routine page interactions.",
+      "follow_up_question": "What specific interactions are considered routine pages?"
+    },
+    {
+      "requirement": "The system shall complete credit-card checkout flows within fifteen seconds.",
+      "source_citation": "Fifteen seconds max for credit-card checkout flows.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the performance requirement for checkout flows.",
+      "follow_up_question": "Are there any specific steps in the checkout flow that should be optimized?"
+    },
+    {
+      "requirement": "The system shall minimize initial streaming buffering to single-digit seconds.",
+      "source_citation": "Single-digit seconds for initial streaming buffering; ~10 seconds max for CDN/client setup.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the performance requirement for streaming buffering.",
+      "follow_up_question": "What specific measures will be taken to ensure adaptive bitrate tuning?"
+    },
+    {
+      "requirement": "The system shall achieve 99.5% availability to avoid outages during peak times.",
+      "source_citation": "99.5% availability target to avoid outages during peak (evenings/weekends).",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the availability requirement.",
+      "follow_up_question": "What specific measures will be taken to ensure redundancy and failover?"
+    },
+    {
+      "requirement": "Card data must be encrypted at rest and accessible only to senior ops/finance admins via tokenization or strict decryption processes.",
+      "source_citation": "Card data must be encrypted at rest, accessible only to senior ops/finance admins via tokenization or strict decryption processes.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the security requirement for card data.",
+      "follow_up_question": "What specific encryption standards and tokenization methods will be used?"
+    },
+    {
+      "requirement": "The system shall use role-based access control (RBAC) with least privilege and multi-factor authentication (MFA) for admin consoles.",
+      "source_citation": "Role-based access control (RBAC) with least privilege, MFA for admin consoles, and immutable audit logs for sensitive data access.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the security requirement for access control.",
+      "follow_up_question": "What specific roles and permissions will be defined in the RBAC model?"
+    },
+    {
+      "requirement": "The system shall provide a clear privacy notice in the footer and a pre-collection banner/modal in plain language before data entry.",
+      "source_citation": "Clear privacy notice in footer + pre-collection banner/modal (plain language) before data entry (e.g., registration/checkout).",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the usability requirement for privacy notices.",
+      "follow_up_question": "What specific language and design will be used for the privacy notice?"
+    },
+    {
+      "requirement": "The system shall detect and mitigate credential stuffing, scraping, card testing, and DDoS attacks.",
+      "source_citation": "Detect credential stuffing, scraping, card testing, DDoS; auto-rate-limit/block suspicious traffic + real-time alerts for high-severity incidents.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the security requirement for abuse and fraud prevention.",
+      "follow_up_question": "What specific detection and mitigation techniques will be employed?"
+    },
+    {
+      "requirement": "The system shall use a microservices architecture for APIs, a CDN for static/streaming assets, and container orchestration for scalability.",
+      "source_citation": "Microservices for APIs, CDN for static/streaming assets, container orchestration for scale, aggressive caching for catalog/menu snappiness.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the scalability requirement for the architecture.",
+      "follow_up_question": "What specific microservices and container orchestration tools will be used?"
+    },
+    {
+      "requirement": "The system shall use tokenization for PCI compliance and encrypt card data if stored.",
+      "source_citation": "Tokenization preferred for PCI compliance; if storing cards, encrypt + strict access controls.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the security requirement for payment data handling.",
+      "follow_up_question": "What specific tokenization and encryption methods will be used?"
+    },
+    {
+      "requirement": "The system shall provide a privacy notice on first-time use and before any data entry point.",
+      "source_citation": "For usability, just the first time is fine, with a persistent link in the footer so users can revisit. But before any data entry point — like registration or checkout — there should be a short reminder or checkbox that they agree, so we can't be accused of hiding it.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the usability requirement for privacy notices.",
+      "follow_up_question": "What specific design and language will be used for the privacy notice?"
+    },
+    {
+      "requirement": "The system shall centralize and retain application logs, access logs, and security events for months.",
+      "source_citation": "Application logs, access logs, and security events should be centralized and retained long enough for forensic work. Daily usage stats should feed into analytics, and we should have dashboards and alerts for key health metrics.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the maintainability requirement for logging and observability.",
+      "follow_up_question": "What specific logging and monitoring tools will be used?"
+    },
+    {
+      "requirement": "The system shall use synthetic transactions to validate response targets post-launch and monitor payment latencies and streaming startup times.",
+      "source_citation": "Synthetic transactions to validate response targets post-launch; continuous monitoring of payment latencies/streaming startup times.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the operability requirement for monitoring and validation.",
+      "follow_up_question": "What specific synthetic transaction tools and monitoring techniques will be used?"
+    },
+    {
+      "requirement": "The system shall have an SRE function for on-call monitoring and alerting.",
+      "source_citation": "SRE function for on-call (escalation to devs); pager alerts for threshold breaches.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the operability requirement for monitoring ownership.",
+      "follow_up_question": "What specific SRE tools and processes will be used?"
+    },
+    {
+      "requirement": "The system shall have a UI design that is forgiving for novice users, with big, clear buttons, simple language, and an African-inspired aesthetic.",
+      "source_citation": "Design-wise, remember our audience. Make the UI forgiving for folks who aren't power users. Big, clear buttons, simple language, and a sleek African-inspired aesthetic so it's both familiar and aspirational.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the usability requirement for UI design.",
+      "follow_up_question": "What specific design guidelines and aesthetic elements will be used?"
+    }
+  ]
+}

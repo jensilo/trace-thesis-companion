@@ -1,0 +1,205 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_5_re_novice_stakeholder_technical_senior_20260227_110558.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_180058",
+  "requirements": [
+    {
+      "requirement": "The system must return parts search results within 15 seconds.",
+      "source_citation": "For parts searches, waiting around more than a few tens of seconds is unacceptable. We should aim to have search results returned well under, uh, something like fifteen seconds.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions a target time for parts search performance, indicating a clear expectation for responsiveness.",
+      "follow_up_question": "Are there specific parts search scenarios or data volumes that should be considered when evaluating the 15-second target?"
+    },
+    {
+      "requirement": "The system must return facility search results within 8 seconds.",
+      "source_citation": "For the preferred repair facility search, that should be noticeably quicker — it should return within roughly eight seconds so the field person isn't standing there awkwardly.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a clear performance target for facility search, emphasizing the need for quick results in field scenarios.",
+      "follow_up_question": "Are there specific facility search scenarios or data volumes that should be considered when evaluating the 8-second target?"
+    },
+    {
+      "requirement": "The system must implement server-side caching for fast searches, with optional client-side caching.",
+      "source_citation": "Server-side caching is the primary lever, with opportunity for short-lived client caching for repeated local lookups. We should use an in-memory cache or a distributed cache for hot items and a CDN for static assets.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder outlines a caching strategy to ensure fast search performance, indicating a focus on optimizing response times.",
+      "follow_up_question": "What specific caching mechanisms or technologies are preferred or required for server-side and client-side caching?"
+    },
+    {
+      "requirement": "The system must encrypt data both in-transit and at-rest.",
+      "source_citation": "We need both. Transport encryption is baseline, and sensitive data at rest should be encrypted per corporate policy.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for encryption in both transit and at rest, aligning with corporate policy.",
+      "follow_up_question": "Are there specific encryption standards or protocols that must be followed for data in-transit and at-rest?"
+    },
+    {
+      "requirement": "The system must implement role-based access control integrated with corporate identity, with auditable permission changes.",
+      "source_citation": "Access control needs to be role-based and integrated with corporate identity. Role assignment and permissioning should map to existing groups so we don't invent another silo. Administrators will manage higher-level roles, and local site coordinators should have limited capabilities. It has to be auditable, meaning changes to permissions are logged, and the enforcement should be centralized via an identity service rather than ad-hoc checks sprinkled through code.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder provides detailed requirements for access control, emphasizing role-based access, integration with corporate identity, and auditable permission changes.",
+      "follow_up_question": "Are there specific role-based access control models or frameworks that must be followed?"
+    },
+    {
+      "requirement": "The system must implement DDoS protection measures, including rate limiting, WAFs, traffic scrubbing, and failover paths.",
+      "source_citation": "We need to harden the perimeter, filter bad traffic, and architect so that one noisy service or attack doesn't take down the whole platform. Rate limiting, web application firewalls, traffic scrubbing — those kinds of defensive measures should be part of the plan. Also we should design failover paths so the core search capability has some resilience under load.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder outlines specific DDoS protection measures, indicating a focus on system resilience and security.",
+      "follow_up_question": "Are there specific DDoS protection technologies or services that must be used?"
+    },
+    {
+      "requirement": "The system must implement application-level throttling and input validation.",
+      "source_citation": "The application should implement sensible throttling and input validation, and then hand off to the corporate DDoS mitigation layers for large-scale attacks.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for application-level throttling and input validation as part of a layered defense strategy.",
+      "follow_up_question": "Are there specific throttling or input validation mechanisms that must be implemented?"
+    },
+    {
+      "requirement": "The system must be mobile-friendly and work well on tablets and phones.",
+      "source_citation": "Mobile-friendly is a must because field adjusters use tablets and phones.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for mobile-friendly design, indicating a focus on usability for field users.",
+      "follow_up_question": "Are there specific mobile usability guidelines or standards that must be followed?"
+    },
+    {
+      "requirement": "The system must follow corporate accessibility guidelines, including color contrast and keyboard navigation.",
+      "source_citation": "Also, the UI should follow corporate accessibility guidelines — color contrast, keyboard navigation, standard components — so it's both consistent and compliant.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for accessibility compliance, indicating a focus on usability and inclusivity.",
+      "follow_up_question": "Are there specific accessibility guidelines or standards that must be followed?"
+    },
+    {
+      "requirement": "The system must have a simplified UI for field users to avoid desktop-like complexity.",
+      "source_citation": "And, I almost forgot — keep the UI simple for mobile users; if it looks like the desktop, they'll ignore it.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the need for a simplified UI for field users, indicating a focus on usability and user experience.",
+      "follow_up_question": "Are there specific UI design principles or guidelines that must be followed for field users?"
+    },
+    {
+      "requirement": "The system must have 98% availability, with a maximum of 2% downtime.",
+      "source_citation": "Our operations group will expect ninety-eight percent availability as the baseline. That implies downtime of about two percent of the time as the maximum tolerated.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder provides a clear uptime requirement, indicating a focus on system reliability and availability.",
+      "follow_up_question": "Are there specific availability targets or SLAs that must be met during peak usage times?"
+    },
+    {
+      "requirement": "The system must be resilient under load, with failover paths for core search capabilities.",
+      "source_citation": "Also we should design failover paths so the core search capability has some resilience under load.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for resilience under load, indicating a focus on system reliability and fault tolerance.",
+      "follow_up_question": "Are there specific fault tolerance mechanisms or technologies that must be implemented?"
+    },
+    {
+      "requirement": "The system must align with corporate architecture patterns and UI standards.",
+      "source_citation": "We can't reinvent the stack; we need to align with the corporate architecture patterns and the UI standards. That's not negotiable.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for alignment with corporate architecture and UI standards, indicating a focus on maintainability and consistency.",
+      "follow_up_question": "Are there specific corporate architecture patterns or UI standards that must be followed?"
+    },
+    {
+      "requirement": "The system must rely on the provider as the source of truth to avoid reconciliation issues.",
+      "source_citation": "So, rely on the provider as the source of truth, keep mappings explicit, and design for schema changes.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the need to rely on the provider as the source of truth, indicating a focus on data integrity and maintainability.",
+      "follow_up_question": "Are there specific data mapping or schema change management practices that must be followed?"
+    },
+    {
+      "requirement": "The system must implement centralized identity management to avoid ad-hoc auth checks.",
+      "source_citation": "It has to be auditable, meaning changes to permissions are logged, and the enforcement should be centralized via an identity service rather than ad-hoc checks sprinkled through code.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for centralized identity management, indicating a focus on security and maintainability.",
+      "follow_up_question": "Are there specific identity management frameworks or services that must be used?"
+    },
+    {
+      "requirement": "The system must scale to handle 1,500 concurrent users initially and 10,000 concurrent users within two years.",
+      "source_citation": "Today we should plan to comfortably handle fifteen hundred concurrent users, and architect it so we can scale to around ten thousand concurrent users within about two years of launch.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder provides specific scalability targets, indicating a focus on system growth and capacity planning.",
+      "follow_up_question": "Are there specific scalability benchmarks or performance metrics that must be met?"
+    },
+    {
+      "requirement": "The system must implement detailed logging for compliance and record-keeping.",
+      "source_citation": "We need detailed logging of who viewed and changed an estimate or which parts were selected, and those logs must meet the company's retention and export rules.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "other",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for detailed logging, indicating a focus on compliance and record-keeping.",
+      "follow_up_question": "Are there specific logging standards or retention policies that must be followed?"
+    },
+    {
+      "requirement": "The system must consider offline mode as a 'nice-to-have' but not prioritize it initially.",
+      "source_citation": "Offline mode is nice-to-have but expensive; it depends on budget.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "other",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions offline mode as a nice-to-have feature, indicating a lower priority but potential future need.",
+      "follow_up_question": "Are there specific offline mode requirements or use cases that must be considered if prioritized?"
+    }
+  ]
+}

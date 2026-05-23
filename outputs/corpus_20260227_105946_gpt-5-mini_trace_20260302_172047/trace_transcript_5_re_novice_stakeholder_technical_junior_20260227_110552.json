@@ -1,0 +1,238 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_5_re_novice_stakeholder_technical_junior_20260227_110552.txt",
+  "model": "openai/gpt-5-mini",
+  "timestamp": "20260302_172446",
+  "requirements": [
+    {
+      "requirement": "The system SHALL be fast and secure such that it is not flaky in the field.",
+      "source_citation": "And, well, it needs to be fast and secure — nobody wants the app to be flaky in the field.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly states both performance and security expectations tied to reliability in field use. This is high-level and needs decomposition into measurable targets (response times, availability, security controls).",
+      "follow_up_question": "Please specify measurable performance targets (e.g., median/percentile response times for key operations) and what security standards or controls are mandatory."
+    },
+    {
+      "requirement": "The system SHALL operate on both office workstations (standard corporate browsers) and on tablets used by field staff.",
+      "source_citation": "Oh, and it should work in both the office and on tablets when someone is out at a shop.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly requires multi-device support (office and tablet). Details about specific browsers/OS versions are missing.",
+      "follow_up_question": "Which specific browsers (and versions) and tablet platforms (iOS/Android, minimum OS versions) must be supported?"
+    },
+    {
+      "requirement": "The system SHALL be hooked up so the parts feed from Choice Parts comes through automatically, with fallbacks if the feed hiccups.",
+      "source_citation": "Ideally it's hooked up so the parts feed comes through automatically, so users see availability without having to import CSVs or, you know, open another app. ... But I guess we could have fallbacks if the feed hiccups.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "The stakeholder expects automatic integration with Choice Parts and fallback mechanisms. Missing specifics: expected latency, data formats, and fallback behavior.",
+      "follow_up_question": "Do you require real-time, near-real-time, or periodic sync for the feed? What fallbacks are acceptable (queued retries, manual import, cached data) and for how long?"
+    },
+    {
+      "requirement": "Parts availability data from the Choice Parts feed SHALL be real-time or near-real-time; if periodic syncs are used they SHALL be frequent enough that the data is trustworthy.",
+      "source_citation": "Real-time or near-real-time would be ideal, because availability changes ... If we have to do periodic syncs, make them frequent enough that the data is trustworthy.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "Stakeholder prefers up-to-date availability to avoid offering unavailable parts. Missing definition of 'near-real-time' or acceptable sync interval.",
+      "follow_up_question": "Please quantify 'near-real-time' and acceptable maximum data age (e.g., update frequency in seconds/minutes) for parts availability."
+    },
+    {
+      "requirement": "A recycled parts search SHALL return results fast enough that adjusters do not lose focus; a parts search SHALL take no more than 15 seconds (upper bound before complaints).",
+      "source_citation": "If a parts search takes more than, say, a handful of seconds, people get annoyed ... maybe around fifteen seconds is about the upper bound before people complain.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder gives an explicit upper bound for parts search. This is a coarse SLA and lacks percentile targets and expected typical times.",
+      "follow_up_question": "Should the 15s limit be a hard SLA (99th percentile) or an absolute maximum? What are desired median and 95th-percentile response-time targets?"
+    },
+    {
+      "requirement": "A repair-facility (shop) search SHALL return results faster than parts searches and ideally feel almost immediate; target under 10 seconds.",
+      "source_citation": "When you're standing by a car ... you want the nearest preferred shop to pop up faster than the big parts lists ... If pressed, I'd say under ten seconds would be nice, but it should feel almost immediate when you're looking up a shop.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder distinguishes shop lookup performance as requiring lower latency than parts lists; gives a 10s target but expects it to feel immediate. Needs clearer metrics.",
+      "follow_up_question": "Please specify percentile-based response-time targets (median, 95th, 99th) for shop lookup and whether 'almost immediate' implies sub-second or sub-2s response."
+    },
+    {
+      "requirement": "The system SHALL follow corporate architecture, UI rules, cloud, and security standards to avoid governance issues and ease deployments/approvals.",
+      "source_citation": "It should follow our corporate architecture and UI rules ... The look and patterns should match our other tools so people recognise it, and the architecture should map to our cloud and security standards so we don't hit governance issues later.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "Stakeholder mandates conformity with corporate guidelines for UI and architecture. Missing: references to specific corporate standards, style guides, or cloud/security baselines.",
+      "follow_up_question": "Please provide the corporate architecture and UI guideline documents (or list the mandatory standards and security baselines) that must be complied with."
+    },
+    {
+      "requirement": "The system SHALL be dead simple and require minimal training so that users are comfortable after a short onsite session of two days.",
+      "source_citation": "It has to be dead simple ... Training should be minimal ... People should be comfortable after a short onsite session ... Two days onsite is what I had in mind.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Stakeholder specifies strong usability and a training-time constraint (two days). This implies learnability metrics but lacks specific usability measures (task completion rates, error rates).",
+      "follow_up_question": "Which core tasks should be trainable within the two-day session and what success criteria (task completion time/error rates) define 'comfortable'?"
+    },
+    {
+      "requirement": "The system SHALL provide audit trails tied to estimates showing who changed what and when, including indicators of which parts came from recycled sources and whether the supplier matched the parts feed.",
+      "source_citation": "It should let adjusters see ... which parts in an estimate came from recycled sources and whether the supplier matched the parts feed. ... we need to keep audit trails tied to estimates ... Regulators and internal audit like to see who changed what and when.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 5,
+      "rationale": "Stakeholder requires traceability for compliance and auditing; needs fields and history logging. Missing specifics: retention periods, logging format, and access controls for logs.",
+      "follow_up_question": "What retention period, log detail level (field-level changes), and regulatory standards (e.g., GDPR, SOX) apply to these audit trails?"
+    },
+    {
+      "requirement": "Ratings and comments about shops SHALL be semi-formal, tied to the user's role, saved with the estimate, and protected so not everyone can change everyone else's ratings.",
+      "source_citation": "There should be a way to record a rating or comment ... semi-formal ... tied to the user's role and saved with the estimate ... not everyone should be able to change everyone else's ratings.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder expects role-based controls over ratings/feedback and persistent storage linked to estimates. Missing specifics: which roles can edit/delete, and retention/purging policies.",
+      "follow_up_question": "Please define the roles and permissions for creating, editing, and viewing ratings/comments, and any retention or auditing requirements for those records."
+    },
+    {
+      "requirement": "The system SHALL implement role-based access controls so adjusters and estimators can see/edit appropriate data, managers have broader visibility, and administrative or personal data is not exposed to field staff.",
+      "source_citation": "Adjusters need to see parts and edit estimates, estimators need similar access, and managers need broader visibility. There should be guards so administrative or personal data doesn't leak to field staff.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder outlines required access separation. Details required: exact permission sets, authentication methods, and audit of privileged actions.",
+      "follow_up_question": "Please provide a matrix of roles and the exact permissions required (read/write/delete/visibility) for each data type, and authentication requirements (SSO, MFA)."
+    },
+    {
+      "requirement": "The system SHALL have high availability; availability targets shall be in the high nineties percentage.",
+      "source_citation": "We need it to be reliable — hardly ever down. If you want a percentage, something up in the high nineties for availability is what we'd expect ...",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "Stakeholder gives a coarse availability expectation ('high nineties') indicating minimal acceptable downtime. Needs precise SLA (e.g., 99.5% or 99.9%).",
+      "follow_up_question": "Please specify the exact availability SLA (e.g., 99.5% or 99.9%) and acceptable maintenance windows or RTO/RPO targets."
+    },
+    {
+      "requirement": "The system SHALL include protections against Denial-of-Service attacks (e.g., rate-limiting, CDN, WAF) and SHALL have monitoring and an operational support plan for incident response.",
+      "source_citation": "Denial-of-service worries me ... it needs basic protections against attacks and a support plan when things go sideways.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly requests DoS mitigations and monitoring. Lacks specifics on required mitigation capacity, SLAs for incident response, and monitoring alerts.",
+      "follow_up_question": "What specific DoS mitigation measures and capacity are required, and what are the required incident detection and response SLAs (e.g., MTTR targets, on-call hours)?"
+    },
+    {
+      "requirement": "The system SHALL have monitoring that alerts operations immediately on traffic spikes or service degradation.",
+      "source_citation": "And we should have monitoring so ops know immediately if something spikes.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Stakeholder expects real-time monitoring and alerting. Missing specifics: metrics to monitor, alert thresholds, notification channels and escalation procedures.",
+      "follow_up_question": "Which metrics and thresholds should trigger alerts, and what notification/escalation channels and SLA for acknowledgement are required?"
+    },
+    {
+      "requirement": "The system SHALL cope with peaks of concurrent users in the low thousands without slowing noticeably.",
+      "source_citation": "If you're asking for a target, I'd say something in the low thousands for simultaneous sessions to be safe.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "Stakeholder requests scalability to handle 'low thousands' concurrent sessions. Needs clarification on exact concurrency target and acceptable performance degradation under load.",
+      "follow_up_question": "Please provide an exact peak concurrent user number and expected performance SLAs under that load (e.g., response-time targets at 90th/95th percentiles)."
+    },
+    {
+      "requirement": "The system SHALL degrade gracefully on flaky mobile networks; offline-first is not required but it SHALL not force large downloads (e.g., not require ~30MB) just to check a part.",
+      "source_citation": "It should work on standard corporate browsers and on tablets for field staff, and it should degrade gracefully on flaky mobile networks. Offline-first isn't necessary, but we shouldn't force 30MB downloads just to check a part.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 5,
+      "rationale": "Stakeholder cares about responsiveness on poor networks and limiting client download sizes. Missing specifics: acceptable max bundle size, behavior under poor connectivity, and caching strategy.",
+      "follow_up_question": "What is the maximum acceptable initial download or bundle size, and what behaviors (caching, reduced payloads) should the app use under poor network conditions?"
+    },
+    {
+      "requirement": "Search functionality SHALL be forgiving and support fuzzy matching for vehicle codes and shop names.",
+      "source_citation": "Make the search forgiving: people type weird vehicle codes and shop names, so fuzzy matching is a lifesaver.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly requests tolerance in search to handle typos and non-standard input. Missing specifics: matching algorithm, acceptable false-positive rate, and performance implications.",
+      "follow_up_question": "What degree of fuzziness is acceptable (e.g., Levenshtein distance, typo tolerance), and what are acceptable trade-offs between recall/precision and performance?"
+    },
+    {
+      "requirement": "The system SHALL provide reporting that allows managers to see recycled parts utilization across regions and identify trends (e.g., shops avoiding recycled parts).",
+      "source_citation": "Also, managers should be able to pick up trends — like if a shop routinely avoids recycled parts ... And reports should let managers see recycled parts utilisation across regions.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Stakeholder needs management reporting for trend analysis. Missing specifics: report types, refresh frequency, data granularity, and export formats.",
+      "follow_up_question": "Which specific reports and metrics are required, what aggregation levels (region/shop/user), and how frequently must reports be generated or updated?"
+    },
+    {
+      "requirement": "The system SHALL retain audit and estimate-related logs in a manner suitable for regulator and internal audit review (showing who changed what and when).",
+      "source_citation": "We need to keep audit trails tied to estimates, especially for parts sourcing decisions. Regulators and internal audit like to see who changed what and when.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 5,
+      "rationale": "Stakeholder emphasizes auditability for regulatory reasons. Lacks retention timeframe, tamper-resistance requirements, and compliance standards.",
+      "follow_up_question": "What are the required log retention periods and compliance standards (e.g., regulatory requirements) and do logs need tamper-evidence or WORM storage?"
+    },
+    {
+      "requirement": "The system SHALL avoid forcing users back to previous manual processes when slow or down; it SHALL maintain business continuity through reliability and fallbacks.",
+      "source_citation": "Downtime is the big one — if the system's down when claims are being processed, it slows everything and people revert to old processes.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "Stakeholder is concerned about business continuity if system outages occur; wants reliability and fallbacks. Needs concrete RTO/RPO and fallback mechanisms.",
+      "follow_up_question": "What business continuity/backup workflows are acceptable and what are the required RTO and RPO values for critical functionality?"
+    },
+    {
+      "requirement": "The system SHALL conform to corporate look-and-feel so the UI matches other tools and is recognizable.",
+      "source_citation": "The look and patterns should match our other tools so people recognise it ...",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 5,
+      "rationale": "Stakeholder requires UI consistency for user recognition and reduced training. Missing specific style guides or component libraries.",
+      "follow_up_question": "Please provide the corporate UI style guide or component library to be used and any mandatory branding elements that must be present."
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+Interviewer: Thanks for taking the time. To get started, from an architecture perspective what's the single biggest problem you want this nursing scheduling system to solve?
+
+Stakeholder: Hmm, well, I think the main thing is to stop the repetitive human errors we keep seeing during scheduling. Right now people double-book students at clinical sites, or they accidentally schedule a student for two shifts that overlap, and fixing that eats up half a day. So whatever we build needs to make it hard for users to do that kind of thing by mistake.
+
+Interviewer: When you say "make it hard for users to do that by mistake," what do you mean exactly? What behaviors or UI affordances are you picturing?
+
+Stakeholder: I mean, things like real-time conflict detection, immediate validation when you pick a time or a site, warnings that explain the problem and suggest fixes — not just a cryptic error message. Also, I think locking or versioning so two admins don't overwrite each other's edits is important. And an easy undo or revert so a bad change doesn't cascade. I guess, in short, the system should guide the user through safe steps rather than leaving them to remember rules.
+
+Interviewer: You mentioned locking and versioning — do you have a preference for how strict that locking should be, or is optimistic concurrency acceptable?
+
+Stakeholder: I lean toward optimistic concurrency for day-to-day edits, but with clear conflict resolution flows. So if two people edit the same schedule, they get a merge UI or a warning that there's a newer version. For critical operations — like finalizing clinical placements — we should use a stronger locking or a confirmation workflow. That gives us a balance between collaboration and safety.
+
+Interviewer: You also said it should "feel fast" earlier. Can you put a number on that — how long is too long for routine operations, and how long is acceptable for heavier tasks like regenerating a whole cohort schedule?
+
+Stakeholder: Okay, yeah — for routine student management or small edits, anything above a few seconds feels sluggish to staff. If you press a button to update a student's enrollment, waiting more than, say, five seconds is noticeable. For bigger tasks like generating a full schedule for a cohort, it's okay to take longer, but I'd expect it to finish within, um, under half a minute. If generation takes minutes we start losing people.
+
+Interviewer: That's helpful. You said "staff" — thinking about the Program Administrators and Nursing Staff, how tech-savvy are they? You mentioned we need to guide them; how intuitive does the UI really need to be?
+
+Stakeholder: They're generally competent but they're not developers; many are used to spreadsheets and campus portals. So the UI should be obvious, with guided workflows that resemble the mental model they already use. Inline help, predictable actions, and minimal clicks for common tasks. Also keyboard-friendly for power users, but not a steep learning curve for occasional users. Honestly, if a new admin can do core tasks after a short walkthrough, we've done well.
+
+Interviewer: When you say "minimal clicks" and "short walkthrough," can you be more specific about training expectations? How much training should we assume will be acceptable?
+
+Stakeholder: Hmm, I think a single hands-on session that lasts an hour or two should be enough for most admins to get comfortable with daily tasks; deeper features shouldn't require extensive classroom training. But maybe that's more operational than architectural — still, it affects how we design discoverability and defaults.
+
+Interviewer: You mentioned integration with the campus portal earlier in your initial comments. How should this system connect to existing DePaul systems?
+
+Stakeholder: We need it to integrate with CampusConnect — their central server holds student identities, enrollments, authentication, and certain rosters. So we should use the official APIs or a supported interface so we aren't re-creating identity. Single sign-on is a must so users don't have multiple passwords, and we should reconcile student enrollment changes coming from CampusConnect rather than duplicating authoritative data.
+
+Interviewer: Are there constraints on how we authenticate or exchange data with CampusConnect? Any preferred protocols or expectations from an interoperability standpoint?
+
+Stakeholder: They typically expose REST endpoints and an SSO solution, so OAuth-based flows or whatever their central server supports should be the approach. Also, we must be able to fall back to batch sync for some datasets if real-time APIs aren't available. And one more thing — the system has to be accessible from any standard web browser; staff use a mix of Chrome, Edge, and Safari depending on their device.
+
+Interviewer: When you say "any standard web browser," do you mean legacy browsers need to be supported, or do you expect modern HTML5-capable browsers only?
+
+Stakeholder: Modern HTML5-capable browsers is what I'd expect. We don't need to cater to really old versions, but it should work in supported releases of mainstream browsers. It should be pure web — no heavy client installs.
+
+Interviewer: Let's talk about reliability. How often can the system be unavailable before it becomes a problem for you?
+
+Stakeholder: We need it to be reliable — downtime during business hours causes chaos. Roughly, I would say the system should be up most of the time; we cannot tolerate frequent outages. If it starts going down regularly, it defeats the purpose of centralizing scheduling.
+
+Interviewer: Can you put a target on "most of the time"? What's an acceptable uptime target?
+
+Stakeholder: Right, if you want a target, aiming for around ninety-five percent availability is reasonable for our context. We don't need carrier-grade five-nines, but we also can't be flaky.
+
+Interviewer: Understood. How long do we expect this system to be maintained and useful for the program? Is this a short-term tool or a long-term replacement?
+
+Stakeholder: It has to be a long-term solution; the nursing program will need it for several years. We should design for at least a multi-year horizon so upgrades and schema changes are manageable without ripping the system out every few years.
+
+Interviewer: Can you be explicit — what's the minimum number of years you expect it to support?
+
+Stakeholder: I'd say a minimum of five years. That gives us a stable baseline for planning migrations and support.
+
+Interviewer: Good. Security and privacy are obviously important because of student data. How strictly do you want access to personal information controlled?
+
+Stakeholder: Very strictly. Not everyone should see everything — some of that student information is sensitive. Access should be role-based so program admins can see full records, while clinical site coordinators or instructors only see what they need for supervision or scheduling. Also, there should be audit trails so we can see who viewed or changed critical data. And, yes, data in transit should be encrypted and stored in line with our organizational policy.
+
+Interviewer: Who specifically should have broad access versus limited access? Can you describe those roles in practice?
+
+Stakeholder: Program administrators need comprehensive access because they manage cohorts and records. Nursing staff who handle scheduling need enough to do assignments and see progression but not necessarily personal notes. Clinical site coordinators should see the roster and schedule for their site and contact details, but they shouldn't be able to edit central academic records. Instructors need lists and attendance-related info, but sensitive administrative notes should be restricted. That distinction is important, otherwise privacy concerns crop up.
+
+Interviewer: On data integrity, what's your expectation when someone enters inconsistent or invalid information? Should the system block it, warn, or accept and flag?
+
+Stakeholder: The system must catch basic invalid entries up front with validation — things like impossible dates, overlapping assignments, or missing prerequisites should be blocked or corrected before saving. For more complex consistency rules, it can warn and require confirmation. But we should prevent obviously invalid data from being introduced in the first place to reduce cleanup work.
+
+Interviewer: From an architectural standpoint, what patterns or components do you think are necessary to meet these usability, performance, and reliability expectations?
+
+Stakeholder: A service-oriented approach makes sense: a stateless web front end that works in any browser, backed by APIs that handle scheduling logic, and a persistent store with strong constraints and transactions. Use caching for common reads to hit that perceived "fast" target, and an asynchronous event bus for long-running tasks like full schedule generation or bulk notifications, so we don't block the UI. Also, implement robust logging and an audit trail, and design for horizontal scalability with a load balancer so we can add capacity if usage grows.
+
+Interviewer: For the asynchronous operations like schedule generation and notifications, how should the system surface progress or completion to users?
+
+Stakeholder: Provide real-time progress indicators in the UI where applicable, and also send notifications when long jobs complete. Users should be able to queue jobs and see a history. For notifications, email is fine; optionally push notifications or SMS for urgent updates would be nice, but email with retries and durable delivery is the baseline.
+
+Interviewer: You mentioned using caching — how aggressive should caching be, given the need for up-to-date schedules?
+
+Stakeholder: Cache read-heavy, mostly static reference data aggressively, but for schedule data we need short TTLs or cache invalidation on writes so users see near-real-time changes. We can't serve stale schedule info for clinical placement decisions, so cache strategy must be conservative for mutable data.
+
+Interviewer: One last thing — about maintainability and future interfaces: do you expect the system to expose APIs for other systems to integrate with in future?
+
+Stakeholder: Yes, we should design a clean API surface from day one. If other campus services or a mobile app need to pull schedules or rosters later, having documented REST endpoints with versioning will save a lot of work. Also, think about data export/import for reporting or archiving.
+
+Interviewer: You mentioned reporting — are there any performance expectations around generating reports?
+
+Stakeholder: Routine reports should be quick — similar to other small tasks — but comprehensive, cross-year reports can be generated as batch jobs. The key is they shouldn't lock day-to-day operations. We can run heavy reports off-line and provide them as downloadable artifacts.
+
+Interviewer: You brought up audit trails and encryption earlier — do you prefer specific technologies or standards for those (e.g., TLS versions, encryption-at-rest approaches)?
+
+Stakeholder: Use industry-standard TLS for all transport, and standard disk/database encryption for data at rest. For audit logs, append-only storage with retention policy is preferred. Nothing exotic — just follow the organization's info-security guidelines so compliance reviewers are happy.
+
+Interviewer: This has been really helpful. Before we wrap, you said earlier that staff currently double-book and that fixes take "half a day." How do you see this system changing day-to-day workflows to reduce that overhead?
+
+Stakeholder: The workflow should shift from manual reconciliation to exception handling. Instead of scanning spreadsheets and calling sites, staff will get immediate feedback when they try to schedule, automated conflict detection will surface issues up front, and standardized placement workflows will reduce ad hoc changes. Over time that should cut the time spent firefighting and free them to focus on student outcomes rather than data cleanup. Oh, and as a slight aside, this will probably save a few trees too — fewer printouts floating around the office.
+
+Interviewer: Great — I want to revisit one point you made about interfacing with CampusConnect: earlier you said single sign-on is a must. Are you expecting us to rely entirely on CampusConnect for identity, or should the system support fallback local accounts?
+
+Stakeholder: Preferably rely on CampusConnect as the primary identity provider so we keep one source of truth, but having a fallback administrative account or emergency access mechanism is sensible if CampusConnect is down. That fallback should be tightly controlled and audited.
+
+Interviewer: Excellent. Thank you — I'll compile these notes and follow up with any clarifying items. Anything else you want to add before we finish?
+
+Stakeholder: Just that we should build for evolution — program rules change, clinical partnerships change — so don't hard-code assumptions into the core. Make rules configurable where it makes sense. And, um, let's make sure whoever implements the UI actually talks to the real admins early on; mockups alone won't capture their habits.
+
+---
+Selected Requirements:
+1. [NICE.csv line 72] [quality, usability] 'The system shall help the user avoid making mistakes while scheduling classes and clinicals for the nursing students.'
+2. [NICE.csv line 74] [quality, usability] 'The system shall be intuitive to the Program Administrators/Nursing Staff Members.'
+3. [NICE.csv line 79] [quality, performance] 'The response time of general student management tasks shall take no longer than 5 seconds and the response time of schedule generation shall take no longer than 30 seconds.'
+4. [NICE.csv line 81] [quality, availability] 'The system shall achieve 95% up time.'
+5. [NICE.csv line 85] [quality, functional, scalability] 'The system shall be expected to manage the nursing program curriculum and class/clinical scheduling for a minimum of 5 years.'
+6. [NICE.csv line 89] [quality, operability] The system shall interface with CampusConnect's central server'
+7. [NICE.csv line 92] [quality, operability] 'We must be able to interface with any HTML browser.'
+8. [NICE.csv line 95] [quality, security] Only authorized users shall have access to students' personal information.'
+9. [NICE.csv line 99] [quality, functional, security] 'The system shall have basic data integrity checking to reduce the possibility of incorrect or invalid data being introduced.'
+10. [NICE.csv line 100] [quality, functional, legal, security] The system shall protect private information in accordance with the organization's information policy.'

@@ -1,0 +1,129 @@
+{
+  "extraction_file": "outputs/corpus_20260227_105946_mistral-small_trace_20260302_180009/trace_transcript_4_re_novice_stakeholder_technical_senior_20260227_110120.json",
+  "ground_truth_source": "outputs/corpus-20260227_105946/transcript_4_re_novice_stakeholder_technical_senior_20260227_110120.json",
+  "eval_model": "openai/gpt-5-mini",
+  "per_requirement": [
+    {
+      "extracted_requirement": "The application should respond to routine navigations and small queries within five seconds.",
+      "matched_ground_truth": "'The maximum wait time for a user navigating from one screen to another within the Disputes application shall be no more than 5 seconds.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 5,
+      "rationale_quality": 4,
+      "gap_detection_quality": 3,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The application should support 350 concurrent users without performance degradation.",
+      "matched_ground_truth": "'The Disputes application shall support 350 concurrent users without any degradation of performance in the application.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 5,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The application should be designed with retries and idempotency for external calls to prevent inconsistent state.",
+      "matched_ground_truth": null,
+      "overlap_score": 1,
+      "overlap_label": "Very Low",
+      "quality_attribute_match": false,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": false,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The application should degrade gracefully and provide clear diagnostics when backend systems are down.",
+      "matched_ground_truth": null,
+      "overlap_score": 1,
+      "overlap_label": "Very Low",
+      "quality_attribute_match": false,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": false,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The application should enforce role-based access control and record all actions for auditing purposes.",
+      "matched_ground_truth": "'The Disputes application shall ensure that only users with the appropriate access level are allowed to initiate dispute requests.'",
+      "overlap_score": 4,
+      "overlap_label": "High",
+      "quality_attribute_match": true,
+      "confidence_quality": 4,
+      "rationale_quality": 3,
+      "gap_detection_quality": 3,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The application should follow corporate UI standards for internal and external tools.",
+      "matched_ground_truth": "'The Disputes application shall comply with the corporate standards for user interface creation for internally and externally used applications.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The application should maintain an audit trail that is tamper-evident and searchable for e-discovery.",
+      "matched_ground_truth": null,
+      "overlap_score": 1,
+      "overlap_label": "Very Low",
+      "quality_attribute_match": false,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 5,
+      "is_hit": false,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The application should be available 24/7 with scheduled maintenance windows.",
+      "matched_ground_truth": "'The Disputes application shall be available 24x7x365 with the exception of the following scheduled maintenance windows. Monday â€“ Saturday 3:00am to 4:00am EST Sunday 1:00amd to 5:00am EST'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 5,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The application should segregate data to ensure internal-only fields are not exposed to merchants or cardmembers.",
+      "matched_ground_truth": "'The Disputes application shall ensure that only users with the appropriate access level are allowed to initiate dispute requests.'",
+      "overlap_score": 3,
+      "overlap_label": "Medium",
+      "quality_attribute_match": true,
+      "confidence_quality": 4,
+      "rationale_quality": 3,
+      "gap_detection_quality": 3,
+      "is_hit": true,
+      "is_duplicate": true
+    }
+  ],
+  "metrics": {
+    "hit_count": 5,
+    "extracted_count": 9,
+    "ground_truth_count": 10,
+    "precision": 0.556,
+    "recall": 0.5,
+    "f1": 0.526,
+    "quality_attribute_accuracy": 1.0,
+    "avg_confidence": 4.333,
+    "avg_overlap_score": 3.333,
+    "avg_confidence_quality": 4.222,
+    "avg_rationale_quality": 3.778,
+    "avg_gap_detection_quality": 3.889
+  }
+}

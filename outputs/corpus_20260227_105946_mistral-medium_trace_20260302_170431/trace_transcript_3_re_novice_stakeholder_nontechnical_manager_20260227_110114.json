@@ -1,0 +1,139 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_3_re_novice_stakeholder_nontechnical_manager_20260227_110114.txt",
+  "model": "mistral/mistral-medium-latest",
+  "timestamp": "20260302_170433",
+  "requirements": [
+    {
+      "requirement": "The system shall be available 95% of the time during business hours.",
+      "source_citation": "aiming for high nineties in percent uptime—something around 95% would be acceptable.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions a target uptime percentage, indicating a clear availability requirement.",
+      "follow_up_question": "What specific business hours should the system be available?"
+    },
+    {
+      "requirement": "The system shall prevent invalid data entries such as invalid dates, mismatched course codes, and duplicates.",
+      "source_citation": "preventing invalid dates, mismatched course codes, duplicates... basic checks to prevent invalid input.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder discusses the need for data integrity checks to prevent errors and duplicates.",
+      "follow_up_question": "What specific types of invalid data entries should the system prevent?"
+    },
+    {
+      "requirement": "The system shall use clear and consistent terminology that is standard in the nursing community.",
+      "source_citation": "Clear and use Standard English... speak the language of nurses... consistent wording.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for clear and consistent terminology to avoid confusion.",
+      "follow_up_question": "Can you provide examples of standard nursing terminology that should be used?"
+    },
+    {
+      "requirement": "The system shall control access to sensitive student information based on user roles.",
+      "source_citation": "access needs to be controlled... role-based visibility... safeguards so information isn’t exposed to unauthorized people.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for role-based access control to protect sensitive information.",
+      "follow_up_question": "What specific roles and their corresponding access levels should be defined?"
+    },
+    {
+      "requirement": "The system shall be learnable within a single day of training for routine tasks.",
+      "source_citation": "learnable quickly... single day of training should be enough... if it takes more than a day of hands-on time, people get annoyed.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for the system to be easily learnable within a short training period.",
+      "follow_up_question": "What specific tasks should users be able to perform after a single day of training?"
+    },
+    {
+      "requirement": "The system shall respond to routine student management tasks within 5 seconds.",
+      "source_citation": "For routine student management, ~5 seconds is acceptable.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a target response time for routine tasks.",
+      "follow_up_question": "What specific tasks are considered routine student management tasks?"
+    },
+    {
+      "requirement": "The system shall generate a term's schedule within 30 seconds.",
+      "source_citation": "for schedule generation, up to 30 seconds.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a target time for generating a term's schedule.",
+      "follow_up_question": "What specific operations are involved in schedule generation?"
+    },
+    {
+      "requirement": "The system shall handle aliases or mapping for clinical partner naming conventions to maintain data consistency.",
+      "source_citation": "Handle aliases or mapping for clinical partner naming conventions... keep things tidy.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need to handle different naming conventions to maintain data consistency.",
+      "follow_up_question": "What specific naming conventions should the system handle?"
+    },
+    {
+      "requirement": "The system shall allow at least two-thirds of program administrators to manage scheduling independently after training.",
+      "source_citation": "Majority (2/3) of admins should be able to manage scheduling independently after training.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a measurable target for user proficiency after training.",
+      "follow_up_question": "What specific training materials or methods should be provided to achieve this proficiency?"
+    },
+    {
+      "requirement": "The system shall provide simple exports for accreditation and internal reviews.",
+      "source_citation": "Simple exports for accreditation/internal reviews... pull attendance, placements, summaries easily.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for simple exports for reporting purposes.",
+      "follow_up_question": "What specific data should be included in these exports?"
+    },
+    {
+      "requirement": "The system shall sync with CampusConnect frequently enough to avoid stale rosters, ideally nightly but more frequently during peak times.",
+      "source_citation": "Ideally sync often enough to avoid stale rosters... nightly syncs work, but peak times may need more frequency.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 3,
+      "rationale": "The stakeholder discusses the need for frequent syncs with CampusConnect to maintain up-to-date data.",
+      "follow_up_question": "What specific times are considered peak times for syncing?"
+    },
+    {
+      "requirement": "The system shall avoid manual reconciliation whenever possible.",
+      "source_citation": "Avoid manual reconciliation whenever possible.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 3,
+      "rationale": "The stakeholder emphasizes the need to minimize manual reconciliation efforts.",
+      "follow_up_question": "What specific processes should be automated to avoid manual reconciliation?"
+    }
+  ]
+}

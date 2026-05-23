@@ -1,0 +1,117 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_4_re_experienced_stakeholder_technical_senior_20260227_110538.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_165513",
+  "requirements": [
+    {
+      "requirement": "The system must respond to routine navigation and lookups within 5 seconds to prevent user frustration and workarounds.",
+      "source_citation": "for normal navigation and small detail fetches I'd say around five seconds is the threshold. If a screen takes more than that, users start complaining and productivity drops.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the performance threshold for routine navigation and lookups, which is a clear non-functional requirement.",
+      "follow_up_question": "What specific actions or user flows should be measured to ensure they meet the 5-second threshold?"
+    },
+    {
+      "requirement": "The system must be available 24/7 except during planned maintenance windows.",
+      "source_citation": "we need it to be effectively always available because reps and partner teams operate across a lot of time zones.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder emphasizes the need for the system to be available almost all the time, with exceptions only for planned maintenance.",
+      "follow_up_question": "What are the specific maintenance windows and how often do they occur?"
+    },
+    {
+      "requirement": "The system must queue and retry failed actions, ensuring at-least-once delivery with idempotency keys to avoid duplicates.",
+      "source_citation": "we need at-least-once delivery semantics with idempotency keys, so duplicate postings are avoided when retries happen.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for queuing and retrying failed actions with specific delivery semantics.",
+      "follow_up_question": "What is the maximum retry interval and how many retries are allowed before manual intervention is required?"
+    },
+    {
+      "requirement": "The system must maintain an immutable, tamper-evident audit trail that records actor identity, timestamp, action type, state changes, and correlation IDs.",
+      "source_citation": "Logs should be append-only and tamper-evident — storing them in a write-once or immutable ledger is preferable.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 5,
+      "rationale": "The stakeholder emphasizes the need for an immutable and tamper-evident audit trail, which is a critical non-functional requirement for compliance.",
+      "follow_up_question": "What specific technologies or patterns should be used to implement the immutable audit trail?"
+    },
+    {
+      "requirement": "The system must integrate with the corporate identity provider for authentication and use role-based authorization with row-level security.",
+      "source_citation": "We need to integrate with the corporate identity provider for internal reps, probably SAML or OIDC, and use strong multi-factor authentication for external partners.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for integration with the corporate identity provider and role-based authorization, which are critical security requirements.",
+      "follow_up_question": "What specific roles and permissions should be defined for different user types?"
+    },
+    {
+      "requirement": "The system must be horizontally scalable and manage backpressure to degrade gracefully under high load.",
+      "source_citation": "The architecture should be horizontally scalable for web and API layers, and the async processing should be decoupled — think message queues and worker pools with autoscaling.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for horizontal scalability and backpressure management, which are critical non-functional requirements for handling high load.",
+      "follow_up_question": "What specific scaling metrics and thresholds should be monitored and managed?"
+    },
+    {
+      "requirement": "The system must not duplicate master data and must always use canonical sources for authoritative data.",
+      "source_citation": "we shouldn't have local ad-hoc copies that become the 'source of truth.'",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "data_integrity",
+      "confidence": 5,
+      "rationale": "The stakeholder emphasizes the need to avoid duplicating master data and to use canonical sources, which is a critical non-functional requirement for data integrity.",
+      "follow_up_question": "What specific canonical sources should be used for different types of data?"
+    },
+    {
+      "requirement": "The system must provide a responsive UI with clear status indicators and no silent failures.",
+      "source_citation": "reps should always know whether an action completed to the external system or was queued.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder emphasizes the need for a responsive UI with clear status indicators and no silent failures, which are critical non-functional requirements for usability.",
+      "follow_up_question": "What specific status indicators and error messages should be provided to users?"
+    },
+    {
+      "requirement": "The system must be maintainable with multi-layered access controls and admin capabilities for reconciliation.",
+      "source_citation": "ops must have an admin view to reprocess or reconcile queued items.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for admin capabilities and multi-layered access controls, which are critical non-functional requirements for maintainability.",
+      "follow_up_question": "What specific admin capabilities and access controls should be implemented?"
+    },
+    {
+      "requirement": "The system must comply with strict data lineage and governance policies, ensuring all actions are auditable and traceable.",
+      "source_citation": "I'd fight for maintaining canonical data lineage — always knowing where each piece of data came from — and for the audit trail being unimpeachable.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 5,
+      "rationale": "The stakeholder emphasizes the need for strict data lineage and governance policies, which are critical non-functional requirements for compliance.",
+      "follow_up_question": "What specific data lineage and governance policies should be implemented?"
+    }
+  ]
+}

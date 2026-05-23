@@ -1,0 +1,150 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_6_re_novice_stakeholder_nontechnical_enduser_20260227_110947.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_165652",
+  "requirements": [
+    {
+      "requirement": "The system should provide clear and immediate feedback when a booking is confirmed.",
+      "source_citation": "users unsure if booking went through",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions that users are unsure if their booking went through, indicating a need for clear feedback. This is a direct usability concern.",
+      "follow_up_question": "What specific types of feedback (e.g., visual, auditory) would be most effective for confirming bookings?"
+    },
+    {
+      "requirement": "The system should respond to small actions in under 5 seconds.",
+      "source_citation": "small actions should be almost immediate",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies that small actions should feel instant, with a target of under 5 seconds for basic tasks.",
+      "follow_up_question": "Can you provide examples of what you consider 'small actions'?"
+    },
+    {
+      "requirement": "The system should complete most tasks in under 10 seconds.",
+      "source_citation": "most quick tasks should finish in just a few seconds. I don't know the exact numbers, but under ten seconds for most things feels okay, and under five is ideal for the really basic stuff.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder sets a performance target for task completion times, indicating a need for responsiveness.",
+      "follow_up_question": "What specific tasks should be completed in under 10 seconds?"
+    },
+    {
+      "requirement": "The system should provide reliable search results to prevent double-booking.",
+      "source_citation": "the search results need to be reliable",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "reliability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions that search results sometimes show rooms that are already booked, indicating a need for reliability in search functionality.",
+      "follow_up_question": "What specific measures should be taken to ensure search results are reliable?"
+    },
+    {
+      "requirement": "The system should be tested on at least eight different browsers.",
+      "source_citation": "at least eight different browsers",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a minimum number of browsers for testing, indicating a need for maintainability across different platforms.",
+      "follow_up_question": "What specific browsers and versions should be included in the testing suite?"
+    },
+    {
+      "requirement": "The system should provide actionable error messages that explain conflicts and suggest alternatives.",
+      "source_citation": "explain conflicts, suggest alternatives",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions that error messages should be helpful and actionable, indicating a need for improved usability in error handling.",
+      "follow_up_question": "What specific types of conflicts and alternatives should the system address in error messages?"
+    },
+    {
+      "requirement": "The system should support multiple email servers, both internal and external.",
+      "source_citation": "interface with whatever email servers we have",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for the system to work with different email servers, indicating a need for scalability in email integration.",
+      "follow_up_question": "What specific email servers and protocols should the system support?"
+    },
+    {
+      "requirement": "The system should support multiple languages and correct date/time formats for different locales.",
+      "source_citation": "languages, date formats, time zones",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "internationalization",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for the system to support different languages and date/time formats, indicating a need for internationalization.",
+      "follow_up_question": "What specific languages and date/time formats should the system support?"
+    },
+    {
+      "requirement": "The system should be accessible to users with disabilities, including support for screen readers, keyboard navigation, and high-contrast themes.",
+      "source_citation": "screen readers, keyboard navigation, high-contrast themes",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "accessibility",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for accessibility features, indicating a requirement for the system to be usable by people with disabilities.",
+      "follow_up_question": "What specific accessibility standards and guidelines should the system adhere to?"
+    },
+    {
+      "requirement": "The system should have a very high uptime, close to 100%.",
+      "source_citation": "very, very high uptime, ninety-nine point nine something",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a target for system uptime, indicating a need for high availability.",
+      "follow_up_question": "What specific uptime percentage should the system aim for, and what measures should be taken to achieve it?"
+    },
+    {
+      "requirement": "The system should support mobile access.",
+      "source_citation": "mobile access would be handy",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for mobile access, indicating a requirement for usability on mobile devices.",
+      "follow_up_question": "What specific mobile platforms and devices should the system support?"
+    },
+    {
+      "requirement": "The system should integrate equipment requests (e.g., projectors, laptops) into the booking flow.",
+      "source_citation": "being able to request a laptop or a dongle with the room",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for integrated equipment requests, indicating a requirement for improved usability in the booking process.",
+      "follow_up_question": "What specific types of equipment should the system support for request?"
+    },
+    {
+      "requirement": "The system should have clear UI labels that are easily understandable by users.",
+      "source_citation": "UI labels should be clear",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for clear UI labels, indicating a requirement for improved usability in the user interface.",
+      "follow_up_question": "What specific UI labels should be reviewed and improved?"
+    }
+  ]
+}

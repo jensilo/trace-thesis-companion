@@ -1,0 +1,153 @@
+{
+  "extraction_file": "outputs/corpus_20260227_105946_mistral-small_trace_20260302_180009/trace_transcript_3_re_novice_stakeholder_technical_junior_20260227_110127.json",
+  "ground_truth_source": "outputs/corpus-20260227_105946/transcript_3_re_novice_stakeholder_technical_junior_20260227_110127.json",
+  "eval_model": "openai/gpt-5-mini",
+  "per_requirement": [
+    {
+      "extracted_requirement": "The system shall provide a response time of less than 5 seconds for small management tasks such as adding a student or updating a roster.",
+      "matched_ground_truth": "'The response time of general student management tasks shall take no longer than 5 seconds and the response time of schedule generation shall take no longer than 30 seconds.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 5,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system shall support up to 10 concurrent users during peak hours (9 AM–5 PM) without significant performance degradation.",
+      "matched_ground_truth": "'The system shall cater to 10 simultaneous users from 9am to 5pm.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": false,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 5,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system shall provide role-based access control (RBAC) to restrict access to sensitive student information based on user roles.",
+      "matched_ground_truth": "Only authorized users shall have access to students' personal information.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system shall comply with the organization’s information policy for protecting private information, including controlled access, encryption where required, and minimal exposure of personal identifiers.",
+      "matched_ground_truth": "The system shall protect private information in accordance with the organization's information policy.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system shall maintain an audit log of changes made to schedules and student data, including who made the change, what was changed, and when it was changed.",
+      "matched_ground_truth": null,
+      "overlap_score": 1,
+      "overlap_label": "Very Low",
+      "quality_attribute_match": false,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 5,
+      "is_hit": false,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system shall provide an intuitive user interface with minimal clicks to perform common tasks, clear error messages, and predictable workflows.",
+      "matched_ground_truth": "'The system shall be intuitive to the Program Administrators/Nursing Staff Members.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 4,
+      "rationale_quality": 3,
+      "gap_detection_quality": 4,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system shall perform basic integrity checks to ensure data consistency, such as preventing overlapping dates, ensuring required fields are present, and preventing duplicate assignments.",
+      "matched_ground_truth": "'The system shall have basic data integrity checking to reduce the possibility of incorrect or invalid data being introduced.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": false,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system shall be reliable during working hours (9 AM–5 PM) with a target uptime of 95%.",
+      "matched_ground_truth": "'The system shall achieve 95% up time.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 5,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system shall be maintainable for at least 5 years to support multiple cohorts, accreditation cycles, and curriculum changes.",
+      "matched_ground_truth": "'The system shall be expected to manage the nursing program curriculum and class/clinical scheduling for a minimum of 5 years.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": false,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 5,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system shall be scalable to support future curriculum updates and additional cohorts.",
+      "matched_ground_truth": null,
+      "overlap_score": 2,
+      "overlap_label": "Low",
+      "quality_attribute_match": false,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": false,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system shall include routine backups and a disaster recovery plan to restore data to a recent state in case of corruption.",
+      "matched_ground_truth": null,
+      "overlap_score": 2,
+      "overlap_label": "Low",
+      "quality_attribute_match": false,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": false,
+      "is_duplicate": false
+    }
+  ],
+  "metrics": {
+    "hit_count": 8,
+    "extracted_count": 11,
+    "ground_truth_count": 10,
+    "precision": 0.727,
+    "recall": 0.8,
+    "f1": 0.762,
+    "quality_attribute_accuracy": 0.625,
+    "avg_confidence": 4.273,
+    "avg_overlap_score": 4.091,
+    "avg_confidence_quality": 4.091,
+    "avg_rationale_quality": 3.909,
+    "avg_gap_detection_quality": 4.364
+  }
+}

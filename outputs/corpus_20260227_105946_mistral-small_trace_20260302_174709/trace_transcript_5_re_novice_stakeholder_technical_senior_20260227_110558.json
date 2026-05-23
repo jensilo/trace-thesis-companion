@@ -1,0 +1,172 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_5_re_novice_stakeholder_technical_senior_20260227_110558.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_174755",
+  "requirements": [
+    {
+      "requirement": "The system must have a response time of less than 15 seconds for parts searches.",
+      "source_citation": "For parts searches, if it drags on beyond what feels reasonable, people will open the phone and call a vendor instead... For facility lookups, it's even more immediate.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions that parts searches should return in under 15 seconds, indicating a clear performance requirement.",
+      "follow_up_question": "Are there any specific performance metrics or benchmarks that should be used to measure this requirement?"
+    },
+    {
+      "requirement": "The system must have a response time of less than 8 seconds for facility searches.",
+      "source_citation": "For facility lookups, it's even more immediate — you want the recommended shops to appear quickly when you have a customer standing there. Basically, parts searches can tolerate a bit more latency than facility lookups, but both must be snappy.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies that facility searches should return within 8 seconds, indicating a clear performance requirement.",
+      "follow_up_question": "Are there any specific performance metrics or benchmarks that should be used to measure this requirement?"
+    },
+    {
+      "requirement": "The system must implement layered defense mechanisms, including rate limiting, web application firewalls, and traffic scrubbing.",
+      "source_citation": "Insurance systems are attractive targets... We need to harden the perimeter, filter bad traffic... Rate limiting, web application firewalls, traffic scrubbing.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for layered defense mechanisms to protect against attacks.",
+      "follow_up_question": "Are there any specific security standards or protocols that should be followed for these defense mechanisms?"
+    },
+    {
+      "requirement": "The system must implement transport encryption and encryption at rest for sensitive data.",
+      "source_citation": "We need both [encryption]... Transport encryption is baseline, and sensitive data at rest should be encrypted per corporate policy.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for both transport encryption and encryption at rest for sensitive data.",
+      "follow_up_question": "Are there any specific encryption standards or protocols that should be followed?"
+    },
+    {
+      "requirement": "The system must have a clean, quick interface for field users and a more detailed interface for office users.",
+      "source_citation": "Field users need a clean, quick interface; office users might do deeper analysis.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies different usability requirements for field users and office users.",
+      "follow_up_question": "Are there any specific usability guidelines or standards that should be followed for these interfaces?"
+    },
+    {
+      "requirement": "The system must integrate with corporate identity for authentication and authorization.",
+      "source_citation": "Don't bolt on auth and just hope it works; integrate with corporate identity from the start.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of integrating with corporate identity for authentication and authorization.",
+      "follow_up_question": "Are there any specific identity management standards or protocols that should be followed?"
+    },
+    {
+      "requirement": "The system must have a 98% uptime target, allowing for a maximum of 2% downtime.",
+      "source_citation": "Reliability is critical... We need high availability; I'd say the system has to be up almost all the time.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for high availability and specifies a 98% uptime target.",
+      "follow_up_question": "Are there any specific availability standards or protocols that should be followed?"
+    },
+    {
+      "requirement": "The system must align with corporate architecture patterns and UI standards.",
+      "source_citation": "We can't reinvent the stack; we need to align with the corporate architecture patterns... Also accessibility and consistent UI behavior.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need to align with corporate architecture patterns and UI standards.",
+      "follow_up_question": "Are there any specific corporate architecture or UI standards that should be followed?"
+    },
+    {
+      "requirement": "The system must be designed to handle 1,500 concurrent users initially and scale to 10,000 concurrent users within two years.",
+      "source_citation": "Over the next couple of years the user base could grow substantially... Plan to comfortably handle fifteen hundred concurrent users, and architect it so we can scale to around ten thousand concurrent users within about two years of launch.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for scalability to handle a growing user base.",
+      "follow_up_question": "Are there any specific scalability standards or protocols that should be followed?"
+    },
+    {
+      "requirement": "The system must implement detailed logging for auditing purposes and handle personal information according to privacy rules.",
+      "source_citation": "We need detailed logging of who viewed and changed an estimate... Also any personal information must be handled per the privacy rules.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "compliance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for detailed logging and compliance with privacy rules.",
+      "follow_up_question": "Are there any specific logging or privacy standards that should be followed?"
+    },
+    {
+      "requirement": "The system must preserve the integrity of the estimate workflow to ensure it is defensible in audits.",
+      "source_citation": "Preserve the integrity of the estimate workflow so it stays defensible in audits.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "compliance",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of preserving the integrity of the estimate workflow for auditing purposes.",
+      "follow_up_question": "Are there any specific audit standards or protocols that should be followed?"
+    },
+    {
+      "requirement": "The system must rely on the provider as the source of truth and design for schema changes.",
+      "source_citation": "Rely on the provider as the source of truth, keep mappings explicit, and design for schema changes.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "data_integrity",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of relying on the provider as the source of truth and designing for schema changes.",
+      "follow_up_question": "Are there any specific data integrity standards or protocols that should be followed?"
+    },
+    {
+      "requirement": "The system must be designed with observability, deployability, and maintainability in mind from day one.",
+      "source_citation": "We need to think in terms of observability, deployability, and maintainability from day one.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for observability, deployability, and maintainability.",
+      "follow_up_question": "Are there any specific maintainability standards or protocols that should be followed?"
+    },
+    {
+      "requirement": "The system must have a mobile-friendly interface for field adjusters.",
+      "source_citation": "Mobile-friendly is a must because field adjusters use tablets and phones.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of a mobile-friendly interface for field adjusters.",
+      "follow_up_question": "Are there any specific mobile usability standards or protocols that should be followed?"
+    },
+    {
+      "requirement": "The system must follow corporate accessibility guidelines for color contrast, keyboard navigation, and standard components.",
+      "source_citation": "Also, the UI should follow corporate accessibility guidelines — color contrast, keyboard navigation, standard components — so it's both consistent and compliant.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need to follow corporate accessibility guidelines.",
+      "follow_up_question": "Are there any specific accessibility standards or protocols that should be followed?"
+    }
+  ]
+}

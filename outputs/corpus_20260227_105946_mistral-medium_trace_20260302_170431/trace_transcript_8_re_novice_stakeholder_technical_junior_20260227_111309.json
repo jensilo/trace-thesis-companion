@@ -1,0 +1,183 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_8_re_novice_stakeholder_technical_junior_20260227_111309.txt",
+  "model": "mistral/mistral-medium-latest",
+  "timestamp": "20260302_171346",
+  "requirements": [
+    {
+      "requirement": "The system shall allow users to find a movie, pay, and start watching within three minutes.",
+      "source_citation": "maybe a few minutes from click to play. Not a whole afternoon, you know. I think three minutes would be the outer limit for a straightforward purchase-and-play flow.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions a time limit for the process of finding a movie, paying, and starting to watch. This is a clear performance requirement.",
+      "follow_up_question": "What specific steps are included in the 'purchase-and-play flow' that should be completed within three minutes?"
+    },
+    {
+      "requirement": "The system shall respond to user interactions within five seconds for simple operations.",
+      "source_citation": "if it takes more than a few seconds, users feel annoyed. I'd say around five seconds is when people start to lose patience for simple stuff.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a time limit for user interactions, which is a performance requirement.",
+      "follow_up_question": "Can you provide examples of 'simple stuff' that should respond within five seconds?"
+    },
+    {
+      "requirement": "The system shall process card payments within fifteen seconds.",
+      "source_citation": "I'd put card authorisation at maybe under, say, fifteen seconds from submit to result.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a time limit for card payment processing, which is a performance requirement.",
+      "follow_up_question": "What specific steps are included in the card authorization process that should be completed within fifteen seconds?"
+    },
+    {
+      "requirement": "The system shall start playback within ten seconds of buffering.",
+      "source_citation": "Ten seconds is about the maximum that feels tolerable to me, assuming the user's own connection isn't the problem.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a time limit for buffering before playback starts, which is a performance requirement.",
+      "follow_up_question": "What specific steps are included in the buffering process that should be completed within ten seconds?"
+    },
+    {
+      "requirement": "The system shall provide a simple and easy process for users to enter pre-paid card codes.",
+      "source_citation": "entering the code and getting access should be as easy as typing a PIN; they shouldn’t wrestle with forms.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the ease of use for entering pre-paid card codes, which is a usability requirement.",
+      "follow_up_question": "Can you describe the specific steps users should take to enter pre-paid card codes?"
+    },
+    {
+      "requirement": "The system shall protect sensitive payment data and restrict access to trusted admin roles.",
+      "source_citation": "sensitive stuff like real card details should be locked down. Admins who manage the platform need transaction visibility for business reasons, but not everyone should be able to read full payment details. Only trusted admins, and the data needs to be protected.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need to protect sensitive payment data and restrict access, which is a security requirement.",
+      "follow_up_question": "What specific measures should be taken to protect sensitive payment data?"
+    },
+    {
+      "requirement": "The system shall provide role-based access control and two-factor authentication for high-privilege accounts.",
+      "source_citation": "Roles for sure, and stronger authentication for high-privilege accounts. Two-factor seems sensible for those users who can see sensitive data.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for role-based access control and two-factor authentication, which is a security requirement.",
+      "follow_up_question": "What specific roles and access levels should be defined for the system?"
+    },
+    {
+      "requirement": "The system shall achieve an uptime of 99.5%.",
+      "source_citation": "they'd probably expect around ninety-nine and a half percent uptime.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies an uptime percentage, which is an availability requirement.",
+      "follow_up_question": "What specific measures should be taken to achieve 99.5% uptime?"
+    },
+    {
+      "requirement": "The system shall block or mitigate automated abuse and alert admins when unusual activity is detected.",
+      "source_citation": "Bots trying to brute-force pre-paid codes, or card testing attacks that spike transactions, or crawlers scraping content — we need protections. Ideally, the system blocks or mitigates attacks and alerts admins when something weird happens.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need to block or mitigate automated abuse and alert admins, which is a security requirement.",
+      "follow_up_question": "What specific types of automated abuse should the system be able to detect and mitigate?"
+    },
+    {
+      "requirement": "The system shall provide a clear and visible privacy policy on every page.",
+      "source_citation": "A clear privacy policy that people can find before they give us anything. I don't like those hidden pages — make it visible, maybe linked in the footer and during signup. Users should know what data we collect and how we use it. Uh, yeah, on every page is safer.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for a clear and visible privacy policy, which is a legal requirement.",
+      "follow_up_question": "What specific information should be included in the privacy policy?"
+    },
+    {
+      "requirement": "The system shall store daily aggregates of stream counts, revenue, and active users.",
+      "source_citation": "Daily aggregates like stream counts, revenue, active users — the usual business stuff. But again, it's the ability to look back at daily numbers that matters, so when the marketing team asks 'what happened last Tuesday' we can tell them.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need to store daily aggregates for business purposes, which is a maintainability requirement.",
+      "follow_up_question": "What specific metrics should be included in the daily aggregates?"
+    },
+    {
+      "requirement": "The system shall provide a simple and intuitive user interface with big clear buttons, helpful defaults, and an obvious 'play' flow.",
+      "source_citation": "Big clear buttons, not too many choices at once, helpful defaults, and an obvious prominent 'play' flow.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for a simple and intuitive user interface, which is a usability requirement.",
+      "follow_up_question": "Can you provide specific examples of 'helpful defaults' that should be included in the user interface?"
+    },
+    {
+      "requirement": "The system shall support local languages and currencies for key markets.",
+      "source_citation": "Yeah, we'd want local languages for key markets — at least the big ones. Also support for local currencies in the UI helps reduce confusion.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need to support local languages and currencies, which is a usability requirement.",
+      "follow_up_question": "What specific languages and currencies should be supported by the system?"
+    },
+    {
+      "requirement": "The system shall provide an African-inspired aesthetic for the user interface.",
+      "source_citation": "the visual style should feel familiar and warm; an African-inspired aesthetic would help users feel at home.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for an African-inspired aesthetic, which is a look and feel requirement.",
+      "follow_up_question": "Can you describe specific elements of the African-inspired aesthetic that should be included in the user interface?"
+    },
+    {
+      "requirement": "The system shall provide tooltips and simple error messages to assist users.",
+      "source_citation": "Oh, and tooltips and simple error messages — not scary technical text.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for tooltips and simple error messages, which is a usability requirement.",
+      "follow_up_question": "Can you provide examples of simple error messages that should be included in the system?"
+    },
+    {
+      "requirement": "The system shall monitor server uptime, error rates, and unusual traffic patterns, and provide alerts for nighttime issues.",
+      "source_citation": "Track basic health stuff — server uptime, error rates, and unusual traffic patterns. If an alert fires at night, someone should get notified; we can't just find out in the morning after revenue is lost.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need to monitor server uptime, error rates, and unusual traffic patterns, and provide alerts, which is an operability requirement.",
+      "follow_up_question": "What specific measures should be taken to monitor server uptime, error rates, and unusual traffic patterns?"
+    }
+  ]
+}

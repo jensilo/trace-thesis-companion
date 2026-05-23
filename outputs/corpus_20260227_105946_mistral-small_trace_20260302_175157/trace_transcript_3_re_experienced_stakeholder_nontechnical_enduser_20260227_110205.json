@@ -1,0 +1,139 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_3_re_experienced_stakeholder_nontechnical_enduser_20260227_110205.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_175159",
+  "requirements": [
+    {
+      "requirement": "The system should be intuitive and require minimal training, with a maximum of one day of training for core staff and a shorter orientation for adjuncts and site coordinators.",
+      "source_citation": "if it's intuitive, we could get by with a short, focused workshop. If I had to say, maybe one day of training should be enough for most folks to be productive. But, um, that assumes the UI is straightforward and the common tasks are obvious.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for minimal training and an intuitive UI. The confidence is high due to the clear and direct statement.",
+      "follow_up_question": "Can you provide examples of systems that you find intuitive and why they work well for you?"
+    },
+    {
+      "requirement": "The system should be compatible with common browsers and devices without requiring special plugins or installations.",
+      "source_citation": "If a system needs special plugins or only works in one browser, it becomes a training and support nightmare. We need something that just opens in whatever regular browser people have and behaves the same.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 5,
+      "rationale": "The stakeholder clearly states the need for compatibility with common browsers and devices, emphasizing the importance of avoiding special plugins.",
+      "follow_up_question": "Can you list the specific browsers and devices that the system should be compatible with?"
+    },
+    {
+      "requirement": "The system should have a response time of a few seconds for routine tasks and up to 30 seconds for batch processing.",
+      "source_citation": "For little things like pulling up a student's record or changing a shift, I hate waiting — it should be almost instant. If I had to put a number on it, maybe a few seconds. Like, if I click and it takes longer than, say, five seconds, I start clicking again and making mistakes. For the whole schedule generator — when we batch-create schedules — that one can take longer, but it can't take forever; half a minute-ish feels like the outside of acceptable to me.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder provides specific response time expectations for different types of tasks, indicating a clear performance requirement.",
+      "follow_up_question": "Are there any specific tasks or processes that have more stringent performance requirements?"
+    },
+    {
+      "requirement": "The system should be available 95% of the time during business hours, with a tolerance for rare outages.",
+      "source_citation": "I'd say it should be reliable almost always — maybe allow for rare outages, but not frequently. Thinking about it, I wouldn't want it down more than a few percent of the time. If I had to pick a number, something like ninety-five percent availability sounds about right to me for the start. But the goal is to have it rarely down during business hours.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the desired availability percentage and the tolerance for outages, providing a clear availability requirement.",
+      "follow_up_question": "What specific measures or protocols should be in place to handle outages and ensure high availability?"
+    },
+    {
+      "requirement": "The system should implement role-based access control to restrict access to sensitive information based on user roles.",
+      "source_citation": "Well, program admins — the core staff — need a full view. Site coordinators shouldn't see the full student files; they only need the details relevant to the placement, like who's coming and their required clearances. Instructors probably need rosters and schedule info, but not private notes.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder clearly outlines the need for role-based access control and specifies the access levels for different user roles.",
+      "follow_up_question": "Can you provide more details on the specific access levels and permissions for each role?"
+    },
+    {
+      "requirement": "The system should follow university policies for data privacy and security, including compliance with information policies and audit trails.",
+      "source_citation": "The university has an information policy — I don't remember the exact language, but it's the usual: confidentiality for student records, health info is restricted, and only authorized staff can see sensitive stuff. We have compliance folks who can hand over the policy, but the system needs to be able to enforce those rules. And, um, audit trails would be great — knowing who changed what and when.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for compliance with university policies and the implementation of audit trails, indicating a clear security requirement.",
+      "follow_up_question": "Can you provide the specific university policies that the system should comply with?"
+    },
+    {
+      "requirement": "The system should integrate with the university's student records and HR or payroll systems to avoid manual data entry.",
+      "source_citation": "It should tie into the university's student records for enrollments and probably our HR or payroll for instructor assignments, so we don't have to enter data twice.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder clearly states the need for integration with existing university systems to avoid manual data entry, indicating a maintainability requirement.",
+      "follow_up_question": "Can you provide more details on the specific integration points and data exchange formats?"
+    },
+    {
+      "requirement": "The system should handle 10-15 concurrent users during peak times without slowing down.",
+      "source_citation": "In the mornings, when we're all prepping, there's a bunch of us on at once. Maybe around ten people? Ten to fifteen on busy days, I guess. So it has to handle that load without choking. We can't have it slow down just because it's morning and everyone is looking at the same cohort.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder provides a specific number of concurrent users and emphasizes the need for the system to handle peak loads without slowing down.",
+      "follow_up_question": "Are there any specific performance metrics or benchmarks that should be used to evaluate the system's scalability?"
+    },
+    {
+      "requirement": "The system should implement validation rules to prevent overlapping schedules, missing clearances, and other obvious human errors.",
+      "source_citation": "It should stop me from scheduling a student in two places at the same time, or assign an instructor who is already booked. It could warn me if a clinical placement requires a clearance the student doesn't have. Basically, catch the obvious human errors before they happen.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "error_prevention",
+      "confidence": 4,
+      "rationale": "The stakeholder clearly outlines the need for validation rules to prevent common scheduling errors, indicating a clear error prevention requirement.",
+      "follow_up_question": "Can you provide more details on the specific validation rules and error prevention mechanisms that should be implemented?"
+    },
+    {
+      "requirement": "The system should provide immediate notifications and acknowledgment tracking for schedule changes and other important updates.",
+      "source_citation": "Automatic notices. When a schedule changes, students, instructors, and the site people should get told right away. Emails are fine, and text alerts would be great for urgent stuff, but I don't know — something that actually reaches them. Ideally immediate, yeah, and some way to know they saw it — or at least that it was sent.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for immediate notifications and acknowledgment tracking, indicating a clear usability requirement.",
+      "follow_up_question": "Can you provide more details on the specific notification methods and acknowledgment tracking mechanisms that should be implemented?"
+    },
+    {
+      "requirement": "The system should provide automated reports for daily rosters, clearance status, cohort progression, and other relevant data.",
+      "source_citation": "Yes, we need basic reports. Like, who is scheduled where, gaps in coverage, maybe a roster per site. And if a student's progression is behind, we should be able to see that at a glance. It doesn't have to be fancy, but it should save me time compared to cobbling things together in a spreadsheet.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 4,
+      "rationale": "The stakeholder clearly outlines the need for automated reports and specifies the types of reports required, indicating a clear operability requirement.",
+      "follow_up_question": "Can you provide more details on the specific reports and data that should be included in the system?"
+    },
+    {
+      "requirement": "The system should minimize the need for printing and reduce paper usage.",
+      "source_citation": "it'd be nice if the system reduced the amount we have to print. Less paper, fewer trips to the printer, fewer lamination disasters.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "other",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the desire to reduce paper usage, indicating a general preference for a digital-first approach.",
+      "follow_up_question": "Can you provide more details on the specific areas where paper usage can be reduced and the expected benefits?"
+    }
+  ]
+}

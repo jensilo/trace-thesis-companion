@@ -1,0 +1,128 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_6_re_experienced_stakeholder_nontechnical_enduser_20260227_111152.txt",
+  "model": "mistral/mistral-medium-latest",
+  "timestamp": "20260302_171006",
+  "requirements": [
+    {
+      "requirement": "The system shall respond to user actions within five seconds for routine tasks such as searching and booking a room.",
+      "source_citation": "if I'm doing something small, like booking a 30-minute room, it should be basically instant. Maybe, I don't know, five seconds?",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions a response time expectation for routine tasks, which is a clear performance requirement.",
+      "follow_up_question": "What specific tasks are considered routine, and are there any exceptions where longer response times are acceptable?"
+    },
+    {
+      "requirement": "The system shall have a standard layout with clear labels and intuitive navigation, similar to common web applications.",
+      "source_citation": "a clear top bar or something that shows Home, Calendar, Bookings, maybe your profile. Nothing weird hidden in menus. If it's like other web apps I've used, I can find things without reading a manual.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder describes a clear expectation for the system's layout and navigation, emphasizing familiarity and ease of use.",
+      "follow_up_question": "Can you provide examples of web applications that have the kind of layout and navigation you find intuitive?"
+    },
+    {
+      "requirement": "The system shall be usable without training, with new users able to perform basic tasks within fifteen minutes of first use.",
+      "source_citation": "People shouldn't need a training session. I'd say within maybe a short timeframe... maybe like under fifteen minutes?",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the expectation for learnability and ease of use without formal training.",
+      "follow_up_question": "What specific basic tasks should a new user be able to perform within fifteen minutes?"
+    },
+    {
+      "requirement": "The system shall support screen readers and keyboard-only navigation, ensuring all buttons and interactive elements are properly labeled.",
+      "source_citation": "One of our teammates uses a screen reader and the old system was a mess for them. Keyboard navigation felt broken, and some buttons weren't labelled so the screen reader couldn't explain them.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "accessibility",
+      "confidence": 5,
+      "rationale": "The stakeholder highlights specific accessibility issues with the current system, indicating clear requirements for the new system.",
+      "follow_up_question": "Are there any specific accessibility standards or guidelines that the system should comply with?"
+    },
+    {
+      "requirement": "The system shall display dates and times in the local format of the user's location.",
+      "source_citation": "Their invite showed the date in day-month order and mine showed month-day... it really needs to show dates and times the way people expect where they are.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "localization",
+      "confidence": 4,
+      "rationale": "The stakeholder describes a specific issue with date formats, indicating a need for localization.",
+      "follow_up_question": "How should the system determine the user's location to display the correct date and time format?"
+    },
+    {
+      "requirement": "The system shall have minimal downtime during business hours, ensuring high availability.",
+      "source_citation": "Outages should be super rare... it needs to be almost always up during work hours... very high percentage of uptime.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of the system being available during business hours, indicating a high availability requirement.",
+      "follow_up_question": "What specific uptime percentage or downtime duration is considered acceptable during business hours?"
+    },
+    {
+      "requirement": "The system shall be compatible with common browsers, ensuring proper display and functionality.",
+      "source_citation": "The system needs to display properly so buttons line up and calendars look right... it should work on most common browsers.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "compatibility",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for the system to work across different browsers, indicating a compatibility requirement.",
+      "follow_up_question": "Which specific browsers and versions should the system be compatible with?"
+    },
+    {
+      "requirement": "The system shall support multiple email servers and send reliable email notifications without duplicates.",
+      "source_citation": "It needs to actually send emails reliably and play nicely with our corporate email... it should be flexible enough to talk to different mail systems... please make it stop sending duplicate invites.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "reliability",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights issues with email notifications, indicating a need for reliable and flexible email integration.",
+      "follow_up_question": "Are there specific email servers or protocols that the system should support?"
+    },
+    {
+      "requirement": "The system shall be localized to display the user interface in the local language and adhere to local conventions.",
+      "source_citation": "For offices where English isn't primary, the UI should be in local language... local staff shouldn't have to guess the format or labels.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "localization",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for the system to be in the local language and adhere to local conventions, indicating a localization requirement.",
+      "follow_up_question": "Which specific languages and local conventions should the system support?"
+    },
+    {
+      "requirement": "The system shall provide clear and informative notifications, including reasons for booking failures.",
+      "source_citation": "Clear notifications... if a booking fails, tell me why—don’t just show an error.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for clear notifications, indicating a usability requirement for informative feedback.",
+      "follow_up_question": "What specific information should be included in notifications for different types of failures?"
+    },
+    {
+      "requirement": "The system shall prioritize functionality over visual design, ensuring simplicity in user workflows.",
+      "source_citation": "Please prioritize function over fancy visuals... keep it simple... don't make people go through a ten-step wizard just to book a room.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 3,
+      "rationale": "The stakeholder emphasizes the importance of simplicity and functionality over visual design, indicating a usability requirement.",
+      "follow_up_question": "Are there specific workflows that should be simplified or streamlined?"
+    }
+  ]
+}

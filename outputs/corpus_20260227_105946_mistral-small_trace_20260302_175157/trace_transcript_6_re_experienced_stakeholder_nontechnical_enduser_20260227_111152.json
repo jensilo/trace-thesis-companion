@@ -1,0 +1,117 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_6_re_experienced_stakeholder_nontechnical_enduser_20260227_111152.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_175250",
+  "requirements": [
+    {
+      "requirement": "The system should have a clear, intuitive, and standard layout with easily recognizable labels and navigation elements.",
+      "source_citation": "The labels are obscure, so I spend time guessing where to click, and there are too many steps to confirm a booking. And the layout isn't, like, standard — I'm always hunting for the calendar or the confirm button.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions issues with labels, steps, and layout, indicating a need for a more intuitive and standard interface. The evidence is strong, but specific design guidelines are not provided.",
+      "follow_up_question": "Can you provide examples of specific web apps with layouts you find intuitive, and what elements you prefer?"
+    },
+    {
+      "requirement": "The system should respond to simple booking requests within 5 seconds.",
+      "source_citation": "if I'm doing something small, like booking a 30-minute room, it should be basically instant. Maybe, I don't know, five seconds?",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a response time of 5 seconds for simple bookings, which is a clear performance requirement. The evidence is strong, but the scope of 'simple bookings' needs clarification.",
+      "follow_up_question": "What specific actions or tasks should be completed within the 5-second response time?"
+    },
+    {
+      "requirement": "The system should have a familiar navigation structure, such as a clear top bar with standard menu items like Home, Calendar, Bookings, and Profile.",
+      "source_citation": "I mean the usual stuff you see on most websites — you know, a clear top bar or something that shows Home, Calendar, Bookings, maybe your profile.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for a familiar navigation structure similar to other web apps. The evidence is strong, but specific examples or standards are not provided.",
+      "follow_up_question": "Can you provide examples of web apps with navigation structures you find intuitive?"
+    },
+    {
+      "requirement": "The system should be accessible to users with disabilities, including compatibility with screen readers, keyboard navigation, high contrast, and proper button labeling.",
+      "source_citation": "One of our teammates uses a screen reader and the old system was a mess for them. Keyboard navigation felt broken, and some buttons weren't labelled so the screen reader couldn't explain them. Also, low-vision folks need high contrast or larger fonts sometimes.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder provides specific examples of accessibility issues, indicating a clear need for an accessible design. The evidence is very strong, but specific standards or guidelines are not mentioned.",
+      "follow_up_question": "Are there specific accessibility standards or guidelines that the system should comply with?"
+    },
+    {
+      "requirement": "The system should display dates and times in the local format of the user's region.",
+      "source_citation": "Their invite showed the date in the day-month order and mine showed month-day, and we got the day wrong. So, it really needs to show dates and times the way people expect where they are.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions an issue with date formats causing confusion, indicating a need for localization. The evidence is strong, but the scope of localization is not fully specified.",
+      "follow_up_question": "What specific date and time formats should the system support for different regions?"
+    },
+    {
+      "requirement": "The system should have a high availability during business hours, with minimal downtime.",
+      "source_citation": "It shouldn't happen during business hours, honestly. Well, I mean it should be there when we need it. I don't expect miracle uptime, like never ever, but outages should be super rare.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of high availability during business hours. The evidence is strong, but specific uptime percentages or acceptable downtime are not provided.",
+      "follow_up_question": "What specific uptime percentage or acceptable downtime would you consider reasonable?"
+    },
+    {
+      "requirement": "The system should be compatible with at least eight common browsers.",
+      "source_citation": "The system needs to display properly so buttons line up and calendars look right. If it breaks on someone's browser they can't do their job. So it should work on most common browsers. Sorry, not very precise — I just mean don't break in one or two of the popular ones. Uh, if you forced me, I'd say at least a handful — enough to cover the usual suspects. Maybe around eight?",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for cross-browser compatibility and mentions a specific number of browsers. The evidence is strong, but the specific browsers are not listed.",
+      "follow_up_question": "Can you provide a list of the specific browsers that the system should be compatible with?"
+    },
+    {
+      "requirement": "The system should avoid sending duplicate email invites.",
+      "source_citation": "Sometimes it sends duplicates, which is annoying.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions an issue with duplicate emails, indicating a need for reliability in email integration. The evidence is moderate, but the specific cause or frequency is not provided.",
+      "follow_up_question": "How often do duplicate emails occur, and what specific issues do they cause?"
+    },
+    {
+      "requirement": "The system should have clear and informative notifications for cancellations and errors.",
+      "source_citation": "Maybe notifications that are clear. If someone cancels the room, the notification should say who did it and why, not just a cryptic message. And when a booking fails, tell me why — don't just show an error.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for clear notifications. The evidence is strong, but specific examples or formats are not provided.",
+      "follow_up_question": "Can you provide examples of clear and informative notifications from other systems?"
+    },
+    {
+      "requirement": "The system should prioritize functionality over fancy visuals.",
+      "source_citation": "Oh, and please prioritize the things we've talked about over fancy visuals. They look nice, but function first.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the importance of prioritizing functionality. The evidence is moderate, but specific examples or trade-offs are not provided.",
+      "follow_up_question": "Can you provide examples of visual elements that you consider 'fancy' and should be deprioritized?"
+    }
+  ]
+}

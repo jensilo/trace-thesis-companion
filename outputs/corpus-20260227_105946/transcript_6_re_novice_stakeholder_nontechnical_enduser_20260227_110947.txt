@@ -1,0 +1,92 @@
+Interviewer: Hi—thanks for taking the time. Can you tell me how you normally use the room-booking system now and what frustrates you?
+
+Stakeholder: Sure, um, I use it every day, mostly to book a room for team meetings or to check if a projector is available. Honestly, I think the biggest thing is that it should just be easy. Right now it feels like you need to be trained to do something that should be simple, and people get stuck and call reception. And, uh, I hate when it takes ages to find a room that actually fits what we need.
+
+Interviewer: When you say "easy" and "takes ages," what do you mean—can you describe a typical step that trips people up?
+
+Stakeholder: Well, for example, searching for a room—sometimes the results are confusing, or they show rooms that are already booked, or you can't filter by whether the room has a screen or video conferencing. So people click around, get unsure if the booking went through, and then they either double-book or call someone. It's just... annoying. Also a lot of people want clear confirmation. If there's no good feedback, they don't trust it.
+
+Interviewer: So searching and confirmations are important. Do you need the system to send emails too, like invites?
+
+Stakeholder: Yes, definitely. We need invites and reminders to go out. And not just within our company email—clients use different systems and sometimes the invites never arrive or look broken, so that's a pain. It should talk to whatever email setup we use and actually send messages reliably.
+
+Interviewer: Okay. You mentioned it shouldn't take ages—how long is too long when someone is trying to reserve a room?
+
+Stakeholder: Hmm, well, I think for the small stuff it needs to feel instant. If I'm clicking to reserve, I don't want to think about it. Maybe, um, five minutes is a reasonable maximum for someone to figure it out if they're new? But small actions should be almost immediate.
+
+Interviewer: Five minutes for a new user to complete a reservation, got it. You said small actions should be almost immediate—do you have any sense of how quickly typical tasks should finish so your flow isn't interrupted?
+
+Stakeholder: Yeah, it just needs to be snappy. If I'm adding a meeting or checking availability, it should happen while I'm thinking. If it drags, people lose their train of thought. I guess most quick tasks should finish in just a few seconds. I don't know the exact numbers, but under ten seconds for most things feels okay, and under five is ideal for the really basic stuff.
+
+Interviewer: Under five for basic stuff and under ten for most tasks—okay. Back to searching: when you say filters like "has a screen" or "video conferencing," is that something people ask for often?
+
+Stakeholder: Oh, all the time. Like, we need to know capacity, whether the room has a whiteboard or a projector, if there are conference phones. Otherwise you get to a room and realize it won't work, which is embarrassing. Also, um, sometimes the system shows rooms that are supposedly free but then someone else shows up, so the search results need to be reliable.
+
+Interviewer: Right. Do people use different browsers or languages when they access it? Anything about how it should look on different computers?
+
+Stakeholder: Yes, people use everything—Chrome, Edge, Safari, some older browsers too. And there are people from different countries here, so some want the interface in their language, and the calendar should show dates and times the way they're used to. It gets confusing when the format is different and someone misreads the date. Also accessibility is important—some of our colleagues use screen readers or need keyboard navigation, so the UI has to work for them.
+
+Interviewer: When you say "some older browsers" and "people from different countries," do you have an idea of how many browsers or languages we should make sure work, or how correct the date formats need to be?
+
+Stakeholder: Well, I think at a minimum it should be tested on a good cross-section—like, uh, at least several major browsers and a few older ones. And for the date and time, people notice if it's wrong for their locale; most folks should feel like it's correct. If I had to pick a target, maybe around ninety percent of people in each country should find the formatting correct. But, again, that's just a rough idea.
+
+Interviewer: Ninety percent sounds specific—thanks. You mentioned accessibility—do you mean just screen readers or broader things?
+
+Stakeholder: Broader. Screen readers, yes, but also high-contrast themes, keyboard-only navigation, clear focus outlines, that sort of stuff. We have teammates who rely on those features and it's not optional. It should follow whatever the ADA requires, at least meet those standards so people can actually use it without workarounds.
+
+Interviewer: Got it. You also said emails sometimes don't arrive. Should the system be able to work with our internal mail server and external ones?
+
+Stakeholder: Yes, it needs to interface with whatever email servers we have. Our IT uses a couple of different setups in different offices, and clients might be on something else, so the invites and reminders need to leave the system and get delivered properly. If they bounce or get malformed, meetings don't happen as planned.
+
+Interviewer: About confirmations—you said people need clear feedback. How accurate should those confirmations be? Like, how often can it mislead users before that's a problem?
+
+Stakeholder: Hmm, it should be trustworthy most of the time. When someone books, they should feel confident it's booked and that the system shows that. If I had to put a number on it—because people do surveys sometimes—that accurate confirmation should be reported by maybe about eighty percent of users. But the main point is: it must give clear, understandable feedback so people stop second-guessing.
+
+Interviewer: Okay. You mentioned it sometimes crashes or acts slow—do you have expectations on availability? Like, how often can it be down?
+
+Stakeholder: Ugh, downtime is a nightmare. We rely on it all day, so it has to be up almost all the time. Besides scheduled maintenance or a server outage, it should almost never be unavailable. If I had to say, we want it to be available at the level that makes people stop worrying about outages—very, very high uptime. I guess people talk about targets like nearly one hundred percent—maybe something like ninety-nine point nine something. I'm not an IT person, so that's a guess, but the idea is it should be dependable.
+
+Interviewer: You mean like ninety-nine point nine nine percent or something?
+
+Stakeholder: Yeah, something like that—very close to one hundred. We can't have meetings fail because the booking site is down.
+
+Interviewer: Understood. Are there any other things that frustrate you that I haven't asked about?
+
+Stakeholder: Hmm, equipment management I mentioned a bit—like being able to request a laptop or a dongle with the room. And one small pet peeve: the UI labels should be clear. I once had to show someone how to cancel a booking and the button said "release" and they didn't get it. Also, um, a funny tangent—last month we had a very long meeting because five of us showed up at different times thinking the other had booked; the system confirmed for all of them and then... well, chaos. That was a whole morning gone.
+
+Interviewer: When you say "equipment requests," should those be part of the booking flow or separate?
+
+Stakeholder: Ideally part of the booking, so you can ask for a projector or dial-in setup when you make the reservation. It should feel like one quick task rather than a separate ticket.
+
+Interviewer: Okay. You mentioned testing browsers earlier—do you have a minimum number of browser versions you think we should test on, or a pass rate?
+
+Stakeholder: I think a minimum suite would be good—like at least eight different browsers or versions should be checked, given how many we have floating around. And as for passing, it should render correctly on most of them. If I had to guess, maybe around eighty percent should display properly in tests. Again, rough, but that seems reasonable.
+
+Interviewer: Minimum eight browsers and about eighty percent rendering success—thanks. Anything else about internationalization besides language selection and date/time?
+
+Stakeholder: Just that translations should be good and not machine gibberish. People notice when things are badly translated. Also the calendar should show the right week starting day and time zone stuff should be clear so people don't join at the wrong time.
+
+Interviewer: Time zones—do meetings cross time zones often?
+
+Stakeholder: Sometimes, yes. We have remote folks in other countries, so the system should show both local and organizer times in a way that doesn't confuse people. Again, it's about avoiding those "sorry I joined at the wrong time" moments.
+
+Interviewer: Last thing—how should error messages behave? You mentioned the system sometimes gives confusing feedback.
+
+Stakeholder: Error messages should say what went wrong and what to do next. Not just codes or "operation failed," because people get stuck. For example, if a booking fails because of a conflict, it should explain that and suggest alternatives or let you pick a different time without leaving the page. That kind of helpful feedback stops a lot of follow-up calls.
+
+Interviewer: Great. I think I have what I need for now. Anything else you want to add?
+
+Stakeholder: Uh, only that it shouldn't feel like an admin tool—make it friendly. And, um, remember that some people will only ever use it once in a while, so the experience for newcomers matters a lot. Oh, and sorry, I keep jumping around—one last tiny thing: mobile access would be handy, but I didn't think to mention it earlier.
+
+---
+Selected Requirements:
+1. [NICE.csv line 285] [quality, usability] 'The product shall be easy to use. 90% of users will be able to successfully reserve a conference room within 5 minutes of product use.'
+2. [NICE.csv line 291] [quality, functional, usability] 'The product shall allow for intuitive searching of available conference rooms.'
+3. [NICE.csv line 286] [quality, performance, usability] 'The product shall give users feedback when necessary. 80% of the users surveyed report that the product accurately confirms their actions.'
+4. [NICE.csv line 302] [quality, operability, portability] 'The product must be able to interface with various email servers. The product shall be able to send email.'
+5. [NICE.csv line 300] [quality, look_and_feel, operability, portability] 'The product must be able to interface with any HTML browser. The product shall transmit data between the user and the product without problems. The product shall display HTML properly in 80% of all HTML browsers tested (minimum is to test 8 browsers).'
+6. [NICE.csv line 287] [quality, functional, usability] 'The product shall allow the user to select a chosen language from one of the target market countries.'
+7. [NICE.csv line 322] [quality, functional, usability] The product shall be able to display calendar dates and times according to the user's locale. 90% of survey respondents from each target market country will find that the date and time formatting of the product is correct.'
+8. [NICE.csv line 292] [quality, legal] 'The product shall conform to the Americans with Disabilities Act.'
+9. [NICE.csv line 293] [quality, performance] The response shall be fast enough to avoid interrupting the user's flow of thought. 90% of tasks shall complete within 5 seconds. 98% of tasks shall complete within 8 seconds.'
+10. [NICE.csv line 294] [quality, availability] 'Aside from server failure the software product shall achieve 99.99% up time.'

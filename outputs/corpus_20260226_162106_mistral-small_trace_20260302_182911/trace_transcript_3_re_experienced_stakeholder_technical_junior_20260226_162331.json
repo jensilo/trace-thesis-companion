@@ -1,0 +1,172 @@
+{
+  "transcript_file": "outputs/corpus-20260226_162106/transcript_3_re_experienced_stakeholder_technical_junior_20260226_162331.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_182913",
+  "requirements": [
+    {
+      "requirement": "The UI should resemble familiar tools such as spreadsheets and calendars to ensure usability.",
+      "source_citation": "They’re used to spreadsheets and email and kind of expect things to look familiar: a calendar, a table, or something that feels like their Excel worksheets.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions that users are accustomed to spreadsheets and calendars, indicating a preference for familiar UI elements. This suggests a usability requirement to design the interface accordingly.",
+      "follow_up_question": "Can you provide examples of specific spreadsheet or calendar features that users find most useful and would like to see replicated in the new system?"
+    },
+    {
+      "requirement": "The system should allow users to create a clinical placement in 2-3 clicks from the main schedule view.",
+      "source_citation": "ideally a couple of clicks, maybe two or three from the main schedule view to create the placement.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the desired number of clicks for creating a clinical placement, which is a clear usability requirement.",
+      "follow_up_question": "Can you provide a detailed breakdown of the steps involved in creating a clinical placement, including any intermediate screens or actions?"
+    },
+    {
+      "requirement": "The system should provide inline help or tooltips for fields that may be unclear to users.",
+      "source_citation": "Inline help or tooltips for odd fields would help.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for inline help or tooltips, indicating a usability requirement to assist users with unfamiliar fields.",
+      "follow_up_question": "Can you identify specific fields or features that would benefit most from inline help or tooltips?"
+    },
+    {
+      "requirement": "The system should support a responsive layout that works on tablets in the first release.",
+      "source_citation": "A responsive layout that works okay on tablets would be good for the first release.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for tablet support, indicating a usability requirement for a responsive layout.",
+      "follow_up_question": "Can you provide examples of specific tablet interactions or features that are most important for users?"
+    },
+    {
+      "requirement": "The system should provide visual cues such as red highlights and inline error messages for validation.",
+      "source_citation": "Visual cues like red highlights and inline error messages make a big difference.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the importance of visual cues for validation, indicating a usability requirement to enhance user experience.",
+      "follow_up_question": "Can you provide examples of specific scenarios where visual cues would be most helpful for users?"
+    },
+    {
+      "requirement": "The system should feel 'instant' for routine CRUD tasks, with a response time of less than 5 seconds.",
+      "source_citation": "For small actions like adding or editing a student or enrolling someone, it needs to feel instant — I hate waiting. If I have to wait more than a few seconds it becomes annoying.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the desired response time for routine tasks, indicating a performance requirement.",
+      "follow_up_question": "Can you provide examples of specific routine tasks that should feel 'instant' and any known performance issues with the current system?"
+    },
+    {
+      "requirement": "The system should complete full schedule generation within approximately 30 seconds.",
+      "source_citation": "For heavy tasks like a full schedule generation across a cohort, some delay is okay, but it shouldn’t be minutes. I guess small stuff should be under about five seconds, and full schedule runs should finish within maybe thirty seconds or so.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the desired response time for full schedule generation, indicating a performance requirement.",
+      "follow_up_question": "Can you provide more details about the full schedule generation process and any known performance issues with the current system?"
+    },
+    {
+      "requirement": "The system should handle 10 active users during peak hours (9 AM–5 PM, weekdays).",
+      "source_citation": "During mornings when everyone is scheduling, there’s about ten of us at peak who are actively using the scheduling features.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the number of active users during peak hours, indicating a performance requirement.",
+      "follow_up_question": "Can you provide more details about the types of tasks users perform during peak hours and any known performance issues with the current system?"
+    },
+    {
+      "requirement": "The system should have a target of 95% monthly uptime.",
+      "source_citation": "I’d expect a target uptime in the mid-nineties percentage-wise, but occasional planned maintenance is okay if it’s communicated.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the desired uptime target, indicating an availability requirement.",
+      "follow_up_question": "Can you provide more details about the impact of downtime on users and any known availability issues with the current system?"
+    },
+    {
+      "requirement": "The system should handle 5 years of historical data without performance degradation.",
+      "source_citation": "I’d say keep core records accessible for multiple years so reports can be run across terms. Sure — I believe the requirement is five years for program records.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need to keep core records accessible for multiple years, indicating a scalability requirement.",
+      "follow_up_question": "Can you provide more details about the types of historical data that need to be retained and any known scalability issues with the current system?"
+    },
+    {
+      "requirement": "The system should implement role-based access controls to restrict access to sensitive fields such as health notes.",
+      "source_citation": "We need to protect private student information in line with the university’s info security policy. That means encrypting data in transit, and sensitive fields like social security numbers or health-related notes must be stored securely. Access should be restricted — not everyone should be able to see everything.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for role-based access controls and secure storage of sensitive fields, indicating a security requirement.",
+      "follow_up_question": "Can you provide more details about the specific roles and their corresponding access levels?"
+    },
+    {
+      "requirement": "The system should retain audit logs for 5 years in a tamper-evident format.",
+      "source_citation": "I think audit logs should be available for the same retention window, yeah. But older logs could be archived in a tamper-evident format.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "auditability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need to retain audit logs for the same retention window as other records, indicating an auditability requirement.",
+      "follow_up_question": "Can you provide more details about the specific types of changes that need to be logged and any known auditability issues with the current system?"
+    },
+    {
+      "requirement": "The system should have retry logic and error dashboards for CampusConnect syncs.",
+      "source_citation": "We should have retry logic and a clear error dashboard so admins know when data is stale. For critical mismatches, maybe a manual re-sync button.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for retry logic and error dashboards, indicating a maintainability requirement.",
+      "follow_up_question": "Can you provide more details about the specific types of sync failures that need to be handled and any known maintainability issues with the current system?"
+    },
+    {
+      "requirement": "The system should support near real-time sync for critical changes and nightly syncs for other data from CampusConnect.",
+      "source_citation": "Ideally the sync is near real-time for critical changes like enrollment, but nightly updates for less critical fields would be okay if real-time isn’t possible.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "integration",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for near real-time sync for critical changes and nightly syncs for other data, indicating an integration requirement.",
+      "follow_up_question": "Can you provide more details about the specific types of critical changes that need to be synced in near real-time and any known integration issues with the current system?"
+    },
+    {
+      "requirement": "The system should provide audit logs that track who changed what, when, and why.",
+      "source_citation": "They want to know who changed a schedule, when it was changed, and the previous value. Sometimes a short reason for the change is helpful.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "auditability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for audit logs that track changes, indicating an auditability requirement.",
+      "follow_up_question": "Can you provide more details about the specific types of changes that need to be logged and any known auditability issues with the current system?"
+    }
+  ]
+}

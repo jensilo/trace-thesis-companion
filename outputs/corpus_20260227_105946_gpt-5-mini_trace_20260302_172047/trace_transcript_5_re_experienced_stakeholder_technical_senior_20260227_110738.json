@@ -1,0 +1,249 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_5_re_experienced_stakeholder_technical_senior_20260227_110738.txt",
+  "model": "openai/gpt-5-mini",
+  "timestamp": "20260302_172330",
+  "requirements": [
+    {
+      "requirement": "The parts search shall return results within fifteen seconds under normal operating conditions.",
+      "source_citation": "Over fifteen, and the workflow breaks down.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly assigns a 15-second threshold as the acceptable upper bound for parts search latency; this is an operational SLA for user-perceived performance. Gaps: 'normal operating conditions' needs definition (e.g., network class, backend availability, concurrency level, and whether this applies to cache hits vs. live-feed queries).",
+      "follow_up_question": "Should the 15s requirement apply to cold-cache and live upstream calls, or only to read-optimized cache responses; define the client network profile (e.g., 4G median RTT) and concurrency level under which this SLA must hold."
+    },
+    {
+      "requirement": "The preferred repair-facility lookup shall return in under eight seconds on cellular connections.",
+      "source_citation": "I'd want the preferred facility lookup to come back in under about eight seconds.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder gives an explicit 8-second target for facility lookup, emphasizing mobile/cellular UX. Gaps: 'cellular' should be clarified (4G, 3G, specific latency/bandwidth), and whether map tiles or third-party services are included in the budget.",
+      "follow_up_question": "Please confirm the target network profile (e.g., 4G-equivalent with X ms RTT and Y kbps) and whether third-party map tile loading is included in the 8-second budget."
+    },
+    {
+      "requirement": "System availability shall target 98% uptime.",
+      "source_citation": "They're asking for ninety-eight percent availability.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "Stakeholder states a concrete availability target (98%). Gaps: measurement window (monthly, yearly), permitted maintenance windows, and what components/services are included/excluded (e.g., partner feed outages vs. our service).",
+      "follow_up_question": "Over which measurement period should the 98% availability be calculated (monthly/annual), and should partner-feed outages or scheduled maintenance be excluded from this SLA?"
+    },
+    {
+      "requirement": "Design must support initial concurrency of 1,500 simultaneous users and scale to support up to 10,000 concurrent users within two years.",
+      "source_citation": "handle fifteen hundred concurrent users comfortably... within two years... capable of supporting up to ten thousand concurrent users",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "Stakeholder provides concrete capacity numbers for initial and future scaling. Gaps: definition of 'concurrent user' (active requests/sec, sessions), peak patterns, and acceptable degradation behavior during sudden spikes.",
+      "follow_up_question": "Define 'concurrent users' in terms of active requests/sec or sessions, expected peak request rates per user, and acceptable behavior (queueing, throttling) under overload."
+    },
+    {
+      "requirement": "The system shall prefer availability for search results over strict real-time consistency; when upstream feeds are unavailable show last-known-good cached data and visibly mark data age.",
+      "source_citation": "We should prefer availability over strict real-time consistency for searches. So if the feed is down, show the last-known-good snapshot and mark item ages.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 5,
+      "rationale": "Stakeholder articulates an availability-first tradeoff (eventual consistency) with explicit UX requirement to show cached snapshots and indicate staleness. Gaps: staleness thresholds, how 'mark item ages' should be presented, and which operations may be blocked pending reconciliation.",
+      "follow_up_question": "What maximum staleness (e.g., hours/days) is acceptable before an item is considered invalid, and how should UI present staleness (timestamp, color-coding, warnings)?"
+    },
+    {
+      "requirement": "A reconciliation pipeline must revalidate cached parts during estimate finalization and produce auditable records of any post-hoc changes.",
+      "source_citation": "a reconciliation pipeline that revalidates parts during estimate finalization.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "Stakeholder requires reconciliation to reconcile cached/live data and produce audit evidence; this affects pipelines and audit retention. Gaps: timing of reconciliation (synchronous vs asynchronous), SLAs for reconciliation completion, and required data retained.",
+      "follow_up_question": "Should reconciliation be synchronous at estimate submission or asynchronous with manual blocking; what is the required maximum time to complete reconciliation and what exact fields must be recorded for audit?"
+    },
+    {
+      "requirement": "Every part suggestion use or override, estimate submission, parts assignment, facility assignment, and facility rating must produce a persisted, auditable event (user, timestamp, change) shipped to corporate analytics and long-term storage.",
+      "source_citation": "Every time a part suggestion is used or overridden in an estimate, we need an audit trail linking the action to the user, timestamp, and the change... ship to corporate analytics and long-term storage for retention policies.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Stakeholder specifies exact actions that require audit events and storage/retention. Gaps: retention duration, format/schema of structured logs, and compliance requirements for tamper-proofing.",
+      "follow_up_question": "What are the required retention periods and formats for audit logs, and are there compliance rules (e.g., WORM storage, encryption at rest) we must follow?"
+    },
+    {
+      "requirement": "High-volume diagnostic traces may be sampled, but semantic audit events must always be persisted; logging shall be asynchronous to avoid blocking critical paths.",
+      "source_citation": "Sampling for high-volume traces is okay, but the audit events for estimate changes must always be persisted.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder distinguishes between sampled telemetry and mandatory audit persistence; also calls out async logging to protect performance. Gaps: sampling rates, guarantees for persistence (durability), and backlog behavior if analytics pipeline is slow.",
+      "follow_up_question": "Specify sampling rates for diagnostic traces, durability guarantees for persisted audit events (e.g., ACK to client), and acceptable buffering/backpressure behavior if downstream analytics are unavailable."
+    },
+    {
+      "requirement": "The application must implement tenant isolation at application and data layers (e.g., tenant-aware queries and row-level security), with role-based access controls and tenant-scoped encryption keys where feasible.",
+      "source_citation": "We need strong separation... tenant isolation at both the application and data layers. Role-based access controls on top of that are mandatory... tenant-scoped encryption keys would be ideal for extra protection.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder demands multi-tenant isolation plus RBAC and suggests tenant-scoped keys; this is a clear security and privacy requirement. Gaps: whether logical separation is permitted for all insurers vs only some, key management specifics, and compliance/regulatory constraints.",
+      "follow_up_question": "For which tenants (by size or class) do we require physical separation vs logical; who will manage tenant-scoped keys and what KMS/rotation policies are required?"
+    },
+    {
+      "requirement": "Identity provider must assert tenant information in issued tokens so every service call can enforce authorization.",
+      "source_citation": "The identity provider must assert tenant information in tokens so every service call can enforce authorization.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder requires tenant claim in tokens for authorization enforcement; this impacts identity integration and token schemas. Gaps: token format (JWT), claims names, token lifetime and refresh behavior.",
+      "follow_up_question": "Confirm token format and exact tenant claim name to be used, and required token lifetimes/refresh behavior for mobile clients."
+    },
+    {
+      "requirement": "The system shall implement rate limiting, circuit breakers, and graceful degradation at the application level and use WAF/DDoS protections at the perimeter to defend in depth.",
+      "source_citation": "the app must implement rate limiting, circuit breakers, and graceful degradation so a protection layer in front plus application-level controls give defense in depth.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder prescribes both perimeter and application-level mitigations for API abuse and DDoS; this is an explicit security/resilience requirement. Gaps: specific thresholds for rate limits, what behaviors are degraded, and which perimeter services are mandatory.",
+      "follow_up_question": "What default rate-limit thresholds should be applied per IP/client/tenant, and what exact graceful-degradation behaviors are acceptable (e.g., returning stale results, read-only mode)?"
+    },
+    {
+      "requirement": "Leverage corporate perimeter defenses and cloud provider DDoS/WAF services, but ensure the application maintains its own protective controls.",
+      "source_citation": "We should leverage corporate perimeter defenses where available, but also design the application to defend itself. So yes, cloud provider DDoS and WAF services are fine, but the app must implement rate limiting, circuit breakers, and graceful degradation",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "Stakeholder expects shared responsibility: corporate/cloud protections plus app-level controls. Gaps: which responsibilities belong to corporate vs project team, and cost/ops constraints for using cloud services.",
+      "follow_up_question": "Which perimeter protections will corporate provide vs which must the project procure/configure; provide a list of available corporate services and any usage constraints."
+    },
+    {
+      "requirement": "The UI shall be progressive: cache recent searches, allow limited offline review of claims, queue non-critical updates for later sync, and indicate when data may be stale.",
+      "source_citation": "cache recent searches, allow limited offline review of claims, and queue any non-critical updates for later sync... provide clear indicators when data might be stale",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Stakeholder describes offline-friendly UX and explicit data-staleness indicators. Gaps: exact offline capabilities (read-only vs limited edits), sync conflict resolution, and storage limits on device.",
+      "follow_up_question": "Which operations must be available offline (read, edit, submit), what is the maximum size/age of cached data on-device, and how should conflicts during sync be resolved/presented to users?"
+    },
+    {
+      "requirement": "The client UI must be lightweight for cellular devices; measure using time-to-interactive on a 4G-equivalent connection as the primary metric with payload size and number of requests as secondary metrics.",
+      "source_citation": "time-to-interactive on a 4G-equivalent connection is the business-facing metric, with payload size and number of requests as secondary engineering metrics to manage.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder sets a measurable primary metric (TTI on 4G) and secondary engineering metrics; this gives a clear performance measurement approach. Gaps: target TTI number, test harness/profile (latency/bandwidth), and sampling frequency for monitoring.",
+      "follow_up_question": "What target time-to-interactive value (in seconds) should we meet on a 4G-equivalent profile, and please provide the exact network profile (latency, bandwidth) to use for testing."
+    },
+    {
+      "requirement": "Adopt the corporate approved service mesh, logging/tracing standards, identity platform, and UI component/accessibility guidelines; deviation is not allowed for core components.",
+      "source_citation": "the company has an approved service mesh, logging and tracing standards, and an identity platform we must use... For UI, there are a set of components and accessibility rules",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "Stakeholder mandates reuse of corporate platforms and UI components for maintainability, consistency, and supportability. Gaps: exact versions, extension points allowed, and approval process for exceptions.",
+      "follow_up_question": "Provide the specific corporate platform versions/libraries to use, the component library reference, and the process to request exceptions or extensions for mobile-specific flows."
+    },
+    {
+      "requirement": "All structured logs and traces must ship to the corporate observability stack; logging shall be asynchronous and not block critical request paths.",
+      "source_citation": "logging needs to feed into the corporate observability stack... we should use asynchronous logging and event streams so tracing doesn't block critical paths.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Stakeholder requires integration with corporate observability and non-blocking logging semantics to protect performance. Gaps: transport protocols, backpressure handling, guaranteed delivery semantics, and schema requirements.",
+      "follow_up_question": "What transport/protocol, schema, and delivery guarantees (at-least-once, exactly-once) does the corporate observability stack require, and how should the app handle backpressure?"
+    },
+    {
+      "requirement": "Audit and analytics events must be retained according to corporate retention policies and be queryable for compliance/audits.",
+      "source_citation": "ship to corporate analytics and long-term storage for retention policies.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 4,
+      "rationale": "Stakeholder requires long-term retention for auditability; ties to legal/compliance. Gaps: specific retention durations, access controls, and legal/regulatory requirements per jurisdiction.",
+      "follow_up_question": "What are the exact retention periods and access control rules for audit data, and are there jurisdictional constraints we must follow?"
+    },
+    {
+      "requirement": "Perform penetration testing, threat modeling, adversarial DDoS testing, load testing, and chaos testing in pre-production as part of acceptance criteria.",
+      "source_citation": "require security testing from the corporate security team — penetration tests and threat modeling, and ideally some adversarial testing for DDoS resilience... we'd want load and chaos testing during pre-prod",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder specifies types of validation tests required before acceptance, covering security and resilience. Gaps: scopes, pass/fail criteria, and who coordinates tests (corporate security vs project).",
+      "follow_up_question": "Define success criteria for pen tests, DDoS/adversarial tests, load (e.g., 1,500 concurrent users) and chaos experiments, and who will authorize/execute each test."
+    },
+    {
+      "requirement": "Design the system as small, well-scoped services with clear contracts to allow swapping parts providers or adding insurers with low friction.",
+      "source_citation": "design this as a set of small, well-scoped services with clear contracts so future changes — like swapping out the parts provider or adding new insurers — are low-friction.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "Stakeholder requests modular architecture for extensibility and maintainability. Gaps: service size boundaries, contract/versioning rules, and governance for service changes.",
+      "follow_up_question": "What are the expected service boundaries and API contract/versioning policies, and are there corporate standards for service discovery and backward compatibility?"
+    },
+    {
+      "requirement": "Ratings data must be tenant-scoped; aggregated and anonymized metrics may be shared across insurers but individual tenant ratings must not be exposed to other tenants.",
+      "source_citation": "Ratings will be part of the workflow... tenant-scoped so only the insurer and aggregated corporate analytics see individual ratings... Aggregated, anonymized metrics for the partner network can be shared more broadly.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder mandates privacy constraints on ratings data and allows aggregated anonymized sharing. Gaps: anonymization technique, acceptable aggregation buckets, and re-identification risk policy.",
+      "follow_up_question": "Specify anonymization rules and minimum aggregation sizes to prevent de-anonymization, and confirm which aggregated metrics are permitted to be exported to partners."
+    },
+    {
+      "requirement": "Measure perceived load primarily via time-to-interactive on 4G-equivalent connections and monitor payload sizes and number of requests as secondary metrics.",
+      "source_citation": "Perceived load time is king for users, so we should measure time-to-interactive on typical mobile networks and also monitor payload sizes.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder prescribes specific telemetry metrics to track UX performance, making measurement explicit. Gaps: exact measurement methodology, alert thresholds, and sampling frequency.",
+      "follow_up_question": "Provide the measurement methodology for TTI (lab vs real-user monitoring), alert thresholds for TTI and payload size, and sampling/aggregation policies for dashboards."
+    },
+    {
+      "requirement": "Implement asynchronous event streams for high-volume telemetry and ensure mandatory audit events are persisted even under high load.",
+      "source_citation": "we should use asynchronous logging and event streams so tracing doesn't block critical paths... audit events for estimate changes must always be persisted.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Stakeholder requires async streaming for performance and durability for important audit events; this impacts architecture and failure modes. Gaps: durability guarantees, queue sizing, and disaster recovery for the event pipeline.",
+      "follow_up_question": "What durability guarantees are required for audit event persistence (e.g., committed to replicated store before ACK), and what backlog/retention/DR plans exist for the event pipeline?"
+    }
+  ]
+}

@@ -1,0 +1,282 @@
+{
+  "transcript_file": "outputs/corpus-20260226_162106/transcript_3_re_novice_stakeholder_nontechnical_manager_20260226_162354.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_182913",
+  "requirements": [
+    {
+      "requirement": "The system must respond to routine student management tasks (e.g., enrollments, updates) within 5 seconds.",
+      "source_citation": "For routine student management stuff — enrollments, updates — I’d say anything beyond about five seconds starts to feel slow.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the performance expectation for routine tasks, providing a clear time threshold.",
+      "follow_up_question": "Are there specific routine tasks that are more critical than others, and should they have stricter performance requirements?"
+    },
+    {
+      "requirement": "The system must generate a full schedule within 30 seconds.",
+      "source_citation": "For full schedule generation, I’d consider up to around thirty seconds acceptable; beyond that people get distracted and open spreadsheets again.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder provides a specific time frame for schedule generation, indicating a clear performance expectation.",
+      "follow_up_question": "Are there any specific factors that could extend the schedule generation time beyond 30 seconds, and how should the system handle such scenarios?"
+    },
+    {
+      "requirement": "The system must be reliable during business hours (8 AM to 6 PM on weekdays).",
+      "source_citation": "It needs to be reliable when our office is open. If it’s down during business hours it causes chaos.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of system reliability during specific business hours.",
+      "follow_up_question": "What specific measures or redundancies should be in place to ensure reliability during business hours?"
+    },
+    {
+      "requirement": "The system must have an uptime availability target in the mid-nineties percentage-wise.",
+      "source_citation": "We need an availability target the IT team can aim at — somewhere in the mid-nineties percentage-wise for uptime so we don’t have frequent disruptions.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions a target for uptime but does not specify the exact percentage.",
+      "follow_up_question": "Can you provide the exact uptime percentage target (e.g., 99.5%, 99.9%) for the system?"
+    },
+    {
+      "requirement": "The system must include monitoring and alerts for system failures or issues.",
+      "source_citation": "Also, we should have monitoring and alerts when things go wrong.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly requests monitoring and alerts to handle system issues.",
+      "follow_up_question": "What specific types of monitoring and alerts are required, and who should be notified?"
+    },
+    {
+      "requirement": "The system must comply with FERPA for student records and HIPAA-like sensitivities for clinical placements.",
+      "source_citation": "We have FERPA for student records and there are HIPAA-like sensitivities for clinical placements because of patient exposure and site agreements.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions specific legal and compliance requirements related to student records and clinical placements.",
+      "follow_up_question": "Are there any additional legal or compliance requirements beyond FERPA and HIPAA-like sensitivities?"
+    },
+    {
+      "requirement": "The system must implement role-based access control to ensure that not everyone sees everything.",
+      "source_citation": "Practically, that means role-based access so not everyone sees everything.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for role-based access control to manage data visibility.",
+      "follow_up_question": "Can you provide details on the specific roles and their corresponding access levels?"
+    },
+    {
+      "requirement": "The system must encrypt data both in transit and at rest where appropriate.",
+      "source_citation": "Encryption when appropriate — both in transit and at rest ideally — and audit trails so we can show who accessed or changed data.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for encryption of data in transit and at rest.",
+      "follow_up_question": "Are there specific types of data that require encryption, and what encryption standards should be used?"
+    },
+    {
+      "requirement": "The system must maintain audit trails to log who accessed or changed data.",
+      "source_citation": "Audit trails so we can show who accessed or changed data.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "auditability",
+      "confidence": 4,
+      "rationale": "The stakeholder requests audit trails to track access and changes to data.",
+      "follow_up_question": "What specific details should be included in the audit trails, and how long should the logs be retained?"
+    },
+    {
+      "requirement": "The system must log every assignment change, override, or permission change for reconstructing incidents.",
+      "source_citation": "I want enough so that if something went wrong we could reconstruct who changed what and when. We don’t need forensic-level detail for every mouse move, but every assignment change, override, or permission change should be logged and kept for a reasonable period.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "auditability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for detailed logging of specific types of changes.",
+      "follow_up_question": "What is considered a 'reasonable period' for retaining these logs?"
+    },
+    {
+      "requirement": "The system must be easy to use, with clear language, minimal clicks for common tasks, and inline help.",
+      "source_citation": "'Easy' means clear language, minimal clicks to do common tasks, and inline help so someone isn’t guessing what a field means.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder defines ease of use in terms of clear language, minimal clicks, and inline help.",
+      "follow_up_question": "Can you provide examples of common tasks and how they should be simplified?"
+    },
+    {
+      "requirement": "The system must feel like a tool rather than a bureaucratic thing.",
+      "source_citation": "It should feel like a tool, not another bureaucratic thing.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the desired feel of the system but does not provide specific usability criteria.",
+      "follow_up_question": "What specific design or functional elements would make the system feel like a tool rather than bureaucratic?"
+    },
+    {
+      "requirement": "The system must allow users to be comfortable with core tasks after a single day of training.",
+      "source_citation": "We can’t do multi-day onboarding for everyone. It needs to be short — like, people should be comfortable with core tasks after a single day of training.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the training time required for users to be comfortable with core tasks.",
+      "follow_up_question": "What specific core tasks should be included in the training, and how will comfort be measured?"
+    },
+    {
+      "requirement": "The system must make reporting straightforward so leadership can see progress.",
+      "source_citation": "We want to make reporting straightforward so leadership can see progress.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "reporting",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for straightforward reporting for leadership.",
+      "follow_up_question": "What specific types of reports are required, and what data should they include?"
+    },
+    {
+      "requirement": "The system must instrument for metrics from day one to measure a 50% reduction in student-reported scheduling mistakes.",
+      "source_citation": "We should instrument for metrics from day one so we can measure that 50% reduction I mentioned.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "metrics",
+      "confidence": 4,
+      "rationale": "The stakeholder requests instrumentation for metrics to measure the reduction in student-reported mistakes.",
+      "follow_up_question": "What specific metrics should be tracked, and how will the 50% reduction be calculated?"
+    },
+    {
+      "requirement": "The system must prevent students from being double-booked in two places at once.",
+      "source_citation": "It should stop the obvious stuff: students double-booked in two places at once.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "error_prevention",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need to prevent double-booking of students.",
+      "follow_up_question": "What specific mechanisms should be in place to prevent double-booking?"
+    },
+    {
+      "requirement": "The system must prevent assigning beyond a clinical site's capacity.",
+      "source_citation": "Assigning beyond a clinical site's capacity.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "error_prevention",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need to prevent assignments beyond clinical site capacity.",
+      "follow_up_question": "How should the system determine and enforce clinical site capacity?"
+    },
+    {
+      "requirement": "The system must prevent placing students into clinicals when they haven’t met pre-requisites.",
+      "source_citation": "Or placing students into clinicals when they haven’t met pre-reqs.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "error_prevention",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need to prevent placing students into clinicals without meeting pre-requisites.",
+      "follow_up_question": "How should the system verify and enforce pre-requisite requirements?"
+    },
+    {
+      "requirement": "The system must flag and prevent saves when there is a clear hard conflict.",
+      "source_citation": "I want the system to flag those and, ideally, prevent saves when it’s a clear hard conflict.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "error_prevention",
+      "confidence": 4,
+      "rationale": "The stakeholder requests the system to flag and prevent saves for clear hard conflicts.",
+      "follow_up_question": "What specific types of conflicts should be considered 'clear hard conflicts'?"
+    },
+    {
+      "requirement": "Senior program admins should have override ability for blocked saves, but it should be gated and logged.",
+      "source_citation": "Senior program admins should have override ability, but it should be gated and logged.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "error_recovery",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for override ability with conditions for senior program admins.",
+      "follow_up_question": "What specific conditions or gates should be in place for the override ability?"
+    },
+    {
+      "requirement": "The system must validate IDs to prevent creating ghost students.",
+      "source_citation": "At minimum, validate IDs so we don’t create ghost students.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "data_quality",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need to validate IDs to prevent creating ghost students.",
+      "follow_up_question": "What specific validation rules should be applied to IDs?"
+    },
+    {
+      "requirement": "The system must require key fields and check referential links (e.g., course codes, clinical site IDs).",
+      "source_citation": "Require key fields, and check referential links — like course codes actually existing and clinical site IDs matching an internal list.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "data_quality",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need to require key fields and check referential links.",
+      "follow_up_question": "What specific key fields and referential links should be validated?"
+    },
+    {
+      "requirement": "The system must integrate with CampusConnect to get student rosters, course codes, and instructor records without manual exports.",
+      "source_citation": "We need an interface so the system can get student rosters, course codes, instructor records — ideally without manual exports.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "integration",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for integration with CampusConnect to retrieve specific data without manual exports.",
+      "follow_up_question": "What specific data fields are required from CampusConnect, and what is the preferred method of integration?"
+    },
+    {
+      "requirement": "The system must use near-real-time or hourly/nightly syncs for changes affecting placements.",
+      "source_citation": "I’d like near-real-time for changes that affect placements, but if we have to start with hourly or nightly syncs that’s okay as a stepping stone.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "integration",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for near-real-time or hourly/nightly syncs but does not specify a clear preference.",
+      "follow_up_question": "What specific changes should trigger near-real-time syncs, and what is the acceptable latency for hourly/nightly syncs?"
+    },
+    {
+      "requirement": "The system must use simple language in notifications to avoid freaking out students with technical jargon.",
+      "source_citation": "Make the notification language simple; students get freaked out by technical jargon.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for simple language in notifications to avoid confusing students.",
+      "follow_up_question": "Can you provide examples of technical jargon that should be avoided and the preferred simple language alternatives?"
+    }
+  ]
+}

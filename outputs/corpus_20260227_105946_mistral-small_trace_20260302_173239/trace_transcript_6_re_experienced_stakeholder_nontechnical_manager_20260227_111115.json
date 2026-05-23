@@ -1,0 +1,205 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_6_re_experienced_stakeholder_nontechnical_manager_20260227_111115.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_173331",
+  "requirements": [
+    {
+      "requirement": "The system should be usable without requiring training for basic tasks.",
+      "source_citation": "People shouldn't need a training session to do the basic things... fewer support calls, fewer angry Slack messages.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for the system to be intuitive and reduce support calls, indicating a strong focus on usability.",
+      "follow_up_question": "What specific metrics or user testing methods will be used to validate that the system is usable without training?"
+    },
+    {
+      "requirement": "Most users should be able to complete a simple room booking within five minutes on their first try.",
+      "source_citation": "For a simple room booking, if most users can't do it within about five minutes on their first try, that's a problem.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder provides a clear, measurable usability target for first-time users.",
+      "follow_up_question": "What percentage of users constitutes 'most' for this usability metric?"
+    },
+    {
+      "requirement": "The UI should be usable with screen readers, keyboard navigation, and high-contrast modes.",
+      "source_citation": "The UI should be usable with screen readers, keyboard navigation, and high-contrast modes.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for accessibility features, which are critical for usability.",
+      "follow_up_question": "Are there any specific accessibility standards or guidelines that the UI should conform to?"
+    },
+    {
+      "requirement": "Common interactions like searching for a room or saving a booking should have a response time within a few seconds.",
+      "source_citation": "For common interactions like searching for a room or saving a booking, response time needs to be quick... within a few seconds.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for quick response times to avoid user distraction.",
+      "follow_up_question": "What is the exact definition of 'a few seconds' for response time?"
+    },
+    {
+      "requirement": "Ninety percent of routine tasks should finish within five seconds, and ninety-eight percent within eight seconds.",
+      "source_citation": "Ninety percent of routine tasks should finish within roughly five seconds, and 98% within eight seconds.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder provides specific performance targets for routine tasks.",
+      "follow_up_question": "Are there any specific tasks or interactions that should be prioritized for performance optimization?"
+    },
+    {
+      "requirement": "The app should handle peak loads without slowing down during busy times.",
+      "source_citation": "The app needs to survive those spikes without slowing people down.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for the system to handle peak loads effectively.",
+      "follow_up_question": "What specific measures will be taken to ensure the app can handle peak loads?"
+    },
+    {
+      "requirement": "The system should handle about a thousand concurrent requests initially, doubling to two thousand by the next release.",
+      "source_citation": "The product should handle about a thousand concurrent requests initially, doubling to two thousand by the next release.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "The stakeholder provides clear scalability targets for concurrent requests.",
+      "follow_up_question": "What specific infrastructure or architectural decisions will support this scalability requirement?"
+    },
+    {
+      "requirement": "Only company employees and approved external users should be able to use the system.",
+      "source_citation": "Only our company employees and approved external users should be able to use it.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for restricted access to the system.",
+      "follow_up_question": "What specific authentication and authorization mechanisms will be used to enforce this requirement?"
+    },
+    {
+      "requirement": "Every logon should map to a company-validated identity.",
+      "source_citation": "Every logon should map to a company-validated identity.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder emphasizes the need for strict access control and identity validation.",
+      "follow_up_question": "What specific identity validation processes will be used?"
+    },
+    {
+      "requirement": "Exceptions should be captured in a log and made available to the support team.",
+      "source_citation": "Exceptions should be captured in a log and made available to our support team.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for logging and support team access to exceptions.",
+      "follow_up_question": "What specific logging mechanisms and support team workflows will be implemented?"
+    },
+    {
+      "requirement": "Automatic transmission of logs to the analysis pipeline should be implemented.",
+      "source_citation": "Automatic transmission of logs... securely transmit them to our analysis pipeline.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for automated log transmission for analysis.",
+      "follow_up_question": "What specific mechanisms will be used for secure and automated log transmission?"
+    },
+    {
+      "requirement": "The system should support English, Spanish, French, and German at launch.",
+      "source_citation": "We need multilingual support for our target markets: English, Spanish, French, and German at launch.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 5,
+      "rationale": "The stakeholder provides a clear list of languages that need to be supported at launch.",
+      "follow_up_question": "What specific localization and internationalization strategies will be used?"
+    },
+    {
+      "requirement": "Any reporting that exposes personal calendars should respect privacy and access controls.",
+      "source_citation": "Any reporting that exposes personal calendars needs to respect privacy and access controls.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for privacy and access control in reporting.",
+      "follow_up_question": "What specific privacy and access control mechanisms will be implemented for reporting?"
+    },
+    {
+      "requirement": "Data residency and export rules should be clear for customers in different countries.",
+      "source_citation": "We have to make sure data residency and export rules are clear for customers in different countries.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for clear data residency and export rules.",
+      "follow_up_question": "What specific legal and compliance measures will be taken to ensure data residency and export rules are clear?"
+    },
+    {
+      "requirement": "The system should make it look like it belongs to the customer with branding and colors.",
+      "source_citation": "Making it look like it belongs to the customer — branding and colors.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for branding and customization to match the customer's identity.",
+      "follow_up_question": "What specific branding and customization options will be provided?"
+    },
+    {
+      "requirement": "The theming should enforce sufficient contrast and accessible font sizing.",
+      "source_citation": "The theming needs guardrails... enforce sufficient contrast and accessible font sizing.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for guardrails in theming to ensure accessibility.",
+      "follow_up_question": "What specific theming options and accessibility standards will be enforced?"
+    },
+    {
+      "requirement": "The system should have near-continuous uptime with four nines (99.99%) availability.",
+      "source_citation": "We expect near-continuous uptime... four nines (99.99%) availability.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder provides a clear uptime target for the system.",
+      "follow_up_question": "What specific measures will be taken to ensure the system meets the 99.99% availability target?"
+    },
+    {
+      "requirement": "When someone searches, they should see rooms with the right layout and equipment availability.",
+      "source_citation": "When someone searches, they should see rooms with the right layout and equipment availability.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Functional",
+      "quality_attribute": null,
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for equipment visibility in search results, which is a functional requirement.",
+      "follow_up_question": "What specific equipment and layout details should be displayed in search results?"
+    }
+  ]
+}

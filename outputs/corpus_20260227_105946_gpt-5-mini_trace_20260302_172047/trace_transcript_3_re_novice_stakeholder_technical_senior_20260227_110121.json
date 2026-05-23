@@ -1,0 +1,194 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_3_re_novice_stakeholder_technical_senior_20260227_110121.txt",
+  "model": "openai/gpt-5-mini",
+  "timestamp": "20260302_172049",
+  "requirements": [
+    {
+      "requirement": "The system shall integrate with existing university systems (e.g., CampusConnect and the student master) via standard APIs to avoid manual re-entry of data.",
+      "source_citation": "Oh, and it must play nicely with the other university pieces we already use, otherwise we’ll end up retyping things forever.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly requests integration to avoid retyping; this implies using interfaces to existing systems for data exchange. Gaps: which specific data fields, frequency of sync, error handling and reconciliation rules are not specified.",
+      "follow_up_question": "Which specific data objects/fields (e.g., roster, attendance, placements) must be exchanged, how often should synchronization occur (real-time vs batch), and what reconciliation behavior is expected on conflicts?"
+    },
+    {
+      "requirement": "The system shall use standard, secure APIs and secure channels for integrations rather than ad-hoc exports.",
+      "source_citation": "Also it should use standard APIs and secure channels; we don't want ad-hoc exports.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly prefers standard and secure integration mechanisms and rejects ad-hoc exports. Missing specifics: which standards (e.g., REST, SOAP), encryption levels, and transport protocols to mandate.",
+      "follow_up_question": "Do you require specific API standards (e.g., REST/JSON only), minimum TLS versions, or other protocol constraints for data in transit?"
+    },
+    {
+      "requirement": "The system shall enforce role-based access controls so that program administrators, clinical site coordinators, and instructors see only the data appropriate to their roles.",
+      "source_citation": "Not everyone. Program administrators need comprehensive access… clinical site coordinators should only see what’s relevant… Instructors need their class lists and maybe limited student notes, but sensitive stuff should be limited.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Clear requirement for differentiated access based on role. Gaps: exact permissions per role, delegation, and approval workflows are unspecified.",
+      "follow_up_question": "Can you provide a mapping of roles to permitted data/actions (e.g., read/write fields) and whether role hierarchies or temporary access (delegation) are needed?"
+    },
+    {
+      "requirement": "The system shall provide audit trails showing who accessed or viewed student data.",
+      "source_citation": "And, um, audit trails would be good so we can see who looked at what.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Stakeholder requests accountability via audit logs. Missing specifics: retention period, log contents (view vs modify), and access to logs.",
+      "follow_up_question": "What events must be audited (view, create, update, delete), what metadata is required in each audit entry, and how long should audit logs be retained?"
+    },
+    {
+      "requirement": "The system shall be intuitive and easy to learn so that staff can be trained in a short hands-on session and perform basic tasks by the next day.",
+      "source_citation": "If we can train someone in, say, a short hands-on session and they can do basic tasks by the next day, that would be perfect.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "Stakeholder specifies a learnability target implying low training overhead. Gaps: definition of 'basic tasks', measures for usability (task completion rates), and target user groups.",
+      "follow_up_question": "Which specific 'basic tasks' should a new user be able to complete within a day, and do you have usability metrics or target success rates for those tasks?"
+    },
+    {
+      "requirement": "The system shall feel responsive for routine day-to-day tasks, with typical small operations completing in five seconds or less.",
+      "source_citation": "for the small management tasks something like five seconds or less feels instant.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder gives explicit performance target for small tasks. Gaps: which specific operations fall into 'small', acceptable variance, and measurement conditions (network, client type).",
+      "follow_up_question": "Please list representative 'small' operations to measure (e.g., load roster, save change) and specify test conditions (network latency, client device) for the 5s target."
+    },
+    {
+      "requirement": "The system shall complete full schedule generation (heavy operations) within approximately thirty seconds.",
+      "source_citation": "For full schedule generation, I’d expect something that finishes within, say, thirty seconds.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder provides an explicit acceptable duration for heavy operations. Gaps: definition of 'full schedule' complexity, concurrency expectations, and whether asynchronous processing with notifications is acceptable.",
+      "follow_up_question": "Define the scope and complexity of 'full schedule generation' (number of cohorts, constraints) and whether synchronous completion is required or if asynchronous generation with progress/status updates is acceptable."
+    },
+    {
+      "requirement": "The system shall support concurrent usage by the scheduling/admin team, typically up to about ten simultaneous users during peak hours.",
+      "source_citation": "There’s not the whole campus, just the team — roughly ten of us at peak, and that’s mostly during normal business hours, like nine to five.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "Stakeholder indicates expected concurrency and peak times, which informs capacity planning. Gaps: whether other user groups may spike usage, or future growth beyond ten users.",
+      "follow_up_question": "Should the system be sized to handle larger spikes (e.g., semester start) beyond the ten-person peak, and what future growth rate should we plan for?"
+    },
+    {
+      "requirement": "The system shall be available during normal working hours with an initial target availability of 95% (SLA), tolerating scheduled maintenance windows.",
+      "source_citation": "Ninety-five percent would be a reasonable target to start with, given scheduled maintenance windows and support realities.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly states an availability target and tolerance for maintenance. Gaps: whether 95% applies monthly/annual, permitted maintenance windows, downtime notification expectations, and severity definitions.",
+      "follow_up_question": "Should the 95% availability target be measured monthly or annually, and what maximum maintenance window duration/frequency and downtime notification lead times do you require?"
+    },
+    {
+      "requirement": "The system shall enforce data validation and referential integrity to prevent impossible or inconsistent entries (e.g., overlapping concurrent clinical assignments, end date before start date, dangling references to student or site records).",
+      "source_citation": "We need basic checks so people don’t enter impossible things, like a student assigned to two different concurrent clinicals … or a placement with an end date before the start. Referential integrity with the student master and site lists is important …",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 5,
+      "rationale": "Stakeholder calls out the need for validation rules and referential integrity to reduce manual cleanup. Gaps: exact validation rules, severity of violations, and whether business-rule engine is required.",
+      "follow_up_question": "Can you enumerate the essential validation rules and business constraints (e.g., maximum concurrent assignments) and how violations should be handled (prevent save, warn, or allow with override)?"
+    },
+    {
+      "requirement": "The system shall protect student personal information per the university’s information policy, including encryption in transit, appropriate storage protections, and access controls.",
+      "source_citation": "We must protect private information according to the university’s information policy. That means encryption in transit, sensible storage protections, and access controls.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 5,
+      "rationale": "Stakeholder mandates compliance with institutional policies for data protection, specifying encryption and storage protections. Gaps: specific encryption standards, at-rest encryption, backup encryption, and regulatory requirements to enforce.",
+      "follow_up_question": "Please provide the university information-security requirements or standards (e.g., required encryption algorithms, at-rest encryption, data classification rules) that the system must meet."
+    },
+    {
+      "requirement": "The system shall send automated notifications for key events with configurable triggers and delivery options (email baseline; optional push or SMS), including a digest mode to reduce message volume.",
+      "source_citation": "It should send automated notifications for key events — assignments, cancellations, changes. Email is the baseline, and a push or SMS option would be nice for urgent changes. But importantly, there should be clear, configurable triggers so we don’t spam people. … a digest option so site coordinators can get daily summaries instead of a dozen single emails.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Stakeholder requests configurable notifications across channels with digest capability. Gaps: SLA for delivery, opt-in/opt-out, templates, localization, and retry policies for failed deliveries.",
+      "follow_up_question": "Which events should trigger immediate notifications versus digests, what delivery failure/retry behavior is required, and which user roles may opt-in/opt-out of channels (SMS/push)?"
+    },
+    {
+      "requirement": "The system shall use secure authentication for APIs, ideally integrating with the university’s identity service, supporting token-based authentication and mutual TLS for backend links as appropriate.",
+      "source_citation": "It should use secure, standard APIs — RESTful endpoints are fine — and authenticate reliably, ideally with the university’s existing identity service. Token-based approaches and mutual TLS for some backend links would be sensible.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder specifies preferred authentication approaches and integration with institutional identity systems. Gaps: exact protocols (OAuth2, SAML), token lifetimes, key rotation, and identity federation details.",
+      "follow_up_question": "Do you require specific authentication protocols (e.g., OAuth2/OpenID Connect, SAML) and are there existing identity endpoints or service accounts we must integrate with?"
+    },
+    {
+      "requirement": "The system shall ensure payloads used in integrations are well-formed and versioned to allow evolution without breaking existing integrations.",
+      "source_citation": "Also, payloads should be well-formed and versioned so we can evolve without breaking things.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "Stakeholder requests API payload versioning to support backward compatibility. Gaps: versioning strategy (URL versioning, header-based), deprecation policy, and change communication processes.",
+      "follow_up_question": "What API versioning strategy and deprecation timeline do you prefer, and how should breaking changes be communicated to stakeholders?"
+    },
+    {
+      "requirement": "Information Services shall be involved in operational ownership and integration coordination, providing service accounts or keys as needed.",
+      "source_citation": "Information Services will be involved; they control CampusConnect and the student master. We’ll need their buy-in and probably their keys or service accounts.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Stakeholder identifies operational responsibilities and the need to coordinate with a specific internal team. Gaps: who provides ongoing support, SLAs for support, and change management processes.",
+      "follow_up_question": "Can you identify the Information Services contact(s) and define their responsibilities for ongoing operations, support SLAs, and access provisioning?"
+    },
+    {
+      "requirement": "The system shall be maintainable: include clear logging, modular components, and documentation so that more than one person can understand and modify it; and allow curriculum changes via configuration rather than code rewrites where possible.",
+      "source_citation": "The solution should be maintainable. We don’t want a black box that only one person can fix. Clear logging, modular components, and decent documentation will save us headaches. Also, flexibility to adapt curriculum changes without code rewrites is critical.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly demands maintainability, logging, modularity, and configurability to avoid black-box systems. Gaps: logging format/centralization, acceptable documentation standards, and what aspects must be configurable.",
+      "follow_up_question": "What minimum documentation, logging levels, and configuration capabilities do you require, and do you expect a configuration UI for curriculum changes or importable configuration files?"
+    },
+    {
+      "requirement": "The system shall be mobile-friendly for at least viewing schedules on phones for staff and students.",
+      "source_citation": "Please make it mobile-friendly at least for viewing schedules; staff and students look at schedules on their phones a lot these days.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 5,
+      "rationale": "Stakeholder requests responsive/mobile access for schedule viewing. Gaps: supported devices/browsers, whether editing is required on mobile, and accessibility standards.",
+      "follow_up_question": "Which mobile platforms and browsers must be supported, and should mobile support include editing/management functions or only viewing?"
+    }
+  ]
+}

@@ -1,0 +1,172 @@
+{
+  "transcript_file": "outputs/corpus-20260226_162106/transcript_5_re_novice_stakeholder_technical_junior_20260226_163031.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_182533",
+  "requirements": [
+    {
+      "requirement": "The system shall ensure that parts searches return results within 15 seconds.",
+      "source_citation": "for parts searches should return within fifteen seconds as a kind of upper limit",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions a target response time for parts searches, indicating a clear performance requirement. The exact target is provided, but it's not clear if this is a soft or hard limit.",
+      "follow_up_question": "Is the 15-second target for parts searches a hard limit, or is it acceptable for some searches to occasionally exceed this time?"
+    },
+    {
+      "requirement": "The system shall ensure that facility lookups return results within 8 seconds.",
+      "source_citation": "for the preferred repair facility lookup the expectation is tighter — it should return within eight seconds",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions a target response time for facility lookups, indicating a clear performance requirement. The exact target is provided, but it's not clear if this is a soft or hard limit.",
+      "follow_up_question": "Is the 8-second target for facility lookups a hard limit, or is it acceptable for some lookups to occasionally exceed this time?"
+    },
+    {
+      "requirement": "The system shall support 1,500 concurrent users during peak loads.",
+      "source_citation": "On busy days we have a lot of adjusters online. I remember a planning figure the product should support about fifteen hundred users concurrently — that’s what Ops used in sizing notes.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions a planning figure for concurrent users, but it's not clear if this is a tested and verified requirement or just an estimate.",
+      "follow_up_question": "Has the system been tested to support 1,500 concurrent users, and what are the performance metrics under this load?"
+    },
+    {
+      "requirement": "The system shall have a monthly uptime of 98%.",
+      "source_citation": "Ops talked about a target, I think it’s around ninety-eight percent uptime. That’s what they tossed out in the last planning meeting, though I’d want them to confirm monitoring windows and maintenance windows.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions an uptime target, but it's not clear if this is a tested and verified requirement or just an estimate. Additionally, the exact monitoring and maintenance windows need to be confirmed.",
+      "follow_up_question": "Can you provide more details on the monitoring windows and maintenance windows that affect the 98% uptime target?"
+    },
+    {
+      "requirement": "The system shall enforce multi-tenancy at the service layer to prevent data leakage between different insurance companies.",
+      "source_citation": "We put a tenant identifier on every record and filter at the service layer. I mean, it’s implemented that way right now, with authorization checks to ensure a requester’s tenant-id matches the data returned.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the implementation of multi-tenancy at the service layer, but it's not clear if this is the final solution or if additional measures are planned.",
+      "follow_up_question": "Are there any plans to enforce multi-tenancy at the database level, and what are the security reviews and tests planned to ensure data isolation?"
+    },
+    {
+      "requirement": "The system shall integrate with the corporate SSO (SAML) for user authentication.",
+      "source_citation": "We integrate with the corporate SSO — SAML — so authentication is handled centrally.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the use of corporate SSO (SAML) for authentication, indicating a clear security requirement.",
+      "follow_up_question": "Are there any specific SAML configuration details or additional authentication requirements that need to be considered?"
+    },
+    {
+      "requirement": "The system shall log search events and estimate changes for auditing purposes.",
+      "source_citation": "We log search events and estimate changes, and there’s an audit trail stored. The logs go to the central logging stack.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions logging requirements for auditing, but it's not clear if these logs meet all compliance requirements.",
+      "follow_up_question": "Do the current logging practices meet all compliance requirements, and are there any additional auditing requirements that need to be addressed?"
+    },
+    {
+      "requirement": "The system shall follow the corporate UI guidelines for design and accessibility.",
+      "source_citation": "Yes, the design team wants us to use the corporate UI guidelines — fonts, colors, components, and accessibility patterns. Deviations need approval.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need to follow corporate UI guidelines, indicating a clear usability requirement.",
+      "follow_up_question": "Are there any specific accessibility standards or guidelines that the system must comply with?"
+    },
+    {
+      "requirement": "The system shall be easy to use for 95% of adjusters and collision estimators.",
+      "source_citation": "The aim I’ve heard is that ninety-five percent of adjusters and collision estimators should report the product is easy to use",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions a target for ease of use, indicating a clear usability requirement. The exact target is provided, but it's not clear how this will be measured.",
+      "follow_up_question": "How will the system's ease of use be measured and evaluated to ensure it meets the 95% target?"
+    },
+    {
+      "requirement": "The system shall support training and onboarding of new users within two days.",
+      "source_citation": "that staff can be trained and productive after two days of onsite training",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions a training duration, but it's not clear what specific training content or methods will be used.",
+      "follow_up_question": "What specific training content and methods will be used to ensure new users can be trained and productive within two days?"
+    },
+    {
+      "requirement": "The system shall provide progress indicators for searches to reduce user frustration.",
+      "source_citation": "small UX fixes like showing estimated time left for a search — people respond better to progress indicators",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for progress indicators, but it's not clear what specific indicators will be implemented or how they will be tested.",
+      "follow_up_question": "What specific progress indicators will be implemented, and how will their effectiveness be measured?"
+    },
+    {
+      "requirement": "The system shall have documented API documentation for the Choice Parts API.",
+      "source_citation": "There are docs that mention rate limits and some suggested patterns, but I’d need to fetch the API docs.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the existence of API documentation, but it's not clear if it's up-to-date or comprehensive.",
+      "follow_up_question": "Can you provide the current API documentation for the Choice Parts API, and how often is it updated?"
+    },
+    {
+      "requirement": "The system shall have a documented and tested fallback mechanism for when the Choice Parts API is down or slow.",
+      "source_citation": "Right now we try to fall back to cached results and show partial matches. If we have nothing, we present a clear message that fresh data isn’t available and offer to save the search for retry.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions a fallback mechanism, but it's not clear if it's fully documented, tested, or meets all user needs.",
+      "follow_up_question": "Can you provide more details on the fallback mechanism, including how it's tested and what user feedback has been received?"
+    },
+    {
+      "requirement": "The system shall encrypt sensitive data at rest and in transit to comply with PII regulations.",
+      "source_citation": "The company has general PII rules and we encrypt sensitive data at rest and in transit.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions encryption requirements for PII compliance, indicating a clear security requirement.",
+      "follow_up_question": "Are there any specific PII regulations or additional encryption requirements that the system must comply with?"
+    },
+    {
+      "requirement": "The system shall have a documented and tested data residency policy for regional compliance.",
+      "source_citation": "There might be regional data residency rules for some clients, so we should check with compliance if any markets need special handling.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions potential regional data residency rules, but it's not clear what specific policies or compliance measures are in place.",
+      "follow_up_question": "Can you provide more details on the data residency policy, including what regions are affected and how compliance is ensured?"
+    }
+  ]
+}

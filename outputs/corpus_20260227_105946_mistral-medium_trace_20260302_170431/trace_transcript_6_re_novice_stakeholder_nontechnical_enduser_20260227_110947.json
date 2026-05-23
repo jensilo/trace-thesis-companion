@@ -1,0 +1,216 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_6_re_novice_stakeholder_nontechnical_enduser_20260227_110947.txt",
+  "model": "mistral/mistral-medium-latest",
+  "timestamp": "20260302_171129",
+  "requirements": [
+    {
+      "requirement": "The system shall allow users to complete a room reservation within five minutes of first use.",
+      "source_citation": "Five minutes max for a new user to complete a reservation",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions a time constraint for new users to complete a reservation, indicating a usability requirement focused on learnability and efficiency.",
+      "follow_up_question": "What specific tasks or steps should be included within this five-minute timeframe for a new user?"
+    },
+    {
+      "requirement": "The system shall respond to basic user actions within five seconds and to most tasks within ten seconds.",
+      "source_citation": "under five is ideal for the really basic stuff... under ten seconds for most things feels okay",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder provides specific time targets for system responsiveness, which directly relates to performance requirements.",
+      "follow_up_question": "Could you provide examples of what you consider 'basic stuff' and 'most tasks' to clarify the performance expectations?"
+    },
+    {
+      "requirement": "The system shall be available 99.9% of the time.",
+      "source_citation": "ninety-nine point nine something... very close to one hundred",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions a specific uptime percentage, indicating a high availability requirement.",
+      "follow_up_question": "Are there specific periods or times when the system's availability is most critical?"
+    },
+    {
+      "requirement": "The system shall support screen readers, keyboard navigation, and high-contrast themes to meet ADA standards.",
+      "source_citation": "Screen readers, keyboard navigation, high-contrast themes, ADA compliance",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "accessibility",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions accessibility features and standards, indicating a clear requirement for accessibility compliance.",
+      "follow_up_question": "Are there any specific ADA standards or guidelines that the system must adhere to?"
+    },
+    {
+      "requirement": "The system shall be compatible with major browsers and older versions, ensuring at least 80% rendering success.",
+      "source_citation": "tested on a good cross-section of browsers/versions... at least eight different browsers or versions... eighty percent rendering success",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for compatibility with various browsers and versions, indicating a portability requirement.",
+      "follow_up_question": "Could you list the specific browsers and versions that are most critical for the system to support?"
+    },
+    {
+      "requirement": "The system shall support multiple languages and locale-specific date/time formats, ensuring at least 90% of users in each country find the formatting correct.",
+      "source_citation": "interface in their language... date/time formats per locale... ninety percent of people in each country should find the formatting correct",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "internationalization",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for multi-language support and locale-specific formatting, indicating an internationalization requirement.",
+      "follow_up_question": "Are there specific languages or locales that are most critical for the system to support initially?"
+    },
+    {
+      "requirement": "The system shall provide clear and actionable error messages, suggesting alternatives or next steps when a booking fails.",
+      "source_citation": "Error messages should say what went wrong and what to do next... suggest alternatives or let you pick a different time",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly describes the need for clear and helpful error messages, indicating a usability requirement focused on error handling.",
+      "follow_up_question": "Could you provide examples of common errors and the specific suggestions or alternatives that should be offered?"
+    },
+    {
+      "requirement": "The system shall ensure that at least 80% of users report accurate confirmation of their bookings.",
+      "source_citation": "accurate confirmation should be reported by maybe about eighty percent of users",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions a specific percentage of users who should report accurate confirmation, indicating a usability requirement focused on user trust and feedback.",
+      "follow_up_question": "What specific feedback or confirmation mechanisms should be implemented to ensure user trust in the system?"
+    },
+    {
+      "requirement": "The system shall be designed to be user-friendly and approachable for newcomers.",
+      "source_citation": "make it friendly... experience for newcomers matters",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 3,
+      "rationale": "The stakeholder emphasizes the importance of a friendly and approachable design for newcomers, indicating a usability requirement focused on user experience.",
+      "follow_up_question": "What specific design elements or features would make the system more friendly and approachable for newcomers?"
+    },
+    {
+      "requirement": "The system shall support mobile access.",
+      "source_citation": "mobile access would be handy",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for mobile access, indicating a portability requirement for the system to be accessible on mobile devices.",
+      "follow_up_question": "What specific mobile devices or platforms should the system prioritize for support?"
+    },
+    {
+      "requirement": "The system shall provide clear and understandable feedback to users.",
+      "source_citation": "Clear confirmation... no good feedback, they don't trust it",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for clear and understandable feedback to build user trust, indicating a usability requirement.",
+      "follow_up_question": "What specific types of feedback or confirmation messages should be provided to users?"
+    },
+    {
+      "requirement": "The system shall ensure that search results are reliable and accurate, showing only available rooms.",
+      "source_citation": "Search results need to be reliable... rooms shown as free but aren't",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the importance of reliable and accurate search results, indicating a usability requirement focused on data accuracy.",
+      "follow_up_question": "What specific measures should be taken to ensure the accuracy and reliability of search results?"
+    },
+    {
+      "requirement": "The system shall be designed to minimize the need for user training.",
+      "source_citation": "It should just be easy... you need to be trained to do something that should be simple",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for the system to be easy to use without extensive training, indicating a usability requirement focused on ease of use.",
+      "follow_up_question": "What specific design elements or features would make the system more intuitive and reduce the need for training?"
+    },
+    {
+      "requirement": "The system shall provide clear and intuitive UI labels and terminology.",
+      "source_citation": "UI labels should be clear... button said 'release' and they didn't get it",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for clear UI labels and terminology, indicating a usability requirement focused on clarity and understanding.",
+      "follow_up_question": "What specific UI labels or terminology should be reviewed or improved for clarity?"
+    },
+    {
+      "requirement": "The system shall ensure that translations are accurate and not machine-generated gibberish.",
+      "source_citation": "translations should be good and not machine gibberish",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "internationalization",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for accurate translations, indicating an internationalization requirement focused on language support.",
+      "follow_up_question": "What specific languages should be prioritized for accurate translation?"
+    },
+    {
+      "requirement": "The system shall display both local and organizer times to avoid confusion across time zones.",
+      "source_citation": "show both local and organizer times for time zones",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "internationalization",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need to display both local and organizer times, indicating an internationalization requirement focused on time zone handling.",
+      "follow_up_question": "What specific time zone-related features or displays should be implemented to avoid confusion?"
+    },
+    {
+      "requirement": "The system shall ensure that the calendar shows the correct week starting day based on the user's locale.",
+      "source_citation": "the calendar should show the right week starting day",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "internationalization",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for the calendar to show the correct week starting day based on the user's locale, indicating an internationalization requirement.",
+      "follow_up_question": "What specific locale settings or preferences should be considered for the calendar display?"
+    },
+    {
+      "requirement": "The system shall ensure that email invites and reminders are delivered reliably to both internal and external email servers.",
+      "source_citation": "interface with whatever email servers we have... invites and reminders need to leave the system and get delivered properly",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "interoperability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for reliable delivery of email invites and reminders, indicating an interoperability requirement focused on email integration.",
+      "follow_up_question": "What specific email servers or systems should the system be tested with to ensure reliable delivery?"
+    },
+    {
+      "requirement": "The system shall be designed to prevent double-bookings and ensure data consistency.",
+      "source_citation": "the system confirmed for all of them and then... chaos",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions an incident where the system confirmed multiple bookings, indicating a fault tolerance requirement focused on preventing data inconsistencies.",
+      "follow_up_question": "What specific measures should be taken to prevent double-bookings and ensure data consistency?"
+    }
+  ]
+}

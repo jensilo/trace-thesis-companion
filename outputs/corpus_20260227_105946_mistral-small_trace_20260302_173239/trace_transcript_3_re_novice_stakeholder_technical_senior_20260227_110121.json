@@ -1,0 +1,161 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_3_re_novice_stakeholder_technical_senior_20260227_110121.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_173241",
+  "requirements": [
+    {
+      "requirement": "The system should integrate with CampusConnect and the student master system using standard APIs and secure channels.",
+      "source_citation": "It needs to talk to CampusConnect — that’s the central coordination hub — and to the student master system so enrollment and student records don’t get out of sync. I mean, if it can pull the roster and push attendance or placements back, that would save a ton of time. Also it should use standard APIs and secure channels; we don't want ad-hoc exports.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "interoperability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for integration with specific systems and the use of standard APIs and secure channels. This indicates a clear requirement for interoperability.",
+      "follow_up_question": "What specific APIs or data formats should be used for integration with CampusConnect and the student master system?"
+    },
+    {
+      "requirement": "The system should implement access controls to restrict sensitive student information based on user roles.",
+      "source_citation": "Program administrators need comprehensive access, because they’re responsible for progression and exceptions, but clinical site coordinators should only see what’s relevant to placements and student contact info for logistics. Instructors need their class lists and maybe limited student notes, but sensitive stuff should be limited.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder outlines specific access control requirements based on user roles, indicating a need for role-based access control (RBAC) and data sensitivity management.",
+      "follow_up_question": "Can you provide a detailed breakdown of the access levels required for each user role?"
+    },
+    {
+      "requirement": "The system should provide audit trails to track access to student information.",
+      "source_citation": "And, um, audit trails would be good so we can see who looked at what. I think that’s important for accountability.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "auditability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for audit trails to track access to student information, which is crucial for accountability and compliance.",
+      "follow_up_question": "What specific events or actions should be logged in the audit trails?"
+    },
+    {
+      "requirement": "The system should have an intuitive interface that allows users to perform basic tasks after a short training session.",
+      "source_citation": "It should be straightforward. We don’t have time for a week-long onboarding. Ideally people pick it up quickly, you know? The interface needs to be intuitive enough for folks who aren’t technical. If we can train someone in, say, a short hands-on session and they can do basic tasks by the next day, that would be perfect.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for an intuitive interface and quick user onboarding, which are key aspects of usability.",
+      "follow_up_question": "Can you provide examples of the types of tasks that users should be able to perform after a short training session?"
+    },
+    {
+      "requirement": "The system should respond within 5 seconds for routine tasks and within 30 seconds for schedule generation.",
+      "source_citation": "For day-to-day things it just needs to feel snappy. I hate waiting around — clicking and staring at a spinner is already a productivity killer. When it does heavy operations like building full schedules with constraints, those can take a bit longer, but even then we shouldn’t be waiting forever. If you need exact cutoffs for testing, I can give numbers, but the user experience should be fast for small tasks and acceptably timed for the big jobs.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder provides specific performance requirements for routine tasks and schedule generation, which are clear and measurable.",
+      "follow_up_question": "Are there any other performance metrics or scenarios that should be considered?"
+    },
+    {
+      "requirement": "The system should support up to 10 concurrent users during peak hours.",
+      "source_citation": "The scheduling and admin team tends to all be online in the mornings when cohorts are being reviewed. There’s not the whole campus, just the team — roughly ten of us at peak, and that’s mostly during normal business hours, like nine to five.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the expected number of concurrent users during peak hours, which is relevant for system scalability.",
+      "follow_up_question": "Are there any anticipated increases in the number of users or concurrent sessions in the future?"
+    },
+    {
+      "requirement": "The system should have a lifespan of at least five years without requiring major overhauls.",
+      "source_citation": "We’re not building something with a two-year shelf life. It should be expected to manage curriculum and scheduling for several years. If you need a specific planning horizon, five years is what we’d hope it can handle without having to replatform.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the expected lifespan of the system, which is a key consideration for long-term maintainability and scalability.",
+      "follow_up_question": "What specific features or functionalities should be prioritized to ensure the system remains relevant and useful over five years?"
+    },
+    {
+      "requirement": "The system should achieve 95% uptime during working hours.",
+      "source_citation": "It needs to be reliable during our working day. We can tolerate some downtime for maintenance, but the system should be up almost all the time when we’re using it. If you want an SLA figure for procurement, I’d say we should aim for something in the mid-nineties percentage-wise for availability. We can get exact targets in procurement, but that gives you the flavor.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the expected uptime percentage, which is a clear requirement for system availability.",
+      "follow_up_question": "What are the acceptable maintenance windows and downtime schedules?"
+    },
+    {
+      "requirement": "The system should include basic validation rules and referential integrity checks to prevent data inconsistencies.",
+      "source_citation": "We need basic checks so people don’t enter impossible things, like a student assigned to two different concurrent clinicals at the same time or a placement with an end date before the start. Referential integrity with the student master and site lists is important so dangling references don’t proliferate. And simple validation rules and some sanity checks will cut down on the manual clean-up we do now.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "data_integrity",
+      "confidence": 4,
+      "rationale": "The stakeholder outlines specific data integrity requirements, including validation rules and referential integrity checks.",
+      "follow_up_question": "Can you provide examples of the types of validation rules and referential integrity checks that should be implemented?"
+    },
+    {
+      "requirement": "The system should comply with the university’s information policy for protecting private information.",
+      "source_citation": "Yes, we must protect private information according to the university’s information policy. That means encryption in transit, sensible storage protections, and access controls. We’re not trying to reinvent HIPAA here, but we do have to treat student data as sensitive and follow the existing institutional rules.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need to comply with the university’s information policy, which includes encryption, storage protections, and access controls.",
+      "follow_up_question": "Can you provide more details on the specific encryption and storage protection requirements?"
+    },
+    {
+      "requirement": "The system should send automated notifications for key events via email, with optional push or SMS for urgent changes.",
+      "source_citation": "It should send automated notifications for key events — assignments, cancellations, changes. Email is the baseline, and a push or SMS option would be nice for urgent changes. But importantly, there should be clear, configurable triggers so we don’t spam people. Oh, and a digest option so site coordinators can get daily summaries instead of a dozen single emails.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder outlines specific requirements for automated notifications, including different communication channels and configurable triggers.",
+      "follow_up_question": "Can you provide examples of the types of key events that should trigger notifications?"
+    },
+    {
+      "requirement": "The system should use secure, standard APIs with reliable authentication mechanisms.",
+      "source_citation": "It should use secure, standard APIs — RESTful endpoints are fine — and authenticate reliably, ideally with the university’s existing identity service. Token-based approaches and mutual TLS for some backend links would be sensible. Also, payloads should be well-formed and versioned so we can evolve without breaking things.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "interoperability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for secure, standard APIs with reliable authentication mechanisms, which are crucial for interoperability.",
+      "follow_up_question": "Can you provide more details on the specific authentication mechanisms and API standards that should be used?"
+    },
+    {
+      "requirement": "The system should be maintainable with clear logging, modular components, and decent documentation.",
+      "source_citation": "The solution should be maintainable. We don’t want a black box that only one person can fix. Clear logging, modular components, and decent documentation will save us headaches.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for maintainability, including clear logging, modular components, and documentation.",
+      "follow_up_question": "Can you provide more details on the specific logging, modularity, and documentation requirements?"
+    },
+    {
+      "requirement": "The system should be mobile-friendly for viewing schedules.",
+      "source_citation": "And, uh, please make it mobile-friendly at least for viewing schedules; staff and students look at schedules on their phones a lot these days.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for mobile-friendliness, which is a key aspect of usability.",
+      "follow_up_question": "Can you provide more details on the specific mobile-friendliness requirements?"
+    }
+  ]
+}

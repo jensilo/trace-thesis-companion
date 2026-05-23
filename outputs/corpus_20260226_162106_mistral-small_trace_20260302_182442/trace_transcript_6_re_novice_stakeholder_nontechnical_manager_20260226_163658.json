@@ -1,0 +1,172 @@
+{
+  "transcript_file": "outputs/corpus-20260226_162106/transcript_6_re_novice_stakeholder_nontechnical_manager_20260226_163658.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_182545",
+  "requirements": [
+    {
+      "requirement": "The system should provide quick bookings, clear confirmations, and match the company’s look to ensure trust.",
+      "source_citation": "Quick bookings, clear confirmations, and it should match the company’s look so people trust it.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for quick bookings, clear confirmations, and matching the company’s look to ensure trust, which are all usability concerns.",
+      "follow_up_question": "What specific metrics will be used to measure the 'quickness' of bookings and the clarity of confirmations?"
+    },
+    {
+      "requirement": "The system should allow most users to reserve a room without asking for help.",
+      "source_citation": "We measure it by whether people can reserve a room without asking for help... If most people can do a reservation quickly on their own, that’s success.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder defines success by the ability of most users to reserve a room without assistance, which is a clear usability requirement.",
+      "follow_up_question": "What percentage of users constitutes 'most users' for this measure of success?"
+    },
+    {
+      "requirement": "The system should be usable by first-time or occasional users without training.",
+      "source_citation": "First-time or occasional users — people who don’t book rooms every day. Those folks need to be able to figure it out without training.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for the system to be usable by first-time or occasional users without training, which is a usability requirement.",
+      "follow_up_question": "What specific usability testing methods will be used to ensure the system meets this requirement?"
+    },
+    {
+      "requirement": "The system should provide immediate, unambiguous feedback for user actions.",
+      "source_citation": "They should get immediate, unambiguous feedback... The point is fewer double-bookings and fewer angry emails to facilities.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder emphasizes the need for immediate and unambiguous feedback to reduce double-bookings and angry emails, which is a usability concern.",
+      "follow_up_question": "What specific types of feedback (e.g., visual, auditory) will be provided, and how will their effectiveness be measured?"
+    },
+    {
+      "requirement": "The system should achieve at least 80% positive user feedback on the accuracy of confirmations.",
+      "source_citation": "We’ll run quick surveys and usability checks... if most users say the app confirms their actions accurately, we’re good. I’d like a high majority — maybe around eighty percent positive on that specific question in surveys.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a target of around 80% positive feedback on the accuracy of confirmations, which is a measurable usability requirement.",
+      "follow_up_question": "What specific survey questions will be used to gather this feedback, and how often will these surveys be conducted?"
+    },
+    {
+      "requirement": "The system should support keyboard navigation, screen-reader friendliness, and sufficient contrast for accessibility.",
+      "source_citation": "Keyboard navigation, screen-reader friendliness, contrast — the main booking flows must work for people using assistive tech.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "accessibility",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for keyboard navigation, screen-reader friendliness, and contrast, which are all accessibility requirements.",
+      "follow_up_question": "Which specific accessibility standards (e.g., WCAG 2.1) will the system aim to comply with?"
+    },
+    {
+      "requirement": "The system should feel immediate, with most tasks completed within five seconds.",
+      "source_citation": "For small interactions, like loading the calendar or making a simple reservation, I’d say if things finish in roughly a few seconds people won’t notice. Maybe five seconds for the small stuff feels right.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a target of five seconds for small interactions, which is a performance requirement.",
+      "follow_up_question": "How will the perceived client-side time be measured and ensured to meet this target?"
+    },
+    {
+      "requirement": "The system should handle about a thousand concurrent requests initially, with the capacity to double that in the next release.",
+      "source_citation": "Plan for about a thousand concurrent requests initially, and we’ll need to double that in the next release as adoption grows.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies initial and future capacity requirements, which are scalability concerns.",
+      "follow_up_question": "What specific metrics will be used to monitor and ensure the system meets these capacity requirements?"
+    },
+    {
+      "requirement": "The system should achieve high four-nines of availability.",
+      "source_citation": "I’d set a very high bar — the kind of number that gives customers confidence. Think in the high four-nines of availability.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a target of high four-nines of availability, which is an availability requirement.",
+      "follow_up_question": "What specific measures will be taken to ensure and monitor this level of availability?"
+    },
+    {
+      "requirement": "The system should only allow access to company employees and approved external collaborators.",
+      "source_citation": "Only company employees and external collaborators that the company has approved should get access. No anonymous or public accounts.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need to restrict access to approved users, which is a security requirement.",
+      "follow_up_question": "What specific authentication and authorization mechanisms will be implemented to enforce this requirement?"
+    },
+    {
+      "requirement": "The system should integrate with corporate single sign-on and identity systems.",
+      "source_citation": "Absolutely — integrate with their identity systems... support the standard enterprise approaches so it plugs into their existing access controls.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need to integrate with corporate identity systems, which is a security requirement.",
+      "follow_up_question": "Which specific identity and access management protocols (e.g., SAML, OAuth) will be supported?"
+    },
+    {
+      "requirement": "The system should support per-user language preferences and handle locale details like date and time formats.",
+      "source_citation": "Users should be able to choose their language... For global customers, language switching has to be easy and we must handle locale details like date and time formats so bookings aren’t misinterpreted.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "internationalization",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for language switching and handling locale details, which are internationalization requirements.",
+      "follow_up_question": "Which specific languages and locales will be supported initially, and how will additional languages be added?"
+    },
+    {
+      "requirement": "The system should support both customer-managed and vendor-managed email servers for sending invites and notifications.",
+      "source_citation": "Customers will expect us to play nicely with their mail. Some will want the app to send through their own servers so invites and notices come from corporate addresses. Others might be okay with a vendor-managed outbound.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "email_integration",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need to support both customer-managed and vendor-managed email servers, which is an email integration requirement.",
+      "follow_up_question": "What specific email protocols (e.g., SMTP, Exchange) will be supported, and how will email deliverability be ensured?"
+    },
+    {
+      "requirement": "The system should provide dashboards and objective measures for tracking booking success rates, response times, email delivery rates, and uptime.",
+      "source_citation": "We need dashboards and objective measures. Track booking success rates, response times seen by users, email delivery rates, and uptime.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for dashboards and objective measures to track various metrics, which are operability concerns.",
+      "follow_up_question": "What specific metrics and KPIs will be included in these dashboards, and how often will they be updated?"
+    },
+    {
+      "requirement": "The system should allow admins to upload assets and change themes from an admin screen.",
+      "source_citation": "Admins should be able to upload assets and change themes from an admin screen.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for admins to be able to upload assets and change themes, which is a maintainability requirement.",
+      "follow_up_question": "What specific types of assets and themes will be supported, and how will the admin interface be designed to facilitate these changes?"
+    }
+  ]
+}

@@ -1,0 +1,128 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_3_re_novice_stakeholder_technical_junior_20260227_110127.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_180011",
+  "requirements": [
+    {
+      "requirement": "The system shall provide a response time of less than 5 seconds for small management tasks such as adding a student or updating a roster.",
+      "source_citation": "It just needs to feel snappy, you know? For the small things, like adding a student or updating a roster, people expect almost immediate feedback. For the heavier stuff — like generating full term schedules — they will tolerate a bit longer but not forever.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for near-instant feedback for small tasks, which can be interpreted as less than 5 seconds. The rationale is clear, but the exact threshold is not explicitly stated.",
+      "follow_up_question": "Can you confirm if 'almost immediate' means less than 5 seconds for small tasks?"
+    },
+    {
+      "requirement": "The system shall support up to 10 concurrent users during peak hours (9 AM–5 PM) without significant performance degradation.",
+      "source_citation": "The whole scheduling team tends to be on it at once in the mornings when they're doing changes, so peak concurrency matters. There's a peak group, not hundreds, but enough that if it slows under load people notice.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions peak concurrency and the impact of performance degradation, but the exact number of users is not explicitly stated.",
+      "follow_up_question": "Can you confirm the exact number of concurrent users expected during peak hours?"
+    },
+    {
+      "requirement": "The system shall provide role-based access control (RBAC) to restrict access to sensitive student information based on user roles.",
+      "source_citation": "Program admins should have broad access because they're managing the cohort, and a few senior staff. Site coordinators should only see the basics they need to operate... Instructors should see academic-relevant info. There should be clear restrictions so only authorized people can see personal data.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for role-based access control and the specific access levels for different roles.",
+      "follow_up_question": "Can you provide more details on the specific access levels for each role?"
+    },
+    {
+      "requirement": "The system shall comply with the organization’s information policy for protecting private information, including controlled access, encryption where required, and minimal exposure of personal identifiers.",
+      "source_citation": "It must protect private information in line with our organization’s information policy. That means controlled access, encryption where required, and minimal exposure of personal identifiers.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for compliance with the organization’s information policy and specific security measures.",
+      "follow_up_question": "Can you provide more details on the specific encryption requirements and personal identifiers that need to be protected?"
+    },
+    {
+      "requirement": "The system shall maintain an audit log of changes made to schedules and student data, including who made the change, what was changed, and when it was changed.",
+      "source_citation": "Yes, we should have a history of who changed what and when... It also helps with compliance.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for an audit log for tracking changes, but the specific details of what should be logged are not explicitly stated.",
+      "follow_up_question": "Can you provide more details on the specific information that should be included in the audit log?"
+    },
+    {
+      "requirement": "The system shall provide an intuitive user interface with minimal clicks to perform common tasks, clear error messages, and predictable workflows.",
+      "source_citation": "Minimal clicks to perform common tasks, clear error messages, and predictable workflows. If admins can do their job without hunting through menus or reading a manual every time, that's intuitive.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for an intuitive user interface, but the specific criteria for intuitiveness are not explicitly stated.",
+      "follow_up_question": "Can you provide more details on what makes a user interface intuitive for this system?"
+    },
+    {
+      "requirement": "The system shall perform basic integrity checks to ensure data consistency, such as preventing overlapping dates, ensuring required fields are present, and preventing duplicate assignments.",
+      "source_citation": "Basic integrity checks are important... We need validation to catch obvious mistakes and prevent garbage getting in.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for basic integrity checks, but the specific checks are not explicitly stated.",
+      "follow_up_question": "Can you provide more details on the specific integrity checks that should be performed?"
+    },
+    {
+      "requirement": "The system shall be reliable during working hours (9 AM–5 PM) with a target uptime of 95%.",
+      "source_citation": "It needs to be reliable during working hours when people are doing scheduling. Occasional downtime for maintenance is okay, but frequent outages during those hours make our lives miserable. Yeah, I think aiming for around ninety-five percent availability makes sense given our needs and budget.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for reliability during working hours and a target uptime of 95%.",
+      "follow_up_question": "Can you confirm the exact working hours and the target uptime percentage?"
+    },
+    {
+      "requirement": "The system shall be maintainable for at least 5 years to support multiple cohorts, accreditation cycles, and curriculum changes.",
+      "source_citation": "This needs to last... We’re talking multiple cohorts, accreditation cycles, curriculum changes... so we should expect it to handle the program for several years. I would plan on at least a handful of years of active use.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for long-term maintainability, but the exact duration is not explicitly stated.",
+      "follow_up_question": "Can you confirm the exact duration for which the system should be maintainable?"
+    },
+    {
+      "requirement": "The system shall be scalable to support future curriculum updates and additional cohorts.",
+      "source_citation": "It's focused on the nursing program now, but it should be built so we can support future curriculum updates and maybe more cohorts.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for scalability, but the specific requirements for scalability are not explicitly stated.",
+      "follow_up_question": "Can you provide more details on the specific scalability requirements for future curriculum updates and additional cohorts?"
+    },
+    {
+      "requirement": "The system shall include routine backups and a disaster recovery plan to restore data to a recent state in case of corruption.",
+      "source_citation": "Backups should be routine; if data gets corrupted, we need a way to restore to a recent state.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "disaster_recovery",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for routine backups and a disaster recovery plan, but the specific details are not explicitly stated.",
+      "follow_up_question": "Can you provide more details on the specific backup and disaster recovery requirements?"
+    }
+  ]
+}

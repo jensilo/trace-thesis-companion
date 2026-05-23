@@ -1,0 +1,116 @@
+Interviewer: Thanks for meeting with me. To start, can you tell me, in your words, what success looks like for IzognMovies?
+
+Stakeholder: Sure, um, I think success is when people — even those who aren't online-savvy — can find and watch a film without getting frustrated. We want a product that feels welcoming, that sells films reliably, and that gives us the business signals we need to decide what to promote next. Oh, and it should reflect an African aesthetic, but, you know, modern and simple so people don't get lost.
+
+Interviewer: Okay. You mentioned "even those who aren't online-savvy." How easy should it be for a novice to use the site?
+
+Stakeholder: Well, it should be straightforward. I mean, most people should be able to use it without training. It should feel obvious where to go, how to buy, how to play a movie. I think if someone is used to basic apps or websites, they shouldn't be stuck.
+
+Interviewer: Right. And signing up — any thoughts on how long or how many steps that should take?
+
+Stakeholder: Signing up should be fast and not annoying. We don't want ten pages of forms or anything like that — just the essentials so people don't drop off mid-signup.
+
+Interviewer: When you say "not ten pages," how many pages would you consider acceptable?
+
+Stakeholder: Hmm, yeah, that's fair to be concrete. I think users should reach an account within about four pages at most. Any more than that and we'll lose a lot of people.
+
+Interviewer: Got it. For someone who wants to buy a single movie and watch it right away, what's the expected experience?
+
+Stakeholder: The flow has to be frictionless. A customer should be able to pick a movie, pay, and start watching with very little clicking or waiting. The moment of truth is being able to actually play the movie quickly after deciding to buy.
+
+Interviewer: What does "quickly" mean for you in that flow?
+
+Stakeholder: By quick I mean a few minutes — it should be under three minutes from deciding to buy to seeing the first frame, assuming their internet isn't terrible.
+
+Interviewer: Okay. On performance more generally, are there any expectations about how responsive the site feels?
+
+Stakeholder: Yes, absolutely. It has to feel snappy. People really abandon a site if it drags. Small interactions need to happen almost instantly; long waits are a real churn risk.
+
+Interviewer: Can you give an idea of what "almost instantly" is? Like, what's too long for a normal click?
+
+Stakeholder: Uh, if I had to pick a number, I'd say roughly five seconds for the usual things, like loading a page or adding to cart. Any longer and people notice and get annoyed.
+
+Interviewer: Thanks. And what about payment processing? I imagine that's a bit different.
+
+Stakeholder: Payments are a bit more sensitive. People tolerate a little more time while a card is being processed, but it still needs to be fast enough that folks don't think the payment failed and try again. Slow or failed payments cost us money and trust.
+
+Interviewer: How long do you think is okay for credit card processing?
+
+Stakeholder: I think up to around fifteen seconds is acceptable for a card transaction; beyond that we start seeing abandoned attempts or duplicate charges from panicked users.
+
+Interviewer: Understood. The platform supports pre-paid cards as well — anything special we should know about that flow?
+
+Stakeholder: Pre-paid cards are important for parts of our audience who prefer cash or who don't use cards. Generating and redeeming those should be simple for admins and for users. Also, the system should keep working if our external payment provider has an outage; we can't have the whole site go dark because the gateway hiccupped.
+
+Interviewer: You mean like people should still be able to browse and watch? Or buy with pre-paid?
+
+Stakeholder: Right, browsing should definitely continue. Ideally people could redeem pre-paid codes or use balances even if the gateway is down. We want graceful degradation so revenue isn't completely blocked and users don't get the impression the whole business collapsed.
+
+Interviewer: That makes sense. On streaming itself, any expectations about how long users should wait for buffering?
+
+Stakeholder: Streaming has to be smooth. If a person clicks play and watches a spinner forever, they'll leave. Short buffering periods are fine, but it should feel immediate. I think a few seconds is okay, but not much more.
+
+Interviewer: Can you say what "a few seconds" means in practice?
+
+Stakeholder: Sure — I would say buffering should generally finish within about ten seconds, plus whatever lag the user's connection adds. So the system shouldn't introduce the delay.
+
+Interviewer: Okay. How important is uptime and reliability from a business perspective?
+
+Stakeholder: It's very important. Downtime hurts us twice: lost revenue and damaged reputation. When the site is down during a popular release or a weekend, that's money and goodwill gone. We need to be dependable.
+
+Interviewer: Is there a target availability you have in mind?
+
+Stakeholder: Yes, we need it to be up almost all the time. If pressed, our goal is something like ninety-nine and a half percent availability over the year. Anything less and I would worry about the platform's credibility.
+
+Interviewer: Got it. About security — you mentioned payments — who should be able to see customers' payment details?
+
+Stakeholder: Payment details are sensitive. Only a few trusted people should be able to access full card details, and access should be strictly controlled. We also want data to be stored in a way that, even if someone got to it, it wouldn't be trivially usable. It's a compliance and trust thing for customers.
+
+Interviewer: So, limited admin access and encrypted storage?
+
+Stakeholder: Exactly. Authorized Izogn admins only, and the payment information needs to be encrypted in the database. We're not going to have support reps waltzing in and reading card numbers.
+
+Interviewer: Hearing the privacy side, how should we make users aware of our data practices?
+
+Stakeholder: We must be upfront; people should know what we collect and how we use it before they type anything. A clear privacy policy that they can access is important, and it should be obvious — not buried.
+
+Interviewer: Where should that privacy policy be available?
+
+Stakeholder: It should be reachable from anywhere on the site. Ideally a link on every page, so users can check it at any point before they hand over any personal info.
+
+Interviewer: Alright. Switching to admin features for a moment — you mentioned analytics. What do admins need to see?
+
+Stakeholder: Admins need actionable business analytics: what sells, viewing patterns, revenue trends — the usual marketing and operations signals. The dashboards should let us spot a title that's suddenly trending, or notice when purchases drop so we can react.
+
+Interviewer: Any thoughts on access control for those analytics dashboards?
+
+Stakeholder: Access should be role-based. Not everyone needs the same things; some people need full reports, others just a summary. We don't want broad access to everything.
+
+Interviewer: Thanks. A couple of things I might have missed — how should the site behave for low-skill users buying and watching a movie, overall?
+
+Stakeholder: The whole flow should be designed around minimal friction. Big buttons, clear labels, minimal form fields, plain language. And, um, a quick checkout option for regulars so returning customers don't have to repeat steps. Also, small tangent here, but we need localized text and payment options for users in different countries — sometimes people prefer mobile money, sometimes pre-paid cards you can buy in a shop. That distribution channel is something we'll explore.
+
+Interviewer: Good point. For offline purchases like pre-paid cards, do you expect the site to issue codes, or do you want physical distribution handled separately?
+
+Stakeholder: The system should support issuing and validating codes, and we should be able to bulk-generate cards for partners to sell physically. How those partners distribute them can vary, but the platform must manage the codes and redemptions cleanly.
+
+Interviewer: Okay. Last quick things — any constraints about how many clicks or pages a customer should go through to purchase and start watching, overall?
+
+Stakeholder: The fewer the better. We already said sign-up should be short, and buying-to-play should be under a few minutes. I think customers shouldn't have to hop through a maze of pages — keep it tight and obvious.
+
+Interviewer: Great. Thanks — that's all I had for now.
+
+Stakeholder: Sure, no problem. I think we're on the right track; just keep everything simple for users, keep payments secure, and make sure the business can keep running even when partners hiccup. Oh, and, well, don't forget that design needs to feel like home for our audience — it's not just function.
+
+---
+Selected Requirements:
+1. [NICE.csv line 388] [quality, usability] 'The product should be able to be used by 90% of novice users on the Internet.'
+2. [NICE.csv line 389] [quality, look_and_feel, usability] 'Users should only have to navigate through a maximum of 4 pages to create an account with the website.'
+3. [NICE.csv line 394] [quality, functional, performance, usability] 'The product shall be easy for customers with novice skills on the Internet to purchase and watch streaming movies. Customers should be able to purchase and watch a pre-determined movie in under 3 minutes.'
+4. [NICE.csv line 397] [quality, fault_tolerance, performance] 'Any interface between a user and the automated system shall have a maximum response time of 5 seconds unless noted by an exception below.'
+5. [NICE.csv line 398] [quality, performance] 'When purchasing a streaming movie or pre-paid card via credit card the processing time should have a maximum response time of 15 seconds.'
+6. [NICE.csv line 399] [quality, performance] When streaming a movie the buffering time should take no longer than 10 seconds (plus any latency on the user's connection.)'
+7. [NICE.csv line 403] [quality, availability] 'The website shall achieve 99.5% up time.'
+8. [NICE.csv line 406] [quality, availability, fault_tolerance] 'The website shall continue to operate if the payment gateway goes down.'
+9. [NICE.csv line 401] [quality, security] 'All credit card information will be secured on the server and only accessible by authorized Izogn administrators. Information will be encrypted in the database.'
+10. [NICE.csv line 434] [quality, functional, security, usability] 'The website shall make its user aware of its information practices before collection data from them via a Privacy Policy accessible on all pages of the website.'

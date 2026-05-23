@@ -1,0 +1,216 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_8_re_experienced_stakeholder_technical_junior_20260227_111420.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_173354",
+  "requirements": [
+    {
+      "requirement": "The system shall respond to user interactions within five seconds for general UI navigation, search results, and simple forms.",
+      "source_citation": "anything longer than, uh, maybe five seconds feels too slow to most people.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states a five-second threshold for general UI responsiveness, which is a clear and measurable performance requirement.",
+      "follow_up_question": "Are there any specific interactions or pages that should have even stricter response time requirements?"
+    },
+    {
+      "requirement": "The system shall complete payment processing within fifteen seconds.",
+      "source_citation": "payment processing needs to complete within about fifteen seconds.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states a fifteen-second threshold for payment processing, which is a clear and measurable performance requirement.",
+      "follow_up_question": "Are there any specific payment scenarios or conditions that should have different performance requirements?"
+    },
+    {
+      "requirement": "The system shall limit initial streaming buffering to no more than ten seconds, excluding network latency.",
+      "source_citation": "Initial buffering shouldn't be more than a handful of seconds, plus network lag. Uh, if I had to guess, something like ten seconds for the buffering part itself is about the limit.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder provides a specific time frame for streaming buffering, which is a clear performance requirement. The mention of 'a handful of seconds' is somewhat vague but is clarified with the 'ten seconds' estimate.",
+      "follow_up_question": "Are there any specific streaming scenarios or network conditions that should have different buffering time requirements?"
+    },
+    {
+      "requirement": "The system shall implement adaptive bitrate streaming to adjust video quality based on the user's network connection.",
+      "source_citation": "I think adaptive bitrate is a must, yeah. Start with a lower bitrate if the user's connection is weak, then ramp up.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for adaptive bitrate streaming, which is a clear performance requirement to ensure smooth streaming under varying network conditions.",
+      "follow_up_question": "What specific bitrate levels or quality settings should be used for different network conditions?"
+    },
+    {
+      "requirement": "The system shall achieve and maintain an uptime of 99.5%.",
+      "source_citation": "aiming for ninety-nine point five percent availability",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states a 99.5% availability target, which is a clear and measurable availability requirement.",
+      "follow_up_question": "Are there any specific periods or scenarios where higher availability is required?"
+    },
+    {
+      "requirement": "The system shall complete the account creation process within four pages from landing to a usable account.",
+      "source_citation": "no more than four pages from landing to a usable account",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states a four-page limit for the account creation flow, which is a clear and measurable usability requirement.",
+      "follow_up_question": "Are there any specific steps or information that should be included or excluded to meet this requirement?"
+    },
+    {
+      "requirement": "The system shall be usable by at least 90% of novice users, defined as individuals who can browse social media but may not be comfortable with complex flows.",
+      "source_citation": "I'd like the product to be usable by most of them — not perfect, but high. If pressed, maybe around ninety percent usability for that group.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder provides a specific usability target for novice users, which is a clear and measurable usability requirement. The mention of 'most of them' is somewhat vague but is clarified with the 'ninety percent' estimate.",
+      "follow_up_question": "What specific usability metrics or methods will be used to measure and ensure this requirement?"
+    },
+    {
+      "requirement": "The system shall store credit card details encrypted on the server, with access restricted to authorized personnel only.",
+      "source_citation": "we planned to keep credit card details on our side — like stored on the server — but encrypted, and only certain people in the company should be able to see that.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for encrypted storage of credit card details and restricted access, which are clear security requirements.",
+      "follow_up_question": "What specific encryption standards and access control mechanisms will be used to meet this requirement?"
+    },
+    {
+      "requirement": "The system shall implement role-based access control to separate permissions for program admins and support staff.",
+      "source_citation": "Program admins would need broad access for troubleshooting and business tasks, while support staff should only see non-sensitive customer data — like order history or contact info, not full card numbers.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for role-based access control, which is a clear security requirement to ensure proper separation of duties.",
+      "follow_up_question": "What specific roles and permissions will be defined and implemented to meet this requirement?"
+    },
+    {
+      "requirement": "The system shall use tokenization for credit card data to reduce PCI compliance burden.",
+      "source_citation": "using tokenization does sound safer and less headache for PCI stuff.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions tokenization as a safer alternative to storing credit card details, which is a clear security requirement. However, the confidence is medium because the stakeholder also mentions that the team leans toward encrypted storage.",
+      "follow_up_question": "What specific tokenization standards and processes will be used to meet this requirement?"
+    },
+    {
+      "requirement": "The system shall detect and respond to suspicious activity, such as repeated failed logins, credential stuffing patterns, and suspicious card activity.",
+      "source_citation": "It should definitely defend itself and let us know. So, things like repeated failed logins, credential stuffing patterns, or suspicious card activity should trigger alerts.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for detecting and responding to suspicious activity, which is a clear security requirement.",
+      "follow_up_question": "What specific detection mechanisms and response actions will be implemented to meet this requirement?"
+    },
+    {
+      "requirement": "The system shall notify admins of high-severity security events via email, SMS, or push notifications to the admin dashboard.",
+      "source_citation": "For severe stuff, maybe SMS or a push to the admin dashboard. It should be obvious and hard to miss — I don't want critical alerts buried in logs.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for notifying admins of high-severity events, which is a clear security requirement. However, the confidence is medium because the stakeholder also mentions that the specific notification channels are a bit vague.",
+      "follow_up_question": "What specific notification channels and thresholds will be used to meet this requirement?"
+    },
+    {
+      "requirement": "The system shall follow W3C standards for accessibility, including semantic HTML and ARIA where needed.",
+      "source_citation": "we should follow W3C standards so assistive tech works — we talked about that briefly in the scrum.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need to follow W3C standards for accessibility, which is a clear usability requirement.",
+      "follow_up_question": "What specific W3C standards and accessibility features will be implemented to meet this requirement?"
+    },
+    {
+      "requirement": "The system shall have a user interface with big buttons, clear labels, and simple language to ensure usability for novice users.",
+      "source_citation": "So big buttons, clear labels, simple language — not flashy, not confusing.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for a user interface with big buttons, clear labels, and simple language, which are clear usability requirements.",
+      "follow_up_question": "What specific design guidelines and usability testing methods will be used to meet this requirement?"
+    },
+    {
+      "requirement": "The system shall provide clear and actionable error messages to users, avoiding cryptic codes.",
+      "source_citation": "show a clear message and not a cryptic code.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for clear and actionable error messages, which is a clear usability requirement.",
+      "follow_up_question": "What specific error message guidelines and user testing methods will be used to meet this requirement?"
+    },
+    {
+      "requirement": "The system shall allow admins to add, edit, and manage movie metadata, upload assets, manage pricing, generate pre-paid cards, view customer accounts, handle refunds, and access business analytics.",
+      "source_citation": "Admins should be able to add and edit movie metadata, upload assets, manage pricing, and generate pre-paid cards for partners. They should also be able to look at customer accounts, see purchase history, handle refunds, and get business analytics — like which titles sell well.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for various admin features, which are clear maintainability requirements.",
+      "follow_up_question": "What specific admin interfaces and workflows will be implemented to meet this requirement?"
+    },
+    {
+      "requirement": "The system shall support both manual and automated generation of pre-paid cards, including an API or scheduled job for bulk generation.",
+      "source_citation": "Probably both. Sometimes admins will generate batches manually for a promotion, and other times there should be an API or scheduled job to create them in bulk.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for both manual and automated generation of pre-paid cards, which is a clear maintainability requirement.",
+      "follow_up_question": "What specific APIs, scheduled jobs, and user interfaces will be implemented to meet this requirement?"
+    },
+    {
+      "requirement": "The system shall provide actionable dashboards for business analytics, including revenue over time, top titles, and redemption rates for pre-paid cards.",
+      "source_citation": "They should be useful for the business team — like revenue over time, top titles, and redemption rates for pre-paids. Not fancy BI on day one, but actionable dashboards that help marketing and ops make decisions.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "other",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for actionable dashboards for business analytics, which is a clear requirement for providing useful analytics to the business team.",
+      "follow_up_question": "What specific analytics features and dashboards will be implemented to meet this requirement?"
+    },
+    {
+      "requirement": "The system shall allow users to flag inappropriate content and provide admins with a moderation queue for reviewing and addressing flagged content.",
+      "source_citation": "Oh, and I keep forgetting — reviews need a way for users to flag inappropriate content, and admins need an easy moderation queue.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for users to flag inappropriate content and admins to have a moderation queue, which are clear maintainability requirements.",
+      "follow_up_question": "What specific user interfaces and workflows will be implemented to meet this requirement?"
+    }
+  ]
+}

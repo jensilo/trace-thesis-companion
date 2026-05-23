@@ -1,0 +1,150 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_4_re_experienced_stakeholder_nontechnical_enduser_20260227_110534.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_174711",
+  "requirements": [
+    {
+      "requirement": "The system shall display a color-coded status for cases to allow users to quickly identify urgent cases.",
+      "source_citation": "If pending is one way and escalated is another — just, you know, obvious.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for color-coded status indicators to improve usability and reduce the time spent opening multiple cases. The requirement is clear but lacks specifics on the exact colors and statuses to be used.",
+      "follow_up_question": "What specific colors should be used for each status (e.g., pending, escalated, closed), and are there any industry standards or corporate guidelines that should be followed?"
+    },
+    {
+      "requirement": "The system shall ensure that navigation and search operations complete within five seconds to avoid interrupting user workflow.",
+      "source_citation": "When a simple click takes ages — maybe around five seconds I start feeling impatient.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states a five-second threshold for acceptable response time, which is a clear performance requirement. This requirement is well-defined and specific.",
+      "follow_up_question": "Are there any specific scenarios or operations that are more critical and require even faster response times?"
+    },
+    {
+      "requirement": "The system shall pull transaction details, member information, and merchant information from their respective authoritative systems in real-time to ensure data consistency.",
+      "source_citation": "If the statement system is the place where transactions are recorded, the dispute screen should show whatever is in there.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "data_integrity",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for a single source of truth and real-time data to avoid discrepancies. This requirement is clear but could benefit from specifics on how often data should be synchronized.",
+      "follow_up_question": "How frequently should the system synchronize data with the authoritative systems to ensure real-time accuracy?"
+    },
+    {
+      "requirement": "The system shall provide role-based access controls to restrict access to cases based on the user's portfolio and role.",
+      "source_citation": "I can’t and shouldn’t see every representative’s cases because some of those are for other teams or regions.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for role-based access controls to prevent unauthorized access to cases. This requirement is well-defined and specific.",
+      "follow_up_question": "What specific roles and access levels should be defined, and what cases should each role have access to?"
+    },
+    {
+      "requirement": "The system shall maintain an audit trail that records all actions, including who performed the action, the timestamp, and any comments added.",
+      "source_citation": "I need to be able to see a clear history of every action, who did it, timestamps, and any comments added.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for an audit trail for compliance and tracking purposes. This requirement is clear and well-defined.",
+      "follow_up_question": "What specific details should be included in the audit trail, and how should this information be presented to users?"
+    },
+    {
+      "requirement": "The system shall schedule maintenance during low-usage hours, specifically between 1 AM and 5 AM on Sundays and between 3 AM and 4 AM on other days.",
+      "source_citation": "Like... between one in the morning and five in the morning on Sundays is okay, and on other days maybe a much smaller window around three to four in the morning.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies acceptable maintenance windows to minimize disruption. This requirement is clear but could benefit from confirmation on the exact times.",
+      "follow_up_question": "Are there any specific days or times within the specified windows that should be avoided for maintenance?"
+    },
+    {
+      "requirement": "The system shall enforce role-based approval workflows for initiating sensitive disputes, requiring manager approval for specific actions.",
+      "source_citation": "We need a manager or senior rep to approve. There are also vendor users, like some merchant services folks, who see a limited view for verification but they can’t change member account details or initiate adjustments.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for role-based approval workflows to ensure proper authorization. This requirement is clear but lacks specifics on the exact roles and approval processes.",
+      "follow_up_question": "What specific roles should require manager approval, and what are the exact approval processes for each type of dispute?"
+    },
+    {
+      "requirement": "The system shall provide a consistent corporate UI/UX that follows corporate templates to improve usability and reduce training time.",
+      "source_citation": "It should look like other corporate apps... following the corporate template would make training and daily use easier.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for a consistent corporate UI/UX to improve usability. This requirement is clear but could benefit from specifics on the exact corporate guidelines to follow.",
+      "follow_up_question": "What specific corporate UI/UX guidelines should the system adhere to, and are there any existing templates or design systems that should be used?"
+    },
+    {
+      "requirement": "The system shall provide before-and-after tracking of changes to case status and amounts to reduce back-and-forth communication.",
+      "source_citation": "If the system could show what actually changed — like the old and new status or amount — that would stop a lot of back-and-forth.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for before-and-after tracking to improve maintainability and reduce communication overhead. This requirement is clear but lacks specifics on the exact details to be tracked.",
+      "follow_up_question": "What specific details should be tracked before and after changes, and how should this information be presented to users?"
+    },
+    {
+      "requirement": "The system shall restrict external users' access to only the necessary information for their interaction, hiding sensitive member data.",
+      "source_citation": "External users — say a merchant dispute liaison — should only see what’s necessary for their interaction: transaction details, maybe the dispute status, but not sensitive member data like full account numbers or certain personal info.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for restricting external users' access to sensitive data. This requirement is clear but could benefit from specifics on the exact data to be restricted.",
+      "follow_up_question": "What specific data should be restricted for external users, and what are the exact access levels for each type of external user?"
+    },
+    {
+      "requirement": "The system shall provide a search functionality that allows users to find cases using partial information.",
+      "source_citation": "Sometimes I type partial info and the system doesn’t find the case.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for better search functionality to improve usability. This requirement is clear but lacks specifics on the exact search criteria and expected results.",
+      "follow_up_question": "What specific search criteria should the system support, and what are the expected results for each type of search?"
+    },
+    {
+      "requirement": "The system shall provide a digital approval workflow for managers to approve sensitive disputes, recording the manager's name and timestamp.",
+      "source_citation": "Ideally, a digital approval inside the case — a button or workflow that records the manager’s name and gives a timestamp.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for a digital approval workflow to improve maintainability and ensure proper authorization. This requirement is clear but lacks specifics on the exact approval process.",
+      "follow_up_question": "What specific approval process should the system use, and what are the exact steps for managers to approve disputes?"
+    },
+    {
+      "requirement": "The system shall save users' most-used searches or filters to improve efficiency and reduce repetitive tasks.",
+      "source_citation": "If the system could save my most-used searches or filters so I don’t have to recreate them each morning, that would be a tiny quality-of-life win.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for saving searches or filters to improve usability. This requirement is clear but lacks specifics on the exact search criteria and filter options to be saved.",
+      "follow_up_question": "What specific search criteria and filter options should the system save, and how should this information be presented to users?"
+    }
+  ]
+}

@@ -1,0 +1,172 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_3_re_experienced_stakeholder_nontechnical_enduser_20260227_110205.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_175544",
+  "requirements": [
+    {
+      "requirement": "The system should respond to routine tasks such as pulling up a student's record or changing a shift in a few seconds, ideally almost instantaneously.",
+      "source_citation": "For little things like pulling up a student's record or changing a shift, I hate waiting — it should be almost instant. If I had to put a number on it, maybe a few seconds.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for quick response times for routine tasks, specifying a few seconds as an acceptable range. This indicates a clear performance requirement.",
+      "follow_up_question": "What specific tasks should be completed within this time frame, and are there any tasks that can take longer?"
+    },
+    {
+      "requirement": "The system should generate batch schedules within approximately half a minute.",
+      "source_citation": "For the whole schedule generator — when we batch-create schedules — that one can take longer, but it can't take forever; half a minute-ish feels like the outside of acceptable to me.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a time frame for batch schedule generation, indicating a clear performance requirement for this specific task.",
+      "follow_up_question": "Are there any other batch processes that need to be optimized for performance?"
+    },
+    {
+      "requirement": "The system should handle concurrent usage by 10 to 15 users during peak times without performance degradation.",
+      "source_citation": "In the mornings, when we're all prepping, there's a bunch of us on at once. Maybe around ten people? Ten to fifteen on busy days... So it has to handle that load without choking.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for the system to handle concurrent usage by a specific number of users during peak times, indicating a performance requirement.",
+      "follow_up_question": "Are there any specific peak times or usage patterns that the system should be optimized for?"
+    },
+    {
+      "requirement": "The system should be available and reliable during working hours, with a target availability of 95%.",
+      "source_citation": "We need it when our office is open... It should be up pretty much all the time during our working hours. I'd say it should be reliable almost always — maybe allow for rare outages, but not frequently... I wouldn't want it down more than a few percent of the time. If I had to pick a number, something like ninety-five percent availability sounds about right to me for the start.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for high availability during working hours and provides a target availability percentage, indicating a clear availability requirement.",
+      "follow_up_question": "What specific measures should be taken to ensure this level of availability?"
+    },
+    {
+      "requirement": "The system should be intuitive and require minimal training, with a maximum of one day of training for most users.",
+      "source_citation": "Oh, we don't have a lot of time for training... I think if it's intuitive, we could get by with a short, focused workshop. If I had to say, maybe one day of training should be enough for most folks to be productive... But, um, that assumes the UI is straightforward and the common tasks are obvious.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for minimal training and an intuitive UI, indicating a usability requirement.",
+      "follow_up_question": "What specific aspects of the system should be intuitive and require minimal training?"
+    },
+    {
+      "requirement": "The system should be compatible with common browsers and devices, including Mac, Windows, and older machines, without requiring special plugins or installations.",
+      "source_citation": "Some of our staff are on Mac, some on Windows, some use older machines... We need something that just opens in whatever regular browser people have and behaves the same.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for compatibility with various browsers and devices, indicating a portability requirement.",
+      "follow_up_question": "Are there any specific browsers or devices that the system should be optimized for?"
+    },
+    {
+      "requirement": "The system should be usable on tablets for quick checks and on phones for receiving alerts, but not for heavy lifting like building schedules.",
+      "source_citation": "It should at least be usable on a tablet for quick checks. Phones are useful for receiving alerts but not for heavy lifting like building schedules.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for usability on different devices for specific tasks, indicating a usability requirement.",
+      "follow_up_question": "What specific tasks should be supported on tablets and phones?"
+    },
+    {
+      "requirement": "The system should implement role-based access control to restrict access to sensitive information based on user roles.",
+      "source_citation": "Program admins — the core staff — need a full view... Site coordinators shouldn't see the full student files; they only need the details relevant to the placement... Instructors probably need rosters and schedule info, but not private notes.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for role-based access control to restrict access to sensitive information, indicating a security requirement.",
+      "follow_up_question": "What specific roles and access levels should be defined in the system?"
+    },
+    {
+      "requirement": "The system should comply with university policies regarding privacy and data protection.",
+      "source_citation": "We have university policies about privacy, and the system should follow those, not do its own thing.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for compliance with university policies, indicating a legal requirement.",
+      "follow_up_question": "What specific university policies should the system comply with?"
+    },
+    {
+      "requirement": "The system should provide audit trails to track changes made by users.",
+      "source_citation": "Audit trails would be great — knowing who changed what and when.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for audit trails, indicating a maintainability requirement.",
+      "follow_up_question": "What specific information should be included in the audit trails?"
+    },
+    {
+      "requirement": "The system should respect university rules regarding data retention and access.",
+      "source_citation": "The university also has rules about how long we keep data and who can access it, so the system should respect those rules.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for compliance with university rules regarding data retention and access, indicating a legal requirement.",
+      "follow_up_question": "What specific rules regarding data retention and access should the system comply with?"
+    },
+    {
+      "requirement": "The system should prevent common scheduling errors, such as double-booking students or assigning instructors who are already booked.",
+      "source_citation": "It should stop me from scheduling a student in two places at the same time, or assign an instructor who is already booked... For some things it should block saving until fixed — overlapping times, for instance.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for the system to prevent common scheduling errors, indicating a usability requirement.",
+      "follow_up_question": "What specific errors should the system prevent?"
+    },
+    {
+      "requirement": "The system should provide basic reports, such as daily clinical rosters, instructor assignments, and summaries of missing clearances.",
+      "source_citation": "We need basic reports. Like, who is scheduled where, gaps in coverage, maybe a roster per site... It doesn't have to be fancy, but it should save me time compared to cobbling things together in a spreadsheet.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for basic reports, indicating an operability requirement.",
+      "follow_up_question": "What specific reports should the system provide?"
+    },
+    {
+      "requirement": "The system should integrate with the university's student records and HR or payroll systems to avoid duplicate data entry.",
+      "source_citation": "It should tie into the university's student records for enrollments and probably our HR or payroll for instructor assignments, so we don't have to enter data twice.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for integration with other systems, indicating a portability requirement.",
+      "follow_up_question": "What specific systems should the system integrate with?"
+    },
+    {
+      "requirement": "The system should reduce the amount of paper usage by providing digital alternatives for schedules and other documents.",
+      "source_citation": "It'd be nice if the system reduced the amount we have to print. Less paper, fewer trips to the printer, fewer lamination disasters.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for the system to reduce paper usage, indicating a usability requirement.",
+      "follow_up_question": "What specific documents or processes should be digitized to reduce paper usage?"
+    }
+  ]
+}

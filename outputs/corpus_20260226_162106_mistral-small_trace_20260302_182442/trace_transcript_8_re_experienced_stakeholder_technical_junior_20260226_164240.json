@@ -1,0 +1,150 @@
+{
+  "transcript_file": "outputs/corpus-20260226_162106/transcript_8_re_experienced_stakeholder_technical_junior_20260226_164240.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_182614",
+  "requirements": [
+    {
+      "requirement": "The system shall ensure that UI interactions complete within 5 seconds for 95% of users.",
+      "source_citation": "if pushed, I’d say around five seconds for small things like form submissions or switching pages.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions a 5-second threshold for UI interactions, which is a clear performance requirement. The 95th percentile is inferred from later discussion but not explicitly stated.",
+      "follow_up_question": "Can you confirm that the 5-second target applies to the 95th percentile of users?"
+    },
+    {
+      "requirement": "The system shall ensure that streaming startup buffering does not exceed 10 seconds for 95% of users.",
+      "source_citation": "startup buffering shouldn't take more than about ten seconds, plus whatever the user's own connection adds.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions a 10-second threshold for streaming startup buffering. The 95th percentile is inferred from later discussion but not explicitly stated.",
+      "follow_up_question": "Can you confirm that the 10-second target applies to the 95th percentile of users?"
+    },
+    {
+      "requirement": "The system shall ensure that the signup flow does not exceed 4 screens.",
+      "source_citation": "we’d like it to be shorter — ideally no more than four pages.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions a 4-screen limit for the signup flow, which is a clear usability requirement.",
+      "follow_up_question": "Can you confirm that the 4-screen limit is a hard requirement?"
+    },
+    {
+      "requirement": "The system shall ensure that the website remains usable if the streaming server or payment gateway fails.",
+      "source_citation": "People should still be able to browse, manage their account, and use pre-paid balances if the gateway or streaming origin is flaky.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions that the website should remain usable even if third-party services fail, which is a clear fault tolerance requirement.",
+      "follow_up_question": "Can you provide more details on what features should remain available during a streaming server or payment gateway failure?"
+    },
+    {
+      "requirement": "The system shall ensure that the overall availability target is 99.5% annually, excluding scheduled maintenance.",
+      "source_citation": "Marketing insisted we aim high... 99.5% as a goal.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions a 99.5% availability target, which is a clear availability requirement. The annual measurement period and exclusion of scheduled maintenance are inferred from later discussion.",
+      "follow_up_question": "Can you confirm that the 99.5% availability target is annual and excludes scheduled maintenance?"
+    },
+    {
+      "requirement": "The system shall ensure that raw card data is not stored on servers and that tokenization is used instead.",
+      "source_citation": "That sets off alarm bells for me because it drags us into PCI scope.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 3,
+      "rationale": "The stakeholder expresses concern about storing raw card data, which implies a preference for tokenization. However, the requirement is not explicitly stated.",
+      "follow_up_question": "Can you confirm that tokenization is a requirement for handling card data?"
+    },
+    {
+      "requirement": "The system shall ensure that a cloud KMS is used for key management with strict access controls.",
+      "source_citation": "We’d prefer a managed KMS, like cloud KMS.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions a preference for a cloud KMS, which is a clear security requirement.",
+      "follow_up_question": "Can you confirm that a cloud KMS is a requirement for key management?"
+    },
+    {
+      "requirement": "The system shall ensure that only senior finance and ops personnel have access to card data.",
+      "source_citation": "I’d say basically finance leads and a senior ops person.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions that only senior finance and ops personnel should have access to card data, which is a clear security requirement.",
+      "follow_up_question": "Can you confirm that only senior finance and ops personnel should have access to card data?"
+    },
+    {
+      "requirement": "The system shall ensure that all admin actions affecting users or payments are logged.",
+      "source_citation": "Any admin action that affects users or payments should be audited.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions that all admin actions affecting users or payments should be logged, which is a clear maintainability requirement.",
+      "follow_up_question": "Can you confirm that all admin actions affecting users or payments should be logged?"
+    },
+    {
+      "requirement": "The system shall ensure that alerts are tuned to avoid being noisy and only page for critical incidents.",
+      "source_citation": "We need both aggregate dashboards and urgent notifications for high-severity incidents.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for tuned alerts and urgent notifications for high-severity incidents, which is a clear operability requirement.",
+      "follow_up_question": "Can you provide more details on what constitutes a critical incident for paging?"
+    },
+    {
+      "requirement": "The system shall ensure that the privacy policy is accessible and that explicit opt-ins are used for marketing.",
+      "source_citation": "We should capture consent during registration and keep a record of which policy version the user agreed to.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for accessible privacy policies and explicit opt-ins for marketing, which is a clear legal requirement.",
+      "follow_up_question": "Can you confirm that explicit opt-ins are a requirement for marketing?"
+    },
+    {
+      "requirement": "The system shall ensure that performance and availability goals are measured using synthetic tests, real user monitoring, and streaming logs.",
+      "source_citation": "We should use a mix of synthetic tests, real user monitoring, and streaming logs.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for synthetic tests, real user monitoring, and streaming logs to measure performance and availability, which is a clear operability requirement.",
+      "follow_up_question": "Can you confirm that synthetic tests, real user monitoring, and streaming logs are required for measuring performance and availability?"
+    },
+    {
+      "requirement": "The system shall ensure that the design team's request for larger hero images does not negatively impact performance.",
+      "source_citation": "they keep asking for larger hero images which worries me performance-wise.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 3,
+      "rationale": "The stakeholder expresses concern about larger hero images impacting performance, which implies a need to balance design and performance. However, the requirement is not explicitly stated.",
+      "follow_up_question": "Can you confirm that the design team's request for larger hero images should not negatively impact performance?"
+    }
+  ]
+}

@@ -1,0 +1,150 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_3_re_novice_stakeholder_technical_senior_20260227_110121.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_180011",
+  "requirements": [
+    {
+      "requirement": "The system should respond to routine tasks within five seconds or less.",
+      "source_citation": "For the small management tasks something like five seconds or less feels instant.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states a performance requirement for routine tasks, providing a clear timeframe. This is a strong indicator of a performance-related non-functional requirement.",
+      "follow_up_question": "Can you provide examples of what constitutes a 'small management task' to ensure the system meets this performance requirement?"
+    },
+    {
+      "requirement": "The system should complete full schedule generation within thirty seconds.",
+      "source_citation": "For full schedule generation, I’d expect something that finishes within, say, thirty seconds.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a timeframe for a more complex operation, indicating a performance requirement for schedule generation.",
+      "follow_up_question": "What are the specific constraints and data size considerations for schedule generation that should be taken into account to meet this performance requirement?"
+    },
+    {
+      "requirement": "The system must use standard APIs and secure channels for integrations.",
+      "source_citation": "It needs to talk to CampusConnect — that’s the central coordination hub — and to the student master system so enrollment and student records don’t get out of sync. I mean, if it can pull the roster and push attendance or placements back, that would save a ton of time. Also it should use standard APIs and secure channels; we don't want ad-hoc exports.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for standard APIs and secure channels, which are critical for security and interoperability.",
+      "follow_up_question": "Can you specify the standard APIs and secure channels that should be used for integrations with CampusConnect and the student master system?"
+    },
+    {
+      "requirement": "The system must protect private information according to the university’s information policy, including encryption in transit, sensible storage protections, and access controls.",
+      "source_citation": "We must protect private information according to the university’s information policy. That means encryption in transit, sensible storage protections, and access controls.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for security measures to protect private information, which is a clear non-functional requirement.",
+      "follow_up_question": "Can you provide more details on the university’s information policy and specific encryption standards that should be followed?"
+    },
+    {
+      "requirement": "The system should be intuitive enough for non-technical users to perform basic tasks after a short hands-on session.",
+      "source_citation": "It should be straightforward. We don’t have time for a week-long onboarding. Ideally people pick it up quickly, you know? The interface needs to be intuitive enough for folks who aren’t technical. If we can train someone in, say, a short hands-on session and they can do basic tasks by the next day, that would be perfect.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for an intuitive interface that can be learned quickly, indicating a usability requirement.",
+      "follow_up_question": "Can you provide examples of the types of basic tasks that users should be able to perform after a short hands-on session?"
+    },
+    {
+      "requirement": "The system should be mobile-friendly for viewing schedules.",
+      "source_citation": "Please make it mobile-friendly at least for viewing schedules; staff and students look at schedules on their phones a lot these days.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for mobile-friendliness, which is a usability requirement.",
+      "follow_up_question": "Can you specify the types of mobile devices and operating systems that the system should be compatible with?"
+    },
+    {
+      "requirement": "The system should be available during working hours with an uptime of at least 95%.",
+      "source_citation": "It needs to be reliable during our working day. We can tolerate some downtime for maintenance, but the system should be up almost all the time when we’re using it. If you want an SLA figure for procurement, I’d say we should aim for something in the mid-nineties percentage-wise for availability.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies an availability requirement, indicating the need for high uptime during working hours.",
+      "follow_up_question": "Can you provide more details on the acceptable downtime windows for maintenance and the consequences of downtime during working hours?"
+    },
+    {
+      "requirement": "The system should be maintainable with clear logging, modular components, and decent documentation.",
+      "source_citation": "The solution should be maintainable. We don’t want a black box that only one person can fix. Clear logging, modular components, and decent documentation will save us headaches.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for maintainability features, which are critical for long-term system upkeep.",
+      "follow_up_question": "Can you provide more details on the specific logging, modular components, and documentation standards that should be followed?"
+    },
+    {
+      "requirement": "The system should be able to handle peak usage of roughly ten users during normal business hours.",
+      "source_citation": "The scheduling and admin team tends to all be online in the mornings when cohorts are being reviewed. There’s not the whole campus, just the team — roughly ten of us at peak, and that’s mostly during normal business hours, like nine to five.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the peak usage scenario, which is a scalability requirement.",
+      "follow_up_question": "Can you provide more details on the specific peak usage patterns and the types of tasks that will be performed during these peak times?"
+    },
+    {
+      "requirement": "The system should be able to manage curriculum and scheduling for several years without needing a major overhaul.",
+      "source_citation": "We’re not building something with a two-year shelf life. It should be expected to manage curriculum and scheduling for several years. If you need a specific planning horizon, five years is what we’d hope it can handle without having to replatform.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a long-term planning horizon, indicating a scalability requirement for the system's lifespan.",
+      "follow_up_question": "Can you provide more details on the expected changes in curriculum and scheduling that the system should be able to accommodate over five years?"
+    },
+    {
+      "requirement": "The system should include basic checks to prevent impossible entries and ensure referential integrity with the student master and site lists.",
+      "source_citation": "We need basic checks so people don’t enter impossible things, like a student assigned to two different concurrent clinicals at the same time or a placement with an end date before the start. Referential integrity with the student master and site lists is important so dangling references don’t proliferate.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "data_quality",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for data quality checks and referential integrity, which are critical for maintaining accurate and consistent data.",
+      "follow_up_question": "Can you provide more details on the specific types of checks and validation rules that should be implemented?"
+    },
+    {
+      "requirement": "The system should include audit trails to track who accessed what information.",
+      "source_citation": "And, um, audit trails would be good so we can see who looked at what. I think that’s important for accountability.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "auditability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for audit trails, which are critical for tracking access and ensuring accountability.",
+      "follow_up_question": "Can you provide more details on the specific types of audit trails and the level of detail required for tracking access?"
+    },
+    {
+      "requirement": "The system should use secure, standard APIs and authenticate reliably with the university’s existing identity service.",
+      "source_citation": "It should use secure, standard APIs — RESTful endpoints are fine — and authenticate reliably, ideally with the university’s existing identity service.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "interoperability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for secure, standard APIs and reliable authentication, which are critical for interoperability.",
+      "follow_up_question": "Can you provide more details on the specific APIs and authentication methods that should be used?"
+    }
+  ]
+}

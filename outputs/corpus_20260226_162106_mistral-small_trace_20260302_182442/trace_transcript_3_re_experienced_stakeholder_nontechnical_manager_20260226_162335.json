@@ -1,0 +1,117 @@
+{
+  "transcript_file": "outputs/corpus-20260226_162106/transcript_3_re_experienced_stakeholder_nontechnical_manager_20260226_162335.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_182444",
+  "requirements": [
+    {
+      "requirement": "The system should complete small actions in about five seconds and schedule runs in under half a minute to keep users engaged during working meetings.",
+      "source_citation": "For everyday actions like enrolling a student or updating a profile, waiting more than a few seconds is noticeable and annoying. For full schedule generation I’m okay if it takes a bit longer because it’s a heavy job, but not so long that staff can’t iterate during planning sessions. If I had to pin it down, maybe small actions should complete in about five seconds and schedule runs in under half a minute—that would keep people engaged during a working meeting.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the performance expectations for small actions and schedule runs, providing clear timeframes for acceptable performance.",
+      "follow_up_question": "Are there any specific scenarios or user interactions that should be prioritized for performance optimization?"
+    },
+    {
+      "requirement": "The system must follow DePaul’s information security policies, FERPA, and avoid storing PHI unless absolutely necessary. Access should be role-based.",
+      "source_citation": "We must follow DePaul’s information security policies and FERPA for sure. If the system ends up capturing clinical patient information, there are HIPAA implications and we should avoid storing PHI unless absolutely necessary. Access should be role-based—site coordinators shouldn’t see everything.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder clearly outlines the compliance and security requirements, including the need for role-based access control and adherence to specific regulations.",
+      "follow_up_question": "Can you provide specific examples of role-based access requirements for different user types?"
+    },
+    {
+      "requirement": "The system should be designed so that users can complete main tasks after a single day of training, with a one-day, hands-on session being sufficient for baseline users.",
+      "source_citation": "Ideally, everyone who needs to use it should be competent after a single day of training. By that I mean a one-day, hands-on session where they can perform their core tasks without hand-holding afterwards. For acceptance, I’d expect they can complete a checklist of the main tasks—like scheduling a student, assigning to a site, and approving a clinical block—on their own.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of quick user adoption and provides specific criteria for acceptance based on training effectiveness.",
+      "follow_up_question": "What specific tasks should be included in the training checklist to ensure users are competent?"
+    },
+    {
+      "requirement": "The system should be reliably available during the critical window of morning into early evening on weekdays, with mid-90s percent availability.",
+      "source_citation": "The critical window is when our office and partners are active—roughly morning into early evening on weekdays. We need the system to be reliably there during those hours... I’d want it up most of the time—again, I don’t have an exact SLA in mind, but it needs to be dependable. Yeah, put me on record—something in the mid-90s percent availability makes me comfortable. If it dips below that, we’ll have problems.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies the critical availability window and the expected uptime percentage, providing clear expectations for system reliability.",
+      "follow_up_question": "Are there any specific maintenance windows or planned downtimes that should be considered?"
+    },
+    {
+      "requirement": "The system should be designed for a long-term lifetime of at least several years, with a plan to keep data accessible and exportable for future transitions.",
+      "source_citation": "I want this to be our system for the long haul—at least several years so it becomes the source of record for accreditation and audits. We need a plan to keep data accessible and exportable in case of future transitions.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for long-term data accessibility and exportability, indicating the importance of maintainability and future-proofing.",
+      "follow_up_question": "What specific data export formats and frequencies are required for compliance and future transitions?"
+    },
+    {
+      "requirement": "The system should support a peak of about a dozen simultaneous active users during planning sessions, with more users viewing schedules.",
+      "source_citation": "During peak, it’s not just the ten in the scheduling room. There may be a few faculty checking in, and a couple of clinical site coordinators. All told, I’d budget for maybe a dozen simultaneous active users at peak, with more people viewing schedules.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder provides specific information about the expected peak user load, which is crucial for system scalability.",
+      "follow_up_question": "Are there any specific scenarios or user interactions that should be prioritized for scalability testing?"
+    },
+    {
+      "requirement": "The system should log who made changes, when they were made, the prior value, and a short justification for overrides to ensure traceability.",
+      "source_citation": "I’d want to know who made the change, when they made it, what the prior value was, and a short justification if they overrode a warning. We need that for traceability.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "data_integrity_auditability",
+      "confidence": 5,
+      "rationale": "The stakeholder clearly outlines the requirements for audit trails and change logging, emphasizing the need for traceability.",
+      "follow_up_question": "Are there any specific types of changes or overrides that should be prioritized for detailed logging?"
+    },
+    {
+      "requirement": "The system should integrate with CampusConnect for core student and course information, respecting single-sign-on and user identity.",
+      "source_citation": "I mean core student and course information—student identity, program and course lists, and basic enrollment facts should come from CampusConnect rather than us trying to be the source of truth. I’d prefer not to reinvent account provisioning either; whatever single-sign-on and user identity CampusConnect uses should be respected.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "integration",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies the integration requirements with CampusConnect, including the need for single-sign-on and user identity management.",
+      "follow_up_question": "Are there any specific data fields or synchronization frequencies that should be prioritized for the CampusConnect integration?"
+    },
+    {
+      "requirement": "The system should use clear Standard English for student-facing notices and align with established nursing terminology for faculty and clinical partners.",
+      "source_citation": "The system’s student-facing notices should use clear Standard English—nothing too technical on the student side. We should align with the common national nursing terminology—what faculty and clinical partners expect.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "compliance_privacy",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of clear and appropriate terminology for different user groups, aligning with compliance and privacy requirements.",
+      "follow_up_question": "Are there any specific nursing terminology standards or glossaries that should be used for alignment?"
+    },
+    {
+      "requirement": "The system should support standard and machine-readable export formats like CSV or XML, with the ability to run exports on demand and annually for compliance purposes.",
+      "source_citation": "I’m not picky about formats as long as they’re standard and machine-readable—CSV or XML would work. We should be able to run an export for a cohort or term on demand, and an archive export annually for compliance purposes.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "exportability_long_term_data_access",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the requirements for data export formats and frequencies, emphasizing the need for compliance and long-term data access.",
+      "follow_up_question": "Are there any specific data fields or reporting requirements that should be included in the exports?"
+    }
+  ]
+}

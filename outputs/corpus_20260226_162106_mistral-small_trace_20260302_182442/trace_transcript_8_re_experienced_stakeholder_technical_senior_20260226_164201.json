@@ -1,0 +1,227 @@
+{
+  "transcript_file": "outputs/corpus-20260226_162106/transcript_8_re_experienced_stakeholder_technical_senior_20260226_164201.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_182621",
+  "requirements": [
+    {
+      "requirement": "The system shall store encrypted card data server-side with strict access controls, allowing only finance and a small set of senior admins to access raw payment details, and shall maintain audit trails for all access.",
+      "source_citation": "Stakeholder: I think we should control our data — so I'd rather we keep card info on our side but in a vaulted, encrypted form. That gives us control over reconciliation and some business workflows. That said, I know there's a trade-off: storing full card data means heavier compliance and more things to manage. I'm tempted to say keep them server-side but encrypted with strict access controls, rather than outsourcing everything to a third party, because we may need occasional raw access for investigation. But, um, that's contingent on us having proper key management.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for encrypted storage of card data server-side with strict access controls and audit trails. The exact number of senior admins is specified as 'single-digit,' which is clear but could be more precise.",
+      "follow_up_question": "Can you specify the exact number of senior admins who should have access to raw payment details?"
+    },
+    {
+      "requirement": "The system shall use HSM-backed keys or cloud KMS with HSM backing for encryption.",
+      "source_citation": "Stakeholder: I would prefer HSM-backed keys wherever possible or cloud KMS with HSM backing. We need strong encryption at rest and in transit, key rotation, and separation of duties between those who manage keys and those who manage the application.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder clearly states the preference for HSM-backed keys or cloud KMS with HSM backing, including the need for strong encryption, key rotation, and separation of duties.",
+      "follow_up_question": "Are there any specific HSM or cloud KMS providers you prefer or any regulatory requirements that dictate the choice of key management system?"
+    },
+    {
+      "requirement": "The system shall comply with PCI standards for payments and applicable data protection laws for user data.",
+      "source_citation": "Stakeholder: We must at least be prepared for PCI compliance given we handle card payments, and we need to follow applicable data protection laws for customers in different countries.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for PCI compliance and adherence to data protection laws, but does not specify the exact standards or laws.",
+      "follow_up_question": "Can you provide more details on the specific PCI compliance level and data protection laws that need to be adhered to?"
+    },
+    {
+      "requirement": "The system shall implement layered defenses against credential stuffing, payment fraud, and DDoS attacks, including WAF, rate-limiting, bot detection, and fraud scoring for purchases.",
+      "source_citation": "Stakeholder: I'm mainly worried about credential stuffing and payment fraud, and broad volumetric attacks like DDoS that could take the site down. For detection, I'd like layered defenses: WAF, rate-limiting, bot detection, and fraud scoring for purchases.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for layered defenses against specific types of attacks, including WAF, rate-limiting, bot detection, and fraud scoring.",
+      "follow_up_question": "Can you provide more details on the specific implementations or tools for WAF, rate-limiting, bot detection, and fraud scoring?"
+    },
+    {
+      "requirement": "The system shall maintain audit logs for several months, with tamper-evident storage and access controls, to support fraud investigation and compliance inquiries.",
+      "source_citation": "Stakeholder: We need to keep audit logs long enough for fraud investigation and compliance inquiries. That means several months at a minimum, maybe longer depending on legal requirements. Also, logs should be tamper-evident and stored separately from production so an attacker can't wipe them easily. Key rotation and access to logs must be tightly controlled too.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for audit logs to be kept for several months, with tamper-evident storage and access controls, but does not specify the exact duration.",
+      "follow_up_question": "Can you specify the exact duration for retaining audit logs and any legal requirements that dictate this duration?"
+    },
+    {
+      "requirement": "The system shall ensure that routine UI actions, such as clicking through movie lists or opening account pages, are completed within 5 seconds (p95).",
+      "source_citation": "Stakeholder: Let's aim for about five seconds as the upper bound for regular UI responses. So most UI actions should return within that window.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the performance requirement for routine UI actions, but it is not clear if this is a p95 or another percentile.",
+      "follow_up_question": "Can you confirm that the 5-second target is for the p95 percentile and provide any additional performance requirements for other percentiles?"
+    },
+    {
+      "requirement": "The system shall ensure that the full purchase flow, including gateway calls and fraud checks, is completed within 15 seconds.",
+      "source_citation": "Stakeholder: For in-line card purchases, including gateway calls and fraud checks, I don't want users sitting forever. I'd say up to around fifteen seconds is tolerable; beyond that we should provide clear feedback and allow cancellation or retry.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the performance requirement for the full purchase flow, but it is not clear if this is a p95 or another percentile.",
+      "follow_up_question": "Can you confirm that the 15-second target is for the p95 percentile and provide any additional performance requirements for other percentiles?"
+    },
+    {
+      "requirement": "The system shall ensure that streaming startup is completed within 10 seconds on typical connections.",
+      "source_citation": "Stakeholder: Startup should be quick; people will abandon if it stalls. Considering different networks, I'd say startup needs to be under what feels like a short wait — roughly within ten seconds to first playback on typical connections.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the performance requirement for streaming startup, but it is not clear if this is a p95 or another percentile.",
+      "follow_up_question": "Can you confirm that the 10-second target is for the p95 percentile and provide any additional performance requirements for other percentiles?"
+    },
+    {
+      "requirement": "The system shall ensure that 90% of novice users can successfully complete core tasks such as searching, buying a movie, and starting playback via moderated usability tests.",
+      "source_citation": "Stakeholder: We should aim for most novice users to complete core tasks without help. If pushed for a number, I’m comfortable designing toward success for about ninety percent of novice users on typical tasks like searching, buying a movie, and starting playback.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the usability requirement for novice users, but it is not clear if this is a p95 or another percentile.",
+      "follow_up_question": "Can you confirm that the 90% target is for the p95 percentile and provide any additional usability requirements for other percentiles?"
+    },
+    {
+      "requirement": "The system shall ensure that error handling is approachable for non-tech-savvy users.",
+      "source_citation": "Stakeholder: We need to make the product approachable for users who aren't tech-savvy, which changes UX and error-handling choices.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for approachable error handling for non-tech-savvy users, but does not provide specific details or examples.",
+      "follow_up_question": "Can you provide more details on what constitutes approachable error handling for non-tech-savvy users and any specific examples or guidelines?"
+    },
+    {
+      "requirement": "The system shall achieve and maintain 99.5% uptime.",
+      "source_citation": "Stakeholder: Alright — for design purposes, target around ninety-nine and a half percent uptime. That gives us some runway for maintenance but keeps us focused on redundancy and monitoring.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the uptime requirement, but it is not clear if this is a p95 or another percentile.",
+      "follow_up_question": "Can you confirm that the 99.5% uptime target is for the p95 percentile and provide any additional availability requirements for other percentiles?"
+    },
+    {
+      "requirement": "The system shall ensure that browsing, search, account management, and purchases remain available even if streaming fails.",
+      "source_citation": "Stakeholder: Browsing, search, account management, and purchases absolutely must remain available. Users should still be able to buy content and have it queued or be informed about playback timing.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for resilience in the face of streaming failures, but does not provide specific details on how this should be achieved.",
+      "follow_up_question": "Can you provide more details on the specific mechanisms or strategies for ensuring that browsing, search, account management, and purchases remain available during streaming failures?"
+    },
+    {
+      "requirement": "The system shall simulate streaming server outages, CDN failures, and payment latency in staging and limited production experiments during low-traffic windows.",
+      "source_citation": "Stakeholder: Yes, we should run failure injection in staging — simulate streaming server outages, CDN edge failures, and payment gateway latency spikes. We should validate graceful degradation: browsing and purchases remain available even if streaming is impaired. Start in staging, then limited experiments in production during low-traffic windows.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for chaos testing, but does not provide specific details on the scope or frequency of these tests.",
+      "follow_up_question": "Can you provide more details on the specific scope, frequency, and criteria for success of the chaos testing experiments?"
+    },
+    {
+      "requirement": "The system shall be designed for 100,000 registered users with autoscaling for peak concurrency, which is expected to be a single-digit percentage of registered users normally and higher during releases.",
+      "source_citation": "Stakeholder: If I have to pick one for the first-design pass, let's size for one hundred thousand registered customers as a realistic initial target and then plan for expected concurrency as a percent of that for peak sizing. We will need to define the concurrency expectations separately.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the scalability requirement, but does not provide specific details on the exact concurrency expectations or the single-digit percentage.",
+      "follow_up_question": "Can you provide more details on the exact concurrency expectations and the single-digit percentage of registered users that should be used for peak sizing?"
+    },
+    {
+      "requirement": "The system shall use a hybrid CDN caching approach, with popular content cached and on-demand fetching for other content.",
+      "source_citation": "Stakeholder: Realistically, only a working set of content would be cached everywhere. We should plan for on-demand origin fetches and a cache-warming strategy for premieres. The catalog is large and we can't pre-warm everything globally without cost. So a hybrid approach makes sense.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for a hybrid CDN caching approach, but does not provide specific details on the criteria for popular content or the cache-warming strategy.",
+      "follow_up_question": "Can you provide more details on the criteria for popular content and the specific cache-warming strategy that should be used?"
+    },
+    {
+      "requirement": "The system shall be designed to avoid the need for yearly rewrites.",
+      "source_citation": "Stakeholder: Sure — thanks. Um, broadly I want a platform that people can actually rely on and one we can evolve without rewriting it every year.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for evolvability, but does not provide specific details or guidelines on how this should be achieved.",
+      "follow_up_question": "Can you provide more details on the specific strategies or guidelines for ensuring that the system can evolve without the need for yearly rewrites?"
+    },
+    {
+      "requirement": "The system shall push notifications to PagerDuty/incident channels for abuse and high-severity incidents.",
+      "source_citation": "Stakeholder: Alerts should go to on-call tooling — email isn't enough — we need push into pager/incident channels with context.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for push notifications to PagerDuty/incident channels, but does not provide specific details on the criteria for high-severity incidents or the exact toolchain.",
+      "follow_up_question": "Can you provide more details on the specific criteria for high-severity incidents and the exact toolchain that should be used for push notifications?"
+    },
+    {
+      "requirement": "The system shall monitor cost estimates for multi-region and HSM setups.",
+      "source_citation": "Stakeholder: Just one last thing — please make sure the NFRs include sign-off owners and a cost-risk note on the HSM/multi-region trade-off.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "other",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for cost awareness, but does not provide specific details or guidelines on how this should be achieved.",
+      "follow_up_question": "Can you provide more details on the specific strategies or guidelines for monitoring cost estimates for multi-region and HSM setups?"
+    },
+    {
+      "requirement": "The system shall have explicit SLIs, such as p95 for performance and p99 for monitoring.",
+      "source_citation": "Stakeholder: We need clear measurable targets so we can design accordingly — otherwise everything becomes 'it should be fast' and we over- or under-build.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "other",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for measurable targets, but does not provide specific details or examples of SLIs.",
+      "follow_up_question": "Can you provide more details on the specific SLIs that should be used for performance and monitoring, and any additional SLIs that may be relevant?"
+    },
+    {
+      "requirement": "The system shall have formal sign-off requirements for security and availability acceptance criteria.",
+      "source_citation": "Stakeholder: Just one last thing — please make sure the NFRs include who signs off on security and availability acceptance.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "other",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for formal sign-off, but does not provide specific details on the criteria or the process for sign-off.",
+      "follow_up_question": "Can you provide more details on the specific criteria and the process for formal sign-off on security and availability acceptance?"
+    }
+  ]
+}

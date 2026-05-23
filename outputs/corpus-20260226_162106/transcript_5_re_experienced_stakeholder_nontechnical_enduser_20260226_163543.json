@@ -1,0 +1,182 @@
+{
+  "project_id": "5",
+  "project_name": "Web-Based Recycled Parts and Repair Facility Management System",
+  "project_description": "A web-based system supporting insurance claim adjusters and collision estimators in managing recycled parts sourcing and repair facility selection. The system integrates with an existing recycled parts database, enabling users to search for available recycled parts and locate preferred repair facilities based on vehicle location. Adjusters can audit recycled parts utilization within collision estimates and rate repair facilities based on their recycled parts performance. Designed for use in office and field environments, the application emphasizes ease of use, fast performance, role-based access control, and compliance with corporate standards and industry regulations.",
+  "model": "gpt-5-mini",
+  "timestamp": "20260226_163543",
+  "interviewer_persona": "re_experienced",
+  "stakeholder_persona": "stakeholder_nontechnical_enduser",
+  "no_refine": true,
+  "selected_requirements": [
+    {
+      "text": "'The product shall interface with the Choice Parts System. This provides the feed of recycled parts data.'",
+      "line": 206,
+      "categories": [
+        "quality",
+        "operability"
+      ]
+    },
+    {
+      "text": "'The product shall comply with corporate User Interface Guidelines'",
+      "line": 209,
+      "categories": [
+        "quality",
+        "legal",
+        "look_and_feel"
+      ]
+    },
+    {
+      "text": "'The product shall be easy to use by Adjusters and Collision Estimators. 95% of Adjusters and Collision Estimators shall find the product easy to use.'",
+      "line": 212,
+      "categories": [
+        "quality",
+        "usability"
+      ]
+    },
+    {
+      "text": "'The product shall be easy to learn by Adjusters and Collision Estimators. The product shall be learned with two days onsite training'",
+      "line": 215,
+      "categories": [
+        "quality",
+        "usability"
+      ]
+    },
+    {
+      "text": "'The user shall easily locate instructions while using the product. User help can be found within 90% of the system.'",
+      "line": 216,
+      "categories": [
+        "quality",
+        "look_and_feel",
+        "usability"
+      ]
+    },
+    {
+      "text": "'The search for recycled parts shall take no longer than 15 seconds. The search results shall be returned in under 15 seconds.'",
+      "line": 217,
+      "categories": [
+        "quality",
+        "performance"
+      ]
+    },
+    {
+      "text": "'The search for the preferred repair facility shall take no longer than 8 seconds. The preferred repair facility is returned within 8 seconds'",
+      "line": 218,
+      "categories": [
+        "quality",
+        "performance"
+      ]
+    },
+    {
+      "text": "'The product shall achieve a 98% uptime. The product shall not fail more than 2% of the available online time.'",
+      "line": 222,
+      "categories": [
+        "quality",
+        "availability",
+        "fault_tolerance"
+      ]
+    },
+    {
+      "text": "'One insurance company shall not be able to view another insurance companys claim data.'",
+      "line": 235,
+      "categories": [
+        "quality",
+        "security"
+      ]
+    },
+    {
+      "text": "'The system shall prevent malicious attacks including denial of service.'",
+      "line": 237,
+      "categories": [
+        "quality",
+        "security"
+      ]
+    }
+  ],
+  "evaluation": {
+    "g_eval_quality": {
+      "judge_model": "openai/gpt-5-mini",
+      "overall_mean": 7.55,
+      "overall_std_dev": 0.66,
+      "dimensions": {
+        "structuring": {
+          "mean": 7.2,
+          "std_dev": 0.45,
+          "samples": [
+            8.0,
+            7.0,
+            7.0,
+            7.0,
+            7.0
+          ]
+        },
+        "clarity": {
+          "mean": 8.2,
+          "std_dev": 0.45,
+          "samples": [
+            9.0,
+            8.0,
+            8.0,
+            8.0,
+            8.0
+          ]
+        },
+        "responsiveness": {
+          "mean": 8.0,
+          "std_dev": 0.71,
+          "samples": [
+            7.0,
+            8.0,
+            8.0,
+            8.0,
+            9.0
+          ]
+        },
+        "rigor": {
+          "mean": 6.8,
+          "std_dev": 0.45,
+          "samples": [
+            7.0,
+            7.0,
+            7.0,
+            6.0,
+            7.0
+          ]
+        }
+      }
+    },
+    "g_eval_meta": {
+      "judge_model": "openai/gpt-5-mini",
+      "overall_mean": 8.6,
+      "overall_std_dev": 0.0,
+      "dimensions": {
+        "completeness": {
+          "mean": 8.6,
+          "std_dev": 0.55,
+          "samples": [
+            9.0,
+            8.0,
+            9.0,
+            9.0,
+            8.0
+          ]
+        },
+        "realism": {
+          "mean": 8.6,
+          "std_dev": 0.55,
+          "samples": [
+            8.0,
+            9.0,
+            9.0,
+            9.0,
+            8.0
+          ]
+        }
+      }
+    },
+    "bert_score": {
+      "precision": 0.7980151772499084,
+      "recall": 0.7881718873977661,
+      "f1": 0.7930629849433899
+    }
+  }
+}

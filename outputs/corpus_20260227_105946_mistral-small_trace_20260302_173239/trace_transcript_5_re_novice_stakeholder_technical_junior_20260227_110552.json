@@ -1,0 +1,139 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_5_re_novice_stakeholder_technical_junior_20260227_110552.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_173327",
+  "requirements": [
+    {
+      "requirement": "The system should respond to parts searches within 15 seconds to prevent user frustration and maintain focus.",
+      "source_citation": "If a parts search takes more than, say, a handful of seconds, people get annoyed and start switching to phone calls. So, fast enough that adjusters don't lose focus, that's the bar. If you want a number... maybe around fifteen seconds is about the upper bound before people complain.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions a time frame for acceptable response times for parts searches, indicating a clear performance requirement. The confidence is high due to the specific time frame provided.",
+      "follow_up_question": "Are there different performance expectations for different types of searches, such as parts versus repair facilities?"
+    },
+    {
+      "requirement": "The system should respond to repair facility searches within 10 seconds to ensure quick access to information while at a location.",
+      "source_citation": "When you're standing by a car or talking to an insured, you want the nearest preferred shop to pop up faster than the big parts lists. So it should come back quicker than the parts search. If pressed, I'd say under ten seconds would be nice, but it should feel almost immediate when you're looking up a shop.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a desired response time for repair facility searches, which is a clear performance requirement. The confidence is high due to the specific time frame provided.",
+      "follow_up_question": "Are there any specific scenarios or conditions under which the response time for repair facility searches might need to be faster or slower?"
+    },
+    {
+      "requirement": "The system should handle a large number of concurrent users, specifically in the low thousands of simultaneous sessions, without performance degradation.",
+      "source_citation": "It needs to cope with a large number of concurrent users without slowing. If you're asking for a target, I'd say something in the low thousands for simultaneous sessions to be safe.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for the system to handle a large number of concurrent users, indicating a scalability requirement. The confidence is medium due to the lack of a specific number but the mention of 'low thousands'.",
+      "follow_up_question": "What is the exact number of concurrent users the system should be able to handle, and are there peak usage times that need to be considered?"
+    },
+    {
+      "requirement": "The system should be highly available, with downtime limited to ensure business continuity, aiming for high nineties percentage availability.",
+      "source_citation": "Downtime is the big one — if the system's down when claims are being processed, it slows everything and people revert to old processes. Umm, we need it to be reliable — hardly ever down. If you want a percentage, something up in the high nineties for availability is what we'd expect, otherwise business continuity teams will raise concerns.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the importance of high availability and provides a specific target percentage, indicating a clear availability requirement. The confidence is high due to the specific target provided.",
+      "follow_up_question": "What specific measures or redundancies are needed to achieve the high availability target?"
+    },
+    {
+      "requirement": "The system should implement standard security protections, such as rate-limiting and CDN or WAF patterns, to mitigate denial-of-service attacks and ensure basic protections against other simple attacks.",
+      "source_citation": "Um, I expect standard protections, like rate-limiting and CDN or WAF patterns so the service doesn't become unusable. Again, not my exact domain, but we can't be wide open to simple attacks.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for standard security protections, indicating a security requirement. The confidence is medium due to the lack of specific details but the mention of standard protections.",
+      "follow_up_question": "What specific security measures or protocols should be implemented to meet these requirements?"
+    },
+    {
+      "requirement": "The system should have role-based access control to ensure that not everyone can see or modify all data, preventing unauthorized access to administrative or personal data.",
+      "source_citation": "Well, adjusters need to see parts and edit estimates, estimators need similar access, and managers need broader visibility. There should be guards so administrative or personal data doesn't leak to field staff. I'm not a security expert, but it's clear not everyone should see everything.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for role-based access control, indicating a clear security requirement. The confidence is high due to the specific roles and data access mentioned.",
+      "follow_up_question": "What specific roles and permissions should be defined for the system?"
+    },
+    {
+      "requirement": "The system should be designed to be easy to use, with minimal training required, and should be intuitive for adjusters and collision estimators.",
+      "source_citation": "It's mainly for adjusters and collision estimators, right? So it has to be dead simple for them. Most of them aren't into fiddly interfaces; they want clear fields, obvious search and a way to attach parts into an estimate without extra clicks. Training should be minimal — we shouldn't be spending weeks. People should be comfortable after a short onsite session and a couple of tries.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for ease of use and minimal training, indicating a clear usability requirement. The confidence is high due to the specific user roles and training expectations mentioned.",
+      "follow_up_question": "What specific usability features or design principles should be incorporated to meet these requirements?"
+    },
+    {
+      "requirement": "The system should be compatible with standard corporate browsers and tablets, and should degrade gracefully on flaky mobile networks.",
+      "source_citation": "It should work on standard corporate browsers and on tablets for field staff, and it should degrade gracefully on flaky mobile networks.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for compatibility with specific devices and networks, indicating a portability requirement. The confidence is medium due to the lack of specific details but the mention of standard browsers and tablets.",
+      "follow_up_question": "What specific devices, browsers, and network conditions should the system be tested against to ensure compatibility?"
+    },
+    {
+      "requirement": "The system should implement fuzzy matching in searches to accommodate for variations in how users input vehicle codes and shop names.",
+      "source_citation": "Make the search forgiving: people type weird vehicle codes and shop names, so fuzzy matching is a lifesaver.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for fuzzy matching in searches, indicating a usability requirement. The confidence is medium due to the lack of specific details but the mention of fuzzy matching.",
+      "follow_up_question": "What specific search algorithms or techniques should be used to implement fuzzy matching?"
+    },
+    {
+      "requirement": "The system should follow corporate architecture and UI guidelines to ensure consistency with other tools and ease of deployment.",
+      "source_citation": "Oh, absolutely. IT will flag anything that deviates, and honestly we don't want a Frankenstein app. The look and patterns should match our other tools so people recognise it, and the architecture should map to our cloud and security standards so we don't hit governance issues later. It makes deployments and approvals much smoother, so yeah, it's kind of essential.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need to follow corporate architecture and UI guidelines, indicating a clear maintainability requirement. The confidence is high due to the specific mention of IT standards and governance issues.",
+      "follow_up_question": "What specific corporate architecture and UI guidelines should the system adhere to?"
+    },
+    {
+      "requirement": "The system should have audit trails tied to estimates, allowing regulators and internal audit to see who changed what and when.",
+      "source_citation": "We need to keep audit trails tied to estimates, especially for parts sourcing decisions. Regulators and internal audit like to see who changed what and when.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "auditability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for audit trails, indicating a clear auditability requirement. The confidence is high due to the specific mention of regulators and internal audit.",
+      "follow_up_question": "What specific audit trail features or logging mechanisms should be implemented?"
+    },
+    {
+      "requirement": "The system should provide real-time or near-real-time updates for parts availability to ensure adjusters are offering parts that are actually available.",
+      "source_citation": "Real-time or near-real-time would be ideal, because availability changes and you don't want adjusters offering parts that aren't actually available.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "data_integrity",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for real-time or near-real-time updates, indicating a data integrity requirement. The confidence is medium due to the lack of specific details but the mention of real-time updates.",
+      "follow_up_question": "What specific mechanisms or technologies should be used to achieve real-time or near-real-time updates?"
+    }
+  ]
+}

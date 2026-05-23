@@ -1,0 +1,227 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_8_re_experienced_stakeholder_nontechnical_enduser_20260227_111453.txt",
+  "model": "openai/gpt-5-mini",
+  "timestamp": "20260302_172653",
+  "requirements": [
+    {
+      "requirement": "Pay-as-you-go account creation must complete within 5 minutes for the majority of users.",
+      "source_citation": "For the quick option they call pay-as-you-go, I felt like it should be really fast — like, I should be able to finish before my tea gets cold... under five minutes would be reasonable for that one.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly specifies an upper bound (under five minutes) for the pay-as-you-go signup flow. This is a usability/performance expectation about elapsed time for a user task. Missing: statistical target (e.g., 95% of users), device/network conditions, whether this includes payment processing latency or only form completion.",
+      "follow_up_question": "Should the 'under 5 minutes' target apply to 95% of users, 99% of users, or some other percentile, and does it assume typical broadband conditions?"
+    },
+    {
+      "requirement": "Unlimited-subscription account creation may take longer but should complete within 10 minutes.",
+      "source_citation": "the subscription was more paperwork-y... it shouldn't drag on. Umm, rough number — I guess under ten minutes feels acceptable for that.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "Stakeholder accepts a longer duration for subscription signup but gives a specific acceptable upper bound (10 minutes). Missing: coverage (percentage of users) and whether this includes external payment provider delays.",
+      "follow_up_question": "Should the 10-minute limit be measured end-to-end for 95% of users, and does it include time waiting on third-party payment gateways?"
+    },
+    {
+      "requirement": "Account creation must be accomplishable within a maximum of four separate pages/steps.",
+      "source_citation": "If I had to pick a maximum, I'd say four pages feels like the most I could tolerate without getting annoyed.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Stakeholder states a hard maximum of four pages for creating an account; this constrains UI step count. Missing: definition of 'page' (modal counts?) and whether optional pages count.",
+      "follow_up_question": "Do modals, overlays, or multi-step single-page forms count toward the 'four pages' limit, and should optional/advanced pages be excluded from the count?"
+    },
+    {
+      "requirement": "After login, a user must be able to begin streaming their purchased movie within two clicks.",
+      "source_citation": "Two clicks or so would feel smooth to me.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly wants low click-distance (≈2 clicks) from login to playback. Missing: whether 'clicks' include opening menus, and applicability across devices (mobile vs desktop).",
+      "follow_up_question": "Does the 'two clicks' requirement apply on both mobile and desktop, and should opening a menu count as a click for this metric?"
+    },
+    {
+      "requirement": "Interactive actions like logging in or opening a page should respond within 5 seconds to avoid user frustration.",
+      "source_citation": "For small things like logging in or opening a page, waiting more than a few seconds feels wrong. If I had to put a number on it, maybe five seconds is the limit before I feel it's sluggish and start refreshing.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder provides a clear threshold (5s) for perceived responsiveness of small interactions. Missing: percentile (e.g., 95% of requests), server vs client rendering time, and conditions (cached vs cold).",
+      "follow_up_question": "Should the 5-second threshold apply to 95% of login/page load attempts under typical network conditions?"
+    },
+    {
+      "requirement": "Login authentication must complete within 5 seconds (end-to-end) under normal conditions.",
+      "source_citation": "To be exact, five seconds or less feels right for me.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly ties the 5s limit to logging in. Missing: scope (includes MFA, rate-limiting, or third-party auth), and target percentile.",
+      "follow_up_question": "Does the 5-second login limit include multi-factor or magic-link authentication, and for what percentile of users should this be true?"
+    },
+    {
+      "requirement": "End-to-end purchase-to-play for a pre-selected movie should be possible in about 3 minutes.",
+      "source_citation": "I'd want it to be possible in about three minutes for a pre-selected movie — from deciding to buy to hitting play.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Stakeholder specifies a target time for the entire purchase and playback initiation flow. Missing: treatment of payment provider latency, ads, or optional upsells; percentile target.",
+      "follow_up_question": "Should the 3-minute goal be met for X% of users (e.g., 95%), and does it include potential ad playback or only the paid content?"
+    },
+    {
+      "requirement": "Initial video start (time-to-first-frame/startup) and buffering should not exceed 10 seconds under typical conditions.",
+      "source_citation": "I'd say waiting more than a few seconds to start streaming is annoying; maybe around ten seconds would be the longest I'd accept before it feels like it's broken",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder tolerates up to ~10 seconds for streaming start/buffering before abandoning. Missing: percentile, adaptive bitrate behavior, and definition of 'typical conditions'.",
+      "follow_up_question": "Should the 10-second startup/buffer limit apply to 95% of streaming attempts and should adaptive bitrate switching be used to meet this target?"
+    },
+    {
+      "requirement": "The site must degrade gracefully on slow connections: provide lower-quality stream options and clear, non-technical messages instead of an indefinite spinner.",
+      "source_citation": "If my connection is weak, maybe a smaller file or a clearer message than some spinning wheel would help. Or options to lower quality without searching for hidden settings. Simple choices, not technical jargon.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Stakeholder requests graceful degradation and user-facing controls/messages for poor networks. Missing: which quality levels to offer and whether automatic fallback is required.",
+      "follow_up_question": "Should the system automatically switch to a lower-bitrate stream and also present simple quality choices (e.g., Low/Medium/High), and which languages/wording should be used in messages?"
+    },
+    {
+      "requirement": "The site must avoid adding unnecessary overhead (heavy images, autoplay videos, excessive redirects) that worsens performance on slow home connections.",
+      "source_citation": "but even with that, the site sometimes makes things worse — like heavy images, autoplay videos before the movie, or too many redirects. It feels like the site adds overhead on top of the slow connection.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder calls out site-level behaviors that amplify poor network performance. Missing: measurable limits (image sizes, redirect count) and differences per device.",
+      "follow_up_question": "Do you want explicit limits (e.g., no autoplay video on landing, max image payload per page) and should the site detect low-bandwidth clients and disable heavy elements automatically?"
+    },
+    {
+      "requirement": "The user interface must be simple enough that at least 90% of novice users (non-technical) can create an account and watch a clip without assistance.",
+      "source_citation": "I'd want almost all of those kinds of users to be able to do basic tasks. If someone asks me to put a number on 'almost all,' hmm — I'd say about nine out of ten of those novice users should manage it without help.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "Stakeholder gives a measurable usability success rate (90%) for novice users. Missing: definition of 'novice user' demographic, test conditions, and acceptable tasks included in success criteria.",
+      "follow_up_question": "How do you define 'novice' (age, literacy, device familiarity), and should success be measured in a formal usability study with a specific task set and success criteria?"
+    },
+    {
+      "requirement": "Run observable usability tests where non-technical users attempt to create an account and watch a clip; majority success indicates usability is acceptable.",
+      "source_citation": "Practically, if we ran a little test where a bunch of non-technical people were asked to make an account and watch a clip, and most of them could do it without asking for help, that would be proof.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "Stakeholder recommends empirical usability testing as an acceptance method. Missing: sample size, metrics to record, and success threshold (though earlier he suggested 9/10).",
+      "follow_up_question": "What sample size and success threshold (e.g., 90% of 20 participants) would you consider sufficient evidence from such a usability test?"
+    },
+    {
+      "requirement": "Registration flows must be both fast and clear; visibility of steps and minimal steps should be enforced to prevent confusion even if the flow is quick.",
+      "source_citation": "No, I think both matter. Fast but confusing is the worst... making the steps visible and few would help both speed and clarity...",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Stakeholder emphasizes that speed alone is insufficient; clarity and visible steps are required. Missing: how to measure 'clear' (task completion, error rates) and what 'visible steps' means visually.",
+      "follow_up_question": "What observable indicators should confirm 'clear' (e.g., task completion without errors, time on task), and do you prefer a progress bar or step labels to make steps visible?"
+    },
+    {
+      "requirement": "Service availability must meet approximately 99.5% uptime.",
+      "source_citation": "If I must say a figure, something like ninety-nine and a half percent up time feels about right to me.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "Stakeholder states an explicit SLA-like uptime figure (99.5%). Missing: measurement window (monthly/yearly), which components this applies to (payment service, streaming CDN, site), and allowed maintenance windows.",
+      "follow_up_question": "Should the 99.5% uptime target be measured monthly or annually, and which system components (frontend, streaming CDN, payment gateway) must meet this SLA?"
+    },
+    {
+      "requirement": "When the site is unavailable, present a clear, friendly downtime message including reason and estimated time to recovery; provide refund or compensation options if the user paid for content.",
+      "source_citation": "I want to know why and when it will be back... if it's down and I paid for a movie, I want to see a clear message or an option to get a refund. At the very least, a friendly message...",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Stakeholder requests transparent downtime communication and refund/compensation workflows. Missing: refund policy specifics, acceptable ETA accuracy, and whether automated refunds are required.",
+      "follow_up_question": "What refund or compensation policy do you expect (instant refund, credit, or retry), and what minimum downtime message fields (reason, ETA, contact) are required?"
+    },
+    {
+      "requirement": "Successful payment should reliably trigger playback; payment-completed-but-player-stuck scenarios must be prevented or automatically remediated.",
+      "source_citation": "I finish registration or payment and the player still doesn't start... I paid or used a card, and then it's just stuck. That makes me feel cheated.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "reliability",
+      "confidence": 5,
+      "rationale": "Stakeholder identifies a critical reliability/UX failure: payment completes but playback fails. Missing: acceptable detection and remediation (auto-retry, refund, customer notification) and SLA for resolution.",
+      "follow_up_question": "Should the system automatically retry playback, queue the content for immediate retry, or proactively issue a refund/credit if playback does not start within X seconds after payment?"
+    },
+    {
+      "requirement": "Pages must avoid clutter: minimize intrusive ads and prevent autoplay media that leads users to immediately close the tab.",
+      "source_citation": "Also, the cluttered pages with too many ads and auto-playing stuff — that gets me to close the tab faster than anything.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 5,
+      "rationale": "Stakeholder cites visual clutter and autoplay as reasons to abandon; this is a look_and_feel/usability concern. Missing: quantitative ad limits, whether non-intrusive ads are acceptable, and business tradeoffs.",
+      "follow_up_question": "Do you want a strict policy (e.g., no autoplay, max one ad per page) and should ad display be suppressed for logged-in users during playback?"
+    },
+    {
+      "requirement": "Pre-paid card redemption flow must be simpler and faster than credit-card payment flow (minimal steps: enter code and play).",
+      "source_citation": "It should be even easier than credit card since I already have the code; I just enter it and watch. If I have to jump through more steps than a credit card, it feels backwards.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "Stakeholder expects a minimal-step flow for pre-paid codes. Missing: exact step count, verification needs to prevent fraud, and whether redemption should be instant or involve backend checks.",
+      "follow_up_question": "Should pre-paid code redemption be a single-step flow (enter code → validate → play), and what fraud checks (if any) are acceptable that might add latency?"
+    },
+    {
+      "requirement": "Password complexity requirements must be reasonable for non-technical users; provide alternatives such as magic links or gentle help prompts rather than strict complexity rules that cause drop-off.",
+      "source_citation": "Please don't make passwords too weird for people who don't use the web much... Maybe some gentle help or alternatives like magic links would be nice.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder highlights security-usability tradeoff: strict password rules harm adoption; suggests alternatives. Missing: exact allowed complexity policy and security risk acceptance.",
+      "follow_up_question": "Which authentication alternatives do you prefer (magic links, SMS codes, social login), and what minimum password policy is acceptable if those alternatives are unavailable?"
+    },
+    {
+      "requirement": "Interactive click latency must feel instantaneous: users should not experience a frozen UI when re-clicking; guard against duplicate requests and visible feedback should appear immediately.",
+      "source_citation": "If I click and nothing happens right away, I start clicking again and then it freezes. I get impatient.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "Stakeholder describes perceived freezing caused by lack of immediate feedback and duplicate clicks. Missing: design for immediate client-side feedback, debouncing/disable-on-click behavior, and thresholds.",
+      "follow_up_question": "Is immediate visible feedback sufficient (e.g., spinner or disabled button), or do you require the UI to prevent duplicate submissions entirely until the server responds?"
+    }
+  ]
+}

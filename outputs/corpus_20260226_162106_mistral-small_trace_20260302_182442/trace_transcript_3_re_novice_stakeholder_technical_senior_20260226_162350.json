@@ -1,0 +1,183 @@
+{
+  "transcript_file": "outputs/corpus-20260226_162106/transcript_3_re_novice_stakeholder_technical_senior_20260226_162350.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_182444",
+  "requirements": [
+    {
+      "requirement": "The system should respond to routine actions within 5 seconds and generate a full schedule within 30 seconds.",
+      "source_citation": "It needs to feel snappy for day-to-day stuff. [...] For the small management tasks, around five seconds is the upper bound I’d tolerate. For generating a full schedule, I’d accept a little more time, say up to thirty seconds, but I’d prefer less.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the expected response times for different types of actions, providing clear performance benchmarks.",
+      "follow_up_question": "Are there any specific actions or operations that require even faster response times?"
+    },
+    {
+      "requirement": "The system must ensure privacy and not expose student records indiscriminately.",
+      "source_citation": "Privacy is important — we can’t just expose student records willy-nilly.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of privacy, indicating a need for robust security measures to protect student records.",
+      "follow_up_question": "What specific privacy regulations or standards must the system comply with?"
+    },
+    {
+      "requirement": "Access control should follow the principle of least privilege.",
+      "source_citation": "Access control should follow least privilege.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the principle of least privilege, which is a key security requirement.",
+      "follow_up_question": "Can you provide examples of specific roles and their corresponding access levels?"
+    },
+    {
+      "requirement": "The system should use secure channels like mutual TLS or OAuth2 client credentials for machine-to-machine APIs.",
+      "source_citation": "We should use secure channels; mutual TLS is preferable where available, or OAuth2 client credentials for machine-to-machine APIs.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for secure communication channels, which is a critical security requirement.",
+      "follow_up_question": "Are there any specific security protocols or standards that must be followed?"
+    },
+    {
+      "requirement": "All personally identifiable information (PII) should be protected in transit and at rest using TLS and encryption.",
+      "source_citation": "All PII should be protected in flight and at rest. [...] TLS for transport, encryption at rest where required.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the need for protecting PII, which is a critical security requirement.",
+      "follow_up_question": "What specific encryption standards or protocols should be used?"
+    },
+    {
+      "requirement": "The system should provide a clean, predictable user experience.",
+      "source_citation": "A clean, predictable user experience are the main things I worry about.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of a clean and predictable user experience, which is a key usability requirement.",
+      "follow_up_question": "Can you provide specific examples of what constitutes a clean and predictable user experience in this context?"
+    },
+    {
+      "requirement": "The system should flag issues in-line and offer suggestions rather than throwing opaque errors.",
+      "source_citation": "It should flag issues in-line and offer suggestions, not throw opaque errors.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for in-line issue flagging and suggestions, which is a key usability requirement.",
+      "follow_up_question": "Can you provide examples of specific types of issues that should be flagged and suggestions that should be offered?"
+    },
+    {
+      "requirement": "The system should be compatible with standard HTML browsers and follow progressive enhancement principles.",
+      "source_citation": "The aim should be broad compatibility. It must work in standard HTML browsers; progressive enhancement is the way to go.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for broad browser compatibility and progressive enhancement, which are key usability requirements.",
+      "follow_up_question": "Are there any specific browsers or browser versions that must be supported?"
+    },
+    {
+      "requirement": "The system should be reliable during office hours, with a target uptime of 95%.",
+      "source_citation": "Reliability during office hours [...] is the main thing I worry about. [...] Something around ninety-five percent [uptime] is what I’m thinking.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the need for reliability during office hours and provides a specific uptime target.",
+      "follow_up_question": "Are there any specific reliability or availability metrics that should be monitored?"
+    },
+    {
+      "requirement": "The system should be designed with standard monitoring hooks for Prometheus-style metrics.",
+      "source_citation": "We should design with standard monitoring hooks so whoever runs it can plug in Prometheus-style metrics.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for standard monitoring hooks, which is a key maintainability requirement.",
+      "follow_up_question": "Are there any specific monitoring tools or metrics that should be integrated?"
+    },
+    {
+      "requirement": "The system should handle peak loads of approximately ten concurrent users during morning hours.",
+      "source_citation": "The scheduling team is small but all come in the morning. At peak, there are roughly ten people working concurrently.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder provides specific information about peak usage, which is a key scalability requirement.",
+      "follow_up_question": "Are there any specific performance metrics or benchmarks that should be met during peak loads?"
+    },
+    {
+      "requirement": "The system should include basic integrity checks such as referential integrity, unique constraints, and type validation.",
+      "source_citation": "Basic integrity checks are required — referential integrity, unique constraints, type validation.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "integrity",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the need for basic integrity checks, which is a key integrity requirement.",
+      "follow_up_question": "Are there any specific integrity checks or validation rules that should be implemented?"
+    },
+    {
+      "requirement": "The system should comply with the university’s information protection policies, which align with FERPA and HIPAA where applicable.",
+      "source_citation": "We should follow the university’s information protection policies, which align with FERPA and, where clinical student health info is involved, HIPAA concerns may come into play.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "compliance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for compliance with specific regulations, which is a key compliance requirement.",
+      "follow_up_question": "Are there any specific compliance standards or regulations that must be followed?"
+    },
+    {
+      "requirement": "The system should maintain audit trails to track who changed what and when.",
+      "source_citation": "We need audit trails so we can answer 'who changed what' if something goes wrong.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "auditability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the need for audit trails, which is a key auditability requirement.",
+      "follow_up_question": "Are there any specific audit trail requirements or logging standards that should be followed?"
+    },
+    {
+      "requirement": "The system should integrate seamlessly with the university’s existing systems, particularly CampusConnect and the student master server.",
+      "source_citation": "It has to play nicely with the university’s existing systems.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "interoperability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for seamless integration with existing systems, which is a key interoperability requirement.",
+      "follow_up_question": "Are there any specific integration requirements or protocols that should be followed?"
+    },
+    {
+      "requirement": "The system should support flexible re-assignment workflows and robust notification mechanisms.",
+      "source_citation": "In another project we underestimated how often clinical sites changed their availability during the term, and that caused a lot of churn. So, flexible re-assignment workflows and good notification plumbing matter.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "flexibility",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the need for flexibility in re-assignment workflows and robust notification mechanisms, which is a key flexibility requirement.",
+      "follow_up_question": "Can you provide specific examples of flexible re-assignment workflows and notification mechanisms that should be implemented?"
+    }
+  ]
+}

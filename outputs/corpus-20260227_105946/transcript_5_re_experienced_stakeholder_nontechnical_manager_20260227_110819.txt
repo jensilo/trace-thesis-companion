@@ -1,0 +1,108 @@
+Interviewer: Thanks for sitting down. To start, in your own words what's the core problem this system should solve for adjusters and estimators?
+
+Stakeholder: Sure — um, basically we want them to stop wasting time hunting down recycled parts and the right repair shops. Right now they bounce between a bunch of websites, emails, and a messy internal spreadsheet, and that slows claim handling and drives up cost. So the product should let them search parts and find the best nearby repair facility without having to juggle ten tabs. It should feel seamless to someone who's out on the road or at their desk.
+
+Interviewer: When you say "search parts" and "seamless," are you thinking about pulling from any existing sources, or building a standalone catalog?
+
+Stakeholder: We definitely need to use what's already there — we've got this Choice Parts database that the whole industry leans on. It would be painful to recreate that inventory, and adjusters expect that data. So the new tool has to work with that feed, not ignore it.
+
+Interviewer: Okay, so integration with the Choice Parts feed is a must. How do you expect that to behave from a user's perspective — real-time, periodic sync, something else?
+
+Stakeholder: From a user's point of view it should feel current. I don't need millisecond updates, but if a part disappeared yesterday it shouldn't show up as available today. So near-real-time or frequent syncs; the feed needs to be reliable enough that adjusters trust the availability info.
+
+Interviewer: You mentioned "trust" and "reliable" — that ties into corporate constraints. Are there existing corporate rules or styles this product has to follow?
+
+Stakeholder: Oh yes, absolutely. We can't ship something that looks and behaves like a rogue app. It has to follow our architecture playbook and our UI standards — the look and feel people are used to, the authentication patterns, that sort of thing. Otherwise IT will block it and the business won't take it seriously.
+
+Interviewer: When you say "authentication patterns" and "architecture playbook," are you concerned about security, performance, or something else from a business perspective?
+
+Stakeholder: Mostly business risk. If we don't align, the platform owners will flag it and delay rollout, and worse, if access isn't controlled properly we expose sensitive claim info. So it's less about the tech detail for me and more about avoiding governance headaches and potential regulatory exposure.
+
+Interviewer: You also said it needs to feel seamless for folks in the field and at desks. What do you mean by "feel seamless"? Can you put a number or a measurement on how many users must find it easy?
+
+Stakeholder: Hmm, I think almost all of our adjusters and estimators should be comfortable with it without complaining. I mean, we run training but this should cut training time down a lot. If I had to be concrete, I'd say we expect the vast majority to report it's easy to use — high nineties in satisfaction, something like that.
+
+Interviewer: "High nineties" — can you be specific? How would you measure that satisfaction?
+
+Stakeholder: Right, okay. We track usability with our post-rollout surveys and standard usability scoring. So the target I'm thinking of is that ninety-five percent of adjusters and collision estimators should report the product is easy to use on those surveys.
+
+Interviewer: Got it. Ninety-five percent ease-of-use target, measured via surveys. You mentioned help and training earlier. How discoverable should help be inside the app?
+
+Stakeholder: Help needs to be where people expect it. I don't want them Googling and ending up on outdated PDFs. Most of the app's screens should have contextual guidance or links to help, so that people find assistance while they're actually in the workflow. It should be present almost everywhere users go.
+
+Interviewer: "Almost everywhere" — can you quantify that, or explain how you'd judge coverage?
+
+Stakeholder: Sure — we would aim for help being available in about nine out of ten screens or workflows. If help is missing in too many places, adjusters will call our support line and that kills our first-call resolution metrics.
+
+Interviewer: Let's talk about speed. You said it's important people in the field don't wait. What happens today when searches are slow?
+
+Stakeholder: Oh, it's brutal. I had an adjuster tell me last week they were parked outside a shop with a customer and the search kept spinning; the customer got angry, the adjuster wrote it up as a bad experience, and we lost credit with that shop. So slow search directly hurts relationships and cycle time.
+
+Interviewer: How slow is too slow? What would be an acceptable response time for parts searches and for finding the preferred repair facility?
+
+Stakeholder: For parts searches, anything that drags on for more than a handful of seconds frustrates people. If you press me for numbers — and I know this is specific — the parts search needs to return within about fifteen seconds tops. For finding a preferred repair facility based on vehicle location, it should be quicker — more like under ten seconds; I think eight seconds is a good business boundary.
+
+Interviewer: Thanks, that's helpful. You mentioned auditing parts usage and rating repair facilities earlier. How visible should that data be, and who should be able to rate or audit?
+
+Stakeholder: Well, adjusters should see recycled parts usage when they're reviewing estimates, and claims managers should be able to run audits over time to spot patterns. Also we want a feedback mechanism where adjusters can rate how often a shop actually used recycled parts when they said they would — that influences our preferred provider lists. But not everyone should be able to change ratings or see everything; there are privacy and reputational risks if ratings get misused.
+
+Interviewer: You said "not everyone should see everything" — who needs broad access versus limited access?
+
+Stakeholder: Uh, I think internal program administrators need the broad view for configuration, auditors need historical access to investigate cases, and adjusters and estimators need access aligned to their claims. Field users shouldn't see corporate-wide sensitive data, just the details relevant to the claim they're handling, or else it's overwhelming and risky.
+
+Interviewer: You brought up legal and regulatory risk a couple of times. Are there specific regulations we need to bake in?
+
+Stakeholder: Yes, we can't ignore the estimatics laws that govern recycled parts usage — those rules dictate when and how recycled parts can be recommended or applied. And we also have to respect insurance regulations around claims processing and data retention. If the tool suggests non-compliant workflows, we get regulatory exposure and possible fines.
+
+Interviewer: How strict is that compliance expectation? Is the system expected to prevent non-compliant choices, or just flag them?
+
+Stakeholder: From a business perspective I'd say it should prevent mistakes where possible and flag other things clearly. We need the workflow to guide users away from non-compliant choices and make any exceptions explicit so there's an audit trail.
+
+Interviewer: On availability: you said outages are a business risk. How much downtime is acceptable before it becomes a serious problem?
+
+Stakeholder: We need it to be highly reliable — downtime erodes trust and increases manual workarounds. If it's down too often, people revert to old processes. To be specific, we designed this expecting it to be available nearly all the time; tolerating more than a couple percent of downtime over the year would be uncomfortable for the business.
+
+Interviewer: When you say "a couple percent," can you be precise about the target availability?
+
+Stakeholder: Yes, the expectation is around ninety-eight percent uptime. Anything below that, and we start seeing meaningful impacts on claims throughput and customer satisfaction.
+
+Interviewer: You mentioned field use earlier. Are there expectations for offline access, or just that it be responsive on phones and tablets?
+
+Stakeholder: Primarily responsive and lightweight for mobile use, so field staff can work on flaky cellular connections. Offline mode would be nice, but I see it as a stretch goal for later. Right now the priority is that it works well in the field experience and degrades gracefully.
+
+Interviewer: Understood. One more clarification on the Choice Parts integration: you said the feed needs to be reliable. Do you expect us to store a local cache of that data, or always query the source live?
+
+Stakeholder: I think a hybrid makes sense; users expect freshest data, but in areas with bad reception, a cached snapshot is better than nothing. The key point is that the system needs to handle the feed in a way that preserves trust in availability info and doesn't expose us to stale or inconsistent results.
+
+Interviewer: Earlier you talked about following corporate UI guidelines. How prescriptive are those guidelines — do they include component libraries and accessibility standards we must adopt?
+
+Stakeholder: They're fairly prescriptive — they cover visual components, accessibility expectations, and a set of approved interaction patterns. If we don't follow them, we'll face pushback during architecture reviews. Accessibility isn't just compliance for us; it's also a customer expectation and affects market perception.
+
+Interviewer: You mentioned ratings of repair facilities affecting preferred lists. How quickly should rating data influence which facilities are suggested?
+
+Stakeholder: It should influence recommendations in near real-time, or at least on a daily cadence, because adjusters need to rely on up-to-date performance signals when steering repairs. If ratings take months to show up, they're not useful for day-to-day decisions.
+
+Interviewer: I have two final questions. First, how will we measure success for this project beyond user satisfaction? Second, you mentioned a painful anecdote earlier — how common are incidents like that?
+
+Stakeholder: Success is measured by faster cycle times on claims, higher reuse of recycled parts where appropriate, fewer trips to the shop due to missing parts, and reduced manual admin. And about that anecdote — it's not rare. Field complaints about search slowness or stale availability come up several times a month, and each one saps credibility. Oh, and sorry — slight tangent — last weekend I was at a barbecue and someone mentioned a repair shop that got blacklisted because of a bad experience; it reminded me how fragile those relationships are and why the tool has to be reliable.
+
+Interviewer: Thanks, that's a useful picture. To close, are there any constraints we haven't touched that would block the project if ignored?
+
+Stakeholder: If we ignore corporate architecture and UI rules, or if we can't tie into the Choice Parts feed, that's a non-starter. Also, if we can't guarantee the performance and availability targets we've talked about, adoption will stall. And if we don't bake in the compliance rules for recycled parts, legal will stop us in our tracks. Those are the dealbreakers as I see them.
+
+Interviewer: Great, this gives me what I need to write up the initial requirements. I'll follow up with a draft that maps these business priorities to measurable acceptance criteria. Anything you'd like me to make especially visible in that draft?
+
+Stakeholder: Make the choice integration and compliance risks very visible, and call out the usability and performance targets as business KPIs. If we make those clear up front, we avoid a lot of rework later. Thanks.
+
+---
+Selected Requirements:
+1. [NICE.csv line 206] [quality, operability] 'The product shall interface with the Choice Parts System. This provides the feed of recycled parts data.'
+2. [NICE.csv line 208] [quality, legal] 'The product shall adhere to the corporate Architecture guidelines'
+3. [NICE.csv line 209] [quality, legal, look_and_feel] 'The product shall comply with corporate User Interface Guidelines'
+4. [NICE.csv line 212] [quality, usability] 'The product shall be easy to use by Adjusters and Collision Estimators. 95% of Adjusters and Collision Estimators shall find the product easy to use.'
+5. [NICE.csv line 216] [quality, look_and_feel, usability] 'The user shall easily locate instructions while using the product. User help can be found within 90% of the system.'
+6. [NICE.csv line 217] [quality, performance] 'The search for recycled parts shall take no longer than 15 seconds. The search results shall be returned in under 15 seconds.'
+7. [NICE.csv line 218] [quality, performance] 'The search for the preferred repair facility shall take no longer than 8 seconds. The preferred repair facility is returned within 8 seconds'
+8. [NICE.csv line 222] [quality, availability, fault_tolerance] 'The product shall achieve a 98% uptime. The product shall not fail more than 2% of the available online time.'
+9. [NICE.csv line 239] [quality, legal] 'The product shall comply with the estimatics laws relating to recycled parts usage.'
+10. [NICE.csv line 240] [quality, legal] 'The product shall comply with insurance regulations regarding claims processing.'

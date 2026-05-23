@@ -1,0 +1,128 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_5_re_experienced_stakeholder_nontechnical_manager_20260227_110819.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_180011",
+  "requirements": [
+    {
+      "requirement": "The system must ensure that the parts search response time is ≤15 seconds.",
+      "source_citation": "For parts searches, anything that drags on for more than a handful of seconds frustrates people. If you press me for numbers — and I know this is specific — the parts search needs to return within about fifteen seconds tops.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states a performance target for parts search response time, indicating a clear non-functional requirement.",
+      "follow_up_question": "What specific technical constraints or dependencies should be considered to achieve this response time?"
+    },
+    {
+      "requirement": "The system must ensure that the repair facility search response time is ≤8-10 seconds.",
+      "source_citation": "For finding a preferred repair facility based on vehicle location, it should be quicker — more like under ten seconds; I think eight seconds is a good business boundary.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states a performance target for repair facility search response time, indicating a clear non-functional requirement.",
+      "follow_up_question": "What specific technical constraints or dependencies should be considered to achieve this response time?"
+    },
+    {
+      "requirement": "The system must provide a seamless experience for both field and desk users.",
+      "source_citation": "It should feel seamless to someone who's out on the road or at their desk.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of a seamless experience, which is a usability concern. However, the exact metrics or methods to measure seamlessness are not specified.",
+      "follow_up_question": "What specific usability metrics or methods will be used to ensure the system provides a seamless experience?"
+    },
+    {
+      "requirement": "The system must achieve a 95% user satisfaction rate regarding ease of use, as measured by post-rollout surveys.",
+      "source_citation": "So the target I'm thinking of is that ninety-five percent of adjusters and collision estimators should report the product is easy to use on those surveys.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states a usability target for user satisfaction, indicating a clear non-functional requirement.",
+      "follow_up_question": "What specific survey questions or methodologies will be used to measure user satisfaction?"
+    },
+    {
+      "requirement": "The system must provide contextual help on approximately 90% of screens to reduce support calls.",
+      "source_citation": "Help needs to be where people expect it. Most of the app's screens should have contextual guidance or links to help, so that people find assistance while they're actually in the workflow. It should be present almost everywhere users go.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of contextual help and provides a rough estimate of coverage, indicating a usability concern. However, the exact percentage is not explicitly stated.",
+      "follow_up_question": "What specific criteria will be used to determine which screens require contextual help?"
+    },
+    {
+      "requirement": "The system must ensure that the feed from the Choice Parts database is reliable and feels current to the users.",
+      "source_citation": "From a user's point of view it should feel current... the feed needs to be reliable enough that adjusters trust the availability info.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of reliability and currency of the feed, indicating an availability concern. However, the exact metrics or methods to measure reliability are not specified.",
+      "follow_up_question": "What specific metrics or methods will be used to ensure the reliability and currency of the feed?"
+    },
+    {
+      "requirement": "The system must achieve 98% uptime to ensure high availability.",
+      "source_citation": "Yes, the expectation is around ninety-eight percent uptime. Anything below that, and we start seeing meaningful impacts on claims throughput and customer satisfaction.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states an availability target for uptime, indicating a clear non-functional requirement.",
+      "follow_up_question": "What specific technical constraints or dependencies should be considered to achieve this uptime?"
+    },
+    {
+      "requirement": "The system must prevent non-compliant workflows and provide audit trails for exceptions.",
+      "source_citation": "From a business perspective I'd say it should prevent mistakes where possible and flag other things clearly. We need the workflow to guide users away from non-compliant choices and make any exceptions explicit so there's an audit trail.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of preventing non-compliant workflows and providing audit trails, indicating a legal concern. However, the exact methods or processes to achieve this are not specified.",
+      "follow_up_question": "What specific methods or processes will be used to prevent non-compliant workflows and provide audit trails?"
+    },
+    {
+      "requirement": "The system must integrate with the Choice Parts feed and handle data in a way that preserves trust in availability info.",
+      "source_citation": "I think a hybrid makes sense; users expect freshest data, but in areas with bad reception, a cached snapshot is better than nothing. The key point is that the system needs to handle the feed in a way that preserves trust in availability info and doesn't expose us to stale or inconsistent results.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of integrating with the Choice Parts feed and handling data appropriately, indicating a scalability concern. However, the exact methods or processes to achieve this are not specified.",
+      "follow_up_question": "What specific methods or processes will be used to integrate with the Choice Parts feed and handle data appropriately?"
+    },
+    {
+      "requirement": "The system must follow corporate UI/UX standards to avoid rework and ensure consistency.",
+      "source_citation": "Oh yes, absolutely. We can't ship something that looks and behaves like a rogue app. It has to follow our architecture playbook and our UI standards — the look and feel people are used to, the authentication patterns, that sort of thing. Otherwise IT will block it and the business won't take it seriously.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of following corporate UI/UX standards, indicating a maintainability concern. However, the exact standards or guidelines to follow are not specified.",
+      "follow_up_question": "What specific UI/UX standards or guidelines must the system follow?"
+    },
+    {
+      "requirement": "The system must adhere to accessibility standards as part of corporate UI guidelines.",
+      "source_citation": "Accessibility isn't just compliance for us; it's also a customer expectation and affects market perception.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of accessibility, indicating a usability concern. However, the exact standards or guidelines to follow are not specified.",
+      "follow_up_question": "What specific accessibility standards or guidelines must the system adhere to?"
+    }
+  ]
+}

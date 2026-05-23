@@ -1,0 +1,161 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_3_re_experienced_stakeholder_technical_junior_20260227_110159.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_175544",
+  "requirements": [
+    {
+      "requirement": "The UI should warn users before saving invalid data, such as conflicts or missing prerequisites.",
+      "source_citation": "the UI should warn you before you save it",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for the UI to warn users before saving invalid data, indicating a clear usability requirement.",
+      "follow_up_question": "What specific types of warnings or alerts should be implemented, and how should they be displayed to the user?"
+    },
+    {
+      "requirement": "The system should prevent obvious mistakes, such as double-booking a clinical or enrolling a student without prerequisites.",
+      "source_citation": "prevent obvious mistakes when someone double-books a clinical or puts a student in a course they're not eligible for",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder provides examples of mistakes that should be prevented, suggesting a usability requirement for error prevention.",
+      "follow_up_question": "What specific validation rules should be implemented to prevent these mistakes?"
+    },
+    {
+      "requirement": "The system should use familiar nursing terms and avoid jargon.",
+      "source_citation": "use the standard names for clinical rotations and courses so instructors don't get confused",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for familiar terminology, indicating a clear usability requirement.",
+      "follow_up_question": "What specific terms and phrases should be used, and how should they be implemented in the UI?"
+    },
+    {
+      "requirement": "Small tasks should take a few seconds, while larger tasks should complete in under a minute.",
+      "source_citation": "small tasks should feel instantaneous... For bigger things like generating a full schedule for a cohort, waiting is tolerable but it shouldn't be a long drag",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder provides specific timeframes for task completion, indicating a clear performance requirement.",
+      "follow_up_question": "What specific performance metrics should be used to measure task completion times?"
+    },
+    {
+      "requirement": "The system must handle about ten people all active at once during mornings.",
+      "source_citation": "the app needs to handle that burst. We don't need to support some huge campus peak for the whole university, but the nursing office might have, I dunno, about ten people all active at once during certain windows",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder provides a specific number of concurrent users, indicating a clear performance requirement.",
+      "follow_up_question": "What specific performance metrics should be used to measure the system's ability to handle concurrent users?"
+    },
+    {
+      "requirement": "The system should be available during business hours (8 AM–6 PM weekdays) with 95% overall availability.",
+      "source_citation": "It needs to be available when the office is open... I'd say something like mid-90s availability feels tolerable",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder provides specific availability requirements, indicating a clear availability requirement.",
+      "follow_up_question": "What specific availability metrics should be used to measure the system's uptime?"
+    },
+    {
+      "requirement": "Program Admins should have full access, Instructors should have limited access to their students' data, Site coordinators should only see necessary info, and Support staff should be able to generate reports but not modify enrollments.",
+      "source_citation": "Program Admins — the folks who manage the whole program — they need pretty much everything... Nursing instructors need to see their class rosters and schedules... Clinical site coordinators should only see the students assigned to their site... Support staff might need to generate reports but not change enrollments",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder provides specific access requirements for different roles, indicating a clear security requirement.",
+      "follow_up_question": "What specific permissions should be assigned to each role, and how should they be implemented in the system?"
+    },
+    {
+      "requirement": "Sensitive student info, such as health data and personal identifiers, must be restricted.",
+      "source_citation": "Students' personal data and health-related info about clinical issues should be restricted",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need to restrict sensitive student info, indicating a clear security requirement.",
+      "follow_up_question": "What specific data elements should be restricted, and how should they be protected?"
+    },
+    {
+      "requirement": "The system should allow versioning and editing of curriculum structures, which change every 1–2 years.",
+      "source_citation": "Curricula shift about every couple of years... The system should let admins edit curriculum maps and version them",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder provides specific requirements for curriculum versioning and editing, indicating a clear maintainability requirement.",
+      "follow_up_question": "What specific versioning and editing capabilities should be implemented, and how should they be integrated into the system?"
+    },
+    {
+      "requirement": "The system should prevent bad data via picklists, smart matching, and CSV import checks.",
+      "source_citation": "Basic validation — like rejecting impossible dates, making sure course codes are valid, and preventing duplicates with smart matching. Use picklists where possible",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder provides specific data validation requirements, indicating a clear maintainability requirement.",
+      "follow_up_question": "What specific validation rules should be implemented, and how should they be integrated into the system?"
+    },
+    {
+      "requirement": "Program Admins should be able to fix day-to-day issues without IT involvement.",
+      "source_citation": "ideally, program staff can fix most day-to-day things within the app if they have permissions; anything structural or systemic should go to IT",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder provides specific requirements for admin autonomy, indicating a clear maintainability requirement.",
+      "follow_up_question": "What specific capabilities should be provided to Program Admins, and how should they be implemented in the system?"
+    },
+    {
+      "requirement": "The system must integrate with CampusConnect for real-time or near-real-time sync of student rosters to avoid duplicates.",
+      "source_citation": "We need to tie into the university's central systems for student records and authentication... I think real-time or near-real-time sync is better for rosters",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "interoperability",
+      "confidence": 4,
+      "rationale": "The stakeholder provides specific integration requirements, indicating a clear interoperability requirement.",
+      "follow_up_question": "What specific integration methods should be used, and how should they be implemented in the system?"
+    },
+    {
+      "requirement": "The system must export clean CSV/Excel files with historical data for audits.",
+      "source_citation": "sometimes we need exports for accreditation bodies, so the system should let us export clean reports",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "export_compliance",
+      "confidence": 4,
+      "rationale": "The stakeholder provides specific export requirements, indicating a clear export compliance requirement.",
+      "follow_up_question": "What specific export formats and data elements should be supported, and how should they be implemented in the system?"
+    },
+    {
+      "requirement": "Users need examples and tooltips to reduce support calls.",
+      "source_citation": "users will appreciate inline help and a few examples in forms; it cuts down on calls to support",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder provides specific requirements for inline help and examples, indicating a clear usability requirement.",
+      "follow_up_question": "What specific examples and tooltips should be provided, and how should they be implemented in the system?"
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+Interviewer: Thanks for meeting with me. Can you walk me through a typical day using the dispute system? What do you do, what's annoying, that sort of thing.
+
+Stakeholder: Yeah, sure. Um, I start by pulling up the disputes for my cardmembers — you know, people call in upset about charges. I search, I click into a case, I might request a retrieval or start a chargeback, and I send letters sometimes. The annoying parts… well, a bunch. The screens sometimes look different, and it confuses new hires. Also the list is a mess if it isn't clear what's urgent versus what's already resolved. Oh, and it gets slow when I'm jumping between screens, which just makes my day drag.
+
+Interviewer: When you say the screens look different, do you mean layout, colors, or something else?
+
+Stakeholder: Mostly layout and the little things — buttons in different places, fonts that don't match. I think everything should look like our corporate pages. It sounds petty, but when things are inconsistent people make mistakes. It just helps if all the dispute screens feel familiar, like other internal apps.
+
+Interviewer: Okay. You mentioned the list being messy — how would you like that list to behave when you search?
+
+Stakeholder: Ideally, when I search I want to scan it quickly and know what's what. Color helps — like, cases that need attention pop in one color and ones that are closed are another. Right now I have to click into each to check status and that's a pain.
+
+Interviewer: Got it. You said it gets slow jumping between screens. How slow is too slow for you?
+
+Stakeholder: Hmm, I hate waiting more than a couple of seconds. If it's more than, say, five seconds I start doing something else and sometimes I forget to come back. So it should feel snappy — small actions shouldn't make me wait.
+
+Interviewer: That makes sense. About the letters you mentioned earlier, how do you handle correspondence today?
+
+Stakeholder: We use the Letters utility to actually print stuff. So when I need to send a dispute initiation or a follow-up, the system should just request a letter and the printing folks take over. I don't want to be manually creating PDFs or copying templates — it should call the letters process and send it off to the print utility. That way formatting and stationery stay correct.
+
+Interviewer: Where does the dispute data come from? Do you type in transaction details?
+
+Stakeholder: No, and I don't want to. Transaction details should come from the statement system — that's the source of truth. There've been times people tried to patch things in and then the statement didn't match. Same with cardmember details and merchant info; those should come from the cardmember and merchant systems, not from whatever someone remembers or types in.
+
+Interviewer: So the system needs to pull from those specific backend systems. Anything else about those integrations?
+
+Stakeholder: Well, it needs to be reliable. I don't want to click to open a transaction and see blank fields because the back end didn't respond. And, uh, if a system is down I need a clear message — not some cryptic error — so I know whether to call support or handle it a different way. Also, on a bit of an aside, last winter the statement system hiccuped during our busiest Monday and we were all scrambling — that was awful. But, yeah, transparent failures and consistent data sources.
+
+Interviewer: You mentioned logging in earlier. How should access work? Who should be able to use the system?
+
+Stakeholder: Only authorized people, obviously. We have sensitive info — cardnumbers, account stuff — so not everyone should get in. Also, people should only see disputes for the cardmembers they manage. We had this one incident where somebody pulled up a dispute for a cardmember from another region and it was awkward. So the system should block that naturally, based on your assigned cardholder base.
+
+Interviewer: Okay. Do you mean like different teams should have different permissions?
+
+Stakeholder: Yeah, well, I think so. Team leads might need more visibility, but a front-line rep only needs the cases they're handling. I'm not super technical, but the point is, privacy has to be enforced so we don't leak things across teams.
+
+Interviewer: About availability — are there times when you don't need it? Maintenance windows, maybe?
+
+Stakeholder: We pretty much need it all the time. People call any day, any hour, so downtime is a big problem. We can tolerate planned maintenance, though; mornings when traffic is low are usually fine. If you want details, I can give you the exact windows we use for maintenance.
+
+Interviewer: Yes, please — what are those windows?
+
+Stakeholder: Okay, so for planned work we try to pick the early morning. From Monday through Saturday it's usually the 3 AM hour, and on Sunday we do a longer window in the early morning — like from one in the morning to five in the morning. That keeps the system available when the bulk of calls come in. And, um, I know that sounds long but we schedule big jobs then.
+
+Interviewer: Understood. Back to the lists and search — is there anything about sorting or filtering that you need?
+
+Stakeholder: Filters are useful, sure, but honestly the color coding I mentioned is the first thing. If I can glance and see which are pending, which are urgent, which are closed, that saves clicks. Also, I want to be able to quickly jump from the list to the case details and back without losing my place. It sounds small, but repeating searches is annoying.
+
+Interviewer: When you say color coding, do you have specific colors in mind or is it more about contrast?
+
+Stakeholder: I don't care much which exact shades, no, but it should be consistent with corporate colors so people don't get confused. Red-ish for things that need action and something calmer for done would work; again, consistency with our look-and-feel is the key.
+
+Interviewer: About audit trails — do you need to see a history of changes for cases?
+
+Stakeholder: Definitely. We often need to explain why we did something, so seeing who touched a case and what they did is crucial. And, oh, sometimes compliance asks for an export or a report of actions for a particular timeframe, so having a reliable log is essential. It should feel like you can prove the timeline if someone asks.
+
+Interviewer: Are there any reporting or export needs beyond that?
+
+Stakeholder: Occasional reports, yeah. But mostly I rely on the case history and notes. We do sometimes need to pull records for audits or to verify a process, and when that happens it's frustrating if the system doesn't have a straightforward way to show everything in one place.
+
+Interviewer: One more: if something goes wrong — like a transaction mismatch or a failed letter — what do you expect the system to do?
+
+Stakeholder: It should tell me plainly what happened and what I can do next. If a transaction detail couldn't be fetched, say so and maybe give an option to retry or to create a ticket for the backend team. For letters, if the print utility didn't accept the request, it should keep the request in a holding area so I don't lose it. And, uh, tangentially, it'd be nice if there were little reminders or flags when follow-ups are overdue; we rely on memory too much now.
+
+Interviewer: That covers a lot. Is there anything else — maybe about training, or how new hires learn the system?
+
+Stakeholder: Training matters. If the UI follows corporate standards and the flows are predictable, new people pick it up faster. Also, small things like consistent button labels and clear error messages cut down on calls to the helpdesk. Oh, and the coffee machine in the breakroom is still terrible — sorry, that's unrelated, I just remembered while talking about onboarding.
+
+---
+Selected Requirements:
+1. [NICE.csv line 150] [quality, legal, look_and_feel] 'All screens created as part of the Disputes application must comply with corporate standards for interface creation.'
+2. [NICE.csv line 151] [quality, look_and_feel] 'The list of dispute cases that are displayed after a search is performed must be color coded for easy identification of dispute cases based upon the dispute case status.'
+3. [NICE.csv line 155] [quality, performance] 'The maximum wait time for a user navigating from one screen to another within the Disputes application shall be no more than 5 seconds.'
+4. [NICE.csv line 157] [quality, availability, operability] 'The Disputes application shall be available 24x7x365 with the exception of the following scheduled maintenance windows. Monday â€“ Saturday 3:00am to 4:00am EST Sunday 1:00amd to 5:00am EST'
+5. [NICE.csv line 158] [quality, operability] 'The Disputes application shall interface with the Statement Database. The Statement Database provides the transaction details to the Disputes System. All transaction details must be obtained from the Statement Database'
+6. [NICE.csv line 159] [quality, operability] 'The Disputes application shall interface with the Cardmember Information Database. The Cardmember Information Database provides detailed information with regard to a cardmember. All cardmember detail information must be obtained from the Cardmember Information Database.'
+7. [NICE.csv line 160] [quality, operability] 'The Disputes applications shall interface with the Merchant Information Database. The Merchant Information Database provides detailed information with regard to the merchant. All merchant detail information shall be obtained from the Merchant Information Database.'
+8. [NICE.csv line 161] [quality, operability] 'The Disputes application shall interface with the Letters application. This will allow the Disputes application to request letters as part of the dispute initiation and dispute follow up process. All letter requests must be sent to the Print Letter Utility application.'
+9. [NICE.csv line 165] [quality, security] 'The Disputes application shall ensure that only authorized users are allowed to logon to the application.'
+10. [NICE.csv line 180] [quality, security] 'The Disputes System must prevent users from accessing any dispute cases that do not belong to their cardholder base.'

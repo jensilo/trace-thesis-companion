@@ -1,0 +1,150 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_5_re_experienced_stakeholder_nontechnical_enduser_20260227_110902.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_180011",
+  "requirements": [
+    {
+      "requirement": "The system shall complete parts searches in under 15 seconds to avoid disrupting user workflow.",
+      "source_citation": "under a quarter of a minute? Maybe around fifteen seconds feels okay to me.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states that parts searches should feel instant and provides a specific target time of under 15 seconds. This indicates a clear performance requirement.",
+      "follow_up_question": "What specific actions or system states should be considered complete for the purposes of measuring search performance?"
+    },
+    {
+      "requirement": "The system shall complete facility lookups in under 8 seconds to ensure smooth user experience during customer interactions.",
+      "source_citation": "under ten seconds — like eight seconds would be nice.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies that facility lookups should be snappier than parts searches and provides a target time of under 8 seconds.",
+      "follow_up_question": "What specific actions or system states should be considered complete for the purposes of measuring facility lookup performance?"
+    },
+    {
+      "requirement": "The system shall generate audit reports in under 10 seconds to allow users to complete tasks without switching contexts.",
+      "source_citation": "under maybe ten seconds? Quick enough that I don't have to switch tasks.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states that audit report generation should be quick and provides a target time of under 10 seconds.",
+      "follow_up_question": "What specific actions or system states should be considered complete for the purposes of measuring audit report generation performance?"
+    },
+    {
+      "requirement": "The system shall confirm save actions within 5 seconds to provide users with confidence that their actions have been successfully saved.",
+      "source_citation": "under five seconds",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies that save actions should feel immediate and provides a target time of under 5 seconds.",
+      "follow_up_question": "What specific actions or system states should be considered complete for the purposes of measuring save confirmation performance?"
+    },
+    {
+      "requirement": "The system shall maintain performance with up to 1,500 concurrent users during peak times to ensure smooth operation for all users.",
+      "source_citation": "about fifteen hundred people at the same time in the worst-case scenario.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions that the system slows down with a large number of users and provides an estimate of 1,500 concurrent users during peak times.",
+      "follow_up_question": "What specific performance metrics should be maintained under peak load conditions?"
+    },
+    {
+      "requirement": "The system shall provide help functionality in approximately 90% of screens to assist users in completing tasks without external assistance.",
+      "source_citation": "ninety percent",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states that help should be available in most places and provides a target of 90% of screens.",
+      "follow_up_question": "What specific types of help functionality (e.g., tooltips, inline guidance, videos) should be provided in each screen?"
+    },
+    {
+      "requirement": "The system shall require no more than two days of hands-on, onsite training for 95% of users to become comfortable with the system.",
+      "source_citation": "two days of hands-on, onsite training... for ~95% of users to be comfortable.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the expected duration and effectiveness of training for most users.",
+      "follow_up_question": "What specific metrics or tasks will be used to assess user comfort and proficiency after training?"
+    },
+    {
+      "requirement": "The system shall provide warnings before session timeouts and save drafts to prevent loss of unsaved work.",
+      "source_citation": "warnings before session timeouts... save drafts so I don't lose work.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the need for warnings before session timeouts and the saving of drafts to prevent work loss.",
+      "follow_up_question": "What specific actions or system states should trigger warnings before session timeouts?"
+    },
+    {
+      "requirement": "The system shall achieve 98% uptime to minimize disruptions during business hours.",
+      "source_citation": "ninety-eight percent",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the target uptime percentage to ensure system availability.",
+      "follow_up_question": "What specific measures will be taken to monitor and ensure the system meets the 98% uptime requirement?"
+    },
+    {
+      "requirement": "The system shall handle spotty networks gracefully in the field, allowing users to view cached results and continue working.",
+      "source_citation": "must handle spotty networks gracefully — maybe cache things or allow me to at least view the last results.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for the system to handle spotty networks in the field and suggests caching as a solution.",
+      "follow_up_question": "What specific caching strategies and fallback mechanisms should be implemented to ensure operability under spotty network conditions?"
+    },
+    {
+      "requirement": "The system shall separate data by insurer to prevent unauthorized access to other companies' claims and provide tiered access based on user roles.",
+      "source_citation": "we sometimes work with multiple insurers... I don't want to accidentally open another company's claim... tiered access — admins wide, most folks narrow.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the need for data separation and tiered access based on user roles.",
+      "follow_up_question": "What specific mechanisms will be used to enforce data separation and tiered access?"
+    },
+    {
+      "requirement": "The system shall provide a clean and uncluttered UI to reduce user errors and improve user satisfaction.",
+      "source_citation": "make the UI uncluttered... clean, I'll be happier and make fewer mistakes.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the need for a clean and uncluttered UI to improve user satisfaction and reduce errors.",
+      "follow_up_question": "What specific design principles and guidelines will be followed to ensure a clean and uncluttered UI?"
+    },
+    {
+      "requirement": "The system shall provide a short skills check or quick survey to assess the effectiveness of training and ensure that 95% of users are comfortable with the system.",
+      "source_citation": "short skills check or quick survey... to assess training effectiveness.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for a short skills check or quick survey to assess training effectiveness and ensure that 95% of users are comfortable with the system.",
+      "follow_up_question": "What specific metrics or tasks will be included in the skills check or survey to assess training effectiveness?"
+    }
+  ]
+}

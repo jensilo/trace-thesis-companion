@@ -1,0 +1,126 @@
+Interviewer: Hi, thanks for sitting down with me. Could you start by telling me a bit about your role and a typical day working with the current scheduling process?
+
+Stakeholder: Sure. I’m one of the people who actually does the day-to-day scheduling for the nursing program — I, uh, I think I spend most of my time juggling spreadsheets and emails. A typical day is me opening a few Excel files, checking a folder of PDFs from clinical sites, and then replying to a lot of messages from students and instructors about where they’re supposed to be. It’s, well, a lot of little reconciling tasks — making sure the student is in the right cohort, that their clinical hours line up, and, honestly, trying to make sure nobody’s double-booked. I use the university systems for student records sometimes, but mostly it’s local files and email. Oh, and sometimes the printer jams so I run down to the office — totally irrelevant, sorry, little tangent.
+
+Interviewer: No worries. Which other people do you interact with when scheduling — instructors, clinical site staff, students?
+
+Stakeholder: All of those and more. I mean, instructors, clinical site coordinators, the students themselves, and occasionally people in central records if something in their official file doesn’t match what I have. We also talk to the site admin people a lot because they confirm placements. It’s a lot of back-and-forth.
+
+Interviewer: Can you walk me through a recent time when scheduling went wrong? What happened and how did you find out?
+
+Stakeholder: Yeah, last month we had a case where a student was assigned to two clinical shifts that overlapped because someone had edited the sheet and didn’t notice a time change. We didn’t catch it until the student emailed from the site saying they were told to be somewhere else. So then I had to call the site, call the instructor, and move a few people around. It’s stressful and people get upset. We also get errors where the student’s contact info in one file doesn’t match the main system, so messages don’t reach them. We do try to have someone manually check before finalizing, but it’s easy to miss things when you’re copying data around.
+
+Interviewer: Which mistakes happen most often — double-bookings, wrong site, missing student info?
+
+Stakeholder: Mostly double-bookings and site mix-ups, I’d say. And sometimes prerequisites aren’t checked so a student ends up in a clinical that they’re not cleared for. Those are the ones that cause the biggest headaches.
+
+Interviewer: What manual workarounds do you use today to catch or fix those mistakes?
+
+Stakeholder: We have informal steps — someone will glance through a calendar view in the spreadsheet, and we’ll email each other screenshots. We keep a separate checklist for each cohort, and sometimes we block out times by hand. It’s clumsy. We also keep versioned copies of files so if something goes wrong we try to revert, but that’s prone to human error too.
+
+Interviewer: Thanks — that helps. Now, thinking about the new system, when you say it should be “easy to use,” what does that mean to you? What should be obvious when you first log in?
+
+Stakeholder: Easy to use means I shouldn’t have to hunt for things. I want to open something and immediately find the cohort list, then be able to drag or click to assign someone. Labels should be plain English, not weird codes. If something might break, it should warn me clearly, not just dump an error. And it should feel familiar — like a calendar or spreadsheet view so it’s not a shock. If it’s complicated and takes forever to learn, we’ll just go back to spreadsheets, honestly.
+
+Interviewer: Which specific tasks would you expect someone to be able to do after, say, one day of training?
+
+Stakeholder: Hmm, after a day I’d want them to be able to find a student record, assign that student to a clinical, swap someone between shifts, and send a confirmation notice. Also to generate a simple schedule for a cohort and run a basic attendance or hours report. I mean, not become an expert, but be comfortable doing the everyday things without calling me every five minutes.
+
+Interviewer: How would you prefer training to be delivered — in-person, videos, manuals?
+
+Stakeholder: A mix would be good. A short in-person walkthrough to get started and then some short video clips or quick reference sheets. People forget things, so having a one-page cheat sheet would be handy.
+
+Interviewer: Moving on to the scheduling workflow — when you assign students and build schedules, what checks should the system do automatically to prevent mistakes?
+
+Stakeholder: It should at least flag if a student is already booked at the same time, or if an instructor is unavailable. It should warn if a clinical site is over capacity. Also, it would be great if it checked prerequisites or clearances, like health requirements, before the assignment. And if there’s a conflict, show alternatives so I’m not guessing.
+
+Interviewer: Should those checks block you from proceeding, or just warn you?
+
+Stakeholder: Some things should absolutely block you — like assigning a student who isn’t cleared for a clinical. Other things could be warnings, like if a site is near capacity but you might have an exception. I mean, sometimes you need to override, but it should be a deliberate action with a reason logged.
+
+Interviewer: Do you need an undo or a change history when edits happen?
+
+Stakeholder: Yes, an edit history is important. If someone accidentally changes a schedule, I want to see who did it and restore the previous version if necessary. That’s saved us before. Undo is nice, but I care more about an audit trail.
+
+Interviewer: Okay. On performance — how fast should the system feel for routine tasks like opening a student record or saving changes?
+
+Stakeholder: It just needs to feel fast. I hate waiting around. For quick stuff like opening a record or saving a change, if it takes more than a few seconds I notice and it slows us down. Maybe five seconds for the small stuff, I’d say.
+
+Interviewer: And for heavier operations, like generating a full program schedule — what’s acceptable there?
+
+Stakeholder: Generating the whole program can take a little while, but it shouldn’t be forever. I’d be okay with something that completes under half a minute. If it’s longer, I’d prefer to kick it off and get a notification when it’s done so I can keep working.
+
+Interviewer: When do you need the system to be available? During what hours?
+
+Stakeholder: We need it during our office hours when people are making scheduling decisions. Roughly eight in the morning until about six in the evening would cover most of our needs. Outside of that, maintenance is fine, but we do the heavy lifting during the day.
+
+Interviewer: How many people typically use the system at the same time during peak hours?
+
+Stakeholder: In the mornings the whole scheduling team is on it at once. There’s maybe around ten of us at peak. We all poke around and make changes, so it needs to handle that without slowing down.
+
+Interviewer: For browser access, do you expect the system to work from standard campus machines and tablets? Any special requirements?
+
+Stakeholder: Yes, we open a web page from shared lab computers and personal laptops. We use the usual browsers — whatever the campus has on their machines — and some people use tablets when they’re at clinical sites. We really don’t want to install anything extra. If it just works in a browser, that’s ideal.
+
+Interviewer: Are clinical sites’ internet connections sometimes slow or restricted? Do you need an offline mode?
+
+Stakeholder: Some off-site connections are flaky. It’d be nice if critical things could still be viewed or if the app handled slow links gracefully, but I don’t expect a full offline mode. If something needs a sync later, that would be okay.
+
+Interviewer: About data quality: which fields are the most important to validate to avoid bad data?
+
+Stakeholder: Student IDs need to be right, contact information should be accurate, and site addresses should be consistent so maps and directions work. Health clearances and license numbers are sensitive too — if those are wrong, it causes real problems at the site. So basic checks to stop obvious typos or missing required fields would save us time.
+
+Interviewer: Who should be able to see sensitive student information like health or personal details?
+
+Stakeholder: Not everyone should see everything. Program administrators and a few designated staff need full access to handle placements, but site coordinators only need the information relevant to the placement — like emergency contact and certain health clearances, not full personal histories. Students’ social security numbers or similar identifiers should be hidden except to those who absolutely need them.
+
+Interviewer: Do you have organizational policies we must follow for protecting that data?
+
+Stakeholder: Yes, we follow the university’s info policy and, you know, the usual privacy rules. I can put you in touch with our data steward for details, because I’m not the policy expert.
+
+Interviewer: What kind of audit or logging would be helpful for sensitive data access?
+
+Stakeholder: Knowing who viewed or exported a student’s full record would be important. If someone shares info with a clinical site, we should have a record of that consent or approval. I don’t have specifics on retention periods, but we’d follow whatever the university requires.
+
+Interviewer: For notifications, what should trigger messages to students, instructors, or sites?
+
+Stakeholder: When a schedule changes, that should trigger notifications. Also confirmations when a placement is finalized, and alerts for missing clearances. Ideally the message tells them exactly what changed and where to go, and it should come through email and possibly text for urgent changes.
+
+Interviewer: Do clinical site administrators need direct access to the system or just emailed schedules?
+
+Stakeholder: Some of them would like limited access so they can confirm availability and see who’s coming. Others prefer a simple emailed PDF. Giving them a little portal or view-only access would cut down the back-and-forth.
+
+Interviewer: Are there any integrations you need with central systems — student info, calendar, single sign-on?
+
+Stakeholder: We definitely need the roster from the central student system to avoid duplicate entry, and single sign-on would be great so people don’t need another password. Calendar integration would help instructors. Again, I can get you the contact for IT who manages SSO.
+
+Interviewer: Before we finish, what would you say are the top priorities for this system?
+
+Stakeholder: Fixing double-bookings and preventing placement problems is top. Ease-of-use and quick onboarding — if new people can’t learn it fast, we’ll revert to old ways. Performance is important so it feels snappy during the day. And, of course, protecting student privacy; we cannot have casual access to sensitive info.
+
+Interviewer: Does that cover everything, or is there anything I missed?
+
+Stakeholder: That’s most of it. Just remember — if it’s slower than our spreadsheets or harder to use, people will fight it. Oh, and small thing: the print/export should be simple because some of our partners still want paper copies.
+
+Interviewer: Great. Can you share any example spreadsheets, templates, or the person in IT who handles the data policies?
+
+Stakeholder: Yes, I can email you the current templates and the contact for our data steward and the IT person who does SSO. I’ll also send a recent error log we keep in a folder.
+
+Interviewer: Thanks. Would you be available for a short follow-up if we need clarifications?
+
+Stakeholder: Sure, I can do a brief follow-up. I’m around most mornings, so just send a meeting invite.
+
+Interviewer: Thanks a lot for your time — very helpful. I’ll summarize these notes and follow up with the documents.
+
+---
+Selected Requirements:
+1. [NICE.csv line 70] [quality, usability] 'The system shall be easy to use by the Program Administrators/Nursing Staff Members.'
+2. [NICE.csv line 71] [quality, usability] 'All of the users shall be able to use the system after one day of training.'
+3. [NICE.csv line 72] [quality, usability] 'The system shall help the user avoid making mistakes while scheduling classes and clinicals for the nursing students.'
+4. [NICE.csv line 79] [quality, performance] 'The response time of general student management tasks shall take no longer than 5 seconds and the response time of schedule generation shall take no longer than 30 seconds.'
+5. [NICE.csv line 80] [quality, availability] 'The system shall be available for use between the hours of 8am and 6pm.'
+6. [NICE.csv line 83] [quality, availability, scalability] 'The system shall cater to 10 simultaneous users from 9am to 5pm.'
+7. [NICE.csv line 92] [quality, operability] 'We must be able to interface with any HTML browser.'
+8. [NICE.csv line 99] [quality, functional, security] 'The system shall have basic data integrity checking to reduce the possibility of incorrect or invalid data being introduced.'
+9. [NICE.csv line 100] [quality, functional, legal, security] The system shall protect private information in accordance with the organization's information policy.'
+10. [NICE.csv line 95] [quality, security] Only authorized users shall have access to students' personal information.'

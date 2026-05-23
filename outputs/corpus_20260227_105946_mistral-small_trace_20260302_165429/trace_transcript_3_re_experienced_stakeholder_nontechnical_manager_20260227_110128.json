@@ -1,0 +1,117 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_3_re_experienced_stakeholder_nontechnical_manager_20260227_110128.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_165431",
+  "requirements": [
+    {
+      "requirement": "The system must respond to small operations (e.g., opening a student profile or updating a status) within five seconds.",
+      "source_citation": "It needs to feel snappy. For small operations—opening a student profile or updating a status—I hate sitting and watching a spinner. If it takes longer than a few seconds I notice. For the small stuff, I'd say around five seconds feels acceptable.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states a desired response time for small operations, indicating a clear performance expectation. The confidence is high due to the specific time frame provided.",
+      "follow_up_question": "Are there any specific small operations that are more critical than others and require even faster response times?"
+    },
+    {
+      "requirement": "The system must generate a full schedule within half a minute to prevent users from getting distracted and reverting to manual methods.",
+      "source_citation": "For generating a full schedule—I'm comfortable if that's done within half a minute—longer than that and people wander off and start doing other things, which leads to mismatches. If schedule generation takes longer than half a minute, staff start to get distracted and sometimes revert to spreadsheets... So under thirty seconds really keeps everyone focused.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder provides a clear and specific time frame for schedule generation, emphasizing the importance of this performance metric to prevent user distraction and manual workarounds.",
+      "follow_up_question": "Are there any specific factors or data sizes that could significantly impact schedule generation time?"
+    },
+    {
+      "requirement": "The system must be available during business hours (8 AM to 6 PM on weekdays) to support scheduling activities.",
+      "source_citation": "It has to be available when our office is open; those are the times people are making assignments. We can't have it go down during business hours—it's a disruption.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder clearly states the importance of system availability during business hours, indicating a critical need for uptime during these times.",
+      "follow_up_question": "Are there any specific business hours or peak times within the day that are more critical than others?"
+    },
+    {
+      "requirement": "The system must achieve at least 95% uptime over the term to maintain user trust and reliability.",
+      "source_citation": "We need it to be solid. If I had to set a target, I'd be uncomfortable with anything less than the mid-nineties percentage of availability over the term. Ninety-five percent would be the right ballpark for me. If it slips below that, people will lose faith.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder provides a specific uptime target, emphasizing the importance of reliability and the impact of downtime on user trust.",
+      "follow_up_question": "Are there any specific periods or events during the term where uptime is more critical?"
+    },
+    {
+      "requirement": "The system must provide role-based access control to ensure that users can only see and access data relevant to their roles.",
+      "source_citation": "Program administrators need to see the student records to make placement decisions, but site coordinators shouldn't see personal details beyond what they need to contact the student and confirm qualifications. Instructors probably need to see their assigned students and competency status but not everything like disciplinary notes. Basically, not everyone should have everything.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder clearly outlines the need for role-based access control, specifying different levels of access for various roles to protect sensitive information.",
+      "follow_up_question": "Can you provide more details on the specific data elements that each role should or should not have access to?"
+    },
+    {
+      "requirement": "The system must comply with the university's information policy regarding the protection of health information and student records.",
+      "source_citation": "We must follow the university's info policy—so protections around health info and student records apply. It's not optional. The system should treat private data the way the university expects, and we shouldn't be forced to work around it.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for compliance with the university's information policy, indicating a non-negotiable requirement for data protection.",
+      "follow_up_question": "Are there any specific regulations or guidelines within the university's information policy that are particularly important for this system?"
+    },
+    {
+      "requirement": "The system must handle peak loads, such as term starts and mornings before rotations, without significant performance degradation.",
+      "source_citation": "Term starts are heavy—roster generation and assignment runs. People tend to do big batch operations then, and that's when performance matters. Also, mornings before a rotation start are frantic. We need it to handle those peaks without slowing to a crawl.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the importance of handling peak loads, indicating a need for the system to perform well under heavy usage conditions.",
+      "follow_up_question": "Can you provide more details on the specific peak loads and the expected number of concurrent users during these times?"
+    },
+    {
+      "requirement": "The system must provide audit trails for overrides of scheduling conflicts, including information on who made the override and the reason for it.",
+      "source_citation": "Warnings are fine in some cases, but for things that are non-negotiable—like missing prerequisite—there shouldn't be a bypass. For scheduling conflicts, maybe an override with an audit trail could be okay, but I want to see who overrides and why.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for audit trails to track overrides, indicating a requirement for maintainability and accountability.",
+      "follow_up_question": "Are there any specific types of overrides or conflicts that require more detailed audit trails?"
+    },
+    {
+      "requirement": "The system must be intuitive and require minimal training, ideally a single day-long workshop, for new admins to become proficient.",
+      "source_citation": "Easy means that a program admin can log in, pull up a cohort, see who needs a clinical placement, and assign them without having to open five windows or ask someone else. It should guide them—like, if someone is missing a prerequisite it should flag it so they don't assign them. And it should be obvious where to click; non-tech people shouldn't get lost. We really can't ask for a week of classes for every new admin. Ideally they'd pick it up quickly—like, a day of training and then they can use it.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder provides clear expectations for usability, emphasizing the need for minimal training and intuitive design.",
+      "follow_up_question": "Are there any specific features or functionalities that are particularly important for usability and ease of training?"
+    },
+    {
+      "requirement": "The system must be reliable and usable to prevent users from reverting to manual methods such as emails and spreadsheets.",
+      "source_citation": "It has to be reliable and usable. If it's too slow or confusing, people won't use it and we'll be back to emails and spreadsheets. And we can't compromise student privacy—those two things are deal-breakers.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the importance of reliability and usability, indicating that these are critical factors for user adoption and satisfaction.",
+      "follow_up_question": "Are there any specific usability metrics or user satisfaction indicators that you would like to track?"
+    }
+  ]
+}

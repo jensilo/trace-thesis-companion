@@ -1,0 +1,139 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_6_re_experienced_stakeholder_nontechnical_manager_20260227_111115.txt",
+  "model": "mistral/mistral-medium-latest",
+  "timestamp": "20260302_171013",
+  "requirements": [
+    {
+      "requirement": "The system shall allow users to complete a simple room booking within 5 minutes on their first try without requiring support.",
+      "source_citation": "If someone sits down and needs to book a room, they should be able to figure it out in just a few minutes — not spend ten minutes poking around. For a simple room booking, if most users can't do it within about five minutes on their first try, that's a problem for us.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of quick and intuitive room booking for first-time users, indicating a usability requirement. The specific time frame of 5 minutes provides a measurable target.",
+      "follow_up_question": "What specific user actions or steps should be included in the 'simple room booking' process to ensure the 5-minute target is met?"
+    },
+    {
+      "requirement": "The system shall ensure that 90% of routine tasks are completed within 5 seconds and 98% within 8 seconds.",
+      "source_citation": "about ninety percent of routine tasks should finish within roughly five seconds, and almost all of them — say, better than ninety-five, actually closer to ninety-eight percent — should complete within a bit longer, maybe around eight seconds.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder provides specific performance targets for routine tasks, emphasizing the need for quick response times to maintain user engagement.",
+      "follow_up_question": "Can you provide examples of what you consider 'routine tasks' to ensure we are measuring the correct interactions?"
+    },
+    {
+      "requirement": "The system shall handle 1,000 concurrent requests initially and scale to handle 2,000 concurrent requests in the next release.",
+      "source_citation": "the product should handle about a thousand concurrent requests initially. We're planning growth, though, so by the next release we expect that to roughly double to around two thousand.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies concurrency targets for initial release and future growth, indicating scalability requirements.",
+      "follow_up_question": "What specific scenarios or use cases should we consider to test the system's ability to handle the specified concurrent requests?"
+    },
+    {
+      "requirement": "The system shall restrict access to company-validated identities or approved external users only.",
+      "source_citation": "Only our company employees and approved external users should be able to use it. We can't have random external people booking rooms, so every logon should map to a company-validated identity or an external account that we've approved through the customer's provisioning process.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder emphasizes the need for restricted access to ensure only authorized users can use the system, highlighting a security requirement.",
+      "follow_up_question": "What specific mechanisms or protocols should be implemented to validate and approve external user identities?"
+    },
+    {
+      "requirement": "The system shall conform to the Americans with Disabilities Act (ADA) requirements for accessibility.",
+      "source_citation": "It should conform to the Americans with Disabilities Act requirements. That's the baseline for our customers in the U.S., and we expect the product to meet those obligations.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for ADA compliance, indicating a clear accessibility requirement.",
+      "follow_up_question": "Are there any specific ADA guidelines or sections that we should prioritize for initial implementation?"
+    },
+    {
+      "requirement": "The system shall support multilingual capabilities, including English, Spanish, French, and German at launch.",
+      "source_citation": "At launch we have to cover the big ones: English and Spanish are must-haves for customers in the Americas, and then we should include a couple of European languages like French and German for our EU customers.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies the languages that need to be supported at launch, indicating a requirement for multilingual capabilities.",
+      "follow_up_question": "Are there any specific regional or cultural considerations we should be aware of for the supported languages?"
+    },
+    {
+      "requirement": "The system shall achieve 99.99% uptime, excluding total server loss events.",
+      "source_citation": "We expect near-continuous uptime; planned maintenance windows are okay but unplanned downtime is very costly. To be explicit, our target is the kind of uptime that gives customers confidence — think four nines, and that excludes total server loss events which are a separate failure mode we have contingency plans for.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder provides a specific uptime target, emphasizing the importance of availability and excluding certain events.",
+      "follow_up_question": "What specific measures or redundancies should be implemented to achieve the 99.99% uptime target?"
+    },
+    {
+      "requirement": "The system shall provide visibility into failures by capturing exceptions in logs and automatically transmitting them to the support team.",
+      "source_citation": "We definitely need visibility into failures. If invites bounce or the system runs into errors, we want a record. Ideally exceptions are captured in a log and made available to our support team so we can analyze and fix issues without having to reproduce every problem from scratch. And, uh, if possible, that log should be sent to our team; we don't want to be chasing down every little thing manually. Automatic would be much better.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for detailed logs and automatic transmission of exceptions to the support team, indicating a maintainability requirement.",
+      "follow_up_question": "What specific types of exceptions or errors should be prioritized for logging and automatic transmission?"
+    },
+    {
+      "requirement": "The system shall allow customers to customize the UI with their logo, color palette, and fonts, while ensuring accessibility standards are met.",
+      "source_citation": "They want their logo on the landing page, their color palette, maybe a few fonts. Not full-on theming where everything breaks, but enough so employees trust it's an official tool. If a customer insists on low-contrast colors, that can break accessibility. So the theming needs guardrails: let them inject logo and color accents, but the system should enforce sufficient contrast and accessible font sizing.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 4,
+      "rationale": "The stakeholder discusses the need for customization while maintaining accessibility, indicating a requirement for branding and look and feel.",
+      "follow_up_question": "What specific branding elements (e.g., logo placement, color schemes) should be customizable, and what guardrails should be implemented to ensure accessibility?"
+    },
+    {
+      "requirement": "The system shall ensure that reporting features respect privacy and access controls, preventing unauthorized access to personal calendars.",
+      "source_citation": "any reporting that exposes personal calendars needs to respect privacy and access controls. We don't want a junior employee suddenly seeing executive schedules because a manager asked for a report.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for privacy and access controls in reporting features, indicating a security requirement.",
+      "follow_up_question": "What specific privacy and access control measures should be implemented to protect personal calendar information in reports?"
+    },
+    {
+      "requirement": "The system shall provide automated alerts for critical failures and a central console for exception collection and correlation to customer environments.",
+      "source_citation": "If something breaks, the support team should see the exception details quickly so they can triage. We want automated alerts for critical failures, a central console where exceptions are collected, and a way to correlate logs to customer environments.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder discusses the need for automated alerts and a central console for exception management, indicating a maintainability requirement.",
+      "follow_up_question": "What specific types of critical failures should trigger automated alerts, and what information should be included in these alerts?"
+    },
+    {
+      "requirement": "The system shall ensure that equipment availability is shown alongside room availability in search results to prevent double-booking.",
+      "source_citation": "When someone searches, they should see rooms with the right layout and the equipment availability baked in, otherwise it's just noise and people don't trust the system.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need to show equipment availability alongside room availability to prevent double-booking, indicating a usability requirement.",
+      "follow_up_question": "What specific equipment information should be displayed alongside room availability to ensure users can make informed booking decisions?"
+    }
+  ]
+}

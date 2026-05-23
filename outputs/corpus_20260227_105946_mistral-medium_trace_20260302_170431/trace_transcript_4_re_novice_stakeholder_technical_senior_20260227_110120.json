@@ -1,0 +1,194 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_4_re_novice_stakeholder_technical_senior_20260227_110120.txt",
+  "model": "mistral/mistral-medium-latest",
+  "timestamp": "20260302_170704",
+  "requirements": [
+    {
+      "requirement": "The system shall respond to routine navigations and small queries within five seconds.",
+      "source_citation": "For routine navigations and small queries, let's design for roughly five seconds as the upper bound.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states a concrete performance threshold for routine navigations and small queries.",
+      "follow_up_question": "Are there any specific types of queries or navigations that should be prioritized for performance optimization?"
+    },
+    {
+      "requirement": "The system shall support 350 concurrent users without application-level performance degradation.",
+      "source_citation": "design and load tests should target support for 350 concurrent users without application-level performance degradation.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "The stakeholder provides a specific number for concurrent users that the system should support.",
+      "follow_up_question": "What are the expected usage patterns for these concurrent users, and are there any peak usage times we should be aware of?"
+    },
+    {
+      "requirement": "The system shall be available 24/7 with scheduled maintenance windows.",
+      "source_citation": "It needs to be essentially always available... We do allow for scheduled maintenance windows.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for the system to be always available with specific maintenance windows.",
+      "follow_up_question": "What are the expected response times for the system during peak usage and maintenance windows?"
+    },
+    {
+      "requirement": "The system shall enforce role-based access control and keep a full audit trail for compliance.",
+      "source_citation": "It must enforce who can do what while keeping a full audit trail for compliance.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for access control and audit trails for compliance.",
+      "follow_up_question": "What specific roles and permissions should be defined, and what compliance standards need to be followed?"
+    },
+    {
+      "requirement": "The system shall use role-based access control to prevent unauthorized initiation of dispute flows.",
+      "source_citation": "Role-based access control is the baseline... prevent unauthorized initiation of dispute flows.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for role-based access control to prevent unauthorized actions.",
+      "follow_up_question": "What specific actions should be restricted based on roles, and how should access be managed and audited?"
+    },
+    {
+      "requirement": "The system shall record every action that affects case state with who performed it, when, and what the payload was, in a tamper-evident and searchable format.",
+      "source_citation": "Every action that affects case state... must be recorded with who performed it, when, and what the payload was... tamper-evident, searchable for e-discovery.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly details the requirements for audit trails, including what needs to be recorded and the format.",
+      "follow_up_question": "What specific retention policies and search capabilities are required for the audit trail?"
+    },
+    {
+      "requirement": "The system shall follow corporate UI standards and reuse accessible components and patterns.",
+      "source_citation": "We have to follow corporate UI standards... reuse the accessible components and patterns.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need to follow corporate UI standards and reuse accessible components.",
+      "follow_up_question": "Are there any specific corporate UI standards or accessible components that should be prioritized?"
+    },
+    {
+      "requirement": "The system shall degrade gracefully and provide clear diagnostics if backend systems are down.",
+      "source_citation": "The app should degrade gracefully... surface clearly what actions are blocked, queue or retry requests... provide technicians with clear diagnostics.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly describes the expected behavior of the system when backend systems are unavailable.",
+      "follow_up_question": "What specific diagnostics and recovery mechanisms should be implemented for different types of failures?"
+    },
+    {
+      "requirement": "The system shall segregate data to ensure internal-only fields aren't exposed to merchants or cardmembers.",
+      "source_citation": "We need data segregation so internal-only fields aren't exposed to merchants or cardmembers.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for data segregation to protect internal-only fields.",
+      "follow_up_question": "What specific fields need to be segregated, and how should access to these fields be controlled?"
+    },
+    {
+      "requirement": "The system shall mask certain PANs or sensitive fields in UI logs.",
+      "source_citation": "we have to mask certain PANs or sensitive fields in UI logs...",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need to mask sensitive fields in UI logs for compliance.",
+      "follow_up_question": "What specific fields need to be masked, and what are the compliance requirements for logging sensitive data?"
+    },
+    {
+      "requirement": "The system shall use retries and idempotency for external calls to prevent inconsistent state.",
+      "source_citation": "retries and idempotency for the external calls so failures don't create inconsistent state.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for retries and idempotency to maintain consistent state.",
+      "follow_up_question": "What specific mechanisms should be implemented for retries and idempotency, and how should failures be handled?"
+    },
+    {
+      "requirement": "The system shall obtain authoritative data from respective systems and not treat its own copy as the source of truth.",
+      "source_citation": "The application should not treat its own copy of those details as the source of truth, so every time we need a transaction or the latest cardmember data we have to obtain it from the respective systems.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "data_integrity",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states that authoritative data must come from respective systems and not from the application's own copy.",
+      "follow_up_question": "What specific data elements must be obtained from authoritative sources, and how should data consistency be ensured?"
+    },
+    {
+      "requirement": "The system shall validate and refresh cached data and fall back to the statement store for authoritative decisions.",
+      "source_citation": "Caching is okay so long as we validate and refresh and always fall back to the statement store for authoritative decisions.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "data_integrity",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the conditions under which caching is allowed and the need to fall back to authoritative sources.",
+      "follow_up_question": "What specific validation and refresh mechanisms should be implemented for cached data?"
+    },
+    {
+      "requirement": "The system shall use idempotency, retries, and compensation flows to avoid partial state that can't be reconciled.",
+      "source_citation": "avoid partial state that can't be reconciled; that's why idempotency, retries, and compensation flows are important.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the importance of idempotency, retries, and compensation flows to maintain consistent state.",
+      "follow_up_question": "What specific mechanisms should be implemented for idempotency, retries, and compensation flows?"
+    },
+    {
+      "requirement": "The system shall facilitate compliance reviews without exposing unnecessary PII.",
+      "source_citation": "Design should facilitate compliance reviews without exposing unnecessary PII.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need to facilitate compliance reviews while protecting PII.",
+      "follow_up_question": "What specific compliance review processes should be supported, and how should PII be protected during these reviews?"
+    },
+    {
+      "requirement": "The system shall use claims-based decisioning so the front end only renders what the user's scope allows.",
+      "source_citation": "with claims-based decisioning so the front end only renders what the user's scope allows.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for claims-based decisioning to control what the front end renders based on user scope.",
+      "follow_up_question": "What specific claims and decisioning mechanisms should be implemented to control front-end rendering?"
+    },
+    {
+      "requirement": "The system shall monitor and alert to enable quick remediation by operations.",
+      "source_citation": "monitoring and alerting must be in place so ops can remediate quickly.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for monitoring and alerting to enable quick remediation by operations.",
+      "follow_up_question": "What specific monitoring and alerting mechanisms should be implemented, and what are the expected response times for remediation?"
+    }
+  ]
+}

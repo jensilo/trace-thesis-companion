@@ -1,0 +1,70 @@
+Interviewer: Thanks for meeting with me. To start, can you tell me, in your own words, how you usually find recycled parts and pick repair facilities today?
+
+Stakeholder: Yeah, sure. Uh, I think the biggest thing is we already use that Choice Parts feed—so, well, if the new thing doesn't pull from that, we'll be typing or copying stuff all the time, and nobody wants that. Mostly I search for parts, see availability, and then I try to match a repair shop nearby that we trust. It sounds simple but it gets messy when the data's out of sync or when the app looks different from the other tools we use.
+
+Interviewer: Okay. What are the main frustrations you run into with the current tools?
+
+Stakeholder: Hmm, where to start. It's slow sometimes and it just feels clunky, like you have to click around to find basic info. It crashes on my tablet once in a while, which is annoying when I'm standing at a shop. Help is buried, so if I'm doing something in the field I waste time hunting for instructions. Also, we need to be able to audit recycled parts used in estimates; right now pulling that report is a pain. Oh, and we should be able to rate repair shops on how well they use recycled parts, because I keep seeing the same issues and if I could flag them it'd help other adjusters. Sorry, that was a lot.
+
+Interviewer: No, that's fine. You mentioned it can be slow and even crash on a tablet. How long is too long when you're waiting for a parts search, and what about the facility search?
+
+Stakeholder: Honestly, it just needs to feel fast. But if you want a number, I guess for the parts search anything longer than, um, say fifteen seconds feels like forever when I'm on the phone. For finding a preferred repair facility, I expect it to be quicker—maybe eight seconds is reasonable. When it's longer than that you're losing the customer's patience.
+
+Interviewer: Got it. And the audit report you mentioned — how quickly do you need that to come back?
+
+Stakeholder: The audit report needs to be something I can get before I move on. If I have to wait more than, hmm, ten seconds it interrupts my flow. I need to look at the recycled parts usage and make notes without having to leave it running and come back later.
+
+Interviewer: You talked about help being buried. How easy should help be to find while you're using the system?
+
+Stakeholder: It should be almost everywhere, like, you know, if I'm stuck I should be able to find guidance right where I'm working, not have to go to some separate manual. If I had to guess, maybe help should be available in the vast majority of screens—so users don't get stuck. I mean, ninety percent of the system having in-context help would be brilliant.
+
+Interviewer: Okay. You also mentioned training — how long do you think people should need to learn the system?
+
+Stakeholder: It can't be one of those big, drawn-out trainings. Most folks are busy, so it should be short and practical, done onsite with hands-on stuff. I'd say two days of onsite training should get people comfortable, but it should also be obvious enough that people pickup the basics quickly.
+
+Interviewer: Thanks. On the point about the Choice Parts feed, how important is it that the new system connects to that feed directly rather than importing exports or manual updates?
+
+Stakeholder: It's really important. If it doesn't tap into the Choice Parts data directly we'll end up with old availability all the time. I mean, I've been on a call with a shop where they said a part was in stock, but our system didn't show it because someone forgot to update an export. That kills trust. So it needs to use the same feed we rely on now.
+
+Interviewer: Understood. About repair facilities — you said you want to rate them. What happens when a shop gets a bad rating, like do you want the system to prevent them from being chosen or...?
+
+Stakeholder: Well, I think the main thing is visibility. If a shop has a pattern of not using recycled parts properly, I want other adjusters to know. Maybe there could be a score or notes that show up when I'm choosing a shop, and if it's really bad maybe it shouldn't be on our preferred list. But honestly, I'm not sure of the exact process—I just know having that info up front would stop a lot of back-and-forth. Sorry, I'm rambling a bit.
+
+Interviewer: No worries. You mentioned field use and tablets — are there any other environments or devices people use this on?
+
+Stakeholder: Mostly laptops in the office and tablets or phones in the field. Sometimes I'm standing in a parking lot with sketchy cell service, and I just want the app to still let me view recent searches or at least not choke. Also, when I'm in the office multiple adjusters are using it at once and it needs to keep up. Oh, and I forgot to mention, there's usually a lunch rush where everybody's trying to pull parts at the same time — it's a small thing but it matters.
+
+Interviewer: Right. Speaking of multiple adjusters and access, are there concerns about who can see what data?
+
+Stakeholder: Definitely. We absolutely cannot see another insurance company's claims. That would be a nightmare. Each company needs its own space so claims and customer details are private. Within a company, people should see different things depending on their role—some folks need full view, others only the basics. It's mostly about keeping stuff confidential and following our policies.
+
+Interviewer: And when you say "different things depending on role," who, for example, needs full access versus limited?
+
+Stakeholder: Program admins and maybe regional managers usually need the full picture, but site coordinators or junior adjusters should only get what they need to do their job. I don't have the org chart memorized, but you get the idea—no need for everyone to see everything.
+
+Interviewer: Okay. Earlier you said the system should look familiar and not be clunky. How important is adherence to your company's UI guidelines?
+
+Stakeholder: That's huge. If the layout, colors, and controls are different from our other corporate apps people get confused and make mistakes. It should feel like one of our apps so it's intuitive. Also, for compliance and branding it's just easier if it's consistent.
+
+Interviewer: How reliable does this system need to be? You said sometimes it crashes — how often is too often?
+
+Stakeholder: It needs to be reliable almost all the time. If it's down frequently people can't do their job. If you're asking for a metric, I'd say we need it up almost always, with very little downtime—maybe around ninety-eight percent uptime would be acceptable. But honestly, the less downtime the better.
+
+Interviewer: Thanks. Is there anything else you think I haven't asked about that would help in designing this?
+
+Stakeholder: Umm, maybe just that it should be forgiving. People make mistakes, so undo or easy corrections are nice. And, oh—notifications when a part changes status would be good, because I don't want to keep checking. Also, sometimes I go off on a tangent when I'm grabbing parts at lunch, like I once ended up negotiating prices while eating my sandwich, which was, um, maybe not efficient, but it shows we need the tool to work in weird spots. That's about it I think.
+
+Interviewer: Great, that's really helpful. Thanks for your time.
+
+---
+Selected Requirements:
+1. [NICE.csv line 206] [quality, operability] 'The product shall interface with the Choice Parts System. This provides the feed of recycled parts data.'
+2. [NICE.csv line 209] [quality, legal, look_and_feel] 'The product shall comply with corporate User Interface Guidelines'
+3. [NICE.csv line 212] [quality, usability] 'The product shall be easy to use by Adjusters and Collision Estimators. 95% of Adjusters and Collision Estimators shall find the product easy to use.'
+4. [NICE.csv line 215] [quality, usability] 'The product shall be easy to learn by Adjusters and Collision Estimators. The product shall be learned with two days onsite training'
+5. [NICE.csv line 216] [quality, look_and_feel, usability] 'The user shall easily locate instructions while using the product. User help can be found within 90% of the system.'
+6. [NICE.csv line 217] [quality, performance] 'The search for recycled parts shall take no longer than 15 seconds. The search results shall be returned in under 15 seconds.'
+7. [NICE.csv line 218] [quality, performance] 'The search for the preferred repair facility shall take no longer than 8 seconds. The preferred repair facility is returned within 8 seconds'
+8. [NICE.csv line 219] [quality, functional, performance] 'The recycled parts audit report shall be returned to the user within 10 seconds. The audit report shall be returned within 10 seconds.'
+9. [NICE.csv line 222] [quality, availability, fault_tolerance] 'The product shall achieve a 98% uptime. The product shall not fail more than 2% of the available online time.'
+10. [NICE.csv line 235] [quality, security] 'One insurance company shall not be able to view another insurance companys claim data.'

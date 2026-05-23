@@ -1,0 +1,183 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_3_re_novice_stakeholder_technical_senior_20260227_110121.txt",
+  "model": "mistral/mistral-medium-latest",
+  "timestamp": "20260302_170433",
+  "requirements": [
+    {
+      "requirement": "The system shall integrate with CampusConnect and the student master system to synchronize enrollment and student records.",
+      "source_citation": "It needs to talk to CampusConnect — that’s the central coordination hub — and to the student master system so enrollment and student records don’t get out of sync.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "interoperability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for integration with specific systems to avoid data synchronization issues.",
+      "follow_up_question": "What specific data fields need to be synchronized between the systems?"
+    },
+    {
+      "requirement": "The system shall use secure, standard APIs for integrations.",
+      "source_citation": "Also it should use standard APIs and secure channels; we don't want ad-hoc exports.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for secure and standard APIs to avoid ad-hoc exports.",
+      "follow_up_question": "Are there specific API standards or security protocols that the university requires?"
+    },
+    {
+      "requirement": "The system shall implement role-based access control to restrict access to sensitive information based on user roles.",
+      "source_citation": "Not everyone [should have access]... Program administrators need comprehensive access... clinical site coordinators should only see what’s relevant... sensitive stuff should be limited.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for different access levels based on user roles to protect sensitive information.",
+      "follow_up_question": "Can you provide a detailed breakdown of the roles and their corresponding access levels?"
+    },
+    {
+      "requirement": "The system shall provide audit trails to track who accessed what information.",
+      "source_citation": "And audit trails would be good so we can see who looked at what.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for audit trails for accountability.",
+      "follow_up_question": "What specific information should be logged in the audit trails?"
+    },
+    {
+      "requirement": "The system shall be intuitive and easy to learn, allowing users to perform basic tasks after a short training session.",
+      "source_citation": "It should be straightforward. We don’t have time for a week-long onboarding. Ideally people pick it up quickly... The interface needs to be intuitive enough for folks who aren’t technical. If we can train someone in, say, a short hands-on session and they can do basic tasks by the next day, that would be perfect.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for an intuitive interface that can be quickly learned with minimal training.",
+      "follow_up_question": "What specific tasks should users be able to perform after the short training session?"
+    },
+    {
+      "requirement": "The system shall respond to routine tasks within five seconds and generate full schedules within thirty seconds.",
+      "source_citation": "For the small management tasks something like five seconds or less feels instant. For full schedule generation, I’d expect something that finishes within, say, thirty seconds.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly provides specific timing targets for routine tasks and schedule generation.",
+      "follow_up_question": "Are there any other performance-critical operations that need specific timing targets?"
+    },
+    {
+      "requirement": "The system shall support up to ten concurrent users during peak hours.",
+      "source_citation": "The scheduling and admin team tends to all be online in the mornings... roughly ten of us at peak, and that’s mostly during normal business hours.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the expected number of concurrent users during peak hours.",
+      "follow_up_question": "Are there any specific times during the day when the system should expect peak usage?"
+    },
+    {
+      "requirement": "The system shall have an uptime of at least 95% during working hours.",
+      "source_citation": "Ninety-five percent would be a reasonable target to start with for availability.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the target uptime percentage for the system.",
+      "follow_up_question": "Are there specific maintenance windows or times when downtime is acceptable?"
+    },
+    {
+      "requirement": "The system shall implement data validation rules to prevent impossible or inconsistent data entries.",
+      "source_citation": "We need basic checks so people don’t enter impossible things, like a student assigned to two different concurrent clinicals... Referential integrity with the student master and site lists is important so dangling references don’t proliferate.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "data_integrity",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for data validation rules and referential integrity to maintain data quality.",
+      "follow_up_question": "What specific validation rules should be implemented to ensure data integrity?"
+    },
+    {
+      "requirement": "The system shall protect private information according to the university’s information policy, including encryption in transit and access controls.",
+      "source_citation": "We must protect private information according to the university’s information policy. That means encryption in transit, sensible storage protections, and access controls.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need to protect private information according to specific policies.",
+      "follow_up_question": "Are there any specific encryption standards or access control mechanisms that the university requires?"
+    },
+    {
+      "requirement": "The system shall use token-based authentication and mutual TLS for secure API communications.",
+      "source_citation": "Token-based approaches and mutual TLS for some backend links would be sensible.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the use of token-based authentication and mutual TLS for secure API communications.",
+      "follow_up_question": "Are there specific token-based authentication standards or mutual TLS protocols that the university requires?"
+    },
+    {
+      "requirement": "The system shall be maintainable with clear logging, modular components, and decent documentation.",
+      "source_citation": "The solution should be maintainable. We don’t want a black box that only one person can fix. Clear logging, modular components, and decent documentation will save us headaches.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for maintainability, clear logging, modular components, and documentation.",
+      "follow_up_question": "Are there specific logging standards or documentation formats that the university prefers?"
+    },
+    {
+      "requirement": "The system shall be mobile-friendly, at least for viewing schedules.",
+      "source_citation": "Please make it mobile-friendly at least for viewing schedules; staff and students look at schedules on their phones a lot these days.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for mobile-friendliness, particularly for viewing schedules.",
+      "follow_up_question": "Are there any specific mobile devices or platforms that the system should prioritize for optimization?"
+    },
+    {
+      "requirement": "The system shall be expected to manage curriculum and scheduling for at least five years without major overhaul.",
+      "source_citation": "If you need a specific planning horizon, five years is what we’d hope it can handle without having to replatform.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "longevity",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the expected lifespan of the system before needing a major overhaul.",
+      "follow_up_question": "Are there any specific technologies or architectures that the university prefers for long-term sustainability?"
+    },
+    {
+      "requirement": "The system shall send automated notifications for key events with configurable triggers and a digest option.",
+      "source_citation": "It should send automated notifications for key events — assignments, cancellations, changes... clear, configurable triggers so we don’t spam people... a digest option so site coordinators can get daily summaries.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for automated notifications with configurable triggers and a digest option.",
+      "follow_up_question": "What specific events should trigger automated notifications, and what information should be included in the digests?"
+    },
+    {
+      "requirement": "The system shall use RESTful endpoints and versioned payloads for API integrations.",
+      "source_citation": "It should use secure, standard APIs — RESTful endpoints are fine — and authenticate reliably, ideally with the university’s existing identity service... payloads should be well-formed and versioned so we can evolve without breaking things.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "interoperability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the use of RESTful endpoints and versioned payloads for API integrations.",
+      "follow_up_question": "Are there specific RESTful API standards or payload versioning schemes that the university requires?"
+    }
+  ]
+}

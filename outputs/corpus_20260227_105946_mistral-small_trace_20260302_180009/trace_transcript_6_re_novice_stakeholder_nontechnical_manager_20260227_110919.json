@@ -1,0 +1,161 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_6_re_novice_stakeholder_nontechnical_manager_20260227_110919.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_180104",
+  "requirements": [
+    {
+      "requirement": "The system should be available 99.99% of the time, excluding catastrophic server failures.",
+      "source_citation": "Reliability is huge. I mean, hmm, we have a low tolerance for downtime — when it happens it costs us in rescheduling and in trust. I don't expect it to be up if the whole server farm is down or something catastrophic, but aside from that it should be basically always available. We want people to rely on it like email.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for high availability and reliability, comparing it to email. The mention of 'four nines' (99.99% uptime) is a clear indicator of the required availability.",
+      "follow_up_question": "What specific mechanisms or redundancies are expected to achieve this level of availability?"
+    },
+    {
+      "requirement": "90% of tasks should complete within 5 seconds, and almost all tasks should complete within 8 seconds.",
+      "source_citation": "It just needs to feel instantaneous. I really hate waiting; if people have to pause while the page loads they start doing other things and don't come back. Maybe five seconds for the quick stuff, I'd say; slightly longer for heavier operations is tolerable but not by much.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies exact performance metrics for task completion times, indicating a strong focus on performance.",
+      "follow_up_question": "Are there specific tasks or operations that have different performance requirements?"
+    },
+    {
+      "requirement": "The system should handle 1,000 simultaneous requests now and scale to 2,000 requests in the future.",
+      "source_citation": "Right now we need it to handle a thousand simultaneous requests without choking, and we'll need to scale that up in the next release to about double that. Basically it has to survive the rush hours.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "The stakeholder clearly states the current and future scalability requirements, providing specific numbers for simultaneous requests.",
+      "follow_up_question": "What specific scalability strategies or technologies are preferred to achieve this?"
+    },
+    {
+      "requirement": "Only approved company employees or external users with company-approved IDs can log on to the system.",
+      "source_citation": "Only people we trust. Employees, of course, and sometimes external folks who have been given approved company IDs. We can't have anonymous accounts — it's a business tool, not a public calendar. If anyone from outside gets in and changes a booking, that's a big risk to operations and confidentiality.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for strict access control and the prohibition of anonymous accounts, indicating a strong focus on security.",
+      "follow_up_question": "What specific authentication mechanisms or protocols are preferred for this access control?"
+    },
+    {
+      "requirement": "The system should log all access attempts for audit purposes.",
+      "source_citation": "Oh, and we should log access attempts for audit — that's something our risk team will ask about.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for logging access attempts, indicating a focus on audit and security compliance.",
+      "follow_up_question": "What specific audit requirements or compliance standards must the logging mechanism adhere to?"
+    },
+    {
+      "requirement": "The system should have an intuitive workflow for booking, inviting, and equipment needs, with no surprises or fiddly back-and-forth.",
+      "source_citation": "Sure, I think, well, we need something that just makes booking and running meetings boring in a good way — like, no surprises, no fiddly back-and-forth. People should be able to reserve a room, attach equipment needs, invite participants, and the business should feel confident that rooms aren't double-booked or that meetings don't fail because of the system.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for an intuitive and frictionless user experience, indicating a focus on usability.",
+      "follow_up_question": "Are there specific usability testing methods or user feedback mechanisms that should be employed?"
+    },
+    {
+      "requirement": "The system should incorporate the company's branding and identity in its look and feel.",
+      "source_citation": "We want our identity there. Clients and employees should feel it's part of our ecosystem — logo, colors, some branding. Not just throwing our logo on a page, but the overall look and feel should be able to incorporate elements of our identity.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the need for branding and identity incorporation, indicating a focus on look and feel.",
+      "follow_up_question": "Are there specific branding guidelines or design templates that should be followed?"
+    },
+    {
+      "requirement": "The system should support multiple languages, allowing users to select their preferred language.",
+      "source_citation": "We need multiple languages — people in different countries must be able to use it in their language of choice. The user should be able to select a language from the ones we target in our markets.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for multiple language support and user-selectable languages, indicating a focus on usability and localization.",
+      "follow_up_question": "Which specific languages should be supported initially, and how should language selection be implemented?"
+    },
+    {
+      "requirement": "The system should conform to accessibility requirements such as the Americans with Disabilities Act (ADA).",
+      "source_citation": "Very important. We must conform to accessibility requirements like the Americans with Disabilities Act. It's not optional; it's about legal compliance and being inclusive.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for accessibility compliance, indicating a focus on legal and inclusivity requirements.",
+      "follow_up_question": "Are there specific accessibility standards or guidelines that should be followed?"
+    },
+    {
+      "requirement": "The system should run in any standard HTML browser and display correctly in at least 80% of tested browsers.",
+      "source_citation": "Yes, it needs to run in any normal HTML browser. Users shouldn't have to install plugins or a specific browser. The trick is, we also need it to render correctly across a representative set of browsers — there are always edge cases, but it has to look and work properly in most of the browsers our people use.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for cross-browser compatibility and a specific target for correct display, indicating a focus on portability.",
+      "follow_up_question": "Which specific browsers and versions should be included in the test matrix?"
+    },
+    {
+      "requirement": "The system should interface with various email systems to send invites, reminders, and cancellations.",
+      "source_citation": "Very important. If it can't send mail reliably we fail at the basic job. It needs to talk to whatever email servers we use, because different offices use different things, and be able to send invites, reminders, cancellations.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for reliable email integration, indicating a focus on operability.",
+      "follow_up_question": "Are there specific email systems or protocols that should be supported?"
+    },
+    {
+      "requirement": "The system should create exception records for errors and make them available for transmission and analysis.",
+      "source_citation": "Definitely. When something goes wrong, we want an exception record — something that doesn't just sit in the logs but can be packaged up and sent back to our team for analysis. It's useful for trend spotting and for getting support teams to fix recurring issues before users notice.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for structured error logging and transmission, indicating a focus on maintainability.",
+      "follow_up_question": "What specific error logging mechanisms or formats are preferred?"
+    },
+    {
+      "requirement": "The system should have good validation on imports and a way to quickly clean up oddities or phantom entries.",
+      "source_citation": "One more thing — small tangent: we used to have a sticky note system in one office, and I remember this one Thursday where every room showed booked but half were phantom entries from a spreadsheet import gone wrong. So whatever we build, it needs good validation on imports and a way to clean oddities quickly.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for data integrity checks and quick cleanup mechanisms, indicating a focus on maintainability.",
+      "follow_up_question": "What specific validation rules or cleanup tools are preferred?"
+    },
+    {
+      "requirement": "The system should prioritize core tasks like booking and checking availability during peak times, shedding non-essential work if necessary.",
+      "source_citation": "It should try to keep the same experience, especially for core tasks like booking and checking availability. If there's a need to shed non-essential work during extreme load, that's acceptable, but the booking flow must remain snappy.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for graceful degradation and prioritization of core tasks, indicating a focus on performance.",
+      "follow_up_question": "What specific mechanisms or strategies should be used for shedding non-essential work?"
+    }
+  ]
+}

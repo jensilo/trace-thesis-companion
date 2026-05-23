@@ -1,0 +1,141 @@
+{
+  "extraction_file": "outputs/corpus_20260227_105946_mistral-small_trace_20260302_165429/trace_transcript_3_re_novice_stakeholder_technical_senior_20260227_110121.json",
+  "ground_truth_source": "outputs/corpus-20260227_105946/transcript_3_re_novice_stakeholder_technical_senior_20260227_110121.json",
+  "eval_model": "openai/gpt-5-mini",
+  "per_requirement": [
+    {
+      "extracted_requirement": "The system should be intuitive enough for non-technical users to learn and use effectively within a short hands-on session.",
+      "matched_ground_truth": "'All of the users shall be able to use the system after one day of training.'",
+      "overlap_score": 4,
+      "overlap_label": "High",
+      "quality_attribute_match": true,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system should feel snappy and responsive for day-to-day tasks, with a response time of five seconds or less.",
+      "matched_ground_truth": "'The response time of general student management tasks shall take no longer than 5 seconds and the response time of schedule generation shall take no longer than 30 seconds.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system should complete full schedule generation within thirty seconds to allow users to iterate without losing momentum.",
+      "matched_ground_truth": "'The response time of general student management tasks shall take no longer than 5 seconds and the response time of schedule generation shall take no longer than 30 seconds.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 5,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": true,
+      "is_duplicate": true
+    },
+    {
+      "extracted_requirement": "The system should integrate with CampusConnect and the student master system using standard APIs and secure channels.",
+      "matched_ground_truth": "The system shall interface with CampusConnect's central server'",
+      "overlap_score": 4,
+      "overlap_label": "High",
+      "quality_attribute_match": false,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 3,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system should implement role-based access control to limit sensitive information to authorized users and maintain audit trails for accountability.",
+      "matched_ground_truth": "Only authorized users shall have access to students' personal information.'",
+      "overlap_score": 4,
+      "overlap_label": "High",
+      "quality_attribute_match": true,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 5,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system should be available during working hours with an uptime of at least 95% to ensure reliability.",
+      "matched_ground_truth": "'The system shall achieve 95% up time.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 5,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system should include basic checks and referential integrity to prevent invalid data entries and ensure data quality.",
+      "matched_ground_truth": "'The system shall have basic data integrity checking to reduce the possibility of incorrect or invalid data being introduced.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": false,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 3,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system should protect private information according to the university’s information policy, including encryption in transit, storage protections, and access controls.",
+      "matched_ground_truth": "The system shall protect private information in accordance with the organization's information policy.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 5,
+      "rationale_quality": 4,
+      "gap_detection_quality": 5,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system should be maintainable with clear logging, modular components, and decent documentation to facilitate future updates and troubleshooting.",
+      "matched_ground_truth": null,
+      "overlap_score": 1,
+      "overlap_label": "Very Low",
+      "quality_attribute_match": false,
+      "confidence_quality": 3,
+      "rationale_quality": 3,
+      "gap_detection_quality": 2,
+      "is_hit": false,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system should be mobile-friendly to allow staff and students to view schedules on their phones.",
+      "matched_ground_truth": null,
+      "overlap_score": 1,
+      "overlap_label": "Very Low",
+      "quality_attribute_match": false,
+      "confidence_quality": 2,
+      "rationale_quality": 2,
+      "gap_detection_quality": 4,
+      "is_hit": false,
+      "is_duplicate": false
+    }
+  ],
+  "metrics": {
+    "hit_count": 7,
+    "extracted_count": 10,
+    "ground_truth_count": 10,
+    "precision": 0.7,
+    "recall": 0.7,
+    "f1": 0.7,
+    "quality_attribute_accuracy": 0.714,
+    "avg_confidence": 4.2,
+    "avg_overlap_score": 3.9,
+    "avg_confidence_quality": 4.0,
+    "avg_rationale_quality": 3.7,
+    "avg_gap_detection_quality": 3.8
+  }
+}

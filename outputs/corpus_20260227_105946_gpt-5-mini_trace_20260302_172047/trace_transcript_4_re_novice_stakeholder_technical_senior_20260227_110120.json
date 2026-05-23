@@ -1,0 +1,183 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_4_re_novice_stakeholder_technical_senior_20260227_110120.txt",
+  "model": "openai/gpt-5-mini",
+  "timestamp": "20260302_172313",
+  "requirements": [
+    {
+      "requirement": "For routine navigations and small queries, the user interface shall respond within five seconds.",
+      "source_citation": "For routine navigations and small queries, let's design for roughly five seconds as the upper bound. Anything longer and users report it as sluggish.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder gave an explicit testable threshold for UI responsiveness and tied it to user perception. It applies to routine navigations and small queries. Missing: whether this is measured end-to-end (client perceived) or server response time, and percentile target (e.g., 95th).",
+      "follow_up_question": "Should the 5s threshold be measured at the client (perceived) or server API response, and at which percentile (e.g., 95th/99th) during business hours and peak load?"
+    },
+    {
+      "requirement": "The system shall support up to 350 concurrent active users without application-level performance degradation.",
+      "source_citation": "design and load tests should target support for 350 concurrent users without application-level performance degradation.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly specified a capacity target for load testing. Missing: definition of 'application-level performance degradation', workload mix per user, and whether this includes background/system processes.",
+      "follow_up_question": "Please define 'application-level performance degradation' (e.g., response time thresholds, error rates) and provide an expected workload profile per concurrent user for load tests."
+    },
+    {
+      "requirement": "The application shall be essentially always available, allowing only scheduled maintenance windows: Monday–Saturday 03:00–04:00 Eastern and Sunday 01:00–05:00 Eastern.",
+      "source_citation": "It needs to be essentially always available because cardmembers and merchants can open or escalate matters at any time, and there are external systems that expect availability. We do allow for scheduled maintenance windows, though.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "Stakeholder stated near-24/7 availability with explicit maintenance windows later provided. Missing: target uptime percentage (e.g., 99.9%), and procedures for unplanned outages and SLA obligations to external systems.",
+      "follow_up_question": "What is the quantitative availability SLA (e.g., 99.9% monthly uptime) and what are the required SLAs/contractual expectations toward external systems?"
+    },
+    {
+      "requirement": "The application shall implement retries and idempotency for external calls so failures do not create inconsistent state.",
+      "source_citation": "with retries and idempotency for the external calls so failures don't create inconsistent state.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly called for retries and idempotency to prevent inconsistent state. Missing: retry policies (backoff, max attempts), idempotency key semantics, and time windows for idempotency.",
+      "follow_up_question": "Specify retry policies (backoff strategy, max attempts) and the idempotency semantics (how keys are generated, retention duration) required for each external integration."
+    },
+    {
+      "requirement": "The application shall cache non-authoritative data for performance but must validate, refresh, and always fall back to the authoritative source (statement DB, cardmember store, merchant service) for authoritative decisions.",
+      "source_citation": "We can cache for performance, but the canonical transaction details—the things that determine liability, timestamps, amounts—need to be sourced from the statement database. Caching is okay so long as we validate and refresh and always fall back to the statement store for authoritative decisions.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "Stakeholder permits caching but mandates authoritative sources for key fields and fallback behavior. Missing: cache TTLs, invalidation strategies, staleness tolerances, and reconciliation frequency/process.",
+      "follow_up_question": "For each data domain (transactions, cardmember, merchant), what are acceptable cache TTLs/staleness limits and what reconciliation/invalidations processes should be used?"
+    },
+    {
+      "requirement": "For core transaction attributes (e.g., amounts, timestamps) the system shall always obtain authoritative values from the statement database; profile fields from the cardmember store; merchant identifiers and categories from the merchant service.",
+      "source_citation": "For core transaction attributes like amount and timestamps, yes, always authoritative from the statement DB. Profile fields like addresses should come from the cardmember store. Merchant category and merchant identifiers should come from the merchant service.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly enumerated which systems are authoritative for specific fields, implying integration and data consistency requirements. Missing: list of all authoritative fields and how to handle conflicts if sources disagree.",
+      "follow_up_question": "Please provide a complete authoritative-field mapping and rules for resolving conflicts when authoritative systems disagree."
+    },
+    {
+      "requirement": "Adjustment and posting requests to the posting and billing system shall be idempotent, retried on transient failures, reconciled if a response is not received, and must be auditable and authorized.",
+      "source_citation": "We need strong delivery semantics: requests should be idempotent, retried on transient failures, and reconciled if a response isn't received. Also, adjustments are financial operations and must be auditable and authorized through access controls.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "reliability",
+      "confidence": 5,
+      "rationale": "Stakeholder emphasized strong delivery semantics and audit/auth control for financial operations. Missing: reconciliation timelines, who performs reconciliation, and exact audit content for adjustment transactions.",
+      "follow_up_question": "What are the required reconciliation timelines and procedures for adjustment requests, and what exact audit fields must be recorded for each adjustment?"
+    },
+    {
+      "requirement": "The application shall enforce access controls integrated with enterprise identity/access management, using role-based access control as the baseline and attribute checks where necessary, to gate initiation of dispute types and adjustment requests.",
+      "source_citation": "Initiation of certain dispute types and any adjustment requests need higher privilege, so the application must gate those actions based on the user's role and entitlements, integrated with our identity and access management.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder specified RBAC baseline and integration with IAM to restrict sensitive operations. Missing: mapping of roles to permissions, attribute checks required, and integration protocol (e.g., SAML, OAuth, SCIM).",
+      "follow_up_question": "Please provide role-to-permission mappings and specify IAM integration details (protocols, claims/attributes required) and any attribute-based checks needed."
+    },
+    {
+      "requirement": "The system shall record an audit trail for every action affecting case state or triggering external requests containing who performed it, when, the payload, and responses; the trail must be tamper-evident, retained per policy, and searchable for e-discovery while minimizing unnecessary PII exposure.",
+      "source_citation": "Every action that affects case state or triggers an external request must be recorded with who performed it, when, and what the payload was, plus any responses. The audit trail needs to be tamper-evident in practice, kept according to retention policies, and searchable for e-discovery. Also, the design should facilitate compliance reviews without exposing unnecessary PII to reviewers.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 5,
+      "rationale": "Stakeholder gave explicit audit requirements including tamper-evidence, retention, searchability, and PII minimization. Missing: retention periods, tamper-evidence mechanism (WORM logs, signed events), and access controls for audit data.",
+      "follow_up_question": "What are the required retention periods and legal hold procedures, and what tamper-evidence mechanisms and access controls should be used for the audit trail?"
+    },
+    {
+      "requirement": "The application shall degrade gracefully when dependent backend systems are unavailable: it must surface blocked actions clearly, queue or retry requests where appropriate, avoid unreconcilable partial state, and provide clear diagnostics for technicians.",
+      "source_citation": "The app should degrade gracefully. For example, if the statement DB is unavailable, we should surface clearly what actions are blocked, queue or retry requests where appropriate, and provide technicians with clear diagnostics. We should avoid partial state that can't be reconciled; that's why idempotency, retries, and compensation flows are important.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 5,
+      "rationale": "Stakeholder described desired graceful degradation behavior and operational diagnostic needs. Missing: which actions may be queued vs blocked, queue durability expectations, and operator runbooks.",
+      "follow_up_question": "Which specific actions should be queued versus blocked during backend outages, what are queue durability/ordering requirements, and do you have required operator runbooks or escalations?"
+    },
+    {
+      "requirement": "Monitoring and alerting shall be in place to detect failures and support rapid remediation by operations.",
+      "source_citation": "Also, monitoring and alerting must be in place so ops can remediate quickly.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly requested monitoring and alerting for ops. Missing: metrics to monitor, alert thresholds, noise/tuning policies, and on-call/SLAs for alerts.",
+      "follow_up_question": "What specific metrics and alert thresholds are required (e.g., error rates, latency, queue depth), and what are the expected escalation and on-call SLAs for alerts?"
+    },
+    {
+      "requirement": "Internal-only fields shall be segregated so they are not exposed to merchants or cardmembers; the API and presentation layers shall enforce claims-based decisioning and mask sensitive fields (e.g., PAN) in UI logs.",
+      "source_citation": "we need data segregation so internal-only fields aren't exposed to merchants or cardmembers. We should model separation at the API and presentation layers, with claims-based decisioning so the front end only renders what the user's scope allows. And, just to add, sometimes we have to mask certain PANs or sensitive fields in UI logs…",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder demands data segregation, claims-based rendering, and masking of sensitive data in logs. Missing: exact fields to segregate/mask, masking formats, and enforcement mechanisms across layers.",
+      "follow_up_question": "Please provide a list of fields requiring segregation or masking and specify masking formats, and confirm whether masking/enforcement should be implemented at API gateway, backend services, or UI layer (or all)."
+    },
+    {
+      "requirement": "The dispute application shall call the letters API with a template identifier and populated fields and shall not handle rendering or printing itself to keep concerns separated.",
+      "source_citation": "From a design standpoint, the dispute app should call the letters API with a template identifier and populated fields, and the letters side handles the actual rendering and delivery logistics. That keeps dispute logic separate from printing concerns.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "Stakeholder specified separation of concerns for printing via letters service. Missing: expected SLA/latency for letter requests, error handling and retry semantics for letters calls.",
+      "follow_up_question": "What are the expected success/latency SLAs for the letters API calls and what retry/reconciliation behavior should be used if the letters service fails?"
+    },
+    {
+      "requirement": "The UI shall follow corporate UI standards and reuse accessible components and patterns provided by central design to ensure a consistent and accessible experience.",
+      "source_citation": "Yes, we have to follow corporate UI standards, both for internal tools and anything external-facing so users have a consistent experience and we reuse the accessible components and patterns that central design provides.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 5,
+      "rationale": "Stakeholder mandated adherence to corporate UI and accessibility standards. Missing: pointer to style guide, accessibility conformance level (e.g., WCAG 2.1 AA), and exceptions process.",
+      "follow_up_question": "Which corporate UI standard or design system and which accessibility conformance level (e.g., WCAG 2.1 AA) should the UI comply with?"
+    },
+    {
+      "requirement": "The system shall prevent unauthorized initiation of dispute flows and record who did what for audits (baseline RBAC with extensible attribute checks).",
+      "source_citation": "Role-based access control is the baseline; we can extend with attribute checks where necessary. The key is that the system must prevent unauthorized initiation of dispute flows and record who did what for audits.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Reiterates RBAC baseline plus audit requirement to prevent unauthorized actions. Missing: specific authorization rules, separation of duties, and approval workflows for privileged operations.",
+      "follow_up_question": "Please provide required separation-of-duty rules and any approval workflows for high-privilege dispute initiations or adjustments."
+    },
+    {
+      "requirement": "Operational diagnostics shall be provided when degradations occur so technicians can identify which backend is failing and which actions are impacted.",
+      "source_citation": "provide technicians with clear diagnostics.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 4,
+      "rationale": "Stakeholder asked for clear diagnostics during failures. Missing: format of diagnostics, access rights to diagnostic data, and whether diagnostics are exposed in UI or only via logs/observability tools.",
+      "follow_up_question": "What diagnostic information should be exposed to technicians (error codes, traces, affected endpoints) and through which channels (UI, logs, monitoring dashboards)?"
+    }
+  ]
+}

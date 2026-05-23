@@ -1,0 +1,227 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_5_re_experienced_stakeholder_nontechnical_manager_20260227_110819.txt",
+  "model": "openai/gpt-5-mini",
+  "timestamp": "20260302_172325",
+  "requirements": [
+    {
+      "requirement": "The product shall integrate with the existing Choice Parts database feed and use that data rather than recreating the inventory.",
+      "source_citation": "We definitely need to use what's already there — we've got this Choice Parts database that the whole industry leans on.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly requires use of the existing Choice Parts feed and not recreating inventory. This is an interoperability/integration constraint that affects correctness and trust. Gaps: exact API, SLAs, data formats, and authorization model for the feed are not specified.",
+      "follow_up_question": "What are the technical details of the Choice Parts feed (API endpoints, data schema, auth method, expected throughput and SLAs) and who can provide access/test credentials?"
+    },
+    {
+      "requirement": "From a user's perspective, the parts availability data presented shall feel current via near-real-time or frequent synchronization with the Choice Parts feed.",
+      "source_citation": "From a user's point of view it should feel current. I don't need millisecond updates, but if a part disappeared yesterday it shouldn't show up as available today. So near-real-time or frequent syncs; the feed needs to be reliable enough that adjusters trust the availability info.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder requests timeliness of data (near-real-time/frequent syncs) to maintain trust in availability info. Missing specifics: exact maximum allowed staleness (e.g., seconds/minutes/hours) and sync frequency.",
+      "follow_up_question": "What is the maximum acceptable data staleness for availability information (e.g., no older than X minutes/hours) and should certain critical fields require stricter freshness?"
+    },
+    {
+      "requirement": "The application shall conform to the organization's architecture playbook, UI standards, approved authentication patterns, visual components, and accessibility expectations.",
+      "source_citation": "It has to follow our architecture playbook and our UI standards — the look and feel people are used to, the authentication patterns, that sort of thing.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "Stakeholder states adherence to corporate governance, UI, auth, and accessibility guidelines is mandatory to avoid IT blocking rollout. Gaps: which version of playbook, which accessibility standard (e.g., WCAG level) and which component library to use.",
+      "follow_up_question": "Please provide the specific architecture playbook version, UI component library, and accessibility standard (e.g., WCAG level) we must comply with, or point us to the governing documentation."
+    },
+    {
+      "requirement": "Access to claim-related data, ratings, and administrative functions shall be role-based with least-privilege controls: adjusters/estimators limited to claim-relevant details, auditors and program administrators granted broader historical and configuration access as appropriate.",
+      "source_citation": "But not everyone should be able to change ratings or see everything; there are privacy and reputational risks if ratings get misused.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder emphasizes role-based access to protect privacy and reputation; defines who needs broad view vs limited. Gaps: specific roles, permission sets, and approval processes are unspecified.",
+      "follow_up_question": "Can you provide an initial role matrix listing roles (e.g., adjuster, estimator, auditor, program admin) and the precise data/actions each role must be allowed or prohibited from performing?"
+    },
+    {
+      "requirement": "The system shall prevent non-compliant recycled-parts choices where possible and clearly flag others, recording any exceptions in an auditable trail.",
+      "source_citation": "From a business perspective I'd say it should prevent mistakes where possible and flag other things clearly. We need the workflow to guide users away from non-compliant choices and make any exceptions explicit so there's an audit trail.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 5,
+      "rationale": "Stakeholder requires preventive controls plus auditability to enforce regulatory compliance for recycled parts. Gaps: exact legal rules (estimatics laws), business rules engine requirements, and retention period for audit logs.",
+      "follow_up_question": "Please provide the specific compliance rules (estimatics laws and data-retention requirements) we must enforce, and define which cases must be blocked versus merely flagged."
+    },
+    {
+      "requirement": "The system shall provide an auditable history of actions, ratings, and exceptions to support audits and investigations.",
+      "source_citation": "Claims managers should be able to run audits over time to spot patterns... make any exceptions explicit so there's an audit trail.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Stakeholder needs traceability for audits and investigations. Missing specifics: required retention duration, log format, access controls for logs, and query/reporting capabilities.",
+      "follow_up_question": "What is the required retention period for audit logs, and what search/reporting capabilities are needed for auditors (e.g., export, filtering by date/actor/action)?"
+    },
+    {
+      "requirement": "Parts search responses shall return within 15 seconds or less; facility search (preferred repair facility by location) shall return within 10 seconds, with a business boundary target of 8 seconds.",
+      "source_citation": "For parts searches the parts search needs to return within about fifteen seconds tops. For finding a preferred repair facility based on vehicle location, it should be quicker — more like under ten seconds; I think eight seconds is a good business boundary.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder supplies explicit response-time SLAs for key user operations; these are critical business constraints. Gaps: whether these are 95th/99th percentile targets, load conditions, or per-user vs system-wide.",
+      "follow_up_question": "Should the 15s and 8–10s response-time targets be defined as median, 95th percentile, or 99th percentile under what concurrent-user/load profile?"
+    },
+    {
+      "requirement": "The system shall achieve approximately 98% availability (uptime) over the year; tolerating more than a couple percent downtime is unacceptable.",
+      "source_citation": "Yes, the expectation is around ninety-eight percent uptime. Anything below that, and we start seeing meaningful impacts on claims throughput and customer satisfaction.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "Stakeholder states a precise availability target (~98%). Gaps: acceptable maintenance windows, SLA measurement method, required support hours, and RTO/RPO for incidents.",
+      "follow_up_question": "Do you require an official uptime SLA (e.g., measured monthly) at 98% and what are acceptable maintenance windows, RTO, and RPO for critical incidents?"
+    },
+    {
+      "requirement": "The application shall be responsive and lightweight on mobile devices and shall degrade gracefully under flaky cellular connections; offline mode is a desirable stretch goal but not required initially.",
+      "source_citation": "Primarily responsive and lightweight for mobile use, so field staff can work on flaky cellular connections. Offline mode would be nice, but I see it as a stretch goal for later. Right now the priority is that it works well in the field experience and degrades gracefully.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 5,
+      "rationale": "Stakeholder prioritizes mobile responsiveness and graceful degradation; offline is lower priority. Gaps: supported device types/OS versions, acceptable offline feature set, and performance under low bandwidth.",
+      "follow_up_question": "Which mobile platforms/versions must be supported, and which core functions must work offline (if any) versus simply providing cached read-only data?"
+    },
+    {
+      "requirement": "The system shall implement a hybrid caching strategy for Choice Parts data: prefer freshest data but use cached snapshots in poor connectivity areas to preserve availability and avoid exposing stale/inconsistent results.",
+      "source_citation": "I think a hybrid makes sense; users expect freshest data, but in areas with bad reception, a cached snapshot is better than nothing. The key point is that the system needs to handle the feed in a way that preserves trust in availability info and doesn't expose us to stale or inconsistent results.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "Stakeholder suggests hybrid cache to balance freshness and availability. Gaps: cache TTL, invalidation policy, conflict resolution, and how staleness is surfaced to users.",
+      "follow_up_question": "What maximum cache TTL is acceptable, how should stale data be labeled to users, and what invalidation strategy do you prefer for critical availability fields?"
+    },
+    {
+      "requirement": "Help and contextual guidance shall be available on approximately 90% of screens/workflows to minimize support calls and protect first-call resolution metrics.",
+      "source_citation": "We would aim for help being available in about nine out of ten screens or workflows. If help is missing in too many places, adjusters will call our support line and that kills our first-call resolution metrics.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Stakeholder quantifies help coverage goal (90% of screens) tied to operational metric (first-call resolution). Gaps: what constitutes a 'screen or workflow', help content standards, and localization requirements.",
+      "follow_up_question": "Can you provide a prioritized list of core workflows/screens so we can ensure help coverage for the 90%, and are there content/formatting requirements (videos, inline tips, links) for help?"
+    },
+    {
+      "requirement": "Ease-of-use target: at least 95% of adjusters and collision estimators shall report the product is easy to use in post-rollout surveys.",
+      "source_citation": "So the target I'm thinking of is that ninety-five percent of adjusters and collision estimators should report the product is easy to use on those surveys.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Stakeholder provides a measurable usability acceptance criterion (95% satisfaction). Gaps: survey instrument, sampling plan, timing, and success threshold for subgroups.",
+      "follow_up_question": "Which survey instrument and sample size will be used to measure the 95% target, and over what time period after rollout should this be achieved?"
+    },
+    {
+      "requirement": "Rating data shall influence recommendations in near real-time or at least on a daily cadence so adjusters rely on up-to-date performance signals when selecting facilities.",
+      "source_citation": "It should influence recommendations in near real-time, or at least on a daily cadence, because adjusters need to rely on up-to-date performance signals when steering repairs.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder requires that ratings affect recommendations quickly (near-real-time or daily). Gaps: definition of near-real-time, consistency across distributed caches, and whether immediate consistency is required.",
+      "follow_up_question": "Do you require immediate (sub-minute) propagation of rating changes, or is daily batch processing acceptable; and should rating updates be strongly consistent across all users?"
+    },
+    {
+      "requirement": "The system shall provide mechanisms to prevent misuse of ratings and reputation data (e.g., restrict who can change ratings and who can view aggregated/unredacted ratings).",
+      "source_citation": "But not everyone should be able to change ratings or see everything; there are privacy and reputational risks if ratings get misused.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder is concerned about controlling who can modify/view reputation data to protect shops and users. Gaps: exact permission rules, anonymization levels, and appeals processes.",
+      "follow_up_question": "What specific restrictions or anonymization policies do you want for ratings (who can edit, who can view raw vs aggregated scores), and should shops be notified or allowed to respond to ratings?"
+    },
+    {
+      "requirement": "The product shall be designed to avoid exposing sensitive claim information to users who do not require it for their role; field users should only see claim-relevant details.",
+      "source_citation": "Field users shouldn't see corporate-wide sensitive data, just the details relevant to the claim they're handling, or else it's overwhelming and risky.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder emphasizes limiting exposure of sensitive data based on role and context to reduce risk and complexity. Gaps: list of sensitive fields and masking/anonymization requirements.",
+      "follow_up_question": "Please list data elements considered sensitive and whether they must be masked, redacted, or excluded for specific roles (e.g., field adjusters)."
+    },
+    {
+      "requirement": "The system shall be highly reliable such that frequent outages do not force users to revert to legacy processes; incidents of search slowness or stale availability must be minimized as they occur several times a month today.",
+      "source_citation": "We need it to be highly reliable — downtime erodes trust and increases manual workarounds... Field complaints about search slowness or stale availability come up several times a month, and each one saps credibility.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "Stakeholder links reliability to business adoption and cites frequency of current incidents. Gaps: quantitative incident frequency targets (e.g., max incidents/month), MTTR expectations.",
+      "follow_up_question": "What is the maximum acceptable number of critical incidents per month and what MTTR (mean time to recovery) targets do you expect for outages affecting search or availability?"
+    },
+    {
+      "requirement": "The system shall avoid introducing additional governance or regulatory risk by ensuring suggested workflows comply with estimatics and insurance claims processing regulations.",
+      "source_citation": "We can't ignore the estimatics laws that govern recycled parts usage... respect insurance regulations around claims processing and data retention. If the tool suggests non-compliant workflows, we get regulatory exposure and possible fines.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 5,
+      "rationale": "Stakeholder requires compliance with specific regulations to avoid legal exposure. Gaps: which jurisdictions, regulatory citations, and validation/certification requirements.",
+      "follow_up_question": "Which jurisdictions and specific regulations must the system comply with, and do you require legal sign-off or certification prior to deployment?"
+    },
+    {
+      "requirement": "The system shall surface help content inline and where users expect it rather than directing them to external/outdated documents, preventing unnecessary support calls.",
+      "source_citation": "Help needs to be where people expect it. I don't want them Googling and ending up on outdated PDFs. Most of the app's screens should have contextual guidance or links to help, so that people find assistance while they're actually in the workflow.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "Stakeholder wants contextual, discoverable help to reduce support load. Gaps: help localization, authored content ownership, and inline vs linked help balance.",
+      "follow_up_question": "Who will be responsible for authoring and maintaining in-app help content, and is localization required for multiple languages or regions?"
+    },
+    {
+      "requirement": "To measure success beyond user satisfaction, the system shall enable tracking of business KPIs: claim cycle time, percentage reuse of recycled parts, number of shop visits due to missing parts, and amount of manual administrative work.",
+      "source_citation": "Success is measured by faster cycle times on claims, higher reuse of recycled parts where appropriate, fewer trips to the shop due to missing parts, and reduced manual admin.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Stakeholder enumerates measurable business KPIs to judge project success. Gaps: baseline metrics, measurement methodology, dashboards and reporting cadence.",
+      "follow_up_question": "Please provide baseline values for these KPIs and specify reporting cadence and dashboard/report requirements to monitor them."
+    },
+    {
+      "requirement": "If corporate architecture/UI rules are not followed, or integration with Choice Parts cannot be implemented, the project shall be considered a non-starter.",
+      "source_citation": "If we ignore corporate architecture and UI rules, or if we can't tie into the Choice Parts feed, that's a non-starter.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "Stakeholder identifies absolute dealbreakers: adhering to corporate standards and the Choice Parts integration. Gaps: whether waivers are possible and process for exception handling.",
+      "follow_up_question": "Is there an exception/waiver process for the architecture/UI rules or Choice Parts integration, and who has authority to approve such exceptions?"
+    }
+  ]
+}

@@ -1,0 +1,227 @@
+{
+  "transcript_file": "outputs/corpus-20260226_162106/transcript_5_re_experienced_stakeholder_nontechnical_manager_20260226_163604.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_182913",
+  "requirements": [
+    {
+      "requirement": "The system must handle 1,500 concurrent users during peak times.",
+      "source_citation": "At peak I’d expect the system to handle roughly fifteen-hundred people online at the same time.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the expected number of concurrent users during peak times, which is a clear scalability requirement.",
+      "follow_up_question": "What specific performance metrics should be maintained when handling 1,500 concurrent users?"
+    },
+    {
+      "requirement": "The system must provide parts search results within 15 seconds end-to-end.",
+      "source_citation": "For parts searches I'd expect results back within about fifteen seconds end-to-end.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder provides a precise performance target for parts search results, which is a clear performance requirement.",
+      "follow_up_question": "What specific performance metrics should be used to measure and ensure this requirement is met?"
+    },
+    {
+      "requirement": "The system must provide facility lookup results within 8 seconds end-to-end.",
+      "source_citation": "For preferred repair facility lookups I'd want that under eight seconds.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder provides a precise performance target for facility lookup results, which is a clear performance requirement.",
+      "follow_up_question": "What specific performance metrics should be used to measure and ensure this requirement is met?"
+    },
+    {
+      "requirement": "The system must handle slow networks gracefully and provide minimal offline or caching capabilities for short outages.",
+      "source_citation": "So the UI must handle slow networks gracefully, and there should be a minimal offline or caching capability for very short outages.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the need for the system to handle slow networks and provide offline capabilities, which is a clear usability requirement.",
+      "follow_up_question": "What specific usability metrics should be used to measure and ensure this requirement is met?"
+    },
+    {
+      "requirement": "The system must be available 98% of the time.",
+      "source_citation": "The expectation we've set internally is for about ninety-eight percent availability as a minimum.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder provides a precise availability target, which is a clear availability requirement.",
+      "follow_up_question": "What specific availability metrics should be used to measure and ensure this requirement is met?"
+    },
+    {
+      "requirement": "The system must degrade gracefully during outages and provide cached results when appropriate.",
+      "source_citation": "The app should degrade gracefully. It should show cached results when appropriate, flag items as unverified, and let adjusters record attempts or make manual overrides with a note.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the need for the system to degrade gracefully and provide cached results during outages, which is a clear fault tolerance requirement.",
+      "follow_up_question": "What specific fault tolerance metrics should be used to measure and ensure this requirement is met?"
+    },
+    {
+      "requirement": "The system must use SSO, encryption in transit and at rest, and standard protections for security.",
+      "source_citation": "The app should inherit the corporate security posture — things like SSO, encryption in transit and at rest, and standard protections.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the need for the system to inherit the corporate security posture, which is a clear security requirement.",
+      "follow_up_question": "What specific security metrics should be used to measure and ensure this requirement is met?"
+    },
+    {
+      "requirement": "The system must provide progressive feedback during searches, such as partial matches or loading indicators.",
+      "source_citation": "Progressive feedback is important. If a parts search is going to take several seconds, show partial matches or at least a clear spinner and an estimated time.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the need for progressive feedback during searches, which is a clear usability requirement.",
+      "follow_up_question": "What specific usability metrics should be used to measure and ensure this requirement is met?"
+    },
+    {
+      "requirement": "The system must be easy to use, with 95% of users reporting it as easy to use after training.",
+      "source_citation": "Our target is pretty ambitious: we want ninety-five percent of the adjusters and estimators who attend training to report that the product is easy to use on immediate post-training surveys.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder provides a precise usability target, which is a clear usability requirement.",
+      "follow_up_question": "What specific usability metrics should be used to measure and ensure this requirement is met?"
+    },
+    {
+      "requirement": "The system must be integrated with the Choice Parts feed and show near real-time availability.",
+      "source_citation": "The new system needs to talk to that feed and show near real-time availability.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "data_freshness",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the need for the system to integrate with the Choice Parts feed and show near real-time availability, which is a clear data freshness requirement.",
+      "follow_up_question": "What specific data freshness metrics should be used to measure and ensure this requirement is met?"
+    },
+    {
+      "requirement": "The system must flag cached data as stale if it is older than a day for most parts and a few hours for high-turnover parts.",
+      "source_citation": "If cached data is older than a day it should be flagged; for high-turnover parts maybe a few hours.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "data_freshness",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the need for the system to flag cached data as stale based on specific time thresholds, which is a clear data freshness requirement.",
+      "follow_up_question": "What specific data freshness metrics should be used to measure and ensure this requirement is met?"
+    },
+    {
+      "requirement": "The system must be compliant with corporate architecture constraints and enterprise UI guidelines.",
+      "source_citation": "The product must sit within corporate architecture constraints and follow the enterprise UI guidelines.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the need for the system to be compliant with corporate architecture constraints and enterprise UI guidelines, which is a clear maintainability requirement.",
+      "follow_up_question": "What specific maintainability metrics should be used to measure and ensure this requirement is met?"
+    },
+    {
+      "requirement": "The system must provide a clear, precise statement of the requirement in RE standard form.",
+      "source_citation": "The look and feel should match our other apps so users don't feel like they're in a weird island. And the workflows need to mirror what adjusters already do.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the need for the system to match the look and feel of other apps and mirror existing workflows, which is a clear usability requirement.",
+      "follow_up_question": "What specific usability metrics should be used to measure and ensure this requirement is met?"
+    },
+    {
+      "requirement": "The system must be designed to handle bursts of activity concentrated on search and estimate views.",
+      "source_citation": "Activity will concentrate on searches and estimate editing during business hours... So the system needs to cope with bursts concentrated on search and estimate views.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the need for the system to handle bursts of activity concentrated on search and estimate views, which is a clear scalability requirement.",
+      "follow_up_question": "What specific scalability metrics should be used to measure and ensure this requirement is met?"
+    },
+    {
+      "requirement": "The system must provide a reliable integration with the Choice Parts feed and have a contact for outages.",
+      "source_citation": "It's critical that the integration is reliable and has a contact for outages.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the need for a reliable integration with the Choice Parts feed and a contact for outages, which is a clear maintainability requirement.",
+      "follow_up_question": "What specific maintainability metrics should be used to measure and ensure this requirement is met?"
+    },
+    {
+      "requirement": "The system must be designed to handle slow networks gracefully and provide minimal offline or caching capabilities for short outages.",
+      "source_citation": "Field users will be on laptops and tablets, sometimes on flaky mobile connections at shops. So the UI must handle slow networks gracefully, and there should be a minimal offline or caching capability for very short outages.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the need for the system to handle slow networks and provide offline capabilities, which is a clear usability requirement.",
+      "follow_up_question": "What specific usability metrics should be used to measure and ensure this requirement is met?"
+    },
+    {
+      "requirement": "The system must be designed to handle slow networks gracefully and provide minimal offline or caching capabilities for short outages.",
+      "source_citation": "Field users will be on laptops and tablets, sometimes on flaky mobile connections at shops. So the UI must handle slow networks gracefully, and there should be a minimal offline or caching capability for very short outages.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the need for the system to handle slow networks and provide offline capabilities, which is a clear usability requirement.",
+      "follow_up_question": "What specific usability metrics should be used to measure and ensure this requirement is met?"
+    },
+    {
+      "requirement": "The system must be designed to handle slow networks gracefully and provide minimal offline or caching capabilities for short outages.",
+      "source_citation": "Field users will be on laptops and tablets, sometimes on flaky mobile connections at shops. So the UI must handle slow networks gracefully, and there should be a minimal offline or caching capability for very short outages.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the need for the system to handle slow networks and provide offline capabilities, which is a clear usability requirement.",
+      "follow_up_question": "What specific usability metrics should be used to measure and ensure this requirement is met?"
+    },
+    {
+      "requirement": "The system must be designed to handle slow networks gracefully and provide minimal offline or caching capabilities for short outages.",
+      "source_citation": "Field users will be on laptops and tablets, sometimes on flaky mobile connections at shops. So the UI must handle slow networks gracefully, and there should be a minimal offline or caching capability for very short outages.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the need for the system to handle slow networks and provide offline capabilities, which is a clear usability requirement.",
+      "follow_up_question": "What specific usability metrics should be used to measure and ensure this requirement is met?"
+    },
+    {
+      "requirement": "The system must be designed to handle slow networks gracefully and provide minimal offline or caching capabilities for short outages.",
+      "source_citation": "Field users will be on laptops and tablets, sometimes on flaky mobile connections at shops. So the UI must handle slow networks gracefully, and there should be a minimal offline or caching capability for very short outages.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the need for the system to handle slow networks and provide offline capabilities, which is a clear usability requirement.",
+      "follow_up_question": "What specific usability metrics should be used to measure and ensure this requirement is met?"
+    }
+  ]
+}

@@ -1,0 +1,161 @@
+{
+  "transcript_file": "outputs/corpus-20260226_162106/transcript_4_re_novice_stakeholder_nontechnical_enduser_20260226_162946.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_182444",
+  "requirements": [
+    {
+      "requirement": "The system should load case details and transaction history within five seconds to avoid user frustration and errors.",
+      "source_citation": "Anything longer than a few seconds is irritating... five seconds is a reasonable cutoff.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states a performance expectation for loading times, indicating a clear requirement for system responsiveness.",
+      "follow_up_question": "Are there specific transactions or data loads that are more critical to optimize within this five-second target?"
+    },
+    {
+      "requirement": "The system should maintain performance and responsiveness during peak usage times with up to 350 concurrent users.",
+      "source_citation": "The peak is a few hundred people at once... if the app slows when everyone logs in, it's a big problem.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the importance of performance under load, specifying a peak usage scenario.",
+      "follow_up_question": "Can Ops provide more detailed usage patterns or specific performance metrics during peak times?"
+    },
+    {
+      "requirement": "The system should have a consistent look and feel with other internal tools, including menus, buttons, and fonts.",
+      "source_citation": "It should look and behave like our other internal tools — same menus, same buttons, same font, so you don't have to relearn where things are.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly requests consistency with existing internal tools, indicating a clear usability and aesthetic requirement.",
+      "follow_up_question": "Can you provide specific examples or screenshots of the internal tools you refer to for consistency?"
+    },
+    {
+      "requirement": "The system should display case statuses with color coding and labels to ensure quick scanning and accessibility.",
+      "source_citation": "The list of cases needs to be instantly scannable... color coded... but keep it clean. Make it obvious even if someone is color blind; maybe a little label or tooltip.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder requests specific UI elements for usability, including color coding and accessibility considerations.",
+      "follow_up_question": "Can you provide examples of color schemes or labeling that have worked well in other tools?"
+    },
+    {
+      "requirement": "The system should allow users to save and recall custom views, including column selections and filters.",
+      "source_citation": "I wish we could save a view — I like certain columns and filters but it forgets them.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder expresses a need for customizable views to enhance usability and efficiency.",
+      "follow_up_question": "Are there specific columns or filters that are most commonly used and should be prioritized?"
+    },
+    {
+      "requirement": "The system should provide clear, non-technical error messages and allow users to save drafts when errors occur.",
+      "source_citation": "Don't show cryptic errors. Say something like 'Transaction lookup failed — try again or flag for Ops.' Save a draft, mark it incomplete, and let us come back to it.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly requests user-friendly error messages and the ability to save drafts, indicating a clear usability requirement.",
+      "follow_up_question": "Can you provide examples of error messages that have been particularly helpful or unhelpful in the past?"
+    },
+    {
+      "requirement": "The system should be available during extended hours to accommodate cardmember and merchant requests from different time zones.",
+      "source_citation": "We need it basically all the time because cardmembers call at odd hours and merchants can reach out from other timezones.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the need for extended availability to support global operations.",
+      "follow_up_question": "Are there specific time zones or regions that require particular attention for availability?"
+    },
+    {
+      "requirement": "The system should support maintenance windows with minimal disruption, including read-only modes or draft capabilities.",
+      "source_citation": "If it's down for maintenance and something urgent comes up, we need a way to at least capture the request or accept it offline — maybe a read-only mode or a draft we can submit later.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder requests specific maintenance handling capabilities to ensure continuous operation.",
+      "follow_up_question": "Can you provide more details on the types of maintenance activities and their expected frequencies?"
+    },
+    {
+      "requirement": "The system should automatically track and display changes made to cases, including old and new values.",
+      "source_citation": "We need to see who touched the case and when... show both versions automatically.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder requests detailed change tracking for maintainability and audit purposes.",
+      "follow_up_question": "Are there specific types of changes or fields that are most critical to track?"
+    },
+    {
+      "requirement": "The system should support role-based access control, restricting certain actions to senior reps or supervisors.",
+      "source_citation": "New reps shouldn't be able to file certain high-risk cases without a supervisor. Supervisors or senior reps need to be able to approve or override sometimes.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the need for role-based permissions to enhance security and control.",
+      "follow_up_question": "Can you provide a detailed breakdown of the roles and their corresponding permissions?"
+    },
+    {
+      "requirement": "The system should log role changes and access modifications for audit purposes.",
+      "source_citation": "If someone gets temporary rights or someone leaves, that should show up somewhere. Auditors have asked us for evidence before.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder requests logging capabilities for security and compliance purposes.",
+      "follow_up_question": "Are there specific audit requirements or regulatory standards that the logging must comply with?"
+    },
+    {
+      "requirement": "The system should retain case histories for at least a few years to comply with compliance requirements.",
+      "source_citation": "Compliance usually makes us keep things for a few years... assume long-term retention.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions compliance requirements for data retention, indicating a legal and retention concern.",
+      "follow_up_question": "Can you provide specific compliance guidelines or retention periods that the system must adhere to?"
+    },
+    {
+      "requirement": "The system should use the statement system as the source of truth for transaction details.",
+      "source_citation": "The statement system is the thing we trust for transaction details.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "data_consistency",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the source of truth for transaction details, indicating a data consistency requirement.",
+      "follow_up_question": "Are there specific transaction details or fields that are most critical to ensure consistency?"
+    },
+    {
+      "requirement": "The system should provide clear error messages and allow manual notes when integrations fail.",
+      "source_citation": "If the merchant lookup fails, the app should tell me why or let me attach a manual note.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "data_consistency",
+      "confidence": 4,
+      "rationale": "The stakeholder requests specific error handling and manual note capabilities for integration failures.",
+      "follow_up_question": "Can you provide examples of integration failures that have occurred in the past and how they were handled?"
+    }
+  ]
+}

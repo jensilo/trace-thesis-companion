@@ -1,0 +1,205 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_5_re_experienced_stakeholder_nontechnical_manager_20260227_110819.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_165539",
+  "requirements": [
+    {
+      "requirement": "The system shall ensure that the Choice Parts feed is synchronized in near-real-time or frequently enough to maintain adjuster trust in the availability information.",
+      "source_citation": "If a part disappeared yesterday it shouldn't show up as available today. So near-real-time or frequent syncs; the feed needs to be reliable enough that adjusters trust the availability info.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for frequent updates to the Choice Parts feed to ensure data accuracy and reliability, which is critical for adjuster trust.",
+      "follow_up_question": "What specific synchronization interval (e.g., every minute, every hour) would be acceptable for maintaining adjuster trust?"
+    },
+    {
+      "requirement": "The system shall respond to parts searches within fifteen seconds to avoid frustrating users.",
+      "source_citation": "For parts searches, anything that drags on for more than a handful of seconds frustrates people. If you press me for numbers — and I know this is specific — the parts search needs to return within about fifteen seconds tops.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the acceptable response time for parts searches, which is a clear performance requirement.",
+      "follow_up_question": "Are there any specific scenarios or conditions under which the response time might need to be faster or slower?"
+    },
+    {
+      "requirement": "The system shall respond to searches for preferred repair facilities within eight seconds to meet business boundaries.",
+      "source_citation": "For finding a preferred repair facility based on vehicle location, it should be quicker — more like under ten seconds; I think eight seconds is a good business boundary.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder provides a specific target response time for finding preferred repair facilities, which is a clear performance requirement.",
+      "follow_up_question": "Are there any specific scenarios or conditions under which the response time might need to be faster or slower?"
+    },
+    {
+      "requirement": "The system shall be responsive and lightweight for mobile use to ensure functionality on flaky cellular connections.",
+      "source_citation": "Primarily responsive and lightweight for mobile use, so field staff can work on flaky cellular connections.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for the system to be responsive and lightweight for mobile use, which is a performance requirement.",
+      "follow_up_question": "What specific performance metrics (e.g., load time, latency) are expected for mobile use?"
+    },
+    {
+      "requirement": "The system shall control access to sensitive claim information to prevent exposure.",
+      "source_citation": "If access isn't controlled properly we expose sensitive claim info.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the importance of controlling access to sensitive claim information to prevent exposure, which is a security requirement.",
+      "follow_up_question": "What specific access control mechanisms (e.g., role-based access, encryption) are expected to be implemented?"
+    },
+    {
+      "requirement": "The system shall restrict access to ratings and data based on user roles to prevent misuse and protect privacy.",
+      "source_citation": "Not everyone should be able to change ratings or see everything; there are privacy and reputational risks if ratings get misused.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need to restrict access to ratings and data based on user roles to prevent misuse and protect privacy, which is a security requirement.",
+      "follow_up_question": "What specific roles and access levels are expected to be implemented?"
+    },
+    {
+      "requirement": "The system shall ensure that field users can only access data relevant to the claims they are handling to avoid overwhelming them and mitigate risk.",
+      "source_citation": "Field users shouldn't see corporate-wide sensitive data, just the details relevant to the claim they're handling, or else it's overwhelming and risky.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the need to restrict field users' access to data relevant to their claims to avoid overwhelming them and mitigate risk, which is a security requirement.",
+      "follow_up_question": "What specific data access controls are expected to be implemented to ensure field users can only access relevant data?"
+    },
+    {
+      "requirement": "The system shall feel seamless to users whether they are on the road or at their desk.",
+      "source_citation": "It should feel seamless to someone who's out on the road or at their desk.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 3,
+      "rationale": "The stakeholder emphasizes the need for the system to feel seamless to users in different environments, which is a usability requirement.",
+      "follow_up_question": "What specific usability metrics (e.g., ease of use, user satisfaction) are expected to be achieved?"
+    },
+    {
+      "requirement": "The system shall achieve a ninety-five percent ease-of-use satisfaction rate among adjusters and collision estimators.",
+      "source_citation": "Hmm, I think almost all of our adjusters and estimators should be comfortable with it without complaining. I mean, we run training but this should cut training time down a lot. If I had to be concrete, I'd say we expect the vast majority to report it's easy to use — high nineties in satisfaction, something like that.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder provides a specific target for ease-of-use satisfaction, which is a clear usability requirement.",
+      "follow_up_question": "What specific usability testing methods will be used to measure the satisfaction rate?"
+    },
+    {
+      "requirement": "The system shall provide contextual guidance or links to help on most screens to ensure help is discoverable.",
+      "source_citation": "Help needs to be where people expect it. I don't want them Googling and ending up on outdated PDFs. Most of the app's screens should have contextual guidance or links to help, so that people find assistance while they're actually in the workflow.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for help to be discoverable and contextual, which is a usability requirement.",
+      "follow_up_question": "What specific help resources (e.g., tooltips, help documents) are expected to be provided?"
+    },
+    {
+      "requirement": "The system shall provide help on ninety percent of screens or workflows to ensure adequate help coverage.",
+      "source_citation": "We would aim for help being available in about nine out of ten screens or workflows.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder provides a specific target for help coverage, which is a clear usability requirement.",
+      "follow_up_question": "What specific help resources (e.g., tooltips, help documents) are expected to be provided on each screen or workflow?"
+    },
+    {
+      "requirement": "The system shall be available ninety-eight percent of the time to avoid eroding trust and increasing manual workarounds.",
+      "source_citation": "If it's down too often, people revert to old processes. To be specific, we designed this expecting it to be available nearly all the time; tolerating more than a couple percent of downtime over the year would be uncomfortable for the business.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder provides a specific target for system availability, which is a clear availability requirement.",
+      "follow_up_question": "What specific availability metrics (e.g., uptime, downtime) are expected to be achieved?"
+    },
+    {
+      "requirement": "The system shall follow corporate architecture and UI standards to avoid governance headaches and potential regulatory exposure.",
+      "source_citation": "We can't ship something that looks and behaves like a rogue app. It has to follow our architecture playbook and our UI standards — the look and feel people are used to, the authentication patterns, that sort of thing. Otherwise IT will block it and the business won't take it seriously.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for the system to follow corporate architecture and UI standards, which is a maintainability requirement.",
+      "follow_up_question": "What specific architecture and UI standards are expected to be followed?"
+    },
+    {
+      "requirement": "The system shall handle the Choice Parts feed in a way that preserves trust in availability information and avoids stale or inconsistent results.",
+      "source_citation": "The key point is that the system needs to handle the feed in a way that preserves trust in availability info and doesn't expose us to stale or inconsistent results.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 3,
+      "rationale": "The stakeholder highlights the need for the system to handle the Choice Parts feed in a way that preserves trust and avoids stale or inconsistent results, which is a scalability requirement.",
+      "follow_up_question": "What specific mechanisms (e.g., caching, synchronization) are expected to be implemented to handle the Choice Parts feed?"
+    },
+    {
+      "requirement": "The system shall comply with estimatics laws governing recycled parts usage and insurance regulations around claims processing and data retention.",
+      "source_citation": "We can't ignore the estimatics laws that govern recycled parts usage — those rules dictate when and how recycled parts can be recommended or applied. And we also have to respect insurance regulations around claims processing and data retention.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for the system to comply with specific laws and regulations, which is a legal requirement.",
+      "follow_up_question": "What specific laws and regulations are expected to be complied with?"
+    },
+    {
+      "requirement": "The system shall prevent non-compliant choices where possible and flag other issues clearly to guide users away from non-compliant workflows and make exceptions explicit for an audit trail.",
+      "source_citation": "From a business perspective I'd say it should prevent mistakes where possible and flag other things clearly. We need the workflow to guide users away from non-compliant choices and make any exceptions explicit so there's an audit trail.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for the system to prevent non-compliant choices and flag issues clearly, which is a legal requirement.",
+      "follow_up_question": "What specific mechanisms (e.g., warnings, alerts) are expected to be implemented to prevent non-compliant choices and flag issues?"
+    },
+    {
+      "requirement": "The system shall follow corporate UI guidelines, including visual components, accessibility expectations, and approved interaction patterns.",
+      "source_citation": "They're fairly prescriptive — they cover visual components, accessibility expectations, and a set of approved interaction patterns. If we don't follow them, we'll face pushback during architecture reviews. Accessibility isn't just compliance for us; it's also a customer expectation and affects market perception.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "accessibility",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for the system to follow corporate UI guidelines, including accessibility expectations, which is an accessibility requirement.",
+      "follow_up_question": "What specific UI guidelines and accessibility standards are expected to be followed?"
+    },
+    {
+      "requirement": "The system shall influence recommendations for repair facilities in near real-time or at least on a daily cadence to ensure adjusters rely on up-to-date performance signals.",
+      "source_citation": "It should influence recommendations in near real-time, or at least on a daily cadence, because adjusters need to rely on up-to-date performance signals when steering repairs.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for the system to influence recommendations in near real-time or at least on a daily cadence, which is a scalability requirement.",
+      "follow_up_question": "What specific mechanisms (e.g., data synchronization, caching) are expected to be implemented to ensure up-to-date performance signals?"
+    }
+  ]
+}

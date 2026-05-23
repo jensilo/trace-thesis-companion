@@ -1,0 +1,116 @@
+Interviewer: Thanks for sitting down. To start, from an architecture perspective, what keeps you up at night about this recycled parts and repair-facility system?
+
+Stakeholder: Hmm, right off the bat, reliability and integration are the big ones. We can't have the parts search go down because the feed from the partner stops, and likewise the repair-facility lookup needs to be snappy even when someone's on a cellular connection. Also, and this is maybe more blunt, we have to fit within the corporate architecture and UI constraints — we can't just invent our own stack or UX patterns on day one. I think that's it for the high-level anxiety, but honestly there's a bunch of interrelated stuff under those headings.
+
+Interviewer: When you say "fit within the corporate architecture and UI constraints", what do you mean exactly? Are there particular standards or components you expect us to reuse?
+
+Stakeholder: Right, so the company has an approved service mesh, logging and tracing standards, and an identity platform we must use. For UI, there are a set of components and accessibility rules — color contrast, keyboard nav, that kind of thing. We should use the identity provider for SSO, and logging needs to feed into the corporate observability stack. It's less optional and more "this is how things need to look and behave" so we don't create another cottage industry for support.
+
+Interviewer: Okay — that's clear. You mentioned the partner feed. Which feed are we integrating with, and how robust does that integration need to be?
+
+Stakeholder: We're integrating with the Choice Parts system; that's where recycled parts availability comes from. We need a robust interface, so I want an API-first approach with a fallback/cache because the partner feed isn't transactional in our control. If the feed lags or is flaky, users shouldn't get a blank screen. We'd probably want some async replication and caching layers so searches feel fast and we can degrade gracefully.
+
+Interviewer: You said "feel fast" a couple of times. Can you put a number on "fast" for the recycled-parts search? How long is too long before users complain?
+
+Stakeholder: Hmm, if I'm pressed — and you are pressing — for the parts search, I'd say if it takes more than a handful of seconds people get annoyed. Let me be explicit: users expect results in the low tens of seconds for these kinds of queries. Any longer and field adjusters start calling the call center or going back to manual. So short of a catastrophic outage, we need it to return within that window.
+
+Interviewer: Can you be more specific than "low tens of seconds"? What's acceptable and what's not?
+
+Stakeholder: Okay, okay — acceptable would be under fifteen seconds for a parts search. I know that sounds generous from an engineering point of view, but this is how the business tolerates it. Over fifteen, and the workflow breaks down.
+
+Interviewer: Got it. And the repair facility lookup — you said it needs to be snappy on cellular. How snappy should that be?
+
+Stakeholder: That one needs to feel quicker than the parts search because adjusters make on-the-spot decisions. I'd want the preferred facility lookup to come back in under about eight seconds. If the map and options don't load fast, they'll look somewhere else or phone it in.
+
+Interviewer: You mentioned caching and async replication for the Choice Parts feed earlier. If that feed is down for an extended period, how should the system behave? And what about data consistency expectations?
+
+Stakeholder: We should prefer availability over strict real-time consistency for searches. So if the feed is down, show the last-known-good snapshot and mark item ages. For claims auditing and final estimates, though, we need a reconciliation step so any stale parts are flagged. In practice, that means a read-optimized cache for searches and a reconciliation pipeline that revalidates parts during estimate finalization.
+
+Interviewer: Makes sense. Earlier you mentioned reliability and uptime. What does "almost always up" mean to the business? Can you quantify that expectation?
+
+Stakeholder: Yeah, users are intolerant of downtime for this service because it's often in the critical path. If you force me to quantify, the business expects high availability—so we should be targeting uptime that keeps customer complaints very low. To be concrete, the expectation is that any outage window should be very small; we should aim for availability in the high nineties percent-wise. I know you wanted a number, so think in terms of minimal, infrequent outages.
+
+Interviewer: Can you give me the exact target they're asking for? I need to record a number for the SLA discussion.
+
+Stakeholder: They're asking for ninety-eight percent availability. To put it bluntly, they don't want the system failing more than a couple percent of the total time. That keeps support calls reasonable.
+
+Interviewer: Understood. On load — you said many users might be on it at once. What's your view of expected concurrency now and growth over time?
+
+Stakeholder: Right now, the product will be used by several teams across a number of insurers; peak mornings are busy. I think we need to plan for something like a thousand-ish simultaneous users to handle the day-one load, and we should design to scale because adoption could increase significantly within a couple of years.
+
+Interviewer: "Thousand-ish" — can you be more precise for capacity planning? The ops team will want concrete figures for autoscaling and cost estimates.
+
+Stakeholder: Sure. For initial capacity planning the ask is to handle fifteen hundred concurrent users comfortably. And within two years, they want the platform to be capable of supporting up to ten thousand concurrent users as adoption ramps.
+
+Interviewer: Thanks — that's helpful. On multi-tenancy and data separation: are insurers sharing one tenant or do we need strict separation?
+
+Stakeholder: We need strong separation. One insurance company must not be able to see another company's claims. Practically, that means tenant isolation at both the application and data layers. Role-based access controls on top of that are mandatory — adjusters should only see their company's data and only the bits their role allows.
+
+Interviewer: When you say "tenant isolation at both application and data layers," what mechanisms do you expect? Are we talking separate databases per tenant, logical separation, encryption keys, or something else?
+
+Stakeholder: I think we should evaluate both options, but I lean toward logical separation with tenant-aware queries at the application layer combined with row-level security in the database; however, for the largest insurers we might offer dedicated schemas or instances if required. Also, tenant-scoped encryption keys would be ideal for extra protection. The identity provider must assert tenant information in tokens so every service call can enforce authorization.
+
+Interviewer: You mentioned security concerns earlier. Can you walk me through the threat profile you think matters most for this system?
+
+Stakeholder: Sure, and I might ramble a little here, but we need to assume it's a public-facing web app with mobile use, so credential-based attacks, API abuse, and denial-of-service are real worries. We should have rate limiting, WAF controls, and DDoS mitigation in front of the service. Also, injection attacks and broken auth are classic problems; we must wire up the corporate secure development lifecycle and scanning. Oh, and as a tangent, our telematics group had an outage once because they didn't throttle partner calls — we shouldn't repeat that.
+
+Interviewer: You said "we should have rate limiting and DDoS mitigation" — can you be specific about who provides those protections? Are we leveraging cloud provider services or corporate network defenses?
+
+Stakeholder: We should leverage corporate perimeter defenses where available, but also design the application to defend itself. So yes, cloud provider DDoS and WAF services are fine, but the app must implement rate limiting, circuit breakers, and graceful degradation so a protection layer in front plus application-level controls give defense in depth.
+
+Interviewer: Let's pivot to UX and field use. You mentioned support for low-connectivity environments. How should the client handle offline or poor networks?
+
+Stakeholder: For field users, the UI should be progressive — cache recent searches, allow limited offline review of claims, and queue any non-critical updates for later sync. The UI must be lightweight; heavy pages with lots of client-side rendering will bog down cellular devices. Also, we should provide clear indicators when data might be stale so adjusters know when to revalidate.
+
+Interviewer: Earlier you noted that the corporate UI guidelines are mandatory. How strictly must we adhere? Is there room for tailoring the experience for mobile field adjusters?
+
+Stakeholder: We must adhere to the corporate guidelines for core components and accessibility. That said, there's room to create specialized flows for mobile — but we'll implement them using the approved component library and style tokens. So the experience can be tailored, but not at the expense of the established brand and accessibility contracts.
+
+Interviewer: About observability and auditing: you mentioned logs earlier. What's the required level of traceability, especially for auditing recycled parts usage in estimates?
+
+Stakeholder: Every time a part suggestion is used or overridden in an estimate, we need an audit trail linking the action to the user, timestamp, and the change. This is important for both internal audits and regulatory compliance. The logs should be structured and ship to corporate analytics and long-term storage for retention policies.
+
+Interviewer: That sounds like a lot of events. Any concerns about performance when we capture all those traces?
+
+Stakeholder: Yes, we should use asynchronous logging and event streams so tracing doesn't block critical paths. Sampling for high-volume traces is okay, but the audit events for estimate changes must always be persisted.
+
+Interviewer: You said "sampling is okay, but audit events must always be persisted" — can you clarify which events are audited versus sampled?
+
+Stakeholder: The high-volume diagnostic spans can be sampled, but semantic audit events — estimate submissions, parts assigned to estimates, facility assignments, and user ratings of facilities — those must be reliably recorded and retained.
+
+Interviewer: On ratings of repair facilities, do adjusters rate them from within the workflow? Any constraints on anonymity or cross-company visibility?
+
+Stakeholder: Ratings will be part of the workflow, yes. They should be tenant-scoped so only the insurer and aggregated corporate analytics see individual ratings. We should avoid exposing a single company's ratings to other insurers in a way that could be correlated back to claim data. Aggregated, anonymized metrics for the partner network can be shared more broadly.
+
+Interviewer: You mentioned earlier that the Choice Parts feed can be flaky and we should degrade gracefully. How tolerant are we of inconsistent data between the feed and final estimate reconciliation? Do auditors accept reconciled changes after-the-fact?
+
+Stakeholder: In practice, the business accepts that initial estimates may use cached parts and that a reconciliation job can mark parts as unavailable later. Auditors want clear evidence of what was used at each step and any post-hoc changes noted with rationale. So yes, reconciliations are acceptable as long as they're auditable and visible.
+
+Interviewer: One last thing: you said this system must prevent malicious attacks including denial of service. How will you validate that during acceptance? Pen testing, chaos testing?
+
+Stakeholder: We'll require security testing from the corporate security team — penetration tests and threat modeling, and ideally some adversarial testing for DDoS resilience. For resilience, we'd want load and chaos testing during pre-prod so we know how it behaves under stress and can tune autoscaling and circuit breakers.
+
+Interviewer: You gave a lot of concrete numbers earlier; I'm going to reiterate to make sure I captured them correctly. For parts search you want responses under fifteen seconds; facility lookup under eight seconds; initial concurrency around fifteen hundred users and scale to ten thousand within two years; availability target of ninety-eight percent. Is that accurate?
+
+Stakeholder: Yes, that's right. Those are the operational targets I was given.
+
+Interviewer: Great. One final challenge: you said earlier the UI must be lightweight for field users. How will we measure "lightweight"? Is it perceived load time, bytes transferred, or some other metric?
+
+Stakeholder: Good point. Perceived load time is king for users, so we should measure time-to-interactive on typical mobile networks and also monitor payload sizes. If you push me to pick the primary metric, time-to-interactive on a 4G-equivalent connection is the business-facing metric, with payload size and number of requests as secondary engineering metrics to manage.
+
+Interviewer: Perfect — that's very helpful. Anything else you want to add that I might not have asked about?
+
+Stakeholder: Hmm, only that we should design this as a set of small, well-scoped services with clear contracts so future changes — like swapping out the parts provider or adding new insurers — are low-friction. Oh, and apologies, I tend to think in patterns and trade-offs; if you want I can sketch a candidate architecture next time.
+
+---
+Selected Requirements:
+1. [NICE.csv line 206] [quality, operability] 'The product shall interface with the Choice Parts System. This provides the feed of recycled parts data.'
+2. [NICE.csv line 208] [quality, legal] 'The product shall adhere to the corporate Architecture guidelines'
+3. [NICE.csv line 209] [quality, legal, look_and_feel] 'The product shall comply with corporate User Interface Guidelines'
+4. [NICE.csv line 217] [quality, performance] 'The search for recycled parts shall take no longer than 15 seconds. The search results shall be returned in under 15 seconds.'
+5. [NICE.csv line 218] [quality, performance] 'The search for the preferred repair facility shall take no longer than 8 seconds. The preferred repair facility is returned within 8 seconds'
+6. [NICE.csv line 222] [quality, availability, fault_tolerance] 'The product shall achieve a 98% uptime. The product shall not fail more than 2% of the available online time.'
+7. [NICE.csv line 223] [quality, scalability] 'The product shall be able to handle up to 1500 simultaneous users. The system shall perform with 1500 users as a time.'
+8. [NICE.csv line 225] [quality, scalability] 'The product shall be able to handle 10 000 concurrent users within 2 years of the initial launch.'
+9. [NICE.csv line 235] [quality, security] 'One insurance company shall not be able to view another insurance companys claim data.'
+10. [NICE.csv line 237] [quality, security] 'The system shall prevent malicious attacks including denial of service.'

@@ -1,0 +1,194 @@
+{
+  "transcript_file": "outputs/corpus-20260226_162106/transcript_3_re_experienced_stakeholder_nontechnical_enduser_20260226_162420.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_182913",
+  "requirements": [
+    {
+      "requirement": "The system shall be intuitive enough to allow a new scheduler to perform essential tasks independently after one day of training.",
+      "source_citation": "I should be able to train a brand-new scheduler in one workday... and have them do the essentials alone by the end of that day.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for a short training period and the ability to perform essential tasks independently. This is a clear usability requirement.",
+      "follow_up_question": "What specific essential tasks should a new scheduler be able to perform after one day of training?"
+    },
+    {
+      "requirement": "The system shall have an interface that is simple and does not assume advanced technical skills.",
+      "source_citation": "The interface really should be simple and not assume everyone is tech-savvy.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for simplicity and accessibility, indicating a focus on usability for users with varying levels of technical comfort.",
+      "follow_up_question": "Are there any specific accessibility considerations or standards that the system should adhere to?"
+    },
+    {
+      "requirement": "The system shall use consistent and standard nursing terminology and provide a glossary for clarification.",
+      "source_citation": "Please make the language consistent and not full of weird abbreviations.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the importance of consistent and clear terminology to avoid confusion, which is a usability concern.",
+      "follow_up_question": "Are there specific authoritative sources or glossaries that the system should align with?"
+    },
+    {
+      "requirement": "The system shall provide immediate feedback and blocking for critical errors, such as prerequisites and site capacity.",
+      "source_citation": "Blocking would be good for the really bad stuff — prerequisites and sites over capacity.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for immediate feedback and blocking to prevent critical errors, which is a usability and error prevention concern.",
+      "follow_up_question": "What other types of errors should the system block or flag?"
+    },
+    {
+      "requirement": "The system shall respond to small tasks, such as looking up a student or changing a contact, in under five seconds.",
+      "source_citation": "For the small stuff like looking up a student or changing a contact, under five seconds feels right.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the desired response time for small tasks, which is a performance requirement.",
+      "follow_up_question": "Are there any other specific tasks that have similar or different performance requirements?"
+    },
+    {
+      "requirement": "The system shall generate a full schedule in under thirty seconds or provide a notification upon completion.",
+      "source_citation": "Generating a full schedule... maybe under thirty seconds. If a big generation is taking longer, as long as I get a notification when it's done, that's acceptable.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the desired response time for generating a full schedule and the acceptability of notifications for longer tasks, which are performance requirements.",
+      "follow_up_question": "Are there any other specific performance requirements for different types of schedule generation?"
+    },
+    {
+      "requirement": "The system shall be available 95% of the time during business hours.",
+      "source_citation": "Ninety-five percent during business hours sounds okay to me.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the desired availability percentage during business hours, which is an availability requirement.",
+      "follow_up_question": "Are there any specific uptime requirements for different times of the day or week?"
+    },
+    {
+      "requirement": "The system shall support scheduled maintenance outside of business hours.",
+      "source_citation": "Scheduled maintenance outside business hours is fine.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the acceptability of scheduled maintenance outside of business hours, which is an availability requirement.",
+      "follow_up_question": "Are there any specific maintenance windows or frequencies that should be considered?"
+    },
+    {
+      "requirement": "The system shall provide a read-only mode during outages to minimize disruption.",
+      "source_citation": "A read-only mode would be great... to minimize chaos.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the need for a read-only mode during outages to minimize disruption, which is an availability requirement.",
+      "follow_up_question": "What specific functionalities should be available in read-only mode?"
+    },
+    {
+      "requirement": "The system shall restrict access to sensitive student health information, immunization records, and private contact details.",
+      "source_citation": "Student health info, immunization records, private contact details — that stuff shouldn't be public to everyone.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need to restrict access to sensitive information, which is a security requirement.",
+      "follow_up_question": "Are there any specific regulatory frameworks or standards that the system should comply with regarding data security?"
+    },
+    {
+      "requirement": "The system shall follow the university’s information security policies regarding encryption and limited access.",
+      "source_citation": "The system should follow the university’s information security policies about encryption and limited access.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need to follow university information security policies, which is a security requirement.",
+      "follow_up_question": "Can you provide specific details or documentation of the university’s information security policies?"
+    },
+    {
+      "requirement": "The system shall record who made a change, what the change was, when it happened, and an optional note explaining why.",
+      "source_citation": "It should show who made the change, what the change was, when it happened, and an optional note explaining why.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for detailed audit trails, which is a maintainability requirement.",
+      "follow_up_question": "Are there any specific audit trail retention periods or reporting requirements?"
+    },
+    {
+      "requirement": "The system shall keep records for a few years to support accreditation reviews and historical access.",
+      "source_citation": "We need to keep records for a few years because accreditation reviews often ask for past cohorts.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the need for long-term record keeping, which is a maintainability requirement.",
+      "follow_up_question": "What is the exact retention period required for different types of records?"
+    },
+    {
+      "requirement": "The system shall support around ten concurrent users at peak times.",
+      "source_citation": "It’s usually the schedulers and a few program staff — I'd say around ten people at the busiest time.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the expected number of concurrent users, which is a scalability requirement.",
+      "follow_up_question": "Are there any specific peak usage times or scenarios that should be considered?"
+    },
+    {
+      "requirement": "The system shall integrate with the university’s student information system and learning management system.",
+      "source_citation": "It would be great if it could talk to our student information system... and to our LMS so course rosters are consistent.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "interoperability",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the need for integration with other systems, which is an interoperability requirement.",
+      "follow_up_question": "Are there any specific APIs or data formats that should be supported for these integrations?"
+    },
+    {
+      "requirement": "The system shall support email and calendar invites for notifications, with the option for SMS for urgent last-minute changes.",
+      "source_citation": "Email and calendar invites are musts for us. SMS would be nice for urgent last-minute changes.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "notifications",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the desired notification channels, which is a notifications requirement.",
+      "follow_up_question": "Are there any specific notification templates or content requirements?"
+    },
+    {
+      "requirement": "The system shall provide immediate notifications for changes that affect a student's clinical slot or a site's roster.",
+      "source_citation": "Immediate for changes that affect a student's clinical slot or a site's roster.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "notifications",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for immediate notifications for certain types of changes, which is a notifications requirement.",
+      "follow_up_question": "Are there any specific notification delivery times or frequencies for different types of changes?"
+    }
+  ]
+}

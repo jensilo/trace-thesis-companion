@@ -1,0 +1,205 @@
+{
+  "transcript_file": "outputs/corpus-20260226_162106/transcript_5_re_novice_stakeholder_technical_senior_20260226_163019.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_183005",
+  "requirements": [
+    {
+      "requirement": "The system must be resilient to dropped connections and provide offline capabilities for field users.",
+      "source_citation": "Field folks will often be on tablets or phones on cellular networks, so flaky connectivity is a real thing. Offline capabilities would be nice for the field — at least resilience to dropped connections and some ability to resume work.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for resilience to dropped connections and offline capabilities for field users, indicating a performance concern related to network reliability.",
+      "follow_up_question": "What specific offline capabilities are required, and what is the expected behavior when reconnecting?"
+    },
+    {
+      "requirement": "The system must implement role-based access control (RBAC) to ensure that not everyone can see everything.",
+      "source_citation": "not everyone should see everything; access needs to be role-aware because some of the data is sensitive.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for role-aware access control, which is a clear security requirement.",
+      "follow_up_question": "What specific roles and permissions need to be defined, and what data is considered sensitive?"
+    },
+    {
+      "requirement": "The system must comply with corporate architecture standards and use approved technologies and visual components.",
+      "source_citation": "Also talk to the folks who maintain the corporate architecture standards and the UI design system; they gate approved technologies and visual components.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need to comply with corporate architecture standards and use approved technologies, which is a maintainability concern.",
+      "follow_up_question": "What are the specific corporate architecture standards and approved technologies that must be followed?"
+    },
+    {
+      "requirement": "The system must use corporate single sign-on (SSO) and role-based access control (RBAC) for authentication and authorization.",
+      "source_citation": "You'll want to loop in our identity team because we use the corporate single sign-on and authorization patterns.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need to use corporate SSO and RBAC for authentication and authorization, which is a clear security requirement.",
+      "follow_up_question": "What specific SSO and RBAC implementations are required?"
+    },
+    {
+      "requirement": "The system must follow corporate UI guidelines and accessibility standards (WCAG).",
+      "source_citation": "Yes, follow the corporate UI guidelines and use the design system components. We have accessibility expectations — WCAG-level conformance — and cross-browser support standards.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need to follow corporate UI guidelines and accessibility standards, which is a clear usability requirement.",
+      "follow_up_question": "What specific UI guidelines and accessibility standards must be followed?"
+    },
+    {
+      "requirement": "The system must be designed for horizontal scaling and stateless services to support up to 10,000 concurrent users within two years.",
+      "source_citation": "And we must have a clear, tested path to scale up to ten thousand concurrent users within a couple of years. So horizontally scalable, stateless services and sharding strategies should be in the architecture from day one.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for horizontal scaling and stateless services to support a large number of concurrent users, which is a scalability concern.",
+      "follow_up_question": "What specific scaling strategies and technologies should be used?"
+    },
+    {
+      "requirement": "The system must have an uptime target of 98% SLA, which is negotiable based on budget and risk appetite.",
+      "source_citation": "From a contractual standpoint, the target discussed internally is ninety-eight percent uptime. That number is workable but not super high if this becomes business-critical; we should revisit that with stakeholders to balance cost versus availability.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions a specific uptime target and the need to balance cost versus availability, which is an availability concern.",
+      "follow_up_question": "What specific uptime targets and SLAs are required, and how will they be measured?"
+    },
+    {
+      "requirement": "The system must implement strict tenant isolation to ensure that one insurer cannot see another's claims.",
+      "source_citation": "No — that must not happen. Each insurer's data needs to be isolated so they cannot see each other's claims.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for strict tenant isolation, which is a clear security requirement.",
+      "follow_up_question": "What specific tenant isolation mechanisms are required, and how will they be implemented?"
+    },
+    {
+      "requirement": "The system must capture comprehensive and tamper-evident audit logs for all actions and modifications.",
+      "source_citation": "Auditing needs to be comprehensive and tamper-evident. We need to capture who did what and when, and the original and changed values for any estimate modifications.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for comprehensive and tamper-evident audit logs, which is a security requirement.",
+      "follow_up_question": "What specific audit log requirements are there, and how will they be implemented?"
+    },
+    {
+      "requirement": "The system must use the corporate UI design system and components, and any deviations must be explicitly approved.",
+      "source_citation": "Yes, follow the corporate UI guidelines and use the design system components. Deviations need explicit sign-off from design and accessibility leads.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need to follow corporate UI guidelines and use the design system components, which is a usability requirement.",
+      "follow_up_question": "What specific UI design system and components must be used, and what is the approval process for deviations?"
+    },
+    {
+      "requirement": "The system must undergo penetration testing before production rollout.",
+      "source_citation": "Yes, I think a full penetration test before production rollout is mandatory, and automated security scans during development too.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for penetration testing before production rollout, which is a clear security requirement.",
+      "follow_up_question": "What specific penetration testing standards and procedures must be followed?"
+    },
+    {
+      "requirement": "The system must implement caching and lazy-loading for images and heavy metadata to improve search performance.",
+      "source_citation": "Images and heavy enrichment will affect latency, so for the initial search we should return essential fields quickly and lazy-load images or less critical metadata.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for caching and lazy-loading to improve search performance, which is a performance concern.",
+      "follow_up_question": "What specific caching and lazy-loading strategies should be used?"
+    },
+    {
+      "requirement": "The system must return recycled parts search results within 15 seconds (95th percentile) under realistic network conditions.",
+      "source_citation": "If you're pushing me for a number, then for recycled parts searches the expectation is that results come back within about fifteen seconds. That's the upper bound we should be measuring against. We should aim for far faster in common cases, of course, but fifteen seconds is the threshold I expect us to meet.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions a specific performance target for recycled parts search results, which is a clear performance requirement.",
+      "follow_up_question": "What specific performance metrics and testing procedures will be used to validate this requirement?"
+    },
+    {
+      "requirement": "The system must return preferred facility search results within 8 seconds (95th percentile) under realistic network conditions.",
+      "source_citation": "For returning a preferred facility, I want the system to be noticeably faster — somewhere under eight seconds as a max. Ideally much faster, but eight seconds is the upper bound we should design to meet.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions a specific performance target for preferred facility search results, which is a clear performance requirement.",
+      "follow_up_question": "What specific performance metrics and testing procedures will be used to validate this requirement?"
+    },
+    {
+      "requirement": "The system must implement geospatial indexing and precomputed scores for fast facility recommendations.",
+      "source_citation": "For that, we need geospatial indexing and precomputed scores so we aren't doing heavy joins in real time.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for geospatial indexing and precomputed scores to improve performance, which is a performance concern.",
+      "follow_up_question": "What specific geospatial indexing and precomputing strategies should be used?"
+    },
+    {
+      "requirement": "The system must be designed for resilience to external failures, including graceful degradation and fallbacks for the Choice Parts feed.",
+      "source_citation": "Error handling should include sensible fallbacks — cached results, friendly user messages — and clear escalation paths when their feed is unhealthy.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for resilience to external failures and graceful degradation, which is a fault tolerance concern.",
+      "follow_up_question": "What specific resilience and fallback mechanisms should be implemented?"
+    },
+    {
+      "requirement": "The system must implement contract tests for the Choice Parts API schema and a versioning strategy to handle external API changes.",
+      "source_citation": "We'll also need contract tests against their API schema and a versioning strategy so changes don't break us.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for contract tests and a versioning strategy, which is a maintainability concern.",
+      "follow_up_question": "What specific contract testing and versioning strategies should be used?"
+    },
+    {
+      "requirement": "The system must be designed for chaos testing and failover drills to measure RTO and RPO.",
+      "source_citation": "We should do chaos or failover drills to measure RTO and RPO.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for chaos testing and failover drills, which is a fault tolerance concern.",
+      "follow_up_question": "What specific chaos testing and failover procedures should be implemented?"
+    }
+  ]
+}

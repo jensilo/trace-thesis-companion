@@ -1,0 +1,128 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_6_re_experienced_stakeholder_nontechnical_manager_20260227_111115.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_165633",
+  "requirements": [
+    {
+      "requirement": "The system should allow users to book a room in 5 minutes or less on their first attempt.",
+      "source_citation": "For a simple room booking, if most users can't do it within about five minutes on their first try, that's a problem for us.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states a time limit for first-time users to complete a booking, indicating a usability requirement. The exact number (5 minutes) is provided, but the context (e.g., complexity of booking) is not detailed.",
+      "follow_up_question": "What specific steps or actions should a user be able to complete within the 5-minute timeframe, and what level of assistance (if any) is acceptable?"
+    },
+    {
+      "requirement": "The system should require minimal training for basic tasks.",
+      "source_citation": "People shouldn't need a training session to do the basic things.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for minimal training, suggesting a usability requirement. The exact definition of 'basic things' is not specified, but the intent is clear.",
+      "follow_up_question": "What specific tasks are considered 'basic,' and what level of prior knowledge or experience should users have?"
+    },
+    {
+      "requirement": "The system should support screen readers, keyboard navigation, and high-contrast modes to comply with ADA standards.",
+      "source_citation": "Accessibility is non-negotiable for us. We need the UI to be usable with screen readers, keyboard navigation, and high-contrast modes. It should conform to the Americans with Disabilities Act requirements.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions accessibility features and compliance with ADA standards, providing a clear usability requirement.",
+      "follow_up_question": "Are there any additional accessibility standards or guidelines that the system should comply with?"
+    },
+    {
+      "requirement": "The system should handle 1,000 concurrent requests initially, scaling to 2,000 by the next release.",
+      "source_citation": "The product should handle about a thousand concurrent requests initially. We're planning growth, though, so by the next release we expect that to roughly double to around two thousand.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "The stakeholder provides specific numbers for concurrent requests, indicating a scalability requirement. The context (e.g., types of requests) is not detailed.",
+      "follow_up_question": "What types of requests are expected to be concurrent, and what is the expected distribution of request types?"
+    },
+    {
+      "requirement": "The system should complete 90% of tasks in 5 seconds or less and 98% of tasks in 8 seconds or less.",
+      "source_citation": "About ninety percent of routine tasks should finish within roughly five seconds, and almost all of them — say, better than ninety-five, actually closer to ninety-eight percent — should complete within a bit longer, maybe around eight seconds.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder provides specific performance targets for task completion times, indicating a performance requirement. The context (e.g., types of tasks) is not detailed.",
+      "follow_up_question": "What specific tasks are included in the 90% and 98% targets, and what are the expected performance characteristics for other tasks?"
+    },
+    {
+      "requirement": "The system should achieve 99.99% uptime, excluding total server loss events.",
+      "source_citation": "Our target is the kind of uptime that gives customers confidence — think four nines, and that excludes total server loss events which are a separate failure mode we have contingency plans for.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions a specific uptime target (four nines) and excludes total server loss events, indicating an availability requirement. The context (e.g., maintenance windows) is not detailed.",
+      "follow_up_question": "What are the acceptable maintenance windows and contingency plans for total server loss events?"
+    },
+    {
+      "requirement": "The system should automatically capture and transmit exception logs to the support team.",
+      "source_citation": "If the system can package up exceptions and securely transmit them to our analysis pipeline, that's ideal.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for automatic transmission of exception logs, indicating a maintainability requirement. The context (e.g., log format, transmission frequency) is not detailed.",
+      "follow_up_question": "What specific information should be included in the exception logs, and how frequently should they be transmitted?"
+    },
+    {
+      "requirement": "The system should support English, Spanish, French, and German at launch.",
+      "source_citation": "At launch we have to cover the big ones: English and Spanish are must-haves for customers in the Americas, and then we should include a couple of European languages like French and German for our EU customers.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "localization",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the languages to be supported at launch, indicating a localization requirement. The context (e.g., future language support) is not detailed.",
+      "follow_up_question": "Are there any additional languages that should be supported in future releases, and what is the expected timeline for adding them?"
+    },
+    {
+      "requirement": "The system should allow customer branding (logo, colors, fonts) while enforcing accessibility guardrails (e.g., contrast ratios).",
+      "source_citation": "The theming needs guardrails: let them inject logo and color accents, but the system should enforce sufficient contrast and accessible font sizing.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for customer branding with accessibility constraints, indicating a look-and-feel requirement. The context (e.g., specific branding guidelines) is not detailed.",
+      "follow_up_question": "What specific branding guidelines should be followed, and what are the acceptable contrast ratios and font sizes?"
+    },
+    {
+      "requirement": "The system should respect access controls and privacy when generating reports.",
+      "source_citation": "Any reporting that exposes personal calendars needs to respect privacy and access controls.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for privacy and access controls in reporting, indicating a security requirement. The context (e.g., specific access control policies) is not detailed.",
+      "follow_up_question": "What specific access control policies should be implemented, and what types of reports are expected to be generated?"
+    },
+    {
+      "requirement": "The system should show equipment availability alongside room bookings to avoid double-booking.",
+      "source_citation": "When someone searches, they should see rooms with the right layout and the equipment availability baked in, otherwise it's just noise and people don't trust the system.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for equipment availability to be shown alongside room bookings, indicating a usability requirement. The context (e.g., specific equipment types) is not detailed.",
+      "follow_up_question": "What specific types of equipment should be included in the availability display, and how should conflicts be handled?"
+    }
+  ]
+}

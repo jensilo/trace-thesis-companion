@@ -1,0 +1,124 @@
+Interviewer: Thanks for making time. Quick intro — we’re capturing requirements for the recycled parts and repair facility management system. My goals for this session are to confirm scope, uncover integration needs with the Choice Parts feed, and nail down performance, tenancy and operational expectations. Does that match what you expect we should cover?
+
+Stakeholder: Yeah, that matches. I think we should focus on making sure nothing we design today forces us into heavy, bespoke middleware later. I want adjusters in office and on-site to have the same basic experience, and I want the design to sit cleanly inside our enterprise stack so operations and security don’t have to fight it later.
+
+Interviewer: When you say “sit cleanly inside our enterprise stack,” what do you mean exactly? Any absolute no-go technologies or mandatory stacks we must use?
+
+Stakeholder: By that I mean use our standard authentication frameworks, container orchestration patterns, and monitoring agents — nothing exotic that would force a special support contract. We’ve had projects go sideways when teams picked a niche language or a vendor that didn’t integrate with our CI/CD and observability. So, if it can run in our container platform, speak to our SSO, and emit the telemetry our SIEM expects, that’s preferable. If you want specifics on which agents or versions, I can pull those pointers from the architecture repo.
+
+Interviewer: Good — please do. Moving to users and workflows: who are the primary user personas and how do their environments differ?
+
+Stakeholder: Primary users are adjusters and collision estimators, both in office and out in the field, and then there are repair-shop coordinators and a small set of admin users from each insurer. Field users often work from mobile devices in repair yards or at customers’ locations where connectivity can be flaky. That means the UI needs to be tolerant of latency and have a sensible caching or offline approach, otherwise the adjusters will just go back to spreadsheets and phone calls, which defeats the point.
+
+Interviewer: When you say “sensible caching or offline approach,” do you expect full offline triage capability or acceptable degraded functionality with sync later?
+
+Stakeholder: I think degraded functionality is acceptable to start. They need to be able to look up parts and mark candidates offline, but committing a finalized estimate might require connectivity. Full offline-first is possible but it adds sync complexity and conflict resolution; I’d rather scope that for a later phase unless field users absolutely demand it.
+
+Interviewer: How many people are we designing for at peak? Rough load expectations will change architecture choices.
+
+Stakeholder: Hmm, okay, being concrete — at peak across our customer base I’d expect on the order of a few thousand folks, but simultaneous active users is lower. Let me put a number on that for you: plan for about fifteen hundred concurrent users at peak. That’s the scale to size for.
+
+Interviewer: That helps. You mentioned earlier that caching impacts freshness of parts availability. How fresh must the recycled parts data be for an adjuster to trust it?
+
+Stakeholder: Fresh enough that they don’t call a shop about a part that’s been gone for hours. We need near-real-time for inventory changes in hotspots, but for other parts an eventually-consistent window is tolerable. If pushed, I’d say parts inventory staleness should be measured in minutes, not hours, for critical parts. The trade-off is heavier integration versus acceptable user frustration.
+
+Interviewer: Speaking of integration, tell me what you know about the Choice Parts System connectivity options and responsibilities.
+
+Stakeholder: Choice Parts is the canonical feed for recycled parts. They publish inventory and location data; we’ve integrated with them before. They expose an online API for queries and they also provide a bulk feed for batch updates. We should plan for both: live queries when we can and periodic bulk imports for indexing. Also, we need to agree on ownership of schema changes because we don’t want runtime failures when they version something unexpectedly.
+
+Interviewer: Can you be specific about what protocols they support? REST, file transfer, messaging?
+
+Stakeholder: They primarily offer a REST API for real-time queries, and they can push bulk dumps over SFTP. There’s also a message-based option for event notifications if we want inventory change events, but that one’s less mature on their side.
+
+Interviewer: You mentioned agreeing on schema ownership. Who typically manages API versioning and backwards compatibility in these arrangements?
+
+Stakeholder: In our experience it’s a shared responsibility. Choice Parts owns the canonical schema, but we need to sign an interface agreement that specifies versioning cadence and deprecation windows. If they break compatibility without notice, it’s on us to have defensive parsing and fallbacks, but they should commit to reasonable notice periods.
+
+Interviewer: Let’s talk search behavior. We need the parts search to feel fast for field users and facility lookup to be snappy. What are your acceptable time bounds for those operations — measured end-to-end from the user’s device?
+
+Stakeholder: For perceived usability, parts search should return in the order of many seconds but not feel like an eternity. If I have to be numerical — because I know you’ll ask — parts searches must come back under fifteen seconds end-to-end. Facility lookups that are geospatial should be quicker; for those, we should target under eight seconds from a user click to results.
+
+Interviewer: Are those targets absolute or percentile-based? For example, do you want them to apply to most users or every single request?
+
+Stakeholder: Good point. I want to be pragmatic: these should be met at a high percentile — think the large majority of real-world requests, so we’re not pinning acceptance on a single slow outlier. Let’s say we validate at the 95th percentile during load testing, but we can discuss if security or audit needs require tighter bounds.
+
+Interviewer: You mentioned earlier pre-indexing for facilities. Would it be acceptable to precompute preferred facilities by region to meet the facility lookup target?
+
+Stakeholder: Yes, precomputed indexes for preferred facilities make sense. We can combine a geospatial index with a tiny cache layer so most lookups are instant, and then optionally call out to the shop for live constraints if needed. The key is that the UI should render something quickly and then refine if live checks add constraints.
+
+Interviewer: Moving to scalability and availability: what uptime expectations do you have? You hinted that availability should be high but there’s cost trade-offs.
+
+Stakeholder: We do need it reliably available during business hours and when adjusters are working, but before you quote me a crazy SLA, let me be blunt: our operations group tends to accept low single-digit percentage downtime in initial rollouts, but we should aim for high availability. If you need a number for planning, ninety-eight percent uptime is a reasonable baseline to design around for the initial service offering, but we should discuss whether to invest in higher availability for production later.
+
+Interviewer: Ninety-eight percent is lower than what some teams aim for. Why are you comfortable with that for initial release?
+
+Stakeholder: Well, two reasons. One, cost — achieving much higher availability pushes us into multi-region active-active and expensive operational overhead. Two, we have business process fallbacks: adjusters can work with temporary manual processes for short outages. That said, I’d prefer to raise the bar later, and ops will push back if the business demands stricter SLAs.
+
+Interviewer: You used the term “one insurance company should not see another’s claims.” How strict must tenant isolation be — logical separation or full physical isolation?
+
+Stakeholder: It should be strict in practice. For most customers a shared database with strong row-level access controls and tenant claims in tokens may suffice. For customers that demand higher assurance or contractual isolation, we should be prepared to offer separate schemas or databases. The architecture should permit both approaches without a full redesign.
+
+Interviewer: Any contractual obligations or compliance rules that already mandate physical separation?
+
+Stakeholder: Not universally. Some large clients have requested dedicated instances in the past, but they’re exceptions rather than the rule. We should make separate databases an option in our offering and ensure auditing and tenant-aware admin roles are enforced.
+
+Interviewer: On security, you said earlier that the system must prevent malicious attacks including DoS. What mitigation strategies do you expect us to use?
+
+Stakeholder: From a technical standpoint, we need edge protections, so cloud CDN and WAF baked in, with rate-limiting and bot detection. For volumetric DoS, a scrubbing service is sensible. Inside the app, implement input validation, strong auth flows integrated with corporate SSO, token-based access with short lifetimes, and comprehensive logging to the SIEM. But be mindful that aggressive rate limits can harm legitimate field users on spotty networks. So we need adaptive thresholds and a way to whitelist known client variants.
+
+Interviewer: Which authentication pattern do we need to use? Any corporate IDP or SSO methods mandated?
+
+Stakeholder: Yes, we must integrate with the corporate identity provider. SAML-based SSO is our baseline for the web portal, and we should support OAuth tokens for API access from mobile clients. We’ll also need service accounts for integrations like Choice Parts, using mTLS or client certs where the partner supports it.
+
+Interviewer: On compliance, are there frameworks we must satisfy — PCI, HIPAA, anything industry-specific?
+
+Stakeholder: Not typically PCI or HIPAA for this data set, but we do have internal controls aligned with ISO-style practices and we must satisfy our security team’s baseline controls. Expect requirements around encryption at rest and in transit, key management, retention and audit trails. I’ll get you the specific compliance checklist.
+
+Interviewer: You mentioned corporate Architecture Guidelines and UI Guidelines earlier. How tightly do we have to adhere to those, and is there an exceptions process?
+
+Stakeholder: Adherence is expected. The architecture board will want to see the proposed stack, diagrams, and a dependency list, and the design system people will want prototypes that use the corporate components. There is an exceptions process — you submit a rationale, mitigation, and a sunset plan — but it takes time. So if we think we need a nonstandard UI pattern for a field-optimized mobile flow, start the exception early.
+
+Interviewer: Regarding support, you said the product should be supported with the corporate support center. What level of support and what handoff artifacts are needed?
+
+Stakeholder: The support center will be the first line. We must provide runbooks, common troubleshooting scripts, and dashboards that map to the top user-facing errors. Error messages must be support-friendly and include correlation IDs. For hours, business-hours support is fine to start, but critical incidents need an escalation path into engineering.
+
+Interviewer: Can you state the support hours we should plan for?
+
+Stakeholder: For planning, aim for business hours coverage, roughly eight to six local time, with an on-call rotation for critical incidents outside those hours.
+
+Interviewer: For acceptance testing, what evidence will you require for performance and security claims?
+
+Stakeholder: We’ll need load test reports that show our target percentiles for the search and facility lookups under simulated peak load, plus a concurrency test showing the system behaves with the planned simultaneous user count. For security, a vulnerability scan and an external penetration test before production is ideal, along with SIEM logs demonstrating event retention. Also, tenancy isolation should be verified through access control tests and audit trails proving one tenant cannot access another’s data.
+
+Interviewer: When you say “show our target percentiles,” which percentile are you thinking for performance pass/fail?
+
+Stakeholder: Let’s validate at the 95th percentile. If we pass there, we can discuss tightening to the 99th later for premium customers.
+
+Interviewer: A couple of quick risk questions: which project risks are unacceptable and which can be mitigated?
+
+Stakeholder: Unacceptable risks include data leakage between insurers and an integration approach that creates a single point of failure with Choice Parts. Those require hard mitigations. Risks we can accept temporarily include slightly higher latency for rare queries or planned maintenance windows, as long as users are notified and fallback processes exist.
+
+Interviewer: You mentioned earlier that you’d provide certain documents. What will you commit to sending after this session?
+
+Stakeholder: I’ll send the Choice Parts API spec and contact, our corporate architecture guideline pointers, the UI design system link, and the security compliance checklist. Also I’ll identify the architecture, security and support leads to loop into follow-ups.
+
+Interviewer: Great. Final housekeeping: items I’ll follow up on from this conversation are to capture exact performance targets, the load test plan, tenancy approach options with pros/cons, and a draft integration plan for Choice Parts. Anything else I missed?
+
+Stakeholder: Add a small prototype for the field workflow; let’s validate perceived latency with a click-through early. Oh, and one more thing — not exactly requirements, but a lesson: from a past project I learned that unless you give ops a way to toggle caching durations in real-time, they’ll sit on calls with vendors trying to debug stale data at three in the morning. So include a config surface for cache TTLs and feature toggles.
+
+Interviewer: Noted — you mentioned caching control earlier; I’ll link that back to the search freshness and integration design. Thanks — I’ll send meeting notes and a list of required artifacts, and schedule follow-ups with the integration and security teams.
+
+Stakeholder: Sounds good. I’ll get those documents to you by end of the week, and we should probably do an architecture design review within two weeks.
+
+---
+Selected Requirements:
+1. [NICE.csv line 206] [quality, operability] 'The product shall interface with the Choice Parts System. This provides the feed of recycled parts data.'
+2. [NICE.csv line 208] [quality, legal] 'The product shall adhere to the corporate Architecture guidelines'
+3. [NICE.csv line 209] [quality, legal, look_and_feel] 'The product shall comply with corporate User Interface Guidelines'
+4. [NICE.csv line 217] [quality, performance] 'The search for recycled parts shall take no longer than 15 seconds. The search results shall be returned in under 15 seconds.'
+5. [NICE.csv line 218] [quality, performance] 'The search for the preferred repair facility shall take no longer than 8 seconds. The preferred repair facility is returned within 8 seconds'
+6. [NICE.csv line 222] [quality, availability, fault_tolerance] 'The product shall achieve a 98% uptime. The product shall not fail more than 2% of the available online time.'
+7. [NICE.csv line 223] [quality, scalability] 'The product shall be able to handle up to 1500 simultaneous users. The system shall perform with 1500 users as a time.'
+8. [NICE.csv line 235] [quality, security] 'One insurance company shall not be able to view another insurance companys claim data.'
+9. [NICE.csv line 237] [quality, security] 'The system shall prevent malicious attacks including denial of service.'
+10. [NICE.csv line 229] [quality, operability] 'The product shall be supported using the corporate support center.'

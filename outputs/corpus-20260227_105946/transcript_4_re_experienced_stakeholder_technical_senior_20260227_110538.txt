@@ -1,0 +1,106 @@
+Interviewer: Thanks for sitting down. At a high level, what are the must-haves for the Representatives Disputes application from an architecture perspective?
+
+Stakeholder: Sure — I think the big picture is straightforward: reps need a single place to create and drive dispute cases, see transaction and cardmember context, produce correspondence, and—very importantly—make adjustments that actually hit the ledgers. Oh, and it needs to behave like a first-class corporate app: fast, always available when people need it, and with iron-clad auditability. I've seen too many systems where people say "we'll log it later" and then nothing's there when the auditors come knocking. Also, we can't duplicate master data; we should treat our existing statement, cardmember and merchant stores as the truth sources.
+
+Interviewer: When you say "fast", what do you mean exactly? How would you recognize the system as fast versus sluggish?
+
+Stakeholder: Hmm, yeah — "fast" in this context means the rep shouldn't be sitting idle while screens redraw or while they wait for lookups. I think, for routine screen transitions and lookups, a few seconds at most is acceptable; any longer and it feels clunky and drives people to open multiple sessions or re-hit APIs. So, short waits for the small stuff — it has to feel immediate.
+
+Interviewer: Can you put a number on "a few seconds"? What's the upper bound for a user to navigate between screens before it becomes unacceptable?
+
+Stakeholder: Yeah — to be specific, for normal navigation and small detail fetches I'd say around five seconds is the threshold. If a screen takes more than that, users start complaining and productivity drops.
+
+Interviewer: You mentioned availability "when people need it" and that it should be almost always on. Can you explain the expected availability pattern and any windows where downtime is acceptable?
+
+Stakeholder: Well, ops-wise we need it to be effectively always available because reps and partner teams operate across a lot of time zones. That said, I accept short, planned maintenance windows when we patch or deploy major infra changes. Those windows should be narrow and scheduled in the quietest hours for operations.
+
+Interviewer: When you say "quietest hours", what times are you thinking? Can you be specific about allowed maintenance windows?
+
+Stakeholder: Sure — we typically target early pre-dawn slots. For weekdays through Saturday, think of a short window around three to four in the morning Eastern. And on Sunday we allow a slightly longer window in the very early morning, roughly between one and five a.m. Eastern. Outside those slots the platform needs to be up.
+
+Interviewer: You said we must treat other systems as "truth sources" and not duplicate master data. Which backend systems are you expecting us to tie into, and must every piece of data come from those sources?
+
+Stakeholder: Right — we will consume canonical data from the Statement database for transaction details, the Cardmember Information database for cardmember profile data, and the Merchant Information database for merchant detail. In practice, reps must always see the authoritative transaction, cardmember and merchant data — we shouldn't have local ad-hoc copies that become the "source of truth." For letters, we need to request generation from the existing Letters subsystem, which hands off to the print-letter utility. And any account adjustments have to be submitted to the existing Cardmember Posting and Billing system; those systems own posting and balances.
+
+Interviewer: When you say "always see the authoritative ... data," do you mean the application must go to those systems on every request, or can it cache? What's acceptable if those backend systems are slow or unreachable?
+
+Stakeholder: Good question. I think caching is fine for non-authoritative display — e.g., to speed up the UI — provided caches are explicitly marked as such and have tight staleness rules. But critical actions, like initiating a chargeback or posting an adjustment, must use the authoritative systems. If a backend is unreachable, the app must surface that it's operating in a degraded mode and queue outbound requests for guaranteed delivery later, with clear audit entries showing the queue and retry status. We can't silently accept adjustments and not guarantee delivery to the billing system.
+
+Interviewer: You said "queue and retry" — what guarantees are we expecting for delivery? How should failures be represented to the rep?
+
+Stakeholder: Hmm, reps should always know whether an action completed to the external system or was queued. So if an adjustment couldn't be delivered, the UI should show it as pending with a correlation identifier and an ETA for retries. From a guarantee point of view, we need at-least-once delivery semantics with idempotency keys, so duplicate postings are avoided when retries happen. Also, ops must have an admin view to reprocess or reconcile queued items.
+
+Interviewer: Earlier you mentioned auditability being "iron-clad." What level of detail do you expect in the audit trail?
+
+Stakeholder: I think every meaningful user action needs to be recorded so that we can reconstruct what happened. That means who did something, when, which fields changed, what the previous values were, which external systems were called, the correlation IDs, and the outcome. Logs should be append-only and tamper-evident — storing them in a write-once or immutable ledger is preferable. Auditors expect a full timeline, not just vague notes.
+
+Interviewer: When you say "which fields changed" and "previous values", can you be more specific about the data points in the trail? What elements are must-haves on every audit record?
+
+Stakeholder: Okay — each audit record needs to include the actor identity, a timestamp with timezone, the action type, a reference to the dispute and transaction involved, the state change or payload (or a hash of it if payloads get large), and any downstream correlation IDs from the posting or letters systems. Also, the source of truth that delivered certain data should be recorded — for example, whether the transaction detail came from the Statement DB and the time that data was fetched. And we should never allow audit records to be altered without an explicit, logged process.
+
+Interviewer: You said "ensure only authorized users can logon." What does "authorized" mean operationally? Authentication protocols? Any external identity systems?
+
+Stakeholder: We need to integrate with the corporate identity provider for internal reps, probably SAML or OIDC, and use strong multi-factor authentication for external partners. Beyond authentication, authorization must be role-based and scoped: reps should only see customers they are assigned to, and managers get broader visibility. The enforcement should live both at the API gateway and be reinforced at the data layer — I like row-level security approaches so data can't leak via misbehaving APIs.
+
+Interviewer: When you say "reps should only see customers they are assigned to," how do you envision that mapping being enforced? Is it purely application-level, or do you want database-level safeguards as well?
+
+Stakeholder: It has to be multi-layered. Application-level checks are necessary for business logic, but we should enforce the binding at the database level too, so a buggy service can't bypass controls. That means every request carries a tenant or assignment context and we apply row-level filtering based on that context. Also, logs should surface any attempted access denials so we can detect anomalies.
+
+Interviewer: You mentioned letters and a print-letter utility earlier. Walk me through a typical dispute initiation flow involving correspondence. What must we guarantee there?
+
+Stakeholder: On initiation, the rep will pick letter templates or trigger automated communications. The app should assemble the request and forward it to the Letters subsystem, which then hands off to the print-letter utility. We must guarantee that letter requests are formatted correctly and traced end-to-end — if a rep triggers a recovery letter, they need to see that the request was accepted by the Letters subsystem and have its status. If the Letters subsystem returns errors, that needs to be surfaced and retriable. We should avoid generating letters locally; the Letter system is the canonical generator.
+
+Interviewer: You used the phrase "we must avoid generating letters locally" — can you expand on why and how strict that rule should be?
+
+Stakeholder: It's mostly about consistency and compliance. The Letters subsystem owns templates, branding, and legal wording. If reps generate ad-hoc content in the disputes app, we risk inconsistent messaging and compliance violations. So, the disputes app should only request predefined templates or fill authorized placeholders; anything else should be blocked or subject to strict approval workflows.
+
+Interviewer: Thinking about system qualities, how do you want us to handle scaling, given that reps may spike at certain times or a backlog of queued adjustments might grow?
+
+Stakeholder: The architecture should be horizontally scalable for web and API layers, and the async processing should be decoupled — think message queues and worker pools with autoscaling. Backpressure must be managed so the UI degrades gracefully when backlog grows; for example, show delayed processing indicators rather than blocking the rep entirely. Also, if a downstream system is slow, we should throttle retries and offer manual override paths in ops.
+
+Interviewer: You earlier said "we can't duplicate master data" and "all transaction details must come from the Statement DB." How strict is that? Are there any exceptions where local derived data is acceptable?
+
+Stakeholder: It should be strict for authoritative fields like transaction amounts, dates, merchant IDs — those have to come from the Statement DB. We can cache copies for performance but we must always record where the data came from and the timestamp. Derived metrics, like "dispute age" or aggregated counts for dashboards, are fine to compute locally.
+
+Interviewer: You mentioned earlier that the system must prevent users from accessing dispute cases that do not belong to their cardholder base. How should the system determine cardholder base membership?
+
+Stakeholder: Membership should be derived from the enterprise identity mapping — the rep's assignment records in HR or the servicing directory — not from ad-hoc lists in the disputes app. We should pull or sync the assignment mapping from the corporate user directory and enforce it at runtime. There should be an admin capability to manage exceptions, but those exceptions need to be auditable and time-boxed.
+
+Interviewer: Let's challenge that a bit: you say "derive from the enterprise identity mapping" — how real-time does that mapping need to be? Can it be a daily sync, or must changes be immediate?
+
+Stakeholder: Hmm, in most cases a short sync cycle is fine — like within a day — but for security-sensitive changes, such as revoking a user's access, we need faster propagation. So I'd expect the system to honor immediate revocations when flagged, otherwise a near-real-time mechanism or very frequent sync is desirable.
+
+Interviewer: One more question on errors: if the posting/billing system or the Statement DB is down, and we queue actions, how visible should that be to auditors and users? You mentioned correlation IDs earlier — any other expectations?
+
+Stakeholder: Everything has to be visible. The UI should show status at the case level — which items are pending, why, and when they'll be retried. For auditors, each queued action should have an immutable record with its original payload, submission attempt history, and final outcome. We should also expose an operations dashboard that surfaces stuck items and replay status.
+
+Interviewer: You touched on immutability and tamper-evidence for audit logs. Any thoughts on technologies or patterns you'd prefer to implement that?
+
+Stakeholder: Event sourcing or an append-only audit store would fit well. We can use an immutable log backed by cloud object storage with WORM settings, or a dedicated audit DB with write-once_policy and cryptographic hashes linking records. The key is that we can prove append-only behavior and reconstruct state transitions without relying on ad-hoc log files scattered across nodes.
+
+Stakeholder: Oh—sorry, slight tangent — in a prior bank project we used both an event store for app events and a parallel compliance store for snapshots; that worked well because the compliance team wanted easy-read snapshots while devs wanted raw events. Might be worth considering here.
+
+Interviewer: You mentioned earlier that the Disputes app should be available outside office hours and that planned maintenance windows were short. How does that requirement connect to your need for the audit trail and integrations?
+
+Stakeholder: They're connected because if we take a service down for maintenance, we must ensure in-flight actions are either completed or recorded as pending with guarantees. If we disrupt integrations during maintenance, the audit trail must reflect that—who started the action, when maintenance began, and the final fate. Planned downtimes shouldn't cause loss of records or opaque statuses.
+
+Interviewer: Last question: what are the non-functional constraints we absolutely can't trade off—things you'd fight for?
+
+Stakeholder: I'd fight for maintaining canonical data lineage — always knowing where each piece of data came from — and for the audit trail being unimpeachable. Also, enforcing access controls at multiple layers so we never leak customer data. Performance should be good enough that reps don't invent workarounds, and availability should be high, with only minimal, well-communicated maintenance windows. Those are non-negotiables for compliance and for smooth operations.
+
+Interviewer: Thank you — that's very helpful. I'll take these specifics and map them to measurable requirements and integration interfaces. If I need exact SLA wording for the availability windows or other thresholds, may I come back to clarify?
+
+Stakeholder: Yes, please do. And if you need the exact maintenance schedule or the canonical table and field names for the Statement, Cardmember, and Merchant stores, I can pull those. I think those details will make the integration stories much clearer.
+
+---
+Selected Requirements:
+1. [NICE.csv line 155] [quality, performance] 'The maximum wait time for a user navigating from one screen to another within the Disputes application shall be no more than 5 seconds.'
+2. [NICE.csv line 157] [quality, availability, operability] 'The Disputes application shall be available 24x7x365 with the exception of the following scheduled maintenance windows. Monday â€“ Saturday 3:00am to 4:00am EST Sunday 1:00amd to 5:00am EST'
+3. [NICE.csv line 158] [quality, operability] 'The Disputes application shall interface with the Statement Database. The Statement Database provides the transaction details to the Disputes System. All transaction details must be obtained from the Statement Database'
+4. [NICE.csv line 159] [quality, operability] 'The Disputes application shall interface with the Cardmember Information Database. The Cardmember Information Database provides detailed information with regard to a cardmember. All cardmember detail information must be obtained from the Cardmember Information Database.'
+5. [NICE.csv line 160] [quality, operability] 'The Disputes applications shall interface with the Merchant Information Database. The Merchant Information Database provides detailed information with regard to the merchant. All merchant detail information shall be obtained from the Merchant Information Database.'
+6. [NICE.csv line 161] [quality, operability] 'The Disputes application shall interface with the Letters application. This will allow the Disputes application to request letters as part of the dispute initiation and dispute follow up process. All letter requests must be sent to the Print Letter Utility application.'
+7. [NICE.csv line 162] [quality, operability] The Disputes application shall interface with the Cardmember Posting and Billing System. This will allow the Disputes application to request adjustments to cardmember and merchant's accounts. All adjustment requests must be sent to the Cardmember Posting and Billing System.'
+8. [NICE.csv line 165] [quality, security] 'The Disputes application shall ensure that only authorized users are allowed to logon to the application.'
+9. [NICE.csv line 177] [quality, functional, legal] 'The Disputes application must maintain a detailed history of every action that a user takes on a dispute case. This ensures a complete audit trail if questions arise later on with regard to a particular dispute case.'
+10. [NICE.csv line 180] [quality, security] 'The Disputes System must prevent users from accessing any dispute cases that do not belong to their cardholder base.'

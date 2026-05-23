@@ -1,0 +1,161 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_4_re_experienced_stakeholder_technical_junior_20260227_110526.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_180011",
+  "requirements": [
+    {
+      "requirement": "The UI must look and behave like other corporate apps, adhering to corporate UI standards for look-and-feel, accessibility, and component usage.",
+      "source_citation": "The UI needs to look and behave like other corporate apps — we keep getting flagged in reviews for mismatched components and accessibility stuff.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for the UI to match corporate standards, indicating a clear non-functional requirement related to usability and consistency.",
+      "follow_up_question": "Can you provide specific guidelines or documentation for the corporate UI standards that the disputes app must adhere to?"
+    },
+    {
+      "requirement": "The application must feel snappy, with a maximum of five seconds for routine screen-to-screen transitions.",
+      "source_citation": "It has to feel snappy; I get annoyed when I click through screens and it drags. If I'm just moving from a case list to the case detail, I don't want to sit there. I'd say, um, maybe five seconds for those small transitions feels acceptable to me — any longer and people start switching tasks or calling in.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for the application to feel snappy and provides a specific time frame for acceptable performance.",
+      "follow_up_question": "Are there any other performance metrics or specific scenarios that need to be considered beyond the five-second transition time?"
+    },
+    {
+      "requirement": "The application must support role-based access control, ensuring that not everyone can initiate disputes and that sensitive data is hidden from unauthorized users.",
+      "source_citation": "There's also the whole access-control thing — not everyone should be able to kick off a dispute. Hmm, okay. In practice, the reps who handle cardmember or merchant services should be able to create disputes, and supervisors or program admins should have broader permissions like overriding or closing cases. There are some support roles that only need to view certain fields for troubleshooting but shouldn't be able to start or change a dispute. So it's pretty controlled — it's role-based, and sensitive data should be hidden from people who don't need it.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for role-based access control and data separation, indicating a clear non-functional requirement related to security.",
+      "follow_up_question": "Can you provide more details on the specific roles and permissions that need to be implemented?"
+    },
+    {
+      "requirement": "The application must maintain a full, immutable history of all actions performed by representatives, including who did what, when, and any changes made.",
+      "source_citation": "We need to maintain a 'full history' of everything a rep does... That history can't be editable — we need immutable audit entries.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "data_integrity",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for a full, immutable history of actions, indicating a clear non-functional requirement related to data integrity and auditability.",
+      "follow_up_question": "Can you provide more details on what specific information needs to be included in the audit history?"
+    },
+    {
+      "requirement": "The application must be effectively always available, with scheduled maintenance windows on weekdays from 3:00 AM to 4:00 AM Eastern and on Sundays from 1:00 AM to 5:00 AM Eastern.",
+      "source_citation": "We need the app to be effectively always available — folks in different time zones and some external partners rely on it. There are scheduled maintenance windows though; I was given specific windows to work around. On weekdays, and actually Monday through Saturday, the window is a short early morning hour, and on Sundays the maintenance block is longer, early morning as well. So basically 24/7 with those small scheduled downtimes. The maintenance windows were documented as Monday through Saturday from 3:00 AM to 4:00 AM Eastern, and on Sunday from 1:00 AM to 5:00 AM Eastern.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for the application to be always available with specific maintenance windows, indicating a clear non-functional requirement related to availability.",
+      "follow_up_question": "Are there any additional availability requirements or constraints that need to be considered?"
+    },
+    {
+      "requirement": "The application must support up to 350 concurrent users without degradation in performance.",
+      "source_citation": "By 'no degradation' I mean users shouldn't notice slower screens, timeouts, or increased errors during peak. For peaks, I was told to design for a few hundred simultaneous users — it's not tiny. Specifically, the stakeholder group that set requirements mentioned three hundred and fifty concurrent users as what we should support without degradation.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for the application to support a specific number of concurrent users without degradation, indicating a clear non-functional requirement related to scalability and performance.",
+      "follow_up_question": "Are there any additional scalability requirements or constraints that need to be considered beyond the 350 concurrent users?"
+    },
+    {
+      "requirement": "The application must follow standard credit card dispute regulations, including specific timelines and notice requirements.",
+      "source_citation": "We have to follow the usual credit card dispute rules, which complicates timelines and correspondence. The legal folks keep reminding us of the usual suspects for consumer disputes — we have to follow the specific credit card dispute regulations that dictate timelines and notice requirements.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need to follow standard credit card dispute regulations, indicating a clear non-functional requirement related to regulatory compliance.",
+      "follow_up_question": "Can you provide more details on the specific regulations and timelines that need to be adhered to?"
+    },
+    {
+      "requirement": "The application must get transaction details straight from the Statement Database and cardmember details from the Cardmember Information Database, with any authoritative data for dispute decisions traceable back to these systems.",
+      "source_citation": "We are required to get transaction details straight from the Statement Database — like the canonical source. We can cache for UX reason, sure, but any authoritative data for dispute decisions has to be traceable back to that DB. Same deal with cardmember details — those come from the Cardmember Information Database.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "data_integrity",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for authoritative data to be traceable back to specific databases, indicating a clear non-functional requirement related to data integrity and auditability.",
+      "follow_up_question": "Are there any additional data integrity or auditability requirements that need to be considered?"
+    },
+    {
+      "requirement": "The application must send adjustment requests to the Cardmember Posting and Billing System, which is the authoritative actor for any financial adjustments.",
+      "source_citation": "The app shouldn't change account balances itself. We send adjustment requests to the Cardmember Posting and Billing System and then that system applies them.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "data_integrity",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for the application to send adjustment requests to a specific system, indicating a clear non-functional requirement related to data integrity and system integration.",
+      "follow_up_question": "Are there any additional integration requirements or constraints that need to be considered?"
+    },
+    {
+      "requirement": "The application must support role-based views enforced by both the front end and the back end, ensuring that sensitive data is hidden from unauthorized users.",
+      "source_citation": "So the lesson stuck: both layers need to cooperate. There was an incident where a dev bypassed a UI toggle and an external partner saw a field they shouldn't have. It wasn't an exploit, just a debugging shortcut left in a build, but it exposed a mailing address that shouldn't have been visible. After that, the security folks insisted the back end must enforce role-based views, not the front end alone.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for role-based views enforced by both the front end and the back end, indicating a clear non-functional requirement related to security.",
+      "follow_up_question": "Can you provide more details on the specific roles and permissions that need to be implemented?"
+    },
+    {
+      "requirement": "The application must adhere to corporate UI standards and support different data and controls based on the user's role and whether they are internal or external.",
+      "source_citation": "The corporate UI standards cover look-and-feel, accessibility, component usage — basically making sure interns and external partners get a consistent experience. For external partners, though, we need to hide or mask certain data and change what components are visible.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for the application to adhere to corporate UI standards and support different data and controls based on the user's role, indicating a clear non-functional requirement related to usability and consistency.",
+      "follow_up_question": "Can you provide specific guidelines or documentation for the corporate UI standards that the disputes app must adhere to?"
+    },
+    {
+      "requirement": "The application must avoid hammering the statement DB with synchronous calls for heavy queries during peak, using caching patterns or batched retrievals where possible.",
+      "source_citation": "The statement DB team warned us against hammering them with synchronous calls for heavy queries during peak; they asked for caching patterns or batched retrievals where possible.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need to avoid hammering the statement DB with synchronous calls during peak, indicating a clear non-functional requirement related to performance and system integration.",
+      "follow_up_question": "Are there any additional performance or integration requirements that need to be considered?"
+    },
+    {
+      "requirement": "The application must pre-fill forms with data from the cardmember DB to minimize extra clicks and repetitive forms for representatives.",
+      "source_citation": "Reps hate extra clicks and repetitive forms — if we can pre-fill stuff from the cardmember DB and keep the flow short, they'll love us.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need to pre-fill forms to minimize extra clicks and repetitive forms, indicating a clear non-functional requirement related to usability.",
+      "follow_up_question": "Are there any additional usability requirements or constraints that need to be considered?"
+    },
+    {
+      "requirement": "The application must have reliable status syncs after the longer Sunday maintenance window to support the support team's manual reconciliation tasks.",
+      "source_citation": "Also, I forgot to mention, on Sundays our support team does some manual reconciliation over coffee, so having reliable status syncs after that longer maintenance window is important; otherwise they'll be looking at stale indicators and it causes a lot of calls.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for reliable status syncs after the Sunday maintenance window, indicating a clear non-functional requirement related to operability and system reliability.",
+      "follow_up_question": "Are there any additional operability requirements or constraints that need to be considered?"
+    }
+  ]
+}

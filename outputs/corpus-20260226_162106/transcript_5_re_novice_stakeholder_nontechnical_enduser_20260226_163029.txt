@@ -1,0 +1,152 @@
+Interviewer: Hi — thanks for taking the time. Can you start by telling me what you do day-to-day and how you use the current tools for parts and shop selection?
+
+Stakeholder: Sure, yeah — I’m an adjuster, mostly handling collision claims. I think—well, on an average day I’m bouncing between the office and a couple of shops, sometimes out on the road, sometimes at my desk. I look up recycled parts, call places, and try to pick a shop that’ll do a good job and use the parts we agreed on. The current tools are… clunky. Searches are slow, sometimes they show parts that aren’t actually there, and I waste time calling to confirm. It’s annoying — I end up driving over to a yard more than I’d like, which is not efficient.
+
+Interviewer: Which of those things causes the biggest delay for you?
+
+Stakeholder: Mostly the searches and bad data. If the parts list shows something available and it’s not, that’s a big waste. Also, when I’m on the road, slow searches are killer — you start losing momentum on the claim. And, uh, the UI is different in every app so it’s confusing. I want one place that feels familiar.
+
+Interviewer: Do you mostly work on a desktop or a tablet when you’re out in the field? And what networks do you use?
+
+Stakeholder: It’s a mix. At my desk I use a desktop, sometimes a laptop. In the field I use a tablet or my phone on cellular. The networks can be flaky — some shops have terrible reception. So mobile performance matters to me. I don’t have any fancy VPN setup or anything; just standard corporate devices and phone.
+
+Interviewer: Okay, got it. Given that finding parts quickly is a major pain point, I’d like to focus first on how you search for recycled parts and what’s important for that experience. How do you expect the parts data to be sourced?
+
+Stakeholder: It has to pull from the Choice Parts feed — that’s where most of our recycled inventory shows up. If the system doesn’t talk to that feed, I’m back to calling yards. Also, it should be clear if the feed is having issues — like, don’t pretend a search is live if it’s actually showing stale cached results. I don’t want surprises when I go to order something.
+
+Interviewer: How critical is real-time accuracy for you? Is it okay if results are a little out of date sometimes?
+
+Stakeholder: Hmm. I’d say it needs to be pretty fresh. If it’s an hour old and that means a part sold out, that’s a problem. I guess, in plain terms, I want to trust what I see. If it’s not fresh, at least tell me so I can call. I don’t need sub-second updates, but I do need to know if the data might be stale.
+
+Interviewer: If the Choice Parts feed is slow or temporarily unavailable, what should the system do?
+
+Stakeholder: Uh, show cached results with a warning would be fine, I think. Or let me know when we last got an update. If it’s down, give me a fallback like the last-known availability and contact info for sellers. Don’t just fail silently.
+
+Interviewer: How often do you look up parts while out in the field versus in the office?
+
+Stakeholder: More than half the time I’m doing lookups in the field these days — especially when I’m estimating at a shop. It’s common to want something on the spot, so the field experience is very important.
+
+Interviewer: Let’s talk about the search itself. What does a “good” search feel like to you?
+
+Stakeholder: Fast and simple. I want to type the part or pick year/make/model, maybe a quick filter for distance, and see photos and seller contact info right away. If I have to click through menus or wait, I lose focus. And, honestly, if it gives me partial results quickly and fills in the rest, that’s helpful.
+
+Interviewer: When you say “fast,” how long is too long to wait for search results?
+
+Stakeholder: Uh, I hate waiting. A few seconds is fine, but beyond that I get distracted or call someone instead. If you pressed me, I’d say something like — if it takes more than a handful of seconds I start getting impatient. Fifteen seconds would feel long to me.
+
+Interviewer: Would progressive results—showing some hits quickly while more load—work for you?
+
+Stakeholder: Yes, I think so. Show me the top matches fast, then let more come in. That’s better than a blank screen while it thinks.
+
+Interviewer: What information do you need in the results without clicking into a part detail?
+
+Stakeholder: Photos, seller contact, rough distance from the vehicle, and condition — like if it’s new-ish or common-sense wear. Price is nice but it’s not always accurate, so the contact matters. I want the essentials so I can make a quick call.
+
+Interviewer: Okay. Moving to repair facilities: how do you find and choose preferred repair shops now?
+
+Stakeholder: I have a mental list and some notes in our old system. I look at location, turnaround time, and whether they actually install recycled parts properly. Sometimes I go with a familiar shop, sometimes I try someone new if the parts and timing fit.
+
+Interviewer: Who should be able to update the preferred shop ratings or the official preferences?
+
+Stakeholder: That should be restricted. Only supervisors should be able to change the official ratings. Regular adjusters can suggest or comment, but we shouldn’t have everyone changing ratings on a whim. Otherwise the ratings get… messy.
+
+Interviewer: Should non-supervisors be able to see the ratings at all?
+
+Stakeholder: They should see them, yeah — read-only is fine. That way they can use the guidance but not edit it. Oh, and I’d like to see a small note if a rating was recently changed, just so I know it’s current.
+
+Interviewer: How simple should the rating action be — like a quick thumbs-up or something more detailed?
+
+Stakeholder: Keep it quick. A star or thumbs, maybe an optional short comment if needed. Don’t force a long form every time. If we want a reason, supervisors can ask for it when they change things.
+
+Interviewer: When you save a rating, do you expect any delay or should it be immediate?
+
+Stakeholder: It should feel immediate. If I click save, I want confirmation right away. If it’s queued because I’m offline, tell me it’s queued and retry automatically. I don’t want to wonder if my input was lost.
+
+Interviewer: If saving a rating fails, what would you prefer the app do?
+
+Stakeholder: Notify me, retry, and keep my change local until it goes through. Don’t lose my comment.
+
+Interviewer: Now about auditing recycled parts use across estimates — how do you use audit reports and what do you expect from them?
+
+Stakeholder: I pull audits to check whether estimators are using recycled parts when they should. The report should give me a summary and the line-item details, with links back to the estimate. If I have to wait ages for it, I’ll put it off, and that’s not good. I run audits multiple times a week, sometimes during a meeting.
+
+Interviewer: How long would you tolerate waiting for an audit report?
+
+Stakeholder: I want it pretty quick. Waiting more than a short pause makes people lose attention. If I had to say a number when asked, I’d say the report should come back within ten seconds or so for a quick run. Anything much longer starts to feel sluggish.
+
+Interviewer: If a detailed report takes longer, would a quick summary now and the details later be acceptable?
+
+Stakeholder: Yeah, that would work. Give me the summary fast, then let the heavy details load or email the full export later.
+
+Interviewer: About usability and training — how much time should people need before they’re productive with this system?
+
+Stakeholder: We don’t have time for long courses. It should be straightforward. Two days of onsite training seems reasonable to get comfortable, with lighter materials for later. But, um, the app has to be intuitive so the training doesn’t have to be heavy.
+
+Interviewer: How will you judge whether the system is easy to use across your team?
+
+Stakeholder: We can run a pilot and ask people to do common tasks. If most people say it’s easy to use and can do their work without lots of help, that’s good. I don’t know the exact percent off the top of my head, but we’d want the vast majority to be happy.
+
+Interviewer: What about in-app help — how should help be available?
+
+Stakeholder: Help should be right where I work. Tooltips, a help button on screens, and a searchable help center. Don’t make me open a PDF. Most screens I use should have some sort of quick help; not every tiny dialog, but the important ones.
+
+Interviewer: How many screens would you expect to have contextual help?
+
+Stakeholder: Hmm. Most of the main screens — search, part details, estimate audit, and ratings — definitely need it. If I had to put a number to it when asked, I’d say almost all the pages we use regularly — say, most of them. Maybe like nine out of ten of the important pages, I guess.
+
+Interviewer: The company has corporate UI guidelines — how important is it that the new system follows those?
+
+Stakeholder: Very important. If it looks different, people complain and adoption slows. It should look and behave like other company apps so people don’t get thrown off.
+
+Interviewer: On security and roles — who should assign the supervisor role and how should changes be tracked?
+
+Stakeholder: Ideally, it comes from HR or system admins based on titles. And yes, we need an audit trail — who changed ratings, when, and maybe a reason. You’ll want logs for accountability; otherwise, things get sticky.
+
+Interviewer: Do you think ratings changes should require an approval step?
+
+Stakeholder: For the supervisor edits, I don’t think we need an extra approval — supervisors can own it. But if a non-supervisor requests a change, that should go into a queue for a supervisor to approve.
+
+Interviewer: How often are you in low-connectivity areas and which tasks absolutely must work offline?
+
+Stakeholder: Pretty often actually — some suburbs and rural shops are rough. Lookups should still show cached results offline, and if I make a change, like a rating or note, it should queue up. Critical stuff like saving official ratings should sync when back online, but I need to see that my action was captured.
+
+Interviewer: If performance targets can’t be met because of the network, how should the UI communicate that?
+
+Stakeholder: Tell me. Don’t pretend. Show a small banner: “Offline: showing cached results” or a spinner with an estimate. And if something will take longer, give me an option to continue in the background.
+
+Interviewer: Of the things we talked about, what are the top three must-haves for go-live from your perspective?
+
+Stakeholder: Fast, reliable search tied to Choice Parts; ability to see and use preferred shops with clear read-only ratings for most people and edit rights for supervisors; and quick audit reports so I can actually run them during meetings. Training and help are important too, but those are next in priority.
+
+Interviewer: How should we measure whether the system is easy to learn and easy to use?
+
+Stakeholder: Run a pilot with a small group and have them do common tasks. If most of them can use it comfortably after the training, that’s fine. Also, get feedback from the people on the road because mobile experience is different.
+
+Interviewer: Who else should we talk to to validate these needs?
+
+Stakeholder: Talk to my supervisor, a couple of estimators, and the person who liaises with Choice Parts. Maybe IT for authentication questions. Oh, and compliance — they’ll want to see how we log changes.
+
+Interviewer: One final thing — you mentioned cached results and queued saves. If the app queues a rating change while offline, how should I see that status later?
+
+Stakeholder: Show a clear indicator on the item that it’s pending, maybe a small icon. And when it’s synced, show a confirmation. Don’t hide it — people worry otherwise.
+
+Interviewer: Great. Thanks — is there anything else that comes to mind, even tangentially, that I should note?
+
+Stakeholder: Well, um, minor thing — I like when systems let me open the vendor contact directly from the part result so I can call without copying numbers. Also, slightly tangential, but please don’t make the office phones ring every time an update happens — one system I used used to spook people when it pinged. Small annoyances add up.
+
+Interviewer: Thanks, that’s helpful. Would it be okay if we follow up with you or set up a short session to walk through a couple of live examples?
+
+Stakeholder: Yeah, absolutely. I can show you a couple of recent claims and searches that illustrate the problems. I’ll also get someone from estimators to sit in. Sounds good.
+
+---
+Selected Requirements:
+1. [NICE.csv line 206] [quality, operability] 'The product shall interface with the Choice Parts System. This provides the feed of recycled parts data.'
+2. [NICE.csv line 209] [quality, legal, look_and_feel] 'The product shall comply with corporate User Interface Guidelines'
+3. [NICE.csv line 212] [quality, usability] 'The product shall be easy to use by Adjusters and Collision Estimators. 95% of Adjusters and Collision Estimators shall find the product easy to use.'
+4. [NICE.csv line 215] [quality, usability] 'The product shall be easy to learn by Adjusters and Collision Estimators. The product shall be learned with two days onsite training'
+5. [NICE.csv line 216] [quality, look_and_feel, usability] 'The user shall easily locate instructions while using the product. User help can be found within 90% of the system.'
+6. [NICE.csv line 217] [quality, performance] 'The search for recycled parts shall take no longer than 15 seconds. The search results shall be returned in under 15 seconds.'
+7. [NICE.csv line 218] [quality, performance] 'The search for the preferred repair facility shall take no longer than 8 seconds. The preferred repair facility is returned within 8 seconds'
+8. [NICE.csv line 219] [quality, functional, performance] 'The recycled parts audit report shall be returned to the user within 10 seconds. The audit report shall be returned within 10 seconds.'
+9. [NICE.csv line 220] [quality, functional, performance] 'The preferred repair facility ratings shall be saved within 5 seconds. The save shall occur within 5 seconds.'
+10. [NICE.csv line 232] [quality, functional, security] 'Only adjusters with a supervisor role can update preferred repair facility ratings. Users without the supervisor role cannot access the repair facility ratings.'

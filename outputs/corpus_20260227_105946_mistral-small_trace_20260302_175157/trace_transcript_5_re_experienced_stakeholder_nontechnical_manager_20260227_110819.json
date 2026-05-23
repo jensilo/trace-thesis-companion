@@ -1,0 +1,172 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_5_re_experienced_stakeholder_nontechnical_manager_20260227_110819.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_175159",
+  "requirements": [
+    {
+      "requirement": "The parts search must return results within 15 seconds to avoid user frustration.",
+      "source_citation": "For parts searches, anything that drags on for more than a handful of seconds frustrates people. [...] the parts search needs to return within about fifteen seconds tops.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the performance requirement for parts search response time, which is critical for user satisfaction and business operations.",
+      "follow_up_question": "What specific technical constraints or dependencies might impact achieving this 15-second response time for parts searches?"
+    },
+    {
+      "requirement": "The repair facility search must return results within 8 seconds to meet business needs.",
+      "source_citation": "For finding a preferred repair facility based on vehicle location, it should be quicker — more like under ten seconds; I think eight seconds is a good business boundary.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies the performance requirement for repair facility search response time, which is crucial for operational efficiency and user experience.",
+      "follow_up_question": "What are the key factors that influence the 8-second response time requirement for repair facility searches?"
+    },
+    {
+      "requirement": "The system must be responsive and lightweight for mobile use on flaky cellular connections.",
+      "source_citation": "Primarily responsive and lightweight for mobile use, so field staff can work on flaky cellular connections.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for the system to function effectively in field conditions with unreliable connectivity, which is essential for mobile usability.",
+      "follow_up_question": "What specific performance metrics or benchmarks are used to ensure the system remains responsive on flaky cellular connections?"
+    },
+    {
+      "requirement": "The system must follow corporate architecture playbook and UI standards for authentication patterns and look and feel.",
+      "source_citation": "It has to follow our architecture playbook and our UI standards — the look and feel people are used to, the authentication patterns, that sort of thing.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the importance of adhering to corporate standards for UI and authentication to ensure consistency and avoid governance issues.",
+      "follow_up_question": "What specific guidelines or standards from the corporate architecture playbook must be adhered to for authentication patterns and UI design?"
+    },
+    {
+      "requirement": "Field users should only have access to data relevant to the claims they are handling to avoid overwhelming them and mitigating risk.",
+      "source_citation": "Field users shouldn't see corporate-wide sensitive data, just the details relevant to the claim they're handling, or else it's overwhelming and risky.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies the need for controlled access to sensitive data to prevent information overload and reduce risk, which is critical for security and usability.",
+      "follow_up_question": "What specific access control mechanisms or roles will be implemented to ensure field users only see relevant claim data?"
+    },
+    {
+      "requirement": "The system must comply with estimatics laws governing recycled parts usage and insurance regulations around claims processing and data retention.",
+      "source_citation": "We can't ignore the estimatics laws that govern recycled parts usage — those rules dictate when and how recycled parts can be recommended or applied. [...] We also have to respect insurance regulations around claims processing and data retention.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 5,
+      "rationale": "The stakeholder emphasizes the need for compliance with specific laws and regulations, which is essential for legal and operational risk management.",
+      "follow_up_question": "What specific legal requirements or regulatory standards must the system comply with regarding recycled parts usage and claims processing?"
+    },
+    {
+      "requirement": "The system must be easy to use, with 95% of adjusters and collision estimators reporting it as easy to use in post-rollout surveys.",
+      "source_citation": "Ninety-five percent of adjusters and collision estimators should report the product is easy to use on those surveys.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder sets a clear usability target, which is crucial for user adoption and satisfaction.",
+      "follow_up_question": "What specific usability metrics or benchmarks will be used to measure and ensure the system's ease of use?"
+    },
+    {
+      "requirement": "Help must be available in about 90% of screens or workflows to ensure users can find assistance easily.",
+      "source_citation": "We would aim for help being available in about nine out of ten screens or workflows.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for help to be readily available, which is important for user support and satisfaction.",
+      "follow_up_question": "What specific criteria or metrics will be used to determine the availability and effectiveness of help in the system?"
+    },
+    {
+      "requirement": "The system must feel current and reliable, with near-real-time or frequent syncs to ensure data freshness.",
+      "source_citation": "From a user's point of view it should feel current. [...] the feed needs to be reliable enough that adjusters trust the availability info.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "reliability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for data freshness and reliability, which is crucial for user trust and operational efficiency.",
+      "follow_up_question": "What specific mechanisms or technologies will be used to ensure near-real-time or frequent syncs for data freshness?"
+    },
+    {
+      "requirement": "The system must have an uptime of at least 98% to avoid eroding trust and increasing manual workarounds.",
+      "source_citation": "The expectation is around ninety-eight percent uptime.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder sets a clear availability target, which is essential for system reliability and user trust.",
+      "follow_up_question": "What specific measures or redundancies will be implemented to ensure the system meets the 98% uptime requirement?"
+    },
+    {
+      "requirement": "The system must follow corporate UI/UX standards to ensure consistency and avoid governance issues.",
+      "source_citation": "We can't ship something that looks and behaves like a rogue app. It has to follow our architecture playbook and our UI standards.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for adherence to corporate standards, which is crucial for consistency and governance.",
+      "follow_up_question": "What specific UI/UX standards or guidelines from the corporate architecture playbook must be adhered to?"
+    },
+    {
+      "requirement": "The system must comply with accessibility standards to meet customer expectations and market perceptions.",
+      "source_citation": "Accessibility isn't just compliance for us; it's also a customer expectation and affects market perception.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the importance of accessibility compliance, which is essential for market perception and customer satisfaction.",
+      "follow_up_question": "What specific accessibility standards or guidelines must the system comply with?"
+    },
+    {
+      "requirement": "The system must use a hybrid approach for data freshness, combining real-time data with cached snapshots for areas with bad reception.",
+      "source_citation": "A hybrid makes sense; users expect freshest data, but in areas with bad reception, a cached snapshot is better than nothing.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for a hybrid approach to data freshness, which is crucial for system performance and user experience in varying network conditions.",
+      "follow_up_question": "What specific mechanisms or technologies will be used to implement the hybrid approach for data freshness?"
+    },
+    {
+      "requirement": "The system must guide users away from non-compliant choices and make exceptions explicit with an audit trail.",
+      "source_citation": "We need the workflow to guide users away from non-compliant choices and make any exceptions explicit so there's an audit trail.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for compliance and audit trails, which is essential for regulatory adherence and risk management.",
+      "follow_up_question": "What specific mechanisms or workflows will be implemented to guide users away from non-compliant choices and ensure an audit trail?"
+    },
+    {
+      "requirement": "The system must be highly reliable to avoid users reverting to old processes due to frequent downtime.",
+      "source_citation": "If it's down too often, people revert to old processes.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "reliability",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the importance of reliability to prevent users from reverting to old processes, which is crucial for system adoption and efficiency.",
+      "follow_up_question": "What specific measures or redundancies will be implemented to ensure the system's high reliability?"
+    }
+  ]
+}

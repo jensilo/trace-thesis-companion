@@ -1,0 +1,128 @@
+Interviewer: Thanks for sitting down. To start, in one sentence, what does success look like for IzognMovies at launch?
+
+Stakeholder: Umm, I think success is that people — especially folks who aren't power internet users — can find and watch African films without getting frustrated, and that we start turning that into paying customers and subscriptions. Basically, high adoption and low churn. 
+
+Interviewer: When you say “folks who aren't power internet users,” what do you mean exactly? How usable should the product be for that group?
+
+Stakeholder: I mean people who might be using a smartphone for the first time, or who are used to simple mobile apps. The interface needs to be obvious: register, browse, pay, and play. We want most novices to be able to do that without help. Roughly, not just a handful — like a clear majority. I think, hmm, maybe around ninety percent would be a good target, but that's me thinking aloud.
+
+Interviewer: Okay — you just put a number on the usability goal, thank you. Let's hold onto that. You also mentioned paying customers and subscriptions. How big a customer base are you planning for at launch, or in the initial roll-out?
+
+Stakeholder: We're not aiming tiny — we expect real traction in several markets. I don't want to overpromise, but we should design as if tens of thousands could sign up. To be concrete, our planning number is one hundred thousand users as the scale we want to support early on.
+
+Interviewer: Good, that's clear. When you say “support” a hundred thousand users, do you mean registered users, active monthly users, or concurrent users?
+
+Stakeholder: Umm, that's a good point. I mean total registered customers we expect in the platform — not all will be online at once. Peak concurrent streams will be a small fraction of that, but the system needs to be built with the total base in mind for data, analytics and growth.
+
+Interviewer: Noted. Switching to the user experience: you said the site must “feel fast” earlier. Can you put a number on what feels fast to you for ordinary page interactions — browsing, searching, form submissions?
+
+Stakeholder: Sure. For the small stuff — clicking around, moving between pages, the basics — if it takes more than a few seconds people will get impatient. If you force me, I'd say about five seconds for routine UI responses feels about the upper bound.
+
+Interviewer: So you want typical UI interactions to be around five seconds maximum. Are there exceptions where longer waits are acceptable?
+
+Stakeholder: Definitely for heavier operations, like generating big reports in the admin console or large media ingest that might run in the background. But for anything that directly touches a customer waiting to buy or watch, keep it snappy. Also, purchases are special — people expect confirmation quickly. For credit-card purchases, I wouldn't want them stuck on a spinner forever.
+
+Interviewer: How quickly would you expect a credit-card payment to be processed and the user told they can watch?
+
+Stakeholder: Hmm, payments need a bit more leeway because of gateways and fraud checks. I think around fifteen seconds would be acceptable for a card transaction processing path. Longer than that and people start abandoning.
+
+Interviewer: Understood. Now the core product is streaming. What are your expectations for video start-up time and buffering behavior?
+
+Stakeholder: If someone buys or starts a movie, the player should start up fast and not keep stopping. I'd say the initial buffering shouldn't be more than a short wait — maybe up to ten seconds, acknowledging the user's own connection varies. Rebuffering in the middle should be rare; too many stalls and customers will complain loudly.
+
+Interviewer: You mentioned “acknowledging the user's connection.” Do you expect the platform to use adaptive bitrate streaming and CDNs to help with that?
+
+Stakeholder: Yes, we should be smart about using whatever helps deliver smooth playback. I don't care about the brand of CDN right now, but yes, adaptive delivery and caching near users is critical. Also, for some markets people have spotty mobile data, so the player should adapt gracefully.
+
+Interviewer: On purchasing options: you want credit cards and pre-paid cards. Tell me more about the pre-paid card flow and how those cards are generated and used.
+
+Stakeholder: We're thinking physical and digital pre-paid codes for shops and partners so people who don't have cards can still buy access. Admins need to be able to create batches of codes and set their value and expiry. From the customer's side, they should be able to enter a code at checkout and get access immediately. Oh, and a little aside — I grew up buying airtime scratch cards; this should feel familiar to those customers.
+
+Interviewer: When you say “admins need to create batches,” who are these admins? Who should have access to generate or view these codes and to financial data in general?
+
+Stakeholder: Not everyone. Folks in finance and ops should be able to do the issuance and see sales details. Support staff should be able to validate and assist a customer but not see full financial details. The founders or super-admins can see everything, but we should limit sensitive access to only those who need it.
+
+Interviewer: Can you be more specific about what “sensitive access” means? For example, will the platform store full card numbers, and who exactly would be allowed to see them?
+
+Stakeholder: I think we need to protect credit-card data as if our business depends on it — because it does. Card details shouldn't be casually visible. My preference is that any stored payment details are encrypted and only a small set of authorized Izogn administrators can access them. We should treat that data as very sensitive, and make sure there are tight controls and logs when anyone touches it.
+
+Interviewer: When you say “encrypted” and “authorized Izogn administrators,” are you thinking of a formal compliance regime like PCI-DSS? Do we need to store full PANs at all, or can we use tokens from a payment provider?
+
+Stakeholder: I'd rather avoid storing full card numbers if possible — tokenization feels less risky and cheaper from a compliance perspective. But if we do store anything, it must be encrypted and strictly controlled. We will need legal and finance to sign off, so yes, PCI concerns are in play and we'll involve a security expert to make the final call.
+
+Interviewer: Earlier you mentioned “protect credit card data” and “limited access.” How do you want the system to notify you if something suspicious happens around payments or security in general?
+
+Stakeholder: We want to know quickly. If there are failed logins, unusual payment declines, or someone tries to brute-force the checkout, the team should get alerts so they can act. I imagine immediate notifications for serious things; less critical stuff can be batched, but critical payment or fraud events should wake someone.
+
+Interviewer: What do you mean by “immediate notifications”? Is email sufficient, or do you want SMS, push notifications, or integration with an on-call system?
+
+Stakeholder: For the really bad stuff — suspected fraud or a payment processor outage — email alone isn't good. We need an alert channel that actually reaches people out of hours. So something like SMS or an on-call tool. For day-to-day issues, email and a dashboard are fine.
+
+Interviewer: You said “out of hours” — do we need the site to be available around the clock? How do you define acceptable availability?
+
+Stakeholder: The platform needs to be available globally pretty much all the time. We can't have long planned downtimes during peak hours. As for how much downtime we can tolerate, I think we need a strong uptime target, something that only allows for very rare outages — we were thinking in the high nineties, like ninety-nine point five percent.
+
+Interviewer: Ninety-nine point five percent, okay. To be clear, that uptime figure applies to the public site and customer-facing services. Is admin console availability equally critical, or can that have lower expectations?
+
+Stakeholder: The customers come first — public site and playback must be the priority. The admin console should be reliable, but if there's a rare maintenance window for admin features that won't impact customers directly, that's acceptable. Still, long admin outages would hurt operations.
+
+Interviewer: Circling back to abuse and attacks: you said earlier the system should “protect itself.” Can you describe what kinds of automated protections you expect and what level of automation vs manual response is acceptable?
+
+Stakeholder: I want automatic protections for obvious things: rate limiting to prevent somebody hammering the checkout, basic web-application protections, and automated throttles if there are suspicious spikes. But we should avoid locking out legitimate users; false positives are annoying. So automated mitigation for obvious attacks, with alerts so humans can review and escalate as needed.
+
+Interviewer: What do you consider “obvious spikes”? For example, how sensitive should the thresholds be before the system throttles or blocks?
+
+Stakeholder: Hmm, thresholds should be tuned to reduce malicious traffic without hurting normal peak demand, like when a new title drops. We should monitor and adjust. I don't have a fixed number in mind — engineering will need to propose sensible defaults and we can refine during launch.
+
+Interviewer: Understood. Regarding scalability and capacity, you mentioned the platform should handle the expected customer base. How should we think about peaks — say when a new movie launches — and what are your expectations around auto-scaling or using CDNs to handle sudden traffic?
+
+Stakeholder: We should design to handle spikes without booking huge fixed infrastructure cost. CDNs for streaming and caching are essential so we don't overload origin. Autoscaling for web services is fine, but we need guardrails so autoscale doesn't blow the budget on a single popularity event. Also, cost trade-offs are fine as long as we don't drop customers at critical moments like checkout.
+
+Interviewer: For acceptance and testing: how will you know the product is meeting these non-functional goals? What evidence do you want from engineering?
+
+Stakeholder: I want a mix of automated and human-validated tests. Synthetic monitors that measure response times from key geographies, load-test reports showing we can handle the expected user base, usability test results showing our novice users can complete key tasks, and a security audit or pen test report before launch. Those artifacts should let us sign off.
+
+Interviewer: For the usability test you mentioned earlier — you said about ninety percent should succeed. Can you be precise about the test setup: how many participants, what tasks, and what's considered a pass?
+
+Stakeholder: We should run usability sessions with real novice internet users across our target markets. I don't need a huge lab, but enough participants to be statistically meaningful — maybe a few dozen across geographies. Tasks should be things like register, find a specific title, redeem a pre-paid code, and start watching. If nine out of ten typical novice users can complete those tasks without help, that's a pass for me.
+
+Interviewer: You just gave the ninety percent target in the context of usability testing — perfect. Now, on admin features: what do admins need to do day-to-day in the first release?
+
+Stakeholder: Admins need a simple console to add and retire titles, upload metadata and cover art, manage pricing and bundles, create and manage pre-paid code batches, and view basic sales and engagement numbers. Support staff should be able to look up a user, see their purchases and help them, but not see sensitive payment numbers. We also need audit logs so we can trace who made changes.
+
+Interviewer: Who will own the incident response and on-call for outages or security events?
+
+Stakeholder: Initially, our ops lead will own it with support from the founders and a security point person. We should define an escalation path: first acknowledgement within a short window, and then a plan to restore or mitigate. Eventually, ops will likely hand this to a hosted support partner if we scale.
+
+Interviewer: A couple of quick clarifying points from earlier — you mentioned “we need to know quickly” about incidents and “immediate alerts” for payments. To confirm, for payment-related incidents you want high-severity alerts through an out-of-hours channel like SMS or on-call paging, correct?
+
+Stakeholder: Yes, exactly. Payment outages or clear fraud events should trigger out-of-hours escalation. Everything else can be lower priority.
+
+Interviewer: You also said the system should “notify the administrator at all occurrences” of abuse earlier. That sounded very broad. Can you narrow that down — what specific event types should always generate a high-priority notification?
+
+Stakeholder: Okay, that phrasing was me being dramatic. For high-priority notifications, think about large spikes in failed payments, suspected card fraud patterns, DDoS-level traffic spikes, and repeated failed admin login attempts. Those should ping someone right away. Less severe things like a single failed transaction probably shouldn’t wake the team in the middle of the night.
+
+Interviewer: Good clarification. Finally, what are the must-haves for launch versus things we can defer?
+
+Stakeholder: Must-haves are: reliably playing purchased movies, card and pre-paid-code payment flows, a basic admin console for catalog and code generation, support workflows to help customers, and basic analytics to know how titles perform. We can defer fancy personalization, offline downloads, and very advanced fraud models to post-launch, provided we have reasonable basic protections in place.
+
+Interviewer: Thanks — that's very helpful. Next steps: I’ll produce a draft of the non-functional requirements and acceptance criteria based on what we discussed and schedule deep-dives with security and infrastructure. Who should I invite from your side for those deep-dives?
+
+Stakeholder: Invite our ops lead and our head of finance for payments. Also loop in legal for data protection, since we’ll need them on residency and privacy questions. I’ll set that up. Oh — and one more tiny thing, which is maybe a tangent: can we use our design to incorporate some African art motifs? I want the UI to feel familiar and proud, not generic. That matters for adoption.
+
+Interviewer: Noted — you mentioned UI aesthetic early on and this connects to the usability target; I'll make sure UX is included in the follow-ups. Thank you — I’ll send the draft and proposed test plans within two business days.
+
+Stakeholder: Great, thanks. Looking forward to seeing the draft and getting the security folks involved.
+
+---
+Selected Requirements:
+1. [NICE.csv line 397] [quality, fault_tolerance, performance] 'Any interface between a user and the automated system shall have a maximum response time of 5 seconds unless noted by an exception below.'
+2. [NICE.csv line 398] [quality, performance] 'When purchasing a streaming movie or pre-paid card via credit card the processing time should have a maximum response time of 15 seconds.'
+3. [NICE.csv line 399] [quality, performance] When streaming a movie the buffering time should take no longer than 10 seconds (plus any latency on the user's connection.)'
+4. [NICE.csv line 402] [quality, availability] 'The website shall be available for use 24 hours per day 365 days per year.'
+5. [NICE.csv line 403] [quality, availability] 'The website shall achieve 99.5% up time.'
+6. [NICE.csv line 401] [quality, security] 'All credit card information will be secured on the server and only accessible by authorized Izogn administrators. Information will be encrypted in the database.'
+7. [NICE.csv line 432] [quality, maintainability, security] 'The website shall protect itself from intentional abuse and notify the administrator at all occurrences.'
+8. [NICE.csv line 437] [quality, security] 'All customer information will be stored on a secure database accessible only to authorized personnel.'
+9. [NICE.csv line 388] [quality, usability] 'The product should be able to be used by 90% of novice users on the Internet.'
+10. [NICE.csv line 410] [quality, scalability] 'The website shall be capable of supporting 100 000 customers.'

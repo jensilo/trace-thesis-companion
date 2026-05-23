@@ -1,0 +1,141 @@
+{
+  "extraction_file": "outputs/corpus_20260226_162106_mistral-small_trace_20260302_182911/trace_transcript_3_re_novice_stakeholder_technical_senior_20260226_162350.json",
+  "ground_truth_source": "outputs/corpus-20260226_162106/transcript_3_re_novice_stakeholder_technical_senior_20260226_162350.json",
+  "eval_model": "openai/gpt-5-mini",
+  "per_requirement": [
+    {
+      "extracted_requirement": "The system should respond to day-to-day tasks within five seconds and schedule generation within thirty seconds.",
+      "matched_ground_truth": "'The response time of general student management tasks shall take no longer than 5 seconds and the response time of schedule generation shall take no longer than 30 seconds.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 5,
+      "rationale_quality": 4,
+      "gap_detection_quality": 3,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system must protect student records and ensure privacy.",
+      "matched_ground_truth": "The system shall protect private information in accordance with the organization's information policy.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 3,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system should provide a clean, predictable user experience.",
+      "matched_ground_truth": "'The system shall help the user avoid making mistakes while scheduling classes and clinicals for the nursing students.'",
+      "overlap_score": 3,
+      "overlap_label": "Medium",
+      "quality_attribute_match": true,
+      "confidence_quality": 4,
+      "rationale_quality": 3,
+      "gap_detection_quality": 2,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system should be reliable during office hours and have an uptime of around ninety-five percent.",
+      "matched_ground_truth": "'The system shall achieve 95% up time.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 5,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system should be prepared for some adaptation work with legacy APIs.",
+      "matched_ground_truth": "'The system shall interface with the student master server.'",
+      "overlap_score": 3,
+      "overlap_label": "Medium",
+      "quality_attribute_match": false,
+      "confidence_quality": 3,
+      "rationale_quality": 3,
+      "gap_detection_quality": 4,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system should handle roughly ten concurrent users during peak times.",
+      "matched_ground_truth": "'The system shall cater to 10 simultaneous users from 9am to 5pm.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system should enforce constraints at the point of scheduling and flag issues in-line with suggestions.",
+      "matched_ground_truth": "'The system shall help the user avoid making mistakes while scheduling classes and clinicals for the nursing students.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 4,
+      "rationale_quality": 3,
+      "gap_detection_quality": 3,
+      "is_hit": true,
+      "is_duplicate": true
+    },
+    {
+      "extracted_requirement": "The system should follow the university’s information protection policies, which align with FERPA and HIPAA where applicable.",
+      "matched_ground_truth": "The system shall protect private information in accordance with the organization's information policy.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 3,
+      "is_hit": true,
+      "is_duplicate": true
+    },
+    {
+      "extracted_requirement": "The system should provide audit trails to answer 'who changed what' if something goes wrong.",
+      "matched_ground_truth": null,
+      "overlap_score": 1,
+      "overlap_label": "Very Low",
+      "quality_attribute_match": false,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": false,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system should integrate with the university’s existing systems, specifically CampusConnect and the student master server.",
+      "matched_ground_truth": "The system shall interface with CampusConnect's central server'",
+      "overlap_score": 4,
+      "overlap_label": "High",
+      "quality_attribute_match": false,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": true,
+      "is_duplicate": false
+    }
+  ],
+  "metrics": {
+    "hit_count": 7,
+    "extracted_count": 10,
+    "ground_truth_count": 10,
+    "precision": 0.7,
+    "recall": 0.7,
+    "f1": 0.7,
+    "quality_attribute_accuracy": 0.714,
+    "avg_confidence": 4.2,
+    "avg_overlap_score": 4.1,
+    "avg_confidence_quality": 4.1,
+    "avg_rationale_quality": 3.7,
+    "avg_gap_detection_quality": 3.4
+  }
+}

@@ -1,0 +1,194 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_3_re_experienced_stakeholder_nontechnical_manager_20260227_110128.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_175544",
+  "requirements": [
+    {
+      "requirement": "The system shall allow program administrators to log in, pull up a cohort, see who needs a clinical placement, and assign them without having to open five windows or ask someone else.",
+      "source_citation": "Easy means that a program admin can log in, pull up a cohort, see who needs a clinical placement, and assign them without having to open five windows or ask someone else.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for ease of use and simplicity in the scheduling process, emphasizing the importance of a streamlined interface.",
+      "follow_up_question": "Can you provide specific examples of the 'five windows' you mentioned, and what information each contains?"
+    },
+    {
+      "requirement": "The system shall guide users by flagging missing prerequisites to prevent incorrect assignments.",
+      "source_citation": "It should guide them—like, if someone is missing a prerequisite it should flag it so they don't assign them.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder highlights the need for the system to provide clear guidance and prevent errors through visual indicators.",
+      "follow_up_question": "What specific prerequisites or conditions should the system flag, and how should these be visually indicated?"
+    },
+    {
+      "requirement": "The system shall be designed such that non-tech users can navigate and use it without getting lost.",
+      "source_citation": "And it should be obvious where to click; non-tech people shouldn't get lost.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder emphasizes the importance of an intuitive interface that is accessible to users with varying levels of technical proficiency.",
+      "follow_up_question": "Can you provide examples of specific features or interfaces that have caused confusion in the past?"
+    },
+    {
+      "requirement": "The system shall require no more than one day of training for new program administrators to become proficient.",
+      "source_citation": "We really can't ask for a week of classes for every new admin. Ideally they'd pick it up quickly—like, a day of training and then they can use it.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies the need for minimal training time, indicating the importance of an intuitive and user-friendly design.",
+      "follow_up_question": "What specific tasks or features should be covered in this one-day training session?"
+    },
+    {
+      "requirement": "The system shall respond to small operations, such as opening a student profile or updating a status, within five seconds.",
+      "source_citation": "For small operations—opening a student profile or updating a status—I hate sitting and watching a spinner. If it takes longer than a few seconds I notice.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for quick response times for small operations, indicating the importance of performance.",
+      "follow_up_question": "What specific small operations should be prioritized for quick response times?"
+    },
+    {
+      "requirement": "The system shall generate a full schedule within half a minute.",
+      "source_citation": "For generating a full schedule—I'm comfortable if that's done within half a minute—longer than that and people wander off and start doing other things.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the acceptable time frame for generating a full schedule, highlighting the importance of performance during peak usage.",
+      "follow_up_question": "What specific factors or constraints should be considered when generating a full schedule?"
+    },
+    {
+      "requirement": "The system shall be available during business hours, which are from eight in the morning to six in the evening on weekdays.",
+      "source_citation": "It has to be available when our office is open; those are the times people are making assignments. We can't have it go down during business hours—it's a disruption.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder emphasizes the critical need for system availability during specific business hours.",
+      "follow_up_question": "Are there any specific times within these business hours that are more critical than others?"
+    },
+    {
+      "requirement": "The system shall have an uptime of at least 95% over the term.",
+      "source_citation": "Ninety-five percent would be the right ballpark for me. If it slips below that, people will lose faith.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the target uptime percentage, indicating the importance of reliability and availability.",
+      "follow_up_question": "What specific measures or protocols should be in place to ensure this uptime target is met?"
+    },
+    {
+      "requirement": "The system shall restrict access to student records based on roles, with program administrators having full access and site coordinators having access only to necessary information.",
+      "source_citation": "Program administrators need to see the student records to make placement decisions, but site coordinators shouldn't see personal details beyond what they need to contact the student and confirm qualifications.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder highlights the need for role-based access control to protect sensitive student information.",
+      "follow_up_question": "What specific information should be accessible to each role, and what should be restricted?"
+    },
+    {
+      "requirement": "The system shall comply with the university's information policy regarding the protection of health information and student records.",
+      "source_citation": "We must follow the university's info policy—so protections around health info and student records apply. It's not optional.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder emphasizes the importance of compliance with university policies to ensure the protection of sensitive data.",
+      "follow_up_question": "What specific policies or regulations should the system comply with, and how should compliance be verified?"
+    },
+    {
+      "requirement": "The system shall prevent scheduling conflicts by blocking or clearly warning users when attempting to schedule a student at a time a site or preceptor is already booked.",
+      "source_citation": "I want built-in checks. If someone tries to schedule a student at a time a site or preceptor is already booked, it should block or at least clearly warn.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "error_prevention",
+      "confidence": 5,
+      "rationale": "The stakeholder highlights the need for the system to prevent scheduling conflicts through clear warnings or blocks.",
+      "follow_up_question": "What specific types of conflicts should the system detect and how should these be communicated to users?"
+    },
+    {
+      "requirement": "The system shall provide visual indicators for conflicts, prerequisite checks before assignment, and a rules engine that enforces curriculum constraints.",
+      "source_citation": "Also, visual indicators for conflicts, prerequisite checks before assignment, and a rules engine that enforces curriculum constraints so someone doesn't accidentally put a student into a clinical they're not ready for.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "error_prevention",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies the need for visual indicators and a rules engine to prevent errors and enforce constraints.",
+      "follow_up_question": "What specific visual indicators and rules should be implemented to prevent errors?"
+    },
+    {
+      "requirement": "The system shall prevent overrides for non-negotiable conditions, such as missing prerequisites.",
+      "source_citation": "Warnings are fine in some cases, but for things that are non-negotiable—like missing prerequisite—there shouldn't be a bypass.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "error_prevention",
+      "confidence": 5,
+      "rationale": "The stakeholder emphasizes the importance of preventing overrides for critical conditions to ensure data integrity.",
+      "follow_up_question": "What specific conditions should be considered non-negotiable and how should these be enforced?"
+    },
+    {
+      "requirement": "The system shall provide reporting capabilities to track cohort progression, student competencies, site utilization, and recurring scheduling conflicts.",
+      "source_citation": "Reporting is important. I need to know cohort progression, which students are missing competencies, site utilization, and recurring scheduling conflicts.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "auditability",
+      "confidence": 5,
+      "rationale": "The stakeholder highlights the need for comprehensive reporting to track various aspects of the scheduling process.",
+      "follow_up_question": "What specific reports or metrics should be included in the system's reporting capabilities?"
+    },
+    {
+      "requirement": "The system shall generate and send rosters to clinical sites before each rotation starts.",
+      "source_citation": "Also, before every clinical rotation starts, we need a roster that we can send to sites quickly.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "auditability",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies the need for timely roster generation and distribution to ensure smooth clinical rotations.",
+      "follow_up_question": "What specific information should be included in the rosters and how should they be distributed?"
+    },
+    {
+      "requirement": "The system shall sync with the university's Student Information System (SIS) and authenticate staff through existing single sign-on (SSO) tools.",
+      "source_citation": "Ideally, it would sync with the university systems so we don't retype student info, and authenticate staff through the tools we already use.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "integration",
+      "confidence": 5,
+      "rationale": "The stakeholder emphasizes the need for integration with existing university systems to streamline data management and authentication.",
+      "follow_up_question": "What specific data should be synced with the SIS and what SSO tools should be used for authentication?"
+    },
+    {
+      "requirement": "The system shall handle peak usage during term starts and mornings before rotation starts without slowing down.",
+      "source_citation": "Term starts are heavy—roster generation and assignment runs. People tend to do big batch operations then, and that's when performance matters. Also, mornings before a rotation start are frantic. We need it to handle those peaks without slowing to a crawl.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "The stakeholder highlights the need for the system to handle peak usage efficiently to ensure smooth operations during critical times.",
+      "follow_up_question": "What specific performance metrics should be monitored during peak usage, and what measures should be taken to maintain performance?"
+    }
+  ]
+}

@@ -1,0 +1,194 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_5_re_novice_stakeholder_technical_senior_20260227_110558.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_173327",
+  "requirements": [
+    {
+      "requirement": "The system shall return parts search results in under 15 seconds.",
+      "source_citation": "For parts searches, waiting around more than a few tens of seconds is unacceptable. We should aim to have search results returned well under, uh, something like fifteen seconds.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions a target time of under 15 seconds for parts search results, indicating a clear performance requirement.",
+      "follow_up_question": "Are there any specific performance metrics or benchmarks that should be used to measure and ensure this requirement is met?"
+    },
+    {
+      "requirement": "The system shall return facility search results in under 8 seconds.",
+      "source_citation": "For the preferred repair facility search, that should be noticeably quicker — it should return within roughly eight seconds so the field person isn't standing there awkwardly.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions a target time of under 8 seconds for facility search results, indicating a clear performance requirement.",
+      "follow_up_question": "Are there any specific performance metrics or benchmarks that should be used to measure and ensure this requirement is met?"
+    },
+    {
+      "requirement": "The system shall have an uptime of 98%.",
+      "source_citation": "Our operations group will expect ninety-eight percent availability as the baseline. That implies downtime of about two percent of the time as the maximum tolerated.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions a target uptime of 98%, indicating a clear availability requirement.",
+      "follow_up_question": "Are there any specific availability metrics or benchmarks that should be used to measure and ensure this requirement is met?"
+    },
+    {
+      "requirement": "The system shall support 1,500 concurrent users initially and scale to 10,000 concurrent users within two years.",
+      "source_citation": "Today we should plan to comfortably handle fifteen hundred concurrent users, and architect it so we can scale to around ten thousand concurrent users within about two years of launch.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the current and future user load, indicating a clear scalability requirement.",
+      "follow_up_question": "Are there any specific scalability metrics or benchmarks that should be used to measure and ensure this requirement is met?"
+    },
+    {
+      "requirement": "The system shall implement rate limiting, web application firewalls, traffic scrubbing, and failover paths to defend against attacks.",
+      "source_citation": "Rate limiting, web application firewalls, traffic scrubbing — those kinds of defensive measures should be part of the plan. Also we should design failover paths so the core search capability has some resilience under load.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions specific security measures, indicating a clear security requirement.",
+      "follow_up_question": "Are there any specific security metrics or benchmarks that should be used to measure and ensure this requirement is met?"
+    },
+    {
+      "requirement": "The system shall follow corporate privacy rules for personal information.",
+      "source_citation": "Any personal information must be handled per the privacy rules — again, follow the corporate controls.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need to follow corporate privacy rules, indicating a clear security requirement.",
+      "follow_up_question": "Are there any specific privacy metrics or benchmarks that should be used to measure and ensure this requirement is met?"
+    },
+    {
+      "requirement": "The system shall implement both in-transit and at-rest encryption.",
+      "source_citation": "We need both. Transport encryption is baseline, and sensitive data at rest should be encrypted per corporate policy.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for both in-transit and at-rest encryption, indicating a clear security requirement.",
+      "follow_up_question": "Are there any specific encryption metrics or benchmarks that should be used to measure and ensure this requirement is met?"
+    },
+    {
+      "requirement": "The system shall have role-based access control integrated with corporate identity and be auditable.",
+      "source_citation": "Access control needs to be role-based and integrated with corporate identity. Role assignment and permissioning should map to existing groups so we don't invent another silo. It has to be auditable, meaning changes to permissions are logged.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for role-based access control integrated with corporate identity and auditable, indicating a clear security requirement.",
+      "follow_up_question": "Are there any specific access control metrics or benchmarks that should be used to measure and ensure this requirement is met?"
+    },
+    {
+      "requirement": "The system shall be mobile-friendly and work well on tablets and phones.",
+      "source_citation": "Mobile-friendly is a must because field adjusters use tablets and phones.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for mobile-friendly design, indicating a clear usability requirement.",
+      "follow_up_question": "Are there any specific usability metrics or benchmarks that should be used to measure and ensure this requirement is met?"
+    },
+    {
+      "requirement": "The system shall follow corporate accessibility guidelines, including color contrast and keyboard navigation.",
+      "source_citation": "The UI should follow corporate accessibility guidelines — color contrast, keyboard navigation, standard components — so it's both consistent and compliant.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need to follow corporate accessibility guidelines, indicating a clear usability requirement.",
+      "follow_up_question": "Are there any specific accessibility metrics or benchmarks that should be used to measure and ensure this requirement is met?"
+    },
+    {
+      "requirement": "The system shall have a clean and quick user interface for field users.",
+      "source_citation": "Field users need a clean, quick interface; office users might do deeper analysis.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for a clean and quick interface for field users, indicating a clear usability requirement.",
+      "follow_up_question": "Are there any specific usability metrics or benchmarks that should be used to measure and ensure this requirement is met?"
+    },
+    {
+      "requirement": "The system shall follow corporate architecture patterns, design language, and approved tech stack.",
+      "source_citation": "We can't reinvent the stack; we need to align with the corporate architecture patterns and the UI standards. That's not negotiable. We have a set of approved technologies and design language that the system must fit into so operations and support don't freak out.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need to follow corporate architecture patterns, design language, and approved tech stack, indicating a clear maintainability requirement.",
+      "follow_up_question": "Are there any specific maintainability metrics or benchmarks that should be used to measure and ensure this requirement is met?"
+    },
+    {
+      "requirement": "The system shall avoid creating silos and integrate with existing systems for identity and access control.",
+      "source_citation": "Avoiding silos: Identity and access control should integrate with existing systems (mentioned in the identity section).",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need to avoid creating silos and integrate with existing systems, indicating a clear maintainability requirement.",
+      "follow_up_question": "Are there any specific maintainability metrics or benchmarks that should be used to measure and ensure this requirement is met?"
+    },
+    {
+      "requirement": "The system shall be resilient to schema changes and rely on the provider as the source of truth.",
+      "source_citation": "Rely on the provider as the source of truth, keep mappings explicit, and design for schema changes.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need to be resilient to schema changes and rely on the provider as the source of truth, indicating a clear maintainability requirement.",
+      "follow_up_question": "Are there any specific maintainability metrics or benchmarks that should be used to measure and ensure this requirement is met?"
+    },
+    {
+      "requirement": "The system shall have detailed logging for compliance and defensibility.",
+      "source_citation": "We need detailed logging of who viewed and changed an estimate or which parts were selected, and those logs must meet the company's retention and export rules.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for detailed logging for compliance and defensibility, indicating a clear legal requirement.",
+      "follow_up_question": "Are there any specific legal metrics or benchmarks that should be used to measure and ensure this requirement is met?"
+    },
+    {
+      "requirement": "The system shall have an offline mode as a nice-to-have feature but not prioritized for initial release.",
+      "source_citation": "Offline mode is nice-to-have but expensive; it depends on budget.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "other",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions offline mode as a nice-to-have feature but not prioritized for initial release, indicating a clear other requirement.",
+      "follow_up_question": "Are there any specific metrics or benchmarks that should be used to measure and ensure this requirement is met?"
+    },
+    {
+      "requirement": "The system shall provide reporting and export for auditors and business KPIs, including recycled-part utilization metrics and facility ratings over time.",
+      "source_citation": "Reporting and export for auditors and business KPIs are important — we need to track recycled-part utilization metrics and facility ratings over time.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "other",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for reporting and export for auditors and business KPIs, indicating a clear other requirement.",
+      "follow_up_question": "Are there any specific metrics or benchmarks that should be used to measure and ensure this requirement is met?"
+    }
+  ]
+}

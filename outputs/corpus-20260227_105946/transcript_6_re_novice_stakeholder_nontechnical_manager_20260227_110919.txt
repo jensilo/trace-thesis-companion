@@ -1,0 +1,102 @@
+Interviewer: Thanks for meeting with me. Could you tell me, from a product perspective, what problems this room-and-meeting system should solve?
+
+Stakeholder: Sure, I think, well, we need something that just makes booking and running meetings boring in a good way — like, no surprises, no fiddly back-and-forth. People should be able to reserve a room, attach equipment needs, invite participants, and the business should feel confident that rooms aren't double-booked or that meetings don't fail because of the system. It's really about reducing friction and the embarrassment of a meeting that can't start on time.
+
+Interviewer: Okay... when you say "confident" and "no surprises", do you mean the system should be very reliable?
+
+Stakeholder: Yes, absolutely. Reliability is huge. I mean, hmm, we have a low tolerance for downtime — when it happens it costs us in rescheduling and in trust. I don't expect it to be up if the whole server farm is down or something catastrophic, but aside from that it should be basically always available. We want people to rely on it like email.
+
+Interviewer: Right. Do you have a specific uptime target in mind?
+
+Stakeholder: Yeah, if you want a number — and I know these sound picky — we're aiming for four nines. So, apart from full server failures, the software itself should be available at that level. That keeps our executive team happy.
+
+Interviewer: Got it. And performance — how quickly should things happen? Like, when someone books a room or searches availability.
+
+Stakeholder: It just needs to feel instantaneous. I really hate waiting; if people have to pause while the page loads they start doing other things and don't come back. Maybe five seconds for the quick stuff, I'd say; slightly longer for heavier operations is tolerable but not by much.
+
+Interviewer: When you say "slightly longer", how long is too long? Any numbers?
+
+Stakeholder: Okay, to be precise, about ninety percent of tasks should finish within five seconds, and we want almost all of them done within eight seconds. Anything slower than that and you'll see people complain.
+
+Interviewer: Understood. We expect peaks — mornings and late afternoons — how many users or requests should the system handle at the same time?
+
+Stakeholder: Good question. Morning and late afternoon are the problem times, yeah. Right now we need it to handle a thousand simultaneous requests without choking, and we'll need to scale that up in the next release to about double that. Basically it has to survive the rush hours.
+
+Interviewer: So you want it to support a thousand now and two thousand later?
+
+Stakeholder: Yes, exactly.
+
+Interviewer: Security and access — who should be allowed to use the system?
+
+Stakeholder: Only people we trust. Employees, of course, and sometimes external folks who have been given approved company IDs. We can't have anonymous accounts — it's a business tool, not a public calendar. If anyone from outside gets in and changes a booking, that's a big risk to operations and confidentiality.
+
+Interviewer: Should every single logon be an approved company employee or an approved external ID? Like, is that a must?
+
+Stakeholder: Yes, it's non-negotiable. All logons must be by either company employees or external users who've been vetted and given company-approved IDs.
+
+Interviewer: Okay. On integrations — I assume email invites are important?
+
+Stakeholder: Very important. If it can't send mail reliably we fail at the basic job. It needs to talk to whatever email servers we use, because different offices use different things, and be able to send invites, reminders, cancellations. We had an incident last year where an invite didn't go out and half the participants missed a launch review — not great.
+
+Interviewer: Should it support multiple kinds of email servers?
+
+Stakeholder: Yes, it should interface with various email systems. We don't want to be tied to just one vendor.
+
+Interviewer: About failures and problems — how should the system handle errors? Do you want logs?
+
+Stakeholder: Definitely. When something goes wrong, we want an exception record — something that doesn't just sit in the logs but can be packaged up and sent back to our team for analysis. It's useful for trend spotting and for getting support teams to fix recurring issues before users notice. I think we've learned that early reporting saves a lot of firefighting later.
+
+Interviewer: Should those exception logs be transmitted to your company on a regular basis?
+
+Stakeholder: Yes, they should be created and made available for transmission to us. How often can vary, but we need them for our analysis and eventual fixes.
+
+Interviewer: Okay. On the user interface, do you want the product to look like the company, or be neutral?
+
+Stakeholder: We want our identity there. Clients and employees should feel it's part of our ecosystem — logo, colors, some branding. Not just throwing our logo on a page, but the overall look and feel should be able to incorporate elements of our identity. It helps with adoption.
+
+Interviewer: Do you want users to be able to choose language or is it English-only?
+
+Stakeholder: We need multiple languages — people in different countries must be able to use it in their language of choice. The user should be able to select a language from the ones we target in our markets.
+
+Interviewer: Which languages exactly should be supported?
+
+Stakeholder: Well, that'll depend on which target markets are in scope for each release, but the product has to support at least the main languages of our target countries. We can prioritize which ones, but the mechanism for language selection must exist.
+
+Interviewer: Accessibility — how important is complying with accessibility laws or standards?
+
+Stakeholder: Very important. We must conform to accessibility requirements like the Americans with Disabilities Act. It's not optional; it's about legal compliance and being inclusive. Also, it's a reputational thing — we don't want anyone excluded.
+
+Interviewer: Browsers — do you expect it to work in standard web browsers?
+
+Stakeholder: Yes, it needs to run in any normal HTML browser. Users shouldn't have to install plugins or a specific browser. The trick is, we also need it to render correctly across a representative set of browsers — there are always edge cases, but it has to look and work properly in most of the browsers our people use.
+
+Interviewer: Do you have a target for how many browsers it should display properly in, or how many to test?
+
+Stakeholder: We want a meaningful baseline. It should display correctly in eighty percent of the browsers tested, and at least eight different browsers should be part of the test matrix to make sure we're covering diversity of clients.
+
+Interviewer: Right. Going back to security for a second — you mentioned vetting external users and company-approved IDs. Do you have a preferred way to handle authentication, like single sign-on or something?
+
+Stakeholder: Hmm, I think single sign-on would be great because it reduces friction and aligns with our identity policies, but I'm not married to a specific protocol. The key point is that authentication must be tied to our corporate identity process. If there's a standard connector that works with our directory, that's ideal. Oh, and we should log access attempts for audit — that's something our risk team will ask about.
+
+Interviewer: Thanks. Last thing — performance during peak times: do you want the system to degrade gracefully, or should it always keep the same behavior?
+
+Stakeholder: It should try to keep the same experience, especially for core tasks like booking and checking availability. If there's a need to shed non-essential work during extreme load, that's acceptable, but the booking flow must remain snappy. We can't have people getting partial bookings or timeouts during morning rush.
+
+Interviewer: Okay. I think that's all my questions.
+
+Stakeholder: One more thing — small tangent: we used to have a sticky note system in one office, and I remember this one Thursday where every room showed booked but half were phantom entries from a spreadsheet import gone wrong. So whatever we build, it needs good validation on imports and a way to clean oddities quickly. I know that's operational, but it bites users’ trust fast. Anyway, glad we talked through this.
+
+Interviewer: Great, thanks — I'll write this up.
+
+---
+Selected Requirements:
+1. [NICE.csv line 294] [quality, availability] 'Aside from server failure the software product shall achieve 99.99% up time.'
+2. [NICE.csv line 293] [quality, performance] The response shall be fast enough to avoid interrupting the user's flow of thought. 90% of tasks shall complete within 5 seconds. 98% of tasks shall complete within 8 seconds.'
+3. [NICE.csv line 296] [quality, scalability] 'The product shall be capable of handling up to 1 000 concurrent requests. This number will increase to 2 000 by Release 2. The concurrency capacity must be able to handle peak scheduling times such as early morning and late afternoon hours.'
+4. [NICE.csv line 315] [quality, security] 'The product shall ensure that only company employees or external users with company-approved user IDs may have product access. 100% of all logons shall be by either company employees or external users with company-approved user IDs.'
+5. [NICE.csv line 302] [quality, operability, portability] 'The product must be able to interface with various email servers. The product shall be able to send email.'
+6. [NICE.csv line 295] [quality, functional, maintainability] 'The product shall create an exception log of problems encountered within the product for transmission to our company for analysis and resolution.'
+7. [NICE.csv line 282] [quality, look_and_feel] The product's Look and Feel shall be able to incorporate aspects of the customer's organization such as logo branding and identity'
+8. [NICE.csv line 287] [quality, functional, usability] 'The product shall allow the user to select a chosen language from one of the target market countries.'
+9. [NICE.csv line 292] [quality, legal] 'The product shall conform to the Americans with Disabilities Act.'
+10. [NICE.csv line 300] [quality, look_and_feel, operability, portability] 'The product must be able to interface with any HTML browser. The product shall transmit data between the user and the product without problems. The product shall display HTML properly in 80% of all HTML browsers tested (minimum is to test 8 browsers).'

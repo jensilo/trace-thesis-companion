@@ -1,0 +1,172 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_6_re_experienced_stakeholder_nontechnical_manager_20260227_111115.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_175631",
+  "requirements": [
+    {
+      "requirement": "The system should be quick and intuitive to use, requiring no training for basic tasks.",
+      "source_citation": "People shouldn't need a training session to do the basic things",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of intuitiveness and ease of use, indicating a strong focus on usability.",
+      "follow_up_question": "What specific usability metrics or benchmarks are you using to evaluate the intuitiveness of the system?"
+    },
+    {
+      "requirement": "Most users should be able to complete a simple room booking within about five minutes on their first try.",
+      "source_citation": "If most users can't do it within about five minutes on their first try, that's a problem",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder provides a clear, measurable benchmark for first-time user success.",
+      "follow_up_question": "What percentage of users constitutes 'most' for this requirement?"
+    },
+    {
+      "requirement": "Ninety percent of routine tasks should be completed within roughly five seconds.",
+      "source_citation": "Ninety percent of routine tasks should finish within roughly five seconds",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies a precise performance target for routine tasks.",
+      "follow_up_question": "What are considered 'routine tasks' in this context?"
+    },
+    {
+      "requirement": "The UI should be usable with screen readers, keyboard navigation, and high-contrast modes.",
+      "source_citation": "UI to be usable with screen readers, keyboard navigation, and high-contrast modes",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for accessibility features.",
+      "follow_up_question": "Are there any specific accessibility standards or guidelines you want us to follow?"
+    },
+    {
+      "requirement": "The system should handle about a thousand concurrent requests initially.",
+      "source_citation": "The product should handle about a thousand concurrent requests initially",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder provides a clear target for initial concurrency.",
+      "follow_up_question": "What specific performance metrics are you using to evaluate concurrency handling?"
+    },
+    {
+      "requirement": "The system should handle around two thousand concurrent requests by the next release.",
+      "source_citation": "By the next release we expect [concurrent requests] to roughly double to around two thousand",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder indicates a clear scalability target for future releases.",
+      "follow_up_question": "What specific scalability metrics are you using to evaluate performance under increased load?"
+    },
+    {
+      "requirement": "The system should have near-continuous uptime, with planned maintenance windows but minimal unplanned downtime.",
+      "source_citation": "We expect near-continuous uptime; planned maintenance windows are okay but unplanned downtime is very costly",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder emphasizes the importance of high availability and minimal downtime.",
+      "follow_up_question": "What specific availability metrics or SLAs are you targeting?"
+    },
+    {
+      "requirement": "Exceptions should be captured in a log and made available to the support team for analysis.",
+      "source_citation": "We want a record [of failures]... exceptions captured in a log",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the need for error logging and diagnostics.",
+      "follow_up_question": "What specific logging and diagnostic tools or formats do you prefer?"
+    },
+    {
+      "requirement": "Only company employees and approved external users should be able to access the system.",
+      "source_citation": "Only our company employees and approved external users should be able to use it",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies strict access control requirements.",
+      "follow_up_question": "What specific authentication and authorization mechanisms do you envision?"
+    },
+    {
+      "requirement": "Any reporting that exposes personal calendars should respect privacy and access controls.",
+      "source_citation": "Any reporting that exposes personal calendars needs to respect privacy and access controls",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for privacy and access control in reporting.",
+      "follow_up_question": "What specific privacy and access control mechanisms do you envision?"
+    },
+    {
+      "requirement": "Automatic transmission of logs should be securely sent to the analysis pipeline.",
+      "source_citation": "Automatic transmission of logs... securely transmit them to our analysis pipeline",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the need for automated log transmission for diagnostics.",
+      "follow_up_question": "What specific log transmission and analysis tools or formats do you prefer?"
+    },
+    {
+      "requirement": "The system should support multilingual capabilities, including English, Spanish, French, and German at launch.",
+      "source_citation": "At launch we have to cover the big ones: English and Spanish... French and German",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "localization",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for multilingual support for target markets.",
+      "follow_up_question": "What specific localization and internationalization standards or guidelines do you want us to follow?"
+    },
+    {
+      "requirement": "The system should allow for branding customization, including logos and color accents, while enforcing sufficient contrast and accessibility.",
+      "source_citation": "Let them inject logo and color accents, but the system should enforce sufficient contrast",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the need for branding customization while maintaining accessibility.",
+      "follow_up_question": "What specific branding and theming guidelines or standards do you want us to follow?"
+    },
+    {
+      "requirement": "The system should comply with data residency and export rules for customers in different countries.",
+      "source_citation": "We have to make sure data residency and export rules are clear for customers in different countries",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for compliance with data residency and export rules.",
+      "follow_up_question": "What specific data residency and export rules or regulations do you want us to follow?"
+    },
+    {
+      "requirement": "When someone searches for a room, they should see rooms with the right layout and equipment availability.",
+      "source_citation": "When someone searches, they should see rooms with the right layout and the equipment availability baked in",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the need for accurate and comprehensive search results.",
+      "follow_up_question": "What specific search and filtering mechanisms do you envision?"
+    }
+  ]
+}

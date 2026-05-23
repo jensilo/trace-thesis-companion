@@ -1,0 +1,161 @@
+{
+  "transcript_file": "outputs/corpus-20260226_162106/transcript_3_re_experienced_stakeholder_technical_senior_20260226_162333.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_182913",
+  "requirements": [
+    {
+      "requirement": "The system should respond to routine management actions within five seconds to avoid user complaints.",
+      "source_citation": "For routine management actions, something like around five seconds is the upper limit before users notice and complain.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the acceptable latency for routine tasks, which is a clear performance requirement.",
+      "follow_up_question": "What specific routine management actions should be measured against this five-second threshold?"
+    },
+    {
+      "requirement": "The system should complete full schedule generation within half a minute if done interactively; otherwise, it should be handled asynchronously with a progress indicator.",
+      "source_citation": "For an entire schedule generation, I'd want it to finish under about half a minute if done interactively. If it ever goes much longer, we should make it an asynchronous job with a progress indicator.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder provides a clear performance expectation for a heavier operation and specifies the handling of long-running operations.",
+      "follow_up_question": "What constitutes a 'full schedule generation' in terms of data size and complexity?"
+    },
+    {
+      "requirement": "Any personally identifiable information (PII) must be protected according to DePaul's policies, including encryption in transit and at rest, role-based access controls, and detailed audit logs for sensitive access.",
+      "source_citation": "Any PII must be protected according to DePaul's policies — encryption in transit and at rest where appropriate, role-based access controls, and detailed audit logs for sensitive access.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for protecting PII and outlines specific security measures.",
+      "follow_up_question": "What specific encryption standards and access control mechanisms does DePaul's policy mandate?"
+    },
+    {
+      "requirement": "The system should integrate with the campus identity provider for single sign-on (SSO) to avoid users managing extra passwords.",
+      "source_citation": "We should integrate with the campus identity provider for single sign-on so users don't manage extra passwords.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for SSO integration, which is a security requirement.",
+      "follow_up_question": "What specific authentication protocols (e.g., SAML, OAuth) does the campus identity provider support?"
+    },
+    {
+      "requirement": "The system should be designed with an acceptable learning curve for busy program administrators and nursing staff.",
+      "source_citation": "These are busy people; they won't tolerate a steep learning curve.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for a system that is easy to learn and use, which is a usability requirement.",
+      "follow_up_question": "What specific usability testing methods will be used to ensure the system meets the acceptable learning curve?"
+    },
+    {
+      "requirement": "The basic scheduling flow should be intuitive and guided, taking under five minutes to create a new cohort from scratch.",
+      "source_citation": "The basic scheduling flow should be obvious — like a few guided steps where you pick a cohort, assign sites, then confirm. Ideally it should be fast. For me, creating a cohort shouldn't take longer than a coffee break. If I had to pick a practical threshold, I'd say under five minutes for a normal cohort creation path, assuming data like curriculum templates are preloaded.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder provides a clear expectation for the intuitiveness and speed of the basic scheduling flow.",
+      "follow_up_question": "What specific user interface elements and interactions will be included in the guided steps?"
+    },
+    {
+      "requirement": "The system should follow standard accessibility practices to ensure it is usable by all individuals, including those with disabilities.",
+      "source_citation": "Accessibility shouldn't be an afterthought — at a minimum follow standard accessibility practices so we're not excluding anyone.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for accessibility, which is a usability requirement.",
+      "follow_up_question": "What specific accessibility standards (e.g., WCAG) will the system be required to comply with?"
+    },
+    {
+      "requirement": "The system should be available during office hours with an uptime in the mid-90s percentile.",
+      "source_citation": "We need it available when the scheduling team is working. It's not a consumer app that has 24/7 demand, but it must be reliable during office hours. For initial planning, something in the mid-90s percentile is acceptable.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the required availability and uptime, which is an availability requirement.",
+      "follow_up_question": "What specific measures will be taken to ensure the system meets the mid-90s percentile uptime requirement?"
+    },
+    {
+      "requirement": "The system should retain enough history to understand decisions across academic years, especially for overrides and approvals.",
+      "source_citation": "We should retain enough history to understand decisions across academic years, especially for overrides and approvals.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for retaining history, which is a maintainability requirement.",
+      "follow_up_question": "What specific data retention policies and mechanisms will be implemented to ensure historical data is accessible?"
+    },
+    {
+      "requirement": "The system should be designed to handle growth over the next decade without performance degradation.",
+      "source_citation": "We should plan for growth over the next decade — enough that the system won't choke if enrollment increases significantly.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for scalability to handle future growth.",
+      "follow_up_question": "What specific scalability testing and capacity planning measures will be implemented to ensure the system can handle growth?"
+    },
+    {
+      "requirement": "The system should support around ten concurrent admins at peak usage times.",
+      "source_citation": "I would say around ten concurrent admins at peak would cover our needs comfortably.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder provides a clear expectation for the number of concurrent users, which is a scalability requirement.",
+      "follow_up_question": "What specific performance testing will be conducted to ensure the system can handle ten concurrent admins?"
+    },
+    {
+      "requirement": "The system should enforce database integrity constraints such as foreign key consistency, uniqueness, and transactional integrity.",
+      "source_citation": "We need constraints that mirror business invariants. For example, foreign key consistency between student records and cohorts, uniqueness where applicable so you don't have duplicate enrollments, and transactional integrity when multiple schedulers update the same cohort concurrently.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "data_integrity",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for database integrity constraints, which is a data integrity requirement.",
+      "follow_up_question": "What specific database integrity checks and validation rules will be implemented?"
+    },
+    {
+      "requirement": "The system should implement optimistic concurrency with clear conflict detection to handle concurrent edits.",
+      "source_citation": "Optimistic concurrency with clear conflict detection is preferable. Locking presents UX problems and can lead to deadlocks.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "data_integrity",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for optimistic concurrency, which is a data integrity requirement.",
+      "follow_up_question": "What specific conflict resolution mechanisms will be implemented to handle concurrent edits?"
+    },
+    {
+      "requirement": "The system should provide a dashboard that aggregates overrides by rule, user, and cohort, with timestamps and rationales.",
+      "source_citation": "It should show a dashboard that aggregates overrides by rule, user, and cohort, with timestamps and rationales.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "auditability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for a dashboard to surface override patterns, which is an auditability requirement.",
+      "follow_up_question": "What specific metrics and visualizations will be included in the override dashboard?"
+    }
+  ]
+}

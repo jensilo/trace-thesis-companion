@@ -1,0 +1,150 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_5_re_novice_stakeholder_technical_junior_20260227_110552.txt",
+  "model": "mistral/mistral-medium-latest",
+  "timestamp": "20260302_170923",
+  "requirements": [
+    {
+      "requirement": "The system shall respond to parts search queries within 15 seconds.",
+      "source_citation": "If a parts search takes more than, say, a handful of seconds, people get annoyed and start switching to phone calls. So, fast enough that adjusters don't lose focus, that's the bar. If you want a number... maybe around fifteen seconds is about the upper bound before people complain.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions a time frame for parts search response times, indicating a performance requirement.",
+      "follow_up_question": "What specific performance metrics or benchmarks should be used to measure the system's response time?"
+    },
+    {
+      "requirement": "The system shall respond to repair facility search queries within 10 seconds.",
+      "source_citation": "When you're standing by a car or talking to an insured, you want the nearest preferred shop to pop up faster than the big parts lists. So it should come back quicker than the parts search. If pressed, I'd say under ten seconds would be nice, but it should feel almost immediate when you're looking up a shop.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a time frame for repair facility search response times, indicating another performance requirement.",
+      "follow_up_question": "Are there any specific performance testing tools or methodologies that should be used to ensure these response times?"
+    },
+    {
+      "requirement": "The system shall follow corporate architecture and UI guidelines.",
+      "source_citation": "It should follow our corporate architecture and UI rules — you know, the stuff IT keeps reminding us about.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need to adhere to corporate architecture and UI guidelines, indicating a usability and maintainability requirement.",
+      "follow_up_question": "Can you provide specific corporate architecture and UI guidelines that the system must follow?"
+    },
+    {
+      "requirement": "The system shall be secure and prevent data leakage between roles.",
+      "source_citation": "There should be guards so administrative or personal data doesn’t leak to field staff. I’m not a security expert, but it’s clear not everyone should see everything.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for security measures to prevent data leakage, indicating a security requirement.",
+      "follow_up_question": "What specific security standards or protocols should be implemented to prevent data leakage?"
+    },
+    {
+      "requirement": "The system shall have high availability with minimal downtime.",
+      "source_citation": "Downtime is the big one — if the system's down when claims are being processed, it slows everything and people revert to old processes.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of minimal downtime, indicating an availability requirement.",
+      "follow_up_question": "What specific availability metrics or service level agreements (SLAs) should be targeted for the system?"
+    },
+    {
+      "requirement": "The system shall support a large number of concurrent users without performance degradation.",
+      "source_citation": "Peak use can be pretty high — mornings and right after lunch everyone logs in. I don't have exact figures off the top of my head, but it needs to cope with a large number of concurrent users without slowing. If you're asking for a target, I'd say something in the low thousands for simultaneous sessions to be safe.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need to support a large number of concurrent users, indicating a scalability requirement.",
+      "follow_up_question": "What specific load testing or performance testing should be conducted to ensure the system can handle the expected number of concurrent users?"
+    },
+    {
+      "requirement": "The system shall be usable on standard corporate browsers and tablets.",
+      "source_citation": "It should work on standard corporate browsers and on tablets for field staff.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for the system to work on specific devices and browsers, indicating a portability requirement.",
+      "follow_up_question": "Are there any specific browsers or devices that must be supported?"
+    },
+    {
+      "requirement": "The system shall degrade gracefully on flaky mobile networks.",
+      "source_citation": "It should degrade gracefully on flaky mobile networks.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for the system to handle poor network conditions, indicating a fault tolerance requirement.",
+      "follow_up_question": "What specific strategies or technologies should be used to ensure graceful degradation on poor networks?"
+    },
+    {
+      "requirement": "The system shall include audit trails for parts sourcing decisions and user actions.",
+      "source_citation": "We need to keep audit trails tied to estimates, especially for parts sourcing decisions. Regulators and internal audit like to see who changed what and when.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for audit trails for compliance and regulatory purposes, indicating a legal requirement.",
+      "follow_up_question": "What specific audit trail features or logging mechanisms should be implemented to meet regulatory requirements?"
+    },
+    {
+      "requirement": "The system shall include protections against Denial-of-Service attacks.",
+      "source_citation": "Um, I expect standard protections, like rate-limiting and CDN or WAF patterns so the service doesn't become unusable.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for protections against DoS attacks, indicating a security requirement.",
+      "follow_up_question": "What specific security measures or tools should be implemented to protect against DoS attacks?"
+    },
+    {
+      "requirement": "The system shall support real-time or near-real-time updates for the Choice Parts feed.",
+      "source_citation": "Real-time or near-real-time would be ideal, because availability changes and you don't want adjusters offering parts that aren't actually available.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for real-time or near-real-time updates, indicating a performance requirement.",
+      "follow_up_question": "What specific technologies or methodologies should be used to ensure real-time or near-real-time updates?"
+    },
+    {
+      "requirement": "The system shall be intuitive and require minimal training.",
+      "source_citation": "Training should be minimal — we shouldn't be spending weeks. People should be comfortable after a short onsite session and a couple of tries.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for the system to be intuitive and require minimal training, indicating a usability requirement.",
+      "follow_up_question": "What specific usability testing or user feedback mechanisms should be used to ensure the system is intuitive?"
+    },
+    {
+      "requirement": "The system shall include fuzzy matching for search queries.",
+      "source_citation": "Make the search forgiving: people type weird vehicle codes and shop names, so fuzzy matching is a lifesaver.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for fuzzy matching in search queries, indicating a usability requirement.",
+      "follow_up_question": "What specific fuzzy matching algorithms or techniques should be used to improve search functionality?"
+    }
+  ]
+}

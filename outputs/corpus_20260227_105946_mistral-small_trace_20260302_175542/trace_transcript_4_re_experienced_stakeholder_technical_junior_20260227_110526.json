@@ -1,0 +1,117 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_4_re_experienced_stakeholder_technical_junior_20260227_110526.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_175544",
+  "requirements": [
+    {
+      "requirement": "The UI must adhere to corporate standards for look-and-feel, accessibility, and component usage.",
+      "source_citation": "The UI needs to look and behave like other corporate apps — we keep getting flagged in reviews for mismatched components and accessibility stuff.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for UI consistency with corporate standards, including accessibility and component usage.",
+      "follow_up_question": "What specific corporate UI standards or guidelines should be followed?"
+    },
+    {
+      "requirement": "The application must feel snappy, with screen transitions completing within approximately five seconds.",
+      "source_citation": "It has to feel snappy; I get annoyed when I click through screens and it drags.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of a responsive UI, with a specific mention of five seconds as an acceptable transition time.",
+      "follow_up_question": "Are there any specific performance metrics or benchmarks that should be used to measure 'snappy' performance?"
+    },
+    {
+      "requirement": "The application must support 350 concurrent users without degradation in performance.",
+      "source_citation": "I was told to design for a few hundred simultaneous users — it's not tiny. Specifically, three hundred and fifty concurrent users.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "The stakeholder provides a specific number of concurrent users that the application must support.",
+      "follow_up_question": "What specific performance metrics (e.g., response time, error rate) should be used to define 'degradation'?"
+    },
+    {
+      "requirement": "The application must enforce role-based access control to restrict sensitive actions and data.",
+      "source_citation": "There's also the whole access-control thing — not everyone should be able to kick off a dispute.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for access control to restrict certain actions based on user roles.",
+      "follow_up_question": "What specific roles and permissions should be defined for the application?"
+    },
+    {
+      "requirement": "The application must maintain an immutable audit history of all actions performed by representatives.",
+      "source_citation": "We need to keep a full history of everything a rep does on a case.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "data_integrity",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for a complete and immutable history of actions for audit purposes.",
+      "follow_up_question": "What specific data should be included in the audit history?"
+    },
+    {
+      "requirement": "The application must comply with credit card dispute regulations, including timelines and correspondence requirements.",
+      "source_citation": "We have to follow the usual credit card dispute rules, which complicates timelines and correspondence.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need to comply with credit card dispute regulations.",
+      "follow_up_question": "What specific regulations and requirements must the application comply with?"
+    },
+    {
+      "requirement": "The application must be available 24/7 with scheduled maintenance windows from 3:00 AM to 4:00 AM Eastern on weekdays and from 1:00 AM to 5:00 AM Eastern on Sundays.",
+      "source_citation": "We expect it to be available 24/7 with those small scheduled downtimes.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder provides specific maintenance windows and the expectation of 24/7 availability.",
+      "follow_up_question": "Are there any additional availability requirements or constraints?"
+    },
+    {
+      "requirement": "The application must enforce data separation and role-based views on both the front end and back end.",
+      "source_citation": "We can't just rely on front-end hiding; the back end must enforce the data separation too.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for both front-end and back-end enforcement of data separation.",
+      "follow_up_question": "What specific data and views should be restricted based on user roles?"
+    },
+    {
+      "requirement": "The application must pre-fill forms with data from the cardmember database to minimize user effort.",
+      "source_citation": "Reps hate extra clicks and repetitive forms — if we can pre-fill stuff from the cardmember DB and keep the flow short, they'll love us.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need to minimize user effort by pre-filling forms.",
+      "follow_up_question": "What specific data should be pre-filled in the forms?"
+    },
+    {
+      "requirement": "The application must ensure reliable status syncs after the Sunday maintenance window to support manual reconciliation.",
+      "source_citation": "Having reliable status syncs after the longer maintenance window is important; otherwise they'll be looking at stale indicators and it causes a lot of calls.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of reliable status syncs after the Sunday maintenance window.",
+      "follow_up_question": "What specific status syncs and reconciliation processes are required?"
+    }
+  ]
+}

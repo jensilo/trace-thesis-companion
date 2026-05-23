@@ -1,0 +1,136 @@
+Interviewer: Thanks for taking the time. I want to walk through what you've seen so far and what keeps coming up as pain points. To start, how do you describe the main thing this scheduling app has to do for the Program Administrators and nursing staff?
+
+Stakeholder: Uh, sure — I think, well, the big thing is it needs to make their lives simpler. Right now they're juggling spreadsheets and emails and, you know, it's messy. So the app should let them create cohorts, lay out the curriculum, assign students to classes and to clinical sites, and mostly stop them from stepping on each other's toes. It should, like, prevent obvious mistakes when someone double-books a clinical or puts a student in a course they're not eligible for.
+
+Interviewer: When you say "prevent obvious mistakes," what do you mean exactly? Can you give an example of an "obvious mistake" and how you'd like the system to behave?
+
+Stakeholder: Hmm, an example… last semester someone scheduled two students for the same clinical slot at the same site and neither got confirmed until the site coordinator noticed. So I mean things like conflict detection — the UI should warn you before you save it, maybe block it outright if it's clearly impossible. Also validation, like if a student hasn't completed a prerequisite, the system shouldn't let you enroll them without an override. I guess, well, the idea is the system guides you so you don't enter bad data by accident.
+
+Interviewer: You mentioned guiding users — "the UI should warn you" — how strict should those checks be? Should the system just warn and let you proceed, or stop you unless you have special permission?
+
+Stakeholder: Uh, I think there are different levels. For scheduling conflicts, probably block unless someone with higher privileges confirms an override. For things like typos or missing fields, a hard block makes sense. For edge cases — like clinical exemptions — warn and let a Program Admin override after documenting why. I'm not completely sure on the roles though; we haven't fully sorted who can override what.
+
+Interviewer: Roles — who, specifically, do you see needing full access versus limited access? Can you put names to those roles or people?
+
+Stakeholder: Right. So Program Admins — the folks who manage the whole program — they need pretty much everything: student progression, rosters, overrides. Nursing instructors need to see their class rosters and schedules, and be able to submit attendance or evaluations. Clinical site coordinators should only see the students assigned to their site and maybe contact info, not full student records. And support staff might need to generate reports but not change enrollments. Sorry, I'm mixing up "roles" and "permissions" terms a bit, but that's the gist.
+
+Interviewer: That's helpful. Earlier you said the app should "make their lives simpler." How would you measure that? What would make you say, "Yep, it's simple enough"?
+
+Stakeholder: Uh, I think it should be obvious — like, a Program Admin can set up a new cohort without calling IT. If they can finish common tasks without a manual or training session, that's a win. And it should use wording people are familiar with — not weird computer jargon. Oh, and the terminology should match what nurses expect — like, use the standard names for clinical rotations and courses so instructors don't get confused.
+
+Interviewer: When you say "obvious" and "without training", can you put a number on that? For example, how long is too long for a simple task, or how many clicks is too many?
+
+Stakeholder: Hmm, okay, if you're putting me on the spot — for routine stuff like adding a student to a class, it really shouldn't take more than a few seconds of actual interaction; like, if the page lags you wait and then it's frustrating. I think small tasks should feel instantaneous. For bigger things like generating a full schedule for a cohort, waiting is tolerable but it shouldn't be a long drag. I'm not great at exact numbers off the top of my head, but responsiveness is important.
+
+Interviewer: Can you be more specific? What's an acceptable delay for those two kinds of actions — the small ones and the schedule generation?
+
+Stakeholder: Okay, if you insist — small student management things should come back in a handful of seconds, maybe up to about five seconds. For the heavy lift — like when you press "Generate Schedule" for a term — people expect it in under a minute; personally, I think around thirty seconds would be reasonable so they don't start clicking again out of impatience.
+
+Interviewer: Good, that's clear. You mentioned earlier "page lags" and "frustrating" — are there particular times when performance needs to be better? Like mornings when people are all making changes?
+
+Stakeholder: Yeah, mornings are peak. The scheduling team and some instructors tend to pile on changes at the same time, so the app needs to handle that burst. We don't need to support some huge campus peak for the whole university, but the nursing office might have, I dunno, about ten people all active at once during certain windows.
+
+Interviewer: Ten simultaneously — good to know. You also brought up terminology matching the nursing community. Can you expand on that? Any examples of mismatched terms you've seen?
+
+Stakeholder: Uh, sure. In one draft the UI said "enrollment participant" and folks were like, "what's that?" They prefer "student" or "learner," and clinical chunks called "placements" instead of "assignments" — small things but they matter. Also, the phrasing should be plain Standard English; avoid pastiche like "actionize" or shorthand. It makes the staff trust the tool more when it sounds like them.
+
+Interviewer: How about language consistency across the app? Do you expect content editors, or should the system enforce consistent terminology?
+
+Stakeholder: I think it should enforce it as much as possible. Like dropdowns and controlled vocabularies for things like course types, clinical roles, and site names. Free text is fine for notes, but core fields should be consistent. That helps reporting too. Sorry, tangentially, this reminds me of a time when course codes were entered slightly differently and a batch report missed half the students — total headache.
+
+Interviewer: You mentioned reporting — what kinds of reports are critical and how often are they run?
+
+Stakeholder: Reports for scheduling conflicts, student progression, and clinical site utilization are run regularly. Program Admins pull them weekly or around scheduling windows. Quick ad-hoc reports should be fast; the big term-wide exports can take longer but still should finish in a reasonable time so admins can iterate.
+
+Interviewer: Let's talk availability. You said mornings are critical. How available does the system need to be during the workday? Is occasional downtime acceptable?
+
+Stakeholder: It needs to be available when the office is open — folks can't do their jobs during downtime. Occasional maintenance overnight is fine. I guess from the users' perspective, if it's up when we need it, that's what matters. I haven't calculated acceptable downtime precisely.
+
+Interviewer: Can you put a number on "available when the office is open"? What hours are we talking about?
+
+Stakeholder: Yeah, sure — roughly eight in the morning to six in the evening on weekdays. That's when most coordination happens.
+
+Interviewer: And when you say "occasional maintenance overnight is fine," how much downtime over a month would you accept? Can you quantify "occasional"?
+
+Stakeholder: Hmm, I suppose some brief windows are okay, but not long ones. If I had to pick a target, maybe the system should be up almost all the time during that eight-to-six window; overall maybe it can be unavailable a small fraction of hours across the month. I know that's vague — if you need a percentage, I'd say something like mid-90s availability feels tolerable, but anything that causes missed clinical sign-ups would be a problem.
+
+Interviewer: Mid-90s — so around ninety-five percent availability is what you're picturing?
+
+Stakeholder: Yeah, ninety-five percent sounds about right to aim for. Again, the key is that it's reliable during the business day.
+
+Interviewer: Got it. Earlier you referenced integrations, like syncing. Which systems do we need to talk to?
+
+Stakeholder: We need to tie into the university's central systems for student records and authentication. There's this CampusConnect server — it holds the master enrollments and IDs. If we don't sync with CampusConnect, we'll end up with mismatched rosters and duplicate data. Also payroll or HR isn't as critical for scheduling, but clinical site contact info ideally syncs if the campus master has it.
+
+Interviewer: When you say "tie into CampusConnect," do you mean real-time sync, nightly batch, or something else?
+
+Stakeholder: I think real-time or near-real-time sync is better for rosters so changes show up quickly. Maybe some things can be batched overnight, but class enrollments and student status need to propagate promptly. I'm not deep into integration design, though.
+
+Interviewer: You mentioned "duplicate data" and data quality a couple times. How should the app prevent bad or inconsistent data?
+
+Stakeholder: Basic validation — like rejecting impossible dates, making sure course codes are valid, and preventing duplicates with smart matching. Use picklists where possible. Also, when a user pastes a CSV for a roster, the system should check for formatting problems and highlight rows that fail rather than silently importing trash. It's not rocket science, just guardrails to reduce admin errors.
+
+Interviewer: That makes sense. Who is responsible for fixing bad data when it slips through—IT, program staff, or both?
+
+Stakeholder: Ideally, program staff can fix most day-to-day things within the app if they have permissions; anything structural or systemic should go to IT. But empower admins to correct mistakes they accidentally make so they don't need to file tickets for every small error.
+
+Interviewer: On security and privacy, you said sensitive info shouldn't be widely visible. Any specific rules or policies we need to follow?
+
+Stakeholder: We have to follow the university's information policy. Students' personal data and health-related info about clinical issues should be restricted. I don't know the exact legal bits, but the app can't leak phone numbers or sensitive notes to everyone. So role-based access is important — not everyone gets to see everything.
+
+Interviewer: Can you be more specific about which roles should see personal identifiers versus which should not?
+
+Stakeholder: Program Admins need full student records, instructors should see identifiers and evaluations for their students, and site coordinators should see only what's necessary to run the clinical day — name and contact, maybe student status, but not deeper records. That's the sort of split we need.
+
+Interviewer: We talked about the system lasting several years. How long should this platform be expected to support the nursing program's schedules and curricula?
+
+Stakeholder: It should outlast whatever we build now — the department expects to use it for the foreseeable future. I'd say at least a few years; they don't want to redo the whole thing every couple years. If you want an exact horizon, think in the order of multiple academic cycles — maybe around five years of active use before a major rewrite is considered.
+
+Interviewer: Okay, about five years — that's helpful. Another pragmatic question: how often do curriculum structures change? If we're planning five years, how much change should the system accommodate?
+
+Stakeholder: Curricula shift about every couple of years, sometimes yearly for tweaks. The system should let admins edit curriculum maps and version them so we can see historical structures. It should be flexible — not hard-coded — otherwise it'll be a maintenance nightmare.
+
+Interviewer: You mentioned notifications earlier — who needs to be notified and for what events?
+
+Stakeholder: Students need alerts about schedule changes, instructors need notices when rosters or clinical assignments change, and site coordinators need updates when students are added or removed. Also, if a clinical gets canceled or a site changes, those affected should get messages. The messages should be clear, and ideally sent through the channels the university prefers — email, SMS if enabled, or in-app notifications.
+
+Interviewer: About notifications: should they be immediate or batched? You hinted at not overwhelming people.
+
+Stakeholder: Immediate for critical changes, like a cancellation, but for small edits maybe a daily digest would be nicer. Users should be able to configure preferences so they don't get inundated.
+
+Interviewer: You said earlier that Program Admins should be able to do things without IT — how much autonomy do you expect them to have for configuration and reporting?
+
+Stakeholder: They should be able to manage cohorts, update schedules, assign instructors, and run reports without IT. For things like adding new fields, major workflow changes, or integrations, they'd involve IT. The goal is to minimize routine tickets.
+
+Interviewer: A lot of this sounds reasonable. I want to push on one point: you suggested ninety-five percent availability is acceptable. If the system is down during a critical registration window and it's within that five percent of downtime, would that be tolerable? In other words, is 95% actually adequate for critical periods?
+
+Stakeholder: Hmm. Good point. If a downtime hits during a critical scheduling window, even a little outage is a big deal. So maybe we need higher reliability during those windows, or at least scheduled maintenance not to overlap. If there's a way to guarantee that business hours — especially scheduling windows — are prioritized for uptime, that would make everyone happier. So while overall ninety-five percent is okay, there should be stricter guarantees for those critical times.
+
+Interviewer: Noted. You also mentioned the CampusConnect sync and near-real-time updates. Are there any constraints from CampusConnect you know about — like auth methods or data formats?
+
+Stakeholder: I think CampusConnect exposes an API and uses the campus single sign-on. We've been told we'd need to use their central server for authoritative lists. I don't know the exact endpoints or formats; IT has some notes. But the important thing is we rely on CampusConnect as the source of truth for enrollments and IDs, so the app shouldn't be the master for those.
+
+Interviewer: Last few quick clarifications: you want controlled vocabularies for terminology, validation to reduce bad data, role-based access for sensitive fields, responsiveness for small tasks and schedule generation, high availability during business hours with overall decent uptime, CampusConnect integration, five-year operational expectation, and admins empowered to fix day-to-day issues. Did I miss anything important from your perspective?
+
+Stakeholder: No, that's pretty much it. Oh — and a tiny thing: the wording in the UI should be Standard English and avoid weird abbreviations. Also, sometimes we need exports for accreditation bodies, so the system should let us export clean reports. Sorry, that was a bit of a tangent.
+
+Interviewer: That's useful. One more challenge: you mentioned exports for accreditation — how often and in what format do they expect data?
+
+Stakeholder: They typically want CSV or Excel. The frequency is maybe once a year or during audits, but sometimes ad hoc if accreditation folks ask. So the export needs to be accurate and include historical versions of curriculum and student progression.
+
+Interviewer: Great. Thanks, this is very helpful. I'll consolidate these into user stories and follow up on the integration details with IT to confirm CampusConnect capabilities and with the security team about the availability targets during critical windows.
+
+Stakeholder: Awesome. Oh, and one last thing — I think users will appreciate inline help and a few examples in forms; it cuts down on calls to support. Anyway, glad to help.
+
+---
+Selected Requirements:
+1. [NICE.csv line 70] [quality, usability] 'The system shall be easy to use by the Program Administrators/Nursing Staff Members.'
+2. [NICE.csv line 72] [quality, usability] 'The system shall help the user avoid making mistakes while scheduling classes and clinicals for the nursing students.'
+3. [NICE.csv line 77] [quality, look_and_feel, usability] 'The verbiage used within the system shall be consistent with Standard English and the terminology of the national Nursing Community.'
+4. [NICE.csv line 79] [quality, performance] 'The response time of general student management tasks shall take no longer than 5 seconds and the response time of schedule generation shall take no longer than 30 seconds.'
+5. [NICE.csv line 81] [quality, availability] 'The system shall achieve 95% up time.'
+6. [NICE.csv line 82] [quality, availability, scalability] 'system shall be able to handle all of the user requests/usage during business hours.'
+7. [NICE.csv line 85] [quality, functional, scalability] 'The system shall be expected to manage the nursing program curriculum and class/clinical scheduling for a minimum of 5 years.'
+8. [NICE.csv line 89] [quality, operability] The system shall interface with CampusConnect's central server'
+9. [NICE.csv line 99] [quality, functional, security] 'The system shall have basic data integrity checking to reduce the possibility of incorrect or invalid data being introduced.'
+10. [NICE.csv line 100] [quality, functional, legal, security] The system shall protect private information in accordance with the organization's information policy.'

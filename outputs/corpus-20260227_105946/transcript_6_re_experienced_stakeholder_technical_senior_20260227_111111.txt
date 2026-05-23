@@ -1,0 +1,96 @@
+Interviewer: Thanks for sitting down. To start, from an architecture perspective what keeps you up at night for this conference-room system?
+
+Stakeholder: Hmm, well, I think the usual stuff — I don't want a product that forces customers into a single database vendor or a single deployment pattern. In our last roll-out we had offices that kept their databases on-site and others that used a central database in the cloud, and the application had to work the same way in both places. So I care that the app can talk to whatever relational database the customer uses, whether it's sitting on the same host or across the network. Also, uh, it has to be pure-Java friendly so teams can run it on whatever server OS they standardize on, and it needs to deploy into a servlet/app server environment so ops teams can manage it with their existing tooling.
+
+Interviewer: When you say "talk to whatever relational database," can you put some specifics on how that should be achieved? What do you expect the integration layer to look like?
+
+Stakeholder: Sure — sorry, let me be concrete. I expect a JDBC-based data access layer so we rely on vendor-provided drivers, with configurable connection pooling and JNDI-style data source configuration so ops can point the product at their DB instance without code changes. The code should avoid DB-specific SQL dialects where possible and use a thin abstraction so porting is a configuration change rather than a rewrite. And connection parameters need to support remote hosts, connection timeouts, and failover endpoints, because sometimes the DB is on the same machine and sometimes it's across the corporate network.
+
+Interviewer: You mentioned running on whatever server OS teams standardize on. Can you explain what "whatever" covers — is that just Linux and Windows or should we be thinking broader?
+
+Stakeholder: Right, "whatever" as in any OS that can run a supported Java runtime. In practice that's Linux and Windows, yes, but also the less common enterprise flavors that still run Java in some shops. The point is don't bake in OS-specific calls; rely on the JVM and standard Java APIs, so deployment is portable.
+
+Interviewer: You said it needs to deploy into a servlet/app server environment. Any preferences or constraints around which servers or features we must support?
+
+Stakeholder: I think it's fine to develop against a standard servlet container and also validate on a full Java EE or Jakarta EE application server. Ops teams often expect the app to run in a Tomcat-like container for simplicity or in a heavier-weight app server when they need advanced services, so supporting both deployment models is important. We should use standard JEE APIs for things like JMS or JNDI when we need them, so swapping containers is feasible.
+
+Interviewer: Let's talk about performance. Earlier you said the system must feel fast. How long is too long in your view before users feel interrupted?
+
+Stakeholder: Yeah, "feel fast" — I hate waiting around, honestly. For the routine interactions — searching for a room, creating a booking — I'd say anything that takes more than a handful of seconds breaks the flow. If you want a number, small, common tasks should generally finish in about five seconds, and almost everything should be under, say, eight seconds. If we're talking heavy reports or exports, I can be more patient, but the usual UI flow needs to be snappy.
+
+Interviewer: You just gave two time bounds — five and eight seconds — which is helpful. How did you arrive at those, and do you want them stated as targets for the team?
+
+Stakeholder: We measured user frustration in prior products; people start counting after a couple of seconds. So yes, treat five seconds as the target for the vast majority of routine operations and eight seconds as an upper-bound for the near-totality of tasks. Those should be engineering targets.
+
+Interviewer: Availability is another big area. You used the phrase "near-continuous availability" earlier — can you be more specific about how much downtime is acceptable and whether that excludes certain failure modes?
+
+Stakeholder: Okay, pushing for specifics — I get it. We need the system to be effectively always available during business use. That means planned downtime should be minimal and unexpected outages should be extremely rare. To be blunt, ops want a very high-availability SLI; the expectation is that aside from catastrophic server hardware failure, users shouldn't notice downtime. If you want the crisp SLO, think in terms of a four-nines level of availability excluding the period when a server is being rebuilt — that guides decisions like clustering and failover.
+
+Interviewer: You mentioned clustering and failover — how do you see that implemented? Sticky sessions, session replication, or stateless services?
+
+Stakeholder: Prefer statelessness where we can, with session state externalized to a shared cache or database. For the web tier use a load balancer with health checks; for application state use distributed cache and session replication only if necessary. Database replication and read replicas are part of the plan for scale and failover, and asynchronous queues can decouple long-running tasks so the UI stays responsive. We should design for rolling upgrades and zero-downtime deployment as a goal.
+
+Interviewer: About scale — you referenced peak times earlier. How many concurrent users should the platform handle at launch, and do you expect that to grow?
+
+Stakeholder: At peak times there are a lot of simultaneous actions — the scheduling team in the morning and the late-afternoon rush create bursts. For initial release the architecture should comfortably handle on the order of a thousand concurrent requests, and we should plan for that to roughly double by a subsequent release. Those numbers shape our choices around connection pools, thread counts, and load-testing targets.
+
+Interviewer: Okay, a thousand now and about two thousand later. That helps. You also mentioned asynchronous queues for long-running tasks; do you have specific email and notification integration needs for meeting invites and reminders?
+
+Stakeholder: Yes, notifications are central. The system must be able to send email reliably and integrate with whatever enterprise mail server the customer uses. In past projects, customers had Exchange, other SMTP servers, and cloud mail relays, and the app had to support TLS, authentication, and configurable SMTP endpoints. We also need to handle bounce processing and throttling so high-volume reminder waves don't overwhelm the mail server. And this ties back to access controls because emails contain booking details and must only go to authorized recipients.
+
+Interviewer: You mentioned access controls and authorized recipients — who should be allowed to log into the system, and how strict must that be?
+
+Stakeholder: Very strict. Only company employees or external users who have been provisioned with company-approved IDs should be allowed. The system should integrate with corporate identity sources so login is primarily through their approved credentials. We can't have anonymous accounts or self-registration floating around; every login must map back to an approved identity. If you want a crisp enforcement rule, every authentication event should be against the corporate or pre-approved identity store.
+
+Interviewer: When you say "every authentication event should be against the corporate or pre-approved identity store," do you expect that to be enforced 100% of the time?
+
+Stakeholder: Yes, when asked directly I'd say we expect full enforcement: no exceptions. All logons need to be traceable to a company or approved external user ID. That's important for audit and for protecting sensitive booking information.
+
+Interviewer: Let's move to error handling and observability. How should we treat exceptions and error logs? Do you want them only locally or sent somewhere?
+
+Stakeholder: In one deployment we had an issue that only showed up intermittently and we couldn't reproduce it without customer logs. So I want structured exception logging captured server-side and packaged for secure transmission back to our team for analysis. Logs should include stack traces and relevant context but scrub sensitive personal data. Ideally, the product should also have a secure mechanism to push those logs to us — or at least to a central collector — so we can diagnose problems quickly without asking customers for manual uploads.
+
+Interviewer: When you say "secure mechanism to push those logs," can you be specific about transport and privacy expectations?
+
+Stakeholder: Encrypted transfer is a must; use TLS and authenticated endpoints. If we need to pull logs instead, that needs to be under customer control and consent. Logs should be rotated and size-limited to avoid filling disks, and personally identifiable information should be redacted before transmission. The vendor-side analysis pipeline needs structured payloads, not ad-hoc text blobs.
+
+Interviewer: Security against malicious inputs — you already hinted at injection risks. What are your non-functional expectations there?
+
+Stakeholder: Don't trust the client. We need layered defenses: strong input validation at the app boundary, parameterized queries so SQL injection is effectively eliminated, and perhaps a web application firewall as an operational control. But beyond preventing attacks, we also need guarantees that malicious data can't silently corrupt the product's or adjacent systems' data. In previous jobs we had incidents where malformed payloads caused downstream schema anomalies, and that just isn't acceptable. The stack should be resilient so an attempted malicious input doesn't result in corrupted records.
+
+Interviewer: "Resilient so an attempted malicious input doesn't result in corrupted records" is a strong claim. Do you expect that to be absolute — no corruption ever — or is some risk acceptable?
+
+Stakeholder: I mean, practically speaking, the goal has to be to prevent corruption. From the customer's perspective, their booking and equipment data must not be corrupted by an attack vector, so we need transactional integrity, DB constraints, and sanity checks, plus a recovery plan. So yes, we should design to keep data intact even when someone tries to feed malicious content at the boundary.
+
+Interviewer: You mentioned equipment data — any other integrations or adjacent systems we should be aware of that affect these decisions?
+
+Stakeholder: There are a few tangents. For example, some customers tie the scheduling system to room control hardware or to digital signage, and while that integration is often simple, it means a bad payload could impact other systems if we blur boundaries. So we should isolate integration points with clear APIs and validation. Oh — and on a related tangent, we once had a meeting-room sensor vendor send unexpected binary payloads and it crashed a parser; we should avoid that kind of tight coupling.
+
+Interviewer: Good point about isolation. Going back to deployment, you said the app should be Java-based and deployable on containers and app servers. Any expectations about monitoring and health-check endpoints?
+
+Stakeholder: Yes, lightweight health endpoints for load balancer checks and richer metrics for monitoring are essential. Expose readiness and liveness endpoints and instrument key business transactions so we can set meaningful alerts. Metrics should include latency percentiles, queue depths, DB connection pool usage, and error rates, and they should be exportable to standard monitoring systems.
+
+Interviewer: You suggested specific percentiles and metrics, which is helpful. Finally, on maintainability, do you have particular logging formats or traceability expectations for debugging complex tickets?
+
+Stakeholder: Structured logs with correlation IDs are critical so we can trace a user's flow across services. Correlation IDs must be propagated through async processes too, so when a failure is logged we can reconstruct the entire transaction. Also, include enough context in logs to be actionable but avoid dumping PII. That balance matters for both debugging and privacy compliance.
+
+Interviewer: To wrap, you've given us a lot to work with. One last clarification: earlier you said the product should avoid vendor lock-in with databases and support both colocated and remote DBs. How hard is that constraint — are there acceptable trade-offs like limiting to certain DB families?
+
+Stakeholder: It's a practical constraint. We're not saying every exotic DB has to be supported, but the design shouldn't require a specific vendor's features day one. If we document supported DB versions and test the most common ones, that's fine, but the app's architecture should make adding a new DB driver a configuration and QA task rather than a refactor. The operational expectation is flexibility rather than arbitrary lock-in.
+
+Interviewer: Thanks — that's very clear. I'll map these into requirements and follow up on a couple of the operational details around log transmission options and backup/DR scenarios. Anything else you want to add?
+
+Stakeholder: No, that's the meat of it. Oh, and one small thing — let's make the admin UI usable without a PhD in enterprise software. Users shouldn't have to wade through a dozen screens to book a room. Usability matters as much as all the backend gymnastics.
+
+---
+Selected Requirements:
+1. [NICE.csv line 277] [quality, operability, portability] 'The product must work with most database management systems (DBMS) on the market whether the DBMS is colocated with the product on the same machine or is located on a different machine on the computer network.'
+2. [NICE.csv line 278] [quality, portability] 'The product will function alongside server software on any operating system where the Java runtime can be installed.'
+3. [NICE.csv line 280] [quality, operability] 'The product must make use of web/application server technology. Open source examples include Apache web server Tomcat and the JBoss application server.'
+4. [NICE.csv line 293] [quality, performance] The response shall be fast enough to avoid interrupting the user's flow of thought. 90% of tasks shall complete within 5 seconds. 98% of tasks shall complete within 8 seconds.'
+5. [NICE.csv line 294] [quality, availability] 'Aside from server failure the software product shall achieve 99.99% up time.'
+6. [NICE.csv line 295] [quality, functional, maintainability] 'The product shall create an exception log of problems encountered within the product for transmission to our company for analysis and resolution.'
+7. [NICE.csv line 296] [quality, scalability] 'The product shall be capable of handling up to 1 000 concurrent requests. This number will increase to 2 000 by Release 2. The concurrency capacity must be able to handle peak scheduling times such as early morning and late afternoon hours.'
+8. [NICE.csv line 302] [quality, operability, portability] 'The product must be able to interface with various email servers. The product shall be able to send email.'
+9. [NICE.csv line 315] [quality, security] 'The product shall ensure that only company employees or external users with company-approved user IDs may have product access. 100% of all logons shall be by either company employees or external users with company-approved user IDs.'
+10. [NICE.csv line 318] [quality, security] The product shall prevent the input of malicious data. The product and/or adjacent hardware/software systems' data shall remain 100% uncorrupted each time malicious data is input into the product.'

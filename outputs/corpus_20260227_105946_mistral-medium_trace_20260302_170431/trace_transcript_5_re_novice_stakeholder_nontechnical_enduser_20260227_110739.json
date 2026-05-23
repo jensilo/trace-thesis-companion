@@ -1,0 +1,172 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_5_re_novice_stakeholder_nontechnical_enduser_20260227_110739.txt",
+  "model": "mistral/mistral-medium-latest",
+  "timestamp": "20260302_170841",
+  "requirements": [
+    {
+      "requirement": "The system shall respond to parts search queries within 15 seconds.",
+      "source_citation": "anything longer than... fifteen seconds feels like forever [for parts search].",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states a performance requirement for parts search response time.",
+      "follow_up_question": "What is the expected response time for parts search under peak load conditions?"
+    },
+    {
+      "requirement": "The system shall respond to facility search queries within 8 seconds.",
+      "source_citation": "eight seconds [for facility search] is reasonable.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states a performance requirement for facility search response time.",
+      "follow_up_question": "What is the expected response time for facility search under peak load conditions?"
+    },
+    {
+      "requirement": "The system shall generate audit reports within 10 seconds.",
+      "source_citation": "The audit report needs to be something I can get before I move on... more than ten seconds interrupts my flow.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states a performance requirement for audit report generation time.",
+      "follow_up_question": "What is the expected response time for audit report generation under peak load conditions?"
+    },
+    {
+      "requirement": "The system shall have an uptime of approximately 98%.",
+      "source_citation": "maybe around ninety-eight percent uptime would be acceptable.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder provides a specific uptime requirement, indicating the need for high availability.",
+      "follow_up_question": "What are the acceptable downtime windows for maintenance or updates?"
+    },
+    {
+      "requirement": "The system shall provide in-context help on at least 90% of screens.",
+      "source_citation": "ninety percent of the system having in-context help would be brilliant.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for accessible help within the system, specifying a coverage requirement.",
+      "follow_up_question": "What specific types of help or guidance should be provided in-context?"
+    },
+    {
+      "requirement": "The system shall allow users to become comfortable with its use within two days of onsite training.",
+      "source_citation": "two days of onsite training should get people comfortable.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder indicates the expected training time for users to become proficient with the system.",
+      "follow_up_question": "What specific training materials or methods should be used to achieve this training time?"
+    },
+    {
+      "requirement": "The system shall integrate directly with the Choice Parts feed to ensure real-time data synchronization.",
+      "source_citation": "If it doesn't tap into the Choice Parts data directly we'll end up with old availability all the time.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "The stakeholder emphasizes the importance of direct integration to avoid data synchronization issues.",
+      "follow_up_question": "What specific data elements from the Choice Parts feed need to be synchronized in real-time?"
+    },
+    {
+      "requirement": "The system shall ensure data isolation between different insurance companies to maintain confidentiality.",
+      "source_citation": "We absolutely cannot see another insurance company's claims... Each company needs its own space.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for data isolation to maintain confidentiality between different companies.",
+      "follow_up_question": "What specific security measures should be implemented to ensure data isolation?"
+    },
+    {
+      "requirement": "The system shall implement role-based access control to ensure users see only the data relevant to their role.",
+      "source_citation": "Within a company, people should see different things depending on their role...",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder indicates the need for role-based access control to manage data visibility within a company.",
+      "follow_up_question": "What specific roles and their corresponding access levels should be defined?"
+    },
+    {
+      "requirement": "The system shall adhere to the company's UI guidelines to ensure consistency with other corporate apps.",
+      "source_citation": "It should feel like one of our apps so it's intuitive... adherence to UI guidelines is huge.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of UI consistency with other corporate apps for usability and compliance.",
+      "follow_up_question": "What specific UI guidelines should be followed to ensure consistency?"
+    },
+    {
+      "requirement": "The system shall be forgiving, allowing users to easily correct mistakes.",
+      "source_citation": "It should be forgiving. People make mistakes, so undo or easy corrections are nice.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for the system to be forgiving, implying the importance of error correction mechanisms.",
+      "follow_up_question": "What specific error correction mechanisms should be implemented?"
+    },
+    {
+      "requirement": "The system shall support multiple users concurrently without significant performance degradation.",
+      "source_citation": "when I'm in the office multiple adjusters are using it at once and it needs to keep up.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder indicates the need for the system to handle concurrent users effectively.",
+      "follow_up_question": "What is the expected maximum number of concurrent users the system should support?"
+    },
+    {
+      "requirement": "The system shall provide notifications when a part changes status.",
+      "source_citation": "Notifications when a part changes status would be good, because I don't want to keep checking.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for notifications to keep users informed about part status changes.",
+      "follow_up_question": "What specific types of status changes should trigger notifications?"
+    },
+    {
+      "requirement": "The system shall be compatible with laptops, tablets, and phones.",
+      "source_citation": "Mostly laptops in the office and tablets or phones in the field.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the devices the system should be compatible with.",
+      "follow_up_question": "What specific operating systems and versions should be supported on these devices?"
+    },
+    {
+      "requirement": "The system shall allow users to view recent searches even with sketchy cell service.",
+      "source_citation": "Sometimes I'm standing in a parking lot with sketchy cell service, and I just want the app to still let me view recent searches or at least not choke.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder indicates the need for the system to function in low-connectivity environments.",
+      "follow_up_question": "What specific functionalities should be available offline or with unstable connectivity?"
+    }
+  ]
+}

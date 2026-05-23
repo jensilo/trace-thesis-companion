@@ -1,0 +1,150 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_6_re_novice_stakeholder_technical_senior_20260227_110846.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_174801",
+  "requirements": [
+    {
+      "requirement": "The system shall run on any OS where the Java runtime can be installed, including Linux, Windows, and Solaris.",
+      "source_citation": "it should run on whatever servers we have in-house, as long as the Java runtime can be installed there. We don't want to be forced onto a particular OS; teams run Linux, Windows, sometimes Solaris in older shops, so it should play nicely with that.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for the system to run on multiple operating systems, including Linux, Windows, and Solaris, as long as the Java runtime is supported. This indicates a clear requirement for portability across different operating systems.",
+      "follow_up_question": "Are there any specific versions of Linux, Windows, or Solaris that the system must support?"
+    },
+    {
+      "requirement": "The system shall be deployable on existing web or application servers such as Tomcat or JBoss.",
+      "source_citation": "it should be packaged to deploy onto whatever web or application server we use, you know, the usual Tomcat or JBoss-type setups.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for the system to be deployable on existing web or application servers, specifically mentioning Tomcat or JBoss. This indicates a requirement for operability and compatibility with existing infrastructure.",
+      "follow_up_question": "Are there any specific versions of Tomcat or JBoss that the system must support?"
+    },
+    {
+      "requirement": "The system shall support multiple database management systems, including Postgres, Oracle, and SQL Server.",
+      "source_citation": "It needs to work against whatever DBMS the company already runs. Some sites are running Postgres, some are on Oracle, some have SQL Server.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for the system to work with multiple database management systems, including Postgres, Oracle, and SQL Server. This indicates a clear requirement for portability across different database systems.",
+      "follow_up_question": "Are there any specific versions of Postgres, Oracle, or SQL Server that the system must support?"
+    },
+    {
+      "requirement": "The system shall respond to small actions within 5 seconds and heavier tasks within 8 seconds.",
+      "source_citation": "If you press a normal UI button and it's still loading after, say, five seconds, that's getting into the 'ugh' territory. Most routine tasks should be basically immediate; five seconds is a threshold for small things, and even for heavier tasks we shouldn't go much beyond that — eight seconds is a point where you know you need to look at the design or caching.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the acceptable response times for small actions and heavier tasks, indicating a clear performance requirement.",
+      "follow_up_question": "Are there any specific scenarios or actions that require faster response times?"
+    },
+    {
+      "requirement": "The system shall support at least 1,000 concurrent requests today and scale to support 2,000 concurrent requests in the next release.",
+      "source_citation": "think about supporting on the order of thousands of concurrent requests today and more in the next release. Sure — today we should be able to handle about one thousand simultaneous requests. And then by the next release we should be able to handle roughly double that.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the current and future requirements for concurrent requests, indicating a clear scalability requirement.",
+      "follow_up_question": "Are there any specific peak usage scenarios that the system must handle?"
+    },
+    {
+      "requirement": "The system shall achieve 99.99% uptime, excluding server-level failures.",
+      "source_citation": "We should target four nines availability for the software component — in other words, about 99.99% uptime excluding server-level failures.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the target uptime percentage, indicating a clear availability requirement.",
+      "follow_up_question": "Are there any specific maintenance windows or downtime schedules that the system must adhere to?"
+    },
+    {
+      "requirement": "The system shall authenticate users using corporate identity providers such as LDAP or SAML.",
+      "source_citation": "Authentication should tie into corporate identity — LDAP, SAML, or whatever the customer uses — so every logon is from a recognized, approved ID.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for authentication using corporate identity providers, indicating a clear security requirement.",
+      "follow_up_question": "Are there any specific LDAP or SAML configurations that the system must support?"
+    },
+    {
+      "requirement": "The system shall sanitize inputs and validate everything server-side to prevent SQL injection and data corruption.",
+      "source_citation": "The app must sanitize inputs, validate everything server-side, and assume attackers will try to inject SQL or malformed payloads. We can't allow malicious input to corrupt our data stores or adjacent systems; integrity is critical.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for input sanitization and server-side validation, indicating a clear security requirement.",
+      "follow_up_question": "Are there any specific input validation rules or sanitization techniques that the system must implement?"
+    },
+    {
+      "requirement": "The system shall follow standard design patterns and best practices to ensure maintainability.",
+      "source_citation": "The code should follow standard design patterns and best practices. New developers should be able to understand and extend it quickly; we don't want a monolith that's a mystery. Good layering, clear interfaces, and test coverage are key.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for standard design patterns and best practices, indicating a clear maintainability requirement.",
+      "follow_up_question": "Are there any specific design patterns or best practices that the system must follow?"
+    },
+    {
+      "requirement": "The system shall support localization and be brandable to apply different offices' company look and feel.",
+      "source_citation": "the UI must support localization and be brandable so different offices can apply their company look and feel.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for localization and branding flexibility, indicating a clear usability requirement.",
+      "follow_up_question": "Are there any specific localization or branding requirements that the system must support?"
+    },
+    {
+      "requirement": "The system shall be operable in clustered setups for high availability and support rolling upgrades.",
+      "source_citation": "Ops needs to be able to run the app in clustered setups for high availability, monitor key metrics, and perform rolling upgrades.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for clustered setups and rolling upgrades, indicating a clear operability requirement.",
+      "follow_up_question": "Are there any specific clustering or upgrade requirements that the system must support?"
+    },
+    {
+      "requirement": "The system shall be stateless where feasible to facilitate backups and instance replacement.",
+      "source_citation": "it should be stateless where feasible so instances can be replaced without data loss and so backups are straightforward.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for a stateless design to facilitate backups and instance replacement, indicating a clear operability requirement.",
+      "follow_up_question": "Are there any specific stateless design requirements that the system must implement?"
+    },
+    {
+      "requirement": "The system shall not send personally identifiable information (PII) or full user content in external reports.",
+      "source_citation": "Don't send PII or full user content in external reports. We want actionable telemetry — stack traces, timestamps, environment, but scrub sensitive fields.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "privacy",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need to avoid sending PII or full user content in external reports, indicating a clear privacy requirement.",
+      "follow_up_question": "Are there any specific privacy regulations or compliance requirements that the system must adhere to?"
+    }
+  ]
+}

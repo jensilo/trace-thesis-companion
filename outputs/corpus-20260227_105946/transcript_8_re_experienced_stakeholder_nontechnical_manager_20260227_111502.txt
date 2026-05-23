@@ -1,0 +1,120 @@
+Interviewer: Thanks for sitting down with me. To start, tell me in your own words what success looks like for IzognMovies from a product perspective.
+
+Stakeholder: Uh, sure — success is that people, even those who aren't tech-savvy, can find and watch African movies without getting frustrated. I think, well, they should feel confident using the site, pay easily, and come back. If customers have a smooth, almost effortless experience and we can show steady revenue and retention, that's a win.
+
+Interviewer: When you say "not tech-savvy" and "smooth" — what kinds of frustrations are you worried about most? Examples help me prioritise.
+
+Stakeholder: Hmm, slow pages and confusing checkout are big ones. People will abandon if a page takes ages or the video buffers a lot. Also, if they can't tell what we're doing with their card info, they'll bail. And, uh, if the service disappears during a big evening premiere, that kills trust. Sorry, I keep jumping around — the point is low friction and trust.
+
+Interviewer: You mentioned slow pages. Can you put a number on "takes ages"? How long is too long before a user abandons?
+
+Stakeholder: Yeah, good probe. For the small interactions — like loading a movie detail or moving between pages — I think it should feel instant. If I had to pick a threshold, maybe about five seconds for those routine actions. Longer and people start to fidget.
+
+Interviewer: Noted. You also said "video buffers a lot." What is an acceptable buffering experience from a user's point of view?
+
+Stakeholder: Well, streaming should feel continuous. I'd expect any initial buffering to be short, like only a few seconds. If it takes much longer than that, people will assume the stream is broken. So perhaps around ten seconds max to get started, plus whatever their own internet adds.
+
+Interviewer: Okay. You raised trust around card information — what are your non-negotiables there?
+
+Stakeholder: We need to make it crystal clear we treat card data seriously. We shouldn't be in a position where any random employee can look up card numbers. Only very specific, authorised staff should be able to access payment records, and the data should be stored in a way that a leak would be meaningless. From a business-risk point of view, that means encryption and strict access controls — I don't want a single careless admin to create reputational damage.
+
+Interviewer: When you say "only very specific, authorised staff", who exactly do you have in mind? Can you be more specific about roles or functions?
+
+Stakeholder: Right — I mean senior finance people and a very small number of platform ops folks who need it for reconciliation, and maybe a security officer. Not customer service reps or marketers. It's a handful of trusted people, not an open group.
+
+Interviewer: You also mentioned the site disappearing during an evening premiere. Earlier you said "the service disappears" — can you clarify what "continuing to operate" means for the business if a third-party we rely on fails? For example, if our payment gateway is down, what should users still be able to do?
+
+Stakeholder: Good question. If the payment gateway hiccups, we shouldn't go dark. Users should still be able to browse, redeem pre-paid cards, access their purchased titles, and maybe queue purchases to complete later. Ideally, the customer experience doesn't grind to a halt just because a vendor is flaky; we need fallback paths so the business can still make money and customers aren't frustrated.
+
+Interviewer: When you say "redeem pre-paid cards", are those a major part of the plan? How should they behave if the gateway is down?
+
+Stakeholder: Yes, pre-paid cards are important in markets where credit cards aren't universal. Redemption should be processed immediately on our side — it shouldn't require the external gateway — so people can buy access in a shop and watch right away. If the external gateway is down, the in-house flow should keep working.
+
+Interviewer: What about if the streaming server itself goes down — what's acceptable from a user and business viewpoint?
+
+Stakeholder: Hmm, that's tougher. At minimum, the rest of the site should stay up so people can browse and buy, and their purchases should be preserved. For playback, we need clear messaging and either automatic retry or a fallback stream so that most people can still watch. From a revenue standpoint, we can't just serve an error page during peak times.
+
+Interviewer: You used "most people" — how resilient do you expect the system to be? Is "some users affected" acceptable, or do you expect near-total continuity?
+
+Stakeholder: I think some small fraction being affected is tolerable, but not widespread outages. We want to avoid mass disruptions. If there has to be prioritisation, we should prioritise paying customers who are mid-playback and critical admin functions.
+
+Interviewer: Let's talk scale. How many concurrent users are you planning to support at peak?
+
+Stakeholder: We're not Netflix, but we do expect noticeable peaks, like during premieres or popular weekend evenings. If you need a ballpark number for capacity planning, I'd say around one thousand simultaneous users at peak. That feels like a comfortable target for our initial runway.
+
+Interviewer: Thanks. Earlier you said "we can't have the site grind to a halt" — how do you connect that with your uptime expectations? What level of availability would you want to promise stakeholders?
+
+Stakeholder: From a business credibility standpoint, we need very high availability. Downtime erodes trust quickly. If I had to pick a target for SLAs and investor conversations, I'd aim for something like ninety-nine point five percent availability — low enough risk that our customers don't notice routine maintenance, but realistic.
+
+Interviewer: Understood. On analytics and auditing — what kind of data do you need administrators to see, and how often?
+
+Stakeholder: Admins need visibility into sales and usage for both real-time monitoring and daily reporting. Every sale should be recorded so we can audit revenue and refund disputes. And I'd want daily rolls of usage metrics — who watched what, how many streams started, that kind of thing — so marketing and ops can act. It's about having a reliable trail and timely insight.
+
+Interviewer: When you say "every sale should be recorded", what does "accessible by admins" mean in practice? A downloadable report, a dashboard, or both?
+
+Stakeholder: Both, ideally. A dashboard for immediate checks and the ability to pull detailed records for audits or financial reconciliation. Admins should be able to slice by title, date, and payment type without calling engineering.
+
+Interviewer: Earlier you mentioned "make it crystal clear we treat card data seriously" and "privacy." How should privacy be presented to users?
+
+Stakeholder: We need to be upfront before we collect anything — a clear privacy notice that people can find easily. I want it visible on every page in a simple link and, especially during signup or payment, users should be reminded what we're collecting and why. It's a trust anchor.
+
+Interviewer: You said "visible on every page." Do you expect a full privacy document on every page or a link with a summary?
+
+Stakeholder: A link on every page plus a short summary or callout during signup would be fine. The full policy should be accessible immediately if someone wants to drill down.
+
+Interviewer: You brought up pre-paid cards earlier. How important is that payment channel relative to credit cards?
+
+Stakeholder: It's strategically important in several African markets where card penetration is low. So it's not just a niche; it's a core acquisition route. We need a seamless flow for merchants to sell cards and for customers to redeem them without friction.
+
+Interviewer: One more area: performance. You said pages should feel instant and buffering short. Are there any other performance concerns, like peak load behaviour or monitoring?
+
+Stakeholder: Monitoring is critical. We need to know when pages or streams slow down, and we need daily usage stats for trend detection. If we see slowdowns or unusual patterns, ops must be alerted so we can react before customers complain. Essentially, observability that informs quick business decisions.
+
+Interviewer: That ties to what you said earlier about logging sales and daily metrics. Do you have preferences for how long logs and sales records are retained?
+
+Stakeholder: For financial records, long enough to satisfy auditors and local tax rules — so not short-lived. For usage analytics, I want daily aggregates kept for trend analysis for at least months. Exact retention periods I expect legal and finance to define, but long enough to be useful.
+
+Interviewer: You mentioned staff who can see payment data earlier. How strict should the access control be? For example, should admins require two-person approvals for sensitive actions?
+
+Stakeholder: I think for the most sensitive things, like unlocking raw payment data or doing refunds over a certain threshold, additional approvals make sense. For routine reporting, a single authorised admin is OK. We must avoid overburdening simple tasks but be deliberate with high-risk ones.
+
+Interviewer: You touched on a user experience goal for novice users and an African-inspired aesthetic. Any constraints there that might affect functionality?
+
+Stakeholder: Yeah, design needs to be simple and familiar — big buttons, clear language, and local language support where possible. But we shouldn't sacrifice security or essential flows in the name of simplicity. Also, pages should be lightweight so they load well on low-bandwidth connections.
+
+Interviewer: That's an important link back to performance and buffering. If we summarise the biggest risks you want the product team and engineering to mitigate, what are the top three?
+
+Stakeholder: Trust issues around payments and privacy; poor performance causing churn; and vendor outages — like a payment gateway or streaming edge failing — that disrupt revenue or user experience. If we can address those, the product is in a strong position.
+
+Interviewer: That's very helpful. Quick follow-up: when a vendor like a payment gateway fails, earlier you said users should be able to "queue purchases" or use pre-paid cards. For queued payments, do you expect the system to accept the payment details and process later, or to simply inform the user to try again?
+
+Stakeholder: I'd prefer queuing where safe — capture intent, but not sensitive payment data if that increases risk. If it's a card, maybe capture a token or ask them to try again later. For pre-paid, process immediately. The aim is to preserve the sale when possible without increasing security exposure.
+
+Interviewer: Final check — you've mentioned monitoring, admin dashboards, and audit trails. Are there any regulatory or regional compliance issues you're especially concerned about that would change requirements?
+
+Stakeholder: Data residency and local privacy laws are a concern. In some countries, customer data has to be handled a certain way. We need legal to weigh in, but from product side, let's assume we must be able to show compliance and restrict access based on region if required.
+
+Interviewer: Great. This gives us a strong set of outcomes to translate into requirements. One last, small thing: you used "five seconds" and "ten seconds" earlier — are you comfortable with engineering using those as targets for page interactions and initial buffering respectively?
+
+Stakeholder: Yes, those feel like reasonable targets to me. They give engineers something concrete.
+
+Interviewer: And the availability target you mentioned, the ninety-nine point five percent, you want that as the operational goal we plan around?
+
+Stakeholder: Yes, let's use that as our availability goal for planning and for explaining expectations to stakeholders.
+
+Interviewer: Thank you. I'll take these business outcomes and the specifics you've given and draft a requirements set focused on those user experiences: fast page interactions, minimal buffering, resilient flows when vendors fail, strict payment data controls, accessible privacy notices, capacity for peak load, and comprehensive logging and admin analytics. Anything else you want me to capture now?
+
+Stakeholder: No, that covers the big stuff. Oh, one tiny digression — we should keep the onboarding fun. Maybe a playful splash of that African art motif so people feel welcomed. But that's for the design sprint. Thanks.
+
+---
+Selected Requirements:
+1. [NICE.csv line 397] [quality, fault_tolerance, performance] 'Any interface between a user and the automated system shall have a maximum response time of 5 seconds unless noted by an exception below.'
+2. [NICE.csv line 399] [quality, performance] When streaming a movie the buffering time should take no longer than 10 seconds (plus any latency on the user's connection.)'
+3. [NICE.csv line 403] [quality, availability] 'The website shall achieve 99.5% up time.'
+4. [NICE.csv line 401] [quality, security] 'All credit card information will be secured on the server and only accessible by authorized Izogn administrators. Information will be encrypted in the database.'
+5. [NICE.csv line 434] [quality, functional, security, usability] 'The website shall make its user aware of its information practices before collection data from them via a Privacy Policy accessible on all pages of the website.'
+6. [NICE.csv line 406] [quality, availability, fault_tolerance] 'The website shall continue to operate if the payment gateway goes down.'
+7. [NICE.csv line 405] [quality, availability, fault_tolerance] 'The website shall continue to operate if the streaming server goes down.'
+8. [NICE.csv line 409] [quality, scalability] 'The server will support a maximum of 1 000 simultaneous users.'
+9. [NICE.csv line 462] [quality, functional, availability] 'All streaming movie sales will be logged in the database and accessible by the administrator.'
+10. [NICE.csv line 464] [quality, functional, maintainability] 'Daily usage statistics should be logged and accessible by the administrator.'

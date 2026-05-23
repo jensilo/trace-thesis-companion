@@ -1,0 +1,117 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_4_re_experienced_stakeholder_technical_senior_20260227_110538.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_180011",
+  "requirements": [
+    {
+      "requirement": "The system must respond to routine screen transitions and lookups within 5 seconds.",
+      "source_citation": "for normal navigation and small detail fetches I'd say around five seconds is the threshold.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly defines the performance requirement for routine actions, providing a clear and measurable threshold.",
+      "follow_up_question": "Are there any specific user actions or workflows that should be prioritized for performance optimization?"
+    },
+    {
+      "requirement": "The system must be available during all operational hours, with planned maintenance windows limited to specific early morning hours.",
+      "source_citation": "we need it to be effectively always available because reps and partner teams operate across a lot of time zones. That said, I accept short, planned maintenance windows when we patch or deploy major infra changes.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder clearly states the availability requirement and the acceptable maintenance windows.",
+      "follow_up_question": "Are there any specific operational hours or time zones that should be prioritized for availability?"
+    },
+    {
+      "requirement": "The system must integrate with the corporate identity provider for internal reps, using SAML or OIDC, and use strong multi-factor authentication for external partners.",
+      "source_citation": "We need to integrate with the corporate identity provider for internal reps, probably SAML or OIDC, and use strong multi-factor authentication for external partners.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly defines the authentication and authorization requirements for the system.",
+      "follow_up_question": "Are there any specific identity providers or multi-factor authentication methods that should be prioritized?"
+    },
+    {
+      "requirement": "The system must enforce row-level security to ensure that reps can only access data for customers they are assigned to.",
+      "source_citation": "reps should only see customers they are assigned to, and managers get broader visibility. The enforcement should live both at the API gateway and be reinforced at the data layer — I like row-level security approaches so data can't leak via misbehaving APIs.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly defines the need for row-level security to protect sensitive customer data.",
+      "follow_up_question": "Are there any specific data access patterns or use cases that should be prioritized for row-level security?"
+    },
+    {
+      "requirement": "The system must be horizontally scalable for web and API layers, with autoscaling workers and backpressure management.",
+      "source_citation": "The architecture should be horizontally scalable for web and API layers, and the async processing should be decoupled — think message queues and worker pools with autoscaling. Backpressure must be managed so the UI degrades gracefully when backlog grows; for example, show delayed processing indicators rather than blocking the rep entirely.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly defines the scalability requirements for the system, including the need for autoscaling and backpressure management.",
+      "follow_up_question": "Are there any specific scalability scenarios or workload patterns that should be prioritized for testing and optimization?"
+    },
+    {
+      "requirement": "The system must provide an immutable audit trail that records every meaningful user action, including who did something, when, which fields changed, what the previous values were, which external systems were called, the correlation IDs, and the outcome.",
+      "source_citation": "every meaningful user action needs to be recorded so that we can reconstruct what happened. That means who did something, when, which fields changed, what the previous values were, which external systems were called, the correlation IDs, and the outcome.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "data_integrity_and_auditability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly defines the auditability requirements for the system, including the need for an immutable audit trail that records detailed information about user actions.",
+      "follow_up_question": "Are there any specific audit trail requirements or compliance standards that should be prioritized for implementation?"
+    },
+    {
+      "requirement": "The system must avoid generating letters locally and instead rely on the Letters subsystem for all letter generation and formatting.",
+      "source_citation": "We should avoid generating letters locally; the Letter system is the canonical generator.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "compliance_and_consistency",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly defines the requirement to avoid local letter generation to ensure consistency and compliance.",
+      "follow_up_question": "Are there any specific letter templates or formatting requirements that should be prioritized for integration with the Letters subsystem?"
+    },
+    {
+      "requirement": "The system must provide an admin view to reprocess or reconcile queued items, with at-least-once delivery semantics and idempotency keys to avoid duplicate postings.",
+      "source_citation": "ops must have an admin view to reprocess or reconcile queued items. Hmm, reps should always know whether an action completed to the external system or was queued. So if an adjustment couldn't be delivered, the UI should show it as pending with a correlation identifier and an ETA for retries. From a guarantee point of view, we need at-least-once delivery semantics with idempotency keys, so duplicate postings are avoided when retries happen.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly defines the operability requirements for the system, including the need for an admin view to manage queued items and ensure reliable delivery.",
+      "follow_up_question": "Are there any specific operability scenarios or failure modes that should be prioritized for testing and optimization?"
+    },
+    {
+      "requirement": "The system must surface degraded mode if backends are unreachable and queue outbound requests for guaranteed delivery later, with clear audit entries showing the queue and retry status.",
+      "source_citation": "If a backend is unreachable, the app must surface that it's operating in a degraded mode and queue outbound requests for guaranteed delivery later, with clear audit entries showing the queue and retry status.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly defines the fault tolerance requirements for the system, including the need to surface degraded mode and queue requests for later delivery.",
+      "follow_up_question": "Are there any specific fault tolerance scenarios or failure modes that should be prioritized for testing and optimization?"
+    },
+    {
+      "requirement": "The system must enforce access controls at multiple layers to prevent data leaks and ensure compliance with security policies.",
+      "source_citation": "I'd fight for ... enforcing access controls at multiple layers so we never leak customer data.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly defines the need for multi-layered access controls to prevent data leaks and ensure compliance with security policies.",
+      "follow_up_question": "Are there any specific access control requirements or security policies that should be prioritized for implementation?"
+    }
+  ]
+}

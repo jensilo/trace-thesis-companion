@@ -1,0 +1,96 @@
+Interviewer: Thanks for meeting with me. To start, can you tell me what you see as the main goals for this recycled parts and repair facility system?
+
+Stakeholder: Sure, I think the main goal is to make it really easy for adjusters and estimators to find usable recycled parts and to pick the best repair shop nearby. We should make that searchable feed of recycled parts part of the workflow so folks don't have to jump between systems, and, uh, it should also let adjusters check how much recycled material is actually being used in estimates. Oh — and we need to be able to rate facilities so we can nudge shops to do better on recycled parts usage.
+
+Interviewer: Okay, so integrate the parts feed into the workflow, let users search parts and pick facilities, and let adjusters audit usage and rate facilities. Who will be using the system day to day?
+
+Stakeholder: Mostly claims adjusters and collision estimators, both in-office and in the field. There's also going to be oversight people — auditors — who will poke into estimates, and program administrators who will manage configurations. Field users need a clean, quick interface; office users might do deeper analysis. I should say, not everyone should see everything — some data is sensitive and only admins should have the broad view.
+
+Interviewer: Right, so different access levels. Do you have any constraints about how the system should look or be built? Like corporate rules or anything?
+
+Stakeholder: Yes, absolutely. We can't reinvent the stack; we need to align with the corporate architecture patterns and the UI standards. That's not negotiable. We have a set of approved technologies and design language that the system must fit into so operations and support don't freak out. Also accessibility and consistent UI behavior — follow the corporate guidelines so people feel at home.
+
+Interviewer: Got it. You mentioned integrating the parts feed earlier — where is that coming from?
+
+Stakeholder: There's an existing recycled parts provider we use — it's the company's canonical feed for salvaged components. The new app has to consume that feed rather than try to build its own inventory. We've had issues in the past when teams tried to sync copies — messy reconciliation. So, it should be a direct integration so we can rely on a single source of truth.
+
+Interviewer: Okay. About performance — people in the field don't like waiting. How fast does the search need to be, like for parts and for finding repair shops?
+
+Stakeholder: Yeah, it needs to feel fast. I hate waiting around for lookups when I'm on-site. For parts searches, if it drags on beyond what feels reasonable, people will open the phone and call a vendor instead, and then we lose the audit trail. For facility lookups, it's even more immediate — you want the recommended shops to appear quickly when you have a customer standing there. Basically, parts searches can tolerate a bit more latency than facility lookups, but both must be snappy.
+
+Interviewer: When you say "a bit more" and "snappy," do you have specific targets in mind? Like what's too slow for a parts search and too slow for a facility lookup?
+
+Stakeholder: If you're asking for numbers, then yeah — for parts, waiting around more than a few tens of seconds is unacceptable. We should aim to have search results returned well under, uh, something like fifteen seconds. For the preferred repair facility search, that should be noticeably quicker — it should return within roughly eight seconds so the field person isn't standing there awkwardly.
+
+Interviewer: Okay, parts under about fifteen seconds, facilities within about eight. Thanks. What about reliability — how often can this system be down before it becomes a problem?
+
+Stakeholder: Reliability is critical. If the system goes down during business hours, adjusters can't do their jobs and your daily SLAs slide. We need high availability; I'd say the system has to be up almost all the time. If you press me, the target is high — we should plan for something that results in only a very small fraction of total time being unavailable, not something that's flaky.
+
+Interviewer: When you say "only a very small fraction," do we have a target uptime percentage?
+
+Stakeholder: Yes — to be concrete, our operations group will expect ninety-eight percent availability as the baseline. That implies downtime of about two percent of the time as the maximum tolerated. It's not ideal, but it's what the business has signed off on.
+
+Interviewer: Understood. How many people are we designing for? Peak usage, and future growth?
+
+Stakeholder: Right now, the realistic simultaneous load during peak times is on the order of a few thousand at most; in day-to-day peaks it's in the low thousands. Over the next couple of years the user base could grow substantially, so we have to design with headroom. If you need the exact figures for capacity planning, today we should plan to comfortably handle fifteen hundred concurrent users, and architect it so we can scale to around ten thousand concurrent users within about two years of launch.
+
+Interviewer: So 1,500 now and scaling to 10,000 in two years. Makes sense. Do we need to worry about denial of service or other attacks?
+
+Stakeholder: Definitely. Insurance systems are attractive targets and we can't assume all traffic is benign. We need to harden the perimeter, filter bad traffic, and architect so that one noisy service or attack doesn't take down the whole platform. Rate limiting, web application firewalls, traffic scrubbing — those kinds of defensive measures should be part of the plan. Also we should design failover paths so the core search capability has some resilience under load.
+
+Interviewer: Do you want the system to do its own rate limiting and filtering, or rely on corporate network security?
+
+Stakeholder: Both. Relying only on the network team is risky, and vice versa. The application should implement sensible throttling and input validation, and then hand off to the corporate DDoS mitigation layers for large-scale attacks. It's layered defense; that's the right pattern.
+
+Interviewer: Okay. You mentioned audits and compliance earlier. Anything specific about regulatory requirements or data handling we should know?
+
+Stakeholder: Yes, this is an insurance claims process, so there are regulatory obligations about maintaining an auditable trail, retention of records, and data protection. We need detailed logging of who viewed and changed an estimate or which parts were selected, and those logs must meet the company's retention and export rules. Also any personal information must be handled per the privacy rules — again, follow the corporate controls. Oh, and for claim processing we need to preserve the integrity of the estimate workflow so it stays defensible in audits.
+
+Interviewer: Got it. For the parts data coming from the provider feed, what sort of integration are you imagining technical-wise? APIs, batch, streaming?
+
+Stakeholder: Real-time-ish APIs are preferable. The feed should be consumed via a supported interface; polling big batch files daily won't cut it because inventory changes quickly. Ideally, we have an API or message feed and build a lightweight sync or proxy layer with caching so searches are fast and we don't hammer the provider. The caching strategy needs to be careful — we want fresh enough data but not latency from live calls on every request.
+
+Interviewer: Should that caching be in the browser, server, or both?
+
+Stakeholder: Server-side caching is the primary lever, with opportunity for short-lived client caching for repeated local lookups. We should use an in-memory cache or a distributed cache for hot items and a CDN for static assets. Don't overcomplicate the client right away; start with server caching patterns and measure.
+
+Interviewer: You mentioned corporate architecture earlier — any particular stack or patterns we must use? Microservices, monolith, cloud provider?
+
+Stakeholder: The corporate guidance leans toward cloud-native patterns: containerized services, orchestration, and well-defined service boundaries. We should align with the approved cloud provider and use the central platform services for logging, identity, and monitoring. Event-driven patterns can help for notifications and audit events, but synchronous APIs are fine for search. We need to think in terms of observability, deployability, and maintainability from day one.
+
+Interviewer: For identity and access control — you said not everyone should see everything. How strict should the access control be, and who manages roles?
+
+Stakeholder: Access control needs to be role-based and integrated with corporate identity. Role assignment and permissioning should map to existing groups so we don't invent another silo. Administrators will manage higher-level roles, and local site coordinators should have limited capabilities. It has to be auditable, meaning changes to permissions are logged, and the enforcement should be centralized via an identity service rather than ad-hoc checks sprinkled through code.
+
+Interviewer: Okay. Any other non-functional needs I should capture? Mobile, offline use, reporting, that sort of thing?
+
+Stakeholder: Mobile-friendly is a must because field adjusters use tablets and phones. Offline mode is nice-to-have but expensive; it depends on budget. Reporting and export for auditors and business KPIs are important — we need to track recycled-part utilization metrics and facility ratings over time. Also, the UI should follow corporate accessibility guidelines — color contrast, keyboard navigation, standard components — so it's both consistent and compliant.
+
+Interviewer: You said offline is expensive — do you mean we shouldn't plan for it now?
+
+Stakeholder: For an initial release, I think we can focus on responsive web with good caching and quick reconnection behavior. If the business insists on full offline-first capabilities, that's a different project slice. But, um, we should be explicit about that trade-off in the backlog.
+
+Interviewer: Right. Backing up to security briefly: do we need encryption at rest and in transit, or just in transit?
+
+Stakeholder: We need both. Transport encryption is baseline, and sensitive data at rest should be encrypted per corporate policy. Keys and certificates must be managed with the central secrets store.
+
+Interviewer: Thanks. One last thing — any lessons from past projects we should avoid repeating?
+
+Stakeholder: Oh, plenty. In a previous integration we tried to cache everything locally, and when the provider changed their identifiers the data went out of sync and our claims people spent a week reconciling. So, rely on the provider as the source of truth, keep mappings explicit, and design for schema changes. Also, don't bolt on auth and just hope it works; integrate with corporate identity from the start. And, I almost forgot — keep the UI simple for mobile users; if it looks like the desktop, they'll ignore it. That's a long way of saying design for maintainability and measurable SLAs from day one.
+
+Interviewer: Great, that's really helpful. I think I have what I need for the first pass. Thanks for your time.
+
+Stakeholder: No problem. If you want, I can sketch an initial component diagram later — hmm, that might help the team visualize the integration points. I can email that, if that works for you.
+
+---
+Selected Requirements:
+1. [NICE.csv line 206] [quality, operability] 'The product shall interface with the Choice Parts System. This provides the feed of recycled parts data.'
+2. [NICE.csv line 208] [quality, legal] 'The product shall adhere to the corporate Architecture guidelines'
+3. [NICE.csv line 209] [quality, legal, look_and_feel] 'The product shall comply with corporate User Interface Guidelines'
+4. [NICE.csv line 217] [quality, performance] 'The search for recycled parts shall take no longer than 15 seconds. The search results shall be returned in under 15 seconds.'
+5. [NICE.csv line 218] [quality, performance] 'The search for the preferred repair facility shall take no longer than 8 seconds. The preferred repair facility is returned within 8 seconds'
+6. [NICE.csv line 222] [quality, availability, fault_tolerance] 'The product shall achieve a 98% uptime. The product shall not fail more than 2% of the available online time.'
+7. [NICE.csv line 223] [quality, scalability] 'The product shall be able to handle up to 1500 simultaneous users. The system shall perform with 1500 users as a time.'
+8. [NICE.csv line 225] [quality, scalability] 'The product shall be able to handle 10 000 concurrent users within 2 years of the initial launch.'
+9. [NICE.csv line 237] [quality, security] 'The system shall prevent malicious attacks including denial of service.'
+10. [NICE.csv line 240] [quality, legal] 'The product shall comply with insurance regulations regarding claims processing.'

@@ -1,0 +1,183 @@
+{
+  "transcript_file": "outputs/corpus-20260226_162106/transcript_5_re_novice_stakeholder_technical_junior_20260226_163031.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_183001",
+  "requirements": [
+    {
+      "requirement": "The parts search should return results within 15 seconds.",
+      "source_citation": "If I had to put a number on it, for the parts search I’d say around a few to mid tens of seconds is where things become painful. For facility lookups, it needs to feel much snappier — those should be close to instant really. If you want exact targets I can say what I’ve heard from the team.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder provides a clear target for parts search response time, indicating a performance requirement. The exact target of 15 seconds is mentioned later in the interview, reinforcing this requirement.",
+      "follow_up_question": "Are there any specific scenarios or conditions under which the 15-second response time target might not be achievable, and how should those be handled?"
+    },
+    {
+      "requirement": "The facility lookup should return results within 8 seconds.",
+      "source_citation": "If you want exact targets I can say what I’ve heard from the team. Okay, I’ve heard that parts searches should return within fifteen seconds as a kind of upper limit. And for the preferred repair facility lookup the expectation is tighter — it should return within eight seconds.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the response time target for facility lookups, which is a clear performance requirement.",
+      "follow_up_question": "What are the consequences if the facility lookup does not meet the 8-second response time target?"
+    },
+    {
+      "requirement": "The system should support approximately 1,500 concurrent users.",
+      "source_citation": "On busy days we have a lot of adjusters online. I remember a planning figure the product should support about fifteen hundred users concurrently — that’s what Ops used in sizing notes.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions a planning figure for concurrent users, which indicates a scalability requirement. However, the exact number and conditions are not fully detailed.",
+      "follow_up_question": "What specific performance metrics or user behaviors are expected during peak loads of 1,500 concurrent users?"
+    },
+    {
+      "requirement": "The system should achieve 98% uptime on a monthly basis.",
+      "source_citation": "Ops talked about a target, I think it’s around ninety-eight percent uptime. That’s what they tossed out in the last planning meeting, though I’d want them to confirm monitoring windows and maintenance windows.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions a target uptime percentage, which is a clear availability requirement. However, the exact measurement and conditions are not fully detailed.",
+      "follow_up_question": "What are the specific monitoring windows and maintenance windows that affect the 98% uptime target?"
+    },
+    {
+      "requirement": "The system should enforce multi-tenancy by filtering data at the service layer using tenant identifiers.",
+      "source_citation": "We put a tenant identifier on every record and filter at the service layer. I mean, it’s implemented that way right now, with authorization checks to ensure a requester’s tenant-id matches the data returned.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder describes the current implementation of multi-tenancy, which is a clear security requirement.",
+      "follow_up_question": "What additional measures or tests are planned to ensure the robustness of the multi-tenancy implementation?"
+    },
+    {
+      "requirement": "The system should integrate with the corporate SSO (SAML) for user authentication.",
+      "source_citation": "We integrate with the corporate SSO — SAML — so authentication is handled centrally.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the authentication mechanism, which is a clear security requirement.",
+      "follow_up_question": "Are there any specific SAML configuration or integration details that need to be considered?"
+    },
+    {
+      "requirement": "The system should rely on WAF, rate-limiting, and caching to mitigate DoS attacks.",
+      "source_citation": "We rely on the hosting provider’s protections, a WAF, and we’ve put basic rate-limiting on the APIs. On top of that we’ve tried to make the app sensible about caching so repeated requests don’t hammer Choice Parts.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder describes the measures in place to mitigate DoS attacks, which is a clear security requirement.",
+      "follow_up_question": "What specific rate-limiting thresholds and caching strategies are currently implemented?"
+    },
+    {
+      "requirement": "The system should log search events and estimate changes for auditing purposes.",
+      "source_citation": "We log search events and estimate changes, and there’s an audit trail stored. The logs go to the central logging stack.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder describes the logging mechanism for auditing, which is a clear security requirement.",
+      "follow_up_question": "What specific audit logging requirements or compliance standards does the system need to adhere to?"
+    },
+    {
+      "requirement": "The system should follow corporate UI guidelines for fonts, colors, components, and accessibility patterns.",
+      "source_citation": "Yes, the design team wants us to use the corporate UI guidelines — fonts, colors, components, and accessibility patterns. Deviations need approval.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the UI guidelines, which is a clear usability requirement.",
+      "follow_up_question": "Are there any specific accessibility standards or guidelines that the system must comply with?"
+    },
+    {
+      "requirement": "The system should be easy to use for 95% of adjusters and estimators.",
+      "source_citation": "The aim I’ve heard is that ninety-five percent of adjusters and collision estimators should report the product is easy to use, and that staff can be trained and productive after two days of onsite training.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder provides a clear target for ease of use, which is a usability requirement.",
+      "follow_up_question": "What specific metrics or methods will be used to measure the ease of use of the system?"
+    },
+    {
+      "requirement": "The system should provide training content covering search, facility booking, troubleshooting, and compliance.",
+      "source_citation": "They should learn how to search and validate parts, how to pick and book a repair facility, basic troubleshooting for search errors, and how to use the quick templates for estimates. Also some compliance bits like what data they can export.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder describes the training content requirements, which is a usability requirement.",
+      "follow_up_question": "What specific training materials or resources are currently available or planned?"
+    },
+    {
+      "requirement": "The system should provide progress indicators for searches to reduce support calls.",
+      "source_citation": "Oh, and I need to run to a stand-up in five minutes, so I’ll send those links after. That’s a small thing but it reduces calls to support.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 3,
+      "rationale": "The stakeholder suggests a usability improvement, which indicates a requirement for progress indicators.",
+      "follow_up_question": "What specific progress indicators or user feedback mechanisms are planned?"
+    },
+    {
+      "requirement": "The system should have basic load tests that mimic production peaks.",
+      "source_citation": "We’ve run some basic load tests but nothing that fully mimics production peaks. Ops was supposed to do a more thorough load test for the fifteen hundred concurrent users, but I haven’t seen the final report.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for more thorough load testing, which is a performance requirement.",
+      "follow_up_question": "What specific load testing scenarios or conditions are planned to mimic production peaks?"
+    },
+    {
+      "requirement": "Ops owns the uptime and performance guarantees, while devs handle retry/backoff logic and efficient queries.",
+      "source_citation": "Ops owns hosting, monitoring, and SLAs, yeah. Devs are responsible for good retry/backoff logic and efficient queries. For long-term reliability, we need Ops to set up alerting and runbook responses.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder describes the ownership and responsibilities for uptime and performance, which is a maintainability requirement.",
+      "follow_up_question": "What specific SLAs or performance guarantees are currently in place or planned?"
+    },
+    {
+      "requirement": "The system should allow recent searches and favorite facilities to work offline.",
+      "source_citation": "Ideally recent searches and favorite facilities are available offline and you can at least view cached parts. Full search against Choice Parts won’t work offline unless we build a bigger local cache, which has consistency trade-offs.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder describes the offline functionality requirements, which is a usability requirement.",
+      "follow_up_question": "What specific offline data synchronization or caching strategies are planned?"
+    },
+    {
+      "requirement": "The system should encrypt PII at rest and in transit and comply with regional data residency rules.",
+      "source_citation": "The company has general PII rules and we encrypt sensitive data at rest and in transit. There might be regional data residency rules for some clients, so we should check with compliance if any markets need special handling.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder describes the data protection and residency requirements, which are security requirements.",
+      "follow_up_question": "What specific encryption standards or data residency rules does the system need to comply with?"
+    }
+  ]
+}

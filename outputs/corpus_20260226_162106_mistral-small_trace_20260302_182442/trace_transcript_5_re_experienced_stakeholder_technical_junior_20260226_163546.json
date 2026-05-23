@@ -1,0 +1,216 @@
+{
+  "transcript_file": "outputs/corpus-20260226_162106/transcript_5_re_experienced_stakeholder_technical_junior_20260226_163546.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_182528",
+  "requirements": [
+    {
+      "requirement": "The parts search response time should be under 15 seconds for a full result set to appear in the UI.",
+      "source_citation": "For parts search, it just needs to feel fast... anything above maybe a dozen to fifteen seconds is unacceptable.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions a time threshold for parts search response time, indicating a clear performance expectation. The confidence is high due to the direct quote, but the exact context (e.g., network conditions, device type) is not specified.",
+      "follow_up_question": "Can you clarify the expected response time under different network conditions (e.g., 3G, Wi-Fi) and device types (e.g., tablet, desktop)?"
+    },
+    {
+      "requirement": "The facility lookup response time should be under 10 seconds from when the user hits search to when the preferred facility is shown.",
+      "source_citation": "Facility lookup should be snappier... aim for under ten seconds from when they hit search to when the preferred facility is shown.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder provides a specific time threshold for facility lookup response time, indicating a clear performance expectation. The confidence is high due to the direct quote, but the exact context (e.g., network conditions, device type) is not specified.",
+      "follow_up_question": "Can you clarify the expected response time under different network conditions (e.g., 3G, Wi-Fi) and device types (e.g., tablet, desktop)?"
+    },
+    {
+      "requirement": "The system should support progressive rendering, showing top matches immediately and then loading the rest of the results.",
+      "source_citation": "Showing top matches immediately and then loading the rest would feel much faster.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 3,
+      "rationale": "The stakeholder suggests progressive rendering as a solution to improve perceived performance. The confidence is medium because it is a suggestion rather than a strict requirement, and the exact implementation details are not specified.",
+      "follow_up_question": "Can you provide more details on the expected behavior and user experience for progressive rendering?"
+    },
+    {
+      "requirement": "The system should handle a load of roughly 1,500 concurrent active users at peak without significant slowdowns.",
+      "source_citation": "The business has talked about sizing for a few thousand concurrent active users... roughly fifteen hundred active users at peak.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions a specific number of concurrent users as a scaling target. The confidence is medium because the exact definition of 'active users' and the expected performance under this load are not clearly specified.",
+      "follow_up_question": "Can you clarify what 'active users' means in this context and what the expected performance metrics are under this load?"
+    },
+    {
+      "requirement": "The system should be designed for horizontal scaling and stateless services to support concurrency expectations.",
+      "source_citation": "We’ll need horizontal scaling and stateless services, and the session store needs to be shared.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for horizontal scaling and stateless services to meet concurrency expectations. The confidence is high due to the direct quote, but the exact implementation details are not specified.",
+      "follow_up_question": "Can you provide more details on the expected architecture and deployment strategy for horizontal scaling and stateless services?"
+    },
+    {
+      "requirement": "The system should have a monthly uptime target of 98%.",
+      "source_citation": "The target we were given is ninety-eight percent uptime measured monthly.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder provides a specific uptime target. The confidence is high due to the direct quote, but the rationale behind this target and its negotiability are not fully explained.",
+      "follow_up_question": "Can you explain the rationale behind the 98% uptime target and whether it is negotiable?"
+    },
+    {
+      "requirement": "The system should implement graceful degradation, falling back to cached results and read-only modes if Choice Parts is down.",
+      "source_citation": "We plan to fall back to cached results and read-only modes if Choice Parts is down.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the plan for graceful degradation in case of Choice Parts downtime. The confidence is medium because the exact implementation details and user experience during degradation are not specified.",
+      "follow_up_question": "Can you provide more details on the expected behavior and user experience during graceful degradation?"
+    },
+    {
+      "requirement": "The system should authenticate via the corporate SSO and sit behind the company API gateway.",
+      "source_citation": "We have to authenticate via the corporate SSO... and sit behind the company API gateway.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the requirement for corporate SSO and API gateway integration. The confidence is very high due to the direct quote and the clear mandate from the corporate architecture.",
+      "follow_up_question": "Are there any specific security policies or configurations that need to be implemented as part of this requirement?"
+    },
+    {
+      "requirement": "The system should be protected against denial-of-service attacks using rate-limiting and WAF protections provided by the corporate API gateway and CDN.",
+      "source_citation": "We put the app behind the corporate API gateway and the CDN, which gives us WAF protections and the ability to do rate-limiting.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the use of rate-limiting and WAF protections as part of the security measures. The confidence is high due to the direct quote, but the exact policies and thresholds are not specified.",
+      "follow_up_question": "Can you provide more details on the specific rate-limiting policies and WAF configurations that will be implemented?"
+    },
+    {
+      "requirement": "The system should pass regular security scans and penetration tests before production deployment.",
+      "source_citation": "We also have to pass regular security scans and pen tests before production.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the requirement for regular security scans and penetration tests. The confidence is high due to the direct quote, but the specific testing criteria and frequency are not detailed.",
+      "follow_up_question": "Can you provide more details on the specific security testing criteria and the frequency of these scans and penetration tests?"
+    },
+    {
+      "requirement": "The system should include an audit field in the model to trace back to the original feed record in the database.",
+      "source_citation": "We should store an audit field in the model so you can trace back to the original feed record in the DB.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for an audit field to trace the original feed record. The confidence is high due to the direct quote, but the exact implementation details are not specified.",
+      "follow_up_question": "Can you provide more details on the specific data that should be included in the audit field and how it will be used?"
+    },
+    {
+      "requirement": "The system should include provenance information, such as the source of the part and a timestamp, to help users trust the data.",
+      "source_citation": "We need provenance info — like where the part came from and a timestamp — so users can trust it.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "data_quality",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for provenance information to enhance data trustworthiness. The confidence is high due to the direct quote, but the exact implementation details are not specified.",
+      "follow_up_question": "Can you provide more details on the specific provenance information that should be included and how it will be displayed to users?"
+    },
+    {
+      "requirement": "The system should handle malformed data by filtering out part records that are missing required fields server-side.",
+      "source_citation": "If a part record is missing required fields we filter it out server-side.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "data_quality",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the handling of malformed data. The confidence is high due to the direct quote, but the exact criteria for 'required fields' and the user experience when data is filtered out are not specified.",
+      "follow_up_question": "Can you provide more details on the specific required fields and the user experience when data is filtered out?"
+    },
+    {
+      "requirement": "The system should cache parts data with a freshness of a few minutes, as adjusters are okay with slightly stale information for availability.",
+      "source_citation": "Most adjusters are okay with slightly stale info for availability — if it's a few minutes old.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "data_quality",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the acceptability of slightly stale data for availability. The confidence is medium because the exact freshness threshold and the impact on user trust are not fully specified.",
+      "follow_up_question": "Can you clarify the exact freshness threshold for cached data and how it will be communicated to users?"
+    },
+    {
+      "requirement": "The system should comply with corporate standards, including using the approved front-end framework and design tokens.",
+      "source_citation": "We have to use the corporate component library and design tokens, which is great for branding consistency.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the requirement to use corporate component libraries and design tokens. The confidence is high due to the direct quote, but the specific design constraints and their impact on usability are not detailed.",
+      "follow_up_question": "Can you provide more details on the specific design constraints and how they impact the user experience?"
+    },
+    {
+      "requirement": "The system should include big buttons and a simple default view to cater to adjusters' preferences.",
+      "source_citation": "Adjusters want big buttons and a simple default view; the current components are sometimes dense.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for big buttons and a simple default view based on adjuster feedback. The confidence is high due to the direct quote, but the exact design specifications are not provided.",
+      "follow_up_question": "Can you provide more details on the specific design requirements for big buttons and a simple default view?"
+    },
+    {
+      "requirement": "The system should follow accessibility rules, including color contrast and keyboard navigation guidance, and include more screen reader testing.",
+      "source_citation": "Accessibility rules are enforced... though we could do more screen reader testing.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the requirement to follow accessibility rules and the need for more screen reader testing. The confidence is high due to the direct quote, but the specific accessibility criteria and testing methods are not detailed.",
+      "follow_up_question": "Can you provide more details on the specific accessibility criteria and the methods for screen reader testing?"
+    },
+    {
+      "requirement": "The system should be intuitive for users, with almost all adjusters finding the basic flow easy to use.",
+      "source_citation": "Almost all of them said it was intuitive in the basic flow — maybe around nine out of ten.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions that almost all adjusters found the basic flow intuitive. The confidence is medium because the exact usability metrics and the context of the feedback are not fully specified.",
+      "follow_up_question": "Can you provide more details on the specific usability metrics and the context in which the feedback was gathered?"
+    },
+    {
+      "requirement": "The system should require two full days of on-site training with exercises and a sandbox to ensure adjusters are comfortable with the system.",
+      "source_citation": "A couple of days of on-site training with exercises and a sandbox would be my recommendation.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "learnability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for two days of on-site training. The confidence is high due to the direct quote, but the specific training content and methods are not detailed.",
+      "follow_up_question": "Can you provide more details on the specific training content and methods that will be used?"
+    }
+  ]
+}

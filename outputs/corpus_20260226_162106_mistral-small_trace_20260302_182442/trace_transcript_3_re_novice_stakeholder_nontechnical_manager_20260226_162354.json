@@ -1,0 +1,150 @@
+{
+  "transcript_file": "outputs/corpus-20260226_162106/transcript_3_re_novice_stakeholder_nontechnical_manager_20260226_162354.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_182444",
+  "requirements": [
+    {
+      "requirement": "The system must respond to routine student management tasks (e.g., enrollments, updates) within 5 seconds.",
+      "source_citation": "For routine student management stuff — enrollments, updates — I’d say anything beyond about five seconds starts to feel slow.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states a performance expectation for routine tasks, providing a clear threshold for acceptable response time.",
+      "follow_up_question": "Are there specific routine tasks that are more critical than others, and should they have stricter performance requirements?"
+    },
+    {
+      "requirement": "The system must generate full schedules within 30 seconds to prevent user distraction.",
+      "source_citation": "For full schedule generation, I’d consider up to around thirty seconds acceptable; beyond that people get distracted and open spreadsheets again.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder provides a specific performance expectation for schedule generation, indicating a clear threshold for acceptable response time.",
+      "follow_up_question": "Are there specific scenarios or data volumes that would make schedule generation take longer, and how should those be handled?"
+    },
+    {
+      "requirement": "The system must be easy to use, with clear language, minimal clicks for common tasks, and inline help to avoid user confusion.",
+      "source_citation": "Well, the people doing the work are busy and, honestly, not always comfortable with complex systems. 'Easy' means clear language, minimal clicks to do common tasks, and inline help so someone isn’t guessing what a field means.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly defines usability expectations, emphasizing simplicity and clarity to facilitate adoption.",
+      "follow_up_question": "Can you provide examples of common tasks that should require minimal clicks, and what specific inline help would be most useful?"
+    },
+    {
+      "requirement": "Users should be able to perform core tasks after a single day of training.",
+      "source_citation": "We can’t do multi-day onboarding for everyone. It needs to be short — like, people should be comfortable with core tasks after a single day of training.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder sets a clear expectation for training time, indicating that the system should be intuitive enough for users to learn quickly.",
+      "follow_up_question": "What specific core tasks should users be able to perform after a single day of training, and how will proficiency be assessed?"
+    },
+    {
+      "requirement": "The system must be reliable during business hours (8 AM to 6 PM on weekdays) to avoid disruption.",
+      "source_citation": "It needs to be reliable when our office is open. If it’s down during business hours it causes chaos.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of system reliability during specific business hours to prevent operational disruptions.",
+      "follow_up_question": "What specific measures or redundancy strategies should be in place to ensure reliability during business hours?"
+    },
+    {
+      "requirement": "The system must have an uptime target in the mid-nineties percentage-wise to minimize disruptions.",
+      "source_citation": "We can tolerate some maintenance outside those hours, but we need an availability target the IT team can aim at — somewhere in the mid-nineties percentage-wise for uptime so we don’t have frequent disruptions.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder provides a clear expectation for system availability, indicating a target uptime percentage to guide IT team efforts.",
+      "follow_up_question": "What specific uptime percentage should be targeted, and what monitoring or alerting mechanisms should be in place to ensure this?"
+    },
+    {
+      "requirement": "The system must comply with FERPA for student records and HIPAA-like sensitivities for clinical placements.",
+      "source_citation": "We have FERPA for student records and there are HIPAA-like sensitivities for clinical placements because of patient exposure and site agreements.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions compliance requirements related to student records and clinical placements, indicating the need for specific security safeguards.",
+      "follow_up_question": "What specific measures should be implemented to ensure compliance with FERPA and HIPAA-like sensitivities?"
+    },
+    {
+      "requirement": "The system must implement role-based access control, encryption (in transit and at rest), and audit trails for data access and changes.",
+      "source_citation": "Practically, that means role-based access so not everyone sees everything, encryption when appropriate — both in transit and at rest ideally — and audit trails so we can show who accessed or changed data.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder outlines specific security safeguards required to protect sensitive data and ensure accountability.",
+      "follow_up_question": "What specific roles and access levels should be defined, and what encryption standards should be used?"
+    },
+    {
+      "requirement": "The system must log assignment changes, overrides, and permission changes for audit purposes.",
+      "source_citation": "We don’t need forensic-level detail for every mouse move, but every assignment change, override, or permission change should be logged and kept for a reasonable period.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the level of detail required for audit logging, indicating the need for specific types of changes to be recorded.",
+      "follow_up_question": "What constitutes a 'reasonable period' for retaining audit logs, and what specific types of changes should be logged beyond those mentioned?"
+    },
+    {
+      "requirement": "The system must integrate with CampusConnect to retrieve student rosters, course codes, and instructor records without manual exports.",
+      "source_citation": "CampusConnect is our authoritative source for student records. We need an interface so the system can get student rosters, course codes, instructor records — ideally without manual exports.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for seamless integration with an existing system to ensure data accuracy and reduce manual effort.",
+      "follow_up_question": "What specific data fields and formats should be mapped between the systems, and what authentication mechanisms should be used?"
+    },
+    {
+      "requirement": "The system should aim for near-real-time data synchronization with CampusConnect, with hourly or nightly syncs as a stepping stone.",
+      "source_citation": "I’d like near-real-time for changes that affect placements, but if we have to start with hourly or nightly syncs that’s okay as a stepping stone.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder provides a clear expectation for data synchronization frequency, indicating a preference for near-real-time updates with interim solutions.",
+      "follow_up_question": "What specific changes should trigger near-real-time synchronization, and what interim solutions should be implemented for hourly or nightly syncs?"
+    },
+    {
+      "requirement": "The system must reduce student-reported scheduling mistakes by half within the first year after launch.",
+      "source_citation": "I want to reduce those reports significantly; to be specific, my goal is to cut student-noted scheduling mistakes by half within the first year after launch.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "business_metrics",
+      "confidence": 4,
+      "rationale": "The stakeholder sets a clear business metric for system success, indicating a specific target for reducing errors.",
+      "follow_up_question": "What specific types of mistakes should be prioritized for reduction, and what metrics will be used to track progress?"
+    },
+    {
+      "requirement": "The system must be designed to prevent users from reverting to spreadsheets by ensuring it is not slow, hard to train, or untrustworthy.",
+      "source_citation": "If it’s slow, if it’s hard to train, or if people can’t trust the data, they’ll go back to spreadsheets.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of system usability, performance, and data trustworthiness to ensure user adoption.",
+      "follow_up_question": "What specific measures should be implemented to ensure the system is not slow, hard to train, or untrustworthy?"
+    }
+  ]
+}

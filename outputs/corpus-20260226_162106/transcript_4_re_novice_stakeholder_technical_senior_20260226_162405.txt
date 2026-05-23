@@ -1,0 +1,138 @@
+Interviewer: Hi, thanks for meeting with me. Can we start with a quick confirmation — we're talking about the Disputes system for reps, right? Internal and merchant services reps primarily? And you'll help me understand what the system needs to do and who will use it?
+
+Stakeholder: Yes, that's the scope. It's for our front-line cardmember reps and merchant services folks, and there will be some external access for merchant partners in a limited way. I think, hmm, the main thing is we can't treat this as a toy — regulatory sensitivity is high, and we need production-grade integrations and SLAs baked in from the start.
+
+Interviewer: Got it. Do you want any particular documents or standards up front — like a UI guide or security policy I should review?
+
+Stakeholder: Definitely. We have a corporate design system that we use for both internal and externally facing applications, and security policies from the central team. If you could grab those, it will save time. I think, well, compliance teams like to see the UI conform to the corporate look and feel, and security will expect we follow the standard auth patterns.
+
+Interviewer: Okay, I'm noting the corporate design system and security policies. How should I send follow-ups — email with notes?
+
+Stakeholder: Email is fine. Just send the notes and any open questions, and assign owners where you can so we can pull in the DB teams later.
+
+Interviewer: Great. Moving on to users and workflows — who are the personas we should design for and what are the primary things they do?
+
+Stakeholder: The obvious personas are the cardmember rep handling disputes, a merchant services rep who might handle merchant-side inquiries, supervisors for overrides and reviews, and auditors who need read-only access to case history. There will also be service accounts for integrations. The core workflows are creating a dispute, following up on existing cases, initiating retrieval requests or chargebacks, generating correspondence, and making account adjustments. We need clear separation between internal employees and external partners so data exposure is controlled.
+
+Interviewer: When you say separation, do you mean separate logins or just different screens?
+
+Stakeholder: We should integrate with central identity for employees, and for external partners we might federate or provision separate accounts. The point is, authentication and authorization must be robust — not just hiding UI elements. Enforcement needs to be at the API level as well.
+
+Interviewer: Okay. Who can actually initiate a dispute? Any restrictions there?
+
+Stakeholder: Not everyone. Only users with the appropriate privileges should be able to initiate a dispute. Supervisors may have elevated rights like force-closing or overriding certain holds. Agents should be able to create and update cases within their permission set. We need to avoid a situation where a junior rep can perform financial adjustments without an approval path.
+
+Interviewer: Alright. Do we need to manage roles inside the app or will central IAM do it?
+
+Stakeholder: Ideally central IAM provides roles and we consume them, but we may need a small admin UI for role mapping and exceptions. That said, authorization checks must live in our services regardless of how roles are assigned.
+
+Interviewer: Understood. About the UI — you mentioned the corporate design system. Any other UI constraints I should be aware of?
+
+Stakeholder: The app should follow the corporate standards for layout, components, and accessibility. It needs to look and behave like other corporate apps so training and audits go smoother. Also, be mindful that some external partners use older browsers, so we should avoid cutting-edge features if they break compatibility. On the other hand, heavy client frameworks can add latency if not optimized.
+
+Interviewer: Should the UI be mobile-capable or mainly desktop?
+
+Stakeholder: Desktop-first for reps, but responsive enough so supervisors or on-call staff can view things on tablets or phones. We don't need a phone-first app for agents at launch.
+
+Interviewer: Okay. You mentioned latency and optimization. How fast should the app feel when users navigate between screens?
+
+Stakeholder: It needs to feel snappy — I really hate waiting. For typical screen-to-screen navigation, users should not be staring at spinners. Hmm, it's about perceived latency; small waits are OK but long ones frustrate staff.
+
+Interviewer: When you say "not long," do you have a rough number in mind for what's acceptable?
+
+Stakeholder: If you press me, I'd say around five seconds for those small transitions feels like the outer limit. Anything longer and it's painfully obvious. For heavy operations we can show progressive loading, but the basic workflows should meet that feel.
+
+Interviewer: Got it — roughly five seconds for normal navigation. On concurrency, how many people do you expect to be using the system at the same time?
+
+Stakeholder: Peak load isn't huge compared to public-facing systems, but we do expect a few hundred concurrent users during busy periods. It's enough that we can't rely on a single machine; we should plan to scale horizontally and make the services stateless where practical.
+
+Interviewer: Can you be specific about "a few hundred"? Like, is it 200, 300…?
+
+Stakeholder: The planning number we've used internally is three hundred and fifty concurrent users. That gives us headroom for peaks without degradation, assuming reasonable activity distribution.
+
+Interviewer: Okay, 350 concurrent users. On availability — does this need to be up all the time?
+
+Stakeholder: It should be effectively always-on. Cardmember support runs nearly round-the-clock, so downtime is very disruptive. That said, there are scheduled maintenance windows when we coordinate with other systems. Maintenance needs to be predictable so downstream teams can plan.
+
+Interviewer: What are the maintenance windows?
+
+Stakeholder: Weekdays and Saturdays we usually have a tight nightly window in the early morning, and on Sundays there's a longer window in the early morning hours. Specifically, Monday through Saturday we aim for one hour in the 3am block Eastern, and Sunday we allow a larger window that runs from about 1am to 5am Eastern. We need to respect those windows when scheduling disruptive work.
+
+Interviewer: Thanks — I'll record those windows. About integrations — you mentioned other systems like databases. Which authoritative sources will we rely on for data?
+
+Stakeholder: The Statement database is the source for transaction details. Cardmember details come from the Cardmember Information store, and merchant details from the Merchant Information system. These are the authoritative sources; we shouldn't create divergent masters. For performance we can cache or replicate selectively, but any authoritative fields used in dispute adjudication need to be reconciled against the source.
+
+Interviewer: So, every transaction detail must come from the Statement DB? No local copy?
+
+Stakeholder: All transaction details should be obtained from the Statement DB as the source of truth. You can cache for speed, but you must be prepared to validate or refresh if there's any question — decisions depend on accurate transaction data.
+
+Interviewer: And the cardmember and merchant info — same approach?
+
+Stakeholder: Yes. Cardmember demographic and account details should come from the Cardmember database, and merchant identifiers and settlement info from the Merchant DB. Those sources own their domains.
+
+Interviewer: Do we need write-back to those systems? Like, if we process an adjustment do we update Cardmember DB?
+
+Stakeholder: Some actions will require writes, but the pattern should be explicit. For example, account adjustments may need to be posted back to the ledger system rather than directly mutating the Cardmember DB. We'll need to clarify with the owners whether we call APIs on those systems or route through an intermediary payments service. I could digress for a second — I remember a project where we wrote locally and it caused reconciliation nightmares, so let's avoid that.
+
+Interviewer: Okay, I'll note that we need to confirm write-back patterns with each DB owner. On authentication and authorization — you said central IAM. Any specifics on protocols or MFA?
+
+Stakeholder: We need corporate SSO for employees, with MFA enforced. For external partners, federated identity or a token-based approach is fine, but provisioning and revocation must be controlled. Importantly, authorization must be enforced at the API layer and consider role-based restrictions, field masking for sensitive data, and approval flows for elevated actions.
+
+Interviewer: Should we implement our own role management UI or always rely on central IAM?
+
+Stakeholder: Prefer consuming roles from central IAM, but a lightweight mapping UI helps for application-specific role assignments. Still, policy decisions like approving elevated rights probably live with HR or security, not the app. We must capture any changes in the audit trail.
+
+Interviewer: Speaking of audit trails — how much detail do we need to capture for each action?
+
+Stakeholder: Every action on a dispute must be logged with enough context so an auditor can reconstruct the event. That means who did what and when, what changed, and contextual IDs. Logs should be tamper-evident and routed to the central logging stack so compliance and security teams can analyze them. We should avoid logging sensitive PII in plaintext though.
+
+Interviewer: Do you have a retention window or format for those logs?
+
+Stakeholder: Retention tends to follow regulatory guidance which we need to confirm with compliance. For format, structured logs that include correlation IDs are preferable so they can be searched. I'll need to check the exact retention period; that's driven by legal compliance.
+
+Interviewer: Understood. For monitoring and validating the performance and availability targets, any preferred metrics or tools?
+
+Stakeholder: We'll want synthetic checks for key flows, real-user monitoring for latency, and dashboards for p95 and p99 latencies, error rates, and system health. Load testing before release is important to validate the concurrency target. The ops team uses our central monitoring stack, so let's integrate with that.
+
+Interviewer: Who operates monitoring — our dev team or a separate ops team?
+
+Stakeholder: The ops or platform team should own production alerts, but the dev team needs to own the instrumentation and run the tests. We'll coordinate that during handover.
+
+Interviewer: If an upstream DB is slow or down, how should the UI behave? Block the user or let them continue?
+
+Stakeholder: For reads, we can show partial data with clear messaging and let users continue where safe, but for critical writes that affect accounts we should avoid accepting data that can't be reconciled. For example, creating a dispute without transaction verification could be risky. We might allow queuing with explicit flags that reconciliation is pending, but that requires clear workflow support.
+
+Interviewer: So, allow queued submissions in some cases, but not for everything. Who decides which operations can be queued?
+
+Stakeholder: Business rules and compliance will define that. Technical implementation can support both synchronous and asynchronous patterns. Also, we should implement circuit breakers and retries to avoid cascading failures.
+
+Interviewer: Noted. A couple of quick operational questions — do we need immutable audit storage or append-only?
+
+Stakeholder: Auditors tend to prefer append-only with tamper-evidence. Whether that's a technical WORM store or a properly secured log pipeline, we'll have to meet compliance expectations. I'll get the exact requirement from compliance.
+
+Interviewer: Okay. For acceptance testing, what are the must-have tests before we go live?
+
+Stakeholder: Load tests to validate the concurrency target, synthetic transaction flows to validate navigation latency, security scans, and integration tests with each authoritative DB. Also, accessibility checks for the UI.
+
+Interviewer: Thanks. I think that's most of what I planned. Any other concerns or things you want to flag?
+
+Stakeholder: Just one more thing — document the integration contracts early. If we wait for API stability later, it slows everything down. And, hmm, a small aside, make sure the design saves obvious fields like last-updated by and timestamps on the case header; auditors always ask for that first.
+
+Interviewer: Got it. I'll compile these notes and email them with the open questions to the DB owners and IAM. When should we schedule a follow-up?
+
+Stakeholder: Send the notes today, and let's schedule a follow-up in a week. Bring DB owners and security so we can lock down contracts.
+
+Interviewer: Perfect. Thanks for your time — I'll send the notes and set up the meeting.
+
+---
+Selected Requirements:
+1. [NICE.csv line 149] [quality, legal, look_and_feel] 'The Disputes application shall comply with the corporate standards for user interface creation for internally and externally used applications.'
+2. [NICE.csv line 155] [quality, performance] 'The maximum wait time for a user navigating from one screen to another within the Disputes application shall be no more than 5 seconds.'
+3. [NICE.csv line 156] [quality, performance, scalability] 'The Disputes application shall support 350 concurrent users without any degradation of performance in the application.'
+4. [NICE.csv line 157] [quality, availability, operability] 'The Disputes application shall be available 24x7x365 with the exception of the following scheduled maintenance windows. Monday â€“ Saturday 3:00am to 4:00am EST Sunday 1:00amd to 5:00am EST'
+5. [NICE.csv line 158] [quality, operability] 'The Disputes application shall interface with the Statement Database. The Statement Database provides the transaction details to the Disputes System. All transaction details must be obtained from the Statement Database'
+6. [NICE.csv line 159] [quality, operability] 'The Disputes application shall interface with the Cardmember Information Database. The Cardmember Information Database provides detailed information with regard to a cardmember. All cardmember detail information must be obtained from the Cardmember Information Database.'
+7. [NICE.csv line 160] [quality, operability] 'The Disputes applications shall interface with the Merchant Information Database. The Merchant Information Database provides detailed information with regard to the merchant. All merchant detail information shall be obtained from the Merchant Information Database.'
+8. [NICE.csv line 163] [quality, security] 'The Disputes application shall ensure that only users with the appropriate access level are allowed to initiate dispute requests.'
+9. [NICE.csv line 165] [quality, security] 'The Disputes application shall ensure that only authorized users are allowed to logon to the application.'
+10. [NICE.csv line 177] [quality, functional, legal] 'The Disputes application must maintain a detailed history of every action that a user takes on a dispute case. This ensures a complete audit trail if questions arise later on with regard to a particular dispute case.'

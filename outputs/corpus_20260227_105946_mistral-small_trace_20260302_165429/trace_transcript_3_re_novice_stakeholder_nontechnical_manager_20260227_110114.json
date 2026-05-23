@@ -1,0 +1,117 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_3_re_novice_stakeholder_nontechnical_manager_20260227_110114.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_165431",
+  "requirements": [
+    {
+      "requirement": "The system should feel straightforward to use and prevent user frustration with clunky tools.",
+      "source_citation": "Also, it should feel straightforward to use — people here get frustrated with clunky tools.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for the system to be straightforward to use, indicating a strong concern for usability.",
+      "follow_up_question": "Can you provide examples of specific tools that are currently considered clunky and what makes them frustrating?"
+    },
+    {
+      "requirement": "The system should be learnable quickly, with users able to pick it up after a short training session.",
+      "source_citation": "I really want this to be learnable quickly — they should be able to pick it up after a short training and then manage schedules without calling IT every other day.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of quick learning and minimal reliance on IT support, which are key usability concerns.",
+      "follow_up_question": "What specific tasks should users be able to perform after the short training session?"
+    },
+    {
+      "requirement": "The system should use clear and consistent terminology, including Standard English and nursing-specific terms.",
+      "source_citation": "It should be clear and use Standard English, and it should also speak the language of nurses... consistent wording — don't call the same thing different names in different places.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for clear, consistent, and appropriate terminology to avoid confusion and errors.",
+      "follow_up_question": "Can you provide examples of specific terms or phrases that should be used or avoided?"
+    },
+    {
+      "requirement": "The system should be available during business hours with a target uptime of around 95%.",
+      "source_citation": "We need it to be available during business hours when staff are working, and outages are disruptive... aiming for high nineties in percent uptime is what I'd expect — something around ninety-five percent.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for high availability during business hours and provides a specific target uptime.",
+      "follow_up_question": "What are the specific business hours during which the system must be available?"
+    },
+    {
+      "requirement": "The system should feel fast, with small tasks completed in around 5 seconds and schedule generation in up to 30 seconds.",
+      "source_citation": "It just needs to feel fast... For small tasks like updating a student record or adding someone to a cohort, a pause longer than a few seconds feels slow... For schedule generation, I think up to thirty seconds is reasonable.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder provides specific performance expectations for different types of tasks.",
+      "follow_up_question": "Are there any other tasks or operations with specific performance expectations?"
+    },
+    {
+      "requirement": "The system should control access to sensitive student information based on roles and ensure privacy compliance.",
+      "source_citation": "Not everyone needs to see everything; some of the student info is sensitive, so access needs to be controlled in practice.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for access control and privacy compliance for sensitive student information.",
+      "follow_up_question": "Can you provide more details on the specific roles and their corresponding access levels?"
+    },
+    {
+      "requirement": "The system should include basic checks to prevent invalid input and guard against duplicates.",
+      "source_citation": "Basic checks to prevent obviously invalid input and to guard against duplicates would save hours of cleanup.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the importance of data integrity checks to prevent errors and reduce cleanup efforts.",
+      "follow_up_question": "Can you provide examples of specific invalid inputs or duplicate scenarios that should be prevented?"
+    },
+    {
+      "requirement": "The system should handle aliases or mapping for clinical partners' naming conventions to avoid creating duplicate sites.",
+      "source_citation": "Our clinical partners sometimes use different naming conventions for their units... it'd be great if the system could handle aliases or mapping so we don't accidentally create a new site every time someone spells a unit name differently.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for the system to handle different naming conventions to maintain data consistency.",
+      "follow_up_question": "Can you provide examples of specific naming conventions or aliases that should be supported?"
+    },
+    {
+      "requirement": "The system should interface with the central campus system (CampusConnect) to ensure accurate student lists and enrollment statuses.",
+      "source_citation": "We use the central campus system for student records and enrollment — CampusConnect — so this needs to interface with that so student lists and enrollment statuses are accurate.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for integration with CampusConnect to ensure data accuracy.",
+      "follow_up_question": "What specific data fields or entities need to be synchronized between the systems?"
+    },
+    {
+      "requirement": "The system should sync data often enough to avoid stale rosters during enrollment changes, with nightly syncs as a baseline.",
+      "source_citation": "Ideally it would sync often enough that we don't have stale rosters during enrollment changes, but it doesn't have to be instantaneous.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for regular data synchronization to maintain up-to-date information.",
+      "follow_up_question": "What are the specific peak times during which more frequent updates might be necessary?"
+    }
+  ]
+}

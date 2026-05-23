@@ -1,0 +1,293 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_3_re_novice_stakeholder_technical_junior_20260227_110127.txt",
+  "model": "openai/gpt-5-mini",
+  "timestamp": "20260302_172049",
+  "requirements": [
+    {
+      "requirement": "The system shall be stable and not crash or become unusable when users edit cohorts or perform routine scheduling operations.",
+      "source_citation": "trying to make the thing not fall over when someone edits a cohort.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly describes current work to prevent system failures when editing cohorts, indicating a need for robustness against normal operations. Missing specifics: acceptable failure modes, error rates, or recovery behavior.",
+      "follow_up_question": "What specific failure behaviors are unacceptable (e.g., data loss, UI crashes, partial saves), and what acceptable recovery behavior should look like after an edit fails?"
+    },
+    {
+      "requirement": "Integration hooks to other systems shall be implemented in a maintainable, manageable way to avoid messy, fragile integrations.",
+      "source_citation": "I've also worked a bit on the integration hooks to other systems, though, hmm, that part gets messy.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "Interviewee notes integration code is currently messy; implies a non-functional need for maintainable, well-structured integrations. Missing specifics about coding standards, documentation, or interface contracts.",
+      "follow_up_question": "What specific maintainability goals should we target for integrations (e.g., documented APIs, modular adapters, test coverage thresholds)?"
+    },
+    {
+      "requirement": "The system shall reduce manual errors by providing validation and automated checks to prevent double-bookings and incorrect entries.",
+      "source_citation": "double-bookings happen, and folks miss notifications when a schedule changes... automate alerts... reduce manual errors — that’s a big one.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Stakeholder links manual spreadsheet work to errors and requests automation and validation to reduce errors. Missing details: which validations are mandatory and their strictness.",
+      "follow_up_question": "Which specific validations should be required versus advisory (e.g., block a save vs. warn), and are there preferred automated checks beyond double-booking detection?"
+    },
+    {
+      "requirement": "Access to student and schedule data must be role-based so clinical site coordinators, instructors, program admins, and IT staff see only the data appropriate to their role.",
+      "source_citation": "Clinical site coordinators need to see who's coming and when, though they shouldn't see everything about the students.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly calls out differing needs for visibility, implying RBAC. Missing specifics: roles, permissions matrix, and enforcement mechanisms.",
+      "follow_up_question": "Can you provide a detailed list of roles and the exact data fields or actions each role should be allowed to view or perform?"
+    },
+    {
+      "requirement": "The system shall limit access to sensitive information (e.g., SSNs, medical notes) so that only authorized individuals can view such data, and such access must follow university information policy.",
+      "source_citation": "Program admins need a full view, but site coordinators only need the information relevant to their site... anything sensitive... should be hidden unless you really need it. So, access should be limited depending on role.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 5,
+      "rationale": "Stakeholder asks for data minimization and role-limited access and references university policy; this is a legal/compliance requirement. Missing specifics: which fields are classified as sensitive and what policy sections apply.",
+      "follow_up_question": "Which specific data fields are considered sensitive under the university policy, and are there documented approval processes for granting exceptions?"
+    },
+    {
+      "requirement": "Access controls and data handling shall comply with the university's information privacy policy; ad hoc decisions about personal data visibility are not permitted.",
+      "source_citation": "There should be clear restrictions so only authorized people can see personal data. Also, it should follow our university’s information policy on privacy — we can't just make ad hoc decisions here.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 5,
+      "rationale": "Explicit requirement to align with institutional policy. Missing specifics: policy name/clauses and audit/compliance requirements.",
+      "follow_up_question": "Please provide the relevant university information policy documents or specific clauses we must comply with."
+    },
+    {
+      "requirement": "Common lightweight operations (e.g., adding a student, updating a roster) shall respond within approximately 5 seconds under normal load.",
+      "source_citation": "For the small management tasks — I’d say around five seconds is fine; anything longer feels sluggish.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder gives a concrete perceived-performance target for small tasks. Missing specifics: how 'normal load' is defined and SLAs/measurement methods.",
+      "follow_up_question": "Should the 5-second target be an SLA (e.g., 95th percentile) and under what load profile (number of concurrent users)?"
+    },
+    {
+      "requirement": "Heavy operations (e.g., generating a full term schedule) shall complete within approximately 30 seconds, or users should be given clear progress feedback.",
+      "source_citation": "For generating an entire schedule, maybe up to thirty seconds is acceptable before folks start wandering off or hitting refresh.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder provides acceptable delay for heavy processing and implies need for feedback if longer. Missing specifics: whether asynchronous processing with notifications is acceptable.",
+      "follow_up_question": "If schedule generation may exceed 30 seconds, is asynchronous processing with email/notification acceptable, and what success rate/percentile should meet the 30s goal?"
+    },
+    {
+      "requirement": "The system shall support peak concurrency of approximately ten simultaneous users during business hours (9:00–17:00) without noticeable slowdowns.",
+      "source_citation": "I'd say about ten people at peak, and that's mostly during the standard office window from nine in the morning until five in the afternoon.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "Stakeholder specifies expected concurrency and hours; useful for capacity planning. Missing specifics: definition of 'noticeable slowdown' and whether peaks might be higher occasionally.",
+      "follow_up_question": "Should capacity planning target only ten concurrent users, or include a safety margin (e.g., 2x) for occasional spikes?"
+    },
+    {
+      "requirement": "The system shall be available and reliable during standard working hours; frequent outages during those hours are unacceptable.",
+      "source_citation": "It needs to be reliable during working hours when people are doing scheduling. Occasional downtime for maintenance is okay, but frequent outages during those hours make our lives miserable.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "Stakeholder emphasizes business-hour availability and tolerates occasional maintenance windows. Missing specifics: allowed maintenance windows and notification procedures.",
+      "follow_up_question": "What maintenance windows are acceptable, and how much advance notice should users receive for planned downtime?"
+    },
+    {
+      "requirement": "The system shall aim for approximately 95% availability given budget constraints and campus hosting.",
+      "source_citation": "Yeah, I think aiming for around ninety-five percent availability makes sense given our needs and budget.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "Stakeholder gives explicit availability target tied to budget. Missing specifics: measurement period (monthly/yearly) and exceptions (planned maintenance).",
+      "follow_up_question": "Should the 95% availability be measured monthly or annually, and how should planned maintenance be treated in that calculation?"
+    },
+    {
+      "requirement": "The system shall be designed for a minimum service lifetime of five years, supporting multiple cohorts, accreditation cycles, and curriculum changes.",
+      "source_citation": "Five years is a reasonable minimum I’d say.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "Stakeholder expects multi-year use; implies maintainability and extendability. Missing specifics: expectations for upgrades, backward compatibility, or support model.",
+      "follow_up_question": "What level of backward compatibility and upgrade support do you expect over the five-year period (e.g., migrate data for each release, downtime allowed)?"
+    },
+    {
+      "requirement": "The system shall use a stable, authorized integration to CampusConnect (master student data and authentication) rather than manual CSV imports.",
+      "source_citation": "we need a stable, authorized connection rather than some manual CSV imports.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Stakeholder prefers authorized automated interfaces to master campus systems for reliability and data integrity. Missing specifics: protocol (API vs SFTP), authentication method, or SLAs for the integration.",
+      "follow_up_question": "Can central IT provide the preferred integration mechanism (API, SFTP, etc.) and authentication/authorization details for CampusConnect?"
+    },
+    {
+      "requirement": "The user interface shall support standard desktop HTML browsers (Chrome, Edge, Safari, Firefox); mobile support may be deferred to a later phase.",
+      "source_citation": "It should work in any HTML browser so staff can use whatever they have on their machines... Mobile would be nice later, but the immediate need is desktop browsers.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 5,
+      "rationale": "Stakeholder specifies browser compatibility and deprioritizes mobile initially. Missing specifics: supported browser versions and accessibility requirements.",
+      "follow_up_question": "Which minimum browser versions should we support, and are there accessibility (e.g., WCAG) requirements we must meet?"
+    },
+    {
+      "requirement": "The system shall perform input validation and data integrity checks to prevent inconsistent entries (e.g., overlapping dates, missing required fields, students assigned to two places simultaneously) and cross-check entries against master student data.",
+      "source_citation": "We need validation to catch obvious mistakes and prevent garbage getting in... ensuring dates don't overlap, required fields are present, and that a student doesn't get assigned to two places at the same time. Also, cross-checks against the master student data...",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "reliability",
+      "confidence": 5,
+      "rationale": "Stakeholder lists explicit validation examples and cross-checks to ensure data integrity. Missing specifics: strictness (block vs warn), validation timing (client vs server), and error messaging.",
+      "follow_up_question": "For each validation type (overlap, required fields, enrollment check), should the system block the action or allow it with warnings, and where should validation run (client/server)?"
+    },
+    {
+      "requirement": "Notifications about schedule changes shall be automatic, indicate what changed and any required action, and avoid spamming users for minor irrelevant tweaks.",
+      "source_citation": "They need to be automatic... It should say what changed and what action, if any, is required. And, ideally, not spam people for tiny, irrelevant tweaks.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Stakeholder requires automated, informative notifications with throttling or relevance filtering. Missing specifics: definition of 'tiny tweak', batching/throttling policy, and user preferences.",
+      "follow_up_question": "What rules should determine when notifications are sent versus suppressed (e.g., threshold for changes, batching window), and should users be able to configure notification preferences?"
+    },
+    {
+      "requirement": "The system shall support email and calendar invites for notifications as baseline; SMS for urgent day-of changes is optional for later enhancement.",
+      "source_citation": "Email and calendar invites are the baseline. SMS could be handy for urgent day-of changes, but that's a later enhancement.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Stakeholder prioritizes email and calendar integration and mentions SMS as future enhancement. Missing specifics: calendar format (iCal), SMS provider, and opt-in controls.",
+      "follow_up_question": "Should calendar invites use iCal/ICS, and do we need opt-in controls for SMS or any rules for who receives each channel?"
+    },
+    {
+      "requirement": "The system shall maintain an audit log of who changed what and when for schedules and student data to support dispute resolution and compliance.",
+      "source_citation": "Yes, we should have a history of who changed what and when... helps with compliance.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly requests audit trails. Missing specifics: retention period, log format, access controls to logs, and tamper-resistance.",
+      "follow_up_question": "What retention period is required for audit logs, and who should have access to view or export audit history?"
+    },
+    {
+      "requirement": "Personal and sensitive data shall be protected according to organizational policy, including controlled access and encryption where required; sensitive identifiers (e.g., SSNs, medical notes) must not be displayed in plain view.",
+      "source_citation": "It must protect private information in line with our organization’s information policy. That means controlled access, encryption where required, and minimal exposure of personal identifiers. We can't just put SSNs or medical notes in plain view.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder sets clear data protection requirements and references encryption and access control. Missing specifics: encryption at rest/in transit standards, key management, and field-level protections.",
+      "follow_up_question": "Which encryption standards (e.g., TLS version, AES key lengths) and which fields require encryption or masking, and how should key management be handled?"
+    },
+    {
+      "requirement": "The system shall be designed to scale and be extensible so it can support future curriculum updates and additional cohorts without major redesign; it should tolerate occasional heavier days.",
+      "source_citation": "it should be built so we can support future curriculum updates and maybe more cohorts... it should survive heavier days and changes over the years.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "Stakeholder calls for future-proofing and ability to handle heavier load; specifics on expected future scale are vague. Missing specifics: target growth factors, data volume, and concurrency increases.",
+      "follow_up_question": "What is the expected growth in cohorts/users over 1–5 years (e.g., 2x, 5x), and what maximum concurrency should the system be designed to handle?"
+    },
+    {
+      "requirement": "Given budget and campus hosting constraints, the system shall achieve reasonable reliability without requiring top-tier enterprise SLAs and must be compatible with central IT hosting and coordination.",
+      "source_citation": "Budget is always a thing; we probably can't aim for top-tier enterprise SLAs everywhere. Hosting is likely through campus infrastructure so we need to coordinate with central IT.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 4,
+      "rationale": "Stakeholder sets operational constraints that will affect SLA and architectural choices. Missing specifics: acceptable costs, responsibilities of central IT, and hosting capabilities.",
+      "follow_up_question": "Can central IT provide details on available hosting tiers, expected costs, and operational responsibilities (backups, monitoring, incident response)?"
+    },
+    {
+      "requirement": "The UI shall be intuitive and require minimal training so non-technical admins can perform common tasks with minimal clicks, clear error messages, and predictable workflows.",
+      "source_citation": "Keep it simple enough that admins who aren't technical can use it without weeks of training — the UI needs to be intuitive.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 5,
+      "rationale": "Stakeholder emphasizes learnability and efficiency of UI for non-technical users. Missing specifics: acceptable number of clicks for tasks, UX standards, or measurable usability targets.",
+      "follow_up_question": "Can you identify the top 5 common tasks and an acceptable target (e.g., max clicks or time) for each to validate 'minimal clicks'?"
+    },
+    {
+      "requirement": "The system shall provide routine backups and a disaster recovery plan allowing restoration to a recent state so that weeks of scheduling work are not lost; instant failover is not required.",
+      "source_citation": "Backups should be routine; if data gets corrupted, we need a way to restore to a recent state. It doesn't need to be instant failover, but some recovery plan is required so we don't lose weeks of scheduling work.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 5,
+      "rationale": "Stakeholder requests backups and recoverability with relaxed RTO/RPO expectations. Missing specifics: RTO/RPO targets, backup frequency, and restore procedures.",
+      "follow_up_question": "What maximum data loss (RPO) and recovery time (RTO) are acceptable (e.g., up to 24 hours, 72 hours), and how often should backups be taken?"
+    },
+    {
+      "requirement": "The system shall support manual overrides for exceptional rules (e.g., preceptor preferences, site capacities) but include safeguards and checks to prevent invalid states.",
+      "source_citation": "there's always some odd rule about preceptor preferences and site capacities that never fits neatly into automated logic — so having manual override with checks is useful.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "Stakeholder wants flexibility for edge cases with controls to avoid errors; details lacking on who can override and how overrides are tracked.",
+      "follow_up_question": "Who should be permitted to perform manual overrides, what validations should still run, and should overrides be recorded in the audit log with justification?"
+    },
+    {
+      "requirement": "The system shall prevent conflicting assignments (such as scheduling a student at two clinical sites on the same day) through solid conflict detection and enforcement.",
+      "source_citation": "we once had a mess where a student was scheduled at two clinical sites on the same day, so whatever prevents that has to be solid.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "reliability",
+      "confidence": 5,
+      "rationale": "Stakeholder gives a concrete example of unacceptable inconsistency and requests strong conflict prevention. Missing specifics: conflict resolution policy and handling of concurrent edits.",
+      "follow_up_question": "Should conflict checks be enforced transactionally (preventing conflicting saves) and how should concurrent edits be handled (locking vs. optimistic concurrency)?"
+    },
+    {
+      "requirement": "The development process shall include ongoing usability feedback as the UI is developed to reduce future support tickets and improve workflow choices.",
+      "source_citation": "keep talking as the UI shapes up. Small usability choices now save so many support tickets later.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "Stakeholder requests iterative usability collaboration to reduce support burden; this is a process-level non-functional requirement. Missing specifics: cadence, stakeholders involved, or acceptance criteria.",
+      "follow_up_question": "What cadence and stakeholders do you expect for usability reviews (e.g., weekly demos with admins) and are there acceptance criteria for UI changes?"
+    }
+  ]
+}

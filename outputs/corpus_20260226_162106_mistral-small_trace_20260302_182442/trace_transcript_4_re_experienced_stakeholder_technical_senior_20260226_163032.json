@@ -1,0 +1,238 @@
+{
+  "transcript_file": "outputs/corpus-20260226_162106/transcript_4_re_experienced_stakeholder_technical_senior_20260226_163032.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_182444",
+  "requirements": [
+    {
+      "requirement": "The application should deliver a snappy feel to representatives, avoiding blocking on distant systems unless necessary.",
+      "source_citation": "Reps are impatient — honestly, they want instant feedback. They get frustrated if screens take too long to populate or when search results lag. So, the app should deliver a snappy feel. I don't want them sitting idle waiting for full payloads; where possible use skeletons and progressive rendering. If backends are slow, show partial data and let them continue work. The UX should avoid blocking on distant systems unless absolutely necessary.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for a snappy feel and instant feedback, which directly relates to usability. The mention of avoiding blocking on distant systems and using progressive rendering further supports this.",
+      "follow_up_question": "Can you provide specific examples of scenarios where blocking on distant systems is acceptable?"
+    },
+    {
+      "requirement": "The application should have a perceived end-to-end latency of five seconds or less for routine screen-to-screen transitions.",
+      "source_citation": "For routine screen-to-screen transitions, I'd say around five seconds is the upper bound for perceived wait. Anything noticeably longer and reps complain.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the requirement for a five-second upper bound for perceived wait during routine screen-to-screen transitions.",
+      "follow_up_question": "Are there specific screen transitions that should be prioritized for meeting this latency requirement?"
+    },
+    {
+      "requirement": "The application should use skeletons and progressive rendering to show partial data and allow representatives to continue work if backends are slow.",
+      "source_citation": "Where possible use skeletons and progressive rendering. If backends are slow, show partial data and let them continue work.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the use of skeletons and progressive rendering to handle slow backends, which is a usability concern.",
+      "follow_up_question": "Can you provide examples of partial data that can be shown to representatives while waiting for backend responses?"
+    },
+    {
+      "requirement": "The application should be designed for 350 concurrent users without user-visible performance degradation.",
+      "source_citation": "Design for 350 concurrent users without user-visible performance degradation.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the requirement for the application to handle 350 concurrent users without performance degradation.",
+      "follow_up_question": "What specific performance metrics should be monitored to ensure this requirement is met?"
+    },
+    {
+      "requirement": "The application should have a p95 perceived latency of five seconds or less for normal screen transitions.",
+      "source_citation": "p95 should meet it. We can tolerate a small number of slow tails, but if 5–10% of operations are slow, that's a problem. So, p95 perceived latency of five seconds for normal screen transitions feels right.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the p95 perceived latency requirement for normal screen transitions.",
+      "follow_up_question": "Are there specific types of screen transitions that should be prioritized for meeting this p95 latency requirement?"
+    },
+    {
+      "requirement": "The application should have negligible error rates under load.",
+      "source_citation": "Error rates must remain negligible.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the requirement for negligible error rates under load.",
+      "follow_up_question": "What specific error rates are considered negligible for this application?"
+    },
+    {
+      "requirement": "The application should maintain CPU and memory usage well below saturation levels.",
+      "source_citation": "CPU and memory should be well below saturation — we want headroom for spikes.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the requirement for CPU and memory usage to be well below saturation.",
+      "follow_up_question": "What specific thresholds should be set for CPU and memory usage to ensure this requirement is met?"
+    },
+    {
+      "requirement": "The application should have near-continuous availability with scheduled maintenance windows during low-traffic hours.",
+      "source_citation": "We need near-continuous availability because reps and merchants operate around the clock. Scheduled maintenance windows are acceptable, though — small windows during low-traffic hours.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the requirement for near-continuous availability with scheduled maintenance windows.",
+      "follow_up_question": "What specific maintenance windows are acceptable for this application?"
+    },
+    {
+      "requirement": "The application should degrade gracefully and show cached data with a clear warning if downstream systems are unavailable.",
+      "source_citation": "The UI must degrade gracefully. If Statement is down, we should show cached data with a clear warning, disable actions that require authoritative writes, and queue any outbound requests that can be retried safely.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the requirement for graceful degradation and the use of cached data with a clear warning.",
+      "follow_up_question": "What specific actions should be disabled when downstream systems are unavailable?"
+    },
+    {
+      "requirement": "The application should use circuit breakers and exponential backoff for error handling.",
+      "source_citation": "We need circuit breakers, exponential backoff, and operator dashboards to surface issues.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the requirement for circuit breakers and exponential backoff for error handling.",
+      "follow_up_question": "What specific thresholds should be set for circuit breakers and exponential backoff?"
+    },
+    {
+      "requirement": "The application should have clear caching policies and reconcile periodically.",
+      "source_citation": "Cache only under an explicit policy... reconcile periodically.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the requirement for clear caching policies and periodic reconciliation.",
+      "follow_up_question": "What specific caching policies should be implemented for this application?"
+    },
+    {
+      "requirement": "The application should use idempotency keys on requests and have reconciliation jobs to detect duplicate postings.",
+      "source_citation": "Use idempotency keys on requests, durable queues that record submission status, and reconciliation jobs that detect duplicate postings in billing and flag them.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the requirement for idempotency keys and reconciliation jobs to detect duplicates.",
+      "follow_up_question": "What specific reconciliation processes should be implemented for this application?"
+    },
+    {
+      "requirement": "The application should capture every significant action in audit logs with before-and-after states, reasons, and supporting documents.",
+      "source_citation": "Every significant action: case creation, edits, status changes, adjustments requested, approvals, escalations, correspondence sent, and who viewed what and when. For edits we should capture before-and-after states, reasons, and any supporting documents.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the requirement for capturing significant actions in audit logs with detailed information.",
+      "follow_up_question": "What specific actions should be considered significant for audit logging purposes?"
+    },
+    {
+      "requirement": "The application should have immutable audit logs with long-term retention.",
+      "source_citation": "Immutability is preferable for audit logs; if we cannot WORM them, then we must have cryptographic hashing and append-only patterns so tampering is detectable. Retention periods should be set by Legal/Compliance, but for design assume long-term retention — years rather than months.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the requirement for immutable audit logs with long-term retention.",
+      "follow_up_question": "What specific retention periods should be set for audit logs?"
+    },
+    {
+      "requirement": "The application should track regulatory clocks per case, send automated reminders, and escalate to supervisors if timelines are breached.",
+      "source_citation": "The system should track regulatory clocks per case, send automated reminders, escalate to supervisors, and lock certain actions if timelines are breached.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the requirement for tracking regulatory clocks and automated reminders.",
+      "follow_up_question": "What specific regulatory timelines should be tracked for this application?"
+    },
+    {
+      "requirement": "The application should have centralized identity and role-based access control (RBAC) integrated with enterprise SSO.",
+      "source_citation": "Centralized identity and RBAC is the way to go, integrated with enterprise SSO.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the requirement for centralized identity and RBAC integrated with enterprise SSO.",
+      "follow_up_question": "What specific roles and permissions should be defined for this application?"
+    },
+    {
+      "requirement": "The application should enforce case-level visibility with row-level security or an application-level authorization layer.",
+      "source_citation": "We must enforce case-level visibility — row-level security or an application-level authorization layer that filters cases based on rep assignments, territory, or business unit.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the requirement for enforcing case-level visibility with row-level security or an application-level authorization layer.",
+      "follow_up_question": "What specific criteria should be used for filtering cases based on rep assignments, territory, or business unit?"
+    },
+    {
+      "requirement": "The application should have break-glass access for escalations with extra approvals and audit trails.",
+      "source_citation": "Also, we need break-glass for escalations with extra approvals and audit trails.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the requirement for break-glass access with extra approvals and audit trails.",
+      "follow_up_question": "What specific approval processes should be implemented for break-glass access?"
+    },
+    {
+      "requirement": "The application should have near-immediate revocation of access.",
+      "source_citation": "Revocations must be near-immediate.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the requirement for near-immediate revocation of access.",
+      "follow_up_question": "What specific mechanisms should be implemented to ensure near-immediate revocation?"
+    },
+    {
+      "requirement": "The application should use durable queuing, retries with backoff, and reconciliation reporting for adjustments.",
+      "source_citation": "We need durable queuing, retries with backoff, and reconciliation reporting so we can guarantee the request was applied or surface exceptions.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the requirement for durable queuing, retries with backoff, and reconciliation reporting for adjustments.",
+      "follow_up_question": "What specific reconciliation processes should be implemented for adjustments?"
+    },
+    {
+      "requirement": "The application should plan for daylight savings in the maintenance windows.",
+      "source_citation": "Don't forget to plan for daylight savings in the maintenance windows; timezones bite you if you forget them.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "other",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the requirement to plan for daylight savings in the maintenance windows.",
+      "follow_up_question": "What specific measures should be taken to account for daylight savings in the maintenance windows?"
+    }
+  ]
+}

@@ -1,0 +1,183 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_6_re_experienced_stakeholder_technical_junior_20260227_111111.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_174758",
+  "requirements": [
+    {
+      "requirement": "The application must be portable across multiple operating systems including Windows, Linux, and macOS.",
+      "source_citation": "Basically, wherever Java can be put, it should run.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for the application to run on multiple operating systems where Java is supported. This indicates a clear requirement for portability.",
+      "follow_up_question": "Are there any specific versions of these operating systems that the application must support?"
+    },
+    {
+      "requirement": "The application must support flexible database placement, allowing the database to be either local or remote.",
+      "source_citation": "So our code has to play nicely whether the DB is local or remote.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 4,
+      "rationale": "The stakeholder discusses the need for the application to handle database connections flexibly, indicating a requirement for portability in database placement.",
+      "follow_up_question": "Are there any specific database management systems or configurations that must be supported?"
+    },
+    {
+      "requirement": "The application must be deployable on standard Java web/app servers such as Tomcat and JBoss.",
+      "source_citation": "We're not locked to one vendor. The idea is to use standard Java web/app servers — like Tomcat in a lot of our dev setups, and sometimes folks throw JBoss or other app servers in for integration testing.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for the application to be deployable on standard Java web/app servers, indicating a requirement for portability in deployment.",
+      "follow_up_question": "Are there any specific versions of these servers that must be supported?"
+    },
+    {
+      "requirement": "The application must be compatible with at least eight distinct browsers, with a target of 80% rendering success.",
+      "source_citation": "We actually laid out before that we need to test across at least eight distinct browsers, and we'd like the pages to render correctly in, say, around eighty percent of those tests.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for the application to be compatible with multiple browsers and sets a target for rendering success, indicating a requirement for usability.",
+      "follow_up_question": "Which specific browsers are included in the representative set?"
+    },
+    {
+      "requirement": "The application must avoid using bleeding-edge client-side technologies that could break older browsers.",
+      "source_citation": "It should basically work in any HTML browser people use. We shouldn't rely on some bleeding-edge feature that breaks older browsers.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need to avoid bleeding-edge features that could break older browsers, indicating a requirement for usability.",
+      "follow_up_question": "Are there any specific technologies or features that must be avoided?"
+    },
+    {
+      "requirement": "The application must support flexible SMTP settings and common auth/TLS scenarios for email notifications.",
+      "source_citation": "So flexible SMTP settings and support for common auth/TLS scenarios is important.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for flexible SMTP settings and support for common auth/TLS scenarios, indicating a requirement for operability.",
+      "follow_up_question": "Are there any specific email servers or configurations that must be supported?"
+    },
+    {
+      "requirement": "The application must implement sensible retry and backoff mechanisms for email notifications, with admin alerts for persistent failures.",
+      "source_citation": "If an email notification fails because of a transient mail server issue, it should retry... sensible retry and backoff.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for retry and backoff mechanisms for email notifications, indicating a requirement for operability.",
+      "follow_up_question": "What are the specific retry and backoff parameters that should be implemented?"
+    },
+    {
+      "requirement": "The application must respond to routine interactions within 5 seconds for 90% of tasks and within 8 seconds for 98% of tasks.",
+      "source_citation": "So we were targeting that roughly ninety percent of tasks complete in under five seconds, and about ninety-eight percent should finish in under eight seconds.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly sets performance targets for routine interactions, indicating a clear requirement for performance.",
+      "follow_up_question": "Are there any specific interactions or tasks that have different performance requirements?"
+    },
+    {
+      "requirement": "The application must handle at least 1,000 concurrent requests currently and scale up to 2,000 concurrent requests by the next release.",
+      "source_citation": "Currently the target we set was to handle around one thousand concurrent requests, and by the next release that should scale up to around two thousand.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly sets targets for concurrent requests, indicating a clear requirement for scalability.",
+      "follow_up_question": "Are there any specific scenarios or peak loads that must be considered for scalability testing?"
+    },
+    {
+      "requirement": "The application must achieve 99.99% availability, excluding hardware failures.",
+      "source_citation": "I think the number we were aiming for was ninety-nine point nine nine percent availability, not counting situations where the whole server hardware fails.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly sets an availability target, indicating a clear requirement for availability.",
+      "follow_up_question": "Are there any specific availability metrics or monitoring requirements?"
+    },
+    {
+      "requirement": "The application must restrict access to employees or explicitly approved external users with company IDs.",
+      "source_citation": "Only employees, or external users we've explicitly approved and given company IDs, should get in. We can't have random public access.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for strict access control, indicating a clear requirement for security.",
+      "follow_up_question": "Are there any specific authentication or authorization mechanisms that must be implemented?"
+    },
+    {
+      "requirement": "The application must comply with applicable accessibility laws, including screen reader support, keyboard navigation, and color contrast.",
+      "source_citation": "Accessibility is a big one; we should be compliant with the applicable accessibility laws, you know, making sure screen readers work, keyboard navigation, color contrast, that sort of thing.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for accessibility compliance, indicating a clear requirement for usability.",
+      "follow_up_question": "Are there any specific accessibility standards or guidelines that must be followed?"
+    },
+    {
+      "requirement": "The application must degrade gracefully on older or locked-down corporate browsers.",
+      "source_citation": "So if some users are on locked-down corporate machines with old browsers, we need the frontend to degrade gracefully.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for graceful degradation on older browsers, indicating a requirement for usability.",
+      "follow_up_question": "Are there any specific older browsers or corporate environments that must be considered?"
+    },
+    {
+      "requirement": "The application must be deployable on open-source servers like Tomcat and JBoss.",
+      "source_citation": "Ops likes open-source where possible. We often use Tomcat in dev because it's lightweight and free, and JBoss shows up in some places, so compatibility with those is a plus.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the preference for open-source servers, indicating a requirement for maintainability.",
+      "follow_up_question": "Are there any specific versions of these servers that must be supported?"
+    },
+    {
+      "requirement": "The application must support simple and minimal-click booking flows.",
+      "source_citation": "When we design booking flows, keep them simple... users want one-click if possible.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for simple and minimal-click booking flows, indicating a requirement for usability.",
+      "follow_up_question": "Are there any specific user scenarios or workflows that must be simplified?"
+    },
+    {
+      "requirement": "The application must allow rooms to be tagged for coffee proximity.",
+      "source_citation": "If we can tag rooms for coffee proximity, that's a huge win in our office.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for coffee proximity tagging as a user-centric feature, indicating a requirement for usability.",
+      "follow_up_question": "Are there any specific tagging mechanisms or user interfaces that must be implemented?"
+    }
+  ]
+}

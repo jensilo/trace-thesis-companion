@@ -1,0 +1,216 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_5_re_novice_stakeholder_nontechnical_enduser_20260227_110739.txt",
+  "model": "openai/gpt-5-mini",
+  "timestamp": "20260302_172423",
+  "requirements": [
+    {
+      "requirement": "The system SHALL integrate directly with the Choice Parts feed so that availability and part data are current without requiring manual exports or copy/paste.",
+      "source_citation": "we already use that Choice Parts feed—so, well, if the new thing doesn't pull from that, we'll be typing or copying stuff all the time, and nobody wants that.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly requires the new system to use the existing Choice Parts feed to avoid manual exports and stale data. This is about automated data integration and operational correctness rather than a new user-level function. Missing specifics: authentication method for the feed, update frequency, error handling when feed is unavailable.",
+      "follow_up_question": "What exact Choice Parts feed endpoint(s) and authentication method should the system use, and what is the acceptable maximum age of cached/replicated feed data?"
+    },
+    {
+      "requirement": "Parts search responses SHALL be returned within 15 seconds or less under normal conditions as perceived by the user.",
+      "source_citation": "for the parts search anything longer than, um, say fifteen seconds feels like forever when I'm on the phone.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder gave an explicit perceived response-time threshold for parts search. Gaps: what percentile (median, 95th), definition of 'normal conditions', and load conditions.",
+      "follow_up_question": "Should the 15s target apply to a specific percentile (e.g., 95th) and under what load profile (single user, typical concurrency)?"
+    },
+    {
+      "requirement": "Facility (repair shop) search responses SHALL be returned within 8 seconds or less under normal conditions as perceived by the user.",
+      "source_citation": "For finding a preferred repair facility, I expect it to be quicker—maybe eight seconds is reasonable.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder specified an 8s acceptable wait for facility searches. Missing specifics: percentile, load conditions, and exact scope of 'facility search' (filters, maps).",
+      "follow_up_question": "Should the 8s target be expressed as a percentile (e.g., 95th) and does it include map or external API lookups?"
+    },
+    {
+      "requirement": "Audit reports about recycled-parts usage SHALL be generated and returned within 10 seconds or less so the user can review them before continuing work.",
+      "source_citation": "The audit report needs to be something I can get before I move on. If I have to wait more than, hmm, ten seconds it interrupts my flow.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder gave a clear maximum acceptable wait time for audit reports. Missing specifics: report complexity, data volume, caching, and percentile targets.",
+      "follow_up_question": "What is the expected size/complexity of typical audit reports and should the 10s target apply to a specific percentile (e.g., 95th)?"
+    },
+    {
+      "requirement": "The application SHALL provide in-context help on the vast majority of screens (approximately 90% of screens) so users can find guidance without leaving their current workflow.",
+      "source_citation": "It should be almost everywhere... help should be available in the vast majority of screens—so users don't get stuck. I mean, ninety percent of the system having in-context help would be brilliant.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly requests pervasive in-context help and even provides a target (90%). Gaps: depth of help, localization, delivery form (tooltips, help panels, walkthroughs).",
+      "follow_up_question": "What types of in-context help do you prefer (tooltips, step-by-step walkthroughs, contextual FAQs), and should help content be localized or role-specific?"
+    },
+    {
+      "requirement": "The UI SHALL adhere to the company's corporate UI guidelines (layout, colors, controls) to match the look-and-feel of other corporate apps.",
+      "source_citation": "It should feel like one of our apps so it's intuitive... layout, colors, and controls are different... people get confused and make mistakes.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 5,
+      "rationale": "Stakeholder emphasizes consistency with corporate UI to reduce errors and learning time. Missing specifics: version of guidelines, accessibility standards, or exceptions for mobile form factors.",
+      "follow_up_question": "Please provide the corporate UI guideline artifacts (style guide, component library) and any required accessibility standards (e.g., WCAG level)."
+    },
+    {
+      "requirement": "The system SHALL be usable on laptops, tablets, and phones, and SHALL provide offline or degraded-mode access to recent searches and core viewing capabilities when network connectivity is poor.",
+      "source_citation": "Mostly laptops in the office and tablets or phones in the field... sketchy cell service... I just want the app to still let me view recent searches or at least not choke.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 5,
+      "rationale": "Stakeholder expects multi-device support and explicit degraded/offline behavior for field use. Gaps: which features must be available offline, sync model, storage limits.",
+      "follow_up_question": "Which specific features must be available offline (e.g., recent searches, part details, facility notes), and how long should offline cache persist?"
+    },
+    {
+      "requirement": "The application SHALL tolerate intermittent network connectivity and not crash on tablets or phones when connectivity is poor.",
+      "source_citation": "It crashes on my tablet once in a while, which is annoying when I'm standing at a shop. Sometimes I'm standing in a parking lot with sketchy cell service, and I just want the app to still let me view recent searches or at least not choke.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 5,
+      "rationale": "Stakeholder reports crashes on tablets and wants graceful behavior in poor connectivity. Missing specifics: crash telemetry, supported OS versions, and acceptable degraded behaviors.",
+      "follow_up_question": "What tablet and mobile OS versions are in use, and do you require crash reporting/telemetry for diagnostics?"
+    },
+    {
+      "requirement": "The system SHALL support concurrent use by multiple adjusters and handle peak loads (e.g., lunch rush) without unacceptable degradation of response times.",
+      "source_citation": "when I'm in the office multiple adjusters are using it at once and it needs to keep up. Oh, and I forgot to mention, there's usually a lunch rush where everybody's trying to pull parts at the same time — it's a small thing but it matters.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "Stakeholder calls out simultaneous usage and peak periods as a concern; implies need for capacity/scaling. Gaps: expected concurrency numbers and acceptable degradation levels.",
+      "follow_up_question": "What is the expected number of concurrent users during normal and peak periods (e.g., lunchtime), and what response-time targets should hold under peak load?"
+    },
+    {
+      "requirement": "The system SHALL enforce strict data isolation so that each insurance company’s claims and customer data are accessible only to authorized users of that company.",
+      "source_citation": "We absolutely cannot see another insurance company's claims. That would be a nightmare. Each company needs its own space so claims and customer details are private.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder demands multi-tenant isolation to prevent cross-company data exposure. Missing specifics: tenancy model (dedicated DB per tenant vs. logical separation), audit requirements.",
+      "follow_up_question": "Do you require physical separation per company (separate databases) or is logical tenant isolation acceptable, and are there regulatory compliance standards to meet?"
+    },
+    {
+      "requirement": "The system SHALL implement role-based access control so users see data and functions appropriate to their role (e.g., program admins and regional managers have full access; site coordinators and junior adjusters have limited access).",
+      "source_citation": "Within a company, people should see different things depending on their role—some folks need full view, others only the basics.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly requests role-differentiated visibility and access. Gaps: exact permissions per role, role hierarchy, and admin functions for role management.",
+      "follow_up_question": "Please provide the required roles and detailed permission matrix, and indicate who will manage role assignments."
+    },
+    {
+      "requirement": "The system SHALL achieve at least 98% uptime over a representative measurement period (e.g., monthly or annually).",
+      "source_citation": "If you're asking for a metric, I'd say we need it up almost always, with very little downtime—maybe around ninety-eight percent uptime would be acceptable.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "Stakeholder provides a quantitative availability target. Gaps: measurement period, maintenance windows, SLA enforcement, and acceptable outage duration.",
+      "follow_up_question": "Should the 98% uptime be measured monthly or annually, and what maintenance windows (scheduled downtime) are acceptable?"
+    },
+    {
+      "requirement": "The system SHALL provide undo or easy correction mechanisms so that users can recover from input mistakes without needing extensive support.",
+      "source_citation": "it should be forgiving. People make mistakes, so undo or easy corrections are nice.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "Stakeholder requests forgiving UI behavior; indicates need for undo/error-recovery. Gaps: scope of undo (per-field, per-transaction), retention time, and audit trail requirements.",
+      "follow_up_question": "Which operations should support undo (e.g., data edits, deletions, shop ratings), and should undo actions be audited or reversible by admins?"
+    },
+    {
+      "requirement": "The system SHALL provide notifications to users when a part’s status changes to avoid manual polling.",
+      "source_citation": "notifications when a part changes status would be good, because I don't want to keep checking.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "Stakeholder explicitly requests change notifications to improve responsiveness and reduce polling. Gaps: delivery channels (in-app, email, push), subscription controls, and frequency.",
+      "follow_up_question": "Which notification channels do you require (in-app, push notifications, email), and should users be able to subscribe/unsubscribe to specific part updates?"
+    },
+    {
+      "requirement": "Ratings and notes for repair shops SHALL be visible during shop selection and SHALL be stored so patterns of poor behavior can be identified; extreme negative ratings SHALL be able to exclude a shop from preferred lists.",
+      "source_citation": "Maybe there could be a score or notes that show up when I'm choosing a shop, and if it's really bad maybe it shouldn't be on our preferred list.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "Stakeholder wants visibility of shop ratings and potential exclusion from preferred lists. This is about informational quality and policy enforcement rather than core functional process. Missing specifics: rating scale, moderation, who can change preferred-list membership.",
+      "follow_up_question": "What rating scale and moderation workflow do you want, and who should have authority to remove a shop from the preferred list?"
+    },
+    {
+      "requirement": "The system SHALL avoid requiring lengthy training; core functionality SHALL be learnable with approximately two days of onsite hands-on training and basic tasks should be discoverable without extended instruction.",
+      "source_citation": "I'd say two days of onsite training should get people comfortable, but it should also be obvious enough that people pickup the basics quickly.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "Stakeholder gives a training time expectation and an emphasis on learnability. Gaps: definition of 'core functionality', training materials, and expected retention.",
+      "follow_up_question": "Which specific tasks represent 'core functionality' that must be learnable within two days, and do you want built-in tutorials to support that?"
+    },
+    {
+      "requirement": "The system SHALL provide auditability and traceability for recycled-parts usage in estimates, with reports that are easy to generate and review.",
+      "source_citation": "we need to be able to audit recycled parts used in estimates; right now pulling that report is a pain.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "Stakeholder needs auditing capability and easier report generation. This concerns traceability and operational reporting rather than a new function. Gaps: required fields in audit, retention period, regulatory compliance.",
+      "follow_up_question": "What specific fields and history must the audit contain, and how long must audit records be retained?"
+    },
+    {
+      "requirement": "The system SHALL include mechanisms to prevent or minimize stale data caused by manual exports, e.g., automated synchronization or real-time integration with authoritative sources.",
+      "source_citation": "If it doesn't tap into the Choice Parts data directly we'll end up with old availability all the time. I mean, I've been on a call with a shop where they said a part was in stock, but our system didn't show it because someone forgot to update an export. That kills trust.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "Stakeholder identifies stale data from manual exports as a trust issue and requires automated integration or synchronization to avoid it. Gaps: allowable staleness, sync frequency, reconciliations.",
+      "follow_up_question": "What maximum data staleness is acceptable (e.g., seconds/minutes), and do you require real-time updates or periodic syncs?"
+    },
+    {
+      "requirement": "The system SHALL provide mechanisms to surface timely visibility (scores/notes) about repair shops so adjusters can make informed choices and reduce back-and-forth.",
+      "source_citation": "If a shop has a pattern of not using recycled parts properly, I want other adjusters to know. Maybe there could be a score or notes that show up when I'm choosing a shop...",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "Stakeholder requests contextual visibility of shop performance to inform decisions. Gaps: who can create notes, edit history, privacy of notes, and how scores are calculated.",
+      "follow_up_question": "Who should be allowed to add or edit shop notes/scores, and what algorithm or rules should govern score calculation?"
+    }
+  ]
+}

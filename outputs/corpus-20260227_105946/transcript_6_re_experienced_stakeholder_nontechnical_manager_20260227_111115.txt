@@ -1,0 +1,104 @@
+Interviewer: Thanks for sitting down. To start, can you tell me, in your own words, what success looks like for this conference room and meeting management product?
+
+Stakeholder: Sure — I think success is when people stop fighting the tool and the tool actually helps them get a meeting started. So, like, people should be able to reserve a room without calling facilities, they should get their equipment reserved, calendar invites should go out, and overall it should feel like a natural part of their day rather than a hurdle. Oh, and we need to be able to make it look like it belongs to the customer — branding and colors and that sort of thing.
+
+Interviewer: When you say "it should feel like a natural part of their day," what do you mean exactly? How do you measure "feel like"?
+
+Stakeholder: Hmm, good point. I mean it should be quick and obvious. People shouldn't need a training session to do the basic things. If someone sits down and needs to book a room, they should be able to figure it out in just a few minutes — not spend ten minutes poking around. Sorry, that's a bit vague; what I'm trying to say is fewer support calls, fewer angry Slack messages, that kind of thing.
+
+Interviewer: Can you put a number on "a few minutes" or "fewer support calls"? For example, how long is too long for a first-time user to complete a simple reservation?
+
+Stakeholder: Yeah, okay — put me on the spot. For a simple room booking, if most users can't do it within about five minutes on their first try, that's a problem for us. And by most, I mean a high proportion should succeed without help — we don't want support tickets surging because of basic usability issues.
+
+Interviewer: You mentioned branding earlier — can you expand on what "making it look like it belongs to the customer" involves? How important is that, and what parts of the UI need to change?
+
+Stakeholder: It's pretty important for customer acceptance. They want their logo on the landing page, their color palette, maybe a few fonts. Not full-on theming where everything breaks, but enough so employees trust it's an official tool. Also, the client-facing messages, like the email invites and reminders, should carry their identity so it doesn't feel generic.
+
+Interviewer: Speaking of email invites and reminders, you said invites should go out. Are there any specific mail systems we must work with?
+
+Stakeholder: We need to play nicely with what customers actually use. So think Exchange-based shops and folks who use Google for mail, and also the standard SMTP setups that some of our customers run. Basically, it needs to be able to talk to their mail infrastructure so invites and notifications actually get delivered.
+
+Interviewer: You said "notifications actually get delivered" — what happens if they don't? Do you need retries, error reports, or some kind of log?
+
+Stakeholder: We definitely need visibility into failures. If invites bounce or the system runs into errors, we want a record. Ideally exceptions are captured in a log and made available to our support team so we can analyze and fix issues without having to reproduce every problem from scratch. And, uh, if possible, that log should be sent to our team; we don't want to be chasing down every little thing manually.
+
+Interviewer: When you say "sent to our team," do you mean automatic transmission of logs, or do you want someone on the customer side to export and send them?
+
+Stakeholder: Automatic would be much better. I mean, I don't want reliance on someone to remember to export. If the system can package up exceptions and securely transmit them to our analysis pipeline, that's ideal.
+
+Interviewer: Let's talk about availability and peak usage. You mentioned earlier that it needs to feel like part of the day — do you anticipate heavy load at certain times?
+
+Stakeholder: Definitely. The busiest moments are right before the workday and just after lunch, you know, people trying to grab rooms for the morning stand-ups or late-afternoon syncs. Those windows see a lot of simultaneous activity, so the app needs to survive those spikes without slowing people down.
+
+Interviewer: How many simultaneous users or requests are we talking about during those peaks? Can you give me a number to design for?
+
+Stakeholder: Yeah, okay — specifically, the product should handle about a thousand concurrent requests initially. We're planning growth, though, so by the next release we expect that to roughly double to around two thousand. Those peaks are the ones that trip up lesser systems, so capacity needs to be sized with those times in mind.
+
+Interviewer: Capacity aside, how fast should the app feel under normal conditions? You mentioned "not interrupting thought" — can we make that more concrete?
+
+Stakeholder: Right, sorry — that was fuzzy. For common interactions like searching for a room or saving a booking, response time needs to be quick. If a typical task takes longer than a few seconds, people get distracted. To be precise, the vast majority of tasks should finish within a short span so users don't have to wait and lose their train of thought.
+
+Interviewer: You're getting more specific here — how short is "a few seconds," and by "vast majority" what percentage do you mean?
+
+Stakeholder: Okay, to be blunt, about ninety percent of routine tasks should finish within roughly five seconds, and almost all of them — say, better than ninety-five, actually closer to ninety-eight percent — should complete within a bit longer, maybe around eight seconds. We want the experience to be snappy even under normal load.
+
+Interviewer: Thank you — that's helpful. On security and access control: who should be allowed to use the system? Is it open to anyone with an email address or restricted?
+
+Stakeholder: Access needs to be restricted. Only our company employees and approved external users should be able to use it. We can't have random external people booking rooms, so every logon should map to a company-validated identity or an external account that we've approved through the customer's provisioning process.
+
+Interviewer: When you say "every logon should map to a company-validated identity," do you expect any exceptions? For instance, demo accounts, or anonymous booking kiosks?
+
+Stakeholder: For demo or test scenarios, sure, but in production no — production access should only be by approved identities. Kiosks are a special case; if we put a tablet outside a room, that should be registered and controlled by an approved device identity rather than anonymous access.
+
+Interviewer: You mentioned accessibility earlier in your list of concerns. How should the product behave for users with disabilities?
+
+Stakeholder: Accessibility is non-negotiable for us. We need the UI to be usable with screen readers, keyboard navigation, and high-contrast modes. It should follow recognized accessibility standards so someone with visual or motor impairments can still book a room or respond to an invite without asking someone else to do it for them.
+
+Interviewer: Which standard do you want us to align with? You said "recognized standards" — can you name one?
+
+Stakeholder: Yes — it should conform to the Americans with Disabilities Act requirements. That's the baseline for our customers in the U.S., and we expect the product to meet those obligations.
+
+Interviewer: Earlier you talked about "branding" and "accessibility" — how do those two connect? Any tensions between custom look-and-feel and making the product accessible?
+
+Stakeholder: Good call — there can be tension. If a customer insists on low-contrast colors, that can break accessibility. So the theming needs guardrails: let them inject logo and color accents, but the system should enforce sufficient contrast and accessible font sizing. We want flexibility, but not at the cost of excluding people.
+
+Interviewer: Are there any reporting or analytics needs tied to bookings? Management will want insight, I'm sure.
+
+Stakeholder: Yeah, managers want to know utilization — which rooms are overbooked, which equipment is used most, that sort of thing. But, and this is important, any reporting that exposes personal calendars needs to respect privacy and access controls. We don't want a junior employee suddenly seeing executive schedules because a manager asked for a report.
+
+Interviewer: How do you want to handle incidents and ongoing support? You mentioned sending exception logs earlier — what's the expected turnaround or workflow when something breaks?
+
+Stakeholder: If something breaks, the support team should see the exception details quickly so they can triage. We want automated alerts for critical failures, a central console where exceptions are collected, and a way to correlate logs to customer environments. The goal is to diagnose without the customer having to escalate repeatedly. Time to resolution is a business metric for us — long outages cost trust and money.
+
+Interviewer: One last area I want to check: localization. You said it should let users pick a language. Which markets are priorities, or which languages should be supported at launch?
+
+Stakeholder: We need multilingual support for our target markets. At launch we have to cover the big ones: English and Spanish are must-haves for customers in the Americas, and then we should include a couple of European languages like French and German for our EU customers. We don't need every language day one, but customers should be able to pick their preferred language from the set we support.
+
+Interviewer: You brought up several numbers in this talk — five minutes for a first booking, five seconds for most tasks, and concurrency targets. Earlier you mentioned 99.99% availability in a document. How strict is availability expected to be, and are there exceptions?
+
+Stakeholder: Availability is business-critical. We expect near-continuous uptime; planned maintenance windows are okay but unplanned downtime is very costly. To be explicit, our target is the kind of uptime that gives customers confidence — think four nines, and that excludes total server loss events which are a separate failure mode we have contingency plans for.
+
+Interviewer: To wrap up, is there anything I haven't asked about that keeps you up at night?
+
+Stakeholder: Hmm, yeah — two things. One, onboarding: if we make onboarding clunky, customers lose patience quickly. And two, privacy: we have to make sure data residency and export rules are clear for customers in different countries. Oh, and sorry — small tangent — last week a team double-booked a room because the old calendar didn't show equipment availability; it turned into a ten-person shoving match in the kitchen. We want to avoid that kind of chaos.
+
+Interviewer: Good anecdote — that connects back to your point about equipment visibility. So equipment needs to be bookable and shown in search results alongside rooms?
+
+Stakeholder: Exactly. When someone searches, they should see rooms with the right layout and the equipment availability baked in, otherwise it's just noise and people don't trust the system.
+
+Interviewer: Thank you. I'll turn this into formal user stories and pinpoint the measures you've given. If anything else pops up, can I follow up with you?
+
+Stakeholder: Absolutely. And, uh, if you could highlight those performance and uptime numbers clearly in the requirements, that would really help when we talk to infrastructure. Thanks.
+
+---
+Selected Requirements:
+1. [NICE.csv line 285] [quality, usability] 'The product shall be easy to use. 90% of users will be able to successfully reserve a conference room within 5 minutes of product use.'
+2. [NICE.csv line 282] [quality, look_and_feel] The product's Look and Feel shall be able to incorporate aspects of the customer's organization such as logo branding and identity'
+3. [NICE.csv line 292] [quality, legal] 'The product shall conform to the Americans with Disabilities Act.'
+4. [NICE.csv line 287] [quality, functional, usability] 'The product shall allow the user to select a chosen language from one of the target market countries.'
+5. [NICE.csv line 293] [quality, performance] The response shall be fast enough to avoid interrupting the user's flow of thought. 90% of tasks shall complete within 5 seconds. 98% of tasks shall complete within 8 seconds.'
+6. [NICE.csv line 296] [quality, scalability] 'The product shall be capable of handling up to 1 000 concurrent requests. This number will increase to 2 000 by Release 2. The concurrency capacity must be able to handle peak scheduling times such as early morning and late afternoon hours.'
+7. [NICE.csv line 294] [quality, availability] 'Aside from server failure the software product shall achieve 99.99% up time.'
+8. [NICE.csv line 315] [quality, security] 'The product shall ensure that only company employees or external users with company-approved user IDs may have product access. 100% of all logons shall be by either company employees or external users with company-approved user IDs.'
+9. [NICE.csv line 302] [quality, operability, portability] 'The product must be able to interface with various email servers. The product shall be able to send email.'
+10. [NICE.csv line 295] [quality, functional, maintainability] 'The product shall create an exception log of problems encountered within the product for transmission to our company for analysis and resolution.'

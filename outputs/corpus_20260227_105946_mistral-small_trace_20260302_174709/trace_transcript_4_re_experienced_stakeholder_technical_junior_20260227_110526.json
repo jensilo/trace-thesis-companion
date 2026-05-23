@@ -1,0 +1,150 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_4_re_experienced_stakeholder_technical_junior_20260227_110526.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_174711",
+  "requirements": [
+    {
+      "requirement": "The application must have a response time of no more than five seconds for routine screen-to-screen transitions.",
+      "source_citation": "If I'm just moving from a case list to the case detail, I don't want to sit there. I'd say, um, maybe five seconds for those small transitions feels acceptable to me — any longer and people start switching tasks or calling in.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states a performance target of five seconds for screen transitions, indicating a clear expectation for response time.",
+      "follow_up_question": "Are there other specific performance targets for different types of interactions within the application?"
+    },
+    {
+      "requirement": "The application must maintain performance levels without degradation under peak load conditions.",
+      "source_citation": "By 'no degradation' I mean users shouldn't notice slower screens, timeouts, or increased errors during peak.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder defines 'no degradation' in terms of user experience, indicating a need for consistent performance under load.",
+      "follow_up_question": "What specific metrics will be used to measure and ensure 'no degradation' under peak load?"
+    },
+    {
+      "requirement": "The application must enforce role-based access control (RBAC) to restrict dispute initiation and data access based on user roles.",
+      "source_citation": "not everyone should be able to kick off a dispute — and we need to keep a full history of everything a rep does on a case.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for role-based access control and audit logging, indicating security requirements.",
+      "follow_up_question": "Can you provide a detailed list of roles and their corresponding permissions?"
+    },
+    {
+      "requirement": "The application must enforce data separation and access control at the backend to ensure security.",
+      "source_citation": "There was an incident where a dev bypassed a UI toggle and an external partner saw a field they shouldn't have... the security folks insisted the back end must enforce role-based views, not the front end alone.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder provides a specific example of a security incident and the need for backend enforcement.",
+      "follow_up_question": "What specific data fields and roles need to be enforced at the backend?"
+    },
+    {
+      "requirement": "The application must comply with corporate UI standards for consistency and accessibility.",
+      "source_citation": "the UI needs to look and behave like other corporate apps — we keep getting flagged in reviews for mismatched components and accessibility stuff.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for UI consistency and accessibility compliance.",
+      "follow_up_question": "Can you provide specific guidelines or standards that the UI must adhere to?"
+    },
+    {
+      "requirement": "The application must minimize user effort by pre-filling forms and reducing the number of clicks required.",
+      "source_citation": "reps hate extra clicks and repetitive forms — if we can pre-fill stuff from the cardmember DB and keep the flow short, they'll love us.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the need to minimize user effort through pre-filling and reducing clicks.",
+      "follow_up_question": "What specific forms and fields should be pre-filled to minimize user effort?"
+    },
+    {
+      "requirement": "The application must be available 24/7 with scheduled maintenance windows.",
+      "source_citation": "we need the app to be effectively always available — folks in different time zones and some external partners rely on it.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for high availability and specifies maintenance windows.",
+      "follow_up_question": "What are the exact scheduled maintenance windows and how will they be communicated to users?"
+    },
+    {
+      "requirement": "The application must ensure data consistency and reliable status syncs after maintenance.",
+      "source_citation": "having reliable status syncs after that longer maintenance window is important; otherwise they'll be looking at stale indicators and it causes a lot of calls.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "reliability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of reliable status syncs post-maintenance.",
+      "follow_up_question": "What specific measures will be taken to ensure data consistency and reliable status syncs?"
+    },
+    {
+      "requirement": "The application must adhere to system boundaries and enforce data separation for maintainability.",
+      "source_citation": "we can't just make local fixes... adjustments have to go through the posting/billing system.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need to adhere to system boundaries and enforce data separation.",
+      "follow_up_question": "What specific system boundaries and data separation requirements need to be enforced?"
+    },
+    {
+      "requirement": "The application must support 350 concurrent users without performance degradation.",
+      "source_citation": "design for a few hundred simultaneous users — it's not tiny. Specifically, the stakeholder group that set requirements mentioned three hundred and fifty concurrent users as what we should support without degradation.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "The stakeholder provides a specific target for concurrent users and the expectation of no performance degradation.",
+      "follow_up_question": "What specific performance metrics will be used to ensure the application supports 350 concurrent users without degradation?"
+    },
+    {
+      "requirement": "The application must comply with credit card dispute regulations, including timelines and notice requirements.",
+      "source_citation": "we have to follow the usual credit card dispute rules, which complicates timelines and correspondence.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need to comply with credit card dispute regulations.",
+      "follow_up_question": "Can you provide specific regulations and requirements that the application must comply with?"
+    },
+    {
+      "requirement": "The application must maintain an immutable audit log of all actions performed by representatives on cases.",
+      "source_citation": "we need to keep a full history of everything a rep does on a case.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "auditability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for a full history and immutable audit logs.",
+      "follow_up_question": "What specific data points and actions need to be logged in the audit trail?"
+    },
+    {
+      "requirement": "The application must provide a detailed audit trail that allows for the replay of case timelines and evidence.",
+      "source_citation": "if someone asks later what happened on case 12345, we should be able to replay the timeline and show the evidence or documents that were exchanged.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "auditability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for a detailed audit trail that can replay case timelines.",
+      "follow_up_question": "What specific details and evidence need to be included in the audit trail?"
+    }
+  ]
+}

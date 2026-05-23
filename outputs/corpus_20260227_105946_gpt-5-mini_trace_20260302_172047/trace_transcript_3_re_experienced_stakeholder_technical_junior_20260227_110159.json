@@ -1,0 +1,271 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_3_re_experienced_stakeholder_technical_junior_20260227_110159.txt",
+  "model": "openai/gpt-5-mini",
+  "timestamp": "20260302_172049",
+  "requirements": [
+    {
+      "requirement": "The UI must detect scheduling conflicts and warn the user before saving; for clear conflicts the system must block the action unless a user with higher privileges explicitly overrides.",
+      "source_citation": "\"the UI should warn you before you save it, maybe block it outright\"",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly requests conflict detection with warning and blocking behavior; ties to preventing obvious mistakes and guiding users. Missing: exact definition of \"clear conflict\", list of override roles, logging/audit requirements for overrides.",
+      "follow_up_question": "Which specific conflict types should be hard-blocked versus warned (e.g., double-booked clinical slot, prerequisite missing), and which roles are authorized to override each type?"
+    },
+    {
+      "requirement": "The system must validate prerequisite and eligibility rules and prevent enrollment unless an authorized override is provided and documented.",
+      "source_citation": "\"if a student hasn't completed a prerequisite, the system shouldn't let you enroll them without an override.\"",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Clear statement that prerequisite validation is required and overrides must be controlled; gaps include who can override, what documentation is required, and whether this is audited.",
+      "follow_up_question": "Who is allowed to perform prerequisite overrides, what metadata must be recorded when an override occurs, and should overrides be reversible or require approval?"
+    },
+    {
+      "requirement": "The system must provide role-based access control so that Program Admins have broad access, instructors see their class rosters and evaluations, site coordinators see only students assigned to their site (limited contact info), and support staff can generate reports without changing enrollments.",
+      "source_citation": "\"Program Admins ... need pretty much everything... Nursing instructors need to see their class rosters and schedules... Clinical site coordinators should only see the students assigned to their site ... support staff might need to generate reports but not change enrollments.\"",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder defines role/permission distinctions and emphasizes least privilege. Gaps: exact permissions per role, principle for sensitive fields, provisioning processes, and audit logging requirements.",
+      "follow_up_question": "Please provide a concrete matrix mapping roles to allowed actions and visible data fields (e.g., Program Admin, Instructor, Site Coordinator, Support Staff) and whether actions must be auditable."
+    },
+    {
+      "requirement": "Terminology and labels in the UI must use language familiar to nursing staff (e.g., 'student' or 'learner' rather than 'enrollment participant', 'placements' vs 'assignments') and avoid jargon or invented words.",
+      "source_citation": "\"They prefer 'student' or 'learner' ... phrasing should be plain Standard English; avoid pastiche...\"",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly requests plain, domain-appropriate terminology to improve trust and usability. Gaps: specific vocabulary list and governance for content changes.",
+      "follow_up_question": "Can you provide an approved glossary of terms (preferred labels and disallowed terms) for the UI to enforce consistency?"
+    },
+    {
+      "requirement": "Core fields must use controlled vocabularies (dropdowns/picklists) for course types, clinical roles, and site names to enforce consistent data for reporting; free text is allowed only for notes.",
+      "source_citation": "\"I think it should enforce it as much as possible. Like dropdowns and controlled vocabularies for things like course types, clinical roles, and site names. Free text is fine for notes...\"",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "Clear request for controlled vocabularies to improve data quality and reporting. Gaps: who manages vocabularies, whether vocabularies sync with campus master lists, and localization/versioning policies.",
+      "follow_up_question": "Who will curate and maintain the controlled vocabularies, and should they sync automatically with CampusConnect or be editable by Program Admins?"
+    },
+    {
+      "requirement": "Small, routine interactions (e.g., adding a student to a class) must respond within up to approximately 5 seconds; heavy operations (e.g., generating a full schedule for a term) must complete within approximately 30 seconds and no more than 60 seconds.",
+      "source_citation": "\"small student management things should come back in a handful of seconds, maybe up to about five seconds. For the heavy lift ... people expect it in under a minute; personally, I think around thirty seconds would be reasonable\"",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder gives explicit acceptable response times for two classes of operations. Gaps: whether times are for server response or end-to-end perceived latency, and tolerances under peak load.",
+      "follow_up_question": "Do the stated response times refer to perceived UI responsiveness (end-to-end) or backend job completion, and should progress indicators or async job handling be used for longer tasks?"
+    },
+    {
+      "requirement": "The system must handle peak concurrency of about ten concurrent users from the nursing office during busy windows without degraded performance.",
+      "source_citation": "\"mornings are peak... the nursing office might have, I dunno, about ten people all active at once during certain windows.\"",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "Stakeholder provides a rough estimate of expected concurrent users requiring the system to handle bursts. Gap: broader campus concurrency, other simultaneous roles, and definition of 'without degraded performance' (tie to response times).",
+      "follow_up_question": "Are there any other groups that might concurrently use the system (e.g., instructors remotely) and should the system be load-tested for higher concurrency than ten (e.g., 20–50) to be safe?"
+    },
+    {
+      "requirement": "The system must be available during business hours (approx. 08:00–18:00 weekdays), with higher reliability during critical scheduling windows; aim for approximately 95% overall availability but higher guarantees for critical windows.",
+      "source_citation": "\"roughly eight in the morning to six in the evening on weekdays.\" and \"ninety-five percent sounds about right to aim for.\" and \"maybe we need higher reliability during those windows...\"",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "Stakeholder specifies business hours and suggests 95% target but also requests higher reliability during critical windows. Gaps: exact SLA for critical windows, maintenance policies, and allowed downtime per month.",
+      "follow_up_question": "Which specific calendar windows are considered 'critical scheduling windows', and what minimum availability SLA would you require during those windows (e.g., 99%, 99.5%)?"
+    },
+    {
+      "requirement": "The system must integrate with the CampusConnect system for student records and single sign-on and must not act as the master for enrollments or IDs.",
+      "source_citation": "\"tie into the university's central systems for student records and authentication. ... CampusConnect server — it holds the master enrollments and IDs.\" and \"I think CampusConnect exposes an API and uses the campus single sign-on. ... the app shouldn't be the master for those.\"",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Stakeholder insists on CampusConnect as source-of-truth and SSO integration. Gaps: expected integration method (API vs batch), auth protocols, error handling for sync failures, and data ownership/resolution rules.",
+      "follow_up_question": "Can IT confirm whether CampusConnect supports real-time APIs for enrollment changes and SSO (and provide API specs), and what auth method (SAML, OAuth) must be used?"
+    },
+    {
+      "requirement": "Roster and enrollment data must be propagated in real-time or near-real-time (not just nightly batch) so changes in CampusConnect appear promptly in the app.",
+      "source_citation": "\"I think real-time or near-real-time sync is better for rosters so changes show up quickly.\"",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "Stakeholder prefers near-real-time synchronization for rosters to avoid mismatched rosters. Gaps: acceptable lag (seconds/minutes), retry/backoff behavior, and partial-sync semantics.",
+      "follow_up_question": "What maximum synchronization latency is acceptable for roster/enrollment updates (e.g., under 5 minutes), and how should the system surface sync errors to users?"
+    },
+    {
+      "requirement": "When importing CSV rosters, the system must validate formatting and rows, highlight or reject problematic rows, and not silently import invalid data.",
+      "source_citation": "\"when a user pastes a CSV for a roster, the system should check for formatting problems and highlight rows that fail rather than silently importing trash.\"",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "Stakeholder calls for robust import validation and user feedback to avoid bad data. Gaps: specific validation rules, acceptable auto-correction behavior, and bulk-repair tools.",
+      "follow_up_question": "Please specify the validation rules for CSV imports (required fields, permitted formats), and should the system offer automated fixes or only highlight errors for user correction?"
+    },
+    {
+      "requirement": "The system must perform basic data validation (e.g., reject impossible dates, enforce valid course codes, prevent duplicate records via smart matching).",
+      "source_citation": "\"Basic validation — rejecting impossible dates, making sure course codes are valid, and preventing duplicates with smart matching.\"",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "data_quality",
+      "confidence": 5,
+      "rationale": "Direct request for validation rules to ensure data correctness and avoid duplicate/mismatched records. Gaps: definition of smart matching algorithm, thresholds for matching, and reconciliation workflows.",
+      "follow_up_question": "What rules or authoritative sources define 'valid course codes', and what matching logic (e.g., normalized string match, fuzzy matching) should be used to detect duplicates?"
+    },
+    {
+      "requirement": "Program Admins should be empowered to correct most day-to-day data errors within the app, while structural/systemic fixes should be handled by IT.",
+      "source_citation": "\"Ideally, program staff can fix most day-to-day things within the app if they have permissions; anything structural or systemic should go to IT.\"",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Stakeholder wants admins to self-service fixes to reduce tickets; implies need for safe-edit permissions and audit trails. Gaps: list of allowed edits, safeguards to prevent accidental destructive changes, and approval/workflow for sensitive fixes.",
+      "follow_up_question": "Which specific day-to-day corrections should Program Admins be able to perform (e.g., reassign student to site, correct contact info), and should changes be tracked/audited?"
+    },
+    {
+      "requirement": "The system must comply with the university's information policy and restrict access to students' personal and health-related data so sensitive fields are not visible to unauthorized roles.",
+      "source_citation": "\"We have to follow the university's information policy. Students' personal data and health-related info about clinical issues should be restricted.\"",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 5,
+      "rationale": "Explicit legal/privacy constraint requiring restricted access to sensitive data; gaps include specific legal/regulatory requirements (e.g., FERPA, HIPAA), retention policies, and encryption/transport requirements.",
+      "follow_up_question": "Which specific university/policy or regulatory requirements apply (e.g., FERPA/HIPAA), and what controls (field-level access, encryption at rest/in transit) are mandatory?"
+    },
+    {
+      "requirement": "Instructors should see identifiers and evaluations for their students; site coordinators should see only name, contact, and student status needed to run the clinical day, not full student records.",
+      "source_citation": "\"Program Admins need full student records, instructors should see identifiers and evaluations for their students, and site coordinators should see only what's necessary to run the clinical day — name and contact, maybe student status, but not deeper records.\"",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder delineates visibility of specific roles. Gaps: concrete list of identifiers (SSN vs student ID), whether contact fields include phone/email, and consent/audit rules.",
+      "follow_up_question": "Please enumerate the exact fields each role can view (e.g., student ID, email, phone, health notes) and whether any fields require additional consent or masking."
+    },
+    {
+      "requirement": "The platform should be designed for a multi-year lifespan (target ~5 years) and support configurable, versioned curriculum maps to accommodate periodic curriculum changes without code changes.",
+      "source_citation": "\"It should outlast whatever we build now ... maybe around five years of active use before a major rewrite.\" and \"The system should let admins edit curriculum maps and version them so we can see historical structures. It should be flexible — not hard-coded — otherwise it'll be a maintenance nightmare.\"",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "Stakeholder expects long-term use and requests configurability and versioning to avoid frequent rewrites. Gaps: policy for version retention, migration strategies, and tooling for admins to manage versions.",
+      "follow_up_question": "What is the required retention period for historical curriculum versions and what admin capabilities are needed for creating, activating, and auditing curriculum versions?"
+    },
+    {
+      "requirement": "The system must support notifications via university-preferred channels (email, optional SMS, and in-app) and allow users to configure preferences including immediacy (immediate for critical changes, daily digest for minor edits).",
+      "source_citation": "\"The messages should be clear, and ideally sent through the channels the university prefers — email, SMS if enabled, or in-app notifications.\" and \"Immediate for critical changes, like a cancellation, but for small edits maybe a daily digest would be nicer. Users should be able to configure preferences...\"",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Stakeholder specifies channels and batching preferences; gaps: rules for determining criticality, opt-in/opt-out policies for SMS, and rate limits.",
+      "follow_up_question": "Which events are 'critical' (require immediate notification) vs 'minor' (eligible for digest), and should users be able to set per-event notification preferences?"
+    },
+    {
+      "requirement": "Ad-hoc reports must be fast; term-wide exports and accreditation exports can take longer but must finish in a reasonable time and be accurate, supporting CSV and Excel formats and including historical curriculum and student progression.",
+      "source_citation": "\"Quick ad-hoc reports should be fast; the big term-wide exports can take longer but still should finish in a reasonable time...\" and \"They typically want CSV or Excel... So the export needs to be accurate and include historical versions of curriculum and student progression.\"",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder requires performance for ad-hoc reports and specific export formats and historical data inclusion. Gaps: acceptable durations for 'reasonable time' for large exports, scheduling/export automation, and data anonymization for external reporting.",
+      "follow_up_question": "What maximum completion time is acceptable for large term-wide exports, and do accreditation exports require any special data transformations or anonymization?"
+    },
+    {
+      "requirement": "The UI should include inline help and example text in forms to reduce support calls and improve learnability so common tasks can be completed without a manual or training.",
+      "source_citation": "\"If they can finish common tasks without a manual or training session, that's a win.\" and \"Users will appreciate inline help and a few examples in forms; it cuts down on calls to support.\"",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly links inline help to reduced support and improved learnability. Gaps: extent of help content, localization, and whether tooltips or guided walkthroughs are needed.",
+      "follow_up_question": "Which forms or workflows should include inline help/examples, and do you want contextual help only or interactive guided tours for first-time users?"
+    },
+    {
+      "requirement": "The system must prevent and detect duplicate course codes and inconsistent entries; reporting should rely on consistent authoritative identifiers to avoid missing records in batch reports.",
+      "source_citation": "\"course codes were entered slightly differently and a batch report missed half the students — total headache.\"",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "data_quality",
+      "confidence": 4,
+      "rationale": "An anecdote shows consequence of inconsistent data and need for authoritative identifiers and validation. Gaps: exact canonical identifiers, normalization rules, and enforcement mechanisms.",
+      "follow_up_question": "Should course codes be validated against CampusConnect/master lists on entry, and what normalization/validation rules should be applied to avoid near-duplicate codes?"
+    },
+    {
+      "requirement": "Scheduled maintenance must be performed outside core business hours where possible, and maintenance windows must not overlap with critical scheduling windows.",
+      "source_citation": "\"Occasional maintenance overnight is fine.\" and \"If a downtime hits during a critical scheduling window, even a little outage is a big deal... scheduled maintenance not to overlap.\"",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "Stakeholder expects maintenance outside 08:00–18:00 and explicit avoidance of critical windows. Gaps: notification requirements for maintenance, maximum allowed maintenance duration, and exception handling for emergency maintenance.",
+      "follow_up_question": "What advance notice period is required for scheduled maintenance and what maximum maintenance duration per event and per month is acceptable?"
+    },
+    {
+      "requirement": "All overrides and significant data changes must be recorded and auditable (documented reason for override), so Program Admins can override cases like clinical exemptions after documenting why.",
+      "source_citation": "\"For edge cases — like clinical exemptions — warn and let a Program Admin override after documenting why.\"",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Stakeholder requests documented overrides; implies audit trail. Gaps: required fields in audit entry, retention period, and who can view audit logs.",
+      "follow_up_question": "What information must be recorded when an override occurs (e.g., user, timestamp, reason), and how long should these audit records be retained?"
+    },
+    {
+      "requirement": "Authentication must integrate with campus single sign-on (SSO) rather than using a separate master credential store.",
+      "source_citation": "\"I think CampusConnect exposes an API and uses the campus single sign-on.\" and \"the app shouldn't be the master for those.\"",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder expects SSO integration and CampusConnect as authority for identities. Gaps: specific SSO protocol, account provisioning/deprovisioning flow, and fallback for SSO outages.",
+      "follow_up_question": "Which SSO protocol does the campus require (SAML, OAuth/OIDC), and what is the expected behavior if the SSO provider is temporarily unavailable?"
+    },
+    {
+      "requirement": "Users must be able to configure notification preferences to avoid being inundated, including choosing channel and frequency (immediate vs daily digest).",
+      "source_citation": "\"Users should be able to configure preferences so they don't get inundated.\"",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly asks for configurable notification preferences. Gaps: default settings, scope of preferences (per-event, per-cohort), and admin override capabilities.",
+      "follow_up_question": "Should notification preferences be global per user or configurable per-cohort/event, and what are sensible default settings for each role?"
+    }
+  ]
+}

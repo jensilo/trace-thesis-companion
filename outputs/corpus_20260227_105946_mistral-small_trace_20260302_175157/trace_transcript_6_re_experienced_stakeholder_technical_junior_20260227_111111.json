@@ -1,0 +1,139 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_6_re_experienced_stakeholder_technical_junior_20260227_111111.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_175253",
+  "requirements": [
+    {
+      "requirement": "The system must be portable and run on any operating system that supports Java.",
+      "source_citation": "Basically, wherever Java can be put, it should run.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for the system to run on various operating systems where Java is supported. This is a clear indication of a portability requirement.",
+      "follow_up_question": "Are there any specific versions of Java or operating systems that the system must be compatible with?"
+    },
+    {
+      "requirement": "The system must handle database connections flexibly, whether the database is local or remote.",
+      "source_citation": "Our code has to play nicely whether the DB is local or remote.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions issues with connection timeouts and schema migrations, indicating the need for flexible database handling.",
+      "follow_up_question": "What specific database management systems and versions must the system be compatible with?"
+    },
+    {
+      "requirement": "The system must be deployable on standard Java web/app servers such as Tomcat and JBoss.",
+      "source_citation": "We're not locked to one vendor. The idea is to use standard Java web/app servers — like Tomcat in a lot of our dev setups, and sometimes folks throw JBoss or other app servers in for integration testing.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for compatibility with standard Java web/app servers.",
+      "follow_up_question": "Are there any specific versions of Tomcat or JBoss that the system must be compatible with?"
+    },
+    {
+      "requirement": "The system must be compatible with at least eight distinct browsers and render correctly in around eighty percent of those tests.",
+      "source_citation": "We actually laid out before that we need to test across at least eight distinct browsers, and we'd like the pages to render correctly in, say, around eighty percent of those tests.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for browser compatibility and sets specific targets for testing and rendering success.",
+      "follow_up_question": "Which specific browsers must the system be compatible with, and what are the criteria for 'render correctly'?"
+    },
+    {
+      "requirement": "The system must support flexible SMTP settings and common auth/TLS scenarios for email notifications.",
+      "source_citation": "Flexible SMTP settings and support for common auth/TLS scenarios is important.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for flexible SMTP settings and support for common auth/TLS scenarios, indicating a requirement for reliable email integration.",
+      "follow_up_question": "What specific SMTP servers and auth/TLS scenarios must the system support?"
+    },
+    {
+      "requirement": "The system must complete routine interactions, such as checking room availability or saving a quick booking, in about five seconds for ninety percent of tasks and in under eight seconds for ninety-eight percent of tasks.",
+      "source_citation": "Most of those need to finish in about five seconds. To be safe, we want the vast majority of tasks to meet that, and almost all to be done within a bit more time, like eight seconds.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions specific performance targets for routine interactions.",
+      "follow_up_question": "Are there any specific scenarios or tasks that must meet these performance targets?"
+    },
+    {
+      "requirement": "The system must handle around one thousand concurrent requests currently and scale up to around two thousand concurrent requests by the next release.",
+      "source_citation": "Currently the target we set was to handle around one thousand concurrent requests, and by the next release that should scale up to around two thousand.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions specific targets for concurrent requests and scalability.",
+      "follow_up_question": "Are there any specific peak usage scenarios that must be considered for scalability?"
+    },
+    {
+      "requirement": "The system must have an availability of ninety-nine point nine nine percent, excluding situations where the whole server hardware fails.",
+      "source_citation": "The number we were aiming for was ninety-nine point nine nine percent availability, not counting situations where the whole server hardware fails.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions a specific availability target.",
+      "follow_up_question": "Are there any specific measures or redundancies in place to ensure this availability target?"
+    },
+    {
+      "requirement": "The system must enforce strict access control, allowing only employees or externally approved users with company IDs to log in.",
+      "source_citation": "Only employees, or external users we've explicitly approved and given company IDs, should get in. We can't have random public access.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for strict access control and authentication.",
+      "follow_up_question": "Are there any specific authentication methods or protocols that must be supported?"
+    },
+    {
+      "requirement": "The system must comply with accessibility standards, ensuring that it can be used by people with disabilities.",
+      "source_citation": "Accessibility is a big one; we have to make sure it meets standards so folks with disabilities can use it.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for accessibility compliance, indicating a requirement for usability by people with disabilities.",
+      "follow_up_question": "What specific accessibility standards or guidelines must the system comply with?"
+    },
+    {
+      "requirement": "The system must support retry mechanisms and sensible backoff for email notifications, with admin alerts if delivery keeps failing.",
+      "source_citation": "If an email notification fails because of a transient mail server issue, it should retry. [...] Sensible retry and backoff, maybe admin alerts if delivery keeps failing.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for retry mechanisms and admin alerts for email notifications, indicating a requirement for reliable email integration.",
+      "follow_up_question": "What specific retry mechanisms and backoff strategies must be implemented?"
+    },
+    {
+      "requirement": "The system must be deployable on open-source stacks like Tomcat and JBoss, and should not require exotic platform components.",
+      "source_citation": "Ops likes open-source where possible. We often use Tomcat in dev because it's lightweight and free, and JBoss shows up in some places, so compatibility with those is a plus.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the preference for open-source stacks and compatibility with specific app servers, indicating a requirement for maintainability.",
+      "follow_up_question": "Are there any specific open-source components or libraries that must be supported?"
+    }
+  ]
+}

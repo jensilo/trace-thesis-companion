@@ -1,0 +1,153 @@
+{
+  "extraction_file": "outputs/corpus_20260227_105946_mistral-small_trace_20260302_174709/trace_transcript_8_re_novice_stakeholder_nontechnical_enduser_20260227_111250.json",
+  "ground_truth_source": "outputs/corpus-20260227_105946/transcript_8_re_novice_stakeholder_nontechnical_enduser_20260227_111250.json",
+  "eval_model": "openai/gpt-5-mini",
+  "per_requirement": [
+    {
+      "extracted_requirement": "The system shall be easy to use for novice internet users, including those with limited technical skills.",
+      "matched_ground_truth": "'The product should be able to be used by 90% of novice users on the Internet.'",
+      "overlap_score": 4,
+      "overlap_label": "High",
+      "quality_attribute_match": true,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 3,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system shall allow users to start watching a movie with no more than two clicks after logging in.",
+      "matched_ground_truth": "'Users should be able to access their streaming movies in under 2 clicks after logging into the website.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 3,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system shall be usable by at least 90% of novice internet users without external assistance.",
+      "matched_ground_truth": "'The product should be able to be used by 90% of novice users on the Internet.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 5,
+      "rationale_quality": 4,
+      "gap_detection_quality": 3,
+      "is_hit": true,
+      "is_duplicate": true
+    },
+    {
+      "extracted_requirement": "The system shall respond to user actions, such as opening a page or clicking a button, within five seconds.",
+      "matched_ground_truth": "'Any interface between a user and the automated system shall have a maximum response time of 5 seconds unless noted by an exception below.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 3,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system shall initiate movie streaming with no more than ten seconds of buffering.",
+      "matched_ground_truth": "When streaming a movie the buffering time should take no longer than 10 seconds (plus any latency on the user's connection.)'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 3,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system shall be available 24/7 without scheduled downtime.",
+      "matched_ground_truth": "'The website shall be available for use 24 hours per day 365 days per year.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system shall have an uptime of at least 99.5%.",
+      "matched_ground_truth": "'The website shall achieve 99.5% up time.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 5,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system shall encrypt credit card information and restrict access to authorized personnel only.",
+      "matched_ground_truth": "'All credit card information will be secured on the server and only accessible by authorized Izogn administrators. Information will be encrypted in the database.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 5,
+      "rationale_quality": 5,
+      "gap_detection_quality": 4,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system shall provide clear and accessible privacy policies and terms of service.",
+      "matched_ground_truth": "'The website shall make its user aware of its information practices before collection data from them via a Privacy Policy accessible on all pages of the website.'",
+      "overlap_score": 4,
+      "overlap_label": "High",
+      "quality_attribute_match": false,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 3,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system shall support flexible payment options, including prepaid cards available online and in physical stores.",
+      "matched_ground_truth": "'When purchasing a streaming movie or pre-paid card via credit card the processing time should have a maximum response time of 15 seconds.'",
+      "overlap_score": 3,
+      "overlap_label": "Medium",
+      "quality_attribute_match": false,
+      "confidence_quality": 3,
+      "rationale_quality": 3,
+      "gap_detection_quality": 4,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system shall provide subtitles and language options to support accessibility for users with different needs.",
+      "matched_ground_truth": null,
+      "overlap_score": 1,
+      "overlap_label": "Very Low",
+      "quality_attribute_match": false,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": false,
+      "is_duplicate": false
+    }
+  ],
+  "metrics": {
+    "hit_count": 9,
+    "extracted_count": 11,
+    "ground_truth_count": 10,
+    "precision": 0.818,
+    "recall": 0.9,
+    "f1": 0.857,
+    "quality_attribute_accuracy": 0.778,
+    "avg_confidence": 3.727,
+    "avg_overlap_score": 4.273,
+    "avg_confidence_quality": 4.182,
+    "avg_rationale_quality": 4.0,
+    "avg_gap_detection_quality": 3.455
+  }
+}

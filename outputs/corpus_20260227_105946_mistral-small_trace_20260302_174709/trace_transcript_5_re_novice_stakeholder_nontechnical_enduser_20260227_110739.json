@@ -1,0 +1,161 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_5_re_novice_stakeholder_nontechnical_enduser_20260227_110739.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_174751",
+  "requirements": [
+    {
+      "requirement": "The system shall respond to parts search queries within 15 seconds.",
+      "source_citation": "For the parts search, anything longer than fifteen seconds feels like forever",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states a response time expectation for parts search, indicating a clear performance requirement.",
+      "follow_up_question": "What specific actions or data volume are expected to be handled within this 15-second response time?"
+    },
+    {
+      "requirement": "The system shall respond to repair facility search queries within 8 seconds.",
+      "source_citation": "For finding a preferred repair facility, I expect it to be quicker—maybe eight seconds is reasonable",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a desired response time for repair facility search, which is a clear performance requirement.",
+      "follow_up_question": "What specific actions or data volume are expected to be handled within this 8-second response time?"
+    },
+    {
+      "requirement": "The system shall generate audit reports within 10 seconds.",
+      "source_citation": "The audit report needs to be something I can get before I move on. If I have to wait more than ten seconds it interrupts my flow.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a desired response time for generating audit reports, which is a clear performance requirement.",
+      "follow_up_question": "What specific actions or data volume are expected to be handled within this 10-second response time?"
+    },
+    {
+      "requirement": "The system shall handle concurrent use by multiple adjusters without significant performance degradation.",
+      "source_citation": "When I'm in the office, multiple adjusters are using it at once and it needs to keep up.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for the system to handle concurrent use, indicating a scalability requirement.",
+      "follow_up_question": "What is the expected number of concurrent users the system should support without performance degradation?"
+    },
+    {
+      "requirement": "The system shall handle peak loads, such as during lunch rushes, without significant performance degradation.",
+      "source_citation": "There's usually a lunch rush where everybody's trying to pull parts at the same time—it's a small thing but it matters.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for the system to handle peak loads, indicating a scalability requirement.",
+      "follow_up_question": "What specific peak load scenarios should the system be designed to handle?"
+    },
+    {
+      "requirement": "The system shall have an uptime of at least 98%.",
+      "source_citation": "Maybe around ninety-eight percent uptime would be acceptable.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies an uptime expectation, indicating an availability requirement.",
+      "follow_up_question": "What are the acceptable downtime windows and maintenance schedules?"
+    },
+    {
+      "requirement": "The system shall provide in-context help on at least 90% of screens.",
+      "source_citation": "If I had to guess, maybe help should be available in the vast majority of screens—so users don't get stuck. I mean, ninety percent of the system having in-context help would be brilliant.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the extent of in-context help needed, indicating a usability requirement.",
+      "follow_up_question": "What specific types of help content are expected to be available in-context?"
+    },
+    {
+      "requirement": "The system shall be learnable with a maximum of two days of onsite training.",
+      "source_citation": "It can't be one of those big, drawn-out trainings. Most folks are busy, so it should be short and practical, done onsite with hands-on stuff. I'd say two days of onsite training should get people comfortable, but it should also be obvious enough that people pickup the basics quickly.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies training expectations, indicating a usability requirement.",
+      "follow_up_question": "What specific training materials or methods are expected to be provided?"
+    },
+    {
+      "requirement": "The system shall connect directly to the Choice Parts feed for real-time data.",
+      "source_citation": "If it doesn't tap into the Choice Parts data directly, we'll end up with old availability all the time.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for direct data feed integration, indicating a maintainability requirement.",
+      "follow_up_question": "What specific data synchronization mechanisms are expected to be implemented?"
+    },
+    {
+      "requirement": "The system shall prevent data visibility between different insurance companies.",
+      "source_citation": "We absolutely cannot see another insurance company's claims. That would be a nightmare.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies data isolation requirements, indicating a security requirement.",
+      "follow_up_question": "What specific data isolation mechanisms are expected to be implemented?"
+    },
+    {
+      "requirement": "The system shall implement role-based access control to restrict data visibility based on user roles.",
+      "source_citation": "Within a company, people should see different things depending on their role.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies role-based access control, indicating a security requirement.",
+      "follow_up_question": "What specific roles and access levels are expected to be implemented?"
+    },
+    {
+      "requirement": "The system shall adhere to the company's UI guidelines for consistency with other corporate apps.",
+      "source_citation": "If the layout, colors, and controls are different from our other corporate apps people get confused and make mistakes. It should feel like one of our apps so it's intuitive.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for UI consistency, indicating a usability requirement.",
+      "follow_up_question": "What specific UI guidelines or design systems should the system adhere to?"
+    },
+    {
+      "requirement": "The system shall provide undo functionality or easy correction mechanisms for user errors.",
+      "source_citation": "It should be forgiving. People make mistakes, so undo or easy corrections are nice.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for error recovery mechanisms, indicating a usability requirement.",
+      "follow_up_question": "What specific types of undo or correction mechanisms are expected to be implemented?"
+    },
+    {
+      "requirement": "The system shall provide real-time notifications for part status changes.",
+      "source_citation": "Notifications when a part changes status would be good, because I don't want to keep checking.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for real-time notifications, indicating a usability requirement.",
+      "follow_up_question": "What specific types of notifications and triggers are expected to be implemented?"
+    }
+  ]
+}

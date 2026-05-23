@@ -1,0 +1,117 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_6_re_novice_stakeholder_technical_junior_20260227_110912.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_175313",
+  "requirements": [
+    {
+      "requirement": "The system should feel snappy and handle peak loads efficiently, particularly during mornings and before big meetings.",
+      "source_citation": "It just needs to feel snappy, honestly — waiting around kills productivity. Heavy operations should be quick. Also mornings and right before big meetings are when the most people hit it, so it needs to not choke during those peaks.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for the system to feel responsive and handle peak loads, which are clear performance requirements.",
+      "follow_up_question": "What are the specific performance metrics or response time targets that the system should meet during peak usage?"
+    },
+    {
+      "requirement": "The system should scale to accommodate company growth and increased usage.",
+      "source_citation": "And we want it to scale forward a bit as the company grows, not be a one-off that flails when usage increases.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for the system to scale with the company's growth, indicating a scalability requirement.",
+      "follow_up_question": "What are the specific scalability targets or growth scenarios the system should support?"
+    },
+    {
+      "requirement": "Access to the system should be controlled and integrated with company identity systems or approved account lists.",
+      "source_citation": "Access needs to be controlled. Mostly it’s company employees, and then occasionally external partners who’ve been set up with approved accounts. We shouldn’t be letting random people in, so integration with whatever company identity system or approved account list is important.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for controlled access and integration with company identity systems, which are clear security requirements.",
+      "follow_up_question": "What specific identity systems or account lists should the system integrate with?"
+    },
+    {
+      "requirement": "The system should provide audit trails for tracking changes and actions within the system.",
+      "source_citation": "Also audit trails are useful when someone says, 'Hey, why was my meeting moved?'",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the usefulness of audit trails for tracking changes, indicating a security requirement.",
+      "follow_up_question": "What specific types of actions or changes should be logged in the audit trails?"
+    },
+    {
+      "requirement": "The system should render correctly in common web browsers used by companies, including older browsers.",
+      "source_citation": "People use normal web browsers — desktops mostly, but sometimes laptops or tablets. The UI should just render correctly in the common browsers companies use, and not fall apart when someone has, like, an older browser.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for the system to render correctly in common browsers, including older ones, which is a usability requirement.",
+      "follow_up_question": "What specific browsers and versions should the system be compatible with?"
+    },
+    {
+      "requirement": "The system should follow common design patterns and best practices to ensure maintainability and ease of future feature additions.",
+      "source_citation": "We try to follow common design patterns and best practices so the codebase is predictable, not some custom spaghetti. That makes it easier for someone new to jump in and add a feature without undoing half the app.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for common design patterns and best practices, indicating a maintainability requirement.",
+      "follow_up_question": "What specific design patterns or best practices should be followed?"
+    },
+    {
+      "requirement": "The system should support multiple languages and be customizable for client branding.",
+      "source_citation": "Yeah, it should be customizable so clients can put their branding on it and it should support multiple languages.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "other",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for customization and multi-language support, which are non-functional requirements related to internationalization and branding.",
+      "follow_up_question": "What specific languages and branding customization options should be supported?"
+    },
+    {
+      "requirement": "The system should handle locale and timezone settings correctly to avoid scheduling conflicts.",
+      "source_citation": "Once we had a site where the calendar times were off because of a weird local DB setting and two teams ended up double-booked... That taught us to pay attention to locale and timezone handling.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "other",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the importance of correct locale and timezone handling to avoid scheduling conflicts, indicating a non-functional requirement.",
+      "follow_up_question": "What specific locale and timezone settings should the system support?"
+    },
+    {
+      "requirement": "The system should provide reliable diagnostic data and error messages for support and debugging purposes.",
+      "source_citation": "Also, we sometimes get oddities when support tries to debug without the full logs; so getting reliable diagnostic data out of the system is a recurring gripe.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for reliable diagnostic data and error messages, indicating an operability requirement.",
+      "follow_up_question": "What specific diagnostic data and error messages should be provided?"
+    },
+    {
+      "requirement": "The system should be accessible, including support for keyboard navigation and screen reader friendliness.",
+      "source_citation": "Accessibility is important too — keyboard navigation and screen reader friendliness — because different offices have different needs and we don’t want to exclude people.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for accessibility features, indicating a usability requirement.",
+      "follow_up_question": "What specific accessibility standards or guidelines should the system comply with?"
+    }
+  ]
+}

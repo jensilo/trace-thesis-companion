@@ -1,0 +1,249 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_5_re_novice_stakeholder_nontechnical_manager_20260227_110640.txt",
+  "model": "openai/gpt-5-mini",
+  "timestamp": "20260302_172441",
+  "requirements": [
+    {
+      "requirement": "The system shall be easy to use such that 95% of adjusters and estimators report that it is easy to use in post-deployment surveys.",
+      "source_citation": "We aim for something like ninety-five percent of adjusters and estimators reporting that it's easy to use in our surveys.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Stakeholder gave an explicit, quantitative usability acceptance target (95% positive survey responses). This is a clear non-functional usability requirement. Gaps: survey design, frequency, sample size, and what constitutes \"easy\" need definition.",
+      "follow_up_question": "Which specific survey instrument, cadence, and sample size should be used, and what exact survey question(s) will define \"easy to use\"?"
+    },
+    {
+      "requirement": "Parts search operations shall appear responsive to users; recycled parts search results must return within 15 seconds or less under typical conditions, with preference for much faster responses.",
+      "source_citation": "For the recycled parts search, people told me they'd tolerate up to about fifteen seconds, but they'd prefer it much faster.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder provided a direct latency target for recycled parts search (15s tolerated, faster preferred). Gaps: percentile (p99/p95), definition of \"typical conditions\", and performance under peak load.",
+      "follow_up_question": "Do you want this 15s target to be specified as a percentile (e.g., 95th/99th percentile) and under what load/profile (e.g., peak 1500 concurrent users)?"
+    },
+    {
+      "requirement": "Repair facility lookup (location-based) shall return results within 8 seconds or less under typical conditions, with faster responses preferred.",
+      "source_citation": "I think under eight seconds is where users stop fidgeting — again, they'd love faster, but that's the practical cutoff.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder specified an explicit practical cutoff for repair facility lookup latency (8s). Gaps: percentile, exact request types, network variability, and offline fallback behavior.",
+      "follow_up_question": "Should the 8-second target be expressed as a percentile (e.g., 95th) and does it apply to cold starts, mobile networks, or only on corporate networks?"
+    },
+    {
+      "requirement": "The system shall achieve at least 98% availability over a year (high nineties uptime), with minimal downtime during peak business hours.",
+      "source_citation": "the business expects something in the high nineties — around ninety-eight percent availability over the year is what leadership considers acceptable.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "Stakeholder gave a clear annual availability target (≈98%) and emphasized minimizing outage impact during peak hours. Gaps: whether availability is per-tenant, per-region, SLA/legal obligations, and maintenance windows.",
+      "follow_up_question": "Should the 98% availability be guaranteed per tenant and are there allowable maintenance windows that can be excluded from the calculation?"
+    },
+    {
+      "requirement": "The system shall support approximately 1,500 concurrent users at peak without degraded responsiveness.",
+      "source_citation": "Yeah, we sized it for roughly fifteen hundred concurrent users at peak.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "Stakeholder provided a sizing target for peak concurrent users and expects the app to handle heavy concurrency. Gaps: user behavior profiles, geographic distribution, and performance SLAs under that load.",
+      "follow_up_question": "Please provide expected user behavior profiles (mix of searches, lookups, edits) and geographic/region distribution to create accurate load and scaling plans."
+    },
+    {
+      "requirement": "Each insurer (tenant) shall only be able to view their own claims and related data; no cross-tenant data visibility is permitted.",
+      "source_citation": "Each company must only see their own claims and related data, period.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Explicit tenant isolation requirement; critical security/privacy constraint. Gaps: enforcement mechanisms (logical vs physical isolation), auditability, and data residency concerns.",
+      "follow_up_question": "Do you require logical multi-tenant isolation with strict access controls, or physical separation for some tenants, and are there data residency/regulatory constraints per tenant?"
+    },
+    {
+      "requirement": "The system shall implement role-based access control so that users have appropriate permissions (e.g., read-only vs full edit) mapped to business roles.",
+      "source_citation": "roles matter. Not everyone should see everything. Some folks just need read-only claim context, while others need full edit rights… important we map roles to the business functions correctly.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder requires RBAC aligned to business functions. Gaps: exact roles, permission matrix, delegation, and administrative workflows for role changes.",
+      "follow_up_question": "Can you provide the initial role definitions and a permission matrix, and describe how role changes should be requested and approved?"
+    },
+    {
+      "requirement": "The system shall include protections against denial-of-service attacks and automated scraping of parts data to preserve availability and partner trust.",
+      "source_citation": "Denial of service or automated scraping of parts data would be bad. So we need protections — both because of business continuity and to keep our partners' trust.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly calls for protections against DoS and scraping. Gaps: acceptable mitigation techniques, thresholds for rate limiting, and responsibilities between product and central security.",
+      "follow_up_question": "Which mitigation strategies are preferred (WAF, rate limiting, CDNs, bot detection), and what are acceptable thresholds for rate limiting or blocking?"
+    },
+    {
+      "requirement": "The product must meet corporate security expectations from day one; security controls cannot be added post-launch without InfoSec and Ops involvement.",
+      "source_citation": "Security is a shared responsibility, but the product needs to meet corporate security expectations from day one. We can't launch and then bolt on controls later… Ops and InfoSec will have to be in the loop.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Stakeholder emphasizes compliance with corporate security/operational standards at launch. Gaps: exact corporate standards, certification, and required pre-launch assessments.",
+      "follow_up_question": "Please provide the corporate security and ops checklists, required certifications, and the approval process and timelines for InfoSec/Operations sign-off."
+    },
+    {
+      "requirement": "Aggregated, anonymized repair-facility performance indicators may be displayed broadly, but individual notes tied to a claim must be restricted to the insurer or to specific roles and not exported widely.",
+      "source_citation": "We can show aggregated, anonymized performance indicators broadly, but individual notes tied to a claim might be restricted to the insurer or to certain roles. We don't want raw, inflammatory comments exported everywhere.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "privacy",
+      "confidence": 4,
+      "rationale": "Stakeholder wants privacy and controlled visibility for user-generated ratings/notes. Gaps: definition of \"aggregated\", anonymization level, retention, and export controls.",
+      "follow_up_question": "What aggregation and anonymization standards are acceptable, which roles should see individual notes, and what export restrictions are required?"
+    },
+    {
+      "requirement": "The system shall provide mechanisms to capture repair shop feedback without encouraging low-quality or inflammatory comments (e.g., moderation, structured inputs, or quality controls).",
+      "source_citation": "we need to capture useful info without encouraging low-quality comments.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "Stakeholder requests controls to ensure feedback quality; this is a user-experience and content-quality requirement. Gaps: specific moderation approach, automated filtering, or structured rating fields.",
+      "follow_up_question": "Do you prefer structured feedback forms, automated content moderation, or a human review workflow to reduce low-quality comments?"
+    },
+    {
+      "requirement": "The system shall provide a resilient experience for field staff by supporting basic lookups and a recent cache while offline; full offline claim editing is not required initially.",
+      "source_citation": "It would be great to have a resilient experience — at least the basic lookups and recent cache working offline. That said, full offline claim editing is complicated and not the highest priority right now.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 5,
+      "rationale": "Stakeholder requests offline/resilience capability for basic lookups via caching; explicitly deprioritizes full offline editing. Gaps: cache size, sync conflict resolution, security of local caches, and supported platforms.",
+      "follow_up_question": "What exact data should be available offline, how long should the cache persist, and what security/encryption requirements apply to local caches?"
+    },
+    {
+      "requirement": "Parts data must originate from the Choice Parts feed and the system shall not introduce duplicate master copies of that data.",
+      "source_citation": "The parts data has to come from our Choice Parts feed — we rely on that data source today, so whatever we build needs to talk to it. Otherwise we'd be maintaining duplicates and that's a mess.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "Stakeholder requires integration to avoid duplicate data and maintain a single source of truth. Gaps: integration protocol, data ownership, and caching vs live reads.",
+      "follow_up_question": "Should the system read directly from Choice Parts in real time, or is an authorized cached copy acceptable, and what integration interfaces/protocols does Choice Parts provide?"
+    },
+    {
+      "requirement": "Parts data shall be updated frequently (near-real-time preferred) so that listings reflect current availability and adjusters can trust availability information.",
+      "source_citation": "ideally it's near-real-time or updated frequently enough that adjusters trust availability.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder emphasizes data freshness for parts availability; prefers near-real-time updates. Gaps: acceptable sync cadence, staleness bounds, and what constitutes \"near-real-time.\"",
+      "follow_up_question": "What maximum allowable data staleness (e.g., seconds/minutes/hours) is acceptable for parts availability, and can the Choice Parts feed support that cadence?"
+    },
+    {
+      "requirement": "The system shall follow corporate UI look-and-feel and architecture guidelines to ensure trust, supportability, and consistent user experience.",
+      "source_citation": "We have to follow the architecture guidelines so ops and security don't push back, and the user interface has to match our corporate UI patterns… It's more than cosmetics; it's about trust and supportability.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 5,
+      "rationale": "Stakeholder requires adherence to corporate UI and architectural standards for trust and maintainability. Gaps: specific style guides, component libraries, and allowed deviations.",
+      "follow_up_question": "Please provide the corporate UI style guide, component libraries, and architecture constraints we must comply with."
+    },
+    {
+      "requirement": "Monitoring, audit trails, and traceability shall be provided to show who changed what for internal reviews and compliance.",
+      "source_citation": "monitoring and audit trails — we need to be able to show who changed what, both for internal reviews and for compliance.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly requests auditing and monitoring for traceability and compliance. Gaps: retention period, log formats, access to logs, and tamper-resistance requirements.",
+      "follow_up_question": "What audit log retention period, log detail (fields), and tamper-resistance/compliance standards (e.g., SOX, GDPR) apply?"
+    },
+    {
+      "requirement": "The system shall be practical to deploy and support operationally; it must not require a specialized operations team.",
+      "source_citation": "deployment and support have to be practical. If we build something fancy that requires a special ops team, it'll never fly.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "Stakeholder wants low operational complexity to keep supportable by existing teams. Gaps: definition of \"practical\" (automation, runbooks, acceptable tooling), and which operations team will support it.",
+      "follow_up_question": "What existing ops capabilities and tooling should the solution rely on, and what are unacceptable operational requirements that would trigger rejection?"
+    },
+    {
+      "requirement": "The product team shall involve Ops and InfoSec during design and before launch to meet corporate security expectations and operational readiness.",
+      "source_citation": "Ops and InfoSec will have to be in the loop.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Stakeholder mandates early involvement of Ops and InfoSec, making security/operational readiness a process requirement. Gaps: required checkpoints, acceptance criteria, and timelines for reviews.",
+      "follow_up_question": "What are the required Ops/InfoSec review milestones and acceptance criteria prior to launch?"
+    },
+    {
+      "requirement": "The system shall include measures to detect and prevent malicious or accidental overloads (e.g., DDoS detection/mitigation and rate limiting) to protect business continuity.",
+      "source_citation": "We have to assume people will try to break or overload things, whether maliciously or by accident.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder expects protective measures against overloads; similar to DoS requirement but focused on detection/mitigation and business continuity. Gaps: detection thresholds, mitigation strategies, and responsibilities.",
+      "follow_up_question": "What detection accuracy, false-positive tolerance, and mitigation escalation procedures are acceptable for overload protection?"
+    },
+    {
+      "requirement": "The system shall include periodic post-launch usability checks to detect regressions in usability over time.",
+      "source_citation": "we might want periodic usability checks after launch, because what feels easy today can degrade if we pile on features.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "Stakeholder requests ongoing usability monitoring. Gaps: frequency, methods (surveys, usability tests, telemetry), and acceptance thresholds.",
+      "follow_up_question": "What cadence and methods do you want for periodic usability checks, and what metrics will indicate acceptable vs degraded usability?"
+    },
+    {
+      "requirement": "The system shall minimize printed outputs as an outcome, supporting reduced paper use (sustainability objective).",
+      "source_citation": "our sustainability group would love it if fewer paper printouts happen, but that's more of an outcome than a hard requirement.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "other",
+      "confidence": 3,
+      "rationale": "Stakeholder mentions sustainability as a desired outcome to reduce printing; not a firm requirement but relevant to UX and workflows. Gaps: targets for reduction, reporting, and whether mandatory.",
+      "follow_up_question": "Is there a target reduction percentage for printouts or specific workflows we should prioritize to support reduced paper usage?"
+    },
+    {
+      "requirement": "The system shall provide anonymized, aggregated partner reputation signals while preventing punitive exposure of individual incidents without context.",
+      "source_citation": "Over time, that becomes a reputational signal… It shouldn't be punitive in a vacuum, but we need feedback so preferred partner lists reflect real behavior.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "Stakeholder expects reputation signals that are fair and not punitive; this affects presentation and business rules. Gaps: aggregation algorithms, thresholds, appeal process for partners.",
+      "follow_up_question": "What aggregation rules, thresholds for flagging, and appeal or dispute processes should be in place for partner reputation signals?"
+    }
+  ]
+}

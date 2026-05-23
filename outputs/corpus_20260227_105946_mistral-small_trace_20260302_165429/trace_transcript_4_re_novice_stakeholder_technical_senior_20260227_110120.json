@@ -1,0 +1,106 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_4_re_novice_stakeholder_technical_senior_20260227_110120.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_165527",
+  "requirements": [
+    {
+      "requirement": "The application must respond to routine navigations and small queries within 5 seconds.",
+      "source_citation": "For routine navigations and small queries, let's design for roughly five seconds as the upper bound. Anything longer and users report it as sluggish.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states a concrete performance threshold for routine navigations and queries, which is a clear non-functional requirement.",
+      "follow_up_question": "Are there specific user interactions or queries that should be prioritized for performance optimization?"
+    },
+    {
+      "requirement": "The application must support 350 concurrent users without performance degradation.",
+      "source_citation": "Yes, design and load tests should target support for 350 concurrent users without application-level performance degradation.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states a concrete scalability target for concurrent users, which is a clear non-functional requirement.",
+      "follow_up_question": "Are there specific peak usage periods or scenarios that should be considered for load testing?"
+    },
+    {
+      "requirement": "The application must implement retries and idempotency for external calls to prevent inconsistent state.",
+      "source_citation": "Architecturally, think of it as a thin client backed by services that mediate calls to our back-end systems, with retries and idempotency for the external calls so failures don't create inconsistent state.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for retries and idempotency to handle failures, which is a clear non-functional requirement related to fault tolerance.",
+      "follow_up_question": "What are the specific retry mechanisms and idempotency strategies that should be implemented?"
+    },
+    {
+      "requirement": "The application must degrade gracefully when backend systems are unavailable.",
+      "source_citation": "The app should degrade gracefully. For example, if the statement DB is unavailable, we should surface clearly what actions are blocked, queue or retry requests where appropriate, and provide technicians with clear diagnostics.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "The stakeholder describes the need for graceful degradation and clear diagnostics, which are non-functional requirements related to fault tolerance.",
+      "follow_up_question": "What specific actions should be blocked or queued when backend systems are unavailable?"
+    },
+    {
+      "requirement": "The application must enforce role-based access control and record user actions for audits.",
+      "source_citation": "Role-based access control is the baseline; we can extend with attribute checks where necessary. The key is that the system must prevent unauthorized initiation of dispute flows and record who did what for audits.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for role-based access control and audit trails, which are clear non-functional requirements related to security.",
+      "follow_up_question": "What specific roles and permissions need to be defined for the application?"
+    },
+    {
+      "requirement": "The application must follow corporate UI standards for a consistent user experience.",
+      "source_citation": "Yes, we have to follow corporate UI standards, both for internal tools and anything external-facing so users have a consistent experience and we reuse the accessible components and patterns that central design provides.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need to follow corporate UI standards, which is a non-functional requirement related to the look and feel of the application.",
+      "follow_up_question": "What specific UI standards and guidelines should be followed?"
+    },
+    {
+      "requirement": "The application must record every action that affects case state or triggers an external request, including who performed it, when, and the payload and responses.",
+      "source_citation": "Every action that affects case state or triggers an external request must be recorded with who performed it, when, and what the payload was, plus any responses.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "auditability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for detailed audit trails, which is a clear non-functional requirement related to auditability.",
+      "follow_up_question": "What specific data fields and formats should be included in the audit trail?"
+    },
+    {
+      "requirement": "The application must ensure that internal-only fields are not exposed to merchants or cardmembers.",
+      "source_citation": "Yes, we need data segregation so internal-only fields aren't exposed to merchants or cardmembers.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for data segregation to prevent exposure of internal-only fields, which is a non-functional requirement related to security.",
+      "follow_up_question": "What specific fields should be segregated and how should access be controlled?"
+    },
+    {
+      "requirement": "The application must always source core transaction attributes like amount and timestamps from the statement database.",
+      "source_citation": "For core transaction attributes like amount and timestamps, yes, always authoritative from the statement DB.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "data_integrity",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for authoritative sources for core transaction attributes, which is a clear non-functional requirement related to data integrity.",
+      "follow_up_question": "What other transaction attributes should be sourced from authoritative systems?"
+    }
+  ]
+}

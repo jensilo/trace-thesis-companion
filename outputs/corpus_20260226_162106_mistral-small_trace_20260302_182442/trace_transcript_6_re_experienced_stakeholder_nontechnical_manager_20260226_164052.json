@@ -1,0 +1,139 @@
+{
+  "transcript_file": "outputs/corpus-20260226_162106/transcript_6_re_experienced_stakeholder_nontechnical_manager_20260226_164052.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_182538",
+  "requirements": [
+    {
+      "requirement": "The system must respond to routine interactions within five seconds to prevent user abandonment.",
+      "source_citation": "If someone is checking availability or booking a room and it takes more than a few seconds, they get annoyed and walk away. If you force me to be specific, I'd say around five seconds for the quick stuff, maybe slightly longer for heavier operations, but anything much beyond that is risky.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states a performance requirement for routine interactions, specifying a five-second response time to prevent user abandonment. This is a clear and actionable requirement.",
+      "follow_up_question": "Are there specific types of routine interactions that are more critical than others, and should they be prioritized in performance optimization?"
+    },
+    {
+      "requirement": "The system must respond to complex operations within eight seconds to maintain user flow.",
+      "source_citation": "For more complex things, like pulling full calendar views or running reports, I’d be comfortable with something under eight seconds most of the time.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a performance requirement for complex operations, stating that responses should be under eight seconds to maintain user flow. This is a clear and actionable requirement.",
+      "follow_up_question": "Are there specific complex operations that are more critical than others, and should they be prioritized in performance optimization?"
+    },
+    {
+      "requirement": "The system must be available during business hours with an uptime target of four nines, excluding planned maintenance and major server/catastrophic failures.",
+      "source_citation": "We definitely need it during our business hours... unplanned outages are a big problem; they break trust quickly. If pressed I'd say we should target four nines if possible, excluding planned maintenance and major server/catastrophic failures.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states an availability requirement, specifying a target of four nines uptime during business hours, excluding planned maintenance and major server/catastrophic failures. This is a clear and actionable requirement.",
+      "follow_up_question": "What specific measures or protocols should be in place to ensure the system meets the four nines uptime target during business hours?"
+    },
+    {
+      "requirement": "The system must handle at least one thousand concurrent requests at launch and be ready to double that in the next major release.",
+      "source_citation": "Plan for one thousand concurrent requests at launch. And we need to be ready to double that in the next major release — so two thousand in our roadmap.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a scalability requirement, stating that the system must handle one thousand concurrent requests at launch and be ready to double that in the next major release. This is a clear and actionable requirement.",
+      "follow_up_question": "Are there specific types of concurrent requests that are more critical than others, and should they be prioritized in scalability planning?"
+    },
+    {
+      "requirement": "The system must handle about ten thousand transactions per hour within a couple of years of launch and scale up to about twenty thousand in the following release cycle.",
+      "source_citation": "I expect the system should be able to handle about ten thousand transactions per hour within a couple of years of launch, and then scale up to about twenty thousand in the following release cycle as more offices adopt it.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a scalability requirement, stating that the system must handle ten thousand transactions per hour within a couple of years of launch and scale up to twenty thousand in the following release cycle. This is a clear and actionable requirement.",
+      "follow_up_question": "Are there specific types of transactions that are more critical than others, and should they be prioritized in scalability planning?"
+    },
+    {
+      "requirement": "The system must have tightly controlled access, allowing only employees and explicitly approved external users to log in and take actions.",
+      "source_citation": "Access has to be tightly controlled. Only our employees and external people we explicitly approve should be able to log in and take actions.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states a security requirement, specifying that access must be tightly controlled to allow only employees and explicitly approved external users. This is a clear and actionable requirement.",
+      "follow_up_question": "What specific processes or protocols should be in place to ensure that only approved users can access the system?"
+    },
+    {
+      "requirement": "The system must support single sign-on (SSO) integration with the corporate identity system for employees and approved partners' credentials.",
+      "source_citation": "We'll need to hook into the corporate identity system for employees and support our partners' approved credentials. SSO is a must.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states a security requirement, specifying that the system must support SSO integration with the corporate identity system for employees and approved partners' credentials. This is a clear and actionable requirement.",
+      "follow_up_question": "What specific identity providers or protocols should be supported for SSO integration?"
+    },
+    {
+      "requirement": "The system must support at least eight different browsers and achieve acceptable rendering in roughly eighty percent of them.",
+      "source_citation": "We need to support the mainstream browsers that people actually use in the company. It has to render correctly in most of them... I want us to test at least eight different browsers and versions as a minimum baseline. And in terms of passing, if the product displays properly in about four-fifths of the tested browsers, that would be acceptable.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a usability requirement, stating that the system must support at least eight different browsers and achieve acceptable rendering in roughly eighty percent of them. This is a clear and actionable requirement.",
+      "follow_up_question": "Are there specific browsers or versions that are more critical than others, and should they be prioritized in testing?"
+    },
+    {
+      "requirement": "The system must comply with the Americans with Disabilities Act (ADA) and meet WCAG 2.1 AA standards for accessibility.",
+      "source_citation": "Accessibility is legally and ethically important. We have to comply with the Americans with Disabilities Act, so design and development should meet accepted accessibility standards. If you need a specific technical standard, meeting recognized web accessibility guidelines at a strong level makes sense... ADA is the requirement, but to operationalize that, yes, aiming for WCAG 2.1 at the AA level is appropriate.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "accessibility",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states an accessibility requirement, specifying that the system must comply with the ADA and meet WCAG 2.1 AA standards. This is a clear and actionable requirement.",
+      "follow_up_question": "Are there specific accessibility features or user groups that should be prioritized in the design and development process?"
+    },
+    {
+      "requirement": "The system must be designed to allow new maintenance developers to integrate routine functionality within a couple of working days in most cases.",
+      "source_citation": "New maintenance developers should be able to integrate routine functionality within a couple of working days in most cases, assuming they know our tech stack.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a maintainability requirement, stating that new maintenance developers should be able to integrate routine functionality within a couple of working days in most cases. This is a clear and actionable requirement.",
+      "follow_up_question": "Are there specific types of routine functionality that are more critical than others, and should they be prioritized in the design for maintainability?"
+    },
+    {
+      "requirement": "The system must include dashboards that show live health metrics such as response times, error rates, queue depth, and email delivery problems.",
+      "source_citation": "I need dashboards that show live health: response times, error rates, queue depth, and email delivery problems.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states an operability requirement, specifying that the system must include dashboards that show live health metrics. This is a clear and actionable requirement.",
+      "follow_up_question": "Are there specific health metrics or alerts that are more critical than others, and should they be prioritized in the dashboard design?"
+    },
+    {
+      "requirement": "The system must include synthetic monitors that verify key user journeys and load testing that simulates peak usage periods.",
+      "source_citation": "Synthetic checks for the key user journeys, and realistic load testing that simulates those morning and afternoon peaks so we can be confident in the numbers we discussed.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states an operability requirement, specifying that the system must include synthetic monitors and load testing to simulate peak usage periods. This is a clear and actionable requirement.",
+      "follow_up_question": "Are there specific user journeys or peak usage scenarios that are more critical than others, and should they be prioritized in testing?"
+    }
+  ]
+}

@@ -1,0 +1,162 @@
+Interviewer: Thanks for meeting. To start at a high level, how do you define success for this Disputes application? Who are the primary users we should design for, and what's in‑scope for the first release?
+
+Stakeholder: Sure — um, success for me is pretty pragmatic. I want our reps to be able to take a disputed transaction from the first phone call to a clear resolution without having to chase five different systems or pick up the phone to confirm something. The users are the cardmember reps and the merchant services reps primarily, with supervisors and a handful of external call‑center partners who sometimes act on our behalf. For scope in release one, I think we should cover case creation, follow‑up, status tracking, correspondence, and the basic chargeback/ticket retrieval flows. Long story short: fewer manual escalations, faster resolution times, and no compliance surprises. Oh — and we should reduce the number of times reps call each other to reconcile data; that kills throughput.
+
+Interviewer: When you say “faster resolution times,” what does that mean exactly? Can you put a number or target on it for the team?
+
+Stakeholder: Hmm, I think a good concrete target would be to shave measurable minutes off routine tasks. For instance, small interactions — like pulling up a case or jumping between screens during a call — need to feel instantaneous. If I have to pick a number, I'd say anything under about five seconds for those small navigations is acceptable — beyond that reps complain and calls stretch out.
+
+Interviewer: You mentioned reducing calls between systems — are there things explicitly out of scope for this release? For example, do we need a merchant self‑service portal or batch chargeback automation now?
+
+Stakeholder: Not for release one. We can defer a merchant portal and big batch automations; get the reps' desktop experience and the integrations with our authoritative backends right first. We can circle back to automation after we prove the workflow.
+
+Interviewer: Good. You said “authoritative backends” — which systems do you consider the single sources of truth for the data reps need?
+
+Stakeholder: The way I see it, transaction details must come from our statement system — the transaction statement database is the truth for what actually posted on a cardmember's account. Cardmember profile and account details should come from the cardmember master system. Merchant details — name, MCC, contact info — have to come from our merchant registry. We have to avoid the situation we have today where one report shows one thing and another shows something slightly different; that creates disputes about the dispute itself.
+
+Interviewer: When you say “must come from” those databases, what do you mean technically — synchronous lookups, cached copies, or something else? How tolerant are you of stale data?
+
+Stakeholder: I prefer live lookups for anything that determines case outcomes. For UI responsiveness you can cache read‑only views briefly, but any action that could affect a decision — kicking off a chargeback, issuing a provisional credit — needs to validate against the authoritative source at the time of action. I don't want stale balances or stale merchant IDs being used to make a decision.
+
+Interviewer: Can you put a number on “briefly” for cache staleness, or should we treat it as “no staleness allowed for decisions”?
+
+Stakeholder: I’d rather we treat it as “no staleness allowed for decisions.” For UI convenience, a few seconds or maybe a minute of caching is okay for navigation, but again, any operation must re‑confirm. If you need me to pick a maximum for UI cache, I'll say it's tiny — but the critical rule is authoritative validation on write or decision.
+
+Interviewer: Understood. Let's talk UI and UX. You mentioned the app must feel familiar. What are the expectations around corporate UI standards and accessibility?
+
+Stakeholder: We need it to match our other internal and external apps so reps and customers don't have to relearn things. That means the same visual language, accessible components, keyboard patterns, and the standard templates for correspondence and forms. Accessibility isn't optional — screen reader support, proper contrast, the usual. Branding and layout should follow corporate guidelines so it looks like an official product, not a Frankenstein of different styles. Users should feel it's part of the ecosystem.
+
+Interviewer: When you say “the usual” for accessibility, can you be specific about which guidelines we must meet? For testing and acceptance we need measurable criteria.
+
+Stakeholder: I can't quote a technical checklist off the top of my head, but compliance and accessibility teams will expect we hit the corporate accessibility baseline — it's the same one we've used on our public portal. I'll get their checklist, but for acceptance the UX team should validate against our standard audit and remediation list.
+
+Interviewer: You said earlier that “anything under about five seconds” is acceptable for small navigations. I want to probe that: what actions count as a “small navigation”? Is opening a modal the same as a full case search result?
+
+Stakeholder: Good point. By “small” I meant things like opening a case detail from a search result, switching tabs within a case, or loading a light drawer for correspondence. Full case searches that return lots of results can be longer, but the day‑to‑day clicks during a live call need to be snappy. So modals and tab switches should feel immediate; pulling a large result set can take longer but not too long.
+
+Interviewer: How will we measure and validate that five‑second target during acceptance testing? Any load assumptions?
+
+Stakeholder: We should measure on a realistic network profile — most of our reps are on corporate LANs and a few are remote on typical VPN. Let's set acceptance to the measured times for a standard corporate connection and under typical concurrent load for the team. I can work with Ops to provide a standard test profile; the expectation is that under normal load, 95th percentile for those small interactions should be under about five seconds.
+
+Interviewer: Okay, moving to availability: you mentioned the app should be essentially always available. What availability window do you expect and are there approved maintenance times?
+
+Stakeholder: We need this up for our global operations basically 24/7/365, with a couple of short scheduled windows when platform teams can do maintenance. We already have agreed maintenance windows that should be the exception rather than the rule. I expect the app to be available except during those scheduled times.
+
+Interviewer: Can you tell me the specific maintenance windows we should bake in? Also, are we using a fixed time zone for those windows?
+
+Stakeholder: Yes — the maintenance windows are fixed in Eastern time. Weekdays through Saturday the narrow window is overnight early morning, and Sunday has a slightly longer window. To be precise, Monday through Saturday from three in the morning to four in the morning Eastern, and on Sunday from one in the morning until five in the morning Eastern. Those are the times when planned downtime is acceptable.
+
+Interviewer: Thanks — and do those windows need to account for daylight saving time shifts, or treat them as fixed to EST year‑round?
+
+Stakeholder: They should follow Eastern standard/time rules — so they move with DST. I don't want surprises when clocks change; Ops and scheduling should handle that.
+
+Interviewer: About integrations: what interface patterns do you expect with the Statement, Cardmember, and Merchant databases? REST APIs, message feeds, direct DB calls?
+
+Stakeholder: From the product side I care about reliability and authoritative reads. Ideally the teams owning those systems expose stable service endpoints we can call. I don't want dev teams in this project doing direct, brittle DB queries — we need supported interfaces from those teams, whether that's synchronous APIs for lookups and async feeds for events. The specifics can be hashed out with the backend owners, but the important thing is that we rely on their authoritative interface, not on extracts someone drops into a file.
+
+Interviewer: You mentioned earlier that transaction details must always come from the statement system. Can we cache anything from those sources to improve responsiveness, or must every read be live?
+
+Stakeholder: For responsiveness we can have a short‑lived UI cache, like we discussed. But any operation that affects the case or a financial outcome has to validate against the source. So caching is allowed for UX, but not as a substitute for authoritative data during decision points.
+
+Interviewer: How should the app behave if one of those backends is down — for example, the Statement DB is unavailable? Should reps be blocked entirely?
+
+Stakeholder: They shouldn't be left guessing. For critical backends like the statement system, if it's down, the app should clearly indicate the limitation and block actions that require authoritative transaction info. For less‑critical lookups we could let them create a provisional case flagged as pending verification, but it must be obvious and auditable. The rep needs explicit guidance: “You can create a provisional case but you must confirm later,” rather than an opaque error.
+
+Interviewer: Speaking of auditable, how do you expect access controls to work? Who can open disputes, and how strict does data segregation need to be?
+
+Stakeholder: Not everyone should start every kind of dispute. Reps should be able to start cardmember disputes; merchant services reps start merchant disputes; supervisors have extra rights for overrides and approvals. Also, reps must only see cases for the cardholder base they are assigned to. We have separate portfolios and sometimes third‑party partners who are scoped to a subset of customers — they must not see cases outside their assignment. If a supervisor needs to cross boundaries, it should be an explicit override with an approval and a strong audit record.
+
+Interviewer: When you say “cardholder base,” what do you mean exactly — how is that boundary defined?
+
+Stakeholder: It's usually defined by portfolio ownership — things like BIN ranges, region, or specific account pools managed by a team. Reps can be assigned to one or more portfolios. So a rep might cover a region or a product line; that assignment defines the set of accounts and therefore the set of disputes they can access.
+
+Interviewer: How should onboarding and deprovisioning be handled for those access assignments? Any integration expectations with identity systems?
+
+Stakeholder: Provisioning should be driven by our HR or identity system so when someone changes roles they automatically inherit the right portfolio access. For partners or external vendors we need explicit provisioning workflows. Integration with the central identity provider is important; we should not be managing separate usernames for everyone long‑term.
+
+Interviewer: On overrides — you said supervisors can perform them. What kind of approval trail do you expect when an override happens?
+
+Stakeholder: I want a full story for each override: who requested it, who approved, timestamps, reason code, and what changed as a result. It should be visible in the case history and exportable for audits. Overrides should be the exception and require justification.
+
+Interviewer: That leads into audit trail requirements. What level of detail do you want logged for each action on a dispute?
+
+Stakeholder: We need a comprehensive, tamper‑resistant history for every case. That includes creation, every status change, edits, who viewed the case, correspondence generation, financial adjustments, and any overrides. Each entry should capture the user identity, role, timestamp, workstation or IP if possible, and a before/after snapshot for any field that changed. The goal is to be able to reconstruct what happened in exact sequence for regulatory or legal inquiries.
+
+Interviewer: When you say “tamper‑resistant,” do you have preferences — for example, write‑once storage or cryptographic signing — or should we leave that to security to define?
+
+Stakeholder: I don't want to prescribe the exact mechanism, but I do want something that makes it clear if anything has been altered. Write‑once style or cryptographic signatures are fine by me; I just need the auditability and an easy way to export or present that history to Compliance or Legal. If security says we need cryptographic measures, that's fine — I just need the assurance.
+
+Interviewer: About regulations — you mentioned compliance and legal risk. Which regulatory obligations need to be enforced by the system?
+
+Stakeholder: The two big ones for us are the rules that govern credit card disputes — the consumer protections that determine timelines, required notices, and provisional credits. The system needs to bake those business rules in so we don't miss deadlines or send incorrect notices. Legal and Compliance will provide the definitive mapping, but from a product view, I want the system to prevent actions that would breach those rules and to automatically generate required correspondence.
+
+Interviewer: Can you be more specific about which timelines or actions are critical to automate? For acceptance tests we'll need concrete expectations.
+
+Stakeholder: I can't recite every rule from memory, but the ones we must not miss are the investigation deadlines and the requirement to provide certain notices and evidence within defined windows. For example, if a provisional credit is needed or a dispute must be resolved within X days, the case should track those deadlines and escalate automatically. Legal will define the exact day counts; I expect the system to enforce them programmatically.
+
+Interviewer: Noted. For data retention — how long should case records and audit logs be retained? Is there a regulatory retention period we should follow?
+
+Stakeholder: There are legal retention requirements but I don't have the exact number in my head. It’s typically multiple years, and the Compliance team will set the exact timeframe. For now, design for long‑term retention with an archiving strategy and searchability.
+
+Interviewer: Let's cover error handling. If the merchant info doesn't match what's on the transaction — merchant name mismatch, multiple TIDs, that sort of thing — how do you want reps to proceed?
+
+Stakeholder: If there's a mismatch, the rep needs clear guidance. The system should highlight the discrepancy and offer the right next steps: either validate with the merchant registry, flag the case for deeper research, or escalate to a merchant specialist. The goal is to stop reps from guessing or creating workarounds. And any manual resolution path must be logged with rationale.
+
+Interviewer: For offline or degraded modes — do you want the ability for reps to create cases offline and sync later?
+
+Stakeholder: Ideally no for financial decisions — we should avoid creating cases offline that could result in inconsistent outcomes. If we do offer a provisional offline entry, it needs strong guardrails: clearly flagged, not used for financial action until synced and validated, and time‑limited. But honestly, I prefer discouraging offline unless absolutely necessary.
+
+Interviewer: On reporting and monitoring, which KPIs and dashboards do you want visible from day one?
+
+Stakeholder: From a business standpoint, I want case volume, age distribution, SLA breaches, average time to resolution, and per‑rep productivity. Ops also needs system health and integration error rates. Compliance wants reports on deadlines and any missed notices. Those are the things I'll look at weekly and Compliance will want on a regular schedule.
+
+Interviewer: Who at Compliance or Legal will sign off on Reg E/Z conformance? Can you name a contact?
+
+Stakeholder: Compliance lead is Maria Torres; she's the go‑to for legal sign‑off on these rules. I'll set up an introduction so we can get a checklist and the exact timelines.
+
+Interviewer: For integrations, who owns the Statement, Cardmember, and Merchant systems? Do you have technical contacts we can work with?
+
+Stakeholder: The Statement system is owned by the Billing team — tech lead is Sam Patel. Cardmember data is under Customer Master — their product owner is Rajiv Singh. Merchant registry is owned by Acquiring Ops; the contact is Linda Park. I'll gather their API docs and circulate them. Expect some back‑and‑forth with those teams.
+
+Interviewer: You emphasized earlier that reps must not see cases outside their cardholder base. I want to challenge that slightly — are there legitimate scenarios where cross‑portfolio visibility is needed for investigations, and if so, how do we enable that without exposing data broadly?
+
+Stakeholder: Good question. Yes, occasionally fraud investigators or certain supervisors need cross‑portfolio access. That should be role‑based and tightly controlled, not a default. There should be an approval flow for temporary access and it must be recorded in the audit trail. So special roles, explicit request/approval, and full logging.
+
+Interviewer: How do you want us to prioritize features for MVP versus later releases?
+
+Stakeholder: Prioritize compliance and integrations first — if we can't reliably get authoritative data or enforce the legal timelines, the rest is just window dressing. Access control and audit trail are also high priority. UI polish, advanced reporting, and merchant self‑service can come in later increments.
+
+Interviewer: One last question on acceptance criteria: For the navigation responsiveness and the maintenance windows you specified, are we also expected to provide monitoring and alerts when those targets are missed?
+
+Stakeholder: Yes, absolutely. Ops should get alerts for SLA breaches and for integration failures. Business stakeholders should have dashboards for SLA breaches and case aging. If daytime ops see a spike in integration errors, we need an alert so we can avoid reps being blocked mid‑call.
+
+Interviewer: Great. To wrap up, I'll produce the draft user stories, acceptance criteria, and an integration dependency matrix. Can you take ownership of lining up the backend contacts and Compliance sign‑off? Also, can you provide the corporate UI and accessibility checklist?
+
+Stakeholder: Yes, I'll pull the backend owners and the Compliance contact list together and send over the UI checklist. I'll also flag that the identity team needs to be in the loop for provisioning. Give me a couple of days and I'll send the docs and names.
+
+Interviewer: Perfect. A couple of quick follow‑ups from earlier — you mentioned that rep frustration with slow screens “kills throughput.” How does that connect to our maintenance windows and downtime messaging? Do you want in‑app notifications when maintenance is upcoming?
+
+Stakeholder: Definitely. If a maintenance window is coming up, show an in‑app banner and a scheduled downtime notice well in advance so reps can plan. And during any maintenance, make sure the app explains what's limited and when it'll be back. That ties directly to reducing repeated calls and frustration.
+
+Interviewer: Thanks. One procedural item: which artifacts should I produce next and who will review them?
+
+Stakeholder: Start with the prioritized requirements and the user stories for the MVP, plus the integration matrix listing those three backends and their owners. Send the draft to me and Maria from Compliance, and cc the backend owners. We'll review and iterate.
+
+Interviewer: Excellent. I'll schedule follow‑ups: an integration workshop with the backend owners, a UX deep‑dive to review the corporate UI checklist, and a compliance session with Maria. Anything else before we finish?
+
+Stakeholder: No, that covers it. Oh — and one small digression: if you can make the UI team coffee happen for the UX deep‑dive, they get cranky without it. I'm half‑kidding, but seriously, keep the reps in the room for at least one session. They always surface the weird edge cases.
+
+Interviewer: Noted. Thank you — I'll circulate the next steps and the draft artifacts by end of the week.
+
+---
+Selected Requirements:
+1. [NICE.csv line 149] [quality, legal, look_and_feel] 'The Disputes application shall comply with the corporate standards for user interface creation for internally and externally used applications.'
+2. [NICE.csv line 155] [quality, performance] 'The maximum wait time for a user navigating from one screen to another within the Disputes application shall be no more than 5 seconds.'
+3. [NICE.csv line 157] [quality, availability, operability] 'The Disputes application shall be available 24x7x365 with the exception of the following scheduled maintenance windows. Monday â€“ Saturday 3:00am to 4:00am EST Sunday 1:00amd to 5:00am EST'
+4. [NICE.csv line 158] [quality, operability] 'The Disputes application shall interface with the Statement Database. The Statement Database provides the transaction details to the Disputes System. All transaction details must be obtained from the Statement Database'
+5. [NICE.csv line 159] [quality, operability] 'The Disputes application shall interface with the Cardmember Information Database. The Cardmember Information Database provides detailed information with regard to a cardmember. All cardmember detail information must be obtained from the Cardmember Information Database.'
+6. [NICE.csv line 160] [quality, operability] 'The Disputes applications shall interface with the Merchant Information Database. The Merchant Information Database provides detailed information with regard to the merchant. All merchant detail information shall be obtained from the Merchant Information Database.'
+7. [NICE.csv line 163] [quality, security] 'The Disputes application shall ensure that only users with the appropriate access level are allowed to initiate dispute requests.'
+8. [NICE.csv line 175] [quality, legal] 'The Disputes application must conform to the legal requirements as specified by Regulation E and Regulation Z that govern credit card disputes processing.'
+9. [NICE.csv line 177] [quality, functional, legal] 'The Disputes application must maintain a detailed history of every action that a user takes on a dispute case. This ensures a complete audit trail if questions arise later on with regard to a particular dispute case.'
+10. [NICE.csv line 180] [quality, security] 'The Disputes System must prevent users from accessing any dispute cases that do not belong to their cardholder base.'

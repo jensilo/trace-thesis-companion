@@ -1,0 +1,271 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_8_re_experienced_stakeholder_technical_senior_20260227_111332.txt",
+  "model": "openai/gpt-5-mini",
+  "timestamp": "20260302_172716",
+  "requirements": [
+    {
+      "requirement": "Routine browsing, searching, and loading of movie details shall respond within 5 seconds for users under typical conditions.",
+      "source_citation": "For the small stuff, maybe five seconds for the page or action to respond feels like the outer edge.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly sets a numeric response-time target for routine interactions (browse/search/movie details). It is a measurable performance requirement. Missing specifics: definition of \"typical conditions\" (network profiles, device classes), where the timer starts/ends, measurement method (median/95th percentile), and SLA enforcement.",
+      "follow_up_question": "Should the 5-second target be measured as median, 95th percentile, or maximum, and against which client/network profiles (e.g., mobile 3G, 4G, broadband)?"
+    },
+    {
+      "requirement": "Credit-card checkout flows (card processing) shall complete within 15 seconds under normal operating conditions; durations above 15 seconds are unacceptable.",
+      "source_citation": "Fifteen seconds is where I'd draw a line for card processing. Any longer and we're losing people or getting support tickets.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder gives an explicit maximum latency for checkout/card processing. It's a measurable SLO. Gaps: whether this includes third-party processor time vs client-side steps, retries, and how to measure (end-to-end perceived checkout completion or just payment authorization).",
+      "follow_up_question": "Does the 15-second target refer to end-to-end perceived checkout completion (including network roundtrips and UI updates) or only to payment authorization latency, and what percentile should be used (e.g., 95th)?"
+    },
+    {
+      "requirement": "Initial streaming startup buffering shall be single-digit seconds ideally and tolerable up to approximately 10 seconds including CDN and client setup; adaptive bitrate should recover quickly to minimize rebuffering.",
+      "source_citation": "I'd say initial buffering should be short, you know, single-digit seconds ideally, and if adaptive bitrate is tuned correctly, it should recover quickly. So, tolerable buffering is maybe around ten seconds including CDN and client setup, beyond that it's a problem.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder specifies acceptable startup buffering times and expectation for adaptive bitrate recovery. Missing specifics: exact single-digit target (e.g., <=3s), measurement metrics (startup time, rebuffers per play, time to bitrate stabilization), and network profile definitions.",
+      "follow_up_question": "Please confirm the preferred numeric target for initial startup (e.g., <=3s) and which metrics we should measure (startup delay, rebuffer count, time-to-stable-bitrate) and under which client/network conditions."
+    },
+    {
+      "requirement": "System availability shall be at least 99.5% over a rolling 30-day period.",
+      "source_citation": "I'd aim for ninety-nine point five percent availability. It balances cost and customer expectations for this kind of service.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "Stakeholder provides a specific SLA target (99.5%). Gaps: measurement window (I assumed 30 days), what counts as downtime (user-impacting incidents only), per-region vs global availability, and allowed maintenance windows.",
+      "follow_up_question": "Do you want the 99.5% target measured per-region or globally, and over what measurement window (30-day rolling, monthly calendar)? Also, what planned maintenance windows are acceptable and should be excluded?"
+    },
+    {
+      "requirement": "Payment card data shall be stored only if necessary; otherwise rely on tokenization from a PCI-compliant processor. If card data is stored, it must be encrypted at rest and access limited to a very small set of administrators with strict controls.",
+      "source_citation": "Card data has to be locked down. I think it should be stored only if we have to... it should be encrypted at rest and only accessible to a very small set of administrators.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder prefers tokenization to reduce scope and sets encryption and minimal-access constraints for any stored card data. Missing specifics: encryption algorithms/key management, where keys are stored, whether encryption is field-level, and retention/rotation policies.",
+      "follow_up_question": "If we must store card data, what encryption standards and key management policies do you require (e.g., AES-256 with KMS/HSM, key rotation frequency), and do you require field-level encryption separate from full-disk encryption?"
+    },
+    {
+      "requirement": "Administrative access to sensitive customer data must be role-based, integrated with the identity provider, require SSO and MFA for admin consoles, implement least privilege, and produce immutable audit logs for every access.",
+      "source_citation": "Role-based access control integrated with our identity provider. Use least privilege, and make the admin UI audit every access. Preferably single sign-on with MFA for admin consoles so when someone pulls a record we have an immutable log.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder calls for RBAC with SSO/MFA and auditing of admin accesses. Missing details: required RBAC granularity levels, retention period for audit logs, and whether logs must be tamper-evident (WORM storage).",
+      "follow_up_question": "What retention period and tamper-protection level do you require for admin access logs, and what specific RBAC roles/permissions (a first-cut list) should be defined initially?"
+    },
+    {
+      "requirement": "A clear, plain-language privacy notice must be visible (footer link on every page) and a short banner/modal must be shown before collecting any sensitive data; prior to registration or checkout present a reminder/checkbox indicating agreement.",
+      "source_citation": "It should be obvious. Put it in the footer on every page and show a short, plain-language banner or modal before we collect anything sensitive... But before any data entry point — like registration or checkout — there should be a short reminder or checkbox that they agree.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Stakeholder specifies visibility and interaction pattern for privacy notices for legal/usability purposes. Gaps: exact wording, whether banner needs dismissible consent and whether consent must be stored with versioning, and which pages trigger the banner.",
+      "follow_up_question": "Do you require storing a timestamped record of each user's consent including the policy version, and should the banner be shown only once per device/browser or once per user account?"
+    },
+    {
+      "requirement": "Every sale event (who, what, when, payment method) shall be recorded in near-real-time and available to admins as events happen; analytics aggregation may run nightly for reporting.",
+      "source_citation": "We need every sale logged — who bought what and when, whether via card or a pre-paid card, and administrators must be able to pull that data... Sales should be recorded in near-real-time so support can reconcile immediately. The analytics side can aggregate nightly for reports...",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Stakeholder requires near-real-time transactional logging for sales for support and reconciliation, with nightly aggregation for analytics. Gaps: definition of near-real-time (seconds/minutes), data retention, access controls on sales logs, and export formats/API requirements.",
+      "follow_up_question": "What maximum delay defines 'near-real-time' (e.g., <1 minute, <5 minutes), and what retention and export formats are required for raw sales logs?"
+    },
+    {
+      "requirement": "The system shall detect anomalous patterns (credential stuffing, scraping, card testing, DDoS), automatically rate-limit or block suspicious traffic, and generate immediate alerts for high-severity incidents.",
+      "source_citation": "The system should be able to detect anomalous patterns, rate-limit or block suspicious traffic automatically, and send alerts to the ops/admin team when something abnormal happens.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder lists specific threat types and wants automated detection/mitigation and alerting. Missing specifics: detection thresholds, false-positive handling, specific mitigation actions (CAPTCHA, IP block), and integration with WAF/CDN.",
+      "follow_up_question": "For each threat type (credential stuffing, scraping, card testing, DDoS), what detection thresholds or behaviors should trigger automated mitigation, and what mitigations are acceptable (rate-limit, CAPTCHA, IP block, challenge-response)?"
+    },
+    {
+      "requirement": "Alerts for high-severity incidents (e.g., flood of failed logins or suspicious checkout behavior) shall be sent immediately to on-call personnel; lower-severity anomalies may be batched for periodic review.",
+      "source_citation": "Immediate for high-severity incidents, like a flood of failed logins or suspicious checkout behavior. Lower-severity anomalies can be batched...",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Stakeholder defines alerting timeliness by severity. Gaps: who is on-call, notification channels (SMS, pager, email), escalation policy, and what defines high vs low severity quantitatively.",
+      "follow_up_question": "What notification channels and escalation steps should be used for immediate alerts, and please define quantitative thresholds for high-severity incidents that must trigger immediate paging?"
+    },
+    {
+      "requirement": "Pre-paid card administration shall support batch generation with configurable denominations and expiration policies, restrict high-value batch creation to authorized roles, and fully log generation and redemption linking redemptions to user accounts.",
+      "source_citation": "Admins should be able to generate batches, set denominations and expiration policies... not everyone should be able to generate high-value batches — and full logging of generation and redemption. Also, an audit trail linking redemptions to accounts will help with disputes.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder specifies functionality with security/authorization and auditing constraints for pre-paid cards. Gaps: maximum allowed denominations, workflows for approving high-value batches, and retention of redemption audit logs.",
+      "follow_up_question": "What authorization levels and approval workflow are required to create high-value batches, and what retention period and export capabilities do you need for generation/redemption audit logs?"
+    },
+    {
+      "requirement": "RBAC shall be sufficiently granular to separate catalog managers, finance admins, and support, ensuring catalog roles cannot access payments or raw card details and finance has restricted payment access.",
+      "source_citation": "It needs to be fine-grained enough to separate catalog managers, finance admins, and support. Catalog folks manage titles and metadata but can't touch payments. Finance handles revenue reports and high-level payment access. Support can see customer-facing data but not raw card details.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder demands role separations and restrictions around payment data. Gaps: exact role permission matrix, role hierarchy, and initial list of roles/groups to implement.",
+      "follow_up_question": "Please provide an initial list of roles and required permissions (e.g., catalog_edit, view_reports, create_prepaid_batch_high_value) so we can design the RBAC matrix."
+    },
+    {
+      "requirement": "The public API and user-facing services shall be implemented as scalable microservices, use a CDN for static and streaming assets, deploy via container orchestration with health checks, and replicate key services across availability zones for failover; cache aggressively for catalog/menu data.",
+      "source_citation": "I'd go with a microservices approach for the user-facing APIs, with a CDN fronting static and streaming assets... Use container orchestration for scale and health checks, and replicate key services across zones for failover. Also, cache aggressively where it makes sense so the catalog and menus are snappy...",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "Stakeholder states architectural preferences to meet scalability/resiliency/performance. Gaps: technology choices (which orchestration, CDN), replication strategy (active-active vs active-passive), cache invalidation policies, and autoscaling thresholds.",
+      "follow_up_question": "Do you have preferred technologies for orchestration and CDN, and what autoscaling and replication model (active-active or active-passive) and cache TTL/invalidation strategies do you expect?"
+    },
+    {
+      "requirement": "Prefer tokenization via the payment processor rather than storing card data locally to minimize PCI scope; if local storage is required, implement strong encryption and strict access controls.",
+      "source_citation": "Prefer tokens from the processor to minimize our surface area, but if business insists on storing cards for recurring billing or special cases, then we must encrypt and strictly control access.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder prefers tokenization to reduce compliance burden and sets conditions for local storage. Gaps: whether certain business cases mandate local storage, and exact compliance obligations if storing locally.",
+      "follow_up_question": "Which business cases (if any) require local card storage for recurring billing, and what PCI compliance level are we prepared to achieve if we store cards?"
+    },
+    {
+      "requirement": "Privacy notice consent shall be shown to users on first visit with a persistent footer link, and prior to registration or checkout a short reminder/checkbox must be presented to capture affirmative agreement.",
+      "source_citation": "For usability, just the first time is fine, with a persistent link in the footer... But before any data entry point — like registration or checkout — there should be a short reminder or checkbox that they agree.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 4,
+      "rationale": "Stakeholder specifies consent UX pattern and persistence. Gaps: legal/regulatory requirements (GDPR, local laws), how consent records are stored and versioned, and localization needs.",
+      "follow_up_question": "Are there specific legal jurisdictions (e.g., GDPR regions) we must support that dictate consent storage and revocation flows, and do you require consent versioning with timestamps?"
+    },
+    {
+      "requirement": "Centralize application, access, and security logs; retain detailed logs for months for operational and forensic investigations, with longer retention for financial/compliance records as required by regulation.",
+      "source_citation": "Application logs, access logs, and security events should be centralized and retained long enough for forensic work... For operational troubleshooting, months is reasonable. For financial records and compliance, that might be longer depending on regulations...",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Stakeholder requests centralized logging and gives retention guidance (months for ops, longer for finance). Gaps: exact retention durations, log formats, secure storage, access controls, and cost considerations.",
+      "follow_up_question": "Please specify exact retention durations for operational logs (e.g., 3 months, 6 months) and for financial/compliance logs, and any requirements for log immutability or secure archival."
+    },
+    {
+      "requirement": "Monitoring shall include dashboards and alerts for key health metrics; thresholds crossing shall page on-call staff (SRE or dev team early on); synthetic transactions and continuous page-load tests shall run in production to validate response targets.",
+      "source_citation": "Daily usage stats should feed into analytics, and we should have dashboards and alerts for key health metrics. If a threshold is crossed, on-call gets paged... Run synthetic transactions and page-load tests against the production stack so we have continuous proof that response targets are met.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Stakeholder specifies monitoring, alerting, synthetic tests, and operational ownership expectations. Gaps: which key health metrics, synthetic test cadence, acceptable failure rates, and who owns on-call at launch vs later.",
+      "follow_up_question": "Which exact health metrics should be on dashboards (e.g., 95th latency, error rate, payment latency, streaming startup), what cadence for synthetics is required, and who will be on-call during initial launch?"
+    },
+    {
+      "requirement": "Regular security validation: perform regular penetration tests and quarterly reviews of admin access logs to confirm appropriate access patterns.",
+      "source_citation": "Regular penetration tests for security, and quarterly reviews of access logs to confirm admin access patterns.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder requires scheduled security testing and periodic access reviews. Gaps: frequency and scope of pen tests (annual/quarterly, internal/external), remediation timelines, and who reviews access logs.",
+      "follow_up_question": "Do you require external (3rd-party) penetration tests and at what frequency, and who is responsible for conducting the quarterly access-log reviews?"
+    },
+    {
+      "requirement": "The system shall automatically flag unusual purchases or redemptions of pre-paid cards and make these events visible to admins with near-real-time notifications for potential fraud investigation.",
+      "source_citation": "I also want automated flags on unusual purchases or redemptions of pre-paid cards.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "Stakeholder explicitly requests automated fraud-flagging for purchases and redemptions. Missing specifics: what constitutes 'unusual', thresholds, ML vs rule-based detection, and false-positive handling.",
+      "follow_up_question": "Can you define examples of 'unusual' purchases/redemptions (e.g., velocity, amount, geographic mismatch) and acceptable false-positive rates for automated flags?"
+    },
+    {
+      "requirement": "Admin UIs shall be role-based, simple, and support operational workflows including asset ingestion, transcoding status visibility, regional availability controls, promotion pushes, revocation of access, and a lightweight review workflow for moderation.",
+      "source_citation": "We need role-based UIs that are simple. Catalog editing should include asset ingestion workflows, transcoding status, and regional availability controls. Also, a way to push promotions or bundle content, and to revoke access if there's abuse. Oh, and a lightweight reviewer workflow for user reviews so admins can moderate if necessary.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "Stakeholder lists admin functionality with usability and operational needs; these are NFRs around maintainability and operability of admin tools. Gaps: performance SLAs for admin UIs, audit requirements, and who can perform each operation.",
+      "follow_up_question": "Which admin operations require audit logging and what performance expectations (e.g., UI response times) do you have for the admin interfaces?"
+    },
+    {
+      "requirement": "Moderation shall be a hybrid model: automated filters for obvious spam or abusive language and human review for edge cases.",
+      "source_citation": "A mix makes sense: automated filters for obvious spam or abusive language, with human review for edge cases.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "Stakeholder prefers combined automated/manual moderation to balance safety and accessibility. Gaps: what thresholds trigger human review, SLA for human review turnaround, and tooling to assist reviewers.",
+      "follow_up_question": "What turnaround time SLA do you require for human review of flagged content, and what confidence thresholds should automated filters use to escalate to human reviewers?"
+    },
+    {
+      "requirement": "Customer trust is mission-critical: the architecture must ensure secure handling of payments and personal data, predictable responsiveness under normal load, and resiliency under peak load.",
+      "source_citation": "That customer trust is protected. If we lose confidence in payments, privacy, or reliability, nothing else matters. So secure handling of payments and data, predictable responsiveness for users, and resiliency under load — those three are mission-critical for me.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "other",
+      "confidence": 5,
+      "rationale": "Stakeholder states high-level non-negotiable attributes of security, performance, and resiliency. This is a composite mission statement rather than a single measurable requirement. Gaps: concrete SLOs/SLA for each component beyond those already specified.",
+      "follow_up_question": "Can you prioritize these three mission-critical attributes (security, responsiveness, resiliency) if trade-offs are required, and which concrete SLOs beyond those discussed are mandatory?"
+    },
+    {
+      "requirement": "Operational ownership: monitoring and alerting shall be owned by an SRE function with escalation to devs/product; initially the dev team will handle on-call until SRE is hired or contracted.",
+      "source_citation": "Ideally an SRE function with clear escalation to devs and product. Early on the dev team will handle it, but we should hire or contract an SRE as soon as traffic grows...",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "Stakeholder specifies organizational ownership for monitoring and on-call. Gaps: timelines for hiring SRE, specific escalation SLAs, and responsibilities split between dev and SRE.",
+      "follow_up_question": "What is the expected timeline or traffic threshold at which we must transition monitoring ownership from dev team to an SRE function, and what escalation SLAs do you expect?"
+    },
+    {
+      "requirement": "Design the user interface to be forgiving for non-power users: large clear buttons, simple language, and an aesthetic that aligns with the target audience.",
+      "source_citation": "Make the UI forgiving for folks who aren't power users. Big, clear buttons, simple language, and a sleek African-inspired aesthetic so it's both familiar and aspirational.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 4,
+      "rationale": "Stakeholder describes usability and visual design goals to support adoption. Gaps: accessibility standards (WCAG), specific component sizes, localization, and user testing acceptance criteria.",
+      "follow_up_question": "Do you require formal accessibility conformance (e.g., WCAG 2.1 AA), and are there specific UI guidelines or component size minimums we must follow?"
+    }
+  ]
+}

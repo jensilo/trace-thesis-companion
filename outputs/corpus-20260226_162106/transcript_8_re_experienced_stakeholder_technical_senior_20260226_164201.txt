@@ -1,0 +1,132 @@
+Interviewer: Thanks for making time. To start, tell me in your own words what you see as the top goals and biggest risks for IzognMovies from an architecture perspective.
+
+Stakeholder: Sure — thanks. Um, broadly I want a platform that people can actually rely on and one we can evolve without rewriting it every year. So reliability and secure handling of payments are top of mind; I mean, if payments or user data leak, that's game over. Performance matters too — users shouldn't feel the site is sluggish — but we have to balance that against cost. Also, we need to make the product approachable for users who aren't tech-savvy, which changes UX and error-handling choices. Oh, and one more thing: we need clear measurable targets so we can design accordingly — otherwise everything becomes "it should be fast" and we over- or under-build.
+
+Interviewer: When you say "payment data leak is game over", do you mean we must avoid storing card numbers altogether, or that if we do store them they must be heavily protected? Which side are you leaning toward?
+
+Stakeholder: Hmm, I think we should control our data — so I'd rather we keep card info on our side but in a vaulted, encrypted form. That gives us control over reconciliation and some business workflows. That said, I know there's a trade-off: storing full card data means heavier compliance and more things to manage. I'm tempted to say keep them server-side but encrypted with strict access controls, rather than outsourcing everything to a third party, because we may need occasional raw access for investigation. But, um, that's contingent on us having proper key management.
+
+Interviewer: By "strict access controls" — who exactly should be able to read raw payment details? Finance? Support? Ops? Can you be specific about roles?
+
+Stakeholder: I think only a very small set — finance for settlements and a handful of senior admins for investigations. Not support agents answering user queries. Ideally we'd require multi-factor and some approval workflow before raw data is revealed. Audit trails need to show who did what and when. Sorry, that's a bit fuzzy — I mean, I want least-privilege enforced and an auditable path for any access.
+
+Interviewer: Okay — when you say "a few senior admins" can you put a number on that for planning access controls and RBAC?
+
+Stakeholder: Yeah — okay, put it this way: I expect single-digit administrators to have that level of access. Like, not dozens; more like under ten people globally. That's enough? 
+
+Interviewer: That helps. Switching to availability: you mentioned reliability as top priority. How available does the site need to be, practically speaking?
+
+Stakeholder: We need it to be very available. Customers expect to access content across time zones; outages will hit revenue and reputation. I don't want to get into an SLA war, but let's say high availability is a hard priority — we should aim for industrial-grade uptime targets rather than "mostly available." 
+
+Interviewer: Can you put a specific target on "high availability" so we can size redundancy and failover?
+
+Stakeholder: Alright — for design purposes, target around ninety-nine and a half percent uptime. That gives us some runway for maintenance but keeps us focused on redundancy and monitoring.
+
+Interviewer: Noted. Earlier you said users shouldn't feel the site is sluggish. From a UX interaction standpoint, what constitutes "too slow" in your mind?
+
+Stakeholder: It just needs to feel snappy. Small actions — like clicking through movie lists or opening account pages — should feel immediate. If someone waits and stares, that's poor. Payments are different because of external processors; users tolerate a little more waiting there. But generally, small interactions need sub-feel-slow latency. If you want a number, I think under a few seconds for routine things is where users stop getting annoyed.
+
+Interviewer: Can you be more concrete — what "few seconds" should we design to meet on those routine UI interactions?
+
+Stakeholder: Let's aim for about five seconds as the upper bound for regular UI responses. So most UI actions should return within that window.
+
+Interviewer: You mentioned payments are allowed more time. What about the full purchase flow — entering card, processing with gateway, and confirmation — how long is acceptable before we consider it degraded?
+
+Stakeholder: For in-line card purchases, including gateway calls and fraud checks, I don't want users sitting forever. I'd say up to around fifteen seconds is tolerable; beyond that we should provide clear feedback and allow cancellation or retry.
+
+Interviewer: Understood. On the topic of streaming specifically, what's your tolerance for startup buffering when someone hits play?
+
+Stakeholder: Startup should be quick; people will abandon if it stalls. Considering different networks, I'd say startup needs to be under what feels like a short wait — roughly within ten seconds to first playback on typical connections. During playback, adaptive bitrate should prevent frequent rebuffering, but poor user networks will add noise.
+
+Interviewer: You also said the product must be usable by people who are new to the internet. How do you measure that usability requirement? Any quantitative goal?
+
+Stakeholder: We should aim for most novice users to complete core tasks without help. If pushed for a number, I’m comfortable designing toward success for about ninety percent of novice users on typical tasks like searching, buying a movie, and starting playback. The tests will need to be real moderated usability sessions though — metrics alone won't tell the whole story.
+
+Interviewer: Earlier you mentioned keeping card data server-side for control. Do we have a stance on encryption standards and key management — are we using cloud KMS, HSMs, or rolling our own?
+
+Stakeholder: I would prefer HSM-backed keys wherever possible or cloud KMS with HSM backing. We need strong encryption at rest and in transit, key rotation, and separation of duties between those who manage keys and those who manage the application. Performance-wise, we should bench the decryption path so it doesn't become a bottleneck in high-throughput workflows.
+
+Interviewer: If we used tokenization via a payment gateway instead of storing PANs, how would you weigh that choice?
+
+Stakeholder: Tokenization reduces our compliance surface and is attractive; it's less operational burden. But we sacrifice the ability to do certain reconciliations or specialized processes that some finance folks sometimes need. If we go tokenized, we must accept that some rare workflows will require a different approach or escalations to the payment provider. So I'd put tokenization as the default unless business says we must retain PANs.
+
+Interviewer: Let's talk about resilience. You said the site must keep functioning if the streaming server goes down. What functionality must remain available during a streaming outage?
+
+Stakeholder: Browsing, search, account management, and purchases absolutely must remain available. Users should still be able to buy content and have it queued or be informed about playback timing. Ideally, we would fail over streaming to cached CDN copies or secondary streaming clusters so playback can continue for recent popular titles. But at a minimum, non-playback features cannot go down because streaming is flaky.
+
+Interviewer: When you say failover to cached CDN copies, do you expect all titles to be pre-populated in the CDN, or only the popular catalog?
+
+Stakeholder: Realistically, only a working set of content would be cached everywhere. We should plan for on-demand origin fetches and a cache-warming strategy for premieres. The catalog is large and we can't pre-warm everything globally without cost. So a hybrid approach makes sense.
+
+Interviewer: About scale — you mentioned supporting a large user base. What does "support" mean here: registered users, active monthly, or concurrent viewers? Which should we plan for?
+
+Stakeholder: Good question. The business often quotes the total registered user figure, but for architecture we need both. If I have to pick one for the first-design pass, let's size for one hundred thousand registered customers as a realistic initial target and then plan for expected concurrency as a percent of that for peak sizing. We will need to define the concurrency expectations separately.
+
+Interviewer: Can you quantify the concurrency percentage we should design for at peak? For example, what share of registered users might be online simultaneously during a release?
+
+Stakeholder: Hmm, peak concurrency is what bites you during launches. For initial planning, assume a small single-digit percent of the registered base might be active concurrently during normal peaks; for release-day spikes we should be ready for higher bursts, maybe several times normal peak. I'd rather we plan autoscaling and CDN capacity than hard-wire a fixed high concurrency baseline.
+
+Interviewer: On abuse protection — what attacks are you most worried about, and how do you want the system to surface incidents to ops?
+
+Stakeholder: I'm mainly worried about credential stuffing and payment fraud, and broad volumetric attacks like DDoS that could take the site down. For detection, I'd like layered defenses: WAF, rate-limiting, bot detection, and fraud scoring for purchases. Alerts should go to on-call tooling — email isn't enough — we need push into pager/incident channels with context. But we also must tune thresholds so we don't swamp ops with noise.
+
+Interviewer: "Push into pager/incident channels" — do you have a preferred toolchain for alerts or an SLA for notifying administrators when abuse is detected?
+
+Stakeholder: We should integrate with whatever on-call system operations uses — PagerDuty or similar. For notification timelines, we must alert immediately on high-severity incidents. For lower-severity anomalies, a batched alert is acceptable. I can work with ops to set concrete escalation rules; they need to match our incident response playbooks.
+
+Interviewer: You mentioned audit trails earlier for card-access and admin actions. Any thoughts on retention for those logs?
+
+Stakeholder: We need to keep audit logs long enough for fraud investigation and compliance inquiries. That means several months at a minimum, maybe longer depending on legal requirements. Also, logs should be tamper-evident and stored separately from production so an attacker can't wipe them easily. Key rotation and access to logs must be tightly controlled too.
+
+Interviewer: Are there specific compliance standards we need to comply with right away, like a PCI level or local data protection laws?
+
+Stakeholder: We must at least be prepared for PCI compliance given we handle card payments, and we need to follow applicable data protection laws for customers in different countries. I can't quote levels off the top of my head, but we should involve legal to map exact obligations and ensure our architecture supports them. For now, design as though we will be audited.
+
+Interviewer: For performance acceptance, how do you want us to measure response times and streaming startup? Client perceived metrics, server TTFB, percentiles?
+
+Stakeholder: Measure from the user's perspective — client-perceived metrics are most meaningful. But for root cause we also need server TTFB and edge metrics. Use percentile-based SLIs for acceptance — capture p95 and p99 so we can see tail behavior. Also synthetic transactions from different regions will help validate cross-region performance.
+
+Interviewer: You earlier said routine UI responses should be within five seconds and payments within fifteen. For acceptance tests, which percentile should meet those windows — p95, p99, something else?
+
+Stakeholder: Let's require p95 to meet those targets during normal load tests. For p99 we should monitor and have thresholds that trigger investigation but we shouldn't fail releases on p99 alone in the first pass.
+
+Interviewer: For the usability target — you said aim for about ninety percent of novice users to complete core flows. How do you want to validate that?
+
+Stakeholder: We'll run moderated usability sessions with a representative sample of novice users, task them with searching, buying, and playing a title, and measure success rates and time-on-task. Complement that with analytics on real users post-launch and iterate.
+
+Interviewer: A quick check: you mentioned earlier we should notify admins on all abuse occurrences. That sounded absolute — do you really mean every single event, even low-signal ones?
+
+Stakeholder: No, sorry — that was sloppy phrasing. We want to surface all meaningful incidents, not every trivial event. Low-confidence signals should be aggregated or routed to lower-priority channels. High-confidence detections — like mass login failures or spike in payment declines — should be pushed immediately. So, meaningful notifications for all significant occurrences.
+
+Interviewer: Good clarification. One last area — testing resilience. How much chaos testing are you comfortable with before release? Do you want streaming server outages simulated?
+
+Stakeholder: Yes, we should run failure injection in staging — simulate streaming server outages, CDN edge failures, and payment gateway latency spikes. We should validate graceful degradation: browsing and purchases remain available even if streaming is impaired. Start in staging, then limited experiments in production during low-traffic windows.
+
+Interviewer: To wrap up, which of the items we've discussed should be highest priority for the first release?
+
+Stakeholder: Highest priority is secure payment handling with audited access, solid authentication and RBAC, and basic DDoS and fraud defenses. Next is availability for browsing and purchases with CDN-backed streaming for common content. Usability tests for novice users are critical before launch too. Performance tuning and broader scale support can be phased as we see real usage.
+
+Interviewer: What documents or stakeholders do you want me to pull in next?
+
+Stakeholder: Get legal/compliance in to clarify PCI and data protection expectations, ops for alerting and on-call integration, and finance to confirm what payment workflows they need access to. Also, UX on novice-user flows and a small infra PoC for payments/streaming would help validate assumptions.
+
+Interviewer: Great. I'll produce a draft of measurable NFRs and a test plan that reflects the targets we discussed — five seconds for routine UI, fifteen seconds for card purchase, ten seconds to start playback, ninety-nine point five percent uptime, and capacity for one hundred thousand registered users — and circulate that for your review, plus the list of stakeholders to bring in. Anything else to add?
+
+Stakeholder: That summary sounds right. Just one last thing — please make sure the NFRs include who signs off on security and availability acceptance. And, um, keep an eye on cost estimates for multi-region and HSM stuff; it's easy for that to balloon. Otherwise, we're good.
+
+Interviewer: Noted — I'll include sign-off owners and a cost-risk note on the HSM/multi-region trade-off. Thanks for your time; I'll send the draft and proposed follow-ups by end of day.
+
+Stakeholder: Thanks. I'll loop in legal and ops once I get that. And sorry if I jumped around a bit — old habits.
+
+---
+Selected Requirements:
+1. [NICE.csv line 401] [quality, security] 'All credit card information will be secured on the server and only accessible by authorized Izogn administrators. Information will be encrypted in the database.'
+2. [NICE.csv line 436] [quality, legal, security] The system shall reveal private information only in compliance with the organization's information policy.'
+3. [NICE.csv line 403] [quality, availability] 'The website shall achieve 99.5% up time.'
+4. [NICE.csv line 397] [quality, fault_tolerance, performance] 'Any interface between a user and the automated system shall have a maximum response time of 5 seconds unless noted by an exception below.'
+5. [NICE.csv line 398] [quality, performance] 'When purchasing a streaming movie or pre-paid card via credit card the processing time should have a maximum response time of 15 seconds.'
+6. [NICE.csv line 399] [quality, performance] When streaming a movie the buffering time should take no longer than 10 seconds (plus any latency on the user's connection.)'
+7. [NICE.csv line 405] [quality, availability, fault_tolerance] 'The website shall continue to operate if the streaming server goes down.'
+8. [NICE.csv line 388] [quality, usability] 'The product should be able to be used by 90% of novice users on the Internet.'
+9. [NICE.csv line 410] [quality, scalability] 'The website shall be capable of supporting 100 000 customers.'
+10. [NICE.csv line 432] [quality, maintainability, security] 'The website shall protect itself from intentional abuse and notify the administrator at all occurrences.'

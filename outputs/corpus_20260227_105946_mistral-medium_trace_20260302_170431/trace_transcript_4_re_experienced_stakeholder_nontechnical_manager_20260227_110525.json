@@ -1,0 +1,238 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_4_re_experienced_stakeholder_nontechnical_manager_20260227_110525.txt",
+  "model": "mistral/mistral-medium-latest",
+  "timestamp": "20260302_170433",
+  "requirements": [
+    {
+      "requirement": "The system shall respond to routine navigation and lookups within 5 seconds.",
+      "source_citation": "For routine navigation — moving from one screen to another, looking up a transaction... if a rep has to wait more than about five seconds, they get annoyed...",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states a performance requirement for routine navigation and lookups, specifying a 5-second threshold.",
+      "follow_up_question": "What specific screens or operations are considered routine navigation and lookups?"
+    },
+    {
+      "requirement": "The system shall support 350 concurrent users without noticeable slowdowns.",
+      "source_citation": "design for three hundred and fifty concurrent users without noticeable slowdowns.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "The stakeholder provides a specific number for concurrent users the system should support without performance degradation.",
+      "follow_up_question": "What is the expected growth rate in the number of concurrent users over the next 2-3 years?"
+    },
+    {
+      "requirement": "The system shall implement role-based access control to restrict access to sensitive data based on user roles.",
+      "source_citation": "Not everyone should see every piece of data — there's personal information and settlement details that only a few people should touch. So, roles need to be tighter than what we have now.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder emphasizes the need for role-based access control to protect sensitive data.",
+      "follow_up_question": "Can you provide a detailed role matrix specifying which roles have access to which data and functionalities?"
+    },
+    {
+      "requirement": "The system shall segregate duties such that initiation and approval of actions are performed by different roles.",
+      "source_citation": "The typical cardmember rep should be able to open a case... but they shouldn’t be able to finalize account adjustments or issue refunds without supervisor approval.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies that different roles should be responsible for initiating and approving actions to ensure proper oversight.",
+      "follow_up_question": "Are there any actions that should require approval from multiple roles?"
+    },
+    {
+      "requirement": "The system shall ensure data segregation between internal and external users.",
+      "source_citation": "External-facing interactions... need to be segmented so they only see what’s necessary. Internally, only those with a legitimate business need should see full cardmember data.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for data segregation between internal and external users to protect sensitive information.",
+      "follow_up_question": "What specific data fields should be segregated for external users?"
+    },
+    {
+      "requirement": "The system shall mask sensitive data in exported reports unless explicitly authorized.",
+      "source_citation": "Any exported reports mask or limit sensitive information unless explicitly authorized.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies that sensitive data should be masked in exported reports to protect sensitive information.",
+      "follow_up_question": "What specific data fields are considered sensitive and require masking?"
+    },
+    {
+      "requirement": "The system shall provide temporary privilege elevation with auditing and automatic reversion.",
+      "source_citation": "There should be a controlled way to grant temporary elevated rights, with clear approval and automatic reversion. But those temporary grants must themselves be audited.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies the need for temporary privilege elevation with auditing and automatic reversion to ensure security and accountability.",
+      "follow_up_question": "What is the maximum duration for temporary privilege elevation?"
+    },
+    {
+      "requirement": "The system shall maintain a full audit trail of all actions taken on a case.",
+      "source_citation": "We need a record of every action taken on a case — who opened it, edits, status changes, who viewed sensitive fields, when letters were sent, approvals, everything.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "auditability",
+      "confidence": 5,
+      "rationale": "The stakeholder emphasizes the need for a comprehensive audit trail to track all actions taken on a case for compliance and investigative purposes.",
+      "follow_up_question": "What specific actions should be included in the audit trail?"
+    },
+    {
+      "requirement": "The system shall allow auditors to export a complete case history.",
+      "source_citation": "Auditors want to be able to see the entire chain... They should be able to export a case history and see the raw events.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "auditability",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies that auditors should be able to export a complete case history to ensure transparency and compliance.",
+      "follow_up_question": "What format should the exported case history be in?"
+    },
+    {
+      "requirement": "The system shall comply with relevant credit and electronic funds regulations.",
+      "source_citation": "we have to follow the card dispute rules in our industry — the consumer protections and timelines that come from the relevant credit and electronic funds regulations.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 5,
+      "rationale": "The stakeholder emphasizes the need to comply with industry-specific regulations to avoid consumer complaints and potential fines.",
+      "follow_up_question": "Can you provide specific regulatory requirements that the system must comply with?"
+    },
+    {
+      "requirement": "The system shall be available 24/7 except for planned maintenance windows.",
+      "source_citation": "It effectively needs to be available all the time, except for planned maintenance.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies the need for the system to be available 24/7 to support operations across different time zones.",
+      "follow_up_question": "What is the expected uptime percentage for the system?"
+    },
+    {
+      "requirement": "The system shall follow corporate UI/UX standards for consistency and accessibility.",
+      "source_citation": "We have brand and usability guidelines — forms, error messaging, accessibility standards — and they must be followed... to reduce training time and prevent UX surprises.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 5,
+      "rationale": "The stakeholder emphasizes the need to follow corporate UI/UX standards to ensure consistency and accessibility across the system.",
+      "follow_up_question": "Can you provide the specific corporate UI/UX standards that the system must follow?"
+    },
+    {
+      "requirement": "The system shall provide progress feedback for long-running operations.",
+      "source_citation": "For heavier operations like generating large correspondence packages or bulk exports, I accept longer, but they should be queued and give progress feedback.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies the need for progress feedback during long-running operations to improve user experience.",
+      "follow_up_question": "What specific operations are considered long-running and require progress feedback?"
+    },
+    {
+      "requirement": "The system shall reference authoritative data sources for transactions, cardmembers, and merchants.",
+      "source_citation": "We really want it to reference the authoritative sources... I don’t want a situation where the disputes tool has its own stale copy.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "The stakeholder emphasizes the need to reference authoritative data sources to ensure data accuracy and consistency.",
+      "follow_up_question": "What are the specific authoritative data sources for transactions, cardmembers, and merchants?"
+    },
+    {
+      "requirement": "The system shall synchronize data in real-time with source systems.",
+      "source_citation": "If a rep pulls up a claim and the amount or date doesn’t match what’s on the statement system, that’s a breakdown. It should always reflect the statement system’s version.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies the need for real-time data synchronization to ensure data accuracy and consistency.",
+      "follow_up_question": "What is the maximum acceptable latency for data synchronization with source systems?"
+    },
+    {
+      "requirement": "The system shall have daily maintenance windows from 3–4 a.m. Eastern (Mon–Sat) and extended maintenance windows from 1 a.m.–5 a.m. Eastern on Sundays.",
+      "source_citation": "For routine maintenance, keep it to the early-morning slot Monday through Saturday between three and four a.m. Eastern. On Sundays, allow a larger window from about one a.m. to five a.m. Eastern so we can do upgrades that require a longer outage.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies the preferred maintenance windows for routine and extended maintenance activities.",
+      "follow_up_question": "Are there any specific maintenance activities that should be scheduled during the extended Sunday window?"
+    },
+    {
+      "requirement": "The system shall generate standardized correspondence to reduce errors.",
+      "source_citation": "the app should generate standard letters and emails so reps aren’t composing freeform messages every time — that reduces error and keeps the tone consistent.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies the need for standardized correspondence to reduce errors and maintain consistency.",
+      "follow_up_question": "What specific types of correspondence should be standardized?"
+    },
+    {
+      "requirement": "The system shall enforce controlled workflows for account adjustments.",
+      "source_citation": "For account adjustments, there has to be a controlled workflow: someone creates the adjustment request, supporting evidence is attached, and an authorized person approves and executes it.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder emphasizes the need for controlled workflows to ensure proper oversight and approval for account adjustments.",
+      "follow_up_question": "What specific steps should be included in the controlled workflow for account adjustments?"
+    },
+    {
+      "requirement": "The system shall retain cases for the statutory period and certain notes for longer durations.",
+      "source_citation": "We have legal retention requirements, so cases need to be kept for the statutory period, and certain notes should be retained longer...",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies the need to retain cases and certain notes for specific durations to comply with legal requirements.",
+      "follow_up_question": "What is the statutory period for retaining cases and the specific notes that should be retained longer?"
+    },
+    {
+      "requirement": "The system shall not allow business users to delete case history; deletions should be controlled and logged.",
+      "source_citation": "don’t let business users delete case history — deletions should be controlled and logged.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "auditability",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies that deletions should be controlled and logged to ensure data integrity and accountability.",
+      "follow_up_question": "What specific roles should have the authority to delete case history?"
+    },
+    {
+      "requirement": "The system shall ensure that workflows reflect the timelines and notice requirements from relevant credit and electronic funds regulations.",
+      "source_citation": "make sure the workflows reflect the timelines and notice requirements from those rules.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 5,
+      "rationale": "The stakeholder emphasizes the need to ensure that workflows comply with regulatory timelines and notice requirements.",
+      "follow_up_question": "What specific timelines and notice requirements from the regulations should be reflected in the workflows?"
+    }
+  ]
+}

@@ -1,0 +1,139 @@
+{
+  "transcript_file": "outputs/corpus-20260226_162106/transcript_3_re_novice_stakeholder_nontechnical_enduser_20260226_162344.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_182913",
+  "requirements": [
+    {
+      "requirement": "The system should respond to routine tasks such as opening a student record or saving changes within five seconds.",
+      "source_citation": "It just needs to feel fast. For quick stuff like opening a record or saving a change, if it takes more than a few seconds I notice and it slows us down. Maybe five seconds for the small stuff, I’d say.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states a performance requirement for routine tasks, specifying a time frame of a few seconds, which is further clarified as five seconds.",
+      "follow_up_question": "Are there any specific routine tasks that are more critical than others and require even faster response times?"
+    },
+    {
+      "requirement": "The system should complete heavier operations, such as generating a full program schedule, within half a minute.",
+      "source_citation": "Generating the whole program can take a little while, but it shouldn’t be forever. I’d be okay with something that completes under half a minute.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a performance requirement for heavier operations, indicating a acceptable time frame of under half a minute.",
+      "follow_up_question": "Are there any specific heavier operations that are more critical than others and require even faster completion times?"
+    },
+    {
+      "requirement": "The system should be available during office hours, roughly from 8 AM to 6 PM.",
+      "source_citation": "We need it during our office hours when people are making scheduling decisions. Roughly eight in the morning until about six in the evening would cover most of our needs.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the required availability of the system during office hours.",
+      "follow_up_question": "Are there any specific times within the office hours when the system is most critical and should be highly available?"
+    },
+    {
+      "requirement": "The system should handle concurrent usage by around ten users during peak hours without slowing down.",
+      "source_citation": "In the mornings the whole scheduling team is on it at once. There’s maybe around ten of us at peak. We all poke around and make changes, so it needs to handle that without slowing down.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the number of concurrent users and the requirement for the system to handle this without slowing down.",
+      "follow_up_question": "Are there any specific peak times or scenarios where the number of concurrent users might be higher than ten?"
+    },
+    {
+      "requirement": "The system should be accessible via standard web browsers on shared lab computers, personal laptops, and tablets without requiring additional installations.",
+      "source_citation": "We open a web page from shared lab computers and personal laptops. We use the usual browsers — whatever the campus has on their machines — and some people use tablets when they’re at clinical sites. We really don’t want to install anything extra.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the requirement for browser-based access and compatibility with various devices without additional installations.",
+      "follow_up_question": "Are there any specific browsers or devices that are most commonly used and should be prioritized for compatibility?"
+    },
+    {
+      "requirement": "The system should handle slow or flaky internet connections gracefully, allowing critical information to be viewed and operations to be performed despite network issues.",
+      "source_citation": "Some off-site connections are flaky. It’d be nice if critical things could still be viewed or if the app handled slow links gracefully.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for the system to handle slow or flaky connections, indicating a requirement for fault tolerance.",
+      "follow_up_question": "Are there any specific operations or data that are most critical to be accessible during network issues?"
+    },
+    {
+      "requirement": "The system should validate critical fields such as student IDs, contact information, site addresses, health clearances, and license numbers to ensure data accuracy and consistency.",
+      "source_citation": "Student IDs need to be right, contact information should be accurate, and site addresses should be consistent so maps and directions work. Health clearances and license numbers are sensitive too — if those are wrong, it causes real problems at the site. So basic checks to stop obvious typos or missing required fields would save us time.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "data_quality",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the importance of validating critical fields to ensure data accuracy and consistency.",
+      "follow_up_question": "Are there any additional fields or specific validation rules that should be considered for data quality?"
+    },
+    {
+      "requirement": "The system should implement role-based access control to restrict access to sensitive student information, ensuring that only authorized personnel can view or modify such data.",
+      "source_citation": "Not everyone should see everything. Program administrators and a few designated staff need full access to handle placements, but site coordinators only need the information relevant to the placement — like emergency contact and certain health clearances, not full personal histories. Students’ social security numbers or similar identifiers should be hidden except to those who absolutely need them.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for role-based access control to protect sensitive student information.",
+      "follow_up_question": "Are there any specific roles or access levels that need to be defined for the system?"
+    },
+    {
+      "requirement": "The system should comply with the university's information policy and standard privacy rules for protecting sensitive data.",
+      "source_citation": "Yes, we follow the university’s info policy and, you know, the usual privacy rules.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for compliance with organizational policies and standard privacy rules.",
+      "follow_up_question": "Can you provide more details on the specific university information policy and privacy rules that need to be followed?"
+    },
+    {
+      "requirement": "The system should log and audit access to sensitive student information, including who viewed or exported a student's full record.",
+      "source_citation": "Knowing who viewed or exported a student’s full record would be important.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for logging and auditing access to sensitive student information.",
+      "follow_up_question": "Are there any specific audit or logging requirements beyond who viewed or exported the data?"
+    },
+    {
+      "requirement": "The system should trigger notifications for schedule changes, confirmations, and alerts for missing clearances, providing clear and actionable information to the recipients.",
+      "source_citation": "When a schedule changes, that should trigger notifications. Also confirmations when a placement is finalized, and alerts for missing clearances. Ideally the message tells them exactly what changed and where to go.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for notifications and the type of information that should be included.",
+      "follow_up_question": "Are there any specific notification methods or channels that should be prioritized?"
+    },
+    {
+      "requirement": "The system should integrate with the central student system to avoid duplicate entry and support single sign-on for user authentication.",
+      "source_citation": "We definitely need the roster from the central student system to avoid duplicate entry, and single sign-on would be great so people don’t need another password.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "integration",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for integration with the central student system and support for single sign-on.",
+      "follow_up_question": "Are there any specific integration requirements or protocols that need to be followed?"
+    }
+  ]
+}

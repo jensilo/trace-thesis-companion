@@ -1,0 +1,164 @@
+Interviewer: Hi — thanks for meeting with me. I’m the requirements engineer for this project. Could you briefly say who you are and what you want out of this session?
+
+Stakeholder: Sure, I’m the product manager for the recycled parts and repair facility project. I, uh, want to make sure you capture the needs that let adjusters and estimators find recycled parts quickly and pick repair shops that work for the claim. I’ll also point you to the people who own the parts feed and the architecture standards so you can get the technical details later.
+
+Interviewer: Great. What are the most important outcomes you want from this chat?
+
+Stakeholder: Mostly that you walk away with the right stakeholders to talk to and a clear sense of non-negotiables — like where the parts data comes from, the corporate architecture constraints, and the kind of experience our users need. If you can get contacts and a few documents, that’s a win.
+
+Interviewer: Who else should I talk to about the Choice Parts connection, UI guidelines, and security?
+
+Stakeholder: For Choice Parts, talk to their integration lead — I’ll introduce you. For architecture, our enterprise architect is the gatekeeper; they’ll send the architecture guide. For UI and accessibility, the UX lead owns the design system. And for security, talk to the security operations lead. I can make intro emails after this.
+
+Interviewer: Are there documents I should review before the next meeting?
+
+Stakeholder: Yes, the Choice Parts API docs if you can get them, the enterprise architecture guide, and the corporate UX guidelines. Also, any existing SLAs for Choice Parts would help. I’ll send what I have.
+
+Interviewer: Okay. Let’s talk about users and where they use the system. Who are the primary users?
+
+Stakeholder: The main users are insurance claim adjusters and collision estimators. They’re a mix — some are office-based, some are out in the field, and many split both. They’re busy people; they juggle phone calls, photos, and estimates while moving between appointments.
+
+Interviewer: Do you have a sense of their tech comfort or devices they use?
+
+Stakeholder: Uh, yes — some are pretty comfortable with web apps, others less so. They use laptops in the office and tablets or phones in the field. Tablets are common for estimators inspecting vehicles, but we still have to support standard browsers. Oh, and some areas have flaky cellular, so the app needs to behave reasonably under low bandwidth.
+
+Interviewer: How will success be measured for adoption and usability?
+
+Stakeholder: We’ll measure adoption by how many adjusters and estimators use it instead of their old way, and by time saved per claim. We also want a clear usability target — we expect most of our adjusters and estimators to find it easy to use after training. I think a usability metric and a short training program should be part of acceptance.
+
+Interviewer: Do you have a target for “most” and “short training”?
+
+Stakeholder: Yes — we want almost everyone to feel comfortable. Specifically, we’re aiming for a very high percentage of users saying it’s easy to use, and training should be quick: people should be productive after two days of onsite training.
+
+Interviewer: Got it. You mentioned Choice Parts earlier as the source. Can you tell me more about that integration?
+
+Stakeholder: Choice Parts is our authoritative source for recycled parts availability. It has the inventory, locations, condition, sometimes pricing. We need the app to pull that data so adjusters see current stock. If Choice Parts is down or slow, we can’t leave adjusters stranded — we should show cached results or a clear fallback. Reliability of that feed is, uh, really important.
+
+Interviewer: Who’s the owner for Choice Parts and can we get their API documentation?
+
+Stakeholder: I’ll introduce you to their integration lead. They keep the API docs and can explain whether it’s push or pull. I think it’s primarily a feed we pull, but they might also offer webhooks; the integration lead will clarify.
+
+Interviewer: Anything else about the feed — like what fields we must display or how fresh the data needs to be?
+
+Stakeholder: At a minimum, adjusters need part fitment, condition, location, and if possible whether it’s been reserved by someone else. The freshness matters — stale inventory frustrates people. If there’s a conflict, we need to be transparent about timestamps so the user understands how current the data is.
+
+Interviewer: Should we ask Choice Parts about SLAs and latency?
+
+Stakeholder: Absolutely. We need their availability and latency expectations. If their API responds slowly, then our search response targets need to accommodate that. Also, consider a local cache so searches aren’t entirely dependent on real-time calls.
+
+Interviewer: Right. Quick follow-up on architecture: are there corporate constraints we must follow?
+
+Stakeholder: Yes, we have to follow corporate architecture guidelines. That covers approved identity providers, logging, where data can be hosted, and the general integration patterns. It’s not optional — projects that bypass those get held up in reviews.
+
+Interviewer: Can you point me to the architecture guidelines or the enterprise architect?
+
+Stakeholder: I’ll introduce you to the enterprise architect and send the architecture guide. They’ll also tell you if we have to use a specific cloud provider or identity system.
+
+Interviewer: Okay. About the UI — you mentioned corporate guidelines. How strict are those?
+
+Stakeholder: Pretty strict. We have a corporate design system and accessibility expectations. Using the design system speeds approvals and makes the interface familiar to users. Also, the UI should be simple; adjusters don’t have time for extra clicks. We’ll want the UX lead involved early.
+
+Interviewer: Do we need to meet certain accessibility standards?
+
+Stakeholder: Yes, we need to follow the company’s accessibility requirements. I don’t have the exact level offhand, but the UX team will give you the details.
+
+Interviewer: Moving on to search performance — what are your expectations for recycled parts searches and for finding preferred repair facilities?
+
+Stakeholder: It needs to feel fast. Adjusters will abandon slow searches. For parts, we want a little more tolerance because the data can be larger, but still fast enough that it doesn’t interrupt workflow. For repair facilities, which are usually a simple lookup by location or preference, that needs to be quicker — users expect near-instant results.
+
+Interviewer: When you say “fast,” do you have specific numbers in mind for acceptable response times?
+
+Stakeholder: Yes. For recycled parts searches, we’re targeting that results come back within about fifteen seconds from when the user initiates the search. For preferred repair facility lookups, they should be noticeably faster — we’re aiming for around eight seconds to return the preferred shop.
+
+Interviewer: Are those times end-to-end from the user’s browser, including network, or just backend processing?
+
+Stakeholder: End-to-end as the user perceives it. Network latency in the field matters, so we should measure from the browser. We’d expect most requests to meet those times, but we’ll need to specify which percentile to test later.
+
+Interviewer: Okay. If Choice Parts is slow, how would you like the app to behave — show partial results, cached results, or an error?
+
+Stakeholder: Partial results or cached results are preferable. Show what we have quickly and indicate if there’s more loading. If nothing’s available due to an outage, show a clear message and optionally let the user queue or save the search.
+
+Interviewer: About load and uptime — what availability do you expect for this app?
+
+Stakeholder: We need it to be reliable. Claims work is time sensitive so downtime is costly. I want a clear availability target in the contract so operations and SLAs are aligned.
+
+Interviewer: Do you have a specific uptime target or measurement window?
+
+Stakeholder: We do. We’re working to ensure that the system is available the vast majority of the time; the target is that it’s up almost all the time, with very little downtime — around ninety-eight percent availability when measured over the usual reporting window.
+
+Interviewer: And what about how many users it must handle at peak?
+
+Stakeholder: The system should cope with our busiest moments. We expect peaks where perhaps around fifteen hundred people could be using it concurrently, so architecture must handle that load without failing.
+
+Interviewer: Who will monitor uptime and handle alerts?
+
+Stakeholder: Our operations team will monitor it with standard APM and alerting tools. They’ll get the alerts and coordinate with the on-call engineers. We should define that ownership explicitly in the operational runbook.
+
+Interviewer: On security — you mentioned protections. What are your concerns?
+
+Stakeholder: We can’t risk claim data or service availability. So standard enterprise security is needed: SSO integration, strong role-based access, encryption, and protections against things like denial-of-service attacks. A public-facing endpoint without DDoS protection would be reckless for this kind of product.
+
+Interviewer: Any existing corporate security standards or preferred vendors for DDoS protection?
+
+Stakeholder: There are corporate standards and a preferred set of vendors we normally use through the cloud and the corporate CDN, but I’ll connect you to the security lead for specifics. They’ll tell you what’s mandated, like WAFs, rate limiting, and required pen tests.
+
+Interviewer: About auditing and ratings — adjusters need to audit recycled parts in estimates and rate repair facilities, right?
+
+Stakeholder: Yes, transparency is key. Adjusters must be able to see what recycled parts were proposed in an estimate, who selected them, and why. Also, adjusters and managers should be able to rate facility performance related to recycled parts usage. That helps refine preferred shops over time.
+
+Interviewer: What kind of reporting do you want from those audits and ratings?
+
+Stakeholder: Managers need periodic reports showing recycled parts adoption, which shops consistently use recycled parts, and any exceptions. The reports should help drive improvement and, uh, help resolve disputes if a claim goes to subrogation.
+
+Interviewer: Who should have access to these audits and ratings?
+
+Stakeholder: Access should be role-based. Adjusters should see their own and maybe team-level info; managers need broader visibility; auditors and compliance people need read access to the logs. Some people, like system admins, will have full access for support, but that access should be controlled and audited.
+
+Interviewer: Any idea how long audit logs should be retained?
+
+Stakeholder: We need to keep them long enough for claims disputes and regulatory review. I don’t recall the exact retention period, but it’s measured in years rather than days; the legal team sets it. I’ll get that from them.
+
+Interviewer: For acceptance testing, how will we validate these non-functional targets — like performance under load and usability?
+
+Stakeholder: We should do load and performance tests simulating peak concurrency and measure end-to-end user times. For usability, we’ll run a study after training to confirm adoption and ease-of-use. Security testing and a production monitoring plan are part of acceptance as well.
+
+Interviewer: Do you have specific acceptance criteria, or will we define those with the architects and ops?
+
+Stakeholder: We have targets — performance and availability numbers, and a usability goal tied to post-training satisfaction. But we’ll need to formalize them with the enterprise architect, security, and operations so they’re testable and signed off.
+
+Interviewer: Who signs off on acceptance?
+
+Stakeholder: Product management will, in consultation with IT operations, security, and the business owners for claims. They’ll all have to agree before full rollout.
+
+Interviewer: A few more quick items — do you want a pilot or phased rollout?
+
+Stakeholder: Yes, a pilot is sensible. Start with a small group of adjusters and a geographic area to validate integrations, performance, and workflows, then roll out more broadly once we’ve proven it.
+
+Interviewer: Anything else I should know that might not fit the checklist?
+
+Stakeholder: Hmm, well, one small thing — last winter’s storm showed how claims volume spikes can crush systems if we aren’t prepared. We had shops and adjusters frustrated because parts look available but weren’t, and nobody could get through on the old tools. So whatever you design, keep in mind that real-world messiness: flaky networks, partial data, and high-stress users. Also, on a lighter note, the repair shop rating discussions always get heated at my team meetings; it’s political as much as technical.
+
+Interviewer: That’s helpful context. For next steps, can you introduce me to the Choice Parts contact, the enterprise architect, the UX lead, and the security lead?
+
+Stakeholder: Yes, I’ll send calendar invites and intro emails after this. I’ll also share the architecture and UI guides and whatever I have of the Choice Parts docs.
+
+Interviewer: Okay. Is there anything you want me to include in the summary I send you? Any open questions you want prioritized?
+
+Stakeholder: Please list the outstanding integration questions for Choice Parts — feed type, fields, SLAs, and reservation/transaction behavior. Also, note that we need the exact retention period for audit logs from legal, and the exact accessibility level from UX. Prioritize API docs and the enterprise architecture guide so we can scope hosting and security early.
+
+Interviewer: Understood. Thanks for your time. I’ll follow up with the summary and request those documents.
+
+Stakeholder: Thanks. And, uh, one last thing — don’t forget to schedule the pilot with a small set of field users; their feedback is gold.
+
+---
+Selected Requirements:
+1. [NICE.csv line 206] [quality, operability] 'The product shall interface with the Choice Parts System. This provides the feed of recycled parts data.'
+2. [NICE.csv line 208] [quality, legal] 'The product shall adhere to the corporate Architecture guidelines'
+3. [NICE.csv line 209] [quality, legal, look_and_feel] 'The product shall comply with corporate User Interface Guidelines'
+4. [NICE.csv line 212] [quality, usability] 'The product shall be easy to use by Adjusters and Collision Estimators. 95% of Adjusters and Collision Estimators shall find the product easy to use.'
+5. [NICE.csv line 215] [quality, usability] 'The product shall be easy to learn by Adjusters and Collision Estimators. The product shall be learned with two days onsite training'
+6. [NICE.csv line 217] [quality, performance] 'The search for recycled parts shall take no longer than 15 seconds. The search results shall be returned in under 15 seconds.'
+7. [NICE.csv line 218] [quality, performance] 'The search for the preferred repair facility shall take no longer than 8 seconds. The preferred repair facility is returned within 8 seconds'
+8. [NICE.csv line 222] [quality, availability, fault_tolerance] 'The product shall achieve a 98% uptime. The product shall not fail more than 2% of the available online time.'
+9. [NICE.csv line 223] [quality, scalability] 'The product shall be able to handle up to 1500 simultaneous users. The system shall perform with 1500 users as a time.'
+10. [NICE.csv line 237] [quality, security] 'The system shall prevent malicious attacks including denial of service.'

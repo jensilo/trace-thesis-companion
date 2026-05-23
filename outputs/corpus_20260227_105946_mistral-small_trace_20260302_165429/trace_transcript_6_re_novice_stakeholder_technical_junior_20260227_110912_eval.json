@@ -1,0 +1,129 @@
+{
+  "extraction_file": "outputs/corpus_20260227_105946_mistral-small_trace_20260302_165429/trace_transcript_6_re_novice_stakeholder_technical_junior_20260227_110912.json",
+  "ground_truth_source": "outputs/corpus-20260227_105946/transcript_6_re_novice_stakeholder_technical_junior_20260227_110912.json",
+  "eval_model": "openai/gpt-5-mini",
+  "per_requirement": [
+    {
+      "extracted_requirement": "The system should render correctly in common web browsers used by companies, including older browsers, without layout issues.",
+      "matched_ground_truth": "'The product must be able to interface with any HTML browser. The product shall transmit data between the user and the product without problems. The product shall display HTML properly in 80% of all HTML browsers tested (minimum is to test 8 browsers).'",
+      "overlap_score": 4,
+      "overlap_label": "High",
+      "quality_attribute_match": false,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 5,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system should log exceptions with stack traces and context, and provide a mechanism to send these logs back for analysis.",
+      "matched_ground_truth": "'The product shall create an exception log of problems encountered within the product for transmission to our company for analysis and resolution.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": false,
+      "confidence_quality": 5,
+      "rationale_quality": 4,
+      "gap_detection_quality": 3,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system should feel snappy and handle peak usage times without performance degradation, and should scale as the company grows.",
+      "matched_ground_truth": "'The product shall be capable of handling up to 1 000 concurrent requests. This number will increase to 2 000 by Release 2. The concurrency capacity must be able to handle peak scheduling times such as early morning and late afternoon hours.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": false,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 3,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "Access to the system should be controlled, integrating with company identity systems or approved account lists, and audit trails should be maintained.",
+      "matched_ground_truth": "'The product shall ensure that only company employees or external users with company-approved user IDs may have product access. 100% of all logons shall be by either company employees or external users with company-approved user IDs.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 3,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The codebase should follow common design patterns and best practices to ensure maintainability and ease of future feature additions.",
+      "matched_ground_truth": "'The product must be designed using Design Patterns and coding best practices. 90% of maintenance software developers are able to integrate new functionality into the product with 2 working days.'",
+      "overlap_score": 4,
+      "overlap_label": "High",
+      "quality_attribute_match": true,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 3,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system should handle locale and timezone settings correctly to avoid scheduling issues, and error messages should be clear and non-cryptic.",
+      "matched_ground_truth": "'The product shall create an exception log of problems encountered within the product for transmission to our company for analysis and resolution.'",
+      "overlap_score": 2,
+      "overlap_label": "Low",
+      "quality_attribute_match": false,
+      "confidence_quality": 4,
+      "rationale_quality": 3,
+      "gap_detection_quality": 3,
+      "is_hit": false,
+      "is_duplicate": true
+    },
+    {
+      "extracted_requirement": "The system should be customizable to support client branding and multiple languages, and should be accessible with keyboard navigation and screen reader support.",
+      "matched_ground_truth": null,
+      "overlap_score": 1,
+      "overlap_label": "Very Low",
+      "quality_attribute_match": false,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": false,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system should be tested against a representative set of browsers to ensure compatibility.",
+      "matched_ground_truth": "'The product must be able to interface with any HTML browser. The product shall transmit data between the user and the product without problems. The product shall display HTML properly in 80% of all HTML browsers tested (minimum is to test 8 browsers).'",
+      "overlap_score": 4,
+      "overlap_label": "High",
+      "quality_attribute_match": false,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 5,
+      "is_hit": true,
+      "is_duplicate": true
+    },
+    {
+      "extracted_requirement": "The system should be flexible to work with different database systems as preferred by the IT team.",
+      "matched_ground_truth": "'The product is expected to integrate with multiple database management systems. The product will operate with Oracle SQL Server DB2 MySQL HSQL and MS Access.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 5,
+      "is_hit": true,
+      "is_duplicate": false
+    }
+  ],
+  "metrics": {
+    "hit_count": 6,
+    "extracted_count": 9,
+    "ground_truth_count": 10,
+    "precision": 0.667,
+    "recall": 0.6,
+    "f1": 0.632,
+    "quality_attribute_accuracy": 0.5,
+    "avg_confidence": 4.0,
+    "avg_overlap_score": 3.889,
+    "avg_confidence_quality": 4.111,
+    "avg_rationale_quality": 3.889,
+    "avg_gap_detection_quality": 3.778
+  }
+}

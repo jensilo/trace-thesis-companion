@@ -1,0 +1,205 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_4_re_novice_stakeholder_nontechnical_manager_20260227_110438.txt",
+  "model": "openai/gpt-5-mini",
+  "timestamp": "20260302_172300",
+  "requirements": [
+    {
+      "requirement": "All transaction data displayed in the Disputes application must be retrieved from the authoritative transaction store to ensure data freshness and correctness.",
+      "source_citation": "It has to come from the authoritative source — our transaction store.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly requires that transaction data originate from the canonical transaction store to avoid stale copies and guessing about amounts. This is a data-integrity requirement affecting where data is sourced and maintained. Missing specifics: acceptable data staleness windows, read vs. replica usage, and connectivity/latency constraints.",
+      "follow_up_question": "Can you specify acceptable maximum data age or staleness (e.g., must reflect updates within X seconds/minutes), and whether read replicas are acceptable provided they are within that bound?"
+    },
+    {
+      "requirement": "Cardmember details displayed must be sourced from the single authoritative member information system so names, addresses, and contact preferences remain consistent.",
+      "source_citation": "Cardmember info should come from the system that is the single source for member details.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "The stakeholder requires a single source of truth for member data to ensure consistency downstream (letters, adjustments). Missing specifics: allowed latency, which fields must be canonical, and how to handle temporary inconsistencies during syncs.",
+      "follow_up_question": "Which specific member fields must always be canonical (e.g., name, address, contact prefs), and what is the acceptable propagation delay for updates from the member system?"
+    },
+    {
+      "requirement": "The application must record and retain an audit log of every user action (who did what and when) covering case creation, edits, notes, correspondence sends, and adjustment requests.",
+      "source_citation": "Every action a user takes — opening the case, editing notes, sending a letter, requesting an adjustment — we need to know who did what and when.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Explicit need for comprehensive auditability for regulatory and internal review purposes. Gaps: retention period, tamper-resistance, log format, and access controls for audit logs.",
+      "follow_up_question": "What is the required retention period for audit logs, and are there regulatory or tamper-resistance requirements (e.g., WORM storage, signed logs)?"
+    },
+    {
+      "requirement": "The disputes application must not directly change account balances; adjustment requests must be handed off to the billing/posting system and the application must record the resulting outcome.",
+      "source_citation": "They should go to the system that actually posts things to accounts. We can't have the disputes tool directly changing balances; it should hand off a request to the billing/posting system and then record the outcome.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "Clarifies separation of responsibilities between systems to preserve ledger integrity and auditability. Missing specifics: handoff protocol, acknowledgement timelines, retry behavior, and error handling.",
+      "follow_up_question": "What SLA is required for the posting system to acknowledge and complete an adjustment request, and what error/retry semantics should the disputes app implement if the handoff fails?"
+    },
+    {
+      "requirement": "Access control must enforce role-based permissions and account-scoped visibility so that only authorized roles can initiate disputes or request adjustments and reps can only see cardmembers they are assigned to.",
+      "source_citation": "Only certain reps should be able to open a dispute or ask for an adjustment. Some people should only be able to view, and others need full powers. ... We also have to make sure reps can't see cases for cardmembers they don't cover;",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Specifies both RBAC and data-scoping (least privilege) to prevent unauthorized actions and data exposure. Missing specifics: exact roles, permission matrix, and how scope is defined (team, geography, portfolio).",
+      "follow_up_question": "Can you provide the list of roles and the mapping of permitted actions and the rules for scoping (how cardholder assignments are represented and updated)?"
+    },
+    {
+      "requirement": "Temporary escalated access must be controllable and auditable; any temporary access grants must be logged with who granted them, duration, and justification.",
+      "source_citation": "There are escalation paths where someone temporarily needs access, but that should be controlled and auditable.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Requires governed, temporary privilege elevation with audit trail. Gaps: maximum duration, approval workflow, automated expiry, and notification requirements.",
+      "follow_up_question": "What approval workflow and maximum duration should apply to temporary access, and who is authorized to grant it?"
+    },
+    {
+      "requirement": "The system must enforce tenant/merchant data segregation so external users (e.g., merchants) can only see their own disputes and cannot access another merchant's data.",
+      "source_citation": "The external view shouldn't expose internal-only data, and it should be simpler. Oh, and we need strong separation so one merchant can't see another merchant's disputes.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Explicit multi-tenant/authorization isolation requirement for external views. Missing specifics: multi-tenancy model, authorization model for partners, and data filtering rules.",
+      "follow_up_question": "Do merchants authenticate via separate accounts/tenants, and what identity/provider mechanisms will be used to enforce merchant-level separation?"
+    },
+    {
+      "requirement": "The application must be available during business hours when reps and designated external users are working, with only limited planned early-morning maintenance windows (short nightly windows; longer window on Sundays).",
+      "source_citation": "It needs to be available basically whenever reps are working and also for some external users. We can't have it down during the day. We tolerate some planned early-morning maintenance, but otherwise it should be up most of the time.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "Specifies availability expectations and tolerance for scheduled maintenance outside working hours. Gaps: precise uptime SLA (e.g., 99.9%), exact maintenance window times, and notification processes.",
+      "follow_up_question": "Please provide the exact hours considered 'business hours' and the allowable scheduled maintenance windows (start/end times and maximum duration), and any target uptime SLA percentage."
+    },
+    {
+      "requirement": "Performance must feel snappy: small screens and searches should be near-instant and common small transitions should complete within approximately five seconds or less under normal conditions.",
+      "source_citation": "It just needs to feel snappy. I hate watching spinners; reps get impatient and try to reload things or call over a manager. For small screens and searches it should be almost instant ... Maybe around five seconds for the small transitions?",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "User-perceived responsiveness requirement with an approximate numeric target (~5s). Missing specifics: percentile targets (p95, p99), network conditions (WAN/remote users), and performance under peak load.",
+      "follow_up_question": "Should the 5-second target apply to p95 or p99, and are there different targets for local vs remote users or mobile devices?"
+    },
+    {
+      "requirement": "The application must scale to handle peak concurrent load of approximately 350 active users without noticeable degradation in responsiveness.",
+      "source_citation": "At peak times we have a few hundred people in the system concurrently. ... our planning number is three hundred and fifty concurrent active users at peak,",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "Gives a concrete planning capacity number to size for concurrency and maintain responsiveness. Missing specifics: definition of 'active' user, throughput per user, burst behavior during surges, and future growth expectations.",
+      "follow_up_question": "Please confirm the definition of 'concurrent active user' (e.g., users performing actions per minute) and expected growth rate or headroom required beyond 350."
+    },
+    {
+      "requirement": "The disputes application must orchestrate integrations to canonical backend systems (transaction store, member info store, posting/billing) so reps do not need to access other systems directly.",
+      "source_citation": "So the transaction store for statements, the member information store for cardmember details, and the posting/billing system for adjustments. I want the disputes tool to orchestrate these calls so reps don't have to.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "Requirement for integration responsibilities to centralize workflows and reduce context switching. Gaps: integration patterns (sync vs async), API contracts, error handling, and ownership/responsibilities during outages.",
+      "follow_up_question": "Are the backend systems able to provide APIs for synchronous calls, or should some interactions be asynchronous with callbacks/events?"
+    },
+    {
+      "requirement": "The application UI must align with corporate UI standards (look and feel) so that external users perceive a consistent brand and internal users have a cohesive experience.",
+      "source_citation": "Also, the look and feel should align with our corporate UI so external users feel it's the same brand when we expose parts of this to merchants or partners.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 4,
+      "rationale": "Explicit requirement for UI/branding consistency for external exposure. Missing specifics: which corporate UI guidelines, accessibility standards, and responsive/mobile requirements.",
+      "follow_up_question": "Can you provide the corporate UI guideline document and any accessibility (e.g., WCAG) or responsive design requirements that must be met?"
+    },
+    {
+      "requirement": "External portals/views must present a simplified interface and must not expose internal-only data to merchants or partners.",
+      "source_citation": "The external view shouldn't expose internal-only data, and it should be simpler.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Calls for reduced-scope external interfaces with restricted data exposure. Missing specifics: exact fields to hide, permitted actions for external users, and authentication/authorization mechanisms.",
+      "follow_up_question": "Which specific data fields or internal statuses must be hidden from external users, and what actions should external users be allowed to perform?"
+    },
+    {
+      "requirement": "The application must provide search, inline case history, notes, templates for common correspondence, and a single-page workflow option to minimize clicks and cognitive load for reps.",
+      "source_citation": "They want quick search, yeah, and the ability to add notes and see the case history inline. A lot of reps prefer a single page where they can do the essentials without clicking too much. Also, having templates for common correspondence is a big time-saver.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Multiple usability needs are explicitly mentioned to improve rep productivity and reduce errors. Gaps: exact search capabilities (filters, fuzzy search), expected template customization, and keyboard accessibility.",
+      "follow_up_question": "What search fields and filters are essential, and do templates need to be editable by supervisors or centrally managed?"
+    },
+    {
+      "requirement": "High-impact financial actions must include safeguards such as mandatory supervisor approval or confirmation dialogs to prevent accidental adjustments.",
+      "source_citation": "Checks and balances for actions that have financial impact, like a mandatory supervisor approval popup or something, would help avoid mistakes.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder requests explicit control mechanisms for actions with financial consequences to reduce human error. Missing specifics: which actions require approval, approval SLAs, and approval audit requirements.",
+      "follow_up_question": "Which exact actions should require supervisor approval and what is the expected SLA for approval turnaround?"
+    },
+    {
+      "requirement": "Managers must have dashboards and reports showing queue health, aging disputes, per-user workloads, counts, ages, and amounts by dispute reason for operational monitoring.",
+      "source_citation": "Managers want dashboards for queue health and aging disputes and to see who is overloaded. ... reporting folks will want standard things like counts, ages, and maybe amounts by dispute reason.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Operational reporting needs are explicitly stated to support workload management. Gaps: report refresh frequency, export formats, access control for reports, and KPI definitions.",
+      "follow_up_question": "What are the required refresh intervals for dashboards (real-time, hourly), and which users should have access to which reports?"
+    },
+    {
+      "requirement": "The system must provide tamper-evident and complete audit trails for correspondence sends (e.g., letters sent) so the organization can prove whether an item was mailed.",
+      "source_citation": "They send dispute letters, responses to merchants sometimes, and acknowledgments to cardmembers. It should be easy to produce those and record that they were sent. It's embarrassing when a rep says they mailed something but we can't prove it later.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Specifies evidence capture for outbound correspondence to avoid disputes about whether communications occurred. Missing specifics: proof types (postage receipts, electronic delivery receipts), retention, and chain-of-custody.",
+      "follow_up_question": "What types of proof are acceptable for mailed correspondence (e.g., scanned postage receipts), and how long must these proofs be retained?"
+    },
+    {
+      "requirement": "Integrations and system changes must be coordinated with backend system owners to avoid mismatched data (e.g., transaction timestamps) and to prevent business-hour outages caused by maintenance.",
+      "source_citation": "Another time, two systems had different transaction timestamps and nobody knew which was right. And sometimes maintenance knocks people out during business hours because windows weren't communicated well.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "Based on past incidents, the stakeholder wants coordination to avoid data inconsistency and poorly timed maintenance. Gaps: formal change management processes, testing environments, and notification SLAs.",
+      "follow_up_question": "What change management processes and notification lead times are required for backend integrations and maintenance to avoid daytime outages?"
+    }
+  ]
+}

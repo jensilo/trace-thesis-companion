@@ -1,0 +1,128 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_3_re_experienced_stakeholder_technical_junior_20260227_110159.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_174711",
+  "requirements": [
+    {
+      "requirement": "The system should prevent obvious mistakes such as scheduling conflicts and invalid enrollments by providing warnings or blocking actions.",
+      "source_citation": "the UI should warn you before you save it, maybe block it outright if it's clearly impossible.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for the system to guide users and prevent mistakes, indicating a focus on usability.",
+      "follow_up_question": "What specific types of warnings or blocks should be implemented for different scenarios?"
+    },
+    {
+      "requirement": "The system should use familiar nursing terminology to ensure ease of use.",
+      "source_citation": "it should use wording people are familiar with — not weird computer jargon. Oh, and the terminology should match what nurses expect — like, use the standard names for clinical rotations and courses so instructors don't get confused.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the importance of using familiar terminology to ensure the system is user-friendly.",
+      "follow_up_question": "Are there any specific terms or phrases that should be avoided or replaced?"
+    },
+    {
+      "requirement": "The system should allow users to complete small tasks in less than 5 seconds and generate schedules in less than 30 seconds.",
+      "source_citation": "small student management things should come back in a handful of seconds, maybe up to about five seconds. For the heavy lift — like when you press 'Generate Schedule' for a term — people expect it in under a minute; personally, I think around thirty seconds would be reasonable so they don't start clicking again out of impatience.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder provides specific timeframes for acceptable response times, indicating a focus on performance.",
+      "follow_up_question": "Are there any other tasks or processes that have specific performance requirements?"
+    },
+    {
+      "requirement": "The system should handle peak loads of approximately 10 concurrent users during morning scheduling bursts.",
+      "source_citation": "We don't need to support some huge campus peak for the whole university, but the nursing office might have, I dunno, about ten people all active at once during certain windows.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for the system to handle peak loads, but the exact number of users is not specified.",
+      "follow_up_question": "What is the maximum number of concurrent users the system should be able to handle during peak times?"
+    },
+    {
+      "requirement": "The system should be available 95% of the time overall, with stricter guarantees during critical windows.",
+      "source_citation": "If I had to pick a target, maybe the system should be up almost all the time during that eight-to-six window; overall maybe it can be unavailable a small fraction of hours across the month. I know that's vague — if you need a percentage, I'd say something like mid-90s availability feels tolerable, but anything that causes missed clinical sign-ups would be a problem.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder provides a specific availability target and mentions the need for stricter guarantees during critical windows.",
+      "follow_up_question": "What are the specific critical windows and what are the availability requirements during these times?"
+    },
+    {
+      "requirement": "The system should be available from 8 AM to 6 PM on weekdays, with overnight maintenance acceptable.",
+      "source_citation": "It needs to be available when the office is open — folks can't do their jobs during downtime. Occasional maintenance overnight is fine. I guess from the users' perspective, if it's up when we need it, that's what matters.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the required availability hours and the acceptability of overnight maintenance.",
+      "follow_up_question": "Are there any specific days or times within the 8 AM to 6 PM window that are more critical than others?"
+    },
+    {
+      "requirement": "The system should follow university policies for data protection and role-based access control.",
+      "source_citation": "We have to follow the university's information policy. Students' personal data and health-related info about clinical issues should be restricted. I don't know the exact legal bits, but the app can't leak phone numbers or sensitive notes to everyone. So role-based access is important — not everyone gets to see everything.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for data protection and role-based access control, indicating a focus on security.",
+      "follow_up_question": "What specific university policies should the system comply with?"
+    },
+    {
+      "requirement": "The system should allow Program Admins to edit and version curriculum structures to accommodate changes.",
+      "source_citation": "The system should let admins edit curriculum maps and version them so we can see historical structures. It should be flexible — not hard-coded — otherwise it'll be a maintenance nightmare.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for the system to be flexible and allow for versioning of curriculum structures.",
+      "follow_up_question": "What specific features or functionalities should be included to support curriculum versioning?"
+    },
+    {
+      "requirement": "The system should integrate with CampusConnect for near-real-time sync of student rosters and enrollments.",
+      "source_citation": "I think real-time or near-real-time sync is better for rosters so changes show up quickly. Maybe some things can be batched overnight, but class enrollments and student status need to propagate promptly.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for near-real-time sync with CampusConnect, but the exact integration details are not specified.",
+      "follow_up_question": "What specific data should be synced in near-real-time and what data can be batched overnight?"
+    },
+    {
+      "requirement": "The system should provide inline help and examples in forms to reduce support calls.",
+      "source_citation": "Oh, and one last thing — I think users will appreciate inline help and a few examples in forms; it cuts down on calls to support.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for inline help and examples, but the specific requirements are not detailed.",
+      "follow_up_question": "What specific types of inline help and examples should be provided?"
+    },
+    {
+      "requirement": "The system should support CSV or Excel exports for accreditation reports, including historical data.",
+      "source_citation": "They typically want CSV or Excel. The frequency is maybe once a year or during audits, but sometimes ad hoc if accreditation folks ask. So the export needs to be accurate and include historical versions of curriculum and student progression.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "data_quality",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for accurate exports that include historical data for accreditation purposes.",
+      "follow_up_question": "What specific data fields and historical information should be included in the exports?"
+    }
+  ]
+}

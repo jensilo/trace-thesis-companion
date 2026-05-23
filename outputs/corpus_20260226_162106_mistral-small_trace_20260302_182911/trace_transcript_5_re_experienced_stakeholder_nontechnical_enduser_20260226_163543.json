@@ -1,0 +1,150 @@
+{
+  "transcript_file": "outputs/corpus-20260226_162106/transcript_5_re_experienced_stakeholder_nontechnical_enduser_20260226_163543.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_182913",
+  "requirements": [
+    {
+      "requirement": "The system shall display search results for parts within 15 seconds on a tablet.",
+      "source_citation": "For parts search, I’d expect results back within 15 seconds on my tablet.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states a performance requirement for parts search, specifying a timeframe of 15 seconds on a tablet. This is a clear and measurable requirement.",
+      "follow_up_question": "Are there any specific conditions under which this performance requirement should be met, such as network speed or device type?"
+    },
+    {
+      "requirement": "The system shall display search results for repair shops within 8 seconds.",
+      "source_citation": "For finding preferred repair shops, I’d be unhappy if it was slower than about 8 seconds.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states a performance requirement for shop search, specifying a timeframe of 8 seconds. This is a clear and measurable requirement.",
+      "follow_up_question": "Are there any specific conditions under which this performance requirement should be met, such as network speed or device type?"
+    },
+    {
+      "requirement": "The system shall show a clear progress indicator and allow users to continue other tasks if a search takes longer than the specified time.",
+      "source_citation": "Show a clear progress indicator and let me continue other tasks, maybe fill out notes. If it times out, give me cached results and an option to retry.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder describes the expected behavior of the system when search times exceed the specified limits, focusing on usability and user experience.",
+      "follow_up_question": "What specific tasks should users be able to continue while waiting for search results?"
+    },
+    {
+      "requirement": "The system shall be designed to be usable on tablets in bright sunlight.",
+      "source_citation": "Screens should be readable in sunlight and not feel awkward on a tablet.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of usability in bright sunlight, which is a specific environmental condition.",
+      "follow_up_question": "Are there any specific usability features or adjustments that should be made to ensure readability in bright sunlight?"
+    },
+    {
+      "requirement": "The system shall comply with corporate UI standards to ensure familiarity and ease of use.",
+      "source_citation": "If the layout, fonts, and buttons feel familiar, training is easier and people trust it.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the importance of compliance with corporate UI standards for usability and user acceptance.",
+      "follow_up_question": "Can you provide specific guidelines or examples of corporate UI standards that should be followed?"
+    },
+    {
+      "requirement": "The system shall support adjustable text sizes to accommodate users with different visual needs.",
+      "source_citation": "Accessibility matters; make sure text sizes are adjustable so older colleagues can read on a tablet.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for adjustable text sizes to support accessibility, which is a key usability requirement.",
+      "follow_up_question": "Are there any other accessibility features that should be included to support users with different needs?"
+    },
+    {
+      "requirement": "The system shall provide help and support features that are easily discoverable and accessible from about 90% of the screens.",
+      "source_citation": "Make it so help is discoverable from about 90% of the screens where a user might be stuck.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the importance of help and support features being easily discoverable, with a clear target of 90% of screens.",
+      "follow_up_question": "What specific types of help and support features should be included, such as tooltips, how-to videos, or guided walkthroughs?"
+    },
+    {
+      "requirement": "The system shall be available 98% of the time to ensure minimal disruption to operations.",
+      "source_citation": "We’d expect it to be almost always available — say around ninety-eight percent of the time.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states an availability requirement, specifying a target of 98% uptime.",
+      "follow_up_question": "Are there any specific times or conditions under which the system's availability is critical?"
+    },
+    {
+      "requirement": "The system shall implement strict access controls to ensure that users can only view claims from their own company.",
+      "source_citation": "Access controls need to be strict: when I log in, I should only see my company’s claims.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for strict access controls to prevent users from viewing claims from other companies, which is a critical security requirement.",
+      "follow_up_question": "What specific access control mechanisms should be implemented to ensure this requirement is met?"
+    },
+    {
+      "requirement": "The system shall protect against malicious attacks that could knock it offline, especially when used on public networks.",
+      "source_citation": "Yeah, honestly I don’t want our system knocked offline by a malicious attack because we’re on a public network at a shop.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder expresses concern about the system being knocked offline by malicious attacks, highlighting the need for robust security measures.",
+      "follow_up_question": "What specific security measures should be implemented to protect against such attacks?"
+    },
+    {
+      "requirement": "The system shall log all actions performed by users, including who did what and when, to support auditing and compliance.",
+      "source_citation": "The logs should show who did what and when — like if someone added a part, changed a rating, or edited an estimate.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for detailed logging of user actions to support auditing and compliance, which is a key maintainability requirement.",
+      "follow_up_question": "What specific types of actions should be logged, and how should these logs be accessed and reviewed?"
+    },
+    {
+      "requirement": "The system shall integrate with the Choice Parts feed to provide up-to-date information on recycled parts.",
+      "source_citation": "The system should pull the available recycled parts from Choice Parts — pricing, location, and fit info — so I don’t have to go to Choice Parts separately.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for integration with the Choice Parts feed to ensure up-to-date information on recycled parts, which is a key scalability requirement.",
+      "follow_up_question": "What specific data should be pulled from the Choice Parts feed, and how should it be integrated into the system?"
+    },
+    {
+      "requirement": "The system shall request permission before using automatic geolocation to respect user privacy.",
+      "source_citation": "Automatic geolocation is handy — but it should ask for permission, obviously.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "data_privacy",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the importance of requesting permission before using automatic geolocation to respect user privacy.",
+      "follow_up_question": "What specific permissions should be requested, and how should user consent be managed?"
+    }
+  ]
+}

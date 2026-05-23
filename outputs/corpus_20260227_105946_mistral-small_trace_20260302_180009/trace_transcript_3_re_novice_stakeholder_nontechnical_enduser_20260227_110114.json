@@ -1,0 +1,117 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_3_re_novice_stakeholder_nontechnical_enduser_20260227_110114.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_180011",
+  "requirements": [
+    {
+      "requirement": "The system should respond to routine actions (e.g., searching for a student or updating an assignment) within a couple of seconds.",
+      "source_citation": "For the little things, it should feel almost instant — a couple of seconds at most before I can move on.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the desired response time for routine actions, which is a clear performance requirement.",
+      "follow_up_question": "What specific actions should be considered routine, and what are the acceptable response times for more complex actions?"
+    },
+    {
+      "requirement": "The system should be intuitive and easy to use, requiring minimal training for non-technical users.",
+      "source_citation": "Most of the folks here aren’t technical — we’re used to simple things. It needs to be intuitive so we don’t dread using it.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder emphasizes the need for an intuitive interface that is easy to use, especially for non-technical users.",
+      "follow_up_question": "What specific usability features or design principles would make the system intuitive for non-technical users?"
+    },
+    {
+      "requirement": "The system should be available during business hours with a target uptime of 95%.",
+      "source_citation": "We need it to be there when the office is open. If it goes down a lot, it’s a real problem. I’d be comfortable with it being available the vast majority of the time, like maybe around ninety-five percent.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the desired uptime percentage and the criticality of system availability during business hours.",
+      "follow_up_question": "What specific measures should be taken to ensure the system meets the 95% uptime target?"
+    },
+    {
+      "requirement": "The system should support concurrent use by around ten users during peak times, particularly in the mornings.",
+      "source_citation": "On busy mornings, probably around ten of us are working in it at the same time.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder indicates the number of concurrent users during peak times, which is a scalability requirement.",
+      "follow_up_question": "What specific performance metrics should be monitored to ensure the system can handle peak loads effectively?"
+    },
+    {
+      "requirement": "The system should implement role-based access control to restrict sensitive information to authorized users only.",
+      "source_citation": "Student personal information is sensitive; not every adjunct or site contact should see that. Only people who need to know should see those parts.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for access control to protect sensitive information, which is a security requirement.",
+      "follow_up_question": "What specific roles and access levels should be defined for different types of users?"
+    },
+    {
+      "requirement": "The system should prevent obvious mistakes, such as entering shifts outside normal clinical hours or assigning students to inappropriate sites.",
+      "source_citation": "Very important. I want it to stop obvious mistakes, like entering a shift outside normal clinical hours or assigning someone to a site that doesn’t accept that program.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "data_quality",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for the system to prevent obvious mistakes, which is a data quality requirement.",
+      "follow_up_question": "What specific validation rules should be implemented to prevent these mistakes?"
+    },
+    {
+      "requirement": "The system should provide clear warnings or suggestions for borderline mistakes, such as potential scheduling conflicts.",
+      "source_citation": "For borderline things, a warning with suggested fixes would be nice.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "error_prevention",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for warnings and suggestions for borderline mistakes, which is an error prevention requirement.",
+      "follow_up_question": "What specific criteria should be used to determine when a warning or suggestion should be provided?"
+    },
+    {
+      "requirement": "The system should notify users of schedule changes via email, in-app reminders, and text messages for urgent changes.",
+      "source_citation": "Email is the baseline because that’s what students and sites check. In-app reminders would be great too when you're logged in, and maybe text for urgent last-minute changes.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "notifications",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the preferred methods for notifications, which is a notifications requirement.",
+      "follow_up_question": "What specific types of changes should trigger each type of notification?"
+    },
+    {
+      "requirement": "The system should provide automatic saving and the ability to roll back changes to prevent data loss.",
+      "source_citation": "automatic saving and a way to roll back changes would be reassuring.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for automatic saving and rollback functionality, which is a maintainability requirement.",
+      "follow_up_question": "What specific mechanisms should be implemented for automatic saving and rollback?"
+    },
+    {
+      "requirement": "The system should be responsive, ensuring that users do not feel like they are waiting for it to perform actions.",
+      "source_citation": "it should feel responsive so you don’t feel like you’re waiting for it.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for the system to feel responsive, which is a performance requirement.",
+      "follow_up_question": "What specific performance metrics should be monitored to ensure the system remains responsive?"
+    }
+  ]
+}

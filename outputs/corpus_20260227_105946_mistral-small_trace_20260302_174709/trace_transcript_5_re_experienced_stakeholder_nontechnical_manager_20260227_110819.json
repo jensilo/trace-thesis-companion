@@ -1,0 +1,161 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_5_re_experienced_stakeholder_nontechnical_manager_20260227_110819.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_174711",
+  "requirements": [
+    {
+      "requirement": "The system shall return parts search results within 15 seconds.",
+      "source_citation": "For parts searches, anything that drags on for more than a handful of seconds frustrates people. [...] the parts search needs to return within about fifteen seconds tops.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states a specific time frame for parts search response time, indicating a clear performance requirement.",
+      "follow_up_question": "What are the technical constraints or dependencies that could impact the ability to meet the 15-second response time for parts searches?"
+    },
+    {
+      "requirement": "The system shall return repair facility search results within 8 seconds.",
+      "source_citation": "For finding a preferred repair facility based on vehicle location, it should be quicker — more like under ten seconds; I think eight seconds is a good business boundary.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a precise time frame for repair facility search response time, which is a clear performance requirement.",
+      "follow_up_question": "What are the technical challenges or limitations that need to be considered to achieve the 8-second response time for repair facility searches?"
+    },
+    {
+      "requirement": "The system shall be responsive and lightweight for mobile use, allowing field staff to work on flaky cellular connections.",
+      "source_citation": "Primarily responsive and lightweight for mobile use, so field staff can work on flaky cellular connections.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for the system to be responsive and lightweight for mobile use, which is a performance requirement.",
+      "follow_up_question": "What specific performance metrics or benchmarks will be used to ensure the system is responsive and lightweight for mobile use?"
+    },
+    {
+      "requirement": "The system shall have a 98% uptime to ensure high reliability and minimize manual workarounds.",
+      "source_citation": "We need it to be highly reliable — downtime erodes trust and increases manual workarounds. [...] the expectation is around ninety-eight percent uptime.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the expected uptime percentage, which is a clear availability requirement.",
+      "follow_up_question": "What are the contingency plans or backup systems in place to ensure the system meets the 98% uptime requirement?"
+    },
+    {
+      "requirement": "The system shall follow corporate architecture and UI standards to avoid governance issues and ensure alignment with existing systems.",
+      "source_citation": "We can't ship something that looks and behaves like a rogue app. It has to follow our architecture playbook and our UI standards.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for the system to follow corporate standards, which is a maintainability requirement.",
+      "follow_up_question": "What specific corporate architecture and UI standards must the system adhere to, and how will compliance be verified?"
+    },
+    {
+      "requirement": "The system shall comply with accessibility standards to meet customer expectations and market perceptions.",
+      "source_citation": "Accessibility isn't just compliance for us; it's also a customer expectation and affects market perception.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the importance of accessibility compliance, which is a maintainability requirement.",
+      "follow_up_question": "What specific accessibility standards and guidelines must the system adhere to, and how will compliance be ensured?"
+    },
+    {
+      "requirement": "The system shall use a hybrid approach for data handling, providing the freshest data where possible and a cached snapshot in areas with bad reception.",
+      "source_citation": "A hybrid makes sense; users expect freshest data, but in areas with bad reception, a cached snapshot is better than nothing.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder suggests a hybrid approach for data handling, which is a scalability requirement.",
+      "follow_up_question": "What specific mechanisms or technologies will be used to implement the hybrid approach for data handling?"
+    },
+    {
+      "requirement": "The system shall guide users away from non-compliant choices and make exceptions explicit to ensure regulatory compliance.",
+      "source_citation": "We need the workflow to guide users away from non-compliant choices and make any exceptions explicit so there's an audit trail.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for the system to ensure regulatory compliance, which is a legal requirement.",
+      "follow_up_question": "What specific regulatory requirements and guidelines must the system adhere to, and how will compliance be verified?"
+    },
+    {
+      "requirement": "The system shall have help available in about 9 out of 10 screens or workflows to ensure usability.",
+      "source_citation": "We would aim for help being available in about nine out of ten screens or workflows.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the extent of help availability, which is a usability requirement.",
+      "follow_up_question": "What specific criteria or metrics will be used to determine the availability and effectiveness of help in the system?"
+    },
+    {
+      "requirement": "The system shall achieve a 95% ease-of-use satisfaction rate as measured by post-rollout surveys.",
+      "source_citation": "Ninety-five percent of adjusters and collision estimators should report the product is easy to use on those surveys.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder sets a specific target for ease-of-use satisfaction, which is a usability requirement.",
+      "follow_up_question": "What specific survey questions or metrics will be used to measure the 95% ease-of-use satisfaction rate?"
+    },
+    {
+      "requirement": "The system shall ensure that field users have access only to the details relevant to the claim they are handling, to avoid overwhelming and risky exposure to sensitive data.",
+      "source_citation": "Field users shouldn't see corporate-wide sensitive data, just the details relevant to the claim they're handling, or else it's overwhelming and risky.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for controlled access to sensitive data, which is a security requirement.",
+      "follow_up_question": "What specific mechanisms or technologies will be used to ensure controlled access to sensitive data?"
+    },
+    {
+      "requirement": "The system shall prevent non-compliant choices where possible and flag other non-compliant choices clearly to ensure regulatory compliance.",
+      "source_citation": "From a business perspective I'd say it should prevent mistakes where possible and flag other things clearly.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for the system to prevent and flag non-compliant choices, which is a legal requirement.",
+      "follow_up_question": "What specific mechanisms or technologies will be used to prevent and flag non-compliant choices?"
+    },
+    {
+      "requirement": "The system shall ensure that rating data influences facility recommendations in near real-time or at least on a daily cadence.",
+      "source_citation": "It should influence recommendations in near real-time, or at least on a daily cadence, because adjusters need to rely on up-to-date performance signals when steering repairs.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for timely updates to rating data, which is a performance requirement.",
+      "follow_up_question": "What specific mechanisms or technologies will be used to ensure timely updates to rating data?"
+    },
+    {
+      "requirement": "The system shall be designed to handle the Choice Parts feed in a way that preserves trust in availability info and avoids stale or inconsistent results.",
+      "source_citation": "The key point is that the system needs to handle the feed in a way that preserves trust in availability info and doesn't expose us to stale or inconsistent results.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for the system to handle the Choice Parts feed effectively, which is a performance requirement.",
+      "follow_up_question": "What specific mechanisms or technologies will be used to handle the Choice Parts feed effectively?"
+    }
+  ]
+}

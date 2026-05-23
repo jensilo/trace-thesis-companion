@@ -1,0 +1,142 @@
+Interviewer: Hi—thanks for taking the time. Can you start by briefly describing what you've been working on for this scheduling system and where you fit in?
+
+Stakeholder: Yeah, sure — I think I’ve been on the import/export bits mostly, and some of the conflict-detection scripts. I’ve been here about a year, so I’ve touched the parts that pull data from the registrar and the little admin pages where people fix things. Lately I’ve been cleaning up messy CSVs we get from different sites, so I know the common headaches.
+
+Interviewer: Great. Which parts of the current toolchain break most often?
+
+Stakeholder: Hmm, the imports for sure. The registrar feeds sometimes use different codes, clinical sites send capacity numbers in weird formats, and people manually edit spreadsheets which then create duplicates. Oh, and the schedule generator I wrote once choked on very large cohorts — that was fun to debug. But generally, manual edits and inconsistent inputs cause most breakages.
+
+Interviewer: Who are the main user groups we should focus on?
+
+Stakeholder: We have program administrators who do the heavy scheduling, clinical coordinators who manage placements, faculty who mostly need to see assignments and sometimes update availability, students who need to view their rotations, and then there are people at the clinical sites who need to confirm placements. There’s also central IT for integrations, but they don’t use the app day-to-day.
+
+Interviewer: Can you estimate how many users you have in those groups now, and how many might use it at once during peak times?
+
+Stakeholder: Roughly speaking, it's not huge. There are a few dozen faculty, maybe a couple dozen admins and coordinators, and a few hundred students across cohorts. At peak, say when schedules drop in the morning, maybe around ten people from the admin side are on it at once — that's the busy window.
+
+Interviewer: Okay. Now, about training: the project notes mention everyone should be able to use it after "one day" of training. What do you mean by that in practice?
+
+Stakeholder: Yeah, when I say one day, I mean after a single day-long session or an equivalent self-paced course, users should be able to do their regular tasks without constant hand-holding. Program admins should be able to build and tweak schedules, instructors should find their assignments, and students should check their rotations. It implies the UI needs to be straightforward and we should have quick-start guides and maybe an admin sandbox.
+
+Interviewer: So one day of training is the target. How would we know they've reached that—what tasks should they be able to perform?
+
+Stakeholder: Umm, I think if an admin can create or edit a cohort schedule, resolve a conflict, and run basic reports without calling support, that’s a good sign. For instructors and students, being able to view and acknowledge assignments counts. We should probably define success criteria later, but that’s the gist.
+
+Interviewer: Got it. Moving to scheduling correctness—how should the system help users avoid scheduling mistakes?
+
+Stakeholder: Right now mistakes are usually double-bookings or over-assigning students to a clinical site. The system should prevent obvious bad actions — block double-booking, flag over-capacity, and warn if prerequisites aren’t met. Ideally it suggests fixes, like the next available slot, and asks for confirmation for risky changes. It should also give clear, contextual warnings rather than cryptic errors.
+
+Interviewer: Can you give examples of the most frequent mistakes you've seen?
+
+Stakeholder: Sure — uh, one simple example: an admin once assigned the same clinical rotation to a group of students who were already scheduled elsewhere because the calendar view didn’t show the other cohort. Another was importing a roster that used old course codes, so students were left unassigned. And sometimes someone increases a site’s capacity in the spreadsheet without checking with the site, which then causes a mismatch in the real world.
+
+Interviewer: Should any of those constraints be enforced strictly versus just warned about?
+
+Stakeholder: I'd say capacity and hard time conflicts should be enforced — you shouldn't be able to save a schedule that double-books an instructor, for instance. Prereqs could be warnings, though in practice we might want to block some prereq violations too. Umm, we need a way to mark rules as soft or hard, but that’s maybe a follow-up.
+
+Interviewer: Okay. About performance: how fast do routine tasks need to feel, and how long is acceptable for generating whole schedules?
+
+Stakeholder: It just needs to feel fast — I hate waiting around. For small things like viewing or editing a student record, it should be nearly instantaneous — maybe only a few seconds tops. For generating a full schedule for a cohort, it can take longer but should still finish pretty quickly — on the order of seconds to under a minute. If it’s going to be long, running it in the background and notifying when done is fine.
+
+Interviewer: What would you call "a few seconds" and "under a minute" more precisely?
+
+Stakeholder: Uh, if you want numbers, I’d say about five seconds or less for the small stuff, and schedule generation should ideally finish in half a minute or so. Those feel like reasonable cutoffs to keep people productive.
+
+Interviewer: Thanks. How big are the datasets when you generate a schedule — how many students, sites, constraints are typical?
+
+Stakeholder: For a single cohort, maybe a couple hundred students with several dozen sites and dozens of constraints like instructor availability, site capacity, and course requirements. It’s not huge compared to enterprise systems, but the constraint complexity makes generation tricky.
+
+Interviewer: Understood. Now about availability — what uptime and hours do we need to aim for?
+
+Stakeholder: We need it to be reliable during our working day; if it goes down during schedule release week, people panic. I mean, I’ve heard a target of something like ninety-five percent uptime mentioned in meetings, but honestly we care most about being up during peak admin hours. For hours, roughly eight in the morning to six in the evening on weekdays is when people use it most.
+
+Interviewer: So 95% uptime and support between roughly 8am and 6pm weekdays. Is maintenance downtime acceptable outside those hours?
+
+Stakeholder: Yeah, maintenance outside business hours is fine as long as it’s planned and we give notice. Short emergency outages are expected sometimes, but we should have monitoring and alerts so we react quickly. Also a read-only fallback for students would be useful if the system degrades.
+
+Interviewer: About handling all user requests during business hours — do we need to plan for any specific concurrency or load?
+
+Stakeholder: The big load is during schedule release and a few people working simultaneously; I mentioned maybe ten concurrent admin users at peak. Students hit it when schedules post, so we might see a spike of many read-only accesses — that could be higher. We should design so the system handles that typical day traffic without slowdowns.
+
+Interviewer: Thanks. For how long does the department expect this system to manage curriculum and schedules? Any retention expectations?
+
+Stakeholder: We need to keep historical schedules and progression records for audits and accreditation — I’d say at least several years. I’ve heard planning assumptions of about five years of active data retention, and beyond that we can archive to cheaper storage. We also need versioning for curriculum rules because those change over time.
+
+Interviewer: Five years—okay. On integration: the notes say CampusConnect is involved. What does that interface look like?
+
+Stakeholder: CampusConnect is the authoritative student and course system; we should pull rosters from it and push scheduling updates back. Right now we hack around with exported CSVs and a half-baked API prototype. Ideally it’s an authenticated API or SSO integration — whatever central IT supports. It should be the single source of truth for student IDs and course masters.
+
+Interviewer: Do you know whether that will be a live API or scheduled file exchange, and what authentication?
+
+Stakeholder: I’m not entirely sure; I think CampusConnect supports an API and SAML-based SSO. Central IT can confirm, but we should plan for both a near-real-time API and a fallback nightly file feed. Also, we need clear conflict resolution rules when CampusConnect data and our edits disagree.
+
+Interviewer: All right. Now security and privacy: who should see clinical site details, and how strict do we need to be?
+
+Stakeholder: Not everyone should see everything — clinical sites give us contact names, capacities, and sometimes sensitive placement notes. Program admins need full access, clinical site coordinators should see their own details, and students should only see what pertains to them. We should integrate with SSO for identities, use role-based access control, and log access. Also, follow DePaul’s information policy for protecting private data — encrypt in transit and at rest, that sort of thing. If any PHI ends up in notes, we may need HIPAA-like controls, but I’m not the policy owner.
+
+Interviewer: So which roles exactly should have access to site details: program admins, site coordinators, instructors, students?
+
+Stakeholder: Program admins definitely, site coordinators for their sites, instructors maybe only for assignments that affect them, and students only their own assignments. But yeah, there’ll be edge cases where instructors need more detail — we’ll need to map those roles out with the program later.
+
+Interviewer: For access control, do you prefer RBAC or something like attribute-based control?
+
+Stakeholder: RBAC is simpler to start with and works for most cases. If we need more granularity later, we could move to attribute-based controls, but starting with roles tied to the university SSO seems pragmatic.
+
+Interviewer: About data integrity — what kinds of checks should be in place to stop bad data?
+
+Stakeholder: Basic validations on the front end like required fields and proper formats, and backend checks to prevent orphaned records. For imports, a validation pass that reports bad rows and lets an admin fix them before committing would save a ton of headaches. Also sanity checks like ensuring site capacities aren't negative and students referenced in an import actually exist in CampusConnect.
+
+Interviewer: Should imports be transactional or allow partial commits?
+
+Stakeholder: I think transactional imports are safer for critical data — all-or-nothing — but for some large feeds a partial commit with an error report might be more practical. We should support both modes or at least give the admin a choice.
+
+Interviewer: About privacy again—when you said follow the organization's information policy, do you know where that policy lives or whom we should talk to?
+
+Stakeholder: Central IT or the privacy office have the documents. I don’t have them on hand, but I can point you to their contacts. We should get that policy early because it will dictate encryption standards, retention, and audit log requirements.
+
+Interviewer: Notifications and reporting — how should the system inform users of schedule changes?
+
+Stakeholder: Email is the default; SMS could be useful for urgent stuff. In-app notifications are good too, especially for instructors and admins. Notifications should be configurable so students don’t get spammed for minor tweaks. Also, change logs for audits and reports on utilization and conflicts would be useful — we should be able to run a report showing site usage and scheduling conflicts over a term.
+
+Interviewer: Should notifications be immediate or batched?
+
+Stakeholder: Immediate for critical changes, but batched for routine things like weekly summaries. And we should throttle bulk sends during big releases, or use a messaging service so the app itself isn’t overwhelmed.
+
+Interviewer: Which of the things we discussed is highest priority for the initial release?
+
+Stakeholder: Preventing scheduling mistakes and integrating reliably with CampusConnect should be the top priorities. After that, performance and availability during business hours. UI and training materials can be the focus of an early user acceptance period.
+
+Interviewer: Any major risks or unknowns I should note?
+
+Stakeholder: The biggest unknowns are exact concurrency patterns for students and the final CampusConnect API specs and limits. Data quality from imports is also a recurring risk. Also, if clinical sites start sending PHI in notes, that ups our compliance burden.
+
+Interviewer: Who can I reach out to for the CampusConnect spec and the info-policy document?
+
+Stakeholder: Talk to central IT for CampusConnect details — I can introduce you to their integration lead. For policy, the privacy office or the university security team has the documents. I’ll send the contact names after this.
+
+Interviewer: Great. A few quick follow-ups I forgot earlier: you mentioned versioning curriculum rules — should the system keep those versions for each term?
+
+Stakeholder: Yes, keep versions tied to terms so we can see what rules applied when a cohort progressed. That helps for audits and student progression disputes.
+
+Interviewer: And for measuring whether training was successful, should we require some kind of sign-off or test?
+
+Stakeholder: A quick checklist or observed task completion for admins would be ideal. For students and faculty, simple acknowledgement and a quick quiz or walkthrough completion could suffice. Again, we can flesh that out with the training team.
+
+Interviewer: Thanks. Is it okay if I follow up by email for the contacts and some example data files?
+
+Stakeholder: Yeah, please do. Oh, and one last thing — slight tangent — when we did the CSV import cleanup last semester, it saved the admin team days, so having a safe import mode will win us a lot of goodwill. I’ll include a sample of those messy files for you.
+
+Interviewer: Perfect. I’ll compile these notes and reach out for those contacts and files. Thanks for your time.
+
+---
+Selected Requirements:
+1. [NICE.csv line 71] [quality, usability] 'All of the users shall be able to use the system after one day of training.'
+2. [NICE.csv line 72] [quality, usability] 'The system shall help the user avoid making mistakes while scheduling classes and clinicals for the nursing students.'
+3. [NICE.csv line 79] [quality, performance] 'The response time of general student management tasks shall take no longer than 5 seconds and the response time of schedule generation shall take no longer than 30 seconds.'
+4. [NICE.csv line 81] [quality, availability] 'The system shall achieve 95% up time.'
+5. [NICE.csv line 82] [quality, availability, scalability] 'system shall be able to handle all of the user requests/usage during business hours.'
+6. [NICE.csv line 85] [quality, functional, scalability] 'The system shall be expected to manage the nursing program curriculum and class/clinical scheduling for a minimum of 5 years.'
+7. [NICE.csv line 89] [quality, operability] The system shall interface with CampusConnect's central server'
+8. [NICE.csv line 93] [quality, security] 'Only authorized users shall have access to clinical site information.'
+9. [NICE.csv line 99] [quality, functional, security] 'The system shall have basic data integrity checking to reduce the possibility of incorrect or invalid data being introduced.'
+10. [NICE.csv line 100] [quality, functional, legal, security] The system shall protect private information in accordance with the organization's information policy.'

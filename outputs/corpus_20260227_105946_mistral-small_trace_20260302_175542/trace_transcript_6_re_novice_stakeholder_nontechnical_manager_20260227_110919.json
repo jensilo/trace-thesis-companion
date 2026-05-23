@@ -1,0 +1,128 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_6_re_novice_stakeholder_nontechnical_manager_20260227_110919.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_175641",
+  "requirements": [
+    {
+      "requirement": "The system should be available 99.99% of the time, excluding catastrophic failures.",
+      "source_citation": "Reliability is huge. I mean, hmm, we have a low tolerance for downtime — when it happens it costs us in rescheduling and in trust. I don't expect it to be up if the whole server farm is down or something catastrophic, but aside from that it should be basically always available. We want people to rely on it like email.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for high availability, comparing it to email and specifying a target of 'four nines' (99.99%). This is a clear and direct statement of availability requirements.",
+      "follow_up_question": "What specific mechanisms or redundancies are expected to achieve this level of availability?"
+    },
+    {
+      "requirement": "Ninety percent of tasks should complete within five seconds, and all tasks should complete within eight seconds.",
+      "source_citation": "It just needs to feel instantaneous. I really hate waiting; if people have to pause while the page loads they start doing other things and don't come back. Maybe five seconds for the quick stuff, I'd say; slightly longer for heavier operations is tolerable but not by much.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder provides specific performance targets for task completion times, indicating a strong emphasis on responsiveness.",
+      "follow_up_question": "Are there specific tasks or operations that are considered 'heavier' and might require the eight-second completion time?"
+    },
+    {
+      "requirement": "The system should handle 1,000 simultaneous requests currently and scale to 2,000 requests in the next release.",
+      "source_citation": "Right now we need it to handle a thousand simultaneous requests without choking, and we'll need to scale that up in the next release to about double that.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the current and future scalability requirements, providing clear numbers for simultaneous requests.",
+      "follow_up_question": "What specific scaling mechanisms or architectures are preferred to achieve this scalability?"
+    },
+    {
+      "requirement": "Only company employees or vetted external users with approved company IDs can log on to the system.",
+      "source_citation": "Only people we trust. Employees, of course, and sometimes external folks who have been given approved company IDs. We can't have anonymous accounts — it's a business tool, not a public calendar.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for strict access control, specifying that only trusted individuals can log on.",
+      "follow_up_question": "What specific authentication mechanisms or protocols are preferred for implementing this access control?"
+    },
+    {
+      "requirement": "All logon attempts should be logged for audit purposes.",
+      "source_citation": "Oh, and we should log access attempts for audit — that's something our risk team will ask about.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for logging access attempts, indicating a requirement for audit trails.",
+      "follow_up_question": "What specific details should be included in the access logs, and how should these logs be stored and managed?"
+    },
+    {
+      "requirement": "The system should reduce friction and avoid errors, such as double-booking rooms or meetings failing to start on time.",
+      "source_citation": "People should be able to reserve a room, attach equipment needs, invite participants, and the business should feel confident that rooms aren't double-booked or that meetings don't fail because of the system.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for a system that reduces friction and avoids errors, which are key usability concerns.",
+      "follow_up_question": "What specific usability testing or user feedback mechanisms will be used to ensure the system meets these goals?"
+    },
+    {
+      "requirement": "The system should generate and transmit exception records for analysis when something goes wrong.",
+      "source_citation": "When something goes wrong, we want an exception record — something that doesn't just sit in the logs but can be packaged up and sent back to our team for analysis.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for exception records to be generated and transmitted for analysis, which is crucial for maintainability.",
+      "follow_up_question": "What specific information should be included in the exception records, and how frequently should they be transmitted?"
+    },
+    {
+      "requirement": "The system should conform to accessibility requirements such as the Americans with Disabilities Act.",
+      "source_citation": "We must conform to accessibility requirements like the Americans with Disabilities Act. It's not optional; it's about legal compliance and being inclusive.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for compliance with accessibility laws, indicating a legal requirement.",
+      "follow_up_question": "What specific accessibility standards or guidelines should the system adhere to?"
+    },
+    {
+      "requirement": "The system should run in any normal HTML browser and display correctly in at least eighty percent of the tested browsers, covering at least eight different browsers.",
+      "source_citation": "It needs to run in any normal HTML browser. Users shouldn't have to install plugins or a specific browser. The trick is, we also need it to render correctly across a representative set of browsers — there are always edge cases, but it has to look and work properly in most of the browsers our people use.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for browser compatibility and provides a target for the percentage of browsers in which the system should display correctly.",
+      "follow_up_question": "What specific browsers should be included in the test matrix, and what criteria will be used to determine correct display and functionality?"
+    },
+    {
+      "requirement": "The system should support multiple languages, allowing users to select their preferred language from the target markets.",
+      "source_citation": "We need multiple languages — people in different countries must be able to use it in their language of choice. The user should be able to select a language from the ones we target in our markets.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the need for multi-language support, indicating a requirement for internationalization.",
+      "follow_up_question": "What specific languages should be supported initially, and how will language selection be implemented?"
+    },
+    {
+      "requirement": "The system should include good validation for imports and a way to quickly clean up any oddities or errors.",
+      "source_citation": "Whatever we build, it needs good validation on imports and a way to clean oddities quickly.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "data_integrity",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for validation and cleanup mechanisms to handle import errors, which is crucial for data integrity.",
+      "follow_up_question": "What specific validation rules or cleanup processes should be implemented to address these concerns?"
+    }
+  ]
+}

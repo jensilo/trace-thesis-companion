@@ -1,0 +1,139 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_8_re_novice_stakeholder_technical_junior_20260227_111309.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_175725",
+  "requirements": [
+    {
+      "requirement": "The system shall ensure that UI interactions such as searching or opening movie details complete within 5 seconds.",
+      "source_citation": "For regular clicks and small requests, if it takes more than a few seconds, users feel annoyed. I'd say around five seconds is when people start to lose patience for simple stuff.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions that users start to lose patience after 5 seconds for small interactions, indicating a clear performance requirement.",
+      "follow_up_question": "Are there specific interactions that are more critical than others and should be prioritized for performance optimization?"
+    },
+    {
+      "requirement": "The system shall complete card authorization within 15 seconds from submission to result.",
+      "source_citation": "Card processing needs to be fast but secure. People abandon if the card keeps hanging. I'd put card authorisation at maybe under, say, fifteen seconds from submit to result. Longer than that and you risk drop-off.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a clear timeframe for card authorization, indicating a performance requirement for the payment flow.",
+      "follow_up_question": "Are there any specific conditions or scenarios where the 15-second target might need to be adjusted?"
+    },
+    {
+      "requirement": "The system shall start streaming playback with no more than 10 seconds of buffering.",
+      "source_citation": "Ten seconds is about the maximum that feels tolerable to me, assuming the user's own connection isn't the problem.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the maximum acceptable buffering time for streaming playback.",
+      "follow_up_question": "Are there any specific network conditions or user scenarios that should be considered for buffering performance?"
+    },
+    {
+      "requirement": "The system shall be designed with simplicity in mind, requiring few clicks and intuitive flows for novice users.",
+      "source_citation": "Simplicity is key. Big clear buttons, not too many choices at once, helpful defaults, and an obvious prominent 'play' flow.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder emphasizes the importance of simplicity and provides specific examples of design elements that enhance usability.",
+      "follow_up_question": "Are there any specific user personas or scenarios that should be considered for usability testing?"
+    },
+    {
+      "requirement": "The system shall support local languages and currencies to build trust with users.",
+      "source_citation": "Yeah, we'd want local languages for key markets — at least the big ones. Also support for local currencies in the UI helps reduce confusion.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the importance of localization for trust and usability.",
+      "follow_up_question": "Which specific languages and currencies should be prioritized for initial implementation?"
+    },
+    {
+      "requirement": "The system shall achieve 99.5% uptime to ensure high availability and avoid revenue loss.",
+      "source_citation": "Hmm, yeah — they talk about near-continuous availability. If I put a number on it, they'd probably expect around ninety-nine and a half percent uptime.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder provides a specific uptime target, indicating a clear availability requirement.",
+      "follow_up_question": "Are there any specific periods or events where higher availability might be critical?"
+    },
+    {
+      "requirement": "The system shall encrypt payment data and restrict access to sensitive information based on roles.",
+      "source_citation": "The credit card info shouldn't be sitting in plain text on the database. And access should be limited to a few admin roles — not the person who just answers support calls.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for encryption and role-based access control for payment data.",
+      "follow_up_question": "Are there any specific compliance or regulatory standards that need to be adhered to for payment data security?"
+    },
+    {
+      "requirement": "The system shall implement role-based access control and two-factor authentication for admin access.",
+      "source_citation": "Roles for sure, and stronger authentication for high-privilege accounts. Two-factor seems sensible for those users who can see sensitive data.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for role-based access control and two-factor authentication for admin access.",
+      "follow_up_question": "Are there any specific roles or permissions that need to be defined for admin access?"
+    },
+    {
+      "requirement": "The system shall include admin tools to avoid manual work, such as managing pre-paid codes without spreadsheets.",
+      "source_citation": "It shouldn't be a manual spreadsheet job — that gets messy fast.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the need for admin tools to reduce manual work and improve maintainability.",
+      "follow_up_question": "Are there any specific administrative tasks that should be prioritized for automation?"
+    },
+    {
+      "requirement": "The system shall support a few concurrent users on admin dashboards during peak times.",
+      "source_citation": "Maybe a handful of people at peak times. They won't all be doing heavy queries constantly, but during reporting windows there could be a few.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 3,
+      "rationale": "The stakeholder provides an estimate of the number of concurrent users expected on admin dashboards, indicating a scalability requirement.",
+      "follow_up_question": "Are there any specific peak periods or events that should be considered for scalability planning?"
+    },
+    {
+      "requirement": "The system shall include a clear and prominently linked privacy policy on every page.",
+      "source_citation": "We should be upfront. A clear privacy policy that people can find before they give us anything. I don't like those hidden pages — make it visible, maybe linked in the footer and during signup. Users should know what data we collect and how we use it.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for a clear and accessible privacy policy, indicating a legal requirement.",
+      "follow_up_question": "Are there any specific privacy regulations or standards that need to be adhered to?"
+    },
+    {
+      "requirement": "The system shall include daily business metrics and health alerts for operational monitoring.",
+      "source_citation": "Track basic health stuff — server uptime, error rates, and unusual traffic patterns. And daily business stats so the team knows if something's trending up or down.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for daily business metrics and health alerts, indicating an operability requirement.",
+      "follow_up_question": "Are there any specific metrics or alerts that should be prioritized for operational monitoring?"
+    }
+  ]
+}

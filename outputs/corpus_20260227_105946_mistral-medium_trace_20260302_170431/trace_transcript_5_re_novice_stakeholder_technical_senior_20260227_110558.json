@@ -1,0 +1,260 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_5_re_novice_stakeholder_technical_senior_20260227_110558.txt",
+  "model": "mistral/mistral-medium-latest",
+  "timestamp": "20260302_171005",
+  "requirements": [
+    {
+      "requirement": "The system shall make it easy for adjusters and estimators to find usable recycled parts and integrate the searchable feed into their workflow.",
+      "source_citation": "make it really easy for adjusters and estimators to find usable recycled parts... integrate the searchable feed into the workflow",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The requirement emphasizes ease of use and integration into the workflow, which are key aspects of usability.",
+      "follow_up_question": "What specific usability metrics or user testing methods should be used to ensure the system meets this requirement?"
+    },
+    {
+      "requirement": "The system shall provide a clean and quick interface for field users and support deeper analysis for office users.",
+      "source_citation": "Field users need a clean, quick interface; office users might do deeper analysis",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The requirement specifies different interface needs for different user roles, focusing on usability.",
+      "follow_up_question": "What are the specific interface design guidelines for field users versus office users?"
+    },
+    {
+      "requirement": "The system shall follow corporate accessibility and UI guidelines to ensure consistency and accessibility.",
+      "source_citation": "Accessibility and consistent UI behavior — follow the corporate guidelines so people feel at home",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The requirement explicitly mentions accessibility and consistent UI behavior, which are key aspects of usability.",
+      "follow_up_question": "Can you provide the specific corporate accessibility and UI guidelines that need to be followed?"
+    },
+    {
+      "requirement": "The system shall be mobile-friendly and follow corporate accessibility guidelines.",
+      "source_citation": "Mobile-friendly is a must... UI should follow corporate accessibility guidelines (color contrast, keyboard navigation, standard components)",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The requirement explicitly mentions mobile-friendliness and accessibility guidelines, which are key aspects of usability.",
+      "follow_up_question": "What specific mobile design guidelines and accessibility standards should be adhered to?"
+    },
+    {
+      "requirement": "The system shall keep the UI simple for mobile users to ensure usability.",
+      "source_citation": "Keep the UI simple for mobile users; if it looks like the desktop, they’ll ignore it",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The requirement emphasizes the need for a simple UI for mobile users, which is a key aspect of usability.",
+      "follow_up_question": "What specific design principles should be followed to keep the mobile UI simple and effective?"
+    },
+    {
+      "requirement": "The system shall return parts search results within 15 seconds.",
+      "source_citation": "for parts, waiting around more than a few tens of seconds is unacceptable. We should aim to have search results returned well under, uh, something like fifteen seconds.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The requirement specifies a clear performance target for parts search results.",
+      "follow_up_question": "What are the expected performance metrics for different types of searches and how will they be measured?"
+    },
+    {
+      "requirement": "The system shall return facility lookup results within 8 seconds.",
+      "source_citation": "For the preferred repair facility search, that should be noticeably quicker — it should return within roughly eight seconds",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The requirement specifies a clear performance target for facility lookup results.",
+      "follow_up_question": "What are the expected performance metrics for different types of lookups and how will they be measured?"
+    },
+    {
+      "requirement": "The system shall achieve 98% availability.",
+      "source_citation": "the target is high — we should plan for something that results in only a very small fraction of total time being unavailable, not something that's flaky. Yes — to be concrete, our operations group will expect ninety-eight percent availability as the baseline.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The requirement specifies a clear availability target for the system.",
+      "follow_up_question": "What are the expected availability metrics and how will they be measured and reported?"
+    },
+    {
+      "requirement": "The system shall support 1,500 concurrent users initially and scale to 10,000 concurrent users within two years.",
+      "source_citation": "If you need the exact figures for capacity planning, today we should plan to comfortably handle fifteen hundred concurrent users, and architect it so we can scale to around ten thousand concurrent users within about two years of launch.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "The requirement specifies clear scalability targets for the system.",
+      "follow_up_question": "What are the specific scalability metrics and how will they be measured and reported?"
+    },
+    {
+      "requirement": "The system shall implement rate limiting, web application firewalls, and traffic scrubbing to protect against attacks.",
+      "source_citation": "Rate limiting, web application firewalls, traffic scrubbing — those kinds of defensive measures should be part of the plan.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The requirement mentions specific security measures to protect the system against attacks.",
+      "follow_up_question": "What specific security measures and protocols should be implemented to protect the system?"
+    },
+    {
+      "requirement": "The system shall implement layered defense for security, including application-level throttling and corporate DDoS mitigation.",
+      "source_citation": "The application should implement sensible throttling and input validation, and then hand off to the corporate DDoS mitigation layers for large-scale attacks. It's layered defense; that's the right pattern.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The requirement emphasizes the need for a layered defense strategy, which is a key aspect of security.",
+      "follow_up_question": "What specific layers of defense should be implemented and how will they be coordinated?"
+    },
+    {
+      "requirement": "The system shall maintain an auditable trail, retain records, and protect data to meet regulatory obligations.",
+      "source_citation": "there are regulatory obligations about maintaining an auditable trail, retention of records, and data protection.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 4,
+      "rationale": "The requirement mentions regulatory obligations related to auditable trails, record retention, and data protection.",
+      "follow_up_question": "What specific regulatory requirements and compliance standards need to be adhered to?"
+    },
+    {
+      "requirement": "The system shall log detailed information about who viewed and changed estimates or selected parts, meeting corporate retention and export rules.",
+      "source_citation": "We need detailed logging of who viewed and changed an estimate or which parts were selected, and those logs must meet the company's retention and export rules.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 4,
+      "rationale": "The requirement specifies the need for detailed logging and compliance with corporate retention and export rules.",
+      "follow_up_question": "What specific logging requirements and retention policies need to be followed?"
+    },
+    {
+      "requirement": "The system shall handle personal information per privacy rules and follow corporate controls.",
+      "source_citation": "Also any personal information must be handled per the privacy rules — again, follow the corporate controls.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 4,
+      "rationale": "The requirement mentions the need to handle personal information per privacy rules and corporate controls.",
+      "follow_up_question": "What specific privacy rules and corporate controls need to be followed for handling personal information?"
+    },
+    {
+      "requirement": "The system shall preserve the integrity of the estimate workflow to stay defensible in audits.",
+      "source_citation": "preserve the integrity of the estimate workflow so it stays defensible in audits.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 3,
+      "rationale": "The requirement mentions the need to preserve the integrity of the estimate workflow for audit defensibility.",
+      "follow_up_question": "What specific measures should be taken to preserve the integrity of the estimate workflow?"
+    },
+    {
+      "requirement": "The system shall integrate with the recycled parts provider feed using real-time-ish APIs.",
+      "source_citation": "Real-time-ish APIs are preferable. The feed should be consumed via a supported interface; polling big batch files daily won't cut it because inventory changes quickly.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The requirement specifies the need for real-time-ish APIs for integrating with the provider feed, which impacts performance.",
+      "follow_up_question": "What specific API requirements and performance metrics should be considered for the real-time-ish APIs?"
+    },
+    {
+      "requirement": "The system shall use server-side caching for hot items and a CDN for static assets to ensure fast searches.",
+      "source_citation": "Server-side caching is the primary lever, with opportunity for short-lived client caching for repeated local lookups. We should use an in-memory cache or a distributed cache for hot items and a CDN for static assets.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The requirement specifies the use of server-side caching and CDN for static assets to ensure fast searches.",
+      "follow_up_question": "What specific caching strategies and technologies should be used to ensure fast searches?"
+    },
+    {
+      "requirement": "The system shall align with corporate architecture patterns, UI standards, and approved technologies.",
+      "source_citation": "We can't reinvent the stack; we need to align with the corporate architecture patterns and the UI standards. That's not negotiable. We have a set of approved technologies and design language that the system must fit into so operations and support don't freak out.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "The requirement emphasizes the need to align with corporate architecture patterns, UI standards, and approved technologies, which are key aspects of maintainability.",
+      "follow_up_question": "What specific corporate architecture patterns, UI standards, and approved technologies need to be followed?"
+    },
+    {
+      "requirement": "The system shall use cloud-native patterns, including containerized services, orchestration, and central platform services for logging, identity, and monitoring.",
+      "source_citation": "The corporate guidance leans toward cloud-native patterns: containerized services, orchestration, and well-defined service boundaries. We should align with the approved cloud provider and use the central platform services for logging, identity, and monitoring.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The requirement specifies the use of cloud-native patterns and central platform services, which are key aspects of maintainability.",
+      "follow_up_question": "What specific cloud-native patterns and central platform services should be used?"
+    },
+    {
+      "requirement": "The system shall implement role-based access control integrated with corporate identity and ensure auditable permission changes.",
+      "source_citation": "Access control needs to be role-based and integrated with corporate identity. Role assignment and permissioning should map to existing groups so we don't invent another silo. Administrators will manage higher-level roles, and local site coordinators should have limited capabilities. It has to be auditable, meaning changes to permissions are logged, and the enforcement should be centralized via an identity service rather than ad-hoc checks sprinkled through code.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The requirement specifies the need for role-based access control and auditable permission changes, which are key aspects of security.",
+      "follow_up_question": "What specific role-based access control mechanisms and auditing processes should be implemented?"
+    },
+    {
+      "requirement": "The system shall use encryption at rest and in transit, with keys and certificates managed via a central secrets store.",
+      "source_citation": "We need both. Transport encryption is baseline, and sensitive data at rest should be encrypted per corporate policy. Keys and certificates must be managed with the central secrets store.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The requirement specifies the need for encryption at rest and in transit, which are key aspects of security.",
+      "follow_up_question": "What specific encryption standards and key management practices should be followed?"
+    },
+    {
+      "requirement": "The system shall rely on the provider as the source of truth and design for schema changes to avoid data synchronization issues.",
+      "source_citation": "rely on the provider as the source of truth, keep mappings explicit, and design for schema changes.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The requirement emphasizes the need to rely on the provider as the source of truth and design for schema changes, which are key aspects of maintainability.",
+      "follow_up_question": "What specific measures should be taken to ensure the provider is the source of truth and to handle schema changes?"
+    },
+    {
+      "requirement": "The system shall integrate with corporate identity from the start to avoid bolting on auth later.",
+      "source_citation": "don't bolt on auth and just hope it works; integrate with corporate identity from the start.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The requirement emphasizes the need to integrate with corporate identity from the start, which is a key aspect of security.",
+      "follow_up_question": "What specific corporate identity integration requirements and authentication mechanisms should be implemented?"
+    }
+  ]
+}

@@ -1,0 +1,238 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_6_re_experienced_stakeholder_nontechnical_manager_20260227_111115.txt",
+  "model": "openai/gpt-5-mini",
+  "timestamp": "20260302_172518",
+  "requirements": [
+    {
+      "requirement": "The UI must be quick and obvious so that users can perform basic tasks without training; a typical first-time user should be able to complete a simple room booking within about five minutes.",
+      "source_citation": "If someone sits down and needs to book a room, they should be able to figure it out in just a few minutes — not spend ten minutes poking around.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly states learnability and time-to-first-success as a critical usability goal and gives a numeric target (~5 minutes) for a simple booking. Gap: \"most users\" / \"high proportion\" is vague; acceptance criteria for 'simple booking' steps not enumerated.",
+      "follow_up_question": "Please confirm the exact success criterion: what percentage of first-time users must complete a \"simple room booking\" within five minutes (e.g., 80%, 90%, 95%), and please define the step-by-step actions that constitute a \"simple booking\" for measurement."
+    },
+    {
+      "requirement": "The product must support customer-specific branding: allow customer logo, color palette and limited font choices so the application appears as an official tool for that customer while preventing themes that break accessibility or usability.",
+      "source_citation": "we need to be able to make it look like it belongs to the customer — branding and colors and that sort of thing.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 5,
+      "rationale": "Stakeholder requires theming for customer acceptance but also expresses constraints to prevent accessibility breakage. Gap: exact theming API/scope and allowed customization limits not specified.",
+      "follow_up_question": "Which specific UI elements must be customizable (e.g., header logo, primary/secondary colors, email templates, fonts), and do you require a theming policy/enforcement mechanism (e.g., automatic contrast checks) to block invalid themes?"
+    },
+    {
+      "requirement": "The system must integrate with customer mail infrastructure (Exchange, Google/Gmail, and standard SMTP) so calendar invites and notifications are delivered to recipients.",
+      "source_citation": "So think Exchange-based shops and folks who use Google for mail, and also the standard SMTP setups that some of our customers run.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 5,
+      "rationale": "Stakeholder names specific mail systems to support; implies interoperability requirement for notifications. Gap: protocol details, authentication methods, retry policies, and delivery guarantees are unspecified.",
+      "follow_up_question": "Please list supported authentication methods and protocols required for mail integration (e.g., OAuth2 for Gmail, Exchange Web Services, SMTP with STARTTLS), and specify desired delivery guarantees (e.g., retry/backoff policy, bounce handling) for notifications."
+    },
+    {
+      "requirement": "The system must capture exceptions and delivery failures in logs and automatically and securely transmit those logs to the vendor's analysis pipeline for support and diagnostics.",
+      "source_citation": "Ideally exceptions are captured in a log and made available to our support team ... that log should be sent to our team; we don't want to be chasing down every little thing manually.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly asks for exception logging and automated shipping. Security/privacy of log transmission is implied and later clarified as 'securely transmit'. Gap: retention, format, PII handling, encryption/transport, and consent/opt-in not specified.",
+      "follow_up_question": "What security, retention, and privacy controls must apply to transmitted logs (e.g., encryption at rest/in transit, redaction of PII, maximum retention period), and do customers need explicit opt-in for automatic log transmission?"
+    },
+    {
+      "requirement": "Log transmission of exceptions must be automatic and secure — the system should package exceptions and securely transmit them to the customer's/vendor's analysis pipeline without manual export.",
+      "source_citation": "Automatic would be much better. I mean, I don't want reliance on someone to remember to export. If the system can package up exceptions and securely transmit them to our analysis pipeline, that's ideal.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder requests automatic and secure transmission of exception data. Gap: which transport/security standards (TLS versions, mutual TLS, VPN), authentication, and authorization for recipients need to be specified.",
+      "follow_up_question": "Which secure transport and authentication mechanisms do you require for log transmission (e.g., TLS 1.2/1.3, mTLS, API keys, VPN), and which endpoints/domains will receive these logs?"
+    },
+    {
+      "requirement": "The application must handle predictable peak load spikes (e.g., right before the workday and just after lunch) without perceptible slowdown to users.",
+      "source_citation": "Those windows see a lot of simultaneous activity, so the app needs to survive those spikes without slowing people down.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "Stakeholder emphasizes capacity during known peak windows. Gap: exact performance targets during spikes are provided elsewhere (concurrency/response targets), but tolerance for degraded service during spikes not defined.",
+      "follow_up_question": "During peak windows, is degraded performance acceptable up to a specific threshold, or must the system maintain the same response-time SLAs as normal hours?"
+    },
+    {
+      "requirement": "The product must support approximately 1,000 concurrent requests initially and be designed to scale to about 2,000 concurrent requests in the next release.",
+      "source_citation": "specifically, the product should handle about a thousand concurrent requests initially. ... by the next release we expect that to roughly double to around two thousand.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "Stakeholder provides explicit concurrency targets for capacity planning. Gap: definition of 'concurrent requests' (per-second, long-polling connections, concurrent users), and what a request entails (search, booking) needs clarification.",
+      "follow_up_question": "Please define 'concurrent requests' precisely (e.g., active HTTP requests per second, WebSocket connections, or simultaneous UI sessions) and provide expected request mix (percentage of searches vs. bookings vs. reads) for sizing."
+    },
+    {
+      "requirement": "For common interactions (e.g., room search, saving a booking), about 90% of routine tasks must complete within roughly five seconds, and approximately 98% must complete within eight seconds.",
+      "source_citation": "about ninety percent of routine tasks should finish within roughly five seconds, and almost all of them — better than ninety-five, actually closer to ninety-eight percent — should complete within a bit longer, maybe around eight seconds.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder gives percentile-based response-time SLAs for common actions. Gap: whether these SLAs apply to peak load as well as normal conditions, and which specific endpoints/actions are included as 'routine tasks'.",
+      "follow_up_question": "Confirm whether the 90% <5s and ~98% <8s targets apply during peak traffic as well as normal traffic, and specify which API endpoints or UI actions are covered by these measurements."
+    },
+    {
+      "requirement": "Access must be restricted so that every login maps to a company-validated identity or an approved external account provisioned by the customer; anonymous production access is not allowed.",
+      "source_citation": "Only our company employees and approved external users should be able to use it. ... every logon should map to a company-validated identity or an external account that we've approved through the customer's provisioning process.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder requires strict authentication and identity mapping for production use. Gap: specific identity providers/protocols (SAML, OAuth, SCIM provisioning) and session/credential policies are unspecified.",
+      "follow_up_question": "Which identity federation and provisioning protocols must be supported (e.g., SAML, OIDC, SCIM), and what are your requirements for session lifetime, MFA, and account deprovisioning?"
+    },
+    {
+      "requirement": "Kiosk/tablet devices used in production must be registered and controlled by approved device identities rather than allowing anonymous or unregistered access.",
+      "source_citation": "Kiosks are a special case; if we put a tablet outside a room, that should be registered and controlled by an approved device identity rather than anonymous access.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly allows kiosks only if registered and controlled by device identity. Gap: device provisioning, lifecycle management, and how device identity is authenticated are unspecified.",
+      "follow_up_question": "Describe the device identity lifecycle and authentication method you require for kiosks (e.g., client certificates, device tokens, MDM enrollment) and how provisioning/decommissioning should be handled."
+    },
+    {
+      "requirement": "The UI must be accessible: support screen readers, keyboard navigation, and high-contrast modes, and conform to recognized accessibility standards (baseline: Americans with Disabilities Act compliance).",
+      "source_citation": "Accessibility is non-negotiable ... usable with screen readers, keyboard navigation, and high-contrast modes. ... it should conform to the Americans with Disabilities Act requirements.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Stakeholder mandates accessibility and names specific capabilities and ADA conformance as baseline. Gap: which technical standard to use (WCAG level AA/AAA mapping to ADA) and verification method (audit, testing) are not specified.",
+      "follow_up_question": "Do you require conformance to a specific technical standard (for example WCAG 2.1 AA) as the measurable implementation of ADA requirements, and what level of audit/testing (automated checks, manual screen-reader testing) do you expect?"
+    },
+    {
+      "requirement": "The theming engine must enforce guardrails (e.g., minimum contrast and accessible font sizing) to prevent customer-provided themes from breaking accessibility.",
+      "source_citation": "So the theming needs guardrails: let them inject logo and color accents, but the system should enforce sufficient contrast and accessible font sizing.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Stakeholder requires mechanisms to prevent branding from violating accessibility. Gap: numeric contrast ratios, font size ranges, and enforcement behaviors (reject theme or auto-adjust) are unspecified.",
+      "follow_up_question": "Specify the exact guardrail thresholds required (e.g., minimum contrast ratio 4.5:1 for normal text, minimum font size) and desired behavior when a customer-submitted theme violates them (reject with feedback, auto-adjust)."
+    },
+    {
+      "requirement": "Reporting and analytics that expose calendar or personal schedule information must enforce privacy and access controls so that users only see data they are authorized to view.",
+      "source_citation": "any reporting that exposes personal calendars needs to respect privacy and access controls. We don't want a junior employee suddenly seeing executive schedules because a manager asked for a report.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "Stakeholder requires access-controlled reporting to protect privacy. Gap: authorization model, role definitions, and auditing requirements for reporting are unspecified.",
+      "follow_up_question": "Please specify required authorization rules for reporting (role hierarchy, RBAC rules) and whether reports must be auditable (who ran the report, when, and which records were included)."
+    },
+    {
+      "requirement": "The platform must provide automated alerting for critical failures, a central console collecting exceptions, and capabilities to correlate logs to specific customer environments to enable fast triage and reduced time-to-resolution.",
+      "source_citation": "We want automated alerts for critical failures, a central console where exceptions are collected, and a way to correlate logs to customer environments.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Stakeholder describes observability and incident management needs tied to business metrics (MTTR). Gap: alerting thresholds, escalation paths, and SLA for response are not provided.",
+      "follow_up_question": "What are the required alert thresholds and escalation procedures (e.g., severity levels, paging hours), and what MTTR targets do you expect for critical vs. non-critical incidents?"
+    },
+    {
+      "requirement": "The product must provide multilingual support at launch including English and Spanish, and also include French and German, with customers able to select their preferred language from supported languages.",
+      "source_citation": "At launch we have to cover the big ones: English and Spanish are must-haves ... include a couple of European languages like French and German ... customers should be able to pick their preferred language from the set we support.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 5,
+      "rationale": "Stakeholder lists initial languages required and preference-selection behavior. Gap: translation process (human vs. machine), scope of localization (UI only or content/emails/legal), and RTL languages not mentioned.",
+      "follow_up_question": "Confirm scope of localization (UI, email templates, error messages, date/time/number formats) and whether translations must be provided by the customer, vendor, or professional translators; also specify locale fallback behavior."
+    },
+    {
+      "requirement": "The system must target 99.99% availability (four nines) excluding planned maintenance windows; unplanned downtime must be minimized and contingency plans for total server loss are acknowledged.",
+      "source_citation": "To be explicit, our target is the kind of uptime that gives customers confidence — think four nines, and that excludes total server loss events which are a separate failure mode we have contingency plans for.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly states availability target (99.99%) and allows planned maintenance exceptions. Gap: measurement period (monthly/annual), maintenance window length limits, and acceptable outage duration per period are not specified.",
+      "follow_up_question": "Confirm the measurement window for the 99.99% SLA (monthly or annual), maximum allowed planned maintenance per period, and required customer notification times for planned outages."
+    },
+    {
+      "requirement": "Onboarding must be simple and not clunky; the onboarding experience must minimize customer drop-off and initial support overhead.",
+      "source_citation": "One, onboarding: if we make onboarding clunky, customers lose patience quickly.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "Stakeholder flags onboarding as critical for adoption. Gap: measurable onboarding success metrics (time-to-first-booking, drop-off rates), required steps, and whether guided tours or admin setup flows are required are unspecified.",
+      "follow_up_question": "What are acceptable onboarding metrics (e.g., percentage of new customers who complete initial setup within X days) and what onboarding features do you expect (guided setup, admin checklist, sample data)?"
+    },
+    {
+      "requirement": "Data residency and export controls must be clear and enforceable so customers in different countries can meet privacy and regulatory requirements.",
+      "source_citation": "we have to make sure data residency and export rules are clear for customers in different countries.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly requires clarity and compliance regarding data residency/export rules. Gap: which regions/countries, acceptable data centers, encryption/legal agreements (DPA), and whether customers can choose region are unspecified.",
+      "follow_up_question": "Which countries/regions require specific data residency guarantees at launch, and do customers need the ability to designate the region where their data is stored and processed?"
+    },
+    {
+      "requirement": "Search results and booking data must accurately reflect room layout and equipment availability to prevent double-bookings and build user trust.",
+      "source_citation": "When someone searches, they should see rooms with the right layout and the equipment availability baked in, otherwise it's just noise and people don't trust the system.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "reliability",
+      "confidence": 5,
+      "rationale": "Stakeholder emphasizes correctness and consistency of availability data to avoid operational failures (double-booking). Gap: required consistency model (real-time, eventual), concurrency control for bookings, and reconciliation/locking behavior are unspecified.",
+      "follow_up_question": "Do you require strict real-time consistency to prevent double-booking (e.g., pessimistic locking or transactional guarantees), and what is the acceptable window for eventual consistency if used?"
+    },
+    {
+      "requirement": "The system must provide visibility into invite delivery failures, including logging bounces and errors, and support retries and error reporting so problems can be analyzed without customer reproduction.",
+      "source_citation": "If invites bounce or the system runs into errors, we want a record. Ideally exceptions are captured in a log and made available to our support team so we can analyze and fix issues without having to reproduce every problem from scratch.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Stakeholder requires visibility into notification failures and ability to analyze them. Gap: specific retry/backoff policy, SLA for detection/notification, and whether users should be informed are not defined.",
+      "follow_up_question": "Define required notification retry policy (number of retries, backoff strategy), and should end-users be notified of persistent delivery failures or only support staff?"
+    },
+    {
+      "requirement": "Exception and operational logs must be correlated to specific customer environments to aid triage and reduce time-to-resolution.",
+      "source_citation": "a way to correlate logs to customer environments. The goal is to diagnose without the customer having to escalate repeatedly.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "Stakeholder needs multi-tenant log correlation to identify issues per customer environment. Gap: required identifiers, privacy constraints on cross-tenant logging, and retention are unspecified.",
+      "follow_up_question": "What tenant identifiers and metadata must be included in logs for correlation, and are there constraints on what tenant data can be transmitted to the vendor for analysis?"
+    }
+  ]
+}

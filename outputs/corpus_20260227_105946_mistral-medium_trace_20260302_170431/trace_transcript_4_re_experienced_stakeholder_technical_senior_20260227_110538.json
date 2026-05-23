@@ -1,0 +1,238 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_4_re_experienced_stakeholder_technical_senior_20260227_110538.txt",
+  "model": "mistral/mistral-medium-latest",
+  "timestamp": "20260302_170553",
+  "requirements": [
+    {
+      "requirement": "The system shall respond to routine screen transitions and lookups within 5 seconds.",
+      "source_citation": "for routine screen transitions and lookups, a few seconds at most is acceptable. So, short waits for the small stuff — it has to feel immediate. for normal navigation and small detail fetches I'd say around five seconds is the threshold.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly defines 'fast' as a few seconds and later specifies a 5-second threshold for screen transitions and lookups. This is a clear performance requirement.",
+      "follow_up_question": "Are there any specific operations or screens that should have a different performance threshold?"
+    },
+    {
+      "requirement": "The system shall be available 24/7 except for planned maintenance windows.",
+      "source_citation": "Effectively always available... short, planned maintenance windows. ops-wise we need it to be effectively always available because reps and partner teams operate across a lot of time zones.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder emphasizes the need for the system to be always available, with exceptions only for planned maintenance windows.",
+      "follow_up_question": "What is the maximum acceptable downtime during maintenance windows?"
+    },
+    {
+      "requirement": "The system shall have planned maintenance windows scheduled during early pre-dawn slots, specifically 3–4 AM Eastern on weekdays and Saturdays, and 1–5 AM Eastern on Sundays.",
+      "source_citation": "For weekdays through Saturday, think of a short window around three to four in the morning Eastern. And on Sunday we allow a slightly longer window in the very early morning, roughly between one and five a.m. Eastern.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder provides specific times for maintenance windows, which are critical for planning and scheduling.",
+      "follow_up_question": "Are there any other acceptable maintenance windows or exceptions to these times?"
+    },
+    {
+      "requirement": "The system shall integrate with corporate identity providers using SAML or OIDC for internal reps and strong multi-factor authentication for external partners.",
+      "source_citation": "We need to integrate with the corporate identity provider for internal reps, probably SAML or OIDC, and use strong multi-factor authentication for external partners.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies the need for integration with corporate identity providers and the use of specific authentication protocols.",
+      "follow_up_question": "Are there any specific identity providers or authentication protocols that should be prioritized?"
+    },
+    {
+      "requirement": "The system shall enforce role-based access control (RBAC) and row-level security to ensure reps only see customers they are assigned to.",
+      "source_citation": "Beyond authentication, authorization must be role-based and scoped: reps should only see customers they are assigned to, and managers get broader visibility. The enforcement should live both at the API gateway and be reinforced at the data layer — I like row-level security approaches so data can't leak via misbehaving APIs.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder emphasizes the need for role-based access control and row-level security to ensure data segregation.",
+      "follow_up_question": "Are there any specific roles or permissions that need to be defined upfront?"
+    },
+    {
+      "requirement": "The system shall record every meaningful user action with details including actor identity, timestamp, action type, dispute/transaction reference, before/after values, correlation IDs, and outcome.",
+      "source_citation": "I think every meaningful user action needs to be recorded so that we can reconstruct what happened. That means who did something, when, which fields changed, what the previous values were, which external systems were called, the correlation IDs, and the outcome.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "auditability",
+      "confidence": 5,
+      "rationale": "The stakeholder provides a detailed list of what needs to be recorded for auditability purposes.",
+      "follow_up_question": "Are there any specific actions or fields that should be prioritized for auditing?"
+    },
+    {
+      "requirement": "The system shall use append-only and tamper-evident logs, preferably stored in a write-once or immutable ledger.",
+      "source_citation": "Logs should be append-only and tamper-evident — storing them in a write-once or immutable ledger is preferable.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "auditability",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies the need for append-only and tamper-evident logs, which are critical for compliance and auditing.",
+      "follow_up_question": "Are there any specific logging technologies or practices that should be used?"
+    },
+    {
+      "requirement": "The system shall use authoritative data from the Statement, Cardmember, and Merchant databases and avoid duplicating master data.",
+      "source_citation": "we should treat our existing statement, cardmember and merchant stores as the truth sources. It should be strict for authoritative fields like transaction amounts, dates, merchant IDs — those have to come from the Statement DB.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "data_integrity",
+      "confidence": 5,
+      "rationale": "The stakeholder emphasizes the need to use authoritative data sources and avoid duplicating master data.",
+      "follow_up_question": "Are there any specific data fields or sources that should be prioritized?"
+    },
+    {
+      "requirement": "The system shall cache non-authoritative data for performance but must record the source and timestamp of the data.",
+      "source_citation": "We can cache copies for performance but we must always record where the data came from and the timestamp.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder allows for caching non-authoritative data but emphasizes the need to record the source and timestamp.",
+      "follow_up_question": "Are there any specific caching mechanisms or technologies that should be used?"
+    },
+    {
+      "requirement": "The system shall surface degraded mode and queue outbound requests for guaranteed delivery later if a backend is unreachable.",
+      "source_citation": "If a backend is unreachable, the app must surface that it's operating in a degraded mode and queue outbound requests for guaranteed delivery later, with clear audit entries showing the queue and retry status.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies the need to handle backend unavailability by surfacing degraded mode and queuing requests.",
+      "follow_up_question": "Are there any specific degraded mode behaviors or queueing mechanisms that should be implemented?"
+    },
+    {
+      "requirement": "The system shall provide at-least-once delivery semantics with idempotency keys for queued actions.",
+      "source_citation": "we need at-least-once delivery semantics with idempotency keys, so duplicate postings are avoided when retries happen.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 5,
+      "rationale": "The stakeholder emphasizes the need for at-least-once delivery semantics and idempotency keys to avoid duplicate postings.",
+      "follow_up_question": "Are there any specific queuing or retry mechanisms that should be used?"
+    },
+    {
+      "requirement": "The system shall provide an admin view to reprocess or reconcile queued items.",
+      "source_citation": "ops must have an admin view to reprocess or reconcile queued items.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies the need for an admin view to manage queued items, which is critical for operational purposes.",
+      "follow_up_question": "Are there any specific admin view functionalities or interfaces that should be prioritized?"
+    },
+    {
+      "requirement": "The system shall be horizontally scalable for web and API layers and use message queues and worker pools with autoscaling for async processing.",
+      "source_citation": "The architecture should be horizontally scalable for web and API layers, and the async processing should be decoupled — think message queues and worker pools with autoscaling.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "The stakeholder emphasizes the need for horizontal scalability and the use of message queues and worker pools for async processing.",
+      "follow_up_question": "Are there any specific scalability technologies or practices that should be used?"
+    },
+    {
+      "requirement": "The system shall manage backpressure to degrade the UI gracefully when backlog grows.",
+      "source_citation": "Backpressure must be managed so the UI degrades gracefully when backlog grows; for example, show delayed processing indicators rather than blocking the rep entirely.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies the need to manage backpressure and degrade the UI gracefully, which is critical for user experience.",
+      "follow_up_question": "Are there any specific backpressure management or UI degradation strategies that should be implemented?"
+    },
+    {
+      "requirement": "The system shall enforce assignment mapping from the enterprise identity directory and allow for auditable and time-boxed exceptions.",
+      "source_citation": "Membership should be derived from the enterprise identity mapping — the rep's assignment records in HR or the servicing directory — not from ad-hoc lists in the disputes app. There should be an admin capability to manage exceptions, but those exceptions need to be auditable and time-boxed.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder emphasizes the need to enforce assignment mapping from the enterprise identity directory and allow for exceptions that are auditable and time-boxed.",
+      "follow_up_question": "Are there any specific enterprise identity directory systems or exception management processes that should be used?"
+    },
+    {
+      "requirement": "The system shall propagate security-sensitive changes immediately and other changes within a day.",
+      "source_citation": "in most cases a short sync cycle is fine — like within a day — but for security-sensitive changes, such as revoking a user's access, we need faster propagation.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies the need for immediate propagation of security-sensitive changes and a short sync cycle for other changes.",
+      "follow_up_question": "Are there any specific change propagation mechanisms or sync cycles that should be implemented?"
+    },
+    {
+      "requirement": "The system shall use event sourcing or an append-only audit store for immutability and tamper-evidence.",
+      "source_citation": "Event sourcing or an append-only audit store would fit well. We can use an immutable log backed by cloud object storage with WORM settings, or a dedicated audit DB with write-once_policy and cryptographic hashes linking records.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "auditability",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies the need for event sourcing or an append-only audit store to ensure immutability and tamper-evidence.",
+      "follow_up_question": "Are there any specific event sourcing or audit store technologies that should be used?"
+    },
+    {
+      "requirement": "The system shall maintain canonical data lineage and an unimpeachable audit trail.",
+      "source_citation": "I'd fight for maintaining canonical data lineage — always knowing where each piece of data came from — and for the audit trail being unimpeachable.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "auditability",
+      "confidence": 5,
+      "rationale": "The stakeholder emphasizes the need for maintaining canonical data lineage and an unimpeachable audit trail, which are critical for compliance and auditing.",
+      "follow_up_question": "Are there any specific data lineage or audit trail technologies or practices that should be used?"
+    },
+    {
+      "requirement": "The system shall enforce access controls at multiple layers to prevent data leakage.",
+      "source_citation": "enforcing access controls at multiple layers so we never leak customer data.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder emphasizes the need for enforcing access controls at multiple layers to prevent data leakage.",
+      "follow_up_question": "Are there any specific access control mechanisms or layers that should be prioritized?"
+    },
+    {
+      "requirement": "The system shall provide high performance to prevent reps from inventing workarounds.",
+      "source_citation": "Performance should be good enough that reps don't invent workarounds.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder emphasizes the need for high performance to prevent reps from inventing workarounds, which is critical for user productivity.",
+      "follow_up_question": "Are there any specific performance metrics or thresholds that should be targeted?"
+    },
+    {
+      "requirement": "The system shall have high availability with only minimal, well-communicated maintenance windows.",
+      "source_citation": "availability should be high, with only minimal, well-communicated maintenance windows.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder emphasizes the need for high availability with minimal and well-communicated maintenance windows.",
+      "follow_up_question": "Are there any specific availability metrics or communication strategies that should be implemented?"
+    }
+  ]
+}

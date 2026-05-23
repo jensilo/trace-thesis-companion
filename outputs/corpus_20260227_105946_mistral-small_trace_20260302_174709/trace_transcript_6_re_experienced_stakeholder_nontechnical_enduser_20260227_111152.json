@@ -1,0 +1,117 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_6_re_experienced_stakeholder_nontechnical_enduser_20260227_111152.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_174755",
+  "requirements": [
+    {
+      "requirement": "The system should respond to simple booking requests within five seconds.",
+      "source_citation": "If I'm doing something small, like booking a 30-minute room, it should be basically instant. Maybe, I don't know, five seconds?",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions a five-second threshold for simple bookings, indicating a clear performance expectation. However, the rationale does not specify the hardware or network conditions under which this performance is expected.",
+      "follow_up_question": "What hardware and network conditions should the system be tested under to meet the five-second response time for simple bookings?"
+    },
+    {
+      "requirement": "The system should have a familiar and intuitive navigation layout, including a clear top bar with options such as Home, Calendar, Bookings, and Profile.",
+      "source_citation": "I mean the usual stuff you see on most websites — you know, a clear top bar or something that shows Home, Calendar, Bookings, maybe your profile. Nothing weird hidden in menus.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of a familiar and intuitive navigation layout, comparing it to standard web apps. This indicates a clear usability expectation.",
+      "follow_up_question": "Can you provide examples of specific web apps that have the kind of navigation layout you prefer?"
+    },
+    {
+      "requirement": "The system should allow users to start using it successfully without training within fifteen minutes.",
+      "source_citation": "People shouldn't need a training session. I'd say within maybe a short timeframe… hmm, I'm trying to put a number on it because I know that helps, maybe like under fifteen minutes?",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions a fifteen-minute timeframe for users to start using the system successfully without training, but the rationale does not specify the level of proficiency expected within this timeframe.",
+      "follow_up_question": "What specific tasks should a user be able to perform successfully within the fifteen-minute timeframe without training?"
+    },
+    {
+      "requirement": "The system should provide accurate search results and functional filters to help users quickly find suitable rooms.",
+      "source_citation": "Right now the search is weird and returns odd results. And, uh, filters that actually work would help, because I don't want to click into every room one by one.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the importance of accurate search results and functional filters, indicating a clear usability expectation. However, the rationale does not specify the exact search criteria or filter options required.",
+      "follow_up_question": "What specific search criteria and filter options should the system provide to help users quickly find suitable rooms?"
+    },
+    {
+      "requirement": "The system should be accessible to users with disabilities, including support for screen readers, keyboard navigation, high contrast, and large fonts.",
+      "source_citation": "One of our teammates uses a screen reader and the old system was a mess for them. Keyboard navigation felt broken, and some buttons weren't labelled so the screen reader couldn't explain them. Also, low-vision folks need high contrast or larger fonts sometimes.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "accessibility",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for accessibility features, including screen reader support, keyboard navigation, high contrast, and large fonts. This indicates a clear accessibility expectation.",
+      "follow_up_question": "What specific accessibility standards or guidelines should the system comply with to ensure it is usable by people with disabilities?"
+    },
+    {
+      "requirement": "The system should display dates and times in the local format for users in different regions.",
+      "source_citation": "Their invite showed the date in the day-month order and mine showed month-day, and we got the day wrong. So, it really needs to show dates and times the way people expect where they are.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "localization",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the importance of displaying dates and times in the local format to avoid confusion, indicating a clear localization expectation.",
+      "follow_up_question": "What specific date and time formats should the system support for different regions?"
+    },
+    {
+      "requirement": "The system should be highly available during work hours, with minimal downtime.",
+      "source_citation": "It needs to be almost always up during work hours — like, very minimal downtime.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for high availability during work hours, indicating a clear expectation for minimal downtime. However, the rationale does not specify the exact uptime percentage required.",
+      "follow_up_question": "What is the acceptable uptime percentage for the system during work hours?"
+    },
+    {
+      "requirement": "The system should be compatible with the different email servers used by the organization.",
+      "source_citation": "It should work with whatever mail server our IT uses. We have a few setups across offices, so I guess it should be flexible enough to talk to different mail systems.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for compatibility with different email servers, indicating a clear scalability expectation. However, the rationale does not specify the exact email servers or protocols that need to be supported.",
+      "follow_up_question": "What specific email servers and protocols should the system be compatible with?"
+    },
+    {
+      "requirement": "The system should display correctly across a set of common browsers, ensuring that buttons and calendars are properly aligned.",
+      "source_citation": "The system needs to display properly so buttons line up and calendars look right. If it breaks on someone's browser they can't do their job. So it should work on most common browsers.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 3,
+      "rationale": "The stakeholder highlights the importance of cross-browser compatibility, indicating a clear scalability expectation. However, the rationale does not specify the exact browsers or versions that need to be supported.",
+      "follow_up_question": "What specific browsers and versions should the system be tested against to ensure proper display?"
+    },
+    {
+      "requirement": "The system should provide clear and informative notifications, including details about who canceled a room and why, as well as specific error messages when a booking fails.",
+      "source_citation": "If someone cancels the room, the notification should say who did it and why, not just a cryptic message. And when a booking fails, tell me why — don't just show an error.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for clear and informative notifications, indicating a clear usability expectation. However, the rationale does not specify the exact format or content of the notifications.",
+      "follow_up_question": "What specific information should be included in notifications to ensure they are clear and informative?"
+    }
+  ]
+}

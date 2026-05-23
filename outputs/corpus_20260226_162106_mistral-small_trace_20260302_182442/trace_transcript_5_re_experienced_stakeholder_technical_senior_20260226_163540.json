@@ -1,0 +1,139 @@
+{
+  "transcript_file": "outputs/corpus-20260226_162106/transcript_5_re_experienced_stakeholder_technical_senior_20260226_163540.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_182532",
+  "requirements": [
+    {
+      "requirement": "The system must integrate with standard authentication frameworks, container orchestration patterns, and monitoring agents used within the enterprise.",
+      "source_citation": "By that I mean use our standard authentication frameworks, container orchestration patterns, and monitoring agents — nothing exotic that would force a special support contract.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need to use standard frameworks and patterns to avoid special support contracts, indicating a strong focus on maintainability and integration with existing systems.",
+      "follow_up_question": "Can you provide specific versions or configurations of the standard frameworks and agents that must be used?"
+    },
+    {
+      "requirement": "The UI must be tolerant of latency and support a sensible caching or offline approach to ensure usability in environments with poor connectivity.",
+      "source_citation": "That means the UI needs to be tolerant of latency and have a sensible caching or offline approach, otherwise the adjusters will just go back to spreadsheets and phone calls, which defeats the point.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for the UI to handle latency and offer caching or offline capabilities to prevent users from reverting to manual processes.",
+      "follow_up_question": "What specific caching strategies or offline capabilities are preferred, and what are the acceptable trade-offs in terms of data freshness?"
+    },
+    {
+      "requirement": "The system must support approximately 1,500 concurrent users at peak times.",
+      "source_citation": "At peak across our customer base I’d expect on the order of a few thousand folks, but simultaneous active users is lower. Let me put a number on that for you: plan for about fifteen hundred concurrent users at peak. That’s the scale to size for.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "The stakeholder provides a specific number of concurrent users the system must support, which is a clear scalability requirement.",
+      "follow_up_question": "Are there any specific performance metrics or SLAs associated with this user load?"
+    },
+    {
+      "requirement": "Parts searches must return results in under fifteen seconds end-to-end, measured at the 95th percentile.",
+      "source_citation": "Parts searches must come back under fifteen seconds end-to-end. [...] Let’s say we validate at the 95th percentile during load testing.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies a clear performance target for parts searches, including the percentile for validation.",
+      "follow_up_question": "Are there any specific scenarios or types of searches that require different performance targets?"
+    },
+    {
+      "requirement": "Facility lookups must return results in under eight seconds from a user click to results, measured at the 95th percentile.",
+      "source_citation": "Facility lookups that are geospatial should be quicker; for those, we should target under eight seconds from a user click to results. [...] Let’s say we validate at the 95th percentile during load testing.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies a clear performance target for facility lookups, including the percentile for validation.",
+      "follow_up_question": "Are there any specific scenarios or types of facility lookups that require different performance targets?"
+    },
+    {
+      "requirement": "The system must achieve 98% uptime during business hours for the initial service offering.",
+      "source_citation": "Ninety-eight percent uptime is a reasonable baseline to design around for the initial service offering.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder provides a specific uptime target for the initial service offering, indicating a clear availability requirement.",
+      "follow_up_question": "Are there any specific business hours or regions that require higher availability?"
+    },
+    {
+      "requirement": "The system must support both shared database with row-level access controls and separate schemas or databases for tenant isolation.",
+      "source_citation": "For most customers a shared database with strong row-level access controls and tenant claims in tokens may suffice. For customers that demand higher assurance or contractual isolation, we should be prepared to offer separate schemas or databases.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for tenant isolation with options for different levels of isolation based on customer requirements.",
+      "follow_up_question": "Are there any specific compliance or regulatory requirements that mandate physical separation for certain customers?"
+    },
+    {
+      "requirement": "The system must implement edge protections such as cloud CDN, WAF, rate-limiting, and bot detection, as well as input validation, strong authentication, and comprehensive logging.",
+      "source_citation": "From a technical standpoint, we need edge protections, so cloud CDN and WAF baked in, with rate-limiting and bot detection. [...] Inside the app, implement input validation, strong auth flows integrated with corporate SSO, token-based access with short lifetimes, and comprehensive logging to the SIEM.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder provides a detailed list of security measures that must be implemented to protect the system.",
+      "follow_up_question": "Are there any specific security standards or frameworks that must be followed?"
+    },
+    {
+      "requirement": "The system must integrate with the corporate identity provider using SAML-based SSO for the web portal and OAuth tokens for API access from mobile clients.",
+      "source_citation": "We must integrate with the corporate identity provider. SAML-based SSO is our baseline for the web portal, and we should support OAuth tokens for API access from mobile clients.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies the authentication methods that must be supported for different types of access.",
+      "follow_up_question": "Are there any specific requirements for service accounts or mTLS for integrations?"
+    },
+    {
+      "requirement": "The system must comply with internal controls aligned with ISO-style practices and satisfy the security team’s baseline controls, including encryption at rest and in transit, key management, retention, and audit trails.",
+      "source_citation": "Not typically PCI or HIPAA for this data set, but we do have internal controls aligned with ISO-style practices and we must satisfy our security team’s baseline controls. Expect requirements around encryption at rest and in transit, key management, retention and audit trails.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "compliance",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions specific compliance requirements and controls that the system must adhere to.",
+      "follow_up_question": "Can you provide more details on the specific ISO-style practices and baseline controls that must be satisfied?"
+    },
+    {
+      "requirement": "The system must provide runbooks, common troubleshooting scripts, and dashboards that map to the top user-facing errors for support.",
+      "source_citation": "We must provide runbooks, common troubleshooting scripts, and dashboards that map to the top user-facing errors.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for support artifacts to ensure the system can be effectively operated and maintained.",
+      "follow_up_question": "Are there any specific support processes or tools that must be integrated with the system?"
+    },
+    {
+      "requirement": "The system must include a configuration surface for cache TTLs and feature toggles to allow operations to adjust caching durations in real-time.",
+      "source_citation": "Unless you give ops a way to toggle caching durations in real-time, they’ll sit on calls with vendors trying to debug stale data at three in the morning. So include a config surface for cache TTLs and feature toggles.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for operational control over caching to prevent issues related to stale data.",
+      "follow_up_question": "Are there any specific caching strategies or feature toggles that must be supported?"
+    }
+  ]
+}

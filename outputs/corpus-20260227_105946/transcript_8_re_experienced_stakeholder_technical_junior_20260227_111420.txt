@@ -1,0 +1,106 @@
+Interviewer: Let's start with the user experience. From your day-to-day, what frustrates you about the current system responsiveness?
+
+Stakeholder: Oh, honestly, I think the biggest thing is waiting. I hate when you click something and nothing happens for a while — users just get lost. So, it needs to feel snappy, you know? Even when I'm testing locally, if a page hangs I get annoyed. 
+
+Interviewer: When you say "snappy" or "feels snappy", what do you mean exactly? Can you put a number on "too long"?
+
+Stakeholder: Hmm, yeah — well, for the small interactions like navigation, search results, simple forms, I'd say anything longer than, uh, maybe five seconds feels too slow to most people.
+
+Interviewer: Okay, that helps. Now for purchases — credit cards and pre-paid cards are core. How does responsiveness look there compared with general browsing?
+
+Stakeholder: Payments are a different beast. People tolerate a slightly longer wait when money is involved, but you still can't leave them hanging. So, the purchase flow should finish noticeably faster than an eternity; like it can take a bit longer than a normal page load, but not by much.
+
+Interviewer: Can you be specific for card processing? How long is acceptable for a payment to complete?
+
+Stakeholder: If I'm pressed, I'd say payment processing needs to complete within about fifteen seconds. Any longer and users start refreshing or abandoning.
+
+Interviewer: You mentioned streaming earlier as well. What expectations do you have around buffering and playback start-up?
+
+Stakeholder: Streaming has its own quirks. People with slow home connections will forgive a little, but we can't have the player spinning forever. Ideally the initial buffering shouldn't be more than a handful of seconds, plus whatever their network causes. Uh, if I had to guess, something like ten seconds for the buffering part itself is about the limit.
+
+Interviewer: You said "plus whatever their network causes" — how do you see us handling different network qualities? Adaptive bitrate? Lower-res fallbacks?
+
+Stakeholder: I think adaptive bitrate is a must, yeah. Start with a lower bitrate if the user's connection is weak, then ramp up. Also offering a low-quality fallback for very poor links would help. I was thinking of a progressive approach rather than just dropping someone entirely.
+
+Interviewer: Let's talk availability. What level of uptime should the team be aiming for?
+
+Stakeholder: We need it to be reliable; customers expect to stream when they want. I mean, it should be up almost always, not something that goes down on weekends. If you want a number, I think aiming for ninety-nine point five percent availability makes sense.
+
+Interviewer: You mentioned earlier that "users get lost" when things take too long — how does that connect to the account creation flow? Any thoughts on how many steps we should have?
+
+Stakeholder: Yeah, good point — account creation is a make-or-break. Novice users can't be asked to jump through too many pages. It should be very straightforward. I don't want them clicking through page after page; something like, uh, no more than four pages from landing to a usable account.
+
+Interviewer: Speaking of novice users, what do you mean by that group? Any target for how usable it should be for people who aren't tech-savvy?
+
+Stakeholder: When I say novice users, I mean folks who can browse social media but might not be comfortable with complex flows. I'd like the product to be usable by most of them — not perfect, but high. If pressed, maybe around ninety percent usability for that group.
+
+Interviewer: All right. Security is a big topic. On card and customer data, what's the current thinking from the dev side?
+
+Stakeholder: So, we planned to keep credit card details on our side — like stored on the server — but encrypted, and only certain people in the company should be able to see that. Same with customer records: they all live in a secure database and only authorized staff get access. We haven't fully nailed the roles yet, though.
+
+Interviewer: You said "only certain people" and "authorized staff" — who exactly would need that access? Can you be more specific about roles or separation of duties?
+
+Stakeholder: Uh, yeah. Program admins would need broad access for troubleshooting and business tasks, while support staff should only see non-sensitive customer data — like order history or contact info, not full card numbers. I think that's the split we'd aim for, though we need to define it in more detail.
+
+Interviewer: Quick challenge: you said you'd store credit card info on your server. Are we set on that approach? Have we considered tokenization or delegating storage to a payment gateway to reduce risk and compliance burden?
+
+Stakeholder: Hmm, good call. To be honest, I think the original plan was server-side with encryption because it's simpler for offline pre-paid card reconciliation or analytics, but now that you mention it, using tokenization does sound safer and less headache for PCI stuff. I guess we need to decide whether to keep full storage or move to tokens. Right now the team leans toward encrypted storage with tight access, but I'm not married to that.
+
+Interviewer: Understood. On abuse and security events — what do you want the system to do when it detects suspicious activity?
+
+Stakeholder: It should definitely defend itself and let us know. So, things like repeated failed logins, credential stuffing patterns, or suspicious card activity should trigger alerts. I imagine admins being notified and the events logged so we can review. We don't want to be the last to know when there's a problem.
+
+Interviewer: When you say "notify admins," how should that notification arrive? What channels are you picturing?
+
+Stakeholder: Uh, I think email is the baseline. For severe stuff, maybe SMS or a push to the admin dashboard. It should be obvious and hard to miss — I don't want critical alerts buried in logs. Sorry, I realize that's a bit vague; we should define thresholds so we don't drown in noise.
+
+Interviewer: Good point about noise. You earlier mentioned the UI should be accessible to novice users and also have an African-inspired aesthetic. How do those ideas fit together?
+
+Stakeholder: Right, we want a modern look that resonates culturally but stays simple. So big buttons, clear labels, simple language — not flashy, not confusing. Think of a site that feels familiar to users in Lagos or Accra and also looks good to someone in London. Oh, and we should follow W3C standards so assistive tech works — we talked about that briefly in the scrum.
+
+Interviewer: You mentioned W3C compliance just now; is that a formal requirement or more of a guideline for the team?
+
+Stakeholder: It's something we intended to follow as a baseline — like semantic HTML, ARIA where needed, and validating against standards. I see it as a must-have for accessibility, not optional fluff.
+
+Interviewer: On administration features, what do admins need to do day-to-day?
+
+Stakeholder: Admins should be able to add and edit movie metadata, upload assets, manage pricing, and generate pre-paid cards for partners. They should also be able to look at customer accounts, see purchase history, handle refunds, and get business analytics — like which titles sell well. Oh, and we need a way to moderate reviews because users will definitely leave comments.
+
+Interviewer: For the pre-paid cards generation, do you see that as a manual admin task or something automated?
+
+Stakeholder: Probably both. Sometimes admins will generate batches manually for a promotion, and other times there should be an API or scheduled job to create them in bulk. We need redemption tracking too so a card can't be used twice.
+
+Interviewer: You touched on analytics. Any expectations on how detailed those need to be?
+
+Stakeholder: They should be useful for the business team — like revenue over time, top titles, and redemption rates for pre-paids. Not fancy BI on day one, but actionable dashboards that help marketing and ops make decisions.
+
+Stakeholder: Oh, and sorry, just a little tangent — my cousin in Accra always complains about sites with tiny fonts and cryptic icons. That anecdote is why I keep hammering on "simple." Anyway.
+
+Interviewer: (smiles) That helps. Back to error conditions: how should the system behave if something goes wrong for the user, say a failed payment or streaming failure?
+
+Stakeholder: It should fail gracefully and tell the user what happened, with steps to retry or contact support. For payments, show a clear message and not a cryptic code. For streaming, offer a retry or switch quality. Also log the incident for admins so we can diagnose it.
+
+Interviewer: You mentioned earlier "the website will protect itself from intentional abuse" — do you really expect it to notify the admin at every occurrence, or should there be thresholds?
+
+Stakeholder: Hmm, right, that sounded a bit extreme when I said it out loud. We probably shouldn't alert on every single failed login because that would be noise. There should be thresholds where actions cross a risk score or pattern, and then it's escalated. But for high-severity events, yes, admins should be notified immediately.
+
+Interviewer: One last check: are there any concrete performance goals or SLAs the ops team expects to see written down after this meeting?
+
+Stakeholder: Yeah, ops will want clear targets. For the basic UI interactions we talked about, they expect sub-five-second responses for normal pages. Payments should complete no slower than about fifteen seconds, and streaming buffering should be kept within ten seconds if possible, apart from the user's own network lag. Uptime-wise, ops aims for an availability target of ninety-nine point five percent. Those are the numbers I think the team will accept as starting points.
+
+Interviewer: Great — that's exactly the clarity we need. Anything else you want to add before I document this and circulate?
+
+Stakeholder: Just that we should keep iterating with actual users from the regions we're targeting. Usability claims are only worth so much on paper. Oh, and I keep forgetting — reviews need a way for users to flag inappropriate content, and admins need an easy moderation queue. Other than that, I think you've got the main points.
+
+---
+Selected Requirements:
+1. [NICE.csv line 397] [quality, fault_tolerance, performance] 'Any interface between a user and the automated system shall have a maximum response time of 5 seconds unless noted by an exception below.'
+2. [NICE.csv line 398] [quality, performance] 'When purchasing a streaming movie or pre-paid card via credit card the processing time should have a maximum response time of 15 seconds.'
+3. [NICE.csv line 399] [quality, performance] When streaming a movie the buffering time should take no longer than 10 seconds (plus any latency on the user's connection.)'
+4. [NICE.csv line 403] [quality, availability] 'The website shall achieve 99.5% up time.'
+5. [NICE.csv line 401] [quality, security] 'All credit card information will be secured on the server and only accessible by authorized Izogn administrators. Information will be encrypted in the database.'
+6. [NICE.csv line 437] [quality, security] 'All customer information will be stored on a secure database accessible only to authorized personnel.'
+7. [NICE.csv line 432] [quality, maintainability, security] 'The website shall protect itself from intentional abuse and notify the administrator at all occurrences.'
+8. [NICE.csv line 388] [quality, usability] 'The product should be able to be used by 90% of novice users on the Internet.'
+9. [NICE.csv line 389] [quality, look_and_feel, usability] 'Users should only have to navigate through a maximum of 4 pages to create an account with the website.'
+10. [NICE.csv line 445] [quality, legal, security] 'The website will comply with W3C standards.'

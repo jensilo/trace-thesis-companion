@@ -1,0 +1,205 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_6_re_experienced_stakeholder_nontechnical_enduser_20260227_111152.txt",
+  "model": "openai/gpt-5-mini",
+  "timestamp": "20260302_172503",
+  "requirements": [
+    {
+      "requirement": "Routine actions such as searching for and booking a room shall complete within 5 seconds so users are not distracted or feel the app is stuck.",
+      "source_citation": "\"if I'm doing something small, like booking a 30-minute room, it should be basically instant. Maybe, I don't know, five seconds? Like, if I'm loading a page I get distracted.\"",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "Stakeholder explicitly gave a target (about five seconds) for small, routine tasks to avoid distraction. Gaps: no SLA for complex tasks, no measured endpoint (UI action vs. server response) or percentile (median/95th).",
+      "follow_up_question": "Should the 5-second target be a median, 95th percentile, or absolute maximum, and does it apply to perceived UI responsiveness only or end-to-end (server + network + client render)?"
+    },
+    {
+      "requirement": "The system shall respond to more complex operations (e.g., editing recurring meetings or adding many participants) within an acceptably longer time without appearing frozen; provide progress/feedback if operations take longer than a few seconds.",
+      "source_citation": "\"For more complex things like editing a recurring meeting or adding lots of participants, I can tolerate a bit more wait — as long as it doesn't feel like the app is stuck.\"",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "Stakeholder allows longer latency for complex tasks but requires feedback to avoid perceived hangs. Gaps: 'a bit more' is vague; no time bound given; type of feedback unspecified.",
+      "follow_up_question": "What maximum wait time is acceptable for complex operations, and what types of progress indicators or feedback would satisfy the requirement (spinner, progress percent, async notification)?"
+    },
+    {
+      "requirement": "Search results and filters shall return accurate, relevant matches for user-entered criteria (e.g., 'projector', '10 people') so users can quickly find suitable rooms without inspecting each result manually.",
+      "source_citation": "\"It should be straightforward — I want to type what I need, like 'projector' or '10 people', and see which rooms match for my time. Right now the search is weird and returns odd results. And, uh, filters that actually work would help...\"",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Stakeholder requests accurate search/filter behavior to improve discoverability. Gaps: no formal definition of accuracy, ranking relevance, or acceptable error rate.",
+      "follow_up_question": "Which attributes must be searchable and filterable (e.g., capacity, equipment, location), and what acceptance criteria or example queries would demonstrate 'accurate' results?"
+    },
+    {
+      "requirement": "The UI shall use clear, standard navigation, labels, and layouts so new users can learn basic booking tasks within 15 minutes without training.",
+      "source_citation": "\"The labels are obscure, so I spend time guessing where to click, and there are too many steps to confirm a booking... If it's like other web apps I've used, I can find things without reading a manual... I'd say within maybe a short timeframe… maybe like under fifteen minutes?\"",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Stakeholder wants familiar UI patterns and learnability target of ~15 minutes. Gaps: which user persona and what counts as 'basic booking' need clarification; measurable usability test criteria missing.",
+      "follow_up_question": "Define the user persona for the 15-minute learnability target and the specific tasks (e.g., find room, set time, add equipment, confirm) to be completed in a usability test."
+    },
+    {
+      "requirement": "The system shall minimize the number of steps required to perform common tasks (e.g., a simple booking) and avoid long multi-step wizards for routine actions.",
+      "source_citation": "\"And, um, please make it stop sending duplicate invites — that's one little gripe but it matters. Also, don't make people go through a ten-step wizard just to book a room. Keep it simple.\"",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "Stakeholder requests streamlined flows and explicitly opposes long multi-step processes. Gaps: 'minimize' not quantified (max steps), and specific flows not enumerated.",
+      "follow_up_question": "What is the maximum acceptable number of steps or screens for a basic booking flow, and which fields can be defaulted or hidden to reduce steps?"
+    },
+    {
+      "requirement": "The system shall prevent double-booking by ensuring availability information is accurate and bookings are synchronized in real-time (or near-real-time) across users.",
+      "source_citation": "\"Sometimes it shows a room as available and then, uh, ten minutes later I find out it was double-booked. That's super frustrating.\"",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 5,
+      "rationale": "Stakeholder experienced inconsistent availability leading to double-bookings and requests accurate synchronized availability. Gaps: acceptable synchronization lag, conflict-resolution policy not specified.",
+      "follow_up_question": "What maximum acceptable synchronization delay (e.g., sub-second, 1s, 5s) is required to prevent double-bookings, and how should booking conflicts be resolved/presented to users?"
+    },
+    {
+      "requirement": "The system shall be accessible and comply with applicable legal accessibility standards (e.g., work with screen readers, support keyboard navigation, provide label metadata, and offer high-contrast / scalable fonts).",
+      "source_citation": "\"One of our teammates uses a screen reader and the old system was a mess for them. Keyboard navigation felt broken, and some buttons weren't labelled so the screen reader couldn't explain them. Also, low-vision folks need high contrast or larger fonts sometimes... I guess we expect it to meet the legal sort of accessibility — you know, the rules that say it must be usable by people with disabilities.\"",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 5,
+      "rationale": "Stakeholder requires legal-level accessibility covering assistive tech and visual needs. Gaps: specific standard (e.g., WCAG 2.1 AA) not named; scope and acceptance criteria unspecified.",
+      "follow_up_question": "Which accessibility standard and conformance level (e.g., WCAG 2.1 AA) should be met, and are there specific assistive technologies or browser/OS combinations to validate?"
+    },
+    {
+      "requirement": "The system shall display dates and times in formats appropriate to each user's locale automatically, and support localization of UI labels and text.",
+      "source_citation": "\"Different offices should see their own formats automatically.\" and \"The UI should be in local language... If the labels are correctly translated and dates/times look right for where people are, it's one less thing to think about.\"",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 5,
+      "rationale": "Stakeholder reported cross-office date format confusion and requests automatic local formatting and translations. Gaps: list of supported locales/languages, fallback behavior, and formatting conventions not specified.",
+      "follow_up_question": "Which locales and languages must be supported initially, and should locale selection be automatic (based on profile/location) with an option for manual override?"
+    },
+    {
+      "requirement": "The system shall be localized (including translations and date/time formats) so local staff see the UI in their primary language and familiar formats.",
+      "source_citation": "\"And for offices where English isn't primary, the UI should be in local language... If the labels are correctly translated and dates/times look right for where people are, it's one less thing to think about.\"",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 4,
+      "rationale": "Stakeholder explicitly wants UI language localization and correct label translations. Gaps: required languages and translation quality processes unspecified.",
+      "follow_up_question": "List the target languages for initial release and the expected translation quality (e.g., human-reviewed vs. machine-translated with review)."
+    },
+    {
+      "requirement": "The system shall have high availability during business hours; outages during the workday must be extremely rare (operational uptime expectation to be specified as a high percentage).",
+      "source_citation": "\"It's disruptive — meetings get canceled or people show up with no room. It shouldn't happen during business hours, honestly.\" and \"outages should be super rare... we rely on it during the day, so downtime during business hours is a big problem.\"",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "Stakeholder emphasizes criticality of uptime during work hours and requests 'very minimal downtime.' Gaps: specific SLA percentage (e.g., 99.9%) and whether availability must be regional/timezone-based are missing.",
+      "follow_up_question": "What numeric availability target (e.g., 99.9% during business hours) and how should 'business hours' be defined across offices for the SLA?"
+    },
+    {
+      "requirement": "The system shall reliably deliver calendar invites and reminder notifications without duplicates, and provide clear, informative messages (e.g., who canceled and why) when events change or fail.",
+      "source_citation": "\"If someone books a room and the calendar invite or reminder doesn't send, people show up late or not at all... Sometimes it sends duplicates, which is annoying.\" and \"If someone cancels the room, the notification should say who did it and why, not just a cryptic message. And when a booking fails, tell me why — don't just show an error.\"",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 5,
+      "rationale": "Stakeholder needs reliable, non-duplicative notifications and informative error/cancellation messages. Gaps: acceptable delivery latency, retry policy, supported notification channels, and duplication cause not detailed.",
+      "follow_up_question": "Which notification channels must be supported (email, in-app, SMS), what delivery guarantees are required, and how should duplicate sends be detected and prevented?"
+    },
+    {
+      "requirement": "The system shall interoperate with multiple corporate email systems used across offices and be configurable to work with different mail servers.",
+      "source_citation": "\"It should work with whatever mail server our IT uses. We have a few setups across offices, so I guess it should be flexible enough to talk to different mail systems.\"",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 4,
+      "rationale": "Stakeholder requests flexibility to integrate with various mail servers to ensure invites/reminders deliver correctly. Gaps: which mail servers (e.g., Exchange, Office365, Gmail) and integration methods (SMTP, APIs) are required.",
+      "follow_up_question": "Which specific mail servers and authentication methods must be supported by IT (e.g., Exchange Web Services, SMTP with TLS, OAuth for Office365/Gmail)?"
+    },
+    {
+      "requirement": "The system shall render and function correctly across common browsers (covering the main popular browsers and a range of versions; approximately 'a handful' up to ~8 variants to include common corporate and personal browsers).",
+      "source_citation": "\"The system needs to display properly so buttons line up and calendars look right... So it should work on most common browsers... Maybe around eight?\"",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "compatibility",
+      "confidence": 4,
+      "rationale": "Stakeholder requests cross-browser compatibility and mentions a rough target (~8) to cover common variants. Gaps: exact browsers/versions, mobile vs. desktop, and minimum supported versions unspecified.",
+      "follow_up_question": "Please provide the list of browsers and minimum versions to support (desktop and mobile), and indicate whether corporate-managed browsers require additional constraints."
+    },
+    {
+      "requirement": "Error messages and notifications presented to users shall be clear and actionable, explaining who performed an action (e.g., cancellation) and why, and providing guidance when a booking fails.",
+      "source_citation": "\"If someone cancels the room, the notification should say who did it and why, not just a cryptic message. And when a booking fails, tell me why — don't just show an error.\"",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "Stakeholder asks for transparent, informative messages for better diagnosability and user comprehension. Gaps: format, localization of messages, and security/privacy rules about exposing identities not specified.",
+      "follow_up_question": "What information may be included in notifications (e.g., full name, reason text) given privacy policies, and should messages be localized?"
+    },
+    {
+      "requirement": "The system shall avoid sending duplicate calendar invites/notifications; duplicate delivery must be prevented or detected and suppressed.",
+      "source_citation": "\"Sometimes it sends duplicates, which is annoying.\" and \"please make it stop sending duplicate invites — that's one little gripe but it matters.\"",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 5,
+      "rationale": "Stakeholder complains about duplicate invites and requests the behavior stopped. Gaps: root cause unknown (retries vs. integration bugs), acceptable detection window unclear.",
+      "follow_up_question": "Under what conditions were duplicates observed (retries, failures, multiple integrations), and should the system deduplicate within a specific time window?"
+    },
+    {
+      "requirement": "The system shall prioritize functional reliability and usability over purely cosmetic visuals; delivering correct and usable functionality takes precedence over fancy visual design.",
+      "source_citation": "\"Please prioritize the things we've talked about over fancy visuals. They look nice, but function first.\"",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 4,
+      "rationale": "Stakeholder explicitly requests prioritization of function over appearance. Gaps: trade-off thresholds not quantified; stakeholders for branding/localization also value look and feel.",
+      "follow_up_question": "Are there any non-negotiable branding or visual requirements that must be met despite the prioritization, and how should trade-offs be decided if visuals conflict with functionality?"
+    },
+    {
+      "requirement": "The system shall provide clear feedback during operations so users do not perceive the application as frozen (e.g., show progress indicators or instant UI response for actions).",
+      "source_citation": "\"As long as it doesn't feel like the app is stuck.\"",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "Stakeholder concerned about perceived hangs; implies need for immediate feedback. Gaps: exact feedback mechanisms and thresholds for displaying progress not specified.",
+      "follow_up_question": "What immediate feedback (spinner, inline status, toast messages) is preferred for operations that exceed 1–2 seconds, and are async confirmations acceptable?"
+    },
+    {
+      "requirement": "The system shall scale to support multiple offices and user populations so features like localization, mail integrations, and synchronized availability function correctly across regions.",
+      "source_citation": "\"We had a cross-office meeting... Different offices should see their own formats automatically.\" and \"We have a few setups across offices... flexible enough to talk to different mail systems.\"",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "Stakeholder describes multi-office/global use implying need for scalable, configurable behavior across locales and integrations. Gaps: expected user counts, traffic patterns, and performance under load are unspecified.",
+      "follow_up_question": "Provide expected number of offices, users, and peak concurrent bookings/searches so we can size scalability targets and test under representative load."
+    }
+  ]
+}

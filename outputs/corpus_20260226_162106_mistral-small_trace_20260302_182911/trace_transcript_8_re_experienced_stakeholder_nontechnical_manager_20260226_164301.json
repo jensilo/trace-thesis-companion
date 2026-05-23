@@ -1,0 +1,172 @@
+{
+  "transcript_file": "outputs/corpus-20260226_162106/transcript_8_re_experienced_stakeholder_nontechnical_manager_20260226_164301.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_183030",
+  "requirements": [
+    {
+      "requirement": "The interface must be designed such that 90% of novice users can register, browse, pay, and play without assistance.",
+      "source_citation": "The interface needs to be obvious: register, browse, pay, and play. We want most novices to be able to do that without help. I think, hmm, maybe around ninety percent would be a good target.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states a usability goal and a target success rate for novice users. The requirement is clear but lacks specific details on the exact tasks and the demographic of the novice users.",
+      "follow_up_question": "Can you specify the exact tasks that novice users should be able to perform and the demographic profile of these users?"
+    },
+    {
+      "requirement": "The system must handle up to 100,000 registered users, with the ability to scale to handle spikes in traffic without significant fixed infrastructure costs.",
+      "source_citation": "We're not aiming tiny — we expect real traction in several markets. I don't want to overpromise, but we should design as if tens of thousands could sign up. To be concrete, our planning number is one hundred thousand users as the scale we want to support early on.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a target user base and the need for scalability. The requirement is clear but lacks details on the specific performance metrics and the expected traffic patterns.",
+      "follow_up_question": "Can you provide more details on the expected traffic patterns and the specific performance metrics that need to be met?"
+    },
+    {
+      "requirement": "Typical UI interactions must complete within 5 seconds.",
+      "source_citation": "For the small stuff — clicking around, moving between pages, the basics — if it takes more than a few seconds people will get impatient. If you force me, I'd say about five seconds for routine UI responses feels about the upper bound.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states a performance goal for UI interactions. The requirement is clear but lacks details on the specific interactions and the conditions under which this performance must be achieved.",
+      "follow_up_question": "Can you specify the exact UI interactions that must complete within 5 seconds and the conditions under which this performance must be achieved?"
+    },
+    {
+      "requirement": "Credit-card payments must be processed within 15 seconds.",
+      "source_citation": "Hmm, payments need a bit more leeway because of gateways and fraud checks. I think around fifteen seconds would be acceptable for a card transaction processing path.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states a performance goal for credit-card payments. The requirement is clear but lacks details on the specific conditions under which this performance must be achieved.",
+      "follow_up_question": "Can you specify the exact conditions under which credit-card payments must be processed within 15 seconds?"
+    },
+    {
+      "requirement": "The initial buffering time for video playback must not exceed 10 seconds, and rebuffering should be rare.",
+      "source_citation": "If someone buys or starts a movie, the player should start up fast and not keep stopping. I'd say the initial buffering shouldn't be more than a short wait — maybe up to ten seconds. Rebuffering in the middle should be rare; too many stalls and customers will complain loudly.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states performance goals for video playback. The requirement is clear but lacks details on the specific conditions under which this performance must be achieved.",
+      "follow_up_question": "Can you specify the exact conditions under which the initial buffering time must not exceed 10 seconds and rebuffering should be rare?"
+    },
+    {
+      "requirement": "The platform must be available globally with an uptime of 99.5%.",
+      "source_citation": "The platform needs to be available globally pretty much all the time. We can't have long planned downtimes during peak hours. I think we need a strong uptime target, something that only allows for very rare outages — we were thinking in the high nineties, like ninety-nine point five percent.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states an availability goal. The requirement is clear but lacks details on the specific conditions under which this availability must be achieved.",
+      "follow_up_question": "Can you specify the exact conditions under which the platform must be available with an uptime of 99.5%?"
+    },
+    {
+      "requirement": "Credit-card data must be protected as if the business depends on it, with encryption and strict access controls.",
+      "source_citation": "I think we need to protect credit-card data as if our business depends on it — because it does. Card details shouldn't be casually visible. My preference is that any stored payment details are encrypted and only a small set of authorized Izogn administrators can access them.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states a security goal for protecting credit-card data. The requirement is clear but lacks details on the specific measures that need to be implemented.",
+      "follow_up_question": "Can you specify the exact measures that need to be implemented to protect credit-card data?"
+    },
+    {
+      "requirement": "The system must use tokenization for payment processing to reduce compliance risks and costs.",
+      "source_citation": "I'd rather avoid storing full card numbers if possible — tokenization feels less risky and cheaper from a compliance perspective.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states a preference for tokenization to reduce compliance risks and costs. The requirement is clear but lacks details on the specific implementation.",
+      "follow_up_question": "Can you specify the exact implementation details for tokenization in payment processing?"
+    },
+    {
+      "requirement": "The system must notify the team quickly of failed logins, unusual payment declines, and brute-force attempts on the checkout.",
+      "source_citation": "We want to know quickly. If there are failed logins, unusual payment declines, or someone tries to brute-force the checkout, the team should get alerts so they can act.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states a requirement for quick notifications of security-related events. The requirement is clear but lacks details on the specific notification mechanisms and thresholds.",
+      "follow_up_question": "Can you specify the exact notification mechanisms and thresholds for security-related events?"
+    },
+    {
+      "requirement": "The system must have automatic protections against rate limiting, web-application attacks, and suspicious traffic spikes.",
+      "source_citation": "I want automatic protections for obvious things: rate limiting to prevent somebody hammering the checkout, basic web-application protections, and automated throttles if there are suspicious spikes.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states a requirement for automatic protections against various types of attacks. The requirement is clear but lacks details on the specific implementation and thresholds.",
+      "follow_up_question": "Can you specify the exact implementation details and thresholds for automatic protections?"
+    },
+    {
+      "requirement": "The system must use CDNs for streaming and caching to handle spikes in traffic without overloading the origin server.",
+      "source_citation": "CDNs for streaming and caching are essential so we don't overload origin.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states a requirement for using CDNs to handle spikes in traffic. The requirement is clear but lacks details on the specific implementation and performance metrics.",
+      "follow_up_question": "Can you specify the exact implementation details and performance metrics for using CDNs?"
+    },
+    {
+      "requirement": "The system must have an admin console that allows for the management of titles, metadata, pricing, pre-paid codes, and basic analytics.",
+      "source_citation": "Admins need a simple console to add and retire titles, upload metadata and cover art, manage pricing and bundles, create and manage pre-paid code batches, and view basic sales and engagement numbers.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states a requirement for an admin console with specific functionalities. The requirement is clear but lacks details on the specific implementation and user interface.",
+      "follow_up_question": "Can you specify the exact functionalities and user interface requirements for the admin console?"
+    },
+    {
+      "requirement": "The system must have audit logs to trace who made changes.",
+      "source_citation": "We also need audit logs so we can trace who made changes.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states a requirement for audit logs. The requirement is clear but lacks details on the specific implementation and retention policies.",
+      "follow_up_question": "Can you specify the exact implementation details and retention policies for audit logs?"
+    },
+    {
+      "requirement": "The system must be designed to be accessible to users who are not power internet users, including those using smartphones for the first time.",
+      "source_citation": "I mean people who might be using a smartphone for the first time, or who are used to simple mobile apps.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states a requirement for accessibility to users who are not power internet users. The requirement is clear but lacks details on the specific design considerations and testing methods.",
+      "follow_up_question": "Can you specify the exact design considerations and testing methods for ensuring accessibility to users who are not power internet users?"
+    },
+    {
+      "requirement": "The system must comply with PCI-DSS standards for handling credit-card data.",
+      "source_citation": "We will need legal and finance to sign off, so yes, PCI concerns are in play and we'll involve a security expert to make the final call.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states a requirement for PCI compliance. The requirement is clear but lacks details on the specific implementation and compliance measures.",
+      "follow_up_question": "Can you specify the exact implementation details and compliance measures for PCI-DSS standards?"
+    }
+  ]
+}

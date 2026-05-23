@@ -1,0 +1,183 @@
+{
+  "transcript_file": "outputs/corpus-20260226_162106/transcript_3_re_novice_stakeholder_nontechnical_enduser_20260226_162344.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_182444",
+  "requirements": [
+    {
+      "requirement": "The system should respond to routine tasks such as opening a student record or saving changes within five seconds.",
+      "source_citation": "It just needs to feel fast. I hate waiting around. For quick stuff like opening a record or saving a change, if it takes more than a few seconds I notice and it slows us down. Maybe five seconds for the small stuff, I’d say.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the importance of quick response times for routine tasks and specifies a target time of five seconds. This indicates a clear performance requirement.",
+      "follow_up_question": "Are there any specific tasks that require even faster response times than five seconds?"
+    },
+    {
+      "requirement": "The system should generate a full program schedule in under half a minute.",
+      "source_citation": "Generating the whole program can take a little while, but it shouldn’t be forever. I’d be okay with something that completes under half a minute.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a target time for generating a full program schedule, indicating a clear performance requirement.",
+      "follow_up_question": "Are there any specific scenarios or data sizes that would require faster or slower generation times?"
+    },
+    {
+      "requirement": "The system should be available during office hours, roughly from eight in the morning until about six in the evening.",
+      "source_citation": "We need it during our office hours when people are making scheduling decisions. Roughly eight in the morning until about six in the evening would cover most of our needs.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the required availability hours for the system, indicating a clear availability requirement.",
+      "follow_up_question": "Are there any specific days or times within the office hours when the system is most critical?"
+    },
+    {
+      "requirement": "The system should be easy to use, with intuitive navigation and plain English labels.",
+      "source_citation": "Easy to use means I shouldn’t have to hunt for things. I want to open something and immediately find the cohort list, then be able to drag or click to assign someone. Labels should be plain English, not weird codes.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the importance of ease of use and provides specific examples of what that means, indicating a clear usability requirement.",
+      "follow_up_question": "Are there any specific usability features or design patterns that you prefer or find particularly effective?"
+    },
+    {
+      "requirement": "The system should provide a mix of training methods, including in-person walkthroughs, short video clips, and quick reference sheets.",
+      "source_citation": "A mix would be good. A short in-person walkthrough to get started and then some short video clips or quick reference sheets. People forget things, so having a one-page cheat sheet would be handy.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the preferred training methods, indicating a clear usability requirement related to training.",
+      "follow_up_question": "Are there any specific topics or tasks that should be covered in the training materials?"
+    },
+    {
+      "requirement": "The system should be accessible via a standard web browser on shared lab computers, personal laptops, and tablets without requiring additional installations.",
+      "source_citation": "We open a web page from shared lab computers and personal laptops. We use the usual browsers — whatever the campus has on their machines — and some people use tablets when they’re at clinical sites. We really don’t want to install anything extra. If it just works in a browser, that’s ideal.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the required access methods and devices, indicating a clear portability requirement.",
+      "follow_up_question": "Are there any specific browsers or devices that are particularly important to support?"
+    },
+    {
+      "requirement": "The system should handle slow or flaky internet connections gracefully, allowing critical information to be viewed or accessed even under poor network conditions.",
+      "source_citation": "Some off-site connections are flaky. It’d be nice if critical things could still be viewed or if the app handled slow links gracefully.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for graceful handling of slow or flaky connections, indicating a clear portability requirement related to network conditions.",
+      "follow_up_question": "Are there any specific features or data that are particularly critical to access under poor network conditions?"
+    },
+    {
+      "requirement": "The system should automatically check for and prevent common scheduling mistakes, such as double-bookings, site mix-ups, and missing prerequisites.",
+      "source_citation": "It should at least flag if a student is already booked at the same time, or if an instructor is unavailable. It should warn if a clinical site is over capacity. Also, it would be great if it checked prerequisites or clearances, like health requirements, before the assignment.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for automatic checks to prevent common mistakes, indicating a clear fault tolerance requirement.",
+      "follow_up_question": "Are there any specific checks or validations that are particularly important to include?"
+    },
+    {
+      "requirement": "The system should provide an edit history and audit trail to track changes and allow for easy restoration of previous versions.",
+      "source_citation": "An edit history is important. If someone accidentally changes a schedule, I want to see who did it and restore the previous version if necessary. That’s saved us before. Undo is nice, but I care more about an audit trail.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the importance of an edit history and audit trail, indicating a clear fault tolerance requirement.",
+      "follow_up_question": "Are there any specific details or levels of granularity that should be included in the edit history?"
+    },
+    {
+      "requirement": "The system should validate critical data fields to prevent errors, such as student IDs, contact information, and site addresses.",
+      "source_citation": "Student IDs need to be right, contact information should be accurate, and site addresses should be consistent so maps and directions work. Health clearances and license numbers are sensitive too — if those are wrong, it causes real problems at the site. So basic checks to stop obvious typos or missing required fields would save us time.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for data validation to prevent errors, indicating a clear fault tolerance requirement.",
+      "follow_up_question": "Are there any specific validation rules or checks that should be implemented for these critical fields?"
+    },
+    {
+      "requirement": "The system should restrict access to sensitive student information based on roles, with only program administrators and designated staff having full access.",
+      "source_citation": "Not everyone should see everything. Program administrators and a few designated staff need full access to handle placements, but site coordinators only need the information relevant to the placement — like emergency contact and certain health clearances, not full personal histories. Students’ social security numbers or similar identifiers should be hidden except to those who absolutely need them.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for role-based access control to sensitive information, indicating a clear security requirement.",
+      "follow_up_question": "Are there any specific roles or permissions that should be defined for accessing sensitive information?"
+    },
+    {
+      "requirement": "The system should follow the university’s information policy and usual privacy rules for protecting sensitive data.",
+      "source_citation": "Yes, we follow the university’s info policy and, you know, the usual privacy rules.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need to follow specific policies and rules, indicating a clear security requirement.",
+      "follow_up_question": "Can you provide more details on the university’s information policy and usual privacy rules that should be followed?"
+    },
+    {
+      "requirement": "The system should log access to sensitive data, including who viewed or exported a student’s full record.",
+      "source_citation": "Knowing who viewed or exported a student’s full record would be important.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for logging access to sensitive data, indicating a clear security requirement.",
+      "follow_up_question": "Are there any specific details or retention periods that should be included in the access logs?"
+    },
+    {
+      "requirement": "The system should handle concurrent use by around ten people during peak hours without slowing down.",
+      "source_citation": "In the mornings the whole scheduling team is on it at once. There’s maybe around ten of us at peak. We all poke around and make changes, so it needs to handle that without slowing down.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the expected number of concurrent users and the need for the system to handle that load, indicating a clear scalability requirement.",
+      "follow_up_question": "Are there any specific scenarios or tasks that should be prioritized for performance under concurrent use?"
+    },
+    {
+      "requirement": "The system should be easy to maintain and use, with a simple print/export feature for generating paper copies.",
+      "source_citation": "If it’s slower than our spreadsheets or harder to use, people will fight it. Oh, and small thing: the print/export should be simple because some of our partners still want paper copies.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for ease of maintenance and use, indicating a clear maintainability requirement.",
+      "follow_up_question": "Are there any specific maintenance tasks or features that should be prioritized for simplicity?"
+    },
+    {
+      "requirement": "The system should integrate with the central student system to avoid duplicate entry and support single sign-on for user authentication.",
+      "source_citation": "We definitely need the roster from the central student system to avoid duplicate entry, and single sign-on would be great so people don’t need another password.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for integration with the central student system and support for single sign-on, indicating a clear portability requirement.",
+      "follow_up_question": "Are there any specific data fields or authentication methods that should be included in the integration?"
+    }
+  ]
+}

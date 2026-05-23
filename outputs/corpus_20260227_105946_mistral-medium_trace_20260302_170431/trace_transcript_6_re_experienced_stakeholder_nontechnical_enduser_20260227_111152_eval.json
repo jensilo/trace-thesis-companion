@@ -1,0 +1,153 @@
+{
+  "extraction_file": "outputs/corpus_20260227_105946_mistral-medium_trace_20260302_170431/trace_transcript_6_re_experienced_stakeholder_nontechnical_enduser_20260227_111152.json",
+  "ground_truth_source": "outputs/corpus-20260227_105946/transcript_6_re_experienced_stakeholder_nontechnical_enduser_20260227_111152.json",
+  "eval_model": "openai/gpt-5-mini",
+  "per_requirement": [
+    {
+      "extracted_requirement": "The system shall respond to user actions within five seconds for routine tasks such as searching and booking a room.",
+      "matched_ground_truth": "The response shall be fast enough to avoid interrupting the user's flow of thought. 90% of tasks shall complete within 5 seconds. 98% of tasks shall complete within 8 seconds.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 5,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system shall have a standard layout with clear labels and intuitive navigation, similar to common web applications.",
+      "matched_ground_truth": "'The product shall use a standard navigation menu familiar to most web users.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 5,
+      "rationale_quality": 4,
+      "gap_detection_quality": 3,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system shall be usable without training, with new users able to perform basic tasks within fifteen minutes of first use.",
+      "matched_ground_truth": "'An employee will be able to successfully use the product within a few minutes. After informally navigating the product for less than 15 minutes users shall be able to successfully setup meetings and reserve conference rooms.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 5,
+      "rationale_quality": 4,
+      "gap_detection_quality": 5,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system shall support screen readers and keyboard-only navigation, ensuring all buttons and interactive elements are properly labeled.",
+      "matched_ground_truth": null,
+      "overlap_score": 1,
+      "overlap_label": "Very Low",
+      "quality_attribute_match": false,
+      "confidence_quality": 2,
+      "rationale_quality": 2,
+      "gap_detection_quality": 3,
+      "is_hit": false,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system shall display dates and times in the local format of the user's location.",
+      "matched_ground_truth": "The product shall be able to display calendar dates and times according to the user's locale. 90% of survey respondents from each target market country will find that the date and time formatting of the product is correct.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": false,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system shall have minimal downtime during business hours, ensuring high availability.",
+      "matched_ground_truth": "'Aside from server failure the software product shall achieve 99.99% up time.'",
+      "overlap_score": 4,
+      "overlap_label": "High",
+      "quality_attribute_match": true,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 5,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system shall be compatible with common browsers, ensuring proper display and functionality.",
+      "matched_ground_truth": "'The product must be able to interface with any HTML browser. The product shall transmit data between the user and the product without problems. The product shall display HTML properly in 80% of all HTML browsers tested (minimum is to test 8 browsers).'",
+      "overlap_score": 4,
+      "overlap_label": "High",
+      "quality_attribute_match": false,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system shall support multiple email servers and send reliable email notifications without duplicates.",
+      "matched_ground_truth": "'The product must be able to interface with various email servers. The product shall be able to send email.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": false,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 5,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system shall be localized to display the user interface in the local language and adhere to local conventions.",
+      "matched_ground_truth": "The product shall be able to display calendar dates and times according to the user's locale. 90% of survey respondents from each target market country will find that the date and time formatting of the product is correct.'",
+      "overlap_score": 3,
+      "overlap_label": "Medium",
+      "quality_attribute_match": false,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": true,
+      "is_duplicate": true
+    },
+    {
+      "extracted_requirement": "The system shall provide clear and informative notifications, including reasons for booking failures.",
+      "matched_ground_truth": null,
+      "overlap_score": 1,
+      "overlap_label": "Very Low",
+      "quality_attribute_match": false,
+      "confidence_quality": 3,
+      "rationale_quality": 3,
+      "gap_detection_quality": 4,
+      "is_hit": false,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system shall prioritize functionality over visual design, ensuring simplicity in user workflows.",
+      "matched_ground_truth": "'The product shall use a standard navigation menu familiar to most web users.'",
+      "overlap_score": 3,
+      "overlap_label": "Medium",
+      "quality_attribute_match": true,
+      "confidence_quality": 3,
+      "rationale_quality": 3,
+      "gap_detection_quality": 2,
+      "is_hit": true,
+      "is_duplicate": true
+    }
+  ],
+  "metrics": {
+    "hit_count": 7,
+    "extracted_count": 11,
+    "ground_truth_count": 10,
+    "precision": 0.636,
+    "recall": 0.7,
+    "f1": 0.667,
+    "quality_attribute_accuracy": 0.571,
+    "avg_confidence": 3.909,
+    "avg_overlap_score": 3.727,
+    "avg_confidence_quality": 3.818,
+    "avg_rationale_quality": 3.636,
+    "avg_gap_detection_quality": 4.0
+  }
+}

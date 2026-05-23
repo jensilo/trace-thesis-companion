@@ -1,0 +1,117 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_3_re_novice_stakeholder_technical_senior_20260227_110121.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_165431",
+  "requirements": [
+    {
+      "requirement": "The system should be intuitive enough for non-technical users to learn and use effectively within a short hands-on session.",
+      "source_citation": "It should be straightforward. We don’t have time for a week-long onboarding. Ideally people pick it up quickly... The interface needs to be intuitive enough for folks who aren’t technical.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for an intuitive interface that non-technical users can learn quickly, indicating a strong usability requirement.",
+      "follow_up_question": "What specific tasks should users be able to perform after a short hands-on session?"
+    },
+    {
+      "requirement": "The system should feel snappy and responsive for day-to-day tasks, with a response time of five seconds or less.",
+      "source_citation": "For day-to-day things it just needs to feel snappy. I hate waiting around — clicking and staring at a spinner is already a productivity killer.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of a responsive system for routine tasks, specifying a desired response time.",
+      "follow_up_question": "What specific day-to-day tasks are considered routine, and what are the acceptable response times for each?"
+    },
+    {
+      "requirement": "The system should complete full schedule generation within thirty seconds to allow users to iterate without losing momentum.",
+      "source_citation": "For full schedule generation, I’d expect something that finishes within, say, thirty seconds.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder provides a specific time frame for completing heavy operations like full schedule generation.",
+      "follow_up_question": "What are the specific constraints and complexities involved in full schedule generation that affect performance?"
+    },
+    {
+      "requirement": "The system should integrate with CampusConnect and the student master system using standard APIs and secure channels.",
+      "source_citation": "It needs to talk to CampusConnect... and to the student master system... Also it should use standard APIs and secure channels; we don't want ad-hoc exports.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "interoperability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for integration with specific systems using standard and secure methods.",
+      "follow_up_question": "What specific APIs and protocols should be used for integration with CampusConnect and the student master system?"
+    },
+    {
+      "requirement": "The system should implement role-based access control to limit sensitive information to authorized users and maintain audit trails for accountability.",
+      "source_citation": "Not everyone. Program administrators need comprehensive access... sensitive stuff should be limited. And, um, audit trails would be good so we can see who looked at what.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for access control and audit trails to protect sensitive information and ensure accountability.",
+      "follow_up_question": "What specific roles and permissions should be defined for different user groups?"
+    },
+    {
+      "requirement": "The system should be available during working hours with an uptime of at least 95% to ensure reliability.",
+      "source_citation": "It needs to be reliable during our working day... the system should be up almost all the time when we’re using it. If you want an SLA figure for procurement, I’d say we should aim for something in the mid-nineties percentage-wise for availability.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for high availability during working hours and provides a specific uptime target.",
+      "follow_up_question": "What are the specific maintenance windows and support realities that affect the 95% uptime target?"
+    },
+    {
+      "requirement": "The system should include basic checks and referential integrity to prevent invalid data entries and ensure data quality.",
+      "source_citation": "We need basic checks so people don’t enter impossible things... Referential integrity with the student master and site lists is important so dangling references don’t proliferate.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "data_integrity",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for data validation and referential integrity to maintain data quality.",
+      "follow_up_question": "What specific validation rules and checks should be implemented to prevent invalid data entries?"
+    },
+    {
+      "requirement": "The system should protect private information according to the university’s information policy, including encryption in transit, storage protections, and access controls.",
+      "source_citation": "We must protect private information according to the university’s information policy. That means encryption in transit, sensible storage protections, and access controls.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for compliance with the university’s information policy and specific security measures.",
+      "follow_up_question": "What specific encryption standards and access control mechanisms should be implemented?"
+    },
+    {
+      "requirement": "The system should be maintainable with clear logging, modular components, and decent documentation to facilitate future updates and troubleshooting.",
+      "source_citation": "The solution should be maintainable. We don’t want a black box that only one person can fix. Clear logging, modular components, and decent documentation will save us headaches.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for maintainability and provides specific requirements for logging, modularity, and documentation.",
+      "follow_up_question": "What specific logging standards and documentation formats should be used?"
+    },
+    {
+      "requirement": "The system should be mobile-friendly to allow staff and students to view schedules on their phones.",
+      "source_citation": "Please make it mobile-friendly at least for viewing schedules; staff and students look at schedules on their phones a lot these days.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for mobile-friendliness to accommodate users who view schedules on their phones.",
+      "follow_up_question": "What specific mobile platforms and devices should the system support?"
+    }
+  ]
+}

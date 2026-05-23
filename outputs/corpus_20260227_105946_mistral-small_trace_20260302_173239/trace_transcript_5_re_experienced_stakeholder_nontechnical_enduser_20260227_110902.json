@@ -1,0 +1,150 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_5_re_experienced_stakeholder_nontechnical_enduser_20260227_110902.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_173241",
+  "requirements": [
+    {
+      "requirement": "The parts search functionality should complete within 15 seconds to maintain user flow and satisfaction.",
+      "source_citation": "under a quarter of a minute? Maybe around fifteen seconds feels okay to me.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states a desired timeframe for parts search, indicating a clear performance expectation.",
+      "follow_up_question": "Are there specific parts search scenarios or filters that should be prioritized for performance optimization?"
+    },
+    {
+      "requirement": "The facility lookup functionality should complete within 8 seconds to maintain user flow and satisfaction during customer calls.",
+      "source_citation": "That one should be snappier than parts, I think. When I'm on the phone with a customer I can't be waiting. If it takes forever, the call drags and the customer gets annoyed. I'd say it should be back in a few seconds — like under ten seconds. Eight seconds would be nice, actually.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states a desired timeframe for facility lookup, indicating a clear performance expectation.",
+      "follow_up_question": "Are there specific facility lookup scenarios or filters that should be prioritized for performance optimization?"
+    },
+    {
+      "requirement": "The audit report generation functionality should complete within 10 seconds to allow users to continue working on the file without interruption.",
+      "source_citation": "If I think about it, getting that audit back should be fast — like, under maybe ten seconds? Quick enough that I don't have to switch tasks.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states a desired timeframe for audit report generation, indicating a clear performance expectation.",
+      "follow_up_question": "Are there specific audit report scenarios or filters that should be prioritized for performance optimization?"
+    },
+    {
+      "requirement": "The system should provide visual confirmation of a successful save within 5 seconds to prevent users from attempting to resave.",
+      "source_citation": "If I don't see confirmation within... five seconds, I start poking around and double-saving.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states a desired timeframe for save confirmation, indicating a clear usability expectation.",
+      "follow_up_question": "What specific visual feedback would be most helpful to users upon successful save?"
+    },
+    {
+      "requirement": "The system should maintain performance with up to 1,500 simultaneous users during peak times.",
+      "source_citation": "If you ask me for numbers, I think at peak we could have... a very large group, maybe in the low thousands? One four-nine-zero? No, wait, that's not right. Hmm. Okay, to be honest, I'd say about fifteen hundred people at the same time in the worst-case scenario.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder provides an estimated number of peak users, indicating a clear scalability expectation. However, the exact number is slightly unclear.",
+      "follow_up_question": "Can you provide more context or data on peak usage times and user activities during these periods?"
+    },
+    {
+      "requirement": "The system should provide a help feature accessible in approximately 90% of screens to assist users with tasks.",
+      "source_citation": "What I want is something right there — a little help button or tips where I am. Not for everything, but in most places you'd need it. If I had to guess, I'd say... the vast majority. Maybe nine out of ten screens? Ninety percent sounds about right in my head.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the desired availability of help features, indicating a clear usability expectation.",
+      "follow_up_question": "What specific types of help features (e.g., tooltips, inline guidance, videos) would be most useful to users?"
+    },
+    {
+      "requirement": "The system should require no more than two days of hands-on, onsite training for 95% of users to become comfortable with its operation.",
+      "source_citation": "If I had to guess, two days of hands-on, onsite training would get most of us comfortable. It's better if it's in-person so we can ask the dumb questions. After that, quick reference help in the screens would be enough.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder provides an estimated training duration and expected user comfort level, indicating a clear usability expectation. However, the exact measurement of user comfort is unclear.",
+      "follow_up_question": "What specific metrics or tasks will be used to measure user comfort and proficiency after training?"
+    },
+    {
+      "requirement": "The system should have an uptime of at least 98% to minimize disruptions during business hours.",
+      "source_citation": "It should be up pretty much all the time we're working. If I had to say — and I'm guessing — it should be available almost always. Like, ninety-something percent of the time. Ninety-eight percent would probably be okay in my head, I think.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder provides an estimated uptime percentage, indicating a clear availability expectation. However, the exact measurement and acceptable downtime periods are unclear.",
+      "follow_up_question": "What specific uptime metrics or service level agreements (SLAs) would be acceptable for the system?"
+    },
+    {
+      "requirement": "The system should provide warnings before session timeouts and save drafts to prevent work loss.",
+      "source_citation": "Definitely warnings before session timeouts — like a countdown or a 'stay signed in' button. And if I'm in the middle of something it should save drafts so I don't lose work.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for warnings and draft saving, indicating a clear usability expectation.",
+      "follow_up_question": "What specific warning mechanisms (e.g., countdown timers, pop-up notifications) would be most effective for users?"
+    },
+    {
+      "requirement": "The system should separate data by insurer to prevent unauthorized access to other companies' claims.",
+      "source_citation": "I don't want to accidentally open another company's claim or compare things I shouldn't. So, the system needs to keep each insurer's claims separated.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for data separation, indicating a clear security expectation.",
+      "follow_up_question": "What specific access control mechanisms (e.g., role-based access, data encryption) would be most effective for ensuring data separation?"
+    },
+    {
+      "requirement": "The system should implement role-based access control to restrict data access based on user roles.",
+      "source_citation": "We have program admins who need access across the board for audits and reporting. Most of us are adjusters or estimators and only need to see our own company's claims. Shop coordinators need limited views — just the assignments and basic contact stuff. So, sort of tiered access — admins wide, most folks narrow.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for role-based access control, indicating a clear security expectation.",
+      "follow_up_question": "What specific roles and access levels should be defined for the system?"
+    },
+    {
+      "requirement": "The system should handle spotty mobile connectivity gracefully, allowing users to continue working without session breaks.",
+      "source_citation": "In the field, the connection is flaky... it must not break my session.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for graceful handling of spotty connectivity, indicating a clear usability expectation.",
+      "follow_up_question": "What specific mechanisms (e.g., caching, offline mode) would be most effective for handling spotty connectivity?"
+    },
+    {
+      "requirement": "The system should have an uncluttered UI with minimal buttons to reduce user errors and improve usability.",
+      "source_citation": "Oh — and one more tiny thing: make the UI uncluttered. I can't stand screens with too many buttons. If it's clean, I'll be happier and make fewer mistakes.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for an uncluttered UI, indicating a clear usability expectation.",
+      "follow_up_question": "What specific UI design principles or guidelines should be followed to achieve an uncluttered design?"
+    }
+  ]
+}

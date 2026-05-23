@@ -1,0 +1,227 @@
+{
+  "transcript_file": "outputs/corpus-20260226_162106/transcript_6_re_novice_stakeholder_nontechnical_enduser_20260226_163629.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_182544",
+  "requirements": [
+    {
+      "requirement": "The system should feel fast, with simple bookings completed within five minutes.",
+      "source_citation": "It just needs to feel fast. I’d say if it takes more than a few minutes people start losing patience. Maybe five minutes for a simple booking would be the outer limit for most people.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the importance of speed and provides a specific time frame for simple bookings. However, it is unclear what constitutes a 'simple booking' or how this requirement scales with more complex bookings.",
+      "follow_up_question": "What specific actions or steps are included in a 'simple booking'? How should the system handle more complex bookings with additional attendees, equipment, or time constraints?"
+    },
+    {
+      "requirement": "Most quick actions should finish within about five seconds, and almost everything should complete within eight seconds.",
+      "source_citation": "It just has to feel snappy. For little things, I don’t want to wait. If I had to put numbers on it, I’d say most quick actions should finish within about five seconds, and almost everything should complete within a bit longer — say under eight seconds.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder provides clear, specific performance metrics for quick actions and overall system performance. This requirement is well-defined and actionable.",
+      "follow_up_question": "Are there any specific actions or processes that should be prioritized for performance optimization?"
+    },
+    {
+      "requirement": "Search, loading calendars, and submitting bookings should be prioritized for performance.",
+      "source_citation": "Search and loading calendars and submitting bookings are the big ones. Those are the moments when lag really bothers people.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder identifies specific areas where performance is critical. This requirement is clear but could benefit from more detail on what constitutes acceptable performance in these areas.",
+      "follow_up_question": "What specific performance metrics should be achieved for search, loading calendars, and submitting bookings?"
+    },
+    {
+      "requirement": "The system should be quick and painless to use, with clear buttons, visible confirmations, and understandable dates.",
+      "source_citation": "It should be quick and painless. Right now it feels clunky sometimes; buttons are unclear, confirmations vanish too fast, and a colleague once said the dates looked like nonsense to him.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights specific usability issues with the current system. This requirement is clear but could benefit from more detailed examples or specific usability metrics.",
+      "follow_up_question": "What specific usability metrics or standards should be used to evaluate the system's usability?"
+    },
+    {
+      "requirement": "The system should provide clear, human-readable error messages and suggestions for alternatives when conflicts arise.",
+      "source_citation": "I want something clear and human — not a scary error code. Like, 'That time is taken' and then show alternatives. And if something goes wrong it should say what I can do next.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of clear, user-friendly error messages. This requirement is clear but could benefit from examples of specific error scenarios and how they should be handled.",
+      "follow_up_question": "What specific error scenarios should be considered, and how should the system handle them?"
+    },
+    {
+      "requirement": "The system should use standard, familiar labels and icons for navigation and actions.",
+      "source_citation": "Keep it standard. Don’t invent weird icons or strange labels. People expect common things like Book Room, My Bookings, Calendar, maybe Admin for the few who need it.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder stresses the importance of using standard, familiar labels and icons. This requirement is clear but could benefit from a list of specific labels and icons that should be used.",
+      "follow_up_question": "What specific labels and icons should be used for navigation and actions in the system?"
+    },
+    {
+      "requirement": "The system should include a search box and quick actions on the main screen, but should avoid confusing users with overly complex features.",
+      "source_citation": "A search would be useful; quick actions are nice too, but nothing that confuses people. Simple and familiar is the priority.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for a search box and quick actions but also emphasizes the importance of simplicity and avoiding confusion. This requirement is somewhat clear but could benefit from more specific guidance on what constitutes 'confusing' features.",
+      "follow_up_question": "What specific features or actions should be included as quick actions, and how should they be presented to avoid confusing users?"
+    },
+    {
+      "requirement": "The system should be accessible to users with disabilities, including those who use screen readers and keyboard-only navigation.",
+      "source_citation": "Well, pages should be readable by JAWS and NVDA, and keyboard-only navigation must work. Contrast needs to be good and buttons have proper labels.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "accessibility",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for accessibility features, including screen reader compatibility and keyboard-only navigation. This requirement is clear but could benefit from more specific guidance on accessibility standards and testing.",
+      "follow_up_question": "What specific accessibility standards or guidelines should the system adhere to, and how should accessibility be tested and validated?"
+    },
+    {
+      "requirement": "The system should conform to the Americans with Disabilities Act (ADA) to ensure accessibility for users with disabilities.",
+      "source_citation": "And, um, it needs to conform to the Americans with Disabilities Act so colleagues who rely on assistive tech aren’t left out.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "accessibility",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for ADA compliance. This requirement is clear but could benefit from more specific guidance on how ADA compliance will be achieved and validated.",
+      "follow_up_question": "What specific ADA guidelines or standards should the system adhere to, and how will ADA compliance be tested and validated?"
+    },
+    {
+      "requirement": "The system should prioritize accessibility for the booking flow, including making new bookings, viewing upcoming bookings, and responding to invites.",
+      "source_citation": "The booking flow is top priority — making a new booking, seeing your upcoming bookings, and responding to invites.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "accessibility",
+      "confidence": 4,
+      "rationale": "The stakeholder identifies specific areas of the system that should be prioritized for accessibility. This requirement is clear but could benefit from more detailed guidance on how accessibility will be implemented in these areas.",
+      "follow_up_question": "What specific accessibility features or accommodations should be included in the booking flow to ensure it is accessible to users with disabilities?"
+    },
+    {
+      "requirement": "The system should provide immediate on-screen confirmations that remain visible until dismissed, as well as email or calendar invites for bookings.",
+      "source_citation": "Definitely both. I want an immediate on-screen confirmation that stays there until I dismiss it, with the basic details. And then an email or calendar invite so it lands in everyone’s calendars.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "reliability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of reliable confirmations and notifications. This requirement is clear but could benefit from more specific guidance on what information should be included in confirmations and how they should be presented.",
+      "follow_up_question": "What specific information should be included in on-screen confirmations and email or calendar invites, and how should they be presented to users?"
+    },
+    {
+      "requirement": "The system should aim for a confirmation accuracy rate of about four out of five users reporting that confirmations are accurate.",
+      "source_citation": "If confirmations are wrong or flaky more than that, we’d have complaints.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "reliability",
+      "confidence": 3,
+      "rationale": "The stakeholder provides a specific target for confirmation accuracy but does not explicitly state the target rate. This requirement is somewhat clear but could benefit from more explicit guidance on the target accuracy rate.",
+      "follow_up_question": "What specific target accuracy rate should the system aim for in terms of confirmation accuracy, and how will this be measured and validated?"
+    },
+    {
+      "requirement": "The system should support a mix of browsers and devices, including corporate-managed browsers, personal browsers, and older setups.",
+      "source_citation": "We have a mix — corporate-managed browsers, personal ones, and a few older setups. I think we should test a decent spread; at minimum maybe eight different browsers or browser/version combos.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need to support a mix of browsers and devices but does not provide specific details on which browsers or devices should be supported. This requirement is somewhat clear but could benefit from more specific guidance on browser and device compatibility.",
+      "follow_up_question": "What specific browsers and devices should the system support, and how will compatibility be tested and validated?"
+    },
+    {
+      "requirement": "The system should render correctly in roughly four out of five browsers tested.",
+      "source_citation": "I’d say if it renders correctly in roughly four out of five browsers we test, that would be acceptable.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder provides a specific target for browser compatibility. This requirement is clear but could benefit from more specific guidance on which browsers should be tested and how compatibility will be measured.",
+      "follow_up_question": "What specific browsers should be included in testing, and how will compatibility be measured and validated?"
+    },
+    {
+      "requirement": "The system should implement graceful degradation to ensure that essential functions remain available even if some features are not.",
+      "source_citation": "Graceful degradation — it should still let people do the essentials even if some fancy bits aren’t available.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of graceful degradation. This requirement is clear but could benefit from more specific guidance on what constitutes 'essential' functions and how graceful degradation will be implemented.",
+      "follow_up_question": "What specific functions should be considered 'essential' for graceful degradation, and how will graceful degradation be implemented and tested?"
+    },
+    {
+      "requirement": "The system should look like the company's branding, including the logo, colors, and a conservative, professional design.",
+      "source_citation": "It should look like our company — logo in the corner, our colors, not some flashy consumer app. It should feel conservative and professional.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of adhering to company branding and design guidelines. This requirement is clear but could benefit from more specific guidance on branding and design standards.",
+      "follow_up_question": "What specific branding and design guidelines should the system adhere to, and how will compliance with these guidelines be ensured?"
+    },
+    {
+      "requirement": "The system should be consistent with other internal tools to avoid confusing users.",
+      "source_citation": "If it looks different from other internal tools, people get suspicious and think they’re in the wrong place.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of consistency with other internal tools. This requirement is clear but could benefit from more specific guidance on what constitutes consistency and how it will be ensured.",
+      "follow_up_question": "What specific internal tools should the system be consistent with, and how will consistency be ensured and validated?"
+    },
+    {
+      "requirement": "The system should support multiple languages, with complete translations and no half-done translations.",
+      "source_citation": "People expect the interface in their language where possible. Translations have to be complete, not half-done where bits are still in English — that looks sloppy.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "localization",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of complete translations. This requirement is clear but could benefit from more specific guidance on which languages should be supported and how translations will be managed.",
+      "follow_up_question": "What specific languages should the system support, and how will translations be managed and validated?"
+    },
+    {
+      "requirement": "The system should support user-selected language and time/date formats, with a company default as a starting point.",
+      "source_citation": "Ideally a user can pick their own, but a company default is fine as a starting point. People should be able to change it if they want.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "localization",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of supporting user-selected language and time/date formats. This requirement is clear but could benefit from more specific guidance on how these preferences will be managed and presented to users.",
+      "follow_up_question": "How should user-selected language and time/date formats be managed and presented to users, and how will these preferences be validated?"
+    },
+    {
+      "requirement": "The system should aim for a satisfaction rate of nine out of ten users being happy with date and time formats in their market.",
+      "source_citation": "Maybe aim for something like nine out of ten being happy with date and time formats.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "localization",
+      "confidence": 4,
+      "rationale": "The stakeholder provides a specific target for satisfaction with date and time formats. This requirement is clear but could benefit from more specific guidance on how satisfaction will be measured and validated.",
+      "follow_up_question": "How will satisfaction with date and time formats be measured and validated, and what specific actions will be taken if satisfaction rates are not met?"
+    }
+  ]
+}

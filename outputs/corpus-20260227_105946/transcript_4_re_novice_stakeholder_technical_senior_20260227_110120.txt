@@ -1,0 +1,96 @@
+Interviewer: Thanks for meeting with me. Can you give me a high-level picture of what the Disputes application needs to do from a systems perspective?
+
+Stakeholder: Sure. At a high level, the application will be the central place representatives use to open and manage dispute cases, follow up on retrievals and chargebacks, produce any correspondence, and request account adjustments. It has to pull authoritative data about transactions, cardmembers, and merchants from existing sources rather than re-inventing those datasets, and it must enforce who can do what while keeping a full audit trail for compliance. Architecturally, think of it as a thin client backed by services that mediate calls to our back-end systems, with retries and idempotency for the external calls so failures don't create inconsistent state.
+
+Interviewer: Okay. You mentioned pulling data from other sources — which systems are those?
+
+Stakeholder: We rely on the statement system for transaction records, the cardmember information store for customer profile data, and the merchant information service for merchant details. The application should not treat its own copy of those details as the source of truth, so every time we need a transaction or the latest cardmember data we have to obtain it from the respective systems. Also, for letters we don't build printing ourselves; we hand off letter requests to the existing letters service, which in turn sends jobs to the Print Letter Utility. And any account adjustment requests must go through the posting and billing system so billing is consistent.
+
+Interviewer: Got it. So the app basically acts as a coordinator and UI. About performance — how fast should the interface feel, like when a rep clicks between screens or opens a case?
+
+Stakeholder: It needs to feel responsive. I think, well, reps get frustrated if screens hang; small navigations should be nearly instantaneous. Hmm, if you want a concrete number for design and testing, ask me and I can give one.
+
+Interviewer: Yeah, what's a concrete threshold we can test against?
+
+Stakeholder: For routine navigations and small queries, let's design for roughly five seconds as the upper bound. Anything longer and users report it as sluggish.
+
+Interviewer: Okay, five seconds. And how many people will be using this at the same time? Do we need to size for a large team?
+
+Stakeholder: Peak concurrency is important because the operations floor can be busy. We should size for a few hundred simultaneous active users so that the system doesn't slow when everyone is working.
+
+Interviewer: Do you have a specific number in mind for that sizing?
+
+Stakeholder: Yes, design and load tests should target support for 350 concurrent users without application-level performance degradation.
+
+Interviewer: Understood. About uptime — does this need to be a 24/7 application, or more like business hours?
+
+Stakeholder: It needs to be essentially always available because cardmembers and merchants can open or escalate matters at any time, and there are external systems that expect availability. We do allow for scheduled maintenance windows, though.
+
+Interviewer: What are the maintenance windows we should plan around?
+
+Stakeholder: The windows we've coordinated with operations are early morning slots, Monday through Saturday, a one‑hour window overnight, and a longer window on Sunday mornings. Specifically, Monday through Saturday from 3:00 a.m. to 4:00 a.m. Eastern, and Sunday from 1:00 a.m. to 5:00 a.m. Eastern.
+
+Interviewer: Thanks. Back to integration: when you said the app must get transaction details from the statement system, do you mean every single detail must come from there, or can we cache some info locally for speed?
+
+Stakeholder: We can cache for performance, but the canonical transaction details—the things that determine liability, timestamps, amounts—need to be sourced from the statement database. Caching is okay so long as we validate and refresh and always fall back to the statement store for authoritative decisions.
+
+Interviewer: Okay. And the cardmember and merchant info — same idea?
+
+Stakeholder: Yes, the cardmember store is the authoritative source for customer attributes, contact info, and status, and the merchant service is the authoritative source for merchant data. The disputes app should not overwrite those providers; rather, it should query them and, if we cache, keep a clear expiration and reconciliation strategy.
+
+Interviewer: When reps need to send letters as part of dispute workflows, you said we call the letters service. Is there any special handling or format required?
+
+Stakeholder: We send letter requests to the letters application which normalizes formatting and sends jobs to the Print Letter Utility. From a design standpoint, the dispute app should call the letters API with a template identifier and populated fields, and the letters side handles the actual rendering and delivery logistics. That keeps dispute logic separate from printing concerns.
+
+Interviewer: And adjustments to accounts — you said posting and billing handles that. Do we just call that system and assume it will succeed?
+
+Stakeholder: We call the posting and billing system with adjustment requests. We need strong delivery semantics: requests should be idempotent, retried on transient failures, and reconciled if a response isn't received. Also, adjustments are financial operations and must be auditable and authorized through access controls.
+
+Interviewer: Speaking of access controls, who should be allowed to open disputes or request adjustments?
+
+Stakeholder: Not everyone can. Internal reps have a broader set of actions, while external users — if we expose anything externally — have tighter access. Initiation of certain dispute types and any adjustment requests need higher privilege, so the application must gate those actions based on the user's role and entitlements, integrated with our identity and access management. Program admins get a broader view and can do system-level tasks, whereas front-line reps only see what they need to work cases.
+
+Interviewer: How strict do you want that to be — is it role-based or attribute-based or...?
+
+Stakeholder: Role-based access control is the baseline; we can extend with attribute checks where necessary. The key is that the system must prevent unauthorized initiation of dispute flows and record who did what for audits.
+
+Interviewer: You mentioned audit trails and compliance earlier — what are the expectations there?
+
+Stakeholder: Every action that affects case state or triggers an external request must be recorded with who performed it, when, and what the payload was, plus any responses. The audit trail needs to be tamper-evident in practice, kept according to retention policies, and searchable for e-discovery. Also, the design should facilitate compliance reviews without exposing unnecessary PII to reviewers.
+
+Interviewer: Hmm. For the UI itself, are there style or branding rules?
+
+Stakeholder: Yes, we have to follow corporate UI standards, both for internal tools and anything external-facing so users have a consistent experience and we reuse the accessible components and patterns that central design provides.
+
+Interviewer: On resiliency — if one of those backend systems is down, say the statement database, what should the app do?
+
+Stakeholder: The app should degrade gracefully. For example, if the statement DB is unavailable, we should surface clearly what actions are blocked, queue or retry requests where appropriate, and provide technicians with clear diagnostics. We should avoid partial state that can't be reconciled; that's why idempotency, retries, and compensation flows are important. Also, monitoring and alerting must be in place so ops can remediate quickly.
+
+Interviewer: Any constraints about separating data between internal teams and external users?
+
+Stakeholder: Yes, we need data segregation so internal-only fields aren't exposed to merchants or cardmembers. We should model separation at the API and presentation layers, with claims-based decisioning so the front end only renders what the user's scope allows. And, just to add, sometimes we have to mask certain PANs or sensitive fields in UI logs, because that's a common compliance hiccup we've seen before — sorry, I went off on a small tangent there, that was from an older project where we missed masking and it cost us time.
+
+Interviewer: No worries. A couple of quick clarifications: you said cached data is allowed but authoritative data must come from backends; is that the same for every field, like transaction amounts, merchant category codes, and cardmember address?
+
+Stakeholder: For core transaction attributes like amount and timestamps, yes, always authoritative from the statement DB. Profile fields like addresses should come from the cardmember store. Merchant category and merchant identifiers should come from the merchant service. Non-authoritative auxiliary fields can live in cache but must be reconciled.
+
+Interviewer: And finally, just to confirm the numbers we discussed: five seconds for screen navigation and support for 350 concurrent users, right?
+
+Stakeholder: Yes, five seconds for routine navigations is a good testable threshold, and 350 concurrent users is the capacity target for load testing.
+
+Interviewer: Great. I think that's everything I needed for now — thanks.
+
+Stakeholder: Sure, happy to help. If you want, I can sketch an integration sequence diagram later, but for now that should give you the constraints to start writing the initial requirements.
+
+---
+Selected Requirements:
+1. [NICE.csv line 149] [quality, legal, look_and_feel] 'The Disputes application shall comply with the corporate standards for user interface creation for internally and externally used applications.'
+2. [NICE.csv line 155] [quality, performance] 'The maximum wait time for a user navigating from one screen to another within the Disputes application shall be no more than 5 seconds.'
+3. [NICE.csv line 156] [quality, performance, scalability] 'The Disputes application shall support 350 concurrent users without any degradation of performance in the application.'
+4. [NICE.csv line 157] [quality, availability, operability] 'The Disputes application shall be available 24x7x365 with the exception of the following scheduled maintenance windows. Monday â€“ Saturday 3:00am to 4:00am EST Sunday 1:00amd to 5:00am EST'
+5. [NICE.csv line 158] [quality, operability] 'The Disputes application shall interface with the Statement Database. The Statement Database provides the transaction details to the Disputes System. All transaction details must be obtained from the Statement Database'
+6. [NICE.csv line 159] [quality, operability] 'The Disputes application shall interface with the Cardmember Information Database. The Cardmember Information Database provides detailed information with regard to a cardmember. All cardmember detail information must be obtained from the Cardmember Information Database.'
+7. [NICE.csv line 160] [quality, operability] 'The Disputes applications shall interface with the Merchant Information Database. The Merchant Information Database provides detailed information with regard to the merchant. All merchant detail information shall be obtained from the Merchant Information Database.'
+8. [NICE.csv line 161] [quality, operability] 'The Disputes application shall interface with the Letters application. This will allow the Disputes application to request letters as part of the dispute initiation and dispute follow up process. All letter requests must be sent to the Print Letter Utility application.'
+9. [NICE.csv line 162] [quality, operability] The Disputes application shall interface with the Cardmember Posting and Billing System. This will allow the Disputes application to request adjustments to cardmember and merchant's accounts. All adjustment requests must be sent to the Cardmember Posting and Billing System.'
+10. [NICE.csv line 163] [quality, security] 'The Disputes application shall ensure that only users with the appropriate access level are allowed to initiate dispute requests.'

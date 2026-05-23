@@ -1,0 +1,153 @@
+{
+  "extraction_file": "outputs/corpus_20260227_105946_mistral-small_trace_20260302_174709/trace_transcript_3_re_experienced_stakeholder_technical_junior_20260227_110159.json",
+  "ground_truth_source": "outputs/corpus-20260227_105946/transcript_3_re_experienced_stakeholder_technical_junior_20260227_110159.json",
+  "eval_model": "openai/gpt-5-mini",
+  "per_requirement": [
+    {
+      "extracted_requirement": "The system should prevent obvious mistakes such as scheduling conflicts and invalid enrollments by providing warnings or blocking actions.",
+      "matched_ground_truth": "'The system shall help the user avoid making mistakes while scheduling classes and clinicals for the nursing students.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 5,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system should use familiar nursing terminology to ensure ease of use.",
+      "matched_ground_truth": "'The verbiage used within the system shall be consistent with Standard English and the terminology of the national Nursing Community.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 5,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system should allow users to complete small tasks in less than 5 seconds and generate schedules in less than 30 seconds.",
+      "matched_ground_truth": "'The response time of general student management tasks shall take no longer than 5 seconds and the response time of schedule generation shall take no longer than 30 seconds.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 5,
+      "rationale_quality": 4,
+      "gap_detection_quality": 3,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system should handle peak loads of approximately 10 concurrent users during morning scheduling bursts.",
+      "matched_ground_truth": "'system shall be able to handle all of the user requests/usage during business hours.'",
+      "overlap_score": 4,
+      "overlap_label": "High",
+      "quality_attribute_match": false,
+      "confidence_quality": 3,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system should be available 95% of the time overall, with stricter guarantees during critical windows.",
+      "matched_ground_truth": "'The system shall achieve 95% up time.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system should be available from 8 AM to 6 PM on weekdays, with overnight maintenance acceptable.",
+      "matched_ground_truth": null,
+      "overlap_score": 1,
+      "overlap_label": "Very Low",
+      "quality_attribute_match": false,
+      "confidence_quality": 4,
+      "rationale_quality": 3,
+      "gap_detection_quality": 4,
+      "is_hit": false,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system should follow university policies for data protection and role-based access control.",
+      "matched_ground_truth": "The system shall protect private information in accordance with the organization's information policy.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system should allow Program Admins to edit and version curriculum structures to accommodate changes.",
+      "matched_ground_truth": "'The system shall be expected to manage the nursing program curriculum and class/clinical scheduling for a minimum of 5 years.'",
+      "overlap_score": 3,
+      "overlap_label": "Medium",
+      "quality_attribute_match": false,
+      "confidence_quality": 4,
+      "rationale_quality": 3,
+      "gap_detection_quality": 2,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system should integrate with CampusConnect for near-real-time sync of student rosters and enrollments.",
+      "matched_ground_truth": "The system shall interface with CampusConnect's central server'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": false,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 5,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system should provide inline help and examples in forms to reduce support calls.",
+      "matched_ground_truth": null,
+      "overlap_score": 2,
+      "overlap_label": "Low",
+      "quality_attribute_match": false,
+      "confidence_quality": 3,
+      "rationale_quality": 3,
+      "gap_detection_quality": 4,
+      "is_hit": false,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system should support CSV or Excel exports for accreditation reports, including historical data.",
+      "matched_ground_truth": null,
+      "overlap_score": 1,
+      "overlap_label": "Very Low",
+      "quality_attribute_match": false,
+      "confidence_quality": 3,
+      "rationale_quality": 3,
+      "gap_detection_quality": 4,
+      "is_hit": false,
+      "is_duplicate": false
+    }
+  ],
+  "metrics": {
+    "hit_count": 8,
+    "extracted_count": 11,
+    "ground_truth_count": 10,
+    "precision": 0.727,
+    "recall": 0.8,
+    "f1": 0.762,
+    "quality_attribute_accuracy": 0.625,
+    "avg_confidence": 3.818,
+    "avg_overlap_score": 3.727,
+    "avg_confidence_quality": 4.0,
+    "avg_rationale_quality": 3.636,
+    "avg_gap_detection_quality": 3.818
+  }
+}

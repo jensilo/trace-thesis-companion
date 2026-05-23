@@ -1,0 +1,95 @@
+{
+  "transcript_file": "outputs/corpus-20260226_162106/transcript_6_re_novice_stakeholder_nontechnical_enduser_20260226_163629.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_183021",
+  "requirements": [
+    {
+      "requirement": "The system should complete quick actions within five seconds and all actions within eight seconds.",
+      "source_citation": "For little things, I don’t want to wait. If I had to put numbers on it, I’d say most quick actions should finish within about five seconds, and almost everything should complete within a bit longer — say under eight seconds.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the expected performance metrics for quick actions and overall system performance. This is a clear and direct requirement.",
+      "follow_up_question": "Are there specific actions that should be prioritized for performance optimization?"
+    },
+    {
+      "requirement": "The system should provide clear and human-readable error messages, such as 'That time is taken' and show alternatives.",
+      "source_citation": "I want something clear and human — not a scary error code. Like, 'That time is taken' and then show alternatives.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for clear and human-readable error messages, which is a usability concern.",
+      "follow_up_question": "Are there specific error scenarios that should be prioritized for clear messaging?"
+    },
+    {
+      "requirement": "The system should conform to the Americans with Disabilities Act (ADA) and be accessible to screen-reader users.",
+      "source_citation": "Well, pages should be readable by JAWS and NVDA, and keyboard-only navigation must work. Contrast needs to be good and buttons have proper labels — too often screen readers skip things because they’re not labeled. And, um, it needs to conform to the Americans with Disabilities Act so colleagues who rely on assistive tech aren’t left out.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "accessibility",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for ADA compliance and accessibility features, which are critical for usability by all users.",
+      "follow_up_question": "Are there specific accessibility guidelines or standards that should be followed?"
+    },
+    {
+      "requirement": "The system should provide immediate on-screen confirmations that stay until dismissed, along with email or calendar invites.",
+      "source_citation": "Definitely both. I want an immediate on-screen confirmation that stays there until I dismiss it, with the basic details. And then an email or calendar invite so it lands in everyone’s calendars.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "reliability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for reliable confirmations, which is crucial for user trust and system reliability.",
+      "follow_up_question": "Are there specific scenarios where confirmations are most critical?"
+    },
+    {
+      "requirement": "The system should be tested with a mix of browsers and should support graceful degradation for older browsers.",
+      "source_citation": "We have a mix — corporate-managed browsers, personal ones, and a few older setups. I think we should test a decent spread; at minimum maybe eight different browsers or browser/version combos, and the product should display properly in most of them. Graceful degradation — it should still let people do the essentials even if some fancy bits aren’t available.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for browser compatibility and graceful degradation, which are important for scalability and user experience.",
+      "follow_up_question": "Are there specific older browsers that should be prioritized for testing?"
+    },
+    {
+      "requirement": "The system should look like the company's branding, with a conservative and professional appearance.",
+      "source_citation": "It should look like our company — logo in the corner, our colors, not some flashy consumer app. It should feel conservative and professional.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for branding consistency, which is important for user trust and professional appearance.",
+      "follow_up_question": "Are there specific branding guidelines that should be followed?"
+    },
+    {
+      "requirement": "The system should support multiple languages and date/time formats, with the ability for users to choose their preferred settings.",
+      "source_citation": "People expect the interface in their language where possible. Translations have to be complete, not half-done where bits are still in English — that looks sloppy. Also the dates and times get people mixed up. Some people read day-month-year, others month-day-year, and some prefer 24-hour clocks. That confusion causes real mistakes.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "localization",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for language and date/time format support, which is crucial for usability in a global context.",
+      "follow_up_question": "Are there specific languages or date/time formats that should be prioritized?"
+    },
+    {
+      "requirement": "The system should be validated through a mix of usability testing, surveys, and analytics.",
+      "source_citation": "Probably a mix. Run a small usability test with real users and a short survey after they use it. Also look at analytics to see task completion times and error rates.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for validation through various methods, which is important for maintaining system quality.",
+      "follow_up_question": "Are there specific metrics or KPIs that should be tracked for validation?"
+    }
+  ]
+}

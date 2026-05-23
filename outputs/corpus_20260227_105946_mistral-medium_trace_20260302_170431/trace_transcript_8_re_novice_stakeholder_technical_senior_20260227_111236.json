@@ -1,0 +1,238 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_8_re_novice_stakeholder_technical_senior_20260227_111236.txt",
+  "model": "mistral/mistral-medium-latest",
+  "timestamp": "20260302_171436",
+  "requirements": [
+    {
+      "requirement": "Small interactions such as page loads and menu clicks should be perceived as instantaneous.",
+      "source_citation": "Small interactions, things like page loads and menu clicks, should be perceived as instantaneous.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for small interactions to be perceived as instantaneous, which is a clear performance requirement.",
+      "follow_up_question": "What specific metrics or tools should be used to measure and ensure the perceived instantaneous performance?"
+    },
+    {
+      "requirement": "The system should complete card-based purchase processing within fifteen seconds.",
+      "source_citation": "The whole processing step should finish within about fifteen seconds for card-based purchases.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder provides a specific time frame for payment processing, which is a clear performance requirement.",
+      "follow_up_question": "How should the system handle cases where processing exceeds fifteen seconds?"
+    },
+    {
+      "requirement": "Startup buffering for streaming should not exceed ten seconds before playback begins.",
+      "source_citation": "Startup buffering should be no more than ten seconds before playback begins.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies a maximum buffering time, which is a clear performance requirement.",
+      "follow_up_question": "What measures should be taken to ensure buffering does not exceed ten seconds?"
+    },
+    {
+      "requirement": "The system should use adaptive bitrate to maintain smooth playback on poor networks.",
+      "source_citation": "Adaptive bitrate should keep things playing even on poor networks.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for adaptive bitrate to ensure smooth playback, which is a performance requirement.",
+      "follow_up_question": "What specific adaptive bitrate technologies or protocols should be implemented?"
+    },
+    {
+      "requirement": "Payment data should be encrypted at rest using AES-256 and managed in a dedicated key management service.",
+      "source_citation": "Encrypt card data at rest with a strong algorithm — in our environment I'd specify industry-standard AES-256 for data at rest, and the keys should be managed in a dedicated key management service.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies the encryption standard and key management service, which are clear security requirements.",
+      "follow_up_question": "What specific key management service should be used, and how should the encryption keys be rotated and managed?"
+    },
+    {
+      "requirement": "Access to sensitive payment data should be role-based and logged.",
+      "source_citation": "Implement role-based controls so only authorized Izogn administrators have permission to decrypt or view that data, and all access should be logged and monitored.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies role-based access controls and logging, which are clear security requirements.",
+      "follow_up_question": "What specific logging mechanisms and access control policies should be implemented?"
+    },
+    {
+      "requirement": "The system should be usable by 90% of novice internet users without help.",
+      "source_citation": "It should be usable by ninety percent of novice internet users.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder sets a specific usability benchmark for novice users.",
+      "follow_up_question": "What specific usability testing methods should be used to ensure the system meets this benchmark?"
+    },
+    {
+      "requirement": "The system should follow semantic HTML, W3C recommendations, and ARIA for accessibility.",
+      "source_citation": "We should follow web standards and accessibility guidelines. Semantic HTML, W3C recommendations, and ARIA where appropriate are important so screen readers and assistive tech work well.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies adherence to web standards and accessibility guidelines, which are clear usability requirements.",
+      "follow_up_question": "What specific accessibility standards and guidelines should be followed?"
+    },
+    {
+      "requirement": "The system should aim for 99.5% availability.",
+      "source_citation": "I suggest aiming for around ninety-nine and a half percent availability.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder provides a specific availability target, which is a clear availability requirement.",
+      "follow_up_question": "What specific measures should be taken to achieve and maintain 99.5% availability?"
+    },
+    {
+      "requirement": "The system should be designed for redundancy and failover to ensure high availability.",
+      "source_citation": "Design for high availability and measure it, with appropriate redundancy and failover in place.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for redundancy and failover, which are clear fault tolerance requirements.",
+      "follow_up_question": "What specific redundancy and failover mechanisms should be implemented?"
+    },
+    {
+      "requirement": "The system should keep running when parts misbehave, ensuring that the catalogue and account functions remain operational even if the streaming server goes down.",
+      "source_citation": "We don't want the catalogue or account functions to stop just because the streaming backend has a problem.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for the system to continue functioning even if parts fail, which is a fault tolerance requirement.",
+      "follow_up_question": "What specific strategies should be employed to ensure the system remains operational during partial failures?"
+    },
+    {
+      "requirement": "The system should use CDNs and a decoupled streaming tier to ensure the main website is not tightly coupled to streaming nodes.",
+      "source_citation": "Ideally we'd use CDNs and a decoupled streaming tier so the main website isn't tightly coupled to a single streaming node.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder suggests using CDNs and a decoupled streaming tier, which are clear scalability requirements.",
+      "follow_up_question": "What specific CDN providers and decoupling strategies should be used?"
+    },
+    {
+      "requirement": "The system should allow users to queue purchases or download receipts even if the streaming service is down.",
+      "source_citation": "At worst we show informative messaging and let users queue purchases or download receipts.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions allowing users to queue purchases or download receipts during failures, which is a fault tolerance requirement.",
+      "follow_up_question": "What specific mechanisms should be implemented to allow users to queue purchases or download receipts during failures?"
+    },
+    {
+      "requirement": "The system should accept pre-paid cards as an alternate purchase route if the payment gateway fails.",
+      "source_citation": "We should accept pre-paid cards as an alternate purchase route.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 3,
+      "rationale": "The stakeholder suggests using pre-paid cards as an alternate route, which is a fault tolerance requirement.",
+      "follow_up_question": "What specific strategies should be employed to ensure the system can accept pre-paid cards as an alternate purchase route during payment gateway failures?"
+    },
+    {
+      "requirement": "The system should be transparent about privacy practices and make them easy to find.",
+      "source_citation": "The privacy practices need to be visible before we collect personal data, and it should be easy to find from anywhere on the site so users aren't surprised.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for transparency and ease of access to privacy practices, which are legal requirements.",
+      "follow_up_question": "What specific measures should be taken to ensure privacy practices are visible and easy to find?"
+    },
+    {
+      "requirement": "The system should implement role-based access controls for administrators to ensure only authorized staff can access sensitive views.",
+      "source_citation": "Everything admin-related has to obey the same access controls I mentioned, so only authorized staff get sensitive views.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions role-based access controls for administrators, which is a security requirement.",
+      "follow_up_question": "What specific role-based access control mechanisms should be implemented for administrators?"
+    },
+    {
+      "requirement": "The system should tie reviews to purchase or viewing history to reduce fake reviews.",
+      "source_citation": "Reviews should be tied to purchase or viewing history so we can reduce fake reviews.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "other",
+      "confidence": 3,
+      "rationale": "The stakeholder suggests tying reviews to purchase or viewing history to reduce fake reviews, which is a policy and technical design consideration.",
+      "follow_up_question": "What specific mechanisms should be implemented to tie reviews to purchase or viewing history?"
+    },
+    {
+      "requirement": "The system should instrument everything, have health checks, and ensure safe rollback capability.",
+      "source_citation": "We should instrument everything, have health checks, and make sure we can roll back safely.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for instrumentation, health checks, and safe rollback capability, which are maintainability requirements.",
+      "follow_up_question": "What specific instrumentation and health check mechanisms should be implemented?"
+    },
+    {
+      "requirement": "The system should degrade gracefully to ensure a predictable user experience even when subsystems fail.",
+      "source_citation": "The service should degrade gracefully so the user experience is predictable even when subsystems fail.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for graceful degradation, which is a fault tolerance requirement.",
+      "follow_up_question": "What specific strategies should be employed to ensure the system degrades gracefully during failures?"
+    },
+    {
+      "requirement": "The system should be mindful of users on limited data plans and provide clear options to switch quality.",
+      "source_citation": "I keep thinking about users who might be on limited data plans; that influences choices like defaulting to lower bitrate previews and giving clear options to switch quality.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need to consider users on limited data plans and provide options to switch quality, which is a usability requirement.",
+      "follow_up_question": "What specific measures should be taken to ensure the system is mindful of users on limited data plans and provides clear options to switch quality?"
+    },
+    {
+      "requirement": "The system should follow an African-inspired modern aesthetic, including patterns, rhythm in layout, and clear typography.",
+      "source_citation": "When we talk about 'African-inspired modern aesthetic,' it's not just colours. It means patterns, rhythm in layout, and clear typography that reads well in low-bandwidth situations.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 3,
+      "rationale": "The stakeholder describes specific design elements that should be incorporated, which are look and feel requirements.",
+      "follow_up_question": "What specific design guidelines or principles should be followed to achieve the African-inspired modern aesthetic?"
+    }
+  ]
+}

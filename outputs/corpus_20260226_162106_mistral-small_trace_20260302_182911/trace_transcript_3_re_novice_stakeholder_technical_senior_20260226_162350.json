@@ -1,0 +1,117 @@
+{
+  "transcript_file": "outputs/corpus-20260226_162106/transcript_3_re_novice_stakeholder_technical_senior_20260226_162350.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_182913",
+  "requirements": [
+    {
+      "requirement": "The system should respond to day-to-day tasks within five seconds and schedule generation within thirty seconds.",
+      "source_citation": "It needs to feel snappy for day-to-day stuff... maybe for the small management tasks, around five seconds is the upper bound I’d tolerate. For generating a full schedule, I’d accept a little more time, say up to thirty seconds, but I’d prefer less.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the acceptable response times for different types of tasks, providing clear performance requirements.",
+      "follow_up_question": "Are there any specific tasks or operations that should be prioritized for faster response times?"
+    },
+    {
+      "requirement": "The system must protect student records and ensure privacy.",
+      "source_citation": "Also, it has to play nicely with the university’s existing systems, because we don’t want two sources of truth. Oh, and privacy is important — we can’t just expose student records willy-nilly.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of privacy and protecting student records, indicating a need for robust security measures.",
+      "follow_up_question": "What specific security measures or protocols should be implemented to protect student records?"
+    },
+    {
+      "requirement": "The system should provide a clean, predictable user experience.",
+      "source_citation": "Also, it has to play nicely with the university’s existing systems, because we don’t want two sources of truth. Oh, and privacy is important — we can’t just expose student records willy-nilly. Beyond that, reliability during office hours and a clean, predictable user experience are the main things I worry about.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for a clean, predictable user experience, which is a key usability requirement.",
+      "follow_up_question": "Can you provide examples of what you consider a clean, predictable user experience?"
+    },
+    {
+      "requirement": "The system should be reliable during office hours and have an uptime of around ninety-five percent.",
+      "source_citation": "Also, it has to play nicely with the university’s existing systems, because we don’t want two sources of truth. Oh, and privacy is important — we can’t just expose student records willy-nilly. Beyond that, reliability during office hours and a clean, predictable user experience are the main things I worry about.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of reliability during office hours and sets a measurable uptime target.",
+      "follow_up_question": "What specific measures or protocols should be implemented to ensure high availability during office hours?"
+    },
+    {
+      "requirement": "The system should be prepared for some adaptation work with legacy APIs.",
+      "source_citation": "There are APIs, yes, though I’d hedge that one of them is a bit older and has some legacy patterns. We’ll need the documentation and a test endpoint from campus IT. I think CampusConnect might not be super modern in every area, so we should be prepared for some adaption work.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder acknowledges the need for adaptation work with legacy APIs, indicating a focus on maintainability.",
+      "follow_up_question": "What specific adaptation work or measures should be taken to ensure compatibility with legacy APIs?"
+    },
+    {
+      "requirement": "The system should handle roughly ten concurrent users during peak times.",
+      "source_citation": "The scheduling team is small but all come in the morning. At peak, there are roughly ten people working concurrently.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder provides a specific number of concurrent users, which is a key scalability requirement.",
+      "follow_up_question": "Are there any specific scalability concerns or bottlenecks that should be addressed?"
+    },
+    {
+      "requirement": "The system should enforce constraints at the point of scheduling and flag issues in-line with suggestions.",
+      "source_citation": "The system should enforce constraints at the point of scheduling. So when someone tries to assign a student or book a clinical, it should check for conflicts — instructor conflicts, clinical site capacity, program progression rules, and pre-requisites. It should flag issues in-line and offer suggestions, not throw opaque errors.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for in-line issue flagging and suggestions, which is a key usability requirement.",
+      "follow_up_question": "Can you provide examples of specific constraints or conflicts that should be enforced and flagged?"
+    },
+    {
+      "requirement": "The system should follow the university’s information protection policies, which align with FERPA and HIPAA where applicable.",
+      "source_citation": "We should follow the university’s information protection policies, which align with FERPA and, where clinical student health info is involved, HIPAA concerns may come into play.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need to comply with specific legal and regulatory requirements, indicating a focus on legal compliance.",
+      "follow_up_question": "What specific measures or protocols should be implemented to ensure compliance with FERPA and HIPAA?"
+    },
+    {
+      "requirement": "The system should provide audit trails to answer 'who changed what' if something goes wrong.",
+      "source_citation": "Also, we need audit trails so we can answer 'who changed what' if something goes wrong.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "auditability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for audit trails, which is a key auditability requirement.",
+      "follow_up_question": "What specific information should be included in the audit trails?"
+    },
+    {
+      "requirement": "The system should integrate with the university’s existing systems, specifically CampusConnect and the student master server.",
+      "source_citation": "Also, it has to play nicely with the university’s existing systems, because we don’t want two sources of truth.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "interoperability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for the system to integrate with existing systems, indicating a focus on interoperability.",
+      "follow_up_question": "What specific integration points or protocols should be used to ensure seamless interoperability?"
+    }
+  ]
+}

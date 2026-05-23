@@ -1,0 +1,161 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_6_re_experienced_stakeholder_technical_junior_20260227_111111.txt",
+  "model": "mistral/mistral-medium-latest",
+  "timestamp": "20260302_171059",
+  "requirements": [
+    {
+      "requirement": "The system shall be able to run on any operating system that supports Java, including Windows, Linux, and macOS.",
+      "source_citation": "It has to run in so many different places — our servers, the contractors' test boxes, folks' laptops. Basically, wherever Java can be put, it should run. [...] Windows or Linux for sure, and sometimes people try it on macOS.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for the system to run on multiple operating systems, emphasizing the importance of portability.",
+      "follow_up_question": "Are there any specific versions of Windows, Linux, or macOS that the system must support?"
+    },
+    {
+      "requirement": "The system shall be able to handle database connections whether the database is local or remote.",
+      "source_citation": "The DB side is, um, flexible. Sometimes the DB runs on the same machine during dev, sometimes it's a separate box on the same network in staging or prod. So our code has to play nicely whether the DB is local or remote.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "compatibility",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the need for the system to work with both local and remote databases, indicating a requirement for flexibility and compatibility.",
+      "follow_up_question": "Are there any specific database management systems that the system must be compatible with?"
+    },
+    {
+      "requirement": "The system shall be deployable on standard Java web/app servers such as Tomcat and JBoss.",
+      "source_citation": "We're not locked to one vendor. The idea is to use standard Java web/app servers — like Tomcat in a lot of our dev setups, and sometimes folks throw JBoss or other app servers in for integration testing. So the app needs to deploy on those common Java servers without too much fuss.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "compatibility",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for the system to be deployable on common Java servers like Tomcat and JBoss.",
+      "follow_up_question": "Are there any specific versions of Tomcat or JBoss that the system must be compatible with?"
+    },
+    {
+      "requirement": "The system shall support at least eight distinct browsers with approximately eighty percent rendering success.",
+      "source_citation": "We can't test every browser under the sun, so we test a representative set and make sure it looks right most of the time. [...] We actually laid out before that we need to test across at least eight distinct browsers, and we'd like the pages to render correctly in, say, around eighty percent of those tests.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "compatibility",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies the need to support multiple browsers with a defined success rate, indicating a clear requirement for browser compatibility.",
+      "follow_up_question": "Which specific browsers must the system support?"
+    },
+    {
+      "requirement": "The system shall avoid using bleeding-edge client-side technologies that may not be supported by older browsers.",
+      "source_citation": "Mostly things like heavy ES6 modules without transpilation, or CSS grid tricks that older corporate browsers choke on. So we transpile and include polyfills as needed.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "compatibility",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need to avoid modern technologies that may not be supported by older browsers, indicating a requirement for backward compatibility.",
+      "follow_up_question": "Are there any specific technologies or polyfills that the system must use or avoid?"
+    },
+    {
+      "requirement": "The system shall support different mail servers and provide configurable SMTP settings.",
+      "source_citation": "In practice, we need it to talk to different mail servers — Exchange in some corporate setups, SMTP relays in others. We've had to add configuration options so admins can point to their mail servers.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "interoperability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need to support different mail servers and provide configurable SMTP settings, indicating a requirement for interoperability.",
+      "follow_up_question": "Are there any specific mail servers or SMTP configurations that the system must support?"
+    },
+    {
+      "requirement": "The system shall implement retry logic for email notifications with sensible backoff and admin alerts for failed deliveries.",
+      "source_citation": "If a mail server rejects a connection, the app should retry sensibly. [...] So sensible retry and backoff, maybe admin alerts if delivery keeps failing.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "reliability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for retry logic and admin alerts for failed email deliveries, indicating a requirement for reliability and fault tolerance.",
+      "follow_up_question": "What specific retry logic and backoff mechanisms should be implemented?"
+    },
+    {
+      "requirement": "The system shall ensure that ninety percent of tasks complete in under five seconds and ninety-eight percent of tasks complete in under eight seconds.",
+      "source_citation": "For little actions like checking room availability or saving a quick booking, I'd say — and this is from user feedback — most of those need to finish in about five seconds. To be safe, we want the vast majority of tasks to meet that, and almost all to be done within a bit more time, like eight seconds. [...] Yeah, so we were targeting that roughly ninety percent of tasks complete in under five seconds, and about ninety-eight percent should finish in under eight seconds.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder provides specific performance targets for task completion times, indicating clear performance requirements.",
+      "follow_up_question": "Are there any specific tasks or operations that must meet these performance targets?"
+    },
+    {
+      "requirement": "The system shall handle around one thousand concurrent requests now and scale up to two thousand by the next release.",
+      "source_citation": "Currently the target we set was to handle around one thousand concurrent requests, and by the next release that should scale up to around two thousand. That's so it doesn't choke at 9 a.m. when everyone's booking.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "The stakeholder specifies the need to handle a certain number of concurrent requests, indicating a clear requirement for scalability.",
+      "follow_up_question": "Are there any specific scenarios or use cases that must be supported at these concurrency levels?"
+    },
+    {
+      "requirement": "The system shall achieve ninety-nine point nine nine percent availability, excluding server hardware failure.",
+      "source_citation": "Ops has been pretty clear that outages are a big deal — if the booking system goes down people panic. So apart from server-level failure, the software should be available essentially all the time. I mean, it really needs to be up almost constantly. [...] Yeah, I think the number we were aiming for was ninety-nine point nine nine percent availability, not counting situations where the whole server hardware fails.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder provides a specific availability target, indicating a clear requirement for high availability.",
+      "follow_up_question": "Are there any specific measures or redundancies that must be implemented to achieve this availability target?"
+    },
+    {
+      "requirement": "The system shall ensure that only employees or externally approved users can log in, with no anonymous or unapproved accounts.",
+      "source_citation": "Pretty strictly company people. Only employees, or external users we've explicitly approved and given company IDs, should get in. We can't have random public access. I think that's non-negotiable because of privacy around booking details and attendee lists. [...] Yes, every login should be by an employee or an externally vetted ID. No anonymous or unapproved accounts. That's what the compliance team expects.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for strict login requirements, indicating a clear requirement for security and access control.",
+      "follow_up_question": "Are there any specific authentication or authorization mechanisms that must be implemented?"
+    },
+    {
+      "requirement": "The system shall comply with applicable accessibility laws, ensuring support for screen readers, keyboard navigation, and color contrast.",
+      "source_citation": "Accessibility is a big one; we have to make sure it meets standards so folks with disabilities can use it. That's been brought up by HR and the legal folks — we should be compliant with the applicable accessibility laws, you know, making sure screen readers work, keyboard navigation, color contrast, that sort of thing.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for accessibility compliance, indicating a clear requirement for usability and accessibility.",
+      "follow_up_question": "Are there any specific accessibility standards or guidelines that the system must comply with?"
+    },
+    {
+      "requirement": "The system shall degrade gracefully on older or locked-down corporate browsers.",
+      "source_citation": "So if some users are on locked-down corporate machines with old browsers, we need the frontend to degrade gracefully.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for graceful degradation on older browsers, indicating a requirement for backward compatibility and usability.",
+      "follow_up_question": "Are there any specific older browsers or corporate environments that the system must support?"
+    },
+    {
+      "requirement": "The system shall use open-source components where possible and be compatible with common Java app servers like Tomcat and JBoss.",
+      "source_citation": "Ops likes open-source where possible. We often use Tomcat in dev because it's lightweight and free, and JBoss shows up in some places, so compatibility with those is a plus.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions a preference for open-source components and compatibility with common Java app servers, indicating a requirement for maintainability and ease of deployment.",
+      "follow_up_question": "Are there any specific open-source components or versions of Tomcat/JBoss that the system must use or be compatible with?"
+    }
+  ]
+}

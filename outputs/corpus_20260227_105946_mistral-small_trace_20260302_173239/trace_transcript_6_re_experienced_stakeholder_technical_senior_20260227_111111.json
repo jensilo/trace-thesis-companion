@@ -1,0 +1,161 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_6_re_experienced_stakeholder_technical_senior_20260227_111111.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_173331",
+  "requirements": [
+    {
+      "requirement": "The system shall support deployment on any OS that can run a supported Java runtime, including Linux, Windows, and less common enterprise flavors.",
+      "source_citation": "I expect a JDBC-based data access layer so we rely on vendor-provided drivers, with configurable connection pooling and JNDI-style data source configuration so ops can point the product at their DB instance without code changes.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for the application to be portable across different operating systems and database environments without requiring code changes. This indicates a strong requirement for portability.",
+      "follow_up_question": "What specific versions of Linux, Windows, and other enterprise flavors should be supported?"
+    },
+    {
+      "requirement": "The system shall support deployment in both standard servlet containers and full Java EE or Jakarta EE application servers.",
+      "source_citation": "I think it's fine to develop against a standard servlet container and also validate on a full Java EE or Jakarta EE application server.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for the application to be deployable in different types of servlet and application servers, indicating a requirement for portability across different deployment environments.",
+      "follow_up_question": "Are there any specific servlet containers or application servers that must be supported?"
+    },
+    {
+      "requirement": "The system shall complete routine interactions, such as searching for a room or creating a booking, within five seconds.",
+      "source_citation": "For the routine interactions — searching for a room, creating a booking — I'd say anything that takes more than a handful of seconds breaks the flow. If you want a number, small, common tasks should generally finish in about five seconds, and almost everything should be under, say, eight seconds.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the performance requirements for routine interactions, providing specific time bounds.",
+      "follow_up_question": "Are there any specific scenarios or user interactions that should be prioritized for performance optimization?"
+    },
+    {
+      "requirement": "The system shall achieve a four-nines level of availability (99.99%) during business hours, excluding planned maintenance periods.",
+      "source_citation": "We need the system to be effectively always available during business use... Think in terms of a four-nines level of availability excluding the period when a server is being rebuilt.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder clearly defines the expected availability level and the conditions under which it applies.",
+      "follow_up_question": "What are the specific business hours during which this availability level must be maintained?"
+    },
+    {
+      "requirement": "The system shall be designed for rolling upgrades and zero-downtime deployment.",
+      "source_citation": "Design for rolling upgrades and zero-downtime deployment as a goal.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for the system to support rolling upgrades and zero-downtime deployment, indicating a requirement for fault tolerance.",
+      "follow_up_question": "Are there any specific deployment scenarios or environments that must be considered for zero-downtime deployment?"
+    },
+    {
+      "requirement": "The system shall handle at least one thousand concurrent requests at launch and scale to handle approximately two thousand concurrent requests by a subsequent release.",
+      "source_citation": "For initial release the architecture should comfortably handle on the order of a thousand concurrent requests, and we should plan for that to roughly double by a subsequent release.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder provides specific scalability targets for the system, indicating a requirement for scalability.",
+      "follow_up_question": "Are there any specific peak usage scenarios or patterns that should be considered for scalability planning?"
+    },
+    {
+      "requirement": "The system shall integrate with enterprise mail servers using SMTP, TLS, and configurable SMTP endpoints.",
+      "source_citation": "The system must be able to send email reliably and integrate with whatever enterprise mail server the customer uses. In past projects, customers had Exchange, other SMTP servers, and cloud mail relays, and the app had to support TLS, authentication, and configurable SMTP endpoints.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "interoperability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for the system to integrate with various enterprise mail servers, indicating a requirement for interoperability.",
+      "follow_up_question": "Are there any specific enterprise mail servers or configurations that must be supported?"
+    },
+    {
+      "requirement": "The system shall only allow authentication events against the corporate or pre-approved identity store, with no exceptions.",
+      "source_citation": "Every authentication event should be against the corporate or pre-approved identity store.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the requirement for strict authentication enforcement, indicating a strong security requirement.",
+      "follow_up_question": "Are there any specific identity stores or authentication protocols that must be supported?"
+    },
+    {
+      "requirement": "The system shall implement layered defenses, including strong input validation, parameterized queries, and a web application firewall, to prevent malicious inputs from corrupting data.",
+      "source_citation": "Don't trust the client. We need layered defenses: strong input validation, parameterized queries, and perhaps a web application firewall.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for layered defenses against malicious inputs, indicating a requirement for security.",
+      "follow_up_question": "Are there any specific types of malicious inputs or attack vectors that should be prioritized for defense?"
+    },
+    {
+      "requirement": "The system shall use TLS and authenticated endpoints for secure log transmission and redact personally identifiable information (PII) before transmission.",
+      "source_citation": "Encrypted transfer is a must; use TLS and authenticated endpoints. If we need to pull logs instead, that needs to be under customer control and consent. Logs should be rotated and size-limited to avoid filling disks, and personally identifiable information should be redacted before transmission.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for secure log transmission and redaction of PII, indicating a requirement for security.",
+      "follow_up_question": "Are there any specific log transmission protocols or formats that must be supported?"
+    },
+    {
+      "requirement": "The system shall expose readiness and liveness endpoints and instrument key business transactions for monitoring and alerting.",
+      "source_citation": "Expose readiness and liveness endpoints and instrument key business transactions so we can set meaningful alerts.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "observability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for health endpoints and instrumentation for monitoring, indicating a requirement for observability.",
+      "follow_up_question": "Are there any specific monitoring systems or alerting mechanisms that must be supported?"
+    },
+    {
+      "requirement": "The system shall use structured logs with correlation IDs for traceability and include enough context for debugging without dumping PII.",
+      "source_citation": "Structured logs with correlation IDs are critical... Include enough context in logs to be actionable but avoid dumping PII.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for structured logs with correlation IDs and context for debugging, indicating a requirement for maintainability.",
+      "follow_up_question": "Are there any specific logging formats or tools that must be supported?"
+    },
+    {
+      "requirement": "The system shall support adding new database drivers through configuration and QA tasks rather than requiring a refactor.",
+      "source_citation": "The app's architecture should make adding a new DB driver a configuration and QA task rather than a refactor.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for the system to support adding new database drivers through configuration, indicating a requirement for maintainability.",
+      "follow_up_question": "Are there any specific database drivers or versions that must be supported?"
+    },
+    {
+      "requirement": "The system shall have an admin UI that is intuitive and does not require a PhD in enterprise software to use.",
+      "source_citation": "Let's make the admin UI usable without a PhD in enterprise software. Users shouldn't have to wade through a dozen screens to book a room.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for an intuitive admin UI, indicating a requirement for usability.",
+      "follow_up_question": "Are there any specific usability guidelines or standards that must be followed?"
+    }
+  ]
+}

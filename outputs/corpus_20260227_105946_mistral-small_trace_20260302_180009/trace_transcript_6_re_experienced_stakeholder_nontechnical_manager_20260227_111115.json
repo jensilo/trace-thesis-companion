@@ -1,0 +1,183 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_6_re_experienced_stakeholder_nontechnical_manager_20260227_111115.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_180100",
+  "requirements": [
+    {
+      "requirement": "The system should be intuitive enough that users can complete basic tasks without needing a training session.",
+      "source_citation": "It should be quick and obvious. People shouldn't need a training session to do the basic things.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for intuitiveness and ease of use, indicating a strong focus on usability. The requirement is clear but lacks specific metrics for measuring success.",
+      "follow_up_question": "What specific metrics or user testing methods will be used to evaluate the intuitiveness of the system?"
+    },
+    {
+      "requirement": "Most users should be able to complete a simple room booking within five minutes on their first try.",
+      "source_citation": "For a simple room booking, if most users can't do it within about five minutes on their first try, that's a problem.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder provides a clear timeframe for completing a task, which is a measurable usability requirement. The term 'most users' needs clarification.",
+      "follow_up_question": "What percentage of users constitutes 'most users' for this requirement?"
+    },
+    {
+      "requirement": "Ninety percent of routine tasks should be completed within five seconds, and 98% within eight seconds.",
+      "source_citation": "Ninety percent of routine tasks should finish within roughly five seconds, and almost all of them (98%) within eight seconds.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder provides specific performance metrics, making this a clear and measurable requirement.",
+      "follow_up_question": "Are there any specific routine tasks that should be prioritized for performance optimization?"
+    },
+    {
+      "requirement": "The UI should be usable with screen readers, keyboard navigation, and high-contrast modes.",
+      "source_citation": "Accessibility is non-negotiable... UI should be usable with screen readers, keyboard navigation, and high-contrast modes.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions accessibility features, which are critical for usability.",
+      "follow_up_question": "Are there any specific accessibility standards or guidelines that should be followed?"
+    },
+    {
+      "requirement": "Onboarding should be designed to minimize user frustration and ensure quick adoption.",
+      "source_citation": "Onboarding: if we make onboarding clunky, customers lose patience quickly.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the importance of a smooth onboarding process, which is a usability concern.",
+      "follow_up_question": "What specific aspects of onboarding are most critical to user satisfaction?"
+    },
+    {
+      "requirement": "The system should handle about a thousand concurrent requests initially, and scale to around two thousand by the next release.",
+      "source_citation": "The product should handle about a thousand concurrent requests initially, and by the next release, roughly double to around two thousand.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder provides specific scalability targets, which are clear and measurable.",
+      "follow_up_question": "What specific performance metrics should be maintained during peak usage?"
+    },
+    {
+      "requirement": "The system should be able to integrate with various mail systems, including Exchange, Google Mail, and standard SMTP setups.",
+      "source_citation": "We need to play nicely with what customers actually use. So think Exchange-based shops and folks who use Google for mail, and also the standard SMTP setups that some of our customers run.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for compatibility with different mail systems, which is a portability concern.",
+      "follow_up_question": "Are there any specific mail systems or configurations that should be prioritized for integration?"
+    },
+    {
+      "requirement": "Exceptions and errors should be captured in logs and made available to the support team for analysis.",
+      "source_citation": "Ideally exceptions are captured in a log and made available to our support team so we can analyze and fix issues without having to reproduce every problem from scratch.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for logging and error tracking, which are maintainability concerns.",
+      "follow_up_question": "What specific types of exceptions or errors should be prioritized for logging?"
+    },
+    {
+      "requirement": "Logs should be automatically transmitted to the analysis pipeline for secure and efficient processing.",
+      "source_citation": "Automatic would be much better. I mean, I don't want reliance on someone to remember to export. If the system can package up exceptions and securely transmit them to our analysis pipeline, that's ideal.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for automatic log transmission, which is a maintainability concern.",
+      "follow_up_question": "What specific security measures should be in place for log transmission?"
+    },
+    {
+      "requirement": "The system should have near-continuous uptime, with a target of four nines (99.99%) availability.",
+      "source_citation": "We expect near-continuous uptime; planned maintenance windows are okay but unplanned downtime is very costly. To be explicit, our target is the kind of uptime that gives customers confidence — think four nines.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder provides a clear availability target, which is a measurable requirement.",
+      "follow_up_question": "What specific measures will be taken to ensure and monitor the availability target?"
+    },
+    {
+      "requirement": "Access to the system should be restricted to company employees and approved external users.",
+      "source_citation": "Access needs to be restricted. Only our company employees and approved external users should be able to use it.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies access control requirements, which are security concerns.",
+      "follow_up_question": "What specific authentication and authorization mechanisms should be implemented?"
+    },
+    {
+      "requirement": "The system should support multilingual capabilities, including English, Spanish, French, and German.",
+      "source_citation": "We need multilingual support for our target markets... English and Spanish are must-haves, plus French and German.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "localization",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for multilingual support, which is a localization concern.",
+      "follow_up_question": "Are there any specific localization standards or guidelines that should be followed?"
+    },
+    {
+      "requirement": "The system should respect privacy and access controls when exposing personal calendars in reports.",
+      "source_citation": "Any reporting that exposes personal calendars needs to respect privacy and access controls.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for privacy and access control in reporting, which are security concerns.",
+      "follow_up_question": "What specific privacy and access control measures should be implemented for reporting?"
+    },
+    {
+      "requirement": "The system should enforce sufficient contrast and accessible font sizing for theming and branding.",
+      "source_citation": "The theming needs guardrails: let them inject logo and color accents, but the system should enforce sufficient contrast.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for accessibility guardrails in theming, which is a usability concern.",
+      "follow_up_question": "What specific accessibility standards or guidelines should be followed for theming?"
+    },
+    {
+      "requirement": "The system should have automated alerts for critical failures and a central console for exception management.",
+      "source_citation": "We want automated alerts for critical failures, a central console where exceptions are collected, and a way to correlate logs to customer environments.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for automated alerts and a central console, which are maintainability concerns.",
+      "follow_up_question": "What specific types of critical failures should be prioritized for automated alerts?"
+    },
+    {
+      "requirement": "The system should ensure data residency and export rules are clear for customers in different countries.",
+      "source_citation": "We have to make sure data residency and export rules are clear for customers in different countries.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for clarity on data residency and export rules, which are legal concerns.",
+      "follow_up_question": "What specific data residency and export rules should be implemented for different countries?"
+    }
+  ]
+}

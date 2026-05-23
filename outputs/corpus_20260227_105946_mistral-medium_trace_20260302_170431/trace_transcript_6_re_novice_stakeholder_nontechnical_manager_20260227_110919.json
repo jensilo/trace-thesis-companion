@@ -1,0 +1,161 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_6_re_novice_stakeholder_nontechnical_manager_20260227_110919.txt",
+  "model": "mistral/mistral-medium-latest",
+  "timestamp": "20260302_171136",
+  "requirements": [
+    {
+      "requirement": "The system shall ensure that rooms are not double-booked and meetings do not fail due to system errors.",
+      "source_citation": "the business should feel confident that rooms aren't double-booked or that meetings don't fail because of the system.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for reliability and trust in the system's ability to prevent double-booking and meeting failures.",
+      "follow_up_question": "What specific mechanisms or safeguards should be implemented to prevent double-booking and ensure meeting success?"
+    },
+    {
+      "requirement": "The system shall be available 99.99% of the time, excluding full server failures.",
+      "source_citation": "we're aiming for four nines [99.99% uptime].",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the uptime target, providing a clear and measurable requirement.",
+      "follow_up_question": "Are there any specific maintenance windows or exceptions to this uptime requirement?"
+    },
+    {
+      "requirement": "The system shall complete 90% of tasks within five seconds and almost all tasks within eight seconds.",
+      "source_citation": "Ninety percent of tasks should finish within five seconds, and we want almost all of them done within eight seconds.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder provides explicit performance targets for task completion times.",
+      "follow_up_question": "What specific tasks are considered critical and must meet these performance targets?"
+    },
+    {
+      "requirement": "The system shall handle a thousand simultaneous requests initially and scale up to two thousand in the next release.",
+      "source_citation": "we need it to handle a thousand simultaneous requests without choking, and we'll need to scale that up in the next release to about double that.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the concurrency requirements and future scalability needs.",
+      "follow_up_question": "What specific strategies or technologies should be used to achieve this scalability?"
+    },
+    {
+      "requirement": "The system shall only allow access to company employees and external users with approved company IDs.",
+      "source_citation": "Only people we trust... employees and external folks with approved company IDs. We can't have anonymous accounts... if anyone from outside gets in and changes a booking, that's a big risk.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the access control requirements, emphasizing the need for approved IDs and no anonymous access.",
+      "follow_up_question": "What specific authentication mechanisms should be used to ensure only approved users can access the system?"
+    },
+    {
+      "requirement": "The system shall support multiple email servers for sending invites, reminders, and cancellations.",
+      "source_citation": "It needs to talk to whatever email servers we use... different offices use different things... support multiple kinds of email servers.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for the system to integrate with various email servers, indicating a requirement for compatibility and flexibility.",
+      "follow_up_question": "What specific email server types or protocols should the system support?"
+    },
+    {
+      "requirement": "The system shall create exception records for errors and make them available for transmission to the company for analysis.",
+      "source_citation": "When something goes wrong, we want an exception record... packaged up and sent back to our team for analysis... early reporting saves firefighting.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the need for error logging and transmission for analysis, emphasizing the importance of early reporting.",
+      "follow_up_question": "What specific information should be included in the exception records?"
+    },
+    {
+      "requirement": "The system shall incorporate the company's branding elements, including logo and colors.",
+      "source_citation": "We want our identity there... logo, colors, branding... should incorporate elements of our identity.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the need for the system to reflect the company's branding, providing specific elements to include.",
+      "follow_up_question": "Are there any specific branding guidelines or standards that the system should adhere to?"
+    },
+    {
+      "requirement": "The system shall support multiple languages, allowing users to select their preferred language.",
+      "source_citation": "The user should be able to select a language from the ones we target in our markets.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the need for multilingual support, emphasizing the importance of language selection for users in different countries.",
+      "follow_up_question": "What specific languages should be supported initially, and are there any priorities among them?"
+    },
+    {
+      "requirement": "The system shall conform to accessibility requirements such as the Americans with Disabilities Act.",
+      "source_citation": "We must conform to accessibility requirements like the Americans with Disabilities Act... it's not optional.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for compliance with accessibility laws, emphasizing its non-negotiable nature.",
+      "follow_up_question": "Are there any specific accessibility standards or guidelines that the system should follow beyond the ADA?"
+    },
+    {
+      "requirement": "The system shall render correctly across a representative set of browsers, displaying properly in at least 80% of tested browsers.",
+      "source_citation": "It needs to run in any normal HTML browser... render correctly across a representative set of browsers. We want a meaningful baseline. It should display correctly in eighty percent of the browsers tested, and at least eight different browsers should be part of the test matrix.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the need for browser compatibility and provides specific targets for testing and rendering.",
+      "follow_up_question": "What specific browsers should be included in the test matrix?"
+    },
+    {
+      "requirement": "The system shall support single sign-on authentication tied to the corporate identity process and log access attempts for audit.",
+      "source_citation": "Authentication must be tied to our corporate identity process... we should log access attempts for audit. Single sign-on would be great... if there's a standard connector that works with our directory, that's ideal.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the preference for single sign-on and the need for logging access attempts for audit purposes.",
+      "follow_up_question": "What specific single sign-on protocols or standards should the system support?"
+    },
+    {
+      "requirement": "The system shall maintain performance during peak times, ensuring that core tasks like booking remain snappy.",
+      "source_citation": "Performance during peak times: it should try to keep the same experience, especially for core tasks like booking... the booking flow must remain snappy.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the need for consistent performance during peak times, particularly for core tasks like booking.",
+      "follow_up_question": "What specific performance metrics should be maintained during peak times?"
+    },
+    {
+      "requirement": "The system shall validate imports and provide a way to clean up any oddities quickly.",
+      "source_citation": "it needs good validation on imports and a way to clean oddities quickly.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for import validation and quick cleanup of oddities, indicating a requirement for data integrity and maintenance.",
+      "follow_up_question": "What specific types of imports should be validated, and what mechanisms should be used for cleaning up oddities?"
+    }
+  ]
+}

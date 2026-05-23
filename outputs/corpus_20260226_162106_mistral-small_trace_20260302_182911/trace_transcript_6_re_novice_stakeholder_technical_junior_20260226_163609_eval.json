@@ -1,0 +1,141 @@
+{
+  "extraction_file": "outputs/corpus_20260226_162106_mistral-small_trace_20260302_182911/trace_transcript_6_re_novice_stakeholder_technical_junior_20260226_163609.json",
+  "ground_truth_source": "outputs/corpus-20260226_162106/transcript_6_re_novice_stakeholder_technical_junior_20260226_163609.json",
+  "eval_model": "openai/gpt-5-mini",
+  "per_requirement": [
+    {
+      "extracted_requirement": "The system should be portable across any OS that can run Java.",
+      "matched_ground_truth": "'The product will function alongside server software on any operating system where the Java runtime can be installed.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 5,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system should support at least eight different browser/version combinations for UI rendering.",
+      "matched_ground_truth": "'The product must be able to interface with any HTML browser. The product shall transmit data between the user and the product without problems. The product shall display HTML properly in 80% of all HTML browsers tested (minimum is to test 8 browsers).'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": false,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "Routine interactions should complete within about five seconds, and nearly all tasks should finish within about eight seconds.",
+      "matched_ground_truth": "The response shall be fast enough to avoid interrupting the user's flow of thought. 90% of tasks shall complete within 5 seconds. 98% of tasks shall complete within 8 seconds.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 5,
+      "rationale_quality": 4,
+      "gap_detection_quality": 3,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system should handle around a thousand concurrent requests as a starting point.",
+      "matched_ground_truth": "'The product shall be capable of handling up to 1 000 concurrent requests. This number will increase to 2 000 by Release 2. The concurrency capacity must be able to handle peak scheduling times such as early morning and late afternoon hours.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system should have near four nines (99.99%) availability.",
+      "matched_ground_truth": "'Aside from server failure the software product shall achieve 99.99% up time.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 5,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "Exception logs should include enough context to reproduce issues, including error stack, timestamps, and endpoint failure information.",
+      "matched_ground_truth": "'The product shall create an exception log of problems encountered within the product for transmission to our company for analysis and resolution.'",
+      "overlap_score": 4,
+      "overlap_label": "High",
+      "quality_attribute_match": true,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 3,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "Every login should map to an approved account, with no exceptions.",
+      "matched_ground_truth": "'The product shall ensure that only company employees or external users with company-approved user IDs may have product access. 100% of all logons shall be by either company employees or external users with company-approved user IDs.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 5,
+      "rationale_quality": 4,
+      "gap_detection_quality": 3,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system should support different email servers and authentication methods for SMTP.",
+      "matched_ground_truth": "'The product must be able to interface with various email servers. The product shall be able to send email.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 4,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "Users should be able to pick their preferred language in their profile or via a selector.",
+      "matched_ground_truth": "'The product shall allow the user to select a chosen language from one of the target market countries.'",
+      "overlap_score": 5,
+      "overlap_label": "Very High",
+      "quality_attribute_match": true,
+      "confidence_quality": 5,
+      "rationale_quality": 4,
+      "gap_detection_quality": 5,
+      "is_hit": true,
+      "is_duplicate": false
+    },
+    {
+      "extracted_requirement": "The system should be prepared for GDPR-type constraints and have documentation for data handling.",
+      "matched_ground_truth": null,
+      "overlap_score": 1,
+      "overlap_label": "Very Low",
+      "quality_attribute_match": false,
+      "confidence_quality": 4,
+      "rationale_quality": 4,
+      "gap_detection_quality": 3,
+      "is_hit": false,
+      "is_duplicate": false
+    }
+  ],
+  "metrics": {
+    "hit_count": 9,
+    "extracted_count": 10,
+    "ground_truth_count": 10,
+    "precision": 0.9,
+    "recall": 0.9,
+    "f1": 0.9,
+    "quality_attribute_accuracy": 0.889,
+    "avg_confidence": 4.2,
+    "avg_overlap_score": 4.5,
+    "avg_confidence_quality": 4.5,
+    "avg_rationale_quality": 4.0,
+    "avg_gap_detection_quality": 3.7
+  }
+}

@@ -1,0 +1,194 @@
+{
+  "transcript_file": "outputs/corpus-20260226_162106/transcript_8_re_experienced_stakeholder_nontechnical_manager_20260226_164301.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_182548",
+  "requirements": [
+    {
+      "requirement": "The interface should enable 90% of novice users to complete key tasks (register, browse, pay, play) without assistance.",
+      "source_citation": "The interface needs to be obvious: register, browse, pay, and play. We want most novices to be able to do that without help. Roughly, not just a handful — like a clear majority. I think, hmm, maybe around ninety percent would be a good target.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states a target of 90% of novice users being able to complete key tasks without assistance. This is a clear usability requirement.",
+      "follow_up_question": "What specific tasks should be included in the usability testing, and what is the definition of a 'novice user' for this context?"
+    },
+    {
+      "requirement": "Usability testing should be conducted with approximately 30 participants to validate a 90% success rate for key tasks.",
+      "source_citation": "We should run usability sessions with real novice internet users across our target markets... If nine out of ten typical novice users can complete those tasks without help, that's a pass for me.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions running usability sessions with real novice users and sets a pass criterion of 90% success rate. The number of participants is implied but not explicitly stated.",
+      "follow_up_question": "How many participants will be included in the usability testing, and what geographies will be represented?"
+    },
+    {
+      "requirement": "The UI should incorporate African art motifs to feel familiar and culturally relevant.",
+      "source_citation": "I want the UI to feel familiar and proud, not generic. That matters for adoption.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 3,
+      "rationale": "The stakeholder emphasizes the importance of the UI feeling familiar and proud, suggesting a cultural and aesthetic requirement.",
+      "follow_up_question": "What specific African art motifs or design elements should be incorporated, and how will their effectiveness be evaluated?"
+    },
+    {
+      "requirement": "Routine UI responses should take no more than 5 seconds.",
+      "source_citation": "For the small stuff — clicking around, moving between pages, the basics — if it takes more than a few seconds people will get impatient. If you force me, I'd say about five seconds for routine UI responses feels about the upper bound.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states a target of 5 seconds for routine UI responses, which is a clear performance requirement.",
+      "follow_up_question": "What specific UI interactions are considered 'routine,' and how will this performance target be measured and enforced?"
+    },
+    {
+      "requirement": "Credit-card payment processing should be confirmed within 15 seconds.",
+      "source_citation": "Payments need a bit more leeway because of gateways and fraud checks. I think around fifteen seconds would be acceptable for a card transaction processing path.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states a target of 15 seconds for credit-card payment processing, which is a clear performance requirement.",
+      "follow_up_question": "What specific steps are included in the payment processing path, and how will this performance target be measured and enforced?"
+    },
+    {
+      "requirement": "Initial buffering for video playback should not exceed 10 seconds, and rebuffering should be minimal.",
+      "source_citation": "If someone buys or starts a movie, the player should start up fast and not keep stopping. I'd say the initial buffering shouldn't be more than a short wait — maybe up to ten seconds... Rebuffering in the middle should be rare.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states targets for initial buffering and rebuffering, which are clear performance requirements.",
+      "follow_up_question": "What specific metrics will be used to measure buffering performance, and how will these targets be enforced?"
+    },
+    {
+      "requirement": "Credit-card data should be protected with encryption, strict access controls, and PCI-DSS compliance.",
+      "source_citation": "We need to protect credit-card data as if our business depends on it — because it does. Card details shouldn't be casually visible... I think we need to protect credit-card data as if our business depends on it — because it does.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of protecting credit-card data and mentions encryption and strict access controls, which are clear security requirements.",
+      "follow_up_question": "What specific encryption standards and access control measures will be implemented, and how will PCI-DSS compliance be ensured?"
+    },
+    {
+      "requirement": "Tokenization should be preferred over storing full Primary Account Numbers (PANs).",
+      "source_citation": "I'd rather avoid storing full card numbers if possible — tokenization feels less risky and cheaper from a compliance perspective.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states a preference for tokenization over storing full PANs, which is a clear security requirement.",
+      "follow_up_question": "What specific tokenization solution will be used, and how will it be integrated with the payment processing system?"
+    },
+    {
+      "requirement": "Real-time alerts should be generated for suspicious activity such as failed logins, unusual payment declines, and brute-force attempts.",
+      "source_citation": "We want to know quickly. If there are failed logins, unusual payment declines, or someone tries to brute-force the checkout, the team should get alerts so they can act.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the need for real-time alerts for suspicious activity, which is a clear security requirement.",
+      "follow_up_question": "What specific types of suspicious activity will trigger alerts, and how will these alerts be managed and responded to?"
+    },
+    {
+      "requirement": "Immediate out-of-hours alerts (SMS/on-call) should be generated for critical security events such as large spikes in failed payments, suspected card fraud patterns, DDoS-level traffic spikes, and repeated failed admin login attempts.",
+      "source_citation": "For high-priority notifications, think about large spikes in failed payments, suspected card fraud patterns, DDoS-level traffic spikes, and repeated failed admin login attempts.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the need for immediate out-of-hours alerts for critical security events, which is a clear security requirement.",
+      "follow_up_question": "What specific alert thresholds will be set for these critical security events, and how will these alerts be managed and responded to?"
+    },
+    {
+      "requirement": "The platform should have an uptime of 99.5% for public-facing services.",
+      "source_citation": "The platform needs to be available globally pretty much all the time. We can't have long planned downtimes during peak hours... I think we need a strong uptime target, something that only allows for very rare outages — we were thinking in the high nineties, like ninety-nine point five percent.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states a target of 99.5% uptime for public-facing services, which is a clear availability requirement.",
+      "follow_up_question": "What specific measures will be taken to ensure this uptime target is met, and how will downtime be monitored and reported?"
+    },
+    {
+      "requirement": "The admin console can have lower availability than customer-facing services.",
+      "source_citation": "The customers come first — public site and playback must be the priority. The admin console should be reliable, but if there's a rare maintenance window for admin features that won't impact customers directly, that's acceptable.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states that the admin console can have lower availability than customer-facing services, which is a clear availability requirement.",
+      "follow_up_question": "What specific availability target will be set for the admin console, and how will this be monitored and enforced?"
+    },
+    {
+      "requirement": "The platform should support 100,000 registered users at launch.",
+      "source_citation": "We expect real traction in several markets... We should design as if tens of thousands could sign up. To be concrete, our planning number is one hundred thousand users as the scale we want to support early on.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states a target of 100,000 registered users at launch, which is a clear scalability requirement.",
+      "follow_up_question": "What specific measures will be taken to ensure the platform can support this number of users, and how will scalability be tested and validated?"
+    },
+    {
+      "requirement": "The platform should handle spikes in traffic without incurring huge fixed infrastructure costs, using auto-scaling with cost controls.",
+      "source_citation": "We should design to handle spikes without booking huge fixed infrastructure cost... Autoscaling for web services is fine, but we need guardrails so autoscale doesn't blow the budget on a single popularity event.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the need to handle spikes in traffic without incurring huge fixed infrastructure costs, which is a clear scalability requirement.",
+      "follow_up_question": "What specific auto-scaling mechanisms and cost controls will be implemented, and how will they be managed and monitored?"
+    },
+    {
+      "requirement": "Audit logs should be maintained to trace who made changes in the admin console.",
+      "source_citation": "We also need audit logs so we can trace who made changes.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the need for audit logs, which is a clear maintainability requirement.",
+      "follow_up_question": "What specific information will be included in the audit logs, and how will they be accessed and reviewed?"
+    },
+    {
+      "requirement": "A formal incident response procedure should be defined, including first acknowledgement within a short window and a plan to restore or mitigate.",
+      "source_citation": "We should define an escalation path: first acknowledgement within a short window, and then a plan to restore or mitigate.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the need for a formal incident response procedure, which is a clear maintainability requirement.",
+      "follow_up_question": "What specific steps will be included in the incident response procedure, and how will it be tested and validated?"
+    },
+    {
+      "requirement": "Formal testing (performance, usability, security) should be conducted before launch.",
+      "source_citation": "I want a mix of automated and human-validated tests... Synthetic monitors that measure response times from key geographies, load-test reports showing we can handle the expected user base, usability test results, and a security audit or pen test report before launch.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "other",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the need for formal testing before launch, which is a clear requirement for ensuring the quality and reliability of the platform.",
+      "follow_up_question": "What specific tests will be included in the formal testing process, and how will the results be evaluated and acted upon?"
+    }
+  ]
+}

@@ -1,0 +1,227 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_8_re_experienced_stakeholder_technical_senior_20260227_111332.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_180128",
+  "requirements": [
+    {
+      "requirement": "The system shall respond to routine interactions (browsing, searching, loading movie details) within 5 seconds.",
+      "source_citation": "For the small stuff, maybe five seconds for the page or action to respond feels like the outer edge.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states a target of 5 seconds for routine interactions, which is a clear performance requirement.",
+      "follow_up_question": "Are there specific interactions within the routine category that should have different performance targets?"
+    },
+    {
+      "requirement": "The system shall complete the checkout flow within 15 seconds.",
+      "source_citation": "Fifteen seconds is where I'd draw a line for card processing. Any longer and we're losing people or getting support tickets.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states a target of 15 seconds for the checkout flow, which is a clear performance requirement.",
+      "follow_up_question": "Are there specific steps within the checkout flow that should have different performance targets?"
+    },
+    {
+      "requirement": "The system shall minimize initial buffering time for streaming to single-digit seconds.",
+      "source_citation": "Initial buffering should be short, you know, single-digit seconds ideally.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions a target of single-digit seconds for initial buffering, which is a clear performance requirement. However, the exact number of seconds is not specified.",
+      "follow_up_question": "What is the maximum acceptable initial buffering time in seconds?"
+    },
+    {
+      "requirement": "The system shall ensure that buffering time during streaming does not exceed 10 seconds.",
+      "source_citation": "Tolerable buffering is maybe around ten seconds including CDN and client setup, beyond that it's a problem.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions a target of 10 seconds for tolerable buffering, which is a clear performance requirement. However, the exact context and conditions are not specified.",
+      "follow_up_question": "Are there specific conditions or scenarios where the buffering time should be different?"
+    },
+    {
+      "requirement": "The system shall maintain an uptime of 99.5%.",
+      "source_citation": "I'd aim for ninety-nine point five percent availability. It balances cost and customer expectations for this kind of service.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states a target of 99.5% uptime, which is a clear availability requirement.",
+      "follow_up_question": "Are there specific times or events where higher availability is required?"
+    },
+    {
+      "requirement": "The system shall handle traffic spikes without failure.",
+      "source_citation": "We can't have the backend fold when a popular title drops; that'll ruin the launch.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for the backend to handle traffic spikes, which is a clear fault tolerance requirement. However, the exact metrics or thresholds are not specified.",
+      "follow_up_question": "What are the specific metrics or thresholds for handling traffic spikes?"
+    },
+    {
+      "requirement": "The system shall encrypt payment data at rest and restrict access to a minimal set of administrators.",
+      "source_citation": "Card data has to be locked down. I think it should be stored only if we have to, and if stored, it should be encrypted at rest and only accessible to a very small set of administrators.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for encryption and restricted access, which are clear security requirements.",
+      "follow_up_question": "What specific encryption standards or protocols should be used?"
+    },
+    {
+      "requirement": "The system shall implement role-based access control (RBAC) for customer data access.",
+      "source_citation": "Customer profiles too need controlled access — support folks need to help customers but not see everything.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for controlled access to customer profiles, which implies RBAC. However, the exact roles and permissions are not specified.",
+      "follow_up_question": "What specific roles and permissions should be defined for RBAC?"
+    },
+    {
+      "requirement": "The system shall provide audit trails for sensitive data access.",
+      "source_citation": "Audit trails are essential so we can answer 'who did what' later.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for audit trails, which is a clear security requirement.",
+      "follow_up_question": "What specific data or actions should be logged in the audit trails?"
+    },
+    {
+      "requirement": "The system shall implement single sign-on (SSO) with multi-factor authentication (MFA) for admin access.",
+      "source_citation": "Preferably single sign-on with MFA for admin consoles so when someone pulls a record we have an immutable log.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for SSO with MFA, which is a clear security requirement. However, the exact implementation details are not specified.",
+      "follow_up_question": "What specific SSO and MFA protocols or standards should be used?"
+    },
+    {
+      "requirement": "The system shall detect and block suspicious activity such as credential stuffing, scraping, card testing, and DDoS attacks.",
+      "source_citation": "The system should be able to detect anomalous patterns, rate-limit or block suspicious traffic automatically, and send alerts to the ops/admin team when something abnormal happens.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for detecting and blocking suspicious activity, which is a clear security requirement. However, the exact methods or thresholds are not specified.",
+      "follow_up_question": "What specific methods or thresholds should be used for detecting and blocking suspicious activity?"
+    },
+    {
+      "requirement": "The system shall provide immediate alerts for high-severity incidents and batched summaries for lower-severity anomalies.",
+      "source_citation": "Immediate for high-severity incidents, like a flood of failed logins or suspicious checkout behavior. Lower-severity anomalies can be batched, but admins should be notified as incidents occur for anything that could impact revenue or user security.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for immediate alerts for high-severity incidents and batched summaries for lower-severity anomalies, which is a clear security requirement. However, the exact criteria for high-severity incidents are not specified.",
+      "follow_up_question": "What specific criteria should be used to classify incidents as high-severity or lower-severity?"
+    },
+    {
+      "requirement": "The system shall prefer tokenization from payment processors for handling payment data.",
+      "source_citation": "Prefer tokens from the processor to minimize our surface area, but if business insists on storing cards for recurring billing or special cases, then we must encrypt and strictly control access.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the preference for tokenization, which is a clear security requirement. However, the exact conditions or scenarios for storing cards are not specified.",
+      "follow_up_question": "What specific conditions or scenarios justify storing payment data instead of using tokenization?"
+    },
+    {
+      "requirement": "The system shall provide a clear and visible privacy notice to users.",
+      "source_citation": "Put it in the footer on every page and show a short, plain-language banner or modal before we collect anything sensitive, with a link to the full policy.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for a clear and visible privacy notice, which is a clear usability requirement. However, the exact format or content of the notice is not specified.",
+      "follow_up_question": "What specific format or content should be used for the privacy notice?"
+    },
+    {
+      "requirement": "The system shall design the UI to be forgiving for non-power users, with big buttons, simple language, and an African-inspired aesthetic.",
+      "source_citation": "Make the UI forgiving for folks who aren't power users. Big, clear buttons, simple language, and a sleek African-inspired aesthetic so it's both familiar and aspirational.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for a forgiving UI design, which is a clear usability requirement. However, the exact design elements or guidelines are not specified.",
+      "follow_up_question": "What specific design elements or guidelines should be followed for the UI?"
+    },
+    {
+      "requirement": "The system shall log every sale in near-real-time and provide daily aggregated analytics.",
+      "source_citation": "Sales should be recorded in near-real-time so support can reconcile immediately. The analytics side can aggregate nightly for reports, but the raw sales log should be available to admins as events happen.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for near-real-time sales logging and daily aggregated analytics, which is a clear maintainability requirement. However, the exact data or metrics to be logged are not specified.",
+      "follow_up_question": "What specific data or metrics should be logged for sales and analytics?"
+    },
+    {
+      "requirement": "The system shall centralize and retain application logs, access logs, and security events for months.",
+      "source_citation": "Application logs, access logs, and security events should be centralized and retained long enough for forensic work. Daily usage stats should feed into analytics, and we should have dashboards and alerts for key health metrics.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for centralized and retained logs, which is a clear maintainability requirement. However, the exact retention period or specific logs to be retained are not specified.",
+      "follow_up_question": "What specific retention period or logs should be centralized and retained?"
+    },
+    {
+      "requirement": "The system shall implement a microservices architecture with a CDN for static and streaming assets, container orchestration for scale, and health checks for failover.",
+      "source_citation": "I'd go with a microservices approach for the user-facing APIs, with a CDN fronting static and streaming assets, and a separate payments service that talks to PCI-compliant payment processors. Use container orchestration for scale and health checks, and replicate key services across zones for failover.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for a microservices architecture with specific components, which is a clear scalability requirement. However, the exact implementation details or specific components are not specified.",
+      "follow_up_question": "What specific implementation details or components should be used for the microservices architecture?"
+    },
+    {
+      "requirement": "The system shall implement aggressive caching for catalog menus to improve responsiveness.",
+      "source_citation": "Also, cache aggressively where it makes sense so the catalog and menus are snappy for novice users.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for aggressive caching, which is a clear scalability requirement. However, the exact caching strategy or specific components to be cached are not specified.",
+      "follow_up_question": "What specific caching strategy or components should be used for aggressive caching?"
+    },
+    {
+      "requirement": "The system shall implement a hybrid moderation workflow for user reviews, combining automated filters with human review for edge cases.",
+      "source_citation": "A mix makes sense: automated filters for obvious spam or abusive language, with human review for edge cases.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "other",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for a hybrid moderation workflow, which is a clear requirement for user reviews. However, the exact criteria or process for automated filters and human review are not specified.",
+      "follow_up_question": "What specific criteria or process should be used for automated filters and human review in the moderation workflow?"
+    }
+  ]
+}

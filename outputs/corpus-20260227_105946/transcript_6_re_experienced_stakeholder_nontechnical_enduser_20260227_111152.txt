@@ -1,0 +1,112 @@
+Interviewer: Walk me through a typical time you use the room-booking system. What do you do first, and what usually goes wrong?
+
+Stakeholder: Oh, sure. Well, I usually need to grab a room for a quick team huddle or a client call. I log in, try to find an available slot, and more often than not I get stuck clicking around or the search doesn't show what I expect. It's… I think clunky is the word. Sometimes it shows a room as available and then, uh, ten minutes later I find out it was double-booked. That's super frustrating.
+
+Interviewer: When you say "clunky" — can you say more exactly what you mean? Is it the number of clicks, the labels, the layout, or something else?
+
+Stakeholder: It's a mix. The labels are obscure, so I spend time guessing where to click, and there are too many steps to confirm a booking. And the layout isn't, like, standard — I'm always hunting for the calendar or the confirm button. So it feels slower than it should be.
+
+Interviewer: You mentioned "too many steps" and "feels slower" — how long is too long for you when making a simple booking?
+
+Stakeholder: Hmm, that's a good question. I don't like waiting — if I'm doing something small, like booking a 30-minute room, it should be basically instant. Maybe, I don't know, five seconds? Like, if I'm loading a page I get distracted. I'm rambling — but yeah, a few seconds, not a minute.
+
+Interviewer: Okay, so for routine tasks you expect responses in a matter of seconds. You also mentioned labels and layout not being standard. What do you mean by "standard" navigation? Can you describe an example that feels intuitive to you?
+
+Stakeholder: Sure. I mean the usual stuff you see on most websites — you know, a clear top bar or something that shows Home, Calendar, Bookings, maybe your profile. Nothing weird hidden in menus. If it's like other web apps I've used, I can find things without reading a manual. I think most people would be fine if it feels familiar.
+
+Interviewer: When you said "most people would be fine" — how quickly do you think an average colleague should be able to start using it successfully without training?
+
+Stakeholder: Well, after poking around for a little while — like, during a coffee break — they should be able to set up a meeting. People shouldn't need a training session. I'd say within maybe a short timeframe… hmm, I'm trying to put a number on it because I know that helps, maybe like under fifteen minutes? Not a hard course or anything.
+
+Interviewer: Understood. You also mentioned double-bookings earlier. How do you expect the system to show availability and searches so you don't run into that problem?
+
+Stakeholder: It should be straightforward — I want to type what I need, like "projector" or "10 people", and see which rooms match for my time. Right now the search is weird and returns odd results. And, uh, filters that actually work would help, because I don't want to click into every room one by one.
+
+Interviewer: When you say "type what I need" and use filters, are there particular attributes that matter most — like room size, equipment, or location — or is it more the general idea of being able to narrow results?
+
+Stakeholder: It's more the narrowing. I do care about equipment sometimes — like a projector or a conference phone — but really it's that I can quickly find rooms that fit my need. If I can type and refine and get accurate matches, that saves time.
+
+Interviewer: Let's talk about accessibility. You mentioned earlier you have colleagues who struggle with some interfaces. What accessibility problems have you seen with the current system?
+
+Stakeholder: Yes. One of our teammates uses a screen reader and the old system was a mess for them. Keyboard navigation felt broken, and some buttons weren't labelled so the screen reader couldn't explain them. Also, low-vision folks need high contrast or larger fonts sometimes. We can't just leave them out because the system hides things.
+
+Interviewer: So accessibility is important. Do you and your colleagues expect the product to meet specific standards, or is it more a general "it must work for everyone"?
+
+Stakeholder: Um, I guess we expect it to meet the legal sort of accessibility — you know, the rules that say it must be usable by people with disabilities. I don't know the legal names, but yes — it should work with assistive tech and keyboard-only use.
+
+Interviewer: You also told me it sometimes shows the wrong date or time. Can you tell me about that — when did you notice it, and how did it affect your meeting?
+
+Stakeholder: Oh gosh, that was embarrassing. We had a cross-office meeting with someone overseas. Their invite showed the date in the day-month order and mine showed month-day, and we got the day wrong. The client called, confused. So, it really needs to show dates and times the way people expect where they are. Different offices should see their own formats automatically.
+
+Interviewer: How important is that for your teams in different countries — is it a minor annoyance or something that causes real problems often?
+
+Stakeholder: It's a real problem. For global meetings it causes confusion pretty regularly. I mean, maybe it's not every day, but enough that people double-check manually, which defeats the point of automation.
+
+Interviewer: Earlier you said searches and response need to be fast to avoid distraction. You gave five seconds as an example when I asked. Is that acceptable for most tasks, or do you have different expectations for more complex tasks?
+
+Stakeholder: For quick stuff, yes, that felt right. For more complex things like editing a recurring meeting or adding lots of participants, I can tolerate a bit more wait — as long as it doesn't feel like the app is stuck. But for the small flows — searching, booking — it should just be quick so you keep in the zone.
+
+Interviewer: You said "as long as it doesn't feel like the app is stuck." How often does the current system go down or become unavailable during the workday?
+
+Stakeholder: Hmm, mostly it's okay, but we've had outage days where nobody could book rooms and everything piled up. It's disruptive — meetings get canceled or people show up with no room. It shouldn't happen during business hours, honestly.
+
+Interviewer: When you say "shouldn't happen during business hours," do you mean it must be almost always available, or are you thinking acceptable occasional downtime?
+
+Stakeholder: Well, I mean it should be there when we need it. I don't expect miracle uptime, like never ever, but outages should be super rare. We rely on it during the day, so downtime during business hours is a big problem.
+
+Interviewer: Fair. Turning to technical integrations: you mentioned email invites earlier. How does email failing affect you?
+
+Stakeholder: It's bad. If someone books a room and the calendar invite or reminder doesn't send, people show up late or not at all. Or there are no reminders for guests. It needs to actually send emails reliably and play nicely with our corporate email. Sometimes it sends duplicates, which is annoying.
+
+Interviewer: When you say "play nicely with our corporate email," do you mean it must work with specific mail systems or be flexible with many different ones?
+
+Stakeholder: It should work with whatever mail server our IT uses. We have a few setups across offices, so I guess it should be flexible enough to talk to different mail systems. I don't want bookings only to work for one kind of email.
+
+Interviewer: Back to browsers — you mentioned earlier "standard web apps" and that the system shouldn't be weird. Which browsers do people in your company use, and how important is cross-browser display?
+
+Stakeholder: We have people on different machines and browsers — some on company laptops with corporate browsers, others on personal ones. The system needs to display properly so buttons line up and calendars look right. If it breaks on someone's browser they can't do their job. So it should work on most common browsers. Sorry, not very precise — I just mean don't break in one or two of the popular ones.
+
+Interviewer: Can you give me a sense of how many different browsers you'd expect the team to test against? I'm trying to understand "most common."  
+
+Stakeholder: Uh, if you forced me, I'd say at least a handful — enough to cover the usual suspects. Maybe around eight? I know that sounds oddly specific, but we've had problems before on less-common versions and that caused issues.
+
+Interviewer: That helps. You also mentioned earlier that you want people to be able to find and reserve rooms within a short time after first using the product — you said "less than a coffee break" and earlier around fifteen minutes. I want to be clear: is that the expectation for new users without training?
+
+Stakeholder: Yes, exactly. A new hire should be able to figure out the basics without someone holding their hand. If they can get a room in that coffee-break time, that's good.
+
+Interviewer: One last thing — you mentioned branding and localization earlier in an aside. How important is it that the system looks like it belongs to your organization and appears in local languages?
+
+Stakeholder: Oh, that's actually more important than it sounds. Clients notice when the app has our logo and colors; it looks more official. And for offices where English isn't primary, the UI should be in local language. I was about to say something about our office coffee machine breaking yesterday — not relevant, ha — but that shows people get distracted by odd things; the app should at least feel familiar and local so it doesn't add to the noise.
+
+Interviewer: You brought up branding and language — does localization include things like local date formats we discussed and translations of labels so local staff don't have to guess?
+
+Stakeholder: Yes, both. If the labels are correctly translated and dates/times look right for where people are, it's one less thing to think about. People shouldn't have to guess the format or labels.
+
+Interviewer: To recap a few points and make sure I understood: you want a system that's quick for routine tasks — you mentioned about five seconds — easy to navigate with a familiar menu, searchable rooms that actually match what you type, accessible for assistive tech, rarely down during the workday, compatible with the different email servers the company uses, displays properly across a set of common browsers you suggested might be around eight, and localized for language and date/time formats so local users see things as expected. Is that a fair summary?
+
+Stakeholder: Yes! That's a good summary. And, um, please make it stop sending duplicate invites — that's one little gripe but it matters. Also, don't make people go through a ten-step wizard just to book a room. Keep it simple.
+
+Interviewer: You mentioned earlier that outages are disruptive and should be "super rare." To be explicit, what level of availability would you consider acceptable so that planning isn't regularly interrupted?
+
+Stakeholder: If you push me, I'd say it needs to be almost always up during work hours — like, very minimal downtime. I guess you'd call that a very high percentage of uptime. I can't live with daily outages during the day.
+
+Interviewer: And on the speed side, for more complex tasks it's okay if things take longer, but for search and booking you expect that short response time you mentioned. Anything else we missed that would make this workday-friendly for you and your colleagues?
+
+Stakeholder: Hmm. Maybe notifications that are clear. If someone cancels the room, the notification should say who did it and why, not just a cryptic message. And when a booking fails, tell me why — don't just show an error. Oh, and please prioritize the things we've talked about over fancy visuals. They look nice, but function first.
+
+Interviewer: Great. Thank you — that's very helpful. I'll take these user-centered points into the requirements and follow up if I need clarification on any of the numbers you mentioned. Anything else you want to add before we wrap up?
+
+Stakeholder: No, that covers it. Thanks for listening. And yeah, maybe fix the coffee machine too — but that's IT, not you.
+
+---
+Selected Requirements:
+1. [NICE.csv line 285] [quality, usability] 'The product shall be easy to use. 90% of users will be able to successfully reserve a conference room within 5 minutes of product use.'
+2. [NICE.csv line 289] [quality, usability] 'An employee will be able to successfully use the product within a few minutes. After informally navigating the product for less than 15 minutes users shall be able to successfully setup meetings and reserve conference rooms.'
+3. [NICE.csv line 290] [quality, usability] 'The product shall use a standard navigation menu familiar to most web users.'
+4. [NICE.csv line 291] [quality, functional, usability] 'The product shall allow for intuitive searching of available conference rooms.'
+5. [NICE.csv line 292] [quality, legal] 'The product shall conform to the Americans with Disabilities Act.'
+6. [NICE.csv line 293] [quality, performance] The response shall be fast enough to avoid interrupting the user's flow of thought. 90% of tasks shall complete within 5 seconds. 98% of tasks shall complete within 8 seconds.'
+7. [NICE.csv line 294] [quality, availability] 'Aside from server failure the software product shall achieve 99.99% up time.'
+8. [NICE.csv line 300] [quality, look_and_feel, operability, portability] 'The product must be able to interface with any HTML browser. The product shall transmit data between the user and the product without problems. The product shall display HTML properly in 80% of all HTML browsers tested (minimum is to test 8 browsers).'
+9. [NICE.csv line 302] [quality, operability, portability] 'The product must be able to interface with various email servers. The product shall be able to send email.'
+10. [NICE.csv line 322] [quality, functional, usability] The product shall be able to display calendar dates and times according to the user's locale. 90% of survey respondents from each target market country will find that the date and time formatting of the product is correct.'

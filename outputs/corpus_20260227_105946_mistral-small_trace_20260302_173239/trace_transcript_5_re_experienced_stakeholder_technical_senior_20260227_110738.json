@@ -1,0 +1,238 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_5_re_experienced_stakeholder_technical_senior_20260227_110738.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_173324",
+  "requirements": [
+    {
+      "requirement": "The parts search response time must be under 15 seconds.",
+      "source_citation": "users expect results in the low tens of seconds for these kinds of queries. [...] acceptable would be under fifteen seconds for a parts search.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the requirement for parts search response time, clarifying it to be under 15 seconds. This is a clear and specific performance requirement.",
+      "follow_up_question": "Are there any specific scenarios or data volumes that could impact the 15-second response time requirement?"
+    },
+    {
+      "requirement": "The repair facility lookup response time must be under 8 seconds for mobile/cellular users.",
+      "source_citation": "I'd want the preferred facility lookup to come back in under about eight seconds.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the requirement for repair facility lookup response time, specifying it to be under 8 seconds for mobile users. This is a clear and specific performance requirement.",
+      "follow_up_question": "Are there any specific scenarios or data volumes that could impact the 8-second response time requirement?"
+    },
+    {
+      "requirement": "The system must support progressive UI for low-connectivity environments, including lightweight pages, offline caching, and queued sync.",
+      "source_citation": "For field users, the UI should be progressive — cache recent searches, allow limited offline review of claims, and queue any non-critical updates for later sync. The UI must be lightweight; heavy pages with lots of client-side rendering will bog down cellular devices.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder describes the need for a progressive UI that supports offline functionality and lightweight pages, which are key usability requirements for low-connectivity environments.",
+      "follow_up_question": "What specific offline functionalities are required, and how should the system handle sync conflicts?"
+    },
+    {
+      "requirement": "The system must use the corporate identity provider for authentication (SSO).",
+      "source_citation": "We should use the identity provider for SSO, and logging needs to feed into the corporate observability stack.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the requirement to use the corporate identity provider for SSO, which is a clear security requirement.",
+      "follow_up_question": "Are there any specific SSO integration requirements or constraints?"
+    },
+    {
+      "requirement": "The system must provide strong tenant isolation, including logical or physical separation, row-level security, and tenant-scoped encryption.",
+      "source_citation": "We need strong separation. One insurance company must not be able to see another company's claims. Practically, that means tenant isolation at both the application and data layers. [...] Also, tenant-scoped encryption keys would be ideal for extra protection.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly describes the need for strong tenant isolation, including logical or physical separation, row-level security, and tenant-scoped encryption, which are clear security requirements.",
+      "follow_up_question": "What specific mechanisms will be used to achieve tenant isolation, and what are the performance implications?"
+    },
+    {
+      "requirement": "The system must defend against credential attacks, API abuse, DDoS, injection, and broken authentication.",
+      "source_citation": "Sure, and I might ramble a little here, but we need to assume it's a public-facing web app with mobile use, so credential-based attacks, API abuse, and denial-of-service are real worries. [...] Also, injection attacks and broken auth are classic problems; we must wire up the corporate secure development lifecycle and scanning.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder describes various security threats and the need to defend against them, which are clear security requirements.",
+      "follow_up_question": "What specific security measures will be implemented to address these threats?"
+    },
+    {
+      "requirement": "The system must implement defense-in-depth, including rate limiting, WAF, and DDoS mitigation at both cloud and application levels.",
+      "source_citation": "We should leverage corporate perimeter defenses where available, but also design the application to defend itself. So yes, cloud provider DDoS and WAF services are fine, but the app must implement rate limiting, circuit breakers, and graceful degradation so a protection layer in front plus application-level controls give defense in depth.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly describes the need for defense-in-depth, including rate limiting, WAF, and DDoS mitigation at both cloud and application levels, which are clear security requirements.",
+      "follow_up_question": "What specific defense-in-depth measures will be implemented, and how will they be tested?"
+    },
+    {
+      "requirement": "The system must provide audit trails for estimate changes, parts usage, and facility ratings.",
+      "source_citation": "Every time a part suggestion is used or overridden in an estimate, we need an audit trail linking the action to the user, timestamp, and the change. [...] They should be tenant-scoped so only the insurer and aggregated corporate analytics see individual ratings.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder describes the need for audit trails for various actions, which are clear security and compliance requirements.",
+      "follow_up_question": "What specific data must be included in the audit trails, and how will they be stored and accessed?"
+    },
+    {
+      "requirement": "The system must undergo penetration testing and chaos testing for acceptance.",
+      "source_citation": "We'll require security testing from the corporate security team — penetration tests and threat modeling, and ideally some adversarial testing for DDoS resilience. For resilience, we'd want load and chaos testing during pre-prod so we know how it behaves under stress and can tune autoscaling and circuit breakers.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the requirement for penetration testing and chaos testing, which are clear security and reliability requirements.",
+      "follow_up_question": "What specific testing methodologies and tools will be used?"
+    },
+    {
+      "requirement": "The system must adhere to corporate UI guidelines, including components, accessibility, color contrast, and keyboard navigation.",
+      "source_citation": "We must adhere to the corporate guidelines for core components and accessibility. That said, there's room to create specialized flows for mobile — but we'll implement them using the approved component library and style tokens.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the requirement to adhere to corporate UI guidelines, which are clear usability requirements.",
+      "follow_up_question": "What specific UI guidelines and components must be adhered to?"
+    },
+    {
+      "requirement": "The system must be optimized for mobile, including lightweight UI, progressive loading, and offline support.",
+      "source_citation": "For field users, the UI should be progressive — cache recent searches, allow limited offline review of claims, and queue any non-critical updates for later sync. The UI must be lightweight; heavy pages with lots of client-side rendering will bog down cellular devices.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder describes the need for a lightweight and progressive UI for mobile users, which are clear usability requirements.",
+      "follow_up_question": "What specific mobile optimization techniques will be used?"
+    },
+    {
+      "requirement": "The system must notify users when data might be stale.",
+      "source_citation": "Also, we should provide clear indicators when data might be stale so adjusters know when to revalidate.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the requirement to notify users when data might be stale, which is a clear usability requirement.",
+      "follow_up_question": "What specific indicators or notifications will be used?"
+    },
+    {
+      "requirement": "The system must achieve 98% uptime.",
+      "source_citation": "They're asking for ninety-eight percent availability. To put it bluntly, they don't want the system failing more than a couple percent of the total time.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the requirement for 98% uptime, which is a clear availability requirement.",
+      "follow_up_question": "What specific measures will be taken to ensure 98% uptime?"
+    },
+    {
+      "requirement": "The system must gracefully degrade when the Choice Parts feed is unavailable, showing the last-known-good snapshot and marking item ages.",
+      "source_citation": "We should prefer availability over strict real-time consistency for searches. So if the feed is down, show the last-known-good snapshot and mark item ages.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "The stakeholder describes the need for graceful degradation when the Choice Parts feed is unavailable, which is a clear fault tolerance requirement.",
+      "follow_up_question": "What specific mechanisms will be used to achieve graceful degradation?"
+    },
+    {
+      "requirement": "The system must use async replication for parts search to avoid blank screens.",
+      "source_citation": "We need a robust interface, so I want an API-first approach with a fallback/cache because the partner feed isn't transactional in our control. [...] We'd probably want some async replication and caching layers so searches feel fast and we can degrade gracefully.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "The stakeholder describes the need for async replication and caching layers to avoid blank screens, which are clear fault tolerance requirements.",
+      "follow_up_question": "What specific async replication mechanisms will be used?"
+    },
+    {
+      "requirement": "The system must be designed as small, well-scoped services for future flexibility.",
+      "source_citation": "Only that we should design this as a set of small, well-scoped services with clear contracts so future changes — like swapping out the parts provider or adding new insurers — are low-friction.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the requirement to design the system as small, well-scoped services, which is a clear maintainability requirement.",
+      "follow_up_question": "What specific service boundaries and contracts will be defined?"
+    },
+    {
+      "requirement": "The system must integrate with the corporate observability stack, including logging, tracing, and audit trails.",
+      "source_citation": "We should use the identity provider for SSO, and logging needs to feed into the corporate observability stack. [...] Every time a part suggestion is used or overridden in an estimate, we need an audit trail linking the action to the user, timestamp, and the change.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder describes the need to integrate with the corporate observability stack, including logging, tracing, and audit trails, which are clear maintainability requirements.",
+      "follow_up_question": "What specific observability tools and integration points will be used?"
+    },
+    {
+      "requirement": "The system must initially support 1,500 concurrent users and scale to 10,000 users within 2 years.",
+      "source_citation": "For initial capacity planning the ask is to handle fifteen hundred concurrent users comfortably. And within two years, they want the platform to be capable of supporting up to ten thousand concurrent users as adoption ramps.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the requirement to support 1,500 concurrent users initially and scale to 10,000 users within 2 years, which are clear scalability requirements.",
+      "follow_up_question": "What specific scaling strategies and infrastructure will be used?"
+    },
+    {
+      "requirement": "The system must prefer availability over strict real-time consistency, using last-known-good snapshots and marking item ages.",
+      "source_citation": "We should prefer availability over strict real-time consistency for searches. So if the feed is down, show the last-known-good snapshot and mark item ages.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "other",
+      "confidence": 4,
+      "rationale": "The stakeholder describes the need to prefer availability over strict real-time consistency, which is a clear data consistency requirement.",
+      "follow_up_question": "What specific mechanisms will be used to ensure availability over strict real-time consistency?"
+    },
+    {
+      "requirement": "The system must comply with regulatory requirements, including audit trails for parts usage and estimates.",
+      "source_citation": "This is important for both internal audits and regulatory compliance. The logs should be structured and ship to corporate analytics and long-term storage for retention policies.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 4,
+      "rationale": "The stakeholder describes the need to comply with regulatory requirements, including audit trails, which are clear legal requirements.",
+      "follow_up_question": "What specific regulatory requirements must the system comply with?"
+    },
+    {
+      "requirement": "The system must measure time-to-interactive on 4G-equivalent networks as the primary metric for mobile field users.",
+      "source_citation": "Perceived load time is king for users, so we should measure time-to-interactive on typical mobile networks and also monitor payload sizes. If you push me to pick the primary metric, time-to-interactive on a 4G-equivalent connection is the business-facing metric, with payload size and number of requests as secondary engineering metrics to manage.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the requirement to measure time-to-interactive on 4G-equivalent networks as the primary metric for mobile field users, which is a clear performance requirement.",
+      "follow_up_question": "What specific tools and methodologies will be used to measure time-to-interactive?"
+    }
+  ]
+}

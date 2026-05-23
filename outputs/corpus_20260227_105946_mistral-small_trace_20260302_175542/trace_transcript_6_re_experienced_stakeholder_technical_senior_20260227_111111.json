@@ -1,0 +1,172 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_6_re_experienced_stakeholder_technical_senior_20260227_111111.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_175636",
+  "requirements": [
+    {
+      "requirement": "The system should respond to routine interactions (e.g., searching for a room, creating a booking) within five seconds and all other tasks within eight seconds.",
+      "source_citation": "For the routine interactions — searching for a room, creating a booking — I'd say anything that takes more than a handful of seconds breaks the flow. If you want a number, small, common tasks should generally finish in about five seconds, and almost everything should be under, say, eight seconds.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the desired response times for routine and other tasks, providing clear performance targets.",
+      "follow_up_question": "Are there any specific tasks or user flows that should be prioritized for performance optimization?"
+    },
+    {
+      "requirement": "The system should have a four-nines level of availability (99.99%) during business hours, excluding planned maintenance periods.",
+      "source_citation": "We need the system to be effectively always available during business use... think in terms of a four-nines level of availability excluding the period when a server is being rebuilt.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder clearly defines the expected availability level and the conditions under which it applies.",
+      "follow_up_question": "What are the specific business hours during which this availability level is required?"
+    },
+    {
+      "requirement": "The system should be designed for rolling upgrades and zero-downtime deployment.",
+      "source_citation": "Design for rolling upgrades and zero-downtime deployment as a goal.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of minimizing downtime during upgrades and deployments.",
+      "follow_up_question": "Are there any specific deployment scenarios or environments that should be considered for zero-downtime deployment?"
+    },
+    {
+      "requirement": "The system should handle at least 1,000 concurrent requests initially and scale to handle approximately 2,000 concurrent requests by the subsequent release.",
+      "source_citation": "At peak times there are a lot of simultaneous actions... the architecture should comfortably handle on the order of a thousand concurrent requests, and we should plan for that to roughly double by a subsequent release.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "The stakeholder provides specific numbers for initial and future scaling requirements.",
+      "follow_up_question": "Are there any specific peak usage periods or events that should be considered for capacity planning?"
+    },
+    {
+      "requirement": "Only company employees or external users with company-approved IDs should be allowed to access the system, and every authentication event should be against the corporate or pre-approved identity store.",
+      "source_citation": "Only company employees or external users who have been provisioned with company-approved IDs should be allowed... every authentication event should be against the corporate or pre-approved identity store.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder clearly defines the access control requirements and the authentication process.",
+      "follow_up_question": "Are there any specific identity providers or authentication protocols that should be supported?"
+    },
+    {
+      "requirement": "The system should implement strong input validation at the application boundary, use parameterized queries to prevent SQL injection, and consider using a web application firewall.",
+      "source_citation": "Don't trust the client... strong input validation at the app boundary, parameterized queries so SQL injection is effectively eliminated, and perhaps a web application firewall as an operational control.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder outlines specific security measures to protect against malicious inputs and attacks.",
+      "follow_up_question": "Are there any specific input validation rules or security standards that should be followed?"
+    },
+    {
+      "requirement": "The system should ensure that malicious data cannot silently corrupt the product's or adjacent systems' data, with transactional integrity, database constraints, and sanity checks in place.",
+      "source_citation": "Malicious data can't silently corrupt the product's or adjacent systems' data... transactional integrity, DB constraints, and sanity checks.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of data integrity and resilience against malicious inputs.",
+      "follow_up_question": "Are there any specific data integrity checks or recovery mechanisms that should be implemented?"
+    },
+    {
+      "requirement": "The admin UI should be designed to be usable without requiring a PhD in enterprise software, with a simple and intuitive interface for booking tasks.",
+      "source_citation": "Let's make the admin UI usable without a PhD in enterprise software. Users shouldn't have to wade through a dozen screens to book a room.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the importance of usability and provides specific examples of desired user experience.",
+      "follow_up_question": "Are there any specific usability guidelines or user personas that should be considered for the admin UI design?"
+    },
+    {
+      "requirement": "The system should use structured logs with correlation IDs for tracing user flows across services, including enough context for debugging but avoiding personally identifiable information (PII).",
+      "source_citation": "Structured logs with correlation IDs are critical... include enough context in logs to be actionable but avoid dumping PII.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder outlines specific logging requirements for maintainability and debugging purposes.",
+      "follow_up_question": "Are there any specific logging formats or tools that should be used for structured logging?"
+    },
+    {
+      "requirement": "The system should avoid vendor lock-in with databases and support both colocated and remote databases, with the ability to add new database drivers through configuration and QA tasks rather than refactoring.",
+      "source_citation": "The design shouldn't require a specific vendor's features day one... adding a new DB driver should be a configuration and QA task rather than a refactor.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of flexibility and avoid vendor lock-in for database support.",
+      "follow_up_question": "Are there any specific database versions or configurations that should be prioritized for testing?"
+    },
+    {
+      "requirement": "The system should expose readiness and liveness endpoints for health checks and instrument key business transactions for monitoring, with metrics including latency percentiles, queue depths, database connection pool usage, and error rates.",
+      "source_citation": "Expose readiness and liveness endpoints and instrument key business transactions... metrics should include latency percentiles, queue depths, DB connection pool usage, and error rates.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 4,
+      "rationale": "The stakeholder outlines specific monitoring and observability requirements for the system.",
+      "follow_up_question": "Are there any specific monitoring tools or systems that should be integrated with the system?"
+    },
+    {
+      "requirement": "The system should be designed to work with any relational database the customer uses, with a JDBC-based data access layer, configurable connection pooling, and JNDI-style data source configuration.",
+      "source_citation": "The app can talk to whatever relational database the customer uses... JDBC-based data access layer, configurable connection pooling, JNDI-style data source configuration.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 5,
+      "rationale": "The stakeholder clearly defines the requirements for database integration and portability.",
+      "follow_up_question": "Are there any specific database vendors or configurations that should be prioritized for testing?"
+    },
+    {
+      "requirement": "The system should rely on the JVM and standard Java APIs for cross-OS compatibility, ensuring deployment portability.",
+      "source_citation": "Rely on the JVM and standard Java APIs, so deployment is portable.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "portability",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of cross-OS compatibility and portability.",
+      "follow_up_question": "Are there any specific Java versions or configurations that should be considered for testing?"
+    },
+    {
+      "requirement": "The system should be designed with stateless services where possible, with session replication only if necessary, and use asynchronous queues for long-running tasks to ensure fault tolerance and resilience.",
+      "source_citation": "Stateless services where possible, session replication only if necessary... asynchronous queues for long-running tasks.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "fault_tolerance",
+      "confidence": 4,
+      "rationale": "The stakeholder outlines specific architectural requirements for fault tolerance and resilience.",
+      "follow_up_question": "Are there any specific fault tolerance mechanisms or redundancy strategies that should be implemented?"
+    },
+    {
+      "requirement": "Logs should be rotated and size-limited to avoid filling disks, and personally identifiable information (PII) should be redacted before transmission.",
+      "source_citation": "Logs should be rotated and size-limited... personally identifiable information should be redacted before transmission.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "legal",
+      "confidence": 4,
+      "rationale": "The stakeholder outlines specific requirements for log management and privacy compliance.",
+      "follow_up_question": "Are there any specific log retention policies or privacy regulations that should be followed?"
+    }
+  ]
+}

@@ -1,0 +1,205 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_8_re_experienced_stakeholder_technical_junior_20260227_111420.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_180119",
+  "requirements": [
+    {
+      "requirement": "The system shall respond to basic UI interactions within five seconds.",
+      "source_citation": "Anything longer than, uh, maybe five seconds feels too slow to most people.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states that anything longer than five seconds feels too slow for most people, indicating a clear performance expectation for basic UI interactions.",
+      "follow_up_question": "Are there any specific UI interactions that should have even stricter response time requirements?"
+    },
+    {
+      "requirement": "The system shall complete payment processing within fifteen seconds.",
+      "source_citation": "Payment processing needs to complete within about fifteen seconds.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions that payment processing should complete within fifteen seconds to avoid user abandonment.",
+      "follow_up_question": "Are there any specific payment scenarios that might require different response time targets?"
+    },
+    {
+      "requirement": "The system shall limit initial buffering time for streaming to ten seconds.",
+      "source_citation": "Something like ten seconds for the buffering part itself is about the limit.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions that ten seconds is about the limit for buffering time, indicating a performance expectation for streaming.",
+      "follow_up_question": "Are there any specific streaming scenarios that might require different buffering time targets?"
+    },
+    {
+      "requirement": "The system shall achieve 99.5% availability.",
+      "source_citation": "Ninety-nine point five percent availability makes sense.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions that 99.5% availability is the target, indicating a clear availability expectation.",
+      "follow_up_question": "Are there any specific availability requirements for different components of the system?"
+    },
+    {
+      "requirement": "The system shall support adaptive bitrate streaming to adjust to the user's network conditions.",
+      "source_citation": "I think adaptive bitrate is a must, yeah. Start with a lower bitrate if the user's connection is weak, then ramp up.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for adaptive bitrate streaming to handle different network qualities, indicating a scalability expectation.",
+      "follow_up_question": "Are there any specific adaptive bitrate streaming requirements for different network conditions?"
+    },
+    {
+      "requirement": "The system shall support the generation of pre-paid cards both manually and automatically via API or scheduled jobs.",
+      "source_citation": "Probably both. Sometimes admins will generate batches manually for a promotion, and other times there should be an API or scheduled job to create them in bulk.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for both manual and automated generation of pre-paid cards, indicating a scalability expectation.",
+      "follow_up_question": "Are there any specific requirements for the bulk generation of pre-paid cards?"
+    },
+    {
+      "requirement": "The system shall provide actionable dashboards for business analytics.",
+      "source_citation": "Actionable dashboards that help marketing and ops make decisions.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for actionable dashboards, indicating a maintainability expectation for business analytics.",
+      "follow_up_question": "Are there any specific requirements for the business analytics dashboards?"
+    },
+    {
+      "requirement": "The system shall follow W3C standards for accessibility.",
+      "source_citation": "Follow W3C standards so assistive tech works.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need to follow W3C standards for accessibility, indicating a usability expectation.",
+      "follow_up_question": "Are there any specific accessibility requirements beyond W3C standards?"
+    },
+    {
+      "requirement": "The system shall have a simple and clear UI design with big buttons, clear labels, and simple language.",
+      "source_citation": "Big buttons, clear labels, simple language — not flashy, not confusing.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for a simple and clear UI design, indicating a usability expectation.",
+      "follow_up_question": "Are there any specific UI design requirements for different user groups?"
+    },
+    {
+      "requirement": "The system shall fail gracefully and provide clear error messages to users.",
+      "source_citation": "Fail gracefully and tell the user what happened.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for the system to fail gracefully and provide clear error messages, indicating a usability expectation.",
+      "follow_up_question": "Are there any specific error handling requirements for different error scenarios?"
+    },
+    {
+      "requirement": "The system shall encrypt credit card details and restrict access to authorized personnel only.",
+      "source_citation": "Credit card details... encrypted, and only certain people in the company should be able to see that.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for encryption and restricted access to credit card details, indicating a security expectation.",
+      "follow_up_question": "Are there any specific encryption requirements for credit card details?"
+    },
+    {
+      "requirement": "The system shall implement role-based access control to restrict access to sensitive data.",
+      "source_citation": "Program admins... support staff should only see non-sensitive customer data.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for role-based access control to restrict access to sensitive data, indicating a security expectation.",
+      "follow_up_question": "Are there any specific role-based access control requirements for different user roles?"
+    },
+    {
+      "requirement": "The system shall consider using tokenization for payment data to reduce PCI compliance burden.",
+      "source_citation": "Using tokenization does sound safer and less headache for PCI stuff.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the potential use of tokenization for payment data, indicating a security expectation, but the decision is not final.",
+      "follow_up_question": "Are there any specific tokenization requirements for payment data?"
+    },
+    {
+      "requirement": "The system shall detect and alert on suspicious activity such as repeated failed logins and credential stuffing patterns.",
+      "source_citation": "Repeated failed logins, credential stuffing patterns... should trigger alerts.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for the system to detect and alert on suspicious activity, indicating a security expectation.",
+      "follow_up_question": "Are there any specific requirements for detecting and alerting on suspicious activity?"
+    },
+    {
+      "requirement": "The system shall notify admins via email and potentially SMS or push notifications for critical security events.",
+      "source_citation": "Email is the baseline. For severe stuff, maybe SMS or a push to the admin dashboard.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for the system to notify admins via email and potentially other channels, indicating a security expectation, but the details are not fully specified.",
+      "follow_up_question": "Are there any specific notification requirements for different types of security events?"
+    },
+    {
+      "requirement": "The system shall have a clear threshold for triggering security alerts to avoid noise.",
+      "source_citation": "There should be thresholds where actions cross a risk score or pattern.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for clear thresholds for triggering security alerts, indicating a security expectation, but the specifics are not fully defined.",
+      "follow_up_question": "Are there any specific threshold requirements for triggering security alerts?"
+    },
+    {
+      "requirement": "The system shall support the addition and editing of movie metadata, uploading of assets, management of pricing, and generation of pre-paid cards.",
+      "source_citation": "Add and edit movie metadata, upload assets, manage pricing, generate pre-paid cards.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for various administrative features, indicating a maintainability expectation.",
+      "follow_up_question": "Are there any specific requirements for the administrative features mentioned?"
+    },
+    {
+      "requirement": "The system shall provide a moderation queue for user-generated content such as reviews.",
+      "source_citation": "A way for users to flag inappropriate content, and admins need an easy moderation queue.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for a moderation queue for user-generated content, indicating a maintainability expectation.",
+      "follow_up_question": "Are there any specific requirements for the moderation queue?"
+    }
+  ]
+}

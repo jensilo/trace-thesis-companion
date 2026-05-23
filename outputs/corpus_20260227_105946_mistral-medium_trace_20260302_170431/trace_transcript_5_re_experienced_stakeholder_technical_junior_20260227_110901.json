@@ -1,0 +1,183 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_5_re_experienced_stakeholder_technical_junior_20260227_110901.txt",
+  "model": "mistral/mistral-medium-latest",
+  "timestamp": "20260302_170819",
+  "requirements": [
+    {
+      "requirement": "The system shall return search results for parts searches in under fifteen seconds.",
+      "source_citation": "for parts searches the target is that search results are returned in under fifteen seconds.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states a performance target for parts searches.",
+      "follow_up_question": "What is the expected performance under peak load conditions?"
+    },
+    {
+      "requirement": "The system shall return search results for preferred repair facility searches in under eight seconds.",
+      "source_citation": "for the preferred repair facility search, the target they gave was under eight seconds.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states a performance target for repair facility searches.",
+      "follow_up_question": "What is the expected performance under peak load conditions?"
+    },
+    {
+      "requirement": "The system shall achieve ninety-eight percent availability.",
+      "source_citation": "The target that was stated for SLAs is ninety-eight percent availability.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states an availability target.",
+      "follow_up_question": "What are the expected maintenance windows and how do they affect availability?"
+    },
+    {
+      "requirement": "The system shall support one thousand five hundred concurrent users at maximum load.",
+      "source_citation": "The ops team set a target... one thousand five hundred concurrent users at maximum load.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states a scalability target.",
+      "follow_up_question": "What is the expected performance degradation as the number of concurrent users increases?"
+    },
+    {
+      "requirement": "The system shall implement rate limiting, WAF rules, and DDoS mitigation to prevent denial-of-service attacks.",
+      "source_citation": "We need protections like rate limiting, WAF rules, and DDoS mitigation.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions security protections needed.",
+      "follow_up_question": "What specific WAF rules and rate limiting thresholds are required?"
+    },
+    {
+      "requirement": "The system shall implement role-based access control to protect sensitive customer data.",
+      "source_citation": "sensitive customer data must be protected by role-based access.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for role-based access control.",
+      "follow_up_question": "What are the specific roles and their corresponding access levels?"
+    },
+    {
+      "requirement": "The system shall adhere to corporate UI guidelines, including colors, spacing, approved widgets, and accessibility rules.",
+      "source_citation": "We do have corporate UI guidelines... colors, spacing, approved widgets, accessibility rules.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need to follow corporate UI guidelines.",
+      "follow_up_question": "Are there specific corporate UI guidelines documents that we should refer to?"
+    },
+    {
+      "requirement": "The system shall ensure that ninety-five percent of adjusters and collision estimators report the product is easy to use.",
+      "source_citation": "Ninety-five percent of adjusters and collision estimators report the product is easy to use.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states a usability target.",
+      "follow_up_question": "What specific usability metrics will be used to measure ease of use?"
+    },
+    {
+      "requirement": "The system shall ensure that users can be trained to use the product within two days of onsite training.",
+      "source_citation": "training-wise, the goal was that people can be up to speed after two days of onsite training.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states a training duration target.",
+      "follow_up_question": "What specific training materials and methods will be used?"
+    },
+    {
+      "requirement": "The system shall implement an adapter layer to normalize the Choice Parts feed before it hits the main app.",
+      "source_citation": "From a developer view, an adapter layer is ideal — some transformation service that normalizes the feed before it hits our main app.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for an adapter layer.",
+      "follow_up_question": "What specific normalization rules and schema validations are required for the adapter layer?"
+    },
+    {
+      "requirement": "The system shall implement alerts for changes in the Choice Parts feed structure.",
+      "source_citation": "Ops asked for alerts when the feed structure changes so we can react quickly.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for alerts on feed structure changes.",
+      "follow_up_question": "What specific alerting mechanisms and thresholds are required?"
+    },
+    {
+      "requirement": "The system shall cache aggressively for search responsiveness but expire critical fields faster, like availability status.",
+      "source_citation": "Our idea is to cache aggressively for search responsiveness but to have background syncs and a way to expire critical fields faster, like availability status.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the caching strategy for search responsiveness.",
+      "follow_up_question": "What specific caching mechanisms and expiration policies are required?"
+    },
+    {
+      "requirement": "The system shall support both onsite and remote training.",
+      "source_citation": "The business asked for onsite training... but should support both [onsite and remote].",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need to support both onsite and remote training.",
+      "follow_up_question": "What specific training methods and materials will be used for remote training?"
+    },
+    {
+      "requirement": "The system shall ensure that the UI is accessible, including support for screen magnifiers.",
+      "source_citation": "the UI guidelines also include accessibility... adjusters sometimes use screen magnifiers.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for accessibility support.",
+      "follow_up_question": "What specific accessibility standards and guidelines must be followed?"
+    },
+    {
+      "requirement": "The system shall integrate with the corporate single sign-on and logging pipeline.",
+      "source_citation": "we have to integrate with the corporate single sign-on and logging pipeline.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need to integrate with corporate SSO and logging.",
+      "follow_up_question": "What specific integration requirements and protocols are needed for SSO and logging?"
+    },
+    {
+      "requirement": "The system shall adhere to corporate architecture guidelines, including deployment models, authentication mechanisms, and logging standards.",
+      "source_citation": "The architecture review board expects adherence to their patterns — deployment models, authentication mechanisms, logging standards.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need to adhere to corporate architecture guidelines.",
+      "follow_up_question": "What specific architecture guidelines and standards must be followed?"
+    }
+  ]
+}

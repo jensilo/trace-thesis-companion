@@ -1,0 +1,88 @@
+Interviewer: Hi — thanks for meeting. Can you tell me, in your own words, what the disputes app needs to do from your perspective?
+
+Stakeholder: Yeah, sure. Um, I think at a high level it needs to let reps open and track disputes and, you know, follow up with merchants — the usual stuff. Also, I guess it has to look and feel like our other internal apps; we can't just invent a new UI every time, that causes confusion. So following the corporate UI guidance is kind of important, both for internal users and when external folks see things.
+
+Interviewer: Okay, so matching existing UI — got it. What about speed or responsiveness? Any problems there now?
+
+Stakeholder: Oh, yeah. I hate waiting around for screens to load. Even little things that take a few seconds add up and frustrate people. It should feel snappy; reps are on the phone and if they're staring at a spinner, it just... derails the call. But I mean, I don't have a stopwatch in my head, it's more of a "don't make me wait" feeling.
+
+Interviewer: Right. And how many people usually use it at the same time? Are we talking just a couple of reps or more?
+
+Stakeholder: There's definitely a chunk of people logged in during peak times. In the mornings lots of teams are working on disputes at once, and on some days the volume spikes. So it should handle those busy times without slowing down. I can't remember the exact headcount off the top of my head, though.
+
+Interviewer: Understood. Do you have uptime expectations — like, does it need to be up all the time, or can we have maintenance windows?
+
+Stakeholder: We need it to be basically available all the time because disputes can come in any day. But, um, we do schedule maintenance sometimes — usually in the really quiet hours so it doesn't interrupt folks. It's a pain if the app goes down during calls, though.
+
+Interviewer: You mentioned integrations earlier for transaction and member info. Which backend systems do we need to talk to?
+
+Stakeholder: Right, so transaction details come from the Statement Database. That's, like, the source of truth for charges and dates and whatnot, so reps expect that data to be accurate and consistent. Cardmember details are pulled from the Cardmember Information Database — if we show wrong contact info, that's a nightmare. Merchant info similarly comes from the Merchant Information Database. And for letters — like templates or printed correspondence — we hit the Letters app or the Print Letter Utility to actually produce those. Oh, and when we need to make adjustments to an account, those requests have to go to the posting and billing system so balances get updated properly.
+
+Interviewer: Okay, so Statement DB, Cardmember DB, Merchant DB, Letters and Print Letter Utility, and the posting/billing system — all integrated. Do reps ever need to generate letters directly from the disputes screen?
+
+Stakeholder: Yes, they do that as part of initiating a dispute or following up. It's handy if they can request a letter right there while on the call rather than jumping to a different tool. But, um, those letter requests should go out to the print utility — we don't want to handle printing ourselves.
+
+Interviewer: Got it. Who should be allowed to start or escalate disputes — any access or permission rules?
+
+Stakeholder: Not everyone should be able to kick off every action. Some of the data is sensitive, so only certain roles should initiate chargebacks or make account adjustments. I think program admins or senior reps have broader rights, while frontline folks only get the basic actions. It's mostly about limiting who can do the risky stuff.
+
+Interviewer: And for audit and compliance — any particular needs there?
+
+Stakeholder: Yeah, we need a full trail. Managers and auditors want to see who did what and when — like notes, status changes, letters sent, adjustments requested — the whole history. Also we have to comply with the usual regulations around disputes and privacy, so access and logging matter.
+
+Interviewer: Earlier you mentioned responsiveness — what would you consider "too long" for navigating between screens? Like, if a rep moves from a case list to a case detail, how many seconds is acceptable?
+
+Stakeholder: Hmm, okay — well if you make me pick a number, I'd say for the small stuff it should be under five seconds. Anything longer and people notice and complain.
+
+Interviewer: Thanks. And about concurrent users — you said there's a chunk at peak — can you say roughly how many simultaneous users the app should support without performance degradation?
+
+Stakeholder: Yeah, we did some sizing last year — the app really needs to handle around three hundred and fifty users at once during peak loads, otherwise things get sluggish.
+
+Interviewer: For availability, you said maintenance happens in quiet hours. Do you have the specific maintenance windows we should plan around?
+
+Stakeholder: Yeah, we try to do maintenance early morning local time. Specifically, Monday through Saturday we usually slot a window around three to four in the morning, and on Sundays we do a longer window, roughly one to five in the morning. Those are the times teams expect possible downtime.
+
+Interviewer: Okay. Back to integrations — are there any rules about where data comes from? Like, can we cache some things or pull from other systems?
+
+Stakeholder: We can cache read-only stuff for performance, sure, but for core details like the transaction data, we always want it coming from the Statement Database. Same for cardmember and merchant details — those databases are the authoritative sources. Caching is fine for UI snappiness, but reconciliation and adjustments should use the authoritative systems.
+
+Interviewer: What about letters and adjustments — you said they go to other systems. Any constraints on that?
+
+Stakeholder: Basically, letters have to be requested through the Print Letter Utility so they get printed and mailed consistently. And adjustments — when a rep requests an adjustment, that request must be sent to the posting and billing system so the ledger changes actually happen in the billing engine. We don't want a half-done process where the dispute shows adjusted but the billing system wasn't updated.
+
+Interviewer: For access control, you mentioned roles — who defines those roles? Is it the disputes team or HR?
+
+Stakeholder: I think it's a mix. The disputes product team defines what roles need to do, but the identity folks and compliance set the permissions and segregation. It can be a little messy — we sometimes have to go back and change who can do what after audits.
+
+Interviewer: You mentioned audit trails and compliance. Any specifics about what's required in the logs — like, every change, or just significant ones?
+
+Stakeholder: We should log everything meaningful — status changes, who initiated chargebacks, letters requested, account adjustments. Even small notes are useful later when someone reviews a case. And, um, timestamps, user IDs, that sort of thing. We've had audits where they wanted a detailed history and it was painful to piece together missing bits.
+
+Interviewer: Are there any UI or workflow things that slow reps down besides loading time? Like too many clicks or confusing screens?
+
+Stakeholder: Yeah, navigation can be clunky if we don't follow the corporate patterns I mentioned. When screens look different or buttons are in odd places, reps get tripped up. Also, if context isn't preserved between screens — like jumping to a merchant profile and losing the original case view — that disrupts the call. Oh, and small tangent: once we had a rep accidentally create duplicate disputes because the confirmation was unclear. That was a mess to clean up.
+
+Interviewer: Understood. Anything else you think is important that we haven't touched?
+
+Stakeholder: Just — we need clear segregation between internal and external users; external support folks shouldn't see internal-only notes. And whatever we build, make it predictable and consistent. I mean, consistency reduces mistakes, which is really the point here.
+
+Interviewer: Great, thanks. One last quick thing — when you say "predictable" and "consistent" do you mean following the same visual patterns as other corporate apps, or also consistent backend behavior?
+
+Stakeholder: Both, really. Visual patterns help the user, and consistent backend behavior — like always getting the right source for data and predictable error handling — helps reps trust the system. If something looks the same but behaves differently, that's worse than a different-looking app that behaves reliably.
+
+Interviewer: Okay, that's all from me for now. Appreciate your time.
+
+Stakeholder: No problem — happy to help. If you want, I can show you some of the pain points in the live app later, but, uh, fair warning, it's not the most exciting demo.
+
+---
+Selected Requirements:
+1. [NICE.csv line 149] [quality, legal, look_and_feel] 'The Disputes application shall comply with the corporate standards for user interface creation for internally and externally used applications.'
+2. [NICE.csv line 155] [quality, performance] 'The maximum wait time for a user navigating from one screen to another within the Disputes application shall be no more than 5 seconds.'
+3. [NICE.csv line 156] [quality, performance, scalability] 'The Disputes application shall support 350 concurrent users without any degradation of performance in the application.'
+4. [NICE.csv line 157] [quality, availability, operability] 'The Disputes application shall be available 24x7x365 with the exception of the following scheduled maintenance windows. Monday â€“ Saturday 3:00am to 4:00am EST Sunday 1:00amd to 5:00am EST'
+5. [NICE.csv line 158] [quality, operability] 'The Disputes application shall interface with the Statement Database. The Statement Database provides the transaction details to the Disputes System. All transaction details must be obtained from the Statement Database'
+6. [NICE.csv line 159] [quality, operability] 'The Disputes application shall interface with the Cardmember Information Database. The Cardmember Information Database provides detailed information with regard to a cardmember. All cardmember detail information must be obtained from the Cardmember Information Database.'
+7. [NICE.csv line 160] [quality, operability] 'The Disputes applications shall interface with the Merchant Information Database. The Merchant Information Database provides detailed information with regard to the merchant. All merchant detail information shall be obtained from the Merchant Information Database.'
+8. [NICE.csv line 161] [quality, operability] 'The Disputes application shall interface with the Letters application. This will allow the Disputes application to request letters as part of the dispute initiation and dispute follow up process. All letter requests must be sent to the Print Letter Utility application.'
+9. [NICE.csv line 162] [quality, operability] The Disputes application shall interface with the Cardmember Posting and Billing System. This will allow the Disputes application to request adjustments to cardmember and merchant's accounts. All adjustment requests must be sent to the Cardmember Posting and Billing System.'
+10. [NICE.csv line 163] [quality, security] 'The Disputes application shall ensure that only users with the appropriate access level are allowed to initiate dispute requests.'

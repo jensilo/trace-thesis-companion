@@ -1,0 +1,117 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_4_re_experienced_stakeholder_nontechnical_enduser_20260227_110534.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_175159",
+  "requirements": [
+    {
+      "requirement": "The system shall display case status using color-coding to allow users to scan and identify urgent cases at a glance.",
+      "source_citation": "If pending is one way and escalated is another — just, you know, obvious.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for color-coding to distinguish between different case statuses, which directly relates to usability.",
+      "follow_up_question": "What specific colors should be used for each status, and how should these colors be tested for accessibility?"
+    },
+    {
+      "requirement": "The system shall navigate between screens or run searches within five seconds to prevent interruptions during member calls.",
+      "source_citation": "When a simple click takes ages — maybe around five seconds I start feeling impatient.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a time threshold for acceptable performance, which is crucial for maintaining usability during calls.",
+      "follow_up_question": "Are there any specific scenarios or data volumes that might impact this performance requirement?"
+    },
+    {
+      "requirement": "The system shall pull transaction details, member information, and merchant information from authoritative systems to ensure data consistency and avoid discrepancies.",
+      "source_citation": "If the statement system is the place where transactions are recorded, the dispute screen should show whatever is in there. Same for member and merchant details.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "data_integrity",
+      "confidence": 5,
+      "rationale": "The stakeholder emphasizes the importance of using authoritative systems to prevent stale or inconsistent data.",
+      "follow_up_question": "What are the specific authoritative systems, and how should the dispute system integrate with them?"
+    },
+    {
+      "requirement": "The system shall be available during business hours and have predictable maintenance windows between 1 AM and 5 AM on Sundays, and between 3 AM and 4 AM on other days.",
+      "source_citation": "Maintenance late at night is fine, like when most members aren’t calling. I guess weekends are okay too if it’s early morning hours. Those times rarely affect our lines.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies acceptable maintenance windows to minimize disruption to business operations.",
+      "follow_up_question": "What is the maximum acceptable downtime during these maintenance windows?"
+    },
+    {
+      "requirement": "The system shall provide a clear audit trail, including who performed actions, timestamps, and comments, to ensure accountability and compliance.",
+      "source_citation": "I need to be able to see a clear history of every action, who did it, timestamps, and any comments added.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "compliance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for an audit trail to track actions and ensure compliance.",
+      "follow_up_question": "What specific details should be included in the audit trail, and how should it be accessed?"
+    },
+    {
+      "requirement": "The system shall implement role-based access controls to restrict access to sensitive actions and data based on user roles.",
+      "source_citation": "Not everyone should be able to initiate a dispute. Some of the newer hires shouldn't submit certain chargebacks without a supervisor's sign-off.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder emphasizes the need for role-based access controls to prevent unauthorized actions.",
+      "follow_up_question": "What specific roles and permissions should be defined, and how should they be enforced?"
+    },
+    {
+      "requirement": "The system shall maintain a consistent look and feel with other corporate applications to reduce disorientation and errors.",
+      "source_citation": "The buttons, fonts, and layout should feel familiar. We use a few corporate tools every day and they have consistent menus, spacing, and help links.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "look_and_feel",
+      "confidence": 4,
+      "rationale": "The stakeholder highlights the importance of consistency with corporate UI standards for usability.",
+      "follow_up_question": "What specific corporate UI guidelines should be followed, and how should they be enforced?"
+    },
+    {
+      "requirement": "The system shall save and allow users to reuse their most-used searches or filters to improve efficiency.",
+      "source_citation": "If the system could save my most-used searches or filters so I don’t have to recreate them each morning, that would be a tiny quality-of-life win.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for saved searches or filters to improve usability and efficiency.",
+      "follow_up_question": "What specific search or filter criteria should be saved, and how should they be managed?"
+    },
+    {
+      "requirement": "The system shall generate correspondence that matches the data displayed in the system to ensure consistency and accuracy.",
+      "source_citation": "Nothing worse than sending a letter that doesn’t match what’s in the system.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "data_integrity",
+      "confidence": 4,
+      "rationale": "The stakeholder emphasizes the importance of consistent and accurate correspondence to avoid discrepancies.",
+      "follow_up_question": "What specific types of correspondence should be generated, and how should they be validated?"
+    },
+    {
+      "requirement": "The system shall allow managers to approve sensitive actions through a digital sign-off within the case to ensure accountability and compliance.",
+      "source_citation": "Ideally, a digital approval inside the case — a button or workflow that records the manager’s name and gives a timestamp.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "compliance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for a digital approval process to ensure accountability and compliance.",
+      "follow_up_question": "What specific sensitive actions require manager approval, and how should the approval process be implemented?"
+    }
+  ]
+}

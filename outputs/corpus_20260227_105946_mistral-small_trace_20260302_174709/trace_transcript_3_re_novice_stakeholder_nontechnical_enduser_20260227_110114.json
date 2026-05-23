@@ -1,0 +1,117 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_3_re_novice_stakeholder_nontechnical_enduser_20260227_110114.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_174711",
+  "requirements": [
+    {
+      "requirement": "The system should respond to routine actions (e.g., searching for a student or updating an assignment) within a couple of seconds.",
+      "source_citation": "For the little things, it should feel almost instant — a couple of seconds at most before I can move on.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the desired response time for routine actions, indicating a clear performance requirement.",
+      "follow_up_question": "What specific actions should be completed within a couple of seconds, and what are the acceptable response times for more complex actions?"
+    },
+    {
+      "requirement": "The system should be available during business hours with an uptime of around 95%.",
+      "source_citation": "I’d be comfortable with it being available the vast majority of the time, like maybe around ninety-five percent.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the desired availability percentage, which is a clear indicator of the system's availability requirement.",
+      "follow_up_question": "What are the acceptable downtime windows for maintenance or updates, and how should downtime be communicated to users?"
+    },
+    {
+      "requirement": "The system should support concurrent use by around ten users during peak times, particularly in the mornings.",
+      "source_citation": "On busy mornings, probably around ten of us are working in it at the same time.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the number of concurrent users during peak times, which is a clear indicator of the system's scalability requirement.",
+      "follow_up_question": "What is the expected performance of the system when ten users are logged in concurrently, and what are the peak usage times?"
+    },
+    {
+      "requirement": "The system should be intuitive and easy to use, requiring minimal training for non-technical users.",
+      "source_citation": "Most of the folks here aren’t technical — we’re used to simple things. It needs to be intuitive so we don’t dread using it.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for an intuitive and easy-to-use system, indicating a clear usability requirement.",
+      "follow_up_question": "What specific usability features or design principles should be incorporated to ensure the system is intuitive for non-technical users?"
+    },
+    {
+      "requirement": "The system should prevent obvious mistakes, such as entering shifts outside normal clinical hours or assigning students to inappropriate sites.",
+      "source_citation": "I want it to stop obvious mistakes, like entering a shift outside normal clinical hours or assigning someone to a site that doesn’t accept that program.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "data_quality",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for the system to prevent obvious mistakes, indicating a clear data quality requirement.",
+      "follow_up_question": "What specific types of mistakes should the system prevent, and what are the acceptable warning or error messages for users?"
+    },
+    {
+      "requirement": "The system should have role-based access controls to restrict sensitive information, such as student personal information and clinical site details.",
+      "source_citation": "Student personal information is sensitive; not every adjunct or site contact should see that. Clinical site details are also sensitive in their own way.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for role-based access controls to restrict sensitive information, indicating a clear security requirement.",
+      "follow_up_question": "What specific roles and permissions should be defined, and what are the acceptable access levels for each role?"
+    },
+    {
+      "requirement": "The system should integrate with existing university systems, such as the registrar, student records, and learning platforms.",
+      "source_citation": "It would be great if it could exchange basic info so I’m not retyping the same things. But, um, honestly, we haven’t standardized how we do that, so I don’t know all the details. It just needs to play nicely with the systems we already use.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for integration with existing systems, indicating a clear maintainability requirement. However, the specific details of the integration are not provided.",
+      "follow_up_question": "What specific data or functionalities should be integrated with existing systems, and what are the acceptable integration methods or protocols?"
+    },
+    {
+      "requirement": "The system should provide clear warnings or hard stops for errors, with explanations and suggested fixes.",
+      "source_citation": "For something clearly wrong it should block you and explain why. For borderline things, a warning with suggested fixes would be nice.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "error_prevention",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the need for clear warnings or hard stops for errors, indicating a clear error prevention requirement.",
+      "follow_up_question": "What specific types of errors should trigger warnings or hard stops, and what are the acceptable explanations and suggested fixes for users?"
+    },
+    {
+      "requirement": "The system should be responsive and not feel slow or clunky during use.",
+      "source_citation": "It should feel responsive so you don’t feel like you’re waiting for it.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the need for a responsive system, indicating a clear performance requirement.",
+      "follow_up_question": "What specific performance metrics or benchmarks should be used to ensure the system feels responsive to users?"
+    },
+    {
+      "requirement": "The system should have automatic saving and a way to roll back changes to prevent data loss.",
+      "source_citation": "Automatic saving and a way to roll back changes would be reassuring.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "reliability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly states the need for automatic saving and rollback functionality, indicating a clear reliability requirement.",
+      "follow_up_question": "What specific data or changes should be automatically saved, and what are the acceptable rollback mechanisms or versions for users?"
+    }
+  ]
+}

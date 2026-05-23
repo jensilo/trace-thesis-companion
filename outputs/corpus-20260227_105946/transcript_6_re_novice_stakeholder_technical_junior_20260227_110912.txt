@@ -1,0 +1,64 @@
+Interviewer: Hi—thanks for talking with me. Could you start by saying what you do on this project and how long you’ve been on it?
+
+Stakeholder: Yeah, sure — I’m a junior dev on the team, been poking at this system for about a year now. I mostly work on the backend glue, so, you know, connecting the booking logic to the data stores and the email bits. I think of it as the thing that has to run wherever folks happen to put it, as long as the Java runtime is there — that’s been our mental model from day one.
+
+Interviewer: Okay. So about that — you said it should run where Java is available. Do we need any particular server software or—like, how does it actually get hosted?
+
+Stakeholder: Right, hosting is via web and application servers — we run it on typical Java app stacks. So people mention Tomcat or JBoss when they talk about examples, and, uh, Apache is in the mix sometimes for frontend proxying. I guess the point is it’s built to sit on that kind of server technology rather than being a desktop app or something.
+
+Interviewer: Got it. And for the data side — where does the meeting and room info live? One database or…?
+
+Stakeholder: It depends on the client site, really. Some places have big enterprise databases, some have lighter databases sitting in the office. We’ve had to make the code work with whatever the IT team prefers, so the app can talk to different database systems; I’ve been fixing little compatibility quirks as they come up. Sorry, I’m getting ahead — I mean, it’s supposed to be flexible there.
+
+Interviewer: Hmm. You mentioned email earlier — can you tell me what the app does with email?
+
+Stakeholder: Yeah, it needs to send notifications — confirmations, reminders, cancellations — and that means it has to hand off mail to whatever mail server the company uses. For us that’s usually an Exchange cluster or some SMTP relay, so we plug into that. Oh, and we log failed sends so we can retry or help support figure out why a mail didn’t go out.
+
+Interviewer: When people use it, do they use browsers? Mobile too? How should it display?
+
+Stakeholder: People use normal web browsers — desktops mostly, but sometimes laptops or tablets. The UI should just render correctly in the common browsers companies use, and not fall apart when someone has, like, an older browser. We try to keep the HTML and CSS fairly standard so it’s broadly compatible. I mean, it’s annoying when layouts break, so we try to avoid that.
+
+Interviewer: So do we test specific browsers or just hope it works?
+
+Stakeholder: We do some testing against a representative set of browsers; teams generally run it through the ones they care about. I don’t run the whole matrix myself, but the idea is that it shouldn’t be a mystery which browsers will work — we try to cover the ones users rely on.
+
+Interviewer: What happens when something goes wrong? Like an exception or crash?
+
+Stakeholder: It should definitely log exceptions — stack traces, context, whatever — and keep a record the ops or our support team can pull. Ideally the app will capture enough info so we can reproduce and fix the issue, and there’s a mechanism to send those logs back for analysis rather than leaving them scattered on a single server, because, well, people move servers and you lose context.
+
+Interviewer: Performance-wise, any expectations? Like how fast pages should load or how many users can be in the system at once?
+
+Stakeholder: It just needs to feel snappy, honestly — waiting around kills productivity. Heavy operations should be quick. Also mornings and right before big meetings are when the most people hit it, so it needs to not choke during those peaks. And we want it to scale forward a bit as the company grows, not be a one-off that flails when usage increases.
+
+Interviewer: Security — who gets to log in and book rooms? Is it open to guests?
+
+Stakeholder: Access needs to be controlled. Mostly it’s company employees, and then occasionally external partners who’ve been set up with approved accounts. We shouldn’t be letting random people in, so integration with whatever company identity system or approved account list is important. Also audit trails are useful when someone says, “Hey, why was my meeting moved?”
+
+Interviewer: The developers on future maintenance — any thoughts on how the code should be organized so people can add features later?
+
+Stakeholder: We try to follow common design patterns and best practices so the codebase is predictable, not some custom spaghetti. That makes it easier for someone new to jump in and add a feature without undoing half the app. I mean, I’ve been the new person before and it’s awful when nothing is documented or consistent.
+
+Interviewer: Are there any other things that have caused trouble or that you wish were different?
+
+Stakeholder: Hmm, yeah — small things. For example, once we had a site where the calendar times were off because of a weird local DB setting and two teams ended up double-booked and, uh, it got awkward with coffee spilled during a scramble to move people. That taught us to pay attention to locale and timezone handling and to make the error messages less cryptic. Also, we sometimes get oddities when support tries to debug without the full logs; so getting reliable diagnostic data out of the system is a recurring gripe.
+
+Interviewer: Okay, that’s helpful. Sorry, one more quick one — do we need any accessibility or branding support, like for different languages or company themes?
+
+Stakeholder: Yeah, it should be customizable so clients can put their branding on it and it should support multiple languages. Accessibility is important too — keyboard navigation and screen reader friendliness — because different offices have different needs and we don’t want to exclude people.
+
+Interviewer: Right. Alright, thanks — that gives me a lot. I might come back with specifics later.
+
+Stakeholder: No problem. And, uh, if you want, I can point you to a list of the specific environments we’ve hit in the wild — that might make the next pass easier.
+
+---
+Selected Requirements:
+1. [NICE.csv line 278] [quality, portability] 'The product will function alongside server software on any operating system where the Java runtime can be installed.'
+2. [NICE.csv line 280] [quality, operability] 'The product must make use of web/application server technology. Open source examples include Apache web server Tomcat and the JBoss application server.'
+3. [NICE.csv line 313] [quality, operability, portability] 'The product is expected to integrate with multiple database management systems. The product will operate with Oracle SQL Server DB2 MySQL HSQL and MS Access.'
+4. [NICE.csv line 302] [quality, operability, portability] 'The product must be able to interface with various email servers. The product shall be able to send email.'
+5. [NICE.csv line 300] [quality, look_and_feel, operability, portability] 'The product must be able to interface with any HTML browser. The product shall transmit data between the user and the product without problems. The product shall display HTML properly in 80% of all HTML browsers tested (minimum is to test 8 browsers).'
+6. [NICE.csv line 295] [quality, functional, maintainability] 'The product shall create an exception log of problems encountered within the product for transmission to our company for analysis and resolution.'
+7. [NICE.csv line 293] [quality, performance] The response shall be fast enough to avoid interrupting the user's flow of thought. 90% of tasks shall complete within 5 seconds. 98% of tasks shall complete within 8 seconds.'
+8. [NICE.csv line 296] [quality, scalability] 'The product shall be capable of handling up to 1 000 concurrent requests. This number will increase to 2 000 by Release 2. The concurrency capacity must be able to handle peak scheduling times such as early morning and late afternoon hours.'
+9. [NICE.csv line 315] [quality, security] 'The product shall ensure that only company employees or external users with company-approved user IDs may have product access. 100% of all logons shall be by either company employees or external users with company-approved user IDs.'
+10. [NICE.csv line 307] [quality, maintainability] 'The product must be designed using Design Patterns and coding best practices. 90% of maintenance software developers are able to integrate new functionality into the product with 2 working days.'

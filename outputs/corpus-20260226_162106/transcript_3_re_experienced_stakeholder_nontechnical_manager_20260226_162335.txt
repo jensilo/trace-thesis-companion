@@ -1,0 +1,150 @@
+Interviewer: Thanks for taking the time. To start at a high level, tell me in your own words what success looks like for this Nursing Program Scheduling and Management System.
+
+Stakeholder: Sure—thanks. I think success is one place where program administrators and nursing staff can do everything they need for cohorts, curriculum, and both clinical and classroom scheduling without juggling a dozen spreadsheets and email threads. It should cut the back-and-forth with clinical sites, reduce the obvious human errors we keep seeing, and play nicely with the university systems we already depend on—CampusConnect primarily. If those things happen, faculty will actually use it and we’ll stop having last‑minute firefights before clinicals.
+
+Interviewer: When you say “play nicely with CampusConnect,” what do you mean exactly? Which pieces of CampusConnect are must-connect on day one?
+
+Stakeholder: Good question. I mean core student and course information—student identity, program and course lists, and basic enrollment facts should come from CampusConnect rather than us trying to be the source of truth. I’d prefer not to reinvent account provisioning either; whatever single-sign-on and user identity CampusConnect uses should be respected. I can get you the CampusConnect contact and whatever API or export docs they have, but yes—that interface is non-negotiable.
+
+Interviewer: Okay, so integration with CampusConnect is a firm dependency. Who are the primary users we must support on day one? Can you describe the roles and roughly how many people are in each?
+
+Stakeholder: Hmm, well, the day-to-day users are program administrators and the scheduling team, then clinical coordinators at DePaul and site liaisons at hospitals, and of course some faculty who teach and supervise clinicals. There are also students who need to see their own schedules. The core group that will be actively managing schedules is smaller—our scheduling team and program admins are the heavy users. I can pull together more exact counts, but I’d say the morning planning sessions typically have about ten people actively making changes.
+
+Interviewer: When you say “students need to see their schedules,” do you mean view-only access, or are there actions students should be able to take inside the system?
+
+Stakeholder: Mostly view and acknowledge, and maybe request a swap or raise a conflict. We don’t want them changing rosters. They should get notifications and be able to confirm or flag issues. The instructors and site coordinators need more control—like marking attendance or confirming placement availability—but again, limited to their scope.
+
+Interviewer: You mentioned reducing administrative mistakes several times. Tell me about the types of mistakes that cause the most pain today. Be specific—give me recent examples.
+
+Stakeholder: Oh, where to start—well, just last term a student got assigned to a clinical site on a day when the site had a training blackout, so they couldn’t accept students that day. And we frequently have instructors double-booked because of overlapping clinical blocks, or students accidentally scheduled into two different cohorts for the same time slot. There are also times a site’s capacity is exceeded because someone forgot to update the spreadsheet. These aren’t theoretical; they cause missed placements, angry site coordinators, and sometimes we have to scramble replacements last minute.
+
+Interviewer: Which of those should the system block outright, and which should it just warn about? In other words, are some rules hard constraints and others soft guidance?
+
+Stakeholder: Hmm, I think anything that would create an actual double-booking—like assigning a student or instructor to two places at once—should be blocked. Capacity overruns, maybe a strong warning first, but allow an override if a program admin has a valid reason. If an override happens, it should be logged so we can audit who did it and why. For things like prerequisites or graduation-hour requirements, the system should flag but perhaps allow program staff to review and approve exceptions.
+
+Interviewer: You used the word “logged”; what level of audit trail are you imagining? What would you need to see in an audit?
+
+Stakeholder: I’d want to know who made the change, when they made it, what the prior value was, and a short justification if they overrode a warning. That way, during accreditation audits or when something blows up, we can see the decision path. It doesn’t need to be some forensic system, but enough context to understand the why.
+
+Interviewer: Earlier you said adoption depends on people being comfortable quickly. What does “quickly” mean to you? How much training time are you imagining and how will you judge that people are “able to use” the system?
+
+Stakeholder: I think this is important—if it’s not obvious, people will revert to email. Ideally, everyone who needs to use it should be competent after a single day of training. By that I mean a one‑day, hands-on session where they can perform their core tasks without hand-holding afterwards. For acceptance, I’d expect they can complete a checklist of the main tasks—like scheduling a student, assigning to a site, and approving a clinical block—on their own. We could do short quizzes or observed task sign-offs. I’ll admit I don’t want long manuals; people are busy.
+
+Interviewer: When you say “one day,” do you mean a full eight-hour classroom, a shorter hands‑on workshop, or some combination with self-study?
+
+Stakeholder: I picture an interactive day—maybe six to eight hours of instructor-led work with real examples from our program. There could be shorter refresher modules online afterward, but the initial day should be enough for the baseline users.
+
+Interviewer: You also mentioned that tasks should “feel snappy.” Can you put a number on that? How long is too long when doing routine student management tasks versus heavier operations like generating full schedules?
+
+Stakeholder: Hmm, I’m not a performance engineer, but for everyday actions like enrolling a student or updating a profile, waiting more than a few seconds is noticeable and annoying. For full schedule generation I’m okay if it takes a bit longer because it’s a heavy job, but not so long that staff can’t iterate during planning sessions. If I had to pin it down, maybe small actions should complete in about five seconds and schedule runs in under half a minute—that would keep people engaged during a working meeting.
+
+Interviewer: That’s helpful—thanks. You also said availability during work hours matters. What hours are critical for you, and how much downtime could you tolerate?
+
+Stakeholder: The critical window is when our office and partners are active—roughly morning into early evening on weekdays. We need the system to be reliably there during those hours. I don’t expect zero maintenance windows, but if it’s flaky during business hours people lose trust. I’d want it up most of the time—again, I don’t have an exact SLA in mind, but it needs to be dependable.
+
+Interviewer: When you say “most of the time,” can you be more specific—do you think ninety‑something percent availability is acceptable, or does it need to be nearly continuous?
+
+Stakeholder: Yeah, put me on record—something in the mid‑90s percent availability makes me comfortable. If it dips below that, we’ll have problems. But I also want planned maintenance outside of our business window and advance notices.
+
+Interviewer: Understood. Let’s shift to language and terminology. You mentioned the system must use familiar nursing terms. Which nursing standards or glossaries should we align with, and who will validate the wording?
+
+Stakeholder: We should align with the common national nursing terminology—what faculty and clinical partners expect. I don’t have a single standard document off the top of my head, but aligning with established nursing bodies is important. We have a faculty SME who can approve wording; I’ll pull them into a terminology workshop. Also, the system’s student-facing notices should use clear Standard English—nothing too technical on the student side.
+
+Interviewer: Who at DePaul will sign off on the terminology? Can we get that SME scheduled?
+
+Stakeholder: Yes, I’ll arrange that. There’s a faculty lead who handles clinical partnerships—she’s picky but useful. I’ll invite her to the workshop.
+
+Interviewer: You talked about data quality earlier—“front-line checks.” Give me examples of the validations you want at input, and whether they should be immediate or could be batch-checked later.
+
+Stakeholder: Simple things like required fields, date and time ranges that make sense, and flags when someone tries to assign a student to a site that’s already full. Those should be immediate. For more complex integrity—like reconciling against CampusConnect records or running nightly reports on anomalies—those can be batch. But basic checks should prevent garbage from getting into the system in the first place.
+
+Interviewer: Should overrides be allowed, and if so who can override and how should the system record it?
+
+Stakeholder: Overrides should be possible but limited to senior program admins. When an override occurs, capture who did it, a timestamp, and a short note explaining why. We need that for traceability.
+
+Interviewer: Let’s talk about the expected lifetime and records. How long do you expect the system to be the authoritative source for curriculum and scheduling data?
+
+Stakeholder: I want this to be our system for the long haul—at least several years so it becomes the source of record for accreditation and audits. We need a plan to keep data accessible and exportable in case of future transitions.
+
+Interviewer: Can you be specific—how many years are you planning for the system to manage curriculum and scheduling?
+
+Stakeholder: Yeah, we should expect it to be the authoritative system for at least five years. That gives us stability for accreditation windows and program planning.
+
+Interviewer: On integrations again—do you expect a real-time sync with CampusConnect or will nightly batches suffice? And which data should flow both ways versus one-way?
+
+Stakeholder: For identity and course catalogs, near-real-time would be ideal so we’re always aligned, but I recognize that might be more work. Enrollment data could probably be shared nightly. Mostly I care that student identity and course definitions stay in sync—if CampusConnect changes a course code we shouldn’t be stale for weeks. I’ll coordinate with the CampusConnect team to see what they support.
+
+Interviewer: If CampusConnect is unavailable, what should the system do—fail, work in a degraded mode, or allow changes to queue up?
+
+Stakeholder: Degraded, ideally. We should be able to view cached data and perform local scheduling work that can sync later. We can’t have people blocked from scheduling because a campus service is down.
+
+Interviewer: Privacy and compliance—what organizational policies and regulations do we need to follow? Any specifics about PHI or student records we should be aware of?
+
+Stakeholder: We must follow DePaul’s information security policies and FERPA for sure. If the system ends up capturing clinical patient information, there are HIPAA implications and we should avoid storing PHI unless absolutely necessary. Access should be role-based—site coordinators shouldn’t see everything. I’ll provide the official policy documents and compliance contacts.
+
+Interviewer: For notifications and reports, what events must trigger messages and which channels are preferred? And how strict should content be about terminology and privacy?
+
+Stakeholder: Notifications need to cover schedule changes, site confirmations, and any last-minute conflicts. Email is primary for students and instructors; site liaisons sometimes prefer direct emails to a departmental inbox. Some urgent items might need SMS for students, but that requires consent handling. All messages should use our agreed nursing terminology and be vetted for privacy—no sensitive student details in push texts. Templates should be owned by program staff so we can control tone and wording.
+
+Interviewer: Do you want notifications to be immediate, or would batching be acceptable for non-urgent updates?
+
+Stakeholder: Immediate for schedule changes that affect someone that day. Non-critical digests can be batched.
+
+Interviewer: For system acceptance at the end, what evidence will convince you the system is ready? Which tests or demonstrations are deal breakers for go‑live?
+
+Stakeholder: I want load tests that show the system can handle our typical work sessions, user acceptance with actual staff completing the task checklist after a one‑day training, and integration tests with CampusConnect that prove the important data flows. Also, monitoring dashboards for uptime and error rates should be in place. If the system can’t generate schedules quickly enough for our planning meetings or if the CampusConnect sync fails, that’d be a showstopper.
+
+Interviewer: When you say “generate schedules quickly enough,” can I confirm the performance expectation you gave earlier—five seconds for small tasks and under thirty seconds for schedule generation—is that your acceptance target?
+
+Stakeholder: Yes, that’s my target. It’s what will keep our planning sessions efficient.
+
+Interviewer: You mentioned earlier that the scheduling team meets in the morning and there are about ten people. I’m going to push on that—during peak planning, how many simultaneous users do you expect we must support so the system doesn’t slow down?
+
+Stakeholder: Right—during peak, it’s not just the ten in the scheduling room. There may be a few faculty checking in, and a couple of clinical site coordinators. All told, I’d budget for maybe a dozen simultaneous active users at peak, with more people viewing schedules.
+
+Interviewer: Good—thank you. Thinking about risks, what do you see as the biggest external dependencies that could delay or complicate delivery?
+
+Stakeholder: CampusConnect integration is the big one—if their team can’t provide APIs or timely access, we get stuck. Also, if clinical sites are slow to adopt the system or insist on their own processes, that’s a coordination risk. Budget for hosting matters too; if we need high availability it can cost more than expected. And honestly, if the UI is confusing, faculty will bail and we’ll be back on spreadsheets.
+
+Interviewer: You mentioned hosting and availability—what level of uptime did you have in mind when you said the system must be dependable? You referenced “mid-90s” earlier; over what measurement period should that be assessed?
+
+Stakeholder: I think measuring it over a monthly period makes sense. Mid-90s percent availability within a month during business hours would be acceptable to us. Outside business hours we can be a bit more lenient for planned maintenance.
+
+Interviewer: Noted. A couple of clarity checks before we wrap: you said basic data integrity checks should be immediate—can you list the top three validations that cannot be missed at input?
+
+Stakeholder: Hmm, I’d say first is preventing double-bookings for people and sites, second is enforcing sensible date and time ranges so you can’t schedule a class in the past or with impossible hours, and third is preventing assignments that exceed a site’s capacity. Those three would avoid the common, painful mistakes we see.
+
+Interviewer: That’s helpful. You mentioned earlier that overrides should be logged and limited to senior admins—who will define who those people are and how many there should be?
+
+Stakeholder: That will be defined by the program director and myself. It won’t be a large group—just the people who are authorized to make exceptional routing decisions.
+
+Interviewer: One more: you said the system must be authoritative for at least five years and that data should be exportable. What export formats do you expect—and do you require an automated export schedule for audits?
+
+Stakeholder: I’m not picky about formats as long as they’re standard and machine-readable—CSV or XML would work. We should be able to run an export for a cohort or term on demand, and an archive export annually for compliance purposes.
+
+Stakeholder: Oh, and sorry—small tangent—I’m also thinking about how this will finally get us off a particular spreadsheet that has been the bane of my existence for years. If this thing can retire that file, I’ll be very happy. Anyway.
+
+Interviewer: (laughs) I hear you. Last items: who will be our points of contact for CampusConnect and for the clinical site partners, and can you provide the organizational information security policy and the faculty SME contact for terminology?
+
+Stakeholder: Yes—I’ll send you the CampusConnect contact and the API docs they have, the information security policy, and the faculty clinical lead. I’ll also gather current spreadsheets and examples of recent errors to ground your tests. Finally, I agree with a pilot rollout—let’s start with one cohort to validate training, schedule generation, and integrations before a full launch.
+
+Interviewer: Excellent. To summarize the action items I’ll take away: you’ll provide CampusConnect contact and API docs, the information policy and compliance contacts, a list of users and peak concurrency confirmation, sample data and example errors, and schedule the terminology SME and pilot cohort. Is that correct?
+
+Stakeholder: Yes, that’s right. I’ll try to get those to you within the next week. And please—design the training so it really is doable in a single day. We’ll judge success on whether people stop using the spreadsheets.
+
+Interviewer: Thanks. I’ll follow up with a calendar invite for the terminology workshop and a checklist for the one‑day training acceptance. Anything else you want to add before we finish?
+
+Stakeholder: No, that covers the big stuff. Oh—just remind the team that notifications need an opt-in for SMS if we go that route. Other than that, I’m excited to see the first prototype. Thanks.
+
+---
+Selected Requirements:
+1. [NICE.csv line 71] [quality, usability] 'All of the users shall be able to use the system after one day of training.'
+2. [NICE.csv line 72] [quality, usability] 'The system shall help the user avoid making mistakes while scheduling classes and clinicals for the nursing students.'
+3. [NICE.csv line 77] [quality, look_and_feel, usability] 'The verbiage used within the system shall be consistent with Standard English and the terminology of the national Nursing Community.'
+4. [NICE.csv line 79] [quality, performance] 'The response time of general student management tasks shall take no longer than 5 seconds and the response time of schedule generation shall take no longer than 30 seconds.'
+5. [NICE.csv line 81] [quality, availability] 'The system shall achieve 95% up time.'
+6. [NICE.csv line 82] [quality, availability, scalability] 'system shall be able to handle all of the user requests/usage during business hours.'
+7. [NICE.csv line 85] [quality, functional, scalability] 'The system shall be expected to manage the nursing program curriculum and class/clinical scheduling for a minimum of 5 years.'
+8. [NICE.csv line 89] [quality, operability] The system shall interface with CampusConnect's central server'
+9. [NICE.csv line 99] [quality, functional, security] 'The system shall have basic data integrity checking to reduce the possibility of incorrect or invalid data being introduced.'
+10. [NICE.csv line 100] [quality, functional, legal, security] The system shall protect private information in accordance with the organization's information policy.'

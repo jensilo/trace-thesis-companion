@@ -1,0 +1,216 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_8_re_novice_stakeholder_technical_junior_20260227_111309.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_173424",
+  "requirements": [
+    {
+      "requirement": "The UI interactions should feel snappy, with small interactions taking no more than a few seconds.",
+      "source_citation": "The UI interactions should feel snappy so people don't think something broke. Small things like searching or opening a movie detail shouldn't make you stare at a spinner.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for snappy UI interactions and specifies that small interactions should not take more than a few seconds. This indicates a clear performance requirement.",
+      "follow_up_question": "What specific metrics or thresholds should be used to measure the snappiness of UI interactions?"
+    },
+    {
+      "requirement": "Regular clicks and small requests should take no more than five seconds.",
+      "source_citation": "For regular clicks and small requests, if it takes more than a few seconds, users feel annoyed. I'd say around five seconds is when people start to lose patience for simple stuff.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder provides a specific time frame of five seconds for regular clicks and small requests, indicating a clear performance requirement.",
+      "follow_up_question": "Are there any specific scenarios or interactions that should be prioritized for performance optimization?"
+    },
+    {
+      "requirement": "Card authorization should take under fifteen seconds from submit to result.",
+      "source_citation": "Card processing needs to be fast but secure. People abandon if the card keeps hanging. I'd put card authorisation at maybe under, say, fifteen seconds from submit to result. Longer than that and you risk drop-off.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a clear time frame of under fifteen seconds for card authorization, indicating a performance requirement.",
+      "follow_up_question": "What are the acceptable failure rates or error conditions for the card authorization process?"
+    },
+    {
+      "requirement": "Streaming playback should buffer for no more than ten seconds before starting.",
+      "source_citation": "Buffering is a big one. We can't promise users' networks, but the player should get them into the movie quickly. If the initial buffer takes forever, they'll bail or think the file is broken. It should be a matter of seconds — not tens of seconds.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions that buffering should be a matter of seconds and specifies ten seconds as the maximum tolerable time, indicating a performance requirement.",
+      "follow_up_question": "What fallback mechanisms should be in place if the initial buffer exceeds ten seconds?"
+    },
+    {
+      "requirement": "The site should have a high availability target of 99.5% uptime.",
+      "source_citation": "The site needs to be reliable. Downtime kills trust and revenue, especially if people plan to watch something and it fails. We can't be down a lot; the business expects high availability. Not constantly perfect, but pretty close to always up.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies a high availability target of 99.5% uptime, indicating a clear availability requirement.",
+      "follow_up_question": "What are the acceptable downtime windows and maintenance schedules for achieving this uptime target?"
+    },
+    {
+      "requirement": "The site should be protected against automated abuse such as bots, brute-force attacks, and scraping.",
+      "source_citation": "Well, automated abuse is a nightmare. Bots trying to brute-force pre-paid codes, or card testing attacks that spike transactions, or crawlers scraping content — we need protections.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for protections against automated abuse, indicating a security requirement.",
+      "follow_up_question": "What specific measures or technologies should be implemented to protect against these types of automated abuse?"
+    },
+    {
+      "requirement": "The system should alert admins when something weird happens, such as unusual traffic patterns or incidents.",
+      "source_citation": "Ideally, the system blocks or mitigates attacks and alerts admins when something weird happens. It's annoying when you only find out after damage is done.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for alerts when something unusual happens, indicating a security requirement.",
+      "follow_up_question": "What specific alert mechanisms or notification channels should be used for these alerts?"
+    },
+    {
+      "requirement": "A clear privacy policy should be easily accessible on every page.",
+      "source_citation": "We should be upfront. A clear privacy policy that people can find before they give us anything. I don't like those hidden pages — make it visible, maybe linked in the footer and during signup. Users should know what data we collect and how we use it.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "privacy",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for a clear and accessible privacy policy, indicating a privacy requirement.",
+      "follow_up_question": "What specific information should be included in the privacy policy to meet user expectations?"
+    },
+    {
+      "requirement": "The site should support local languages and currencies for key markets.",
+      "source_citation": "Yeah, we'd want local languages for key markets — at least the big ones. Also support for local currencies in the UI helps reduce confusion.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "localization",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for support of local languages and currencies, indicating a localization requirement.",
+      "follow_up_question": "Which specific languages and currencies should be supported for the key markets?"
+    },
+    {
+      "requirement": "Admin dashboards should handle a few concurrent users during reporting windows.",
+      "source_citation": "Uh, it's not a huge team. Maybe a handful of people at peak times. They won't all be doing heavy queries constantly, but during reporting windows there could be a few.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 3,
+      "rationale": "The stakeholder mentions the need for admin dashboards to handle a few concurrent users during reporting windows, indicating a scalability requirement.",
+      "follow_up_question": "What specific performance metrics or thresholds should be used to ensure the admin dashboards can handle the expected load?"
+    },
+    {
+      "requirement": "The UI should be simple, with big clear buttons, not too many choices at once, helpful defaults, and an obvious prominent 'play' flow.",
+      "source_citation": "Simplicity is key. Big clear buttons, not too many choices at once, helpful defaults, and an obvious prominent 'play' flow.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for a simple and intuitive UI, indicating a usability requirement.",
+      "follow_up_question": "What specific usability testing or user research methods should be used to validate the UI design?"
+    },
+    {
+      "requirement": "Error messages should be simple and not technical.",
+      "source_citation": "Also the visual style should feel familiar and warm; an African-inspired aesthetic would help users feel at home. Oh, and tooltips and simple error messages — not scary technical text.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for simple and non-technical error messages, indicating a usability requirement.",
+      "follow_up_question": "What specific guidelines or examples should be used to ensure error messages are simple and user-friendly?"
+    },
+    {
+      "requirement": "Role-based access control should be enforced for sensitive data, with two-factor authentication for high-privilege accounts.",
+      "source_citation": "Roles for sure, and stronger authentication for high-privilege accounts. Two-factor seems sensible for those users who can see sensitive data.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for role-based access control and two-factor authentication, indicating a security requirement.",
+      "follow_up_question": "What specific roles and privileges should be defined for accessing sensitive data?"
+    },
+    {
+      "requirement": "Audit logs should be maintained for admin access to sensitive data.",
+      "source_citation": "And of course logs of who accessed what, so we can audit if something looks off.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for audit logs, indicating a security requirement.",
+      "follow_up_question": "What specific information should be included in the audit logs to ensure effective monitoring and auditing?"
+    },
+    {
+      "requirement": "Operational monitoring should track basic health stuff — server uptime, error rates, and unusual traffic patterns.",
+      "source_citation": "Track basic health stuff — server uptime, error rates, and unusual traffic patterns.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for operational monitoring of basic health metrics, indicating an operability requirement.",
+      "follow_up_question": "What specific monitoring tools or technologies should be used to track these metrics?"
+    },
+    {
+      "requirement": "Daily business metrics such as stream counts, revenue, and active users should be stored and accessible.",
+      "source_citation": "Daily aggregates like stream counts, revenue, active users — the usual business stuff.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for daily business metrics, indicating an operability requirement.",
+      "follow_up_question": "What specific reporting or analytics tools should be used to store and access these metrics?"
+    },
+    {
+      "requirement": "Alerts should be sent to someone if an alert fires at night.",
+      "source_citation": "If an alert fires at night, someone should get notified; we can't just find out in the morning after revenue is lost.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "operability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for alerts to be sent to someone if an alert fires at night, indicating an operability requirement.",
+      "follow_up_question": "What specific alert mechanisms or notification channels should be used for these alerts?"
+    },
+    {
+      "requirement": "Admin tools should avoid manual processes such as spreadsheets for pre-paid codes.",
+      "source_citation": "From the user side, entering the code and getting access should be as easy as typing a PIN; they shouldn't wrestle with forms. On the admin side, we need a way to generate those codes and track which have been used. It shouldn't be a manual spreadsheet job — that gets messy fast.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need to avoid manual processes and spreadsheets for pre-paid codes, indicating a maintainability requirement.",
+      "follow_up_question": "What specific tools or automation should be used to manage pre-paid codes and track their usage?"
+    },
+    {
+      "requirement": "Raw logs should be available for troubleshooting, such as duplicate payment records.",
+      "source_citation": "I mean both, but if I had to pick one it's critical to have the raw logs somewhere. We should be able to pull up individual movie sale records if there's a dispute or to reconcile revenue.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder specifies the need for raw logs to be available for troubleshooting, indicating a maintainability requirement.",
+      "follow_up_question": "What specific logging or data storage solutions should be used to ensure raw logs are accessible for troubleshooting?"
+    }
+  ]
+}

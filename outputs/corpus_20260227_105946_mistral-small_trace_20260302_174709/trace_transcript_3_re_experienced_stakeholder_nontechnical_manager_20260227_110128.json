@@ -1,0 +1,150 @@
+{
+  "transcript_file": "outputs/corpus-20260227_105946/transcript_3_re_experienced_stakeholder_nontechnical_manager_20260227_110128.txt",
+  "model": "mistral/mistral-small-latest",
+  "timestamp": "20260302_174711",
+  "requirements": [
+    {
+      "requirement": "The system must respond to small operations (e.g., opening a student profile or updating a status) within 5 seconds.",
+      "source_citation": "It needs to feel snappy. For small operations—opening a student profile or updating a status—I hate sitting and watching a spinner. If it takes longer than a few seconds I notice.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for responsiveness in small operations and provides a clear timeframe of a few seconds. This indicates a performance requirement.",
+      "follow_up_question": "What specific small operations should be prioritized for this 5-second response time?"
+    },
+    {
+      "requirement": "The system must generate a full term's schedule within 30 seconds to prevent staff from reverting to spreadsheets.",
+      "source_citation": "For heavier things, like generating an entire term's schedule, I expect it will take longer but it can't be a full minute-plus ordeal. If schedule generation takes longer than half a minute, staff start to get distracted and sometimes revert to spreadsheets.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "performance",
+      "confidence": 5,
+      "rationale": "The stakeholder provides a clear timeframe for schedule generation and explains the consequences of not meeting this requirement.",
+      "follow_up_question": "Are there specific components of the schedule generation process that are more critical to optimize for performance?"
+    },
+    {
+      "requirement": "The system must ensure that program administrators can see full student records, while site coordinators and instructors can only see necessary information for contact and confirmation of qualifications.",
+      "source_citation": "Program administrators need to see the student records to make placement decisions, but site coordinators shouldn't see personal details beyond what they need to contact the student and confirm qualifications. Instructors probably need to see their assigned students and competency status but not everything like disciplinary notes. Basically, not everyone should have everything.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for role-based access control to protect sensitive student information.",
+      "follow_up_question": "Can you provide a more detailed breakdown of the specific information that each role should have access to?"
+    },
+    {
+      "requirement": "The system must comply with the university's information policy regarding the protection of health information and student records.",
+      "source_citation": "We must follow the university's info policy—so protections around health info and student records apply. It's not optional. The system should treat private data the way the university expects, and we shouldn't be forced to work around it.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "security",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly states the need for compliance with the university's information policy, indicating a security requirement.",
+      "follow_up_question": "Are there specific regulations or guidelines within the university's information policy that should be prioritized?"
+    },
+    {
+      "requirement": "The system must be easy to use, allowing program administrators to manage schedules without needing to open multiple windows or ask for help.",
+      "source_citation": "Easy means that a program admin can log in, pull up a cohort, see who needs a clinical placement, and assign them without having to open five windows or ask someone else. It should guide them—like, if someone is missing a prerequisite it should flag it so they don't assign them. And it should be obvious where to click; non-tech people shouldn't get lost.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 5,
+      "rationale": "The stakeholder provides a clear description of what constitutes ease of use and the expected user experience.",
+      "follow_up_question": "Can you provide specific examples of tasks that should be straightforward for non-tech users?"
+    },
+    {
+      "requirement": "The system must require no more than one day of training for new program administrators to become confident in using it.",
+      "source_citation": "We really can't ask for a week of classes for every new admin. Ideally they'd pick it up quickly—like, a day of training and then they can use it.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "usability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for minimal training time, indicating a usability requirement.",
+      "follow_up_question": "What specific tasks or features should be covered in this one-day training session?"
+    },
+    {
+      "requirement": "The system must be available during business hours (8 AM to 6 PM on weekdays) to ensure it is accessible when scheduling and coordination activities are taking place.",
+      "source_citation": "It has to be available when our office is open; those are the times people are making assignments. We can't have it go down during business hours—it's a disruption.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "availability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for system availability during specific business hours.",
+      "follow_up_question": "Are there any specific times within the business hours that are more critical for system availability?"
+    },
+    {
+      "requirement": "The system must have an uptime of at least 95% to ensure reliability and prevent interruptions.",
+      "source_citation": "We need it to be solid. If I had to set a target, I'd be uncomfortable with anything less than the mid-nineties percentage of availability over the term. Anything lower and we'll see too many interruptions.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "reliability",
+      "confidence": 5,
+      "rationale": "The stakeholder provides a clear uptime target and explains the consequences of not meeting this requirement.",
+      "follow_up_question": "Are there specific periods or events where uptime is more critical?"
+    },
+    {
+      "requirement": "The system must treat private data in accordance with the university's expectations and should not require workarounds to comply with data protection policies.",
+      "source_citation": "The system should treat private data the way the university expects, and we shouldn't be forced to work around it.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 4,
+      "rationale": "The stakeholder explicitly mentions the need for compliance with the university's data protection policies, indicating a maintainability requirement.",
+      "follow_up_question": "Are there specific data protection policies or guidelines that should be prioritized?"
+    },
+    {
+      "requirement": "The system must provide audit trails and reporting capabilities to track cohort progression, student competencies, site utilization, and recurring scheduling conflicts.",
+      "source_citation": "We need audit trails... Reporting is important. I need to know cohort progression, which students are missing competencies, site utilization, and recurring scheduling conflicts.",
+      "citation_verified": false,
+      "citation_warning": "Citation not found in transcript",
+      "classification": "Non-Functional",
+      "quality_attribute": "maintainability",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for audit trails and reporting, indicating a maintainability requirement.",
+      "follow_up_question": "Can you provide more details on the specific types of reports that are needed?"
+    },
+    {
+      "requirement": "The system must handle peak usage during term starts and before rotations without significant performance degradation.",
+      "source_citation": "Term starts are heavy—roster generation and assignment runs. People tend to do big batch operations then, and that's when performance matters. Also, mornings before a rotation start are frantic. We need it to handle those peaks without slowing to a crawl.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "scalability",
+      "confidence": 4,
+      "rationale": "The stakeholder mentions the need for the system to handle peak usage during specific times, indicating a scalability requirement.",
+      "follow_up_question": "Can you provide more details on the specific peak usage scenarios and their impact on system performance?"
+    },
+    {
+      "requirement": "The system must send automatic notifications via email or in-app alerts when schedules change, tailored to the appropriate audience (students, instructors, site administrators).",
+      "source_citation": "Automatic notifications are crucial. If a schedule changes, an email or an in-app alert should go out. For site admins, we need something formal—like an email with the roster—so they can plan staffing. Students need clear messages about time/location and any prerequisite issues.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "other",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for automatic notifications and tailoring them to different audiences, indicating a requirement for notification management.",
+      "follow_up_question": "Can you provide more details on the specific types of notifications and their content?"
+    },
+    {
+      "requirement": "The system must prevent scheduling conflicts by blocking or clearly warning users when a student is scheduled at a time a site or preceptor is already booked.",
+      "source_citation": "I want built-in checks. If someone tries to schedule a student at a time a site or preceptor is already booked, it should block or at least clearly warn.",
+      "citation_verified": true,
+      "citation_warning": null,
+      "classification": "Non-Functional",
+      "quality_attribute": "other",
+      "confidence": 5,
+      "rationale": "The stakeholder explicitly mentions the need for built-in checks to prevent scheduling conflicts, indicating a requirement for conflict detection and resolution.",
+      "follow_up_question": "Can you provide more details on the specific types of conflicts that need to be detected and resolved?"
+    }
+  ]
+}

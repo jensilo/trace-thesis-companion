@@ -1,0 +1,140 @@
+Interviewer: Thanks for sitting down with me. To start, can you tell me who the primary users of this system will be, and what kinds of devices and network conditions we should expect? Any offline needs?
+
+Stakeholder: Sure, I think the primary users are our claim adjusters and collision estimators — people who work in the office and people who are out in the field. Field folks will often be on tablets or phones on cellular networks, so flaky connectivity is a real thing. Office users are typically on desktops and decent LANs. So, yeah, we need to design for both. Offline capabilities would be nice for the field — at least resilience to dropped connections and some ability to resume work — but I wouldn't say we have to build a full offline-first app unless we decide the field use cases absolutely require it. And, uh, not everyone should see everything; access needs to be role-aware because some of the data is sensitive.
+
+Interviewer: Okay. Which internal teams or systems should I talk to besides the parts database — like identity or other services — anything mandatory to consult?
+
+Stakeholder: You'll want to loop in our identity team because we use the corporate single sign-on and authorization patterns. Also talk to the folks who maintain the corporate architecture standards and the UI design system; they gate approved technologies and visual components. And, of course, the team that runs the existing recycled parts source — Choice Parts — because that's the data feed we'll be consuming.
+
+Interviewer: Got it. Any hard corporate constraints I should be aware of — like mandated cloud provider or identity provider?
+
+Stakeholder: Yes, the product must fit within our corporate architecture. We have an approved cloud provider and a set of preferred managed services. We also have a mandated SSO provider and a corporate UI guideline that the product has to follow. Deviating is possible but it requires formal approval, and that slows things down.
+
+Interviewer: Right. Given that context, let's talk about the Choice Parts integration. How should we interface with them — are they a push feed, a REST API, a queue, what should we expect in terms of freshness and error handling?
+
+Stakeholder: Choice Parts is the authoritative source for recycled parts data for us. We need to integrate with their feed rather than attempt to rebuild it. Practically, treat them as an external dependency with SLAs and rate limits. The safe approach is to decouple: ingest their feed into a local, normalized store and serve searches from our index instead of doing a synchronous call for every user search. That gives us more control over latency and resilience. We'll also need contract tests against their API schema and a versioning strategy so changes don't break us. Error handling should include sensible fallbacks — cached results, friendly user messages — and clear escalation paths when their feed is unhealthy.
+
+Interviewer: Do we know what protocol they use? Is there an API spec we can get?
+
+Stakeholder: I think they expose both a REST API and a message-based option, but we need to confirm. We should get their schema and SLAs. Whoever owns that contact on the Choice Parts side needs to share the spec and any rate limits. I can point you to the contact, but you'll need to follow up with them for the exact contract.
+
+Interviewer: Okay, I'll reach out. You mentioned caching and indexing — for recycled parts search, how fast should searches feel? What would be too slow?
+
+Stakeholder: Users hate waiting. For parts search specifically, it needs to feel snappy even for field users. If it drags, adjusters get frustrated and start bypassing the tool. So I want it to be responsive in most situations; if you press search, you shouldn't be sitting idle for long.
+
+Interviewer: When you say "not long", do you have a specific time in mind? Like what's the acceptable maximum?
+
+Stakeholder: If you're pushing me for a number, then for recycled parts searches the expectation is that results come back within about fifteen seconds. That's the upper bound we should be measuring against. We should aim for far faster in common cases, of course, but fifteen seconds is the threshold I expect us to meet.
+
+Interviewer: Alright. And how do we validate that? Is that for cold cache or warm cache, percentile-based or absolute?
+
+Stakeholder: We'll want to define it when we write acceptance tests. Personally, I'd validate against a high percentile — say the 95th — under realistic network conditions, and include both cold-cache and warm-cache scenarios. But the fifteen-second ceiling applies as the maximum for the user-facing search operation.
+
+Interviewer: Okay. The search results themselves — images, photos, filters — do those count toward that time? And for field users, should we support offline search?
+
+Stakeholder: Images and heavy enrichment will affect latency, so for the initial search we should return essential fields quickly and lazy-load images or less critical metadata. As for offline search, a small local cache for the most recent queries could help in the field, but full offline search of the entire catalog is probably not required at launch.
+
+Interviewer: Moving to repair facility search — the system should find preferred repair facilities near the vehicle. How do we determine "preferred," and how fast should that come back?
+
+Stakeholder: "Preferred" is a mix of proximity, insurer relationships, previous performance, and availability, but the simplest user experience is to return a single recommended option quickly. For that, we need geospatial indexing and precomputed scores so we aren't doing heavy joins in real time. It needs to feel quicker than parts lookup because adjusters expect a single recommendation fast.
+
+Interviewer: How quick? Do you have a number for what's acceptable?
+
+Stakeholder: For returning a preferred facility, I want the system to be noticeably faster — somewhere under eight seconds as a max. Ideally much faster, but eight seconds is the upper bound we should design to meet.
+
+Interviewer: Is that for the single preferred item or for a full ranked list?
+
+Stakeholder: The eight-second target is for returning the preferred single choice. A full ranked list can have a slightly longer tolerance if we progressively enhance the UI, but the user should see the top recommendation within that bound.
+
+Interviewer: What types of location inputs will we have? User-entered addresses, GPS, VIN-derived location?
+
+Stakeholder: We'll accept several inputs: user-entered addresses, GPS from the device if granted, and any vehicle telematics or VIN-derived info we can get from other systems. Accuracy expectations should be pragmatic; proximity ranking should tolerate some fuzziness.
+
+Interviewer: For geo services like geocoding or maps, are there approved providers?
+
+Stakeholder: We have a list of corporate-approved map providers. Use those, or get explicit approval to use another. Avoid arbitrary third-party map APIs without clearance.
+
+Interviewer: Understood. On scaling — how many concurrent users do we expect at launch, and what about growth?
+
+Stakeholder: At launch we need to design for a modest but significant concurrent load. If you ask me for concrete numbers, plan for about fifteen hundred users concurrently. And we must have a clear, tested path to scale up to ten thousand concurrent users within a couple of years. So horizontally scalable, stateless services and sharding strategies should be in the architecture from day one.
+
+Interviewer: When you say "concurrent" do you mean active requests per second, connected sessions, or something else?
+
+Stakeholder: Good question. I mean concurrent active users — people actively using the system at the same time. We'll need to translate that into requests per second curves for load testing, but treat the fifteen hundred as the baseline concurrency target.
+
+Interviewer: Okay. And for ten thousand in two years — that's a growth target we need to plan for but maybe not fully provision day one?
+
+Stakeholder: Exactly. Architect for horizontal scaling so we can add capacity as usage grows. Autoscaling, sharding by insurer or region, and stateless frontends will make that practical.
+
+Interviewer: Let's talk uptime. How available must this be?
+
+Stakeholder: Availability needs to be measurable and agreed with ops and the business. From a contractual standpoint, the target discussed internally is ninety-eight percent uptime. That number is workable but not super high if this becomes business-critical; we should revisit that with stakeholders to balance cost versus availability.
+
+Interviewer: Ninety-eight percent — okay. Do you mean that as a strict SLA or more of a starting point?
+
+Stakeholder: As far as I understand, it's the SLA we should aim to meet initially, but it's negotiable depending on budget and risk appetite. If this tool becomes critical to claims throughput, we'll likely need a higher target and multi-region redundancy.
+
+Interviewer: Right. What about resilience to attacks — DoS and other threats — and tenant isolation? For example, should one insurer be able to see another's claims?
+
+Stakeholder: No — that must not happen. Each insurer's data needs to be isolated so they cannot see each other's claims. We can achieve that through logical separation like row-level security or stronger isolation like separate schemas; which approach depends on customer requirements and certification needs. For DoS, we must assume the public surface will be protected by the usual mitigations: API gateway, WAF, rate limiting, and the cloud provider's DDoS protections. We should also plan for capacity buffers and graceful degradation so essential functions remain available under stress.
+
+Interviewer: So strict tenant separation is required. Is there a preference between logical isolation and physically separate environments?
+
+Stakeholder: We prefer logical isolation for manageability unless a customer explicitly demands physical separation. If a customer asks for dedicated tenancy, we can accommodate it, but that adds cost and operational overhead.
+
+Interviewer: And authentication — must we use corporate SSO and RBAC?
+
+Stakeholder: Yes, use the corporate SSO for authentication and the corporate RBAC model for authorization. Integrate with the identity provider and honor the corporate user roles. Also audit every access for compliance purposes.
+
+Interviewer: Speaking of audit — adjusters need to audit recycled parts usage and rate facilities. What are the expectations there?
+
+Stakeholder: Auditing needs to be comprehensive and tamper-evident. We need to capture who did what and when, and the original and changed values for any estimate modifications. Ratings should be associated with the facility profile over time and be queryable for reporting. Reports must be available to the right roles and should be generated asynchronously so reporting workloads don't degrade transactional performance.
+
+Interviewer: Do we have retention requirements for audit logs and ratings data?
+
+Stakeholder: There are corporate and possibly legal requirements for retention. We'll need to check the retention policy, but expect multi-year retention for audit logs. We'll confirm specific durations with compliance.
+
+Interviewer: For UI, you said corporate guidelines apply. Anything specific like accessibility or component libraries we must use?
+
+Stakeholder: Yes, follow the corporate UI guidelines and use the design system components. We have accessibility expectations — WCAG-level conformance — and cross-browser support standards. Deviations need explicit sign-off from design and accessibility leads.
+
+Interviewer: For acceptance and testing: how should we validate the search timings, concurrency and availability targets?
+
+Stakeholder: Acceptance needs to be testable. For search latency, run load tests that model realistic user behavior and validate latency percentiles — I suggested earlier the 95th percentile for the search targets. For concurrency, run ramp tests in staging to validate behavior at fifteen hundred concurrent users and then performance tests on the path to scale to ten thousand. For availability, we need SLOs, monitoring and uptime dashboards, and we should do chaos or failover drills to measure RTO and RPO. Security testing should include SAST/DAST and a penetration test before production.
+
+Interviewer: When you said earlier fifteen seconds and eight seconds, did you mean those as 95th percentile numbers as well?
+
+Stakeholder: Yes, use the 95th percentile under expected conditions as acceptance criteria — so recycled parts search should return within fifteen seconds for 95% of requests, and preferred facility should be returned within eight seconds for 95% of requests, tested under representative network conditions.
+
+Interviewer: Okay. Who owns the integration point with Choice Parts and who signs off on architecture or UI deviations?
+
+Stakeholder: Ownership is usually split: an integration owner on our side and a product owner for contractual sign-off with Choice Parts. Architecture and UI deviations require sign-off from the enterprise architecture board and the design governance group. I can introduce you to the right people.
+
+Interviewer: Are there any other major risks or open issues we should track?
+
+Stakeholder: A few come to mind. Choice Parts' SLA and how often their schema changes is a risk. Field network variability is another, which drives the need for caching and graceful degradation. Tenant isolation can complicate scalability if customers require physical separation. And, um, cost is always a limiter — higher availability and multi-region setups cost more. Oh, and I should mention a tiny anecdote: last year we had an incident where a partner's feed went dark for a day and it dramatically slowed claims processing, so don't underestimate failure modes of external feeds.
+
+Interviewer: Good to know. For next steps, should I collect the Choice Parts API spec, corporate architecture and UI docs, and the contact lists for those owners?
+
+Stakeholder: Yes, gather those artifacts. Also define the initial acceptance test scenarios for parts search and facility lookup, and set up a meeting with the integration contact. Prioritize the fifteen hundred concurrent user target for MVP architecture, but document the path to ten thousand. And get security and identity teams involved early.
+
+Interviewer: Great. Thanks — one last quick thing: do we need penetration testing before launch?
+
+Stakeholder: Yes, I think a full penetration test before production rollout is mandatory, and automated security scans during development too.
+
+Interviewer: Thanks, that's really helpful. I'll get those action items started and follow up on the specs and contacts you mentioned.
+
+Stakeholder: Sounds good. Happy to help with the intros and the acceptance criteria drafts when you have them.
+
+---
+Selected Requirements:
+1. [NICE.csv line 206] [quality, operability] 'The product shall interface with the Choice Parts System. This provides the feed of recycled parts data.'
+2. [NICE.csv line 208] [quality, legal] 'The product shall adhere to the corporate Architecture guidelines'
+3. [NICE.csv line 209] [quality, legal, look_and_feel] 'The product shall comply with corporate User Interface Guidelines'
+4. [NICE.csv line 217] [quality, performance] 'The search for recycled parts shall take no longer than 15 seconds. The search results shall be returned in under 15 seconds.'
+5. [NICE.csv line 218] [quality, performance] 'The search for the preferred repair facility shall take no longer than 8 seconds. The preferred repair facility is returned within 8 seconds'
+6. [NICE.csv line 222] [quality, availability, fault_tolerance] 'The product shall achieve a 98% uptime. The product shall not fail more than 2% of the available online time.'
+7. [NICE.csv line 223] [quality, scalability] 'The product shall be able to handle up to 1500 simultaneous users. The system shall perform with 1500 users as a time.'
+8. [NICE.csv line 225] [quality, scalability] 'The product shall be able to handle 10 000 concurrent users within 2 years of the initial launch.'
+9. [NICE.csv line 237] [quality, security] 'The system shall prevent malicious attacks including denial of service.'
+10. [NICE.csv line 235] [quality, security] 'One insurance company shall not be able to view another insurance companys claim data.'
