@@ -61,6 +61,59 @@ uv run trace       # TRACE extraction
 uv run iso-label   # ISO/IEC 25010 re-labelling
 ```
 
+## Usage
+
+### SQuIRE
+
+```
+Usage: squire [OPTIONS] COMMAND [ARGS]...
+
+  SQuIRE — Synthetic Quality Interview Requirements Elicitation
+
+Commands:
+  run                 Synthesize a requirements elicitation interview transcript.
+  evaluate            Evaluate an existing transcript with G-Eval (quality +
+                      meta) and BERTScore.
+  personas            List available personas.
+  synthesize-corpus   Synthesize and evaluate a full corpus: 5 projects × 2
+                      interviewers × 4 stakeholders = 40 transcripts.
+  reevaluate-corpus   Re-evaluate all transcripts in an existing corpus.
+  summarize-projects  Summarize NICE dataset projects from their requirements
+                      and save to data/project_summaries.json.
+```
+
+Run `uv run squire COMMAND --help` for options on any subcommand.
+
+### TRACE
+
+```
+Usage: trace [OPTIONS] COMMAND [ARGS]...
+
+  TRACE — Trusted Requirements Automated Capture & Extraction
+
+Commands:
+  extract           Extract quality requirements from a transcript file.
+  extract-corpus    Extract requirements from all transcripts in a corpus.
+  evaluate-corpus   Evaluate all extractions in a trace corpus and rewrite
+                    trace_corpus_meta.json.
+```
+
+Run `uv run trace COMMAND --help` for options on any subcommand.
+
+### ISO/IEC 25010 re-labelling
+
+This tool was used for a post-hoc construct validity analysis and is not needed to reproduce the main extraction results.
+
+```
+Usage: iso-label [OPTIONS] COMMAND [ARGS]...
+
+  ISO/IEC 25010 re-labelling agent for NICE QRs.
+
+Commands:
+  run      Classify NICE QRs with ISO/IEC 25010:2023 sub-characteristics (n runs).
+  analyse  Print per-NICE-label concordance summary across run directories.
+```
+
 ## Reproducing the Analysis
 
 The analysis notebook requires a Hugging Face token to load the Gemma embedding model used for transcript similarity analysis:
