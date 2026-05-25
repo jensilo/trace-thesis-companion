@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/1247416099.svg)](https://doi.org/10.5281/zenodo.20374356)
+
 # TRACE — Trusted Requirements Automated Capture & Extraction
 
 Companion repository for the master's thesis _Automated Extraction of Quality Requirements from Interview Transcripts: An Evaluation of LLM-driven Techniques_ (Karlstad University, 2026).
